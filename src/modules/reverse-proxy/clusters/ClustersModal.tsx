@@ -330,7 +330,7 @@ spec:
           <TabsList justify={"start"} className={"px-8"}>
             <TabsTrigger value={"domain"}>
               <GlobeIcon size={14} />
-              Domain
+              {t("clusterTabDomain")}
             </TabsTrigger>
             {!isCloudDeploy && (
               <TabsTrigger
@@ -338,7 +338,7 @@ spec:
                 disabled={!domain.trim() || !!domainError}
               >
                 <ListIcon size={14} />
-                DNS Records
+                {t("clusterTabDnsRecords")}
               </TabsTrigger>
             )}
             <TabsTrigger
@@ -387,21 +387,9 @@ spec:
                 <Callout variant={"info"}>
                   {t("requirementsText")}
                   <ul className={"list-disc pl-4 mt-2 flex flex-col gap-1"}>
-                    <li>
-                      <span className={"text-white font-medium"}>
-                        Publicly accessible IP address
-                      </span>
-                    </li>
-                    <li>
-                      <span className={"text-white font-medium"}>{t("docker")}</span>{" "}
-                      installed and running
-                    </li>
-                    <li>
-                      <span className={"text-white font-medium"}>
-                        Port 80 and 443
-                      </span>{" "}
-                      open and not in use
-                    </li>
+                    <li>{t("requirementPublicIp")}</li>
+                    <li>{t("requirementDocker")}</li>
+                    <li>{t("requirementPorts")}</li>
                   </ul>
                 </Callout>
               )}
@@ -528,7 +516,7 @@ spec:
                 href={REVERSE_PROXY_CLUSTERS_DOCS_LINK}
                 target={"_blank"}
               >
-                Proxy Cluster
+                {t("proxyClustersLabel")}
                 <ExternalLinkIcon size={12} />
               </InlineLink>
             </Paragraph>
@@ -537,24 +525,24 @@ spec:
             {tab === "domain" && (
               <>
                 <ModalClose asChild={true}>
-                  <Button variant={"secondary"}>Cancel</Button>
+                  <Button variant={"secondary"}>{tCommon("cancel")}</Button>
                 </ModalClose>
                 <Button
                   variant={"primary"}
                   onClick={() => (isCloudDeploy ? goToInstall() : setTab("dns"))}
                   disabled={!domain.trim() || !!domainError}
                 >
-                  Continue
+                  {t("continue")}
                 </Button>
               </>
             )}
             {tab === "dns" && (
               <>
                 <Button variant={"secondary"} onClick={() => setTab("domain")}>
-                  Back
+                  {t("back")}
                 </Button>
                 <Button variant={"primary"} onClick={goToInstall}>
-                  Continue
+                  {t("continue")}
                 </Button>
               </>
             )}
