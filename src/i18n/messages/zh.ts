@@ -1084,7 +1084,7 @@ export default {
     policyCreated: "策略 '{name}' 创建成功",
     policyDeleteLoading: "正在删除策略...",
     policyDeleted: "策略 '{name}' 已删除",
-    policyDescriptionHelp: "写一个简短的描述为此态势检查添加更多上下文。",
+    policyDescriptionHelp: "写一个简短的描述为此策略添加更多上下文。",
     policyDescriptionLabel: "描述（可选）",
     policyDisableLoading: "正在禁用策略...",
     policyDisabledSuccess: "策略已成功禁用",
