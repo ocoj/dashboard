@@ -15,6 +15,7 @@ import {
   FilterIcon,
   XIcon,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import * as React from "react";
 import { useState } from "react";
 
@@ -44,6 +45,7 @@ export function TableFiltersButton<TData>({
   filters,
   disabled,
 }: ButtonProps<TData>) {
+  const t = useTranslations("common");
   const [open, setOpen] = useState(false);
   const [activeFilterId, setActiveFilterId] = useState<string | null>(null);
 
@@ -70,7 +72,7 @@ export function TableFiltersButton<TData>({
         >
           <FilterIcon size={16} className={"shrink-0"} />
           <span className={"flex items-center gap-1.5"}>
-            Filters
+            {t("filters")}
             {activeCount > 0 && (
               <span
                 className={

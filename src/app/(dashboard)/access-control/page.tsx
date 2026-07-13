@@ -22,6 +22,7 @@ const AccessControlTable = lazy(
 );
 export default function AccessControlPage() {
 	const t = useTranslations("policies");
+	const tCommon = useTranslations("common");
 	const { permission } = usePermissions();
 
 	const { data: policies, isLoading } = useFetchApi<Policy[]>("/policies");
@@ -36,19 +37,18 @@ export default function AccessControlPage() {
           <Breadcrumbs>
             <Breadcrumbs.Item
               href={"/access-control"}
-              label={"Access Control"}
+              label={t("accessControls")}
               icon={<AccessControlIcon size={14} />}
             />
           </Breadcrumbs>
-          <h1 ref={headingRef}>Access Control Policies</h1>
+          <h1 ref={headingRef}>{t("tableHeading")}</h1>
           <Paragraph>
-            Policies connect users and agents to your network resources,
-            controlling what each identity can reach.{" "}
+            {t("pageDescription")}{" "}
             <InlineLink
               href={"https://docs.netbird.io/how-to/manage-network-access"}
               target={"_blank"}
             >
-              Learn more
+              {tCommon("learnMore")}
               <ExternalLinkIcon size={12} />
             </InlineLink>
           </Paragraph>
