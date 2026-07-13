@@ -64,40 +64,40 @@ export default function NetBirdSettings() {
             <>
               <VerticalTabs.Trigger value="authentication" data-testid="settings-tab-authentication">
                 <ShieldIcon size={14} />
-                Authentication
+                {t("authentication")}
               </VerticalTabs.Trigger>
               {permission.setup_keys.read && (
                 <VerticalTabs.Trigger value="setup-keys">
                   <KeyRound size={14} />
-                  Setup Keys
+                  {t("setupKeys")}
                 </VerticalTabs.Trigger>
               )}
               {account?.settings?.embedded_idp_enabled &&
                 permission?.identity_providers?.read && (
                   <VerticalTabs.Trigger value="identity-providers">
                     <FingerprintIcon size={14} />
-                    Identity Providers
+                    {t("identityProviders")}
                   </VerticalTabs.Trigger>
                 )}
               <VerticalTabs.Trigger value="groups" data-testid="settings-tab-groups">
                 <FolderGit2Icon size={14} />
-                Groups
+                {t("groupsTab")}
               </VerticalTabs.Trigger>
               <VerticalTabs.Trigger value="permissions" data-testid="settings-tab-permissions">
                 <LockIcon size={14} />
-                Permissions
+                {t("permissions")}
               </VerticalTabs.Trigger>
               <VerticalTabs.Trigger value="networks" data-testid="settings-tab-networks">
                 <NetworkIcon size={14} />
-                Networks
+                {t("networksTab")}
               </VerticalTabs.Trigger>
               <VerticalTabs.Trigger value="clients" data-testid="settings-tab-clients">
                 <MonitorSmartphoneIcon size={14} />
-                Clients
+                {t("clients")}
               </VerticalTabs.Trigger>
               <VerticalTabs.Trigger value="metrics">
                 <ChartNoAxesCombined size={14} />
-                Metrics
+                {t("metrics")}
               </VerticalTabs.Trigger>
             </>
           )}
