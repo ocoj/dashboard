@@ -1305,6 +1305,7 @@ export default {
     remove: "Remove",
     networkRoutingPeer: "Network Routing Peer",
     masquerade: "Masquerade",
+    masqueradeHelp: "Hide the original IP address of the peer, making traffic appear to come from the routing peer.",
     masqueradeEnabled: "Masquerade is now enabled",
     masqueradeDisabled: "Masquerade is now disabled",
     updatingMasquerade: "Updating masquerade...",
