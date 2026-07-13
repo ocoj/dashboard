@@ -276,7 +276,7 @@ spec:
       ? "Launch a cloud server to run the proxy."
       : deployMethod === "kubernetes"
       ? "Apply this manifest to start the proxy."
-      : "Run on your machine to start the proxy.";
+      : t("deploymentMethodHelp");
 
   const generateToken = useCallback(async () => {
     setIsGeneratingToken(true);
@@ -353,13 +353,13 @@ spec:
           <TabsContent value={"domain"} className={"pb-8"}>
             <div className={"px-8 flex flex-col gap-6"}>
               <div>
-                <Label>Domain</Label>
+                <Label>{t("domain")}</Label>
                 <HelpText>
-                  Enter a domain name that will be used for your cluster.
+                  {t("domainFieldHelp")}
                 </HelpText>
                 <Input
                   autoFocus={true}
-                  placeholder={"e.g., proxy.company.com"}
+                  placeholder={t("domainFieldPlaceholder")}
                   value={domain}
                   error={domainError}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -368,7 +368,7 @@ spec:
                 />
               </div>
               <div>
-                <Label>Deployment Method</Label>
+                <Label>{t("deploymentMethod")}</Label>
                 <HelpText>{deployDescription}</HelpText>
                 <SelectDropdown
                   value={deployMethod}
@@ -385,8 +385,7 @@ spec:
               </div>
               {!isCloudDeploy && (
                 <Callout variant={"info"}>
-                  In order to run the proxy, please make sure your machine meets
-                  the following requirements:
+                  {t("requirementsText")}
                   <ul className={"list-disc pl-4 mt-2 flex flex-col gap-1"}>
                     <li>
                       <span className={"text-white font-medium"}>
@@ -394,7 +393,7 @@ spec:
                       </span>
                     </li>
                     <li>
-                      <span className={"text-white font-medium"}>Docker</span>{" "}
+                      <span className={"text-white font-medium"}>{t("docker")}</span>{" "}
                       installed and running
                     </li>
                     <li>
@@ -524,7 +523,7 @@ spec:
         <ModalFooter className={"items-center"}>
           <div className={"w-full"}>
             <Paragraph className={"text-sm mt-auto"}>
-              Learn more about
+              {tCommon("learnMore")}
               <InlineLink
                 href={REVERSE_PROXY_CLUSTERS_DOCS_LINK}
                 target={"_blank"}

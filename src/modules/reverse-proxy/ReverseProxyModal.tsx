@@ -955,7 +955,7 @@ value={passHostHeader}
               }[tab];
               return docsLink ? (
                 <Paragraph className={"text-sm mt-auto"}>
-                  Learn more about
+                  {tCommon("learnMore")}
                   <InlineLink href={docsLink.href} target={"_blank"}>
                     {docsLink.label}
                     <ExternalLinkIcon size={12} />

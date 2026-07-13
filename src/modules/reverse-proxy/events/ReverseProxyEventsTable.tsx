@@ -30,6 +30,7 @@ import { ExternalLinkIcon } from "lucide-react";
 import ReverseProxyIcon from "@/assets/icons/ReverseProxyIcon";
 import dayjs from "dayjs";
 import React, { useCallback, useMemo, useState } from "react";
+import { useTranslations } from "next-intl";
 import { DateRange } from "react-day-picker";
 import { DatePickerWithRange } from "@components/DatePickerWithRange";
 import { useServerPagination } from "@/contexts/ServerPaginationProvider";
@@ -174,6 +175,8 @@ type Props = {
 export default function ReverseProxyEventsTable({
   headingTarget,
 }: Readonly<Props>) {
+  const t = useTranslations("reverseProxy");
+  const tCommon = useTranslations("common");
   const {
     data: events,
     isLoading,
@@ -388,7 +391,7 @@ export default function ReverseProxyEventsTable({
       isLoading={isLoading}
       inset={false}
       tableCellClassName={"py-1 px-2"}
-      text={"Proxy Events"}
+      text={t("proxyEvents")}
       sorting={sorting}
       setSorting={setSorting}
       columns={columns}
@@ -404,7 +407,7 @@ export default function ReverseProxyEventsTable({
       renderExpandedRow={(event) => (
         <ReverseProxyEventExpandedRow event={event} />
       )}
-      searchPlaceholder={"Search by IP, host, path, user..."}
+      searchPlaceholder={t("searchEventsPlaceholder")}
       getStartedCard={
         <GetStartedTest
           icon={
@@ -416,18 +419,18 @@ export default function ReverseProxyEventsTable({
               size={"large"}
             />
           }
-          title={"No Proxy Events Yet"}
+          title={t("noEventsTitle")}
           description={
-            "No proxy traffic yet. Events appear here once your reverse proxy services start serving requests."
+            t("noEventsDesc")
           }
           learnMore={
             <>
-              Learn more about
+              {tCommon("learnMore")}
               <InlineLink
                 href={REVERSE_PROXY_EVENTS_DOCS_LINK}
                 target={"_blank"}
               >
-                Proxy Events
+                {t("proxyEvents")}
                 <ExternalLinkIcon size={12} />
               </InlineLink>
             </>

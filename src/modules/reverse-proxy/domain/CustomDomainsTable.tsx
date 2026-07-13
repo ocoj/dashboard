@@ -31,6 +31,7 @@ import {
 } from "lucide-react";
 import { usePathname } from "next/navigation";
 import React, { useMemo, useState } from "react";
+import { useTranslations } from "next-intl";
 import { useSWRConfig } from "swr";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { useReverseProxies } from "@/contexts/ReverseProxiesProvider";
@@ -84,6 +85,8 @@ type Props = {
 };
 
 export default function CustomDomainsTable({ headingTarget }: Readonly<Props>) {
+  const t = useTranslations("reverseProxy");
+  const tCommon = useTranslations("common");
   const { mutate } = useSWRConfig();
   const path = usePathname();
   const { permission } = usePermissions();
@@ -114,9 +117,9 @@ export default function CustomDomainsTable({ headingTarget }: Readonly<Props>) {
 
   const statusOptions = useMemo<RadioOption<boolean | undefined>[]>(
     () => [
-      { value: undefined, label: "All", dotClass: "bg-nb-gray-500" },
-      { value: true, label: "Active", dotClass: "bg-green-500" },
-      { value: false, label: "Pending", dotClass: "bg-yellow-400" },
+      { value: undefined, label: t("all"), dotClass: "bg-nb-gray-500" },
+      { value: true, label: t("active"), dotClass: "bg-green-500" },
+      { value: false, label: t("pending"), dotClass: "bg-yellow-400" },
     ],
     [],
   );
@@ -125,7 +128,7 @@ export default function CustomDomainsTable({ headingTarget }: Readonly<Props>) {
     () => [
       {
         id: "validated",
-        label: "Status",
+        label: t("status"),
         renderPicker: (p) => (
           <RadioPicker
             value={p.value as boolean | undefined}
@@ -174,13 +177,13 @@ export default function CustomDomainsTable({ headingTarget }: Readonly<Props>) {
         initialPageSize={10000}
         showResetFilterButton={false}
         keepStateInLocalStorage={false}
-        text={"Domains"}
+        text={t("customDomains")}
         sorting={sorting}
         setSorting={setSorting}
         columns={CustomDomainsColumns}
         data={data}
         useRowId={true}
-        searchPlaceholder={"Search by domain..."}
+        searchPlaceholder={t("searchDomainsPlaceholder")}
         aboveTable={(table) => (
           <TableFilterChips table={table} filters={filterDefs} />
         )}
@@ -194,9 +197,9 @@ export default function CustomDomainsTable({ headingTarget }: Readonly<Props>) {
                 size={"large"}
               />
             }
-            title={"Add Custom Domains"}
+            title={t("addCustomDomainsTitle")}
             description={
-              "Use your own domains with NetBird's reverse proxy. To get started, add a CNAME record that points to a cluster and verify domain ownership."
+              t("addCustomDomainsDesc")
             }
             button={
               <Button
@@ -207,14 +210,14 @@ export default function CustomDomainsTable({ headingTarget }: Readonly<Props>) {
                 data-testid={"add-custom-domain"}
               >
                 <PlusCircle size={16} />
-                Add Domain
+                {t("addDomainBtn")}
               </Button>
             }
             learnMore={
               <>
-                Learn more about
+                {tCommon("learnMore")}
                 <InlineLink href={REVERSE_PROXY_DOCS_LINK} target={"_blank"}>
-                  Custom Domains
+                  {t("customDomains")}
                   <ExternalLinkIcon size={12} />
                 </InlineLink>
               </>
@@ -232,7 +235,7 @@ export default function CustomDomainsTable({ headingTarget }: Readonly<Props>) {
                 data-testid={"add-custom-domain"}
               >
                 <PlusCircle size={16} />
-                Add Domain
+                {t("addDomainBtn")}
               </Button>
             )}
           </>

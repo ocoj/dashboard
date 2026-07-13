@@ -238,7 +238,7 @@ export default function ReverseProxyTable({ headingTarget }: Readonly<Props>) {
           }
           learnMore={
             <>
-              Learn more about
+              {tCommon("learnMore")}
               <InlineLink href={REVERSE_PROXY_DOCS_LINK} target={"_blank"}>
                 Services
                 <ExternalLinkIcon size={12} />

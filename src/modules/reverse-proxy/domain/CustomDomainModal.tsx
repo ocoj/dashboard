@@ -120,14 +120,13 @@ export const CustomDomainModal = ({
               </Callout>
             ) : (
               <Callout variant="warning">
-                No proxy clusters are currently connected. Please ensure at
-                least one proxy is running before adding a domain. <br /> Learn
-                more about{" "}
+                {t("noClustersNotice")}{" "}
+                {tCommon("learnMore")}{" "}
                 <InlineLink
                   href={REVERSE_PROXY_CLUSTERS_DOCS_LINK}
                   target={"_blank"}
                 >
-                  Proxy Clusters
+                  {t("proxyClustersLabel")}
                   <ExternalLinkIcon size={12} />
                 </InlineLink>
               </Callout>
@@ -161,7 +160,7 @@ export const CustomDomainModal = ({
                   value={selectedCluster}
                   onChange={setSelectedCluster}
                   options={availableClusterOptions}
-                  placeholder={"Select a proxy cluster..."}
+                  placeholder={t("selectProxyCluster")}
                 />
               </div>
             </>
@@ -170,7 +169,7 @@ export const CustomDomainModal = ({
         <ModalFooter className={"items-center"}>
           <div className={"w-full"}>
             <Paragraph className={"text-sm mt-auto"}>
-              Learn more about
+              {tCommon("learnMore")}
               <InlineLink
                 href={REVERSE_PROXY_CUSTOM_DOMAINS_DOCS_LINK}
                 target={"_blank"}
