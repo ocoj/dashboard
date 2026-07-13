@@ -2,8 +2,6 @@ export default {
   common: {
     loading: "Loading...",
     restrictedAccessHeading: "You don't have access to",
-    restrictedAccessDescription:
-      "Seems like you don't have access to this page. Only users with proper permissions can visit this page. Please contact your network administrator for further information.",
     error: "Error",
     success: "Success",
     cancel: "Cancel",
@@ -90,8 +88,6 @@ export default {
     networkIdentifier: "Network Identifier",
     accessControlRules: "Access Control Rules",
     customHeaders: "Custom Headers",
-    customHeadersHelp:
-      "Add extra headers to include in forwarded requests.\nHop-by-hop headers such as Host or Connection are not allowed.",
     metric: "Metric",
     addNewRoutingPeer: "Add New Routing Peer",
     routingPeerHelp: "Assign a single peer as a routing peer for the",
@@ -103,16 +99,10 @@ export default {
     existingNetworkDesc: "Add this peer to an existing network",
     networkRoutes: "Network Routes",
     noNetworkRoutes: "This peer has no network routes",
-    noNetworkRoutesDesc:
-      "You don't have any assigned network routes yet. You can add this peer to an existing network or create a new network route.",
     runRemoteJob: "Run Remote Job",
-    peerOfflineRemoteJob:
-      "Peer <bold>{name}</bold> is currently offline. Please connect the peer to run remote jobs.",
     debugBundleDesc: "Collect debug information for troubleshooting",
     accessTokens: "Access Tokens",
     noAccessTokens: "No access tokens",
-    noAccessTokensDesc:
-      "You don't have any access tokens yet. You can add a token to access the NetBird API.",
     disable: "Disable",
     network: "Network",
     goBack: "Go Back",
@@ -130,6 +120,26 @@ export default {
     domainPlaceholder: "e.g., example.com",
     peerCount: "{count, plural, =0 {0 Peers} one {# Peer} other {# Peers}}",
     resourceCount: "{count, plural, =0 {0 Resources} one {# Resource} other {# Resources}}",
+    hours: "Hours",
+    port: "Port",
+    id: "ID",
+    version: "Version",
+    remove: "Remove",
+    days: "days",
+    email: "Email",
+    valid: "Valid",
+    expired: "Expired",
+    revoke: "Revoke",
+    justNow: "Just now",
+    enable: "Enable",
+    add: "Add",
+    confirmDeleteTitle: "Confirm Delete",
+    role: "Role",
+    pending: "Pending",
+    connecting: "Connecting",
+    blocked: "Blocked",
+    beta: "Beta",
+    key: "Key",
   },
   navigation: {
     controlCenter: "Control Center",
@@ -171,8 +181,6 @@ export default {
     search: "Search...",
     noResults: "No results",
     noResultsCardTitle: "Could not find any results",
-    noResultsDescription:
-      "We couldn't find any results. Please try a different search term or change your filters.",
     rowsPerPage: "Rows per page",
     previous: "Previous",
     next: "Next",
@@ -189,6 +197,10 @@ export default {
     rows: "rows",
     selectAll: "Select all",
     selectRow: "Select row",
+    noResultsDescription: "No results description",
+    inUse: "In Use",
+    resources: "Resources",
+    usage: "Usage",
   },
   auth: {
     login: "Login",
@@ -206,8 +218,6 @@ export default {
     accountBlocked: "Account Blocked",
     accountPending: "Account Pending",
     sessionExpired: "Session Expired",
-    sessionExpiredDescription:
-      "It looks like your login session is no longer active or has expired. Please login again to continue using the app.",
     loginRequired: "Login Required",
     unauthorized: "Unauthorized",
     forbidden: "Forbidden",
@@ -229,19 +239,9 @@ export default {
     userAccountBlocked: "User Account Blocked",
     userApprovalPending: "User Approval Pending",
     accessError: "Access Error",
-    accessBlockedDescription:
-      "Your access has been blocked by the NetBird account administrator, possibly due to new user approval requirements or security policies. Please contact your administrator to regain access.",
-    pendingApprovalDescription:
-      "Your account is pending approval from an administrator. Please wait for approval before accessing the dashboard.",
-    accessGenericDescription:
-      "An error occurred while trying to access the dashboard. Please try again or contact your administrator.",
-    contactAdminDescription:
-      "If you believe this is an error, please contact your administrator.",
   },
   pageNotFound: {
     title: "The requested page was not found",
-    description:
-      "The page you are attempting to access cannot be found. Please verify the URL or return to the dashboard to continue browsing.",
   },
   peers: {
     title: "Peers",
@@ -276,61 +276,31 @@ export default {
     confirmApprove: "Approve peer '{name}'?",
     confirmApproveDescription: "Are you sure you want to approve this peer?",
     approveSuccess: "Peer {name} approved",
-    approveSuccessDescription:
-      "This peer was approved and can now connect to other peers.",
     approveLoading: "Approving peer...",
     approved: "Approved",
     pending: "Pending",
     pendingApprovals: "Pending Approvals",
     noPeers: "No peers available",
     noAccessiblePeersTitle: "This peer has no accessible peers",
-    noAccessiblePeersDescription:
-      "Add more peers to your network or check your access control policies.",
     searchPlaceholder: "Search by name, IP, owner or group...",
     selectPeer: "Select a peer...",
     noPeersAvailable: "No peers available to select.",
     noPeersMatching: "No peers matching your search.",
-    updateRequired:
-      "Please update NetBird to at least v0.36.6 or later to use this peer as a routing peer.",
     serialNumber: "Serial number",
     loginExpiration: "Session Expiration",
     enableLoginExpiration: "Enable Session Expiration",
     disableLoginExpiration: "Disable Session Expiration",
     loginExpirationUpdated: "Session expiration is {state}",
-    loginExpirationUpdateDescription:
-      "Session expiration for peer {name} was successfully {state}.",
     loginExpirationUpdating: "Updating session expiration...",
     loginRequired: "Login required",
-    loginExpiredTooltip:
-      "This peer is offline and needs to be re-authenticated because its login has expired.",
     enableSSH: "Enable SSH Access",
     disableSSH: "Disable SSH Access",
     disableSSHConfirmation: "Disable SSH Access?",
-    disableSSHDescription:
-      "Starting from NetBird v0.61.0, once SSH access is disabled, you cannot re-enable it again from the dashboard. You'll need to create an explicit access control policy and update your NetBird client to restore SSH functionality.",
     sshLearnMore: "Learn more",
     cancel: "Cancel",
     changesTakeEffect: "Changes will take effect after the next peer update.",
     sshAccess: "SSH Access",
-    sshAccessHelp:
-      "Enable the SSH server on this peer to access the machine via a secure shell.",
-    sshSetupHelp:
-      "Set up SSH and create an explicit access control policy defining which users can access specific local usernames of this machine via SSH.",
-    sshOldVersionWarning:
-      "You have SSH access configured but your client runs on an older NetBird version. Please update your NetBird client to v.0.61.0+ in order to allow SSH connections.",
-    sshServerNotEnabled:
-      "You have an SSH access policy configured, but the SSH server isn't enabled on this client. Enable the SSH server to allow SSH connections.",
-    sshNeedsPolicy:
-      "Your SSH server is enabled, but starting from NetBird v0.61.0, SSH requires an explicit access control policy. Please create an SSH access control policy in order to allow SSH connections.",
     createSSHPolicy: "Create SSH Policy",
-    activePoliciesCount:
-      "{count, plural, one {# Active Policy} other {# Active Policies}}",
-    browserPeerTooltip:
-      "Show temporary peers created by the NetBird browser client. These peers are ephemeral and will be deleted automatically after a short period of time.",
-    connectTooltipOffline:
-      "Connecting via SSH or RDP is only available when the peer is online.",
-    expirationDisabledTooltip:
-      "Expiration is disabled for all peers added with an setup-key.",
     justNow: "just now",
     at: "at",
     searchByNameIpOwnerOrGroup: "Search by name, IP, owner or group...",
@@ -338,8 +308,6 @@ export default {
     assignGroups: "Assign Groups",
     deleteAll: "Delete All",
     deleteAllConfirm: "Delete '{count}' {peerWord}?",
-    deleteAllConfirmDescription:
-      "Are you sure you want to delete these peers? This action cannot be undone.",
     deleteAllConfirmText: "Delete All",
     peersDeleted: "Peers were successfully deleted",
     peersDeleting: "Deleting the selected peers...",
@@ -347,21 +315,13 @@ export default {
     groupsAssigning: "Updating the groups of the selected peers...",
     assigningGroups: "Assigning groups...",
     groupsAssignedSuccess: "Groups successfully assigned",
-    assignGroupsDescription:
-      "Assign the following groups to the selected peers. Previously assigned groups will be kept unless you choose to overwrite them.",
     overwriteGroups: "Overwrite Existing Groups",
-    overwriteGroupsHelp:
-      "Overwrite the existing groups of the peers with the selected ones. Previously assigned groups will be removed.",
     overwrite: "Overwrite",
     overwriteGroupsConfirm: "Overwrite existing groups?",
-    overwriteGroupsConfirmDescription:
-      "Are you sure you want to overwrite the existing groups of your {count} selected peer(s)? This action cannot be undone.",
     addGroups: "Add Groups",
     assignedGroups: "Assigned Groups",
     groupsSaved: "Groups of the peer were successfully saved",
     groupsSaving: "Saving the groups of the peer...",
-    assignedGroupsDescription:
-      "Use groups to control what this peer can access",
     peerWord: "peer",
     peersWord: "peers",
     createPeer: "Create Peer",
@@ -370,16 +330,7 @@ export default {
     servers: "Servers",
     userDevice: "User Device",
     userDevices: "User Devices",
-    operatingSystem: {
-      linux: "Linux",
-      windows: "Windows",
-      macos: "macOS",
-      android: "Android",
-      ios: "iOS",
-    },
     updateAvailable: "Update available",
-    updateDescription:
-      "A new version of Netbird is available. Please update your client to get the latest features and bug fixes.",
     downloadChangelog: "Download & Changelog",
     dnsLabelCopied: "DNS label has been copied to your clipboard",
     ipCopied: "IP address has been copied to your clipboard",
@@ -394,8 +345,6 @@ export default {
     domain: "Domain",
     region: "Region",
     regionCopied: "Region has been copied to your clipboard",
-    peerNotFoundDescription:
-      "The peer you are attempting to access cannot be found. It may have been deleted, or you may not have permission to view it. Please verify the URL or return to the dashboard.",
     tabOverview: "Overview",
     tabNetworkRoutes: "Network Routes",
     tabAccessiblePeers: "Accessible Peers",
@@ -409,8 +358,6 @@ export default {
     editPeerIPv6Address: "Edit Peer IPv6 Address",
     updatePeerIPv6Description: "Update the NetBird IPv6 address for this peer.",
     editPeerIPv6Placeholder: "e.g., fd00:1234::1",
-    editPeerIPv6ErrorMessage:
-      "Please enter a valid IPv6 address, e.g., fd00:1234::1",
     remoteAccess: "Remote Access",
     remoteAccessDescription: "Connect directly to this peer via SSH or RDP.",
     domainName: "Domain Name",
@@ -424,74 +371,55 @@ export default {
     peerIpv6Updated: "NetBird Peer IPv6 was successfully updated",
     peerIpv6Updating: "Updating peer IPv6...",
     noServicesForPeer: "This peer has no services",
-    addServicesDescription:
-      "Add your services to this peer and securely expose them through NetBird's reverse proxy",
     editPeerName: "Edit Peer Name",
     editPeerNameDescription: "Set an easily identifiable name for your peer.",
     peerNamePlaceholder: "e.g., AWS Servers",
     domainNamePreview: "Domain Name Preview",
-    domainNamePreviewHelp:
-      "If the domain name already exists, we add an increment number suffix to it.",
-    userDevicesDescription:
-      "Laptops, phones and other personal devices with a user behind them, typically added when the user signs in with SSO.",
     learnMore: "Learn more",
     addNewDeviceTitle: "Add new device to your network",
-    addNewDeviceDescription:
-      "To get started, install NetBird and log in using your email account. After that you should be connected. If you have further questions check out our",
     installationGuide: "Installation Guide",
-    serversDescription:
-      "Servers, VMs, autonomous agents and other unattended machines with no user behind them, typically enrolled with a setup key.",
     addNewServerTitle: "Add new server to your network",
-    addNewServerDescription:
-      "To get started, install NetBird on the server and enroll it using a setup key. If you have further questions check out our",
     saveGroups: "Save Groups",
     sessionExpiration: "Session Expiration",
-    sessionExpirationDescription:
-      "Enable to require SSO login peers to re-authenticate when their session expires after a certain period of time.",
-    inactivityExpirationDescription:
-      "Enable to require authentication after users disconnect from management for 10 minutes.",
-    setupKeyPeerExpirationDisabled:
-      "This setting is disabled for all peers added with an setup-key.",
-    noPermissionToUpdateSetting:
-      "You don't have the required permissions to update this setting.",
-    globalSettingDisabled:
-      "Global setting {setting} is currently disabled. Enable the global setting to be able to toggle it individually per peer.",
     goToSettings: "Go to Settings",
     expirationUpdateSuccess: "Expiration was successfully updated",
     expirationUpdating: "Updating setting...",
     peerSessionExpiration: "Peer Session Expiration",
     requireLoginAfterDisconnect: "Require login after disconnect",
     getStarted: "Get Started with NetBird",
-    getStartedDescription:
-      "It looks like you don't have any connected machines.\nGet started by adding one to your network.",
     learnMoreInOur: "Learn more in our",
     gettingStartedGuide: "Getting Started Guide",
     userPeersDescription: "View all peers registered by this user.",
-    accessiblePeersDesc:
-      "This peer can connect to the following peers within the NetBird network.",
-    networkRoutesDesc:
-      "Access other networks without installing NetBird on every resource.",
-    remoteJobsDesc:
-      "Remotely trigger actions such as debug bundles or other tasks on this peer, without requiring CLI access.",
     revoke: "Revoke",
     bypassCompliance: "Bypass Compliance",
     bypassComplianceConfirmTitle: "Bypass compliance for '{name}'?",
-    bypassComplianceConfirmDescription:
-      "This will override the compliance check and allow this peer to connect. The bypass will be automatically removed if the device becomes compliant.",
     bypassComplianceSuccess: "Compliance bypassed for {name}",
-    bypassComplianceSuccessDescription:
-      "This peer can now connect to other peers.",
     bypassComplianceLoading: "Bypassing compliance...",
     revokeBypass: "Revoke Bypass",
     revokeBypassConfirmTitle: "Revoke compliance bypass for '{name}'?",
-    revokeBypassConfirmDescription:
-      "This peer will be subject to normal compliance validation. If still non-compliant, it will lose network access.",
     revokeBypassSuccess: "Compliance bypass revoked",
-    revokeBypassSuccessDescription:
-      "Peer {name} is now subject to normal compliance validation.",
     revokeBypassLoading: "Revoking compliance bypass...",
-    bypassTooltip:
-      "Bypass {integrationName} compliance check and allow this peer to connect. The bypass is automatically removed when the device becomes compliant.",
+    bypassComplianceSuccessDescription: "Bypass compliance success description",
+    expirationDisabledTooltip: "Expiration disabled tooltip",
+    activePoliciesCount: "Active policies count",
+    loginExpirationUpdateDescription: "Login expiration update description",
+    networkRoutesDesc: "Network routes description",
+    accessiblePeersDesc: "Accessible peers description",
+    noPermissionToUpdateSetting: "No permission to update setting",
+    approveSuccessDescription: "Approve success description",
+    editPeerIPv6ErrorMessage: "Edit peer IPv6 error message",
+    sshAccessHelp: "SSH access help",
+    domainNamePreviewHelp: "Domain name preview help",
+    setupKeyPeerExpirationDisabled: "Setup key peer expiration disabled",
+    assignedGroupsDescription: "Assigned groups description",
+    connectTooltipOffline: "Connect tooltip offline",
+    operatingSystem: {
+      linux: "Linux",
+      windows: "Windows",
+      macos: "macOS",
+      android: "Android",
+      ios: "iOS",
+    },
   },
   policies: {
     title: "Policies",
@@ -541,59 +469,27 @@ export default {
     portsPlaceholder: "e.g. 443",
     addPolicy: "Add Policy",
     createNewPolicy: "Create New Policy",
-    createNewPolicyDescription:
-      "It looks like you don't have any policies yet. Policies can allow connections by specific protocol and ports.",
     noPoliciesForGroup: "This group is not used within any policies yet",
-    noPoliciesForGroupDescription:
-      "Assign this group as either a source or destination inside a policy to see them listed here.",
-    temporaryPoliciesTooltip:
-      "Show temporary policies created by the NetBird browser client. These policies are ephemeral and will be deleted automatically after a short period of time.",
     learnMoreAbout: "Learn more about",
     accessControls: "Access Controls",
     policyActions: "Policy actions",
     policyEnabledSuccess: "The rule was successfully enabled",
     policyDisabledSuccess: "The rule was successfully disabled",
     confirmDeleteTitle: "Delete '{name}'?",
-    confirmDeleteDescription:
-      "Are you sure you want to delete this access control policy? This action cannot be undone.",
     updatePolicy: "Update Access Control Policy",
-    modalDescription:
-      "Use this policy to restrict access to groups of resources.",
     tabPolicy: "Policy",
     tabNameDescription: "Name & Description",
-    protocolHelp:
-      "Allow only specified network protocols. To change traffic direction and ports, select TCP or UDP protocol.",
     selectProtocol: "Select protocol...",
-    netbirdSshHelp:
-      "Select NetBird SSH for SSH-specific policies with fine-grained access control, or use TCP with port 22 for basic network-level SSH access",
-    sourceHelp:
-      "Typically a group of user devices (e.g., Developers, Marketing) or individual devices in peer-to-peer connections that will access the destination.",
     selectSource: "Select source(s)...",
-    destinationHelp:
-      "Typically a group of peers or resources (e.g., Servers, Databases, Internal Services) that will be accessed by the source. Can also be an individual peer or resource.",
     selectDestination: "Select destination(s)...",
-    resourcesBidirectionalWarning:
-      "Some destination groups contain resources. Resources only support incoming traffic and cannot initiate connections.",
-    sshResourceWarning:
-      "SSH access only works on peers, not on routed resources. Please ensure your destination groups contain peers for SSH connectivity.",
     sshAccess: "SSH Access",
-    sshAccessHelp:
-      "Select 'Full Access' to allow SSH as any local user, or 'Limited Access' to specify which local users each group is allowed to use.",
     ports: "Ports",
-    portsHelp:
-      "Allow network traffic and access only to specified ports. Select ports or port ranges between 1 and 65535.",
     enablePolicy: "Enable Policy",
     enablePolicyHelp: "Use this switch to enable or disable the policy.",
     ruleName: "Name of the Rule",
     ruleNameHelp: "Set an easily identifiable name for your policy.",
     ruleNamePlaceholder: "e.g., Devs to Servers",
     policyDescriptionLabel: "Description (optional)",
-    policyDescriptionHelp:
-      "Write a short description to add more context to this policy.",
-    policyDescriptionPlaceholder:
-      "e.g., Devs are allowed to access servers and servers are allowed to access Devs.",
-    accessControlDescription:
-      "Create rules to manage access in your network and define what peers can connect.",
     policyCreated: "Policy '{name}' successfully created",
     policyUpdated: "Policy '{name}' successfully updated",
     policyDeleted: "Policy '{name}' successfully deleted",
@@ -601,41 +497,34 @@ export default {
     policyDisableLoading: "Disabling policy...",
     policySaveLoading: "Saving policy...",
     policyDeleteLoading: "Deleting policy...",
-
-    // SSH Access Type
     sshFullAccess: "Full Access",
     sshLimitedAccess: "Limited Access",
     sshAccessPlaceholder: "Select ssh access type...",
-
-    // SSH Authorized Groups
     sshNoSourceGroups: "You have not added any source groups yet. Please add source groups in order to specify which user group has access to which system users on the destination machines.",
-
-    // SSH Username Selector
     sshAllLocalUsers: "All Local Users",
     sshUsernamePlaceholder: "E.g., root, ec2-user, ubuntu",
     sshAddUsernameByPressing: "Add username by pressing '{key}'",
-
-    // AccessControlProtoPortsCell
     nPorts: "{count} Ports",
     netbirdSshTooltip: "NETBIRD-SSH",
-
-    // AccessControlPostureCheckCell
     addPostureCheck: "Add Posture Check",
     postureCheckCount: "{count} Posture Check(s)",
-
-    // useAccessControl notification
     createPolicyTitle: "Create Access Control Policy",
     createPolicySuccess: "Policy was created successfully.",
     createPolicyLoading: "Creating your policy...",
     policySaveSuccess: "The policy was successfully saved",
-
-    // AccessControlTable
     tableHeading: "Access Control Policies",
     searchByNameAndDescription: "Search by name and description...",
     filterPort: "Port",
     filterPostureChecks: "Posture Checks",
     filterWith: "With",
     filterWithout: "Without",
+    confirmDeleteDescription: "Confirm delete description",
+    portsHelp: "Ports help",
+    sourceHelp: "Source help",
+    policyDescriptionHelp: "Policy description help",
+    sshAccessHelp: "SSH access help",
+    modalDescription: "Modal description",
+    protocolHelp: "Protocol help",
   },
   groups: {
     title: "Groups",
@@ -645,8 +534,6 @@ export default {
     policies: "Policies",
     resources: "Resources",
     create: "Create Group",
-    createDescription:
-      "Create a group to manage and organize access in your network",
     createSuccess: "Group '{name}' successfully created",
     creating: "Creating group...",
     nameHelp: "Set an easily identifiable name for your group",
@@ -669,8 +556,6 @@ export default {
     assignedResources: "Assigned Resources",
     assignPeersDescription: "Use peers to control what this group can access",
     assignUsersDescription: "Use users to control what this group can access",
-    assignResourcesDescription:
-      "Use resources to control what this group can access",
     addPeerToGroupTitle: "Add Peers to Group",
     addUserToGroupTitle: "Add Users to Group",
     addResourcesToGroupTitle: "Add Resources to Group",
@@ -687,12 +572,8 @@ export default {
     setupKeys: "Setup Keys",
     viewDetails: "View Details",
     rename: "Rename",
-    groupsDescription:
-      "Organize peers, users and resources into groups to manage access.",
     allGroups: "All Groups",
     nGroups: "{n} Group(s)",
-    noGroupsMatching:
-      "There are no groups matching your search. Try another search term.",
     noGroupsAvailable: "Seems like you don't have any groups.",
     nPeers: "{n} Peer(s)",
     nResources: "{n} Resource(s)",
@@ -701,6 +582,9 @@ export default {
     deleteDisabledIdP: "This group is issued by an IdP and cannot be deleted.",
     deleteDisabledInUse: "Remove dependencies to this group to delete it.",
     assignedGroups: "Assigned Groups",
+    groupsDescription: "Groups description",
+    createDescription: "Create group description",
+    noGroupsMatching: "No groups matching",
   },
   users: {
     title: "Users",
@@ -742,8 +626,6 @@ export default {
     selectRole: "Select role...",
     userRole: "User Role",
     userRoleHelp: "Set a role for the user to assign access permissions.",
-    autoSSODescription:
-      "This user will be added automatically via SSO when they first sign in.",
     inviteSuccess: "User {email} has been invited",
     inviting: "Inviting user...",
     userBlocked: "User {name} has been blocked",
@@ -767,47 +649,26 @@ export default {
     lastLoginOn: "Last login on",
     showInvites: "Show Invites",
     addNewUsers: "Add New Users",
-    addNewUsersDescription:
-      "It looks like you don't have any users yet. Get started by inviting users to your account.",
     addUser: "Add User",
-    localAuthDisabled:
-      "Local authentication is disabled. Use your IdP for authentication.",
     team: "Team",
-    usersPageDescription:
-      "Manage users and their permissions. Same-domain email users are added automatically on first sign-in.",
     expiresIn: "Expires in",
     expiresInHelp: "Days until the invite expires.",
-    // Shared labels
     groups: "Groups",
     learnMoreAbout: "Learn more about",
-    // UsersTable
     searchByNameEmailOrRole: "Search by name, email or role...",
-    // UserInviteModal
     userCreatedSuccess: "User created successfully!",
     inviteLinkCreated: "Invite link created!",
-    passwordCopyWarning:
-      "This password will not be shown again, so be sure to copy it and store in a secure location.",
-    inviteLinkShareInfo:
-      "Share this link with the user. They will be able to set their own password.",
     passwordCopied: "Password was copied to your clipboard!",
     inviteLinkCopied: "Invite link was copied to your clipboard!",
     expiresOn: "Expires on",
     copyAndClose: "Copy & Close",
     createUserTitle: "Create User",
     inviteUserTitle: "Invite User",
-    createUserDescription:
-      "Create a NetBird user account with email and password.",
-    inviteUserDescription2:
-      "Invite a user to your network and set their permissions.",
-    generateInviteLinkDesc:
-      "Generate an invite link that the user can use to set their own password.",
     sendInvitation: "Send Invitation",
     createInviteLink: "Create Invite Link",
     inviteUserTab: "Invite User",
     createUserTab: "Create User",
     autoAssignedGroups: "Auto-assigned Groups",
-    autoAssignedGroupsHelp:
-      "Groups will be assigned to peers added by this user.",
     dayUnit: "Day(s)",
     createUserNotify: "Create User",
     creatingUserFor: "Creating user account for {name}...",
@@ -815,19 +676,10 @@ export default {
     createInviteNotify: "Create Invite",
     creatingInviteFor: "Creating invite link for {name}...",
     creatingInviteNotify: "Creating invite...",
-    // UserStatusCell
     statusDisabled: "Disabled",
-    localAuthDisabledTooltip:
-      "Local authentication is disabled. This user can no longer log in. Use your IdP for authentication.",
-    invitedTooltip:
-      "This user was invited but has not accepted the invitation yet. Use the Resend button to send another invitation email.",
-    pendingApprovalTooltip:
-      "This user needs admin approval before joining your organization. To disable approvals, turn off",
     userApprovalRequiredLabel: "'User Approval Required'",
     inSettings: "in Settings",
-    // UserNameCell
     you: "You",
-    // UserActionCell
     userDeletedNotify: "'{name}' deleted",
     userDeletedDesc: "User was successfully deleted.",
     deletingUser: "Deleting the user...",
@@ -835,18 +687,12 @@ export default {
     userApprovedDesc: "User was successfully approved.",
     approvingUser: "Approving the user...",
     rejectUserTitle: "Reject '{name}'?",
-    rejectUserDesc:
-      "Rejecting this user will remove them from the account permanently. This action cannot be undone.",
     rejectButton: "Reject",
     userRejectedNotify: "'{name}' rejected",
     userRejectedDesc: "User was successfully rejected and removed.",
     rejectingUser: "Rejecting the user...",
     deleteUserTitle: "Delete '{name}'?",
-    deleteUserDesc:
-      "Deleting this user will remove their devices and remove dashboard access. This action cannot be undone.",
     blockUserTitle: "Block '{name}'?",
-    blockUserDesc:
-      "This action will immediately revoke the user's access and disconnect all of their active peers.",
     blockButton: "Block",
     userBlockedNotify: "User blocked",
     userUnblockedNotify: "User unblocked",
@@ -854,37 +700,25 @@ export default {
     unblockedSuccess: "{name} was successfully unblocked.",
     blockingUser: "Blocking the user...",
     unblockingUser: "Unblocking the user...",
-    // UserGroupCell
     groupsSaved: "Groups of the user were successfully saved",
     updatingGroups: "Updating groups...",
-    // UserResendInviteButton
     resendInviteNotify: "Resend Invite",
     resendingInviteTo: "The invitation is being sent to {email}",
     sendingInvitation: "Sending invitation...",
     sending: "Sending...",
     resendButton: "Resend",
-    // PendingApprovalFilter
     pendingApproval: "Pending Approval",
-    // HorizontalUsersStack
     allUsers: "All Users",
     userCount: "{count, plural, one {# User} other {# Users}}",
     system: "System",
-    // UserRoleSelector
     transferOwnership: "Transfer Ownership?",
     transferOwnershipPrefix: "This action will transfer the",
     transferOwnershipTo: "role to",
     transferOwnershipThisUser: "this user",
     transferOwnershipSuffix1: "and leave you with the",
-    transferOwnershipSuffix2:
-      "role. This action can only be undone if the new owner transfers the role back to you.",
-    // ChangePasswordModal
     changePasswordTitle: "Change Password",
     updateAccountPassword: "Update your account password.",
-    enterCurrentPasswordHelp:
-      "Enter your current password to verify your identity.",
     enterCurrentPasswordPlaceholder: "Enter current password",
-    enterNewPasswordHelp:
-      "Enter your new password. Must be at least 8 characters.",
     enterNewPasswordPlaceholder: "Enter new password",
     reenterNewPasswordHelp: "Re-enter your new password to confirm.",
     confirmNewPasswordPlaceholder: "Confirm new password",
@@ -893,16 +727,10 @@ export default {
     passwordChanged: "Your password has been successfully changed.",
     changingPassword: "Changing password...",
     changePasswordButton: "Change Password",
-    // UserPeersSection
     noRegisteredPeers: "This user has no registered peers",
-    noRegisteredPeersDesc:
-      "Install NetBird and sign in as this user to register peers.",
-    // UserInvitesTable
     invites: "Invites",
     searchByNameOrEmail: "Search by name or email...",
     noPendingInvites: "No Pending Invites",
-    noPendingInvitesDesc:
-      "There are no pending invites. Create an invite to add users to your network.",
     showUsers: "Show Users",
     valid: "Valid",
     expired: "Expired",
@@ -913,18 +741,28 @@ export default {
     inviteDeletedDesc: "Invite was successfully deleted.",
     deletingInvite: "Deleting the invite...",
     deleteInviteTitle: "Delete invite for '{name}'?",
-    deleteInviteDesc:
-      "Deleting this invite will revoke the invite link. The user will no longer be able to join using this invite.",
     inviteLinkRegenerated: "Invite link regenerated!",
-    inviteLinkRegenShareInfo:
-      "Share this link with the user. They will be able to set their own password.",
     inviteActions: "Invite actions",
     regenerateButton: "Regenerate",
     expires: "Expires",
-    // Add
     namePlaceholder: "e.g., John Doe",
     emailPlaceholder: "e.g., hello@netbird.io",
     userActions: "User actions",
+    accessTokens: "Access Tokens",
+    enterCurrentPasswordHelp: "Enter current password help",
+    createUserDescription: "Create user description",
+    noPendingInvitesDesc: "No pending invites description",
+    inviteLinkRegenShareInfo: "Invite link regeneration share info",
+    deleteUserDesc: "Delete user description",
+    inviteLinkShareInfo: "Invite link share info",
+    deleteInviteDesc: "Delete invite description",
+    generateInviteLinkDesc: "Generate invite link description",
+    enterNewPasswordHelp: "Enter new password help",
+    blockUserDesc: "Block user description",
+    autoAssignedGroupsHelp: "Auto-assigned groups help",
+    localAuthDisabled: "Local auth disabled",
+    rejectUserDesc: "Reject user description",
+    inviteUserDescription2: "Invite user description",
   },
   userDropdown: {
     profileSettings: "Profile Settings",
@@ -955,8 +793,6 @@ export default {
     serviceUserNameHelp: "Set a descriptive name for this service user",
     copyUserId: "Copy User ID",
     autoGroups: "Auto Assign Groups",
-    autoGroupsDescription:
-      "Automatically assign these groups to peers that use this service user",
     copySuccess: "Copied to clipboard",
     userCreated: "Service user '{name}' successfully created",
     userUpdated: "Service user '{name}' successfully updated",
@@ -964,10 +800,6 @@ export default {
     createLoading: "Creating service user...",
     updateLoading: "Updating service user...",
     deleteLoading: "Deleting service user...",
-    serviceUsersDescription:
-      "Use service users to create API tokens and avoid losing automated access.",
-    serviceUsersEmptyDescription:
-      "It looks like you don't have any service users. Get started by creating a service user.",
     blocked: "Blocked",
     accessTokens: "Access Tokens",
     accessTokensDescription: "Access tokens give access to NetBird API.",
@@ -978,8 +810,8 @@ export default {
     userCreatedDesc: "{name} was successfully created.",
     creatingServiceUserNotify: "Creating service user...",
     createServiceUserTitle: "Create Service User",
-    serviceUserCreateDesc:
-      "Service users are non-login users that are not associated with any specific person.",
+    serviceUsersDescription: "Service users description",
+    serviceUserCreateDesc: "Service user create description",
   },
   settings: {
     title: "Settings",
@@ -1014,18 +846,12 @@ export default {
     networksTab: "Networks",
     clients: "Clients",
     dangerZone: "Danger zone",
-    languageDescription:
-      "Choose your preferred display language for the dashboard.",
     currentLanguage: "Current language",
     delete: "Delete",
     deleteAccountTitle: "Delete NetBird account",
-    deleteAccountConfirm:
-      "Are you sure you want to delete your NetBird account? This action cannot be undone.",
     deleteAccountSuccess: "NetBird account was successfully deleted.",
     deleteAccountLoading: "Deleting the account...",
     deleteAccountCardTitle: "Delete NetBird account",
-    deleteAccountWarning:
-      "Before proceeding to delete your Netbird account, please be aware that this action is irreversible. Once your account is deleted, you will permanently lose access to all associated data, including your peers, users, groups, policies, and routes.",
     deleteAccountButton: "Delete Account",
     endpointUrls: "Endpoint URLs",
     endpointUrlsHelp: "Add these to your identity provider configuration",
@@ -1040,92 +866,38 @@ export default {
     beta: "Beta",
     selectInterval: "Select interval...",
     userApprovalRequired: "User Approval Required",
-    userApprovalHelp:
-      "Require manual approval for new users joining via domain matching. Users will be blocked until approved.",
     enableLocalMFA: "Enable Local MFA",
-    localMfaHelp:
-      "Require multi-factor authentication for users authenticating with local credentials.",
     peerSessionExpiration: "Peer Session Expiration",
-    peerSessionExpirationHelp:
-      "Request periodic re-authentication of peers registered with SSO.",
     sessionExpiration: "Session Expiration",
-    sessionExpirationHelp:
-      "Time after which every peer added with SSO login will require re-authentication.",
     requireLoginAfterDisconnect: "Require login after disconnect",
-    requireLoginHelp:
-      "Enable to require authentication after users disconnect from management for 10 minutes.",
     automaticUpdates: "Automatic Updates",
-    automaticUpdatesHelp:
-      "Configure how NetBird clients receive update notifications. When enabled, users will be prompted to install the selected version. This requires at least NetBird v0.61.0.",
     versionCustomPrefix: "Version",
     versionCustomPlaceholder: "e.g., 0.52.2",
     forceAutomaticUpdates: "Force Automatic Updates",
-    forceAutomaticUpdatesHelp:
-      "When enabled, updates are installed automatically in the background without user interaction.",
-    automaticUpdatesWarning:
-      "Enabling automatic updates will restart the NetBird client during updates, which can temporarily disrupt active connections. Use with caution in production environments.",
     exposeServicesFromCli: "Expose Services from CLI",
-    exposeServicesFromCliHelp:
-      "Allow peers to expose local services through the NetBird reverse proxy using the CLI. This requires at least NetBird v0.66.0.",
     enablePeerExpose: "Enable Peer Expose",
-    enablePeerExposeHelp:
-      "When enabled, peers can expose local HTTP services accessible via a public URL.",
     allowedPeerGroups: "Allowed peer groups",
-    allowedPeerGroupsHelp:
-      "Select which peer groups are allowed to expose services. At least one group is required.",
     selectPeerGroups: "Select peer groups...",
     experimental: "Experimental",
-    experimentalHelp:
-      "Lazy connections are an experimental feature. Functionality and behavior may evolve. Instead of maintaining always-on connections, NetBird activates them on-demand based on activity or signaling.",
     enableLazyConnections: "Enable Lazy Connections",
-    enableLazyConnectionsHelp:
-      "Lazy connections activate on-demand based on activity or signaling instead of maintaining always-on connections.",
     enableGroupPropagation: "Enable user group propagation",
-    groupPropagationHelp:
-      "Allow group propagation from user's auto-groups to peers, sharing membership information.",
     enableJwtGroupSync: "Enable JWT group sync",
-    jwtGroupSyncHelp:
-      "Extract & sync groups from JWT claims with user's auto-groups, auto-creating groups from tokens.",
     jwtClaim: "JWT claim",
-    jwtClaimHelp:
-      "Specify the JWT claim for extracting group names, e.g., roles or groups, to add to account groups (this claim should contain a list of group names).",
     jwtClaimPlaceholder: "e.g., roles",
     jwtAllowGroups: "JWT allow groups",
-    jwtAllowGroupsHelp:
-      "Limit access to NetBird for the specified group names, e.g., NetBird users. To use the groups, you need to configure them first in your IdP.",
     addGroupPlaceholder: "Add a group and press Enter",
-    jwtGroupAccessWarning:
-      "To prevent losing access, ensure you are part of this group.",
     dnsDomain: "DNS Domain",
-    dnsDomainHelp:
-      "Specify a custom peer DNS domain for your network. This should not point to a domain that is already in use elsewhere, to avoid overriding DNS results.",
     dnsDomainHostedPlaceholder: "netbird.cloud",
     dnsDomainSelfhostedPlaceholder: "netbird.selfhosted",
     networkRange: "Network Range",
-    networkRangeHelp:
-      "Specify a custom IPv4 range for your network in CIDR format. All peer IPs will be re-allocated when changed.",
     networkRangePlaceholder: "e.g. 100.64.0.0/16",
     ipv6NetworkRange: "IPv6 Network Range",
-    ipv6NetworkRangeHelp:
-      "Specify a custom IPv6 range for your network in CIDR format. All peer IPv6 addresses will be re-allocated when changed.",
     ipv6NetworkRangePlaceholder: "e.g. fd00:1234:5678::/64",
     ipv6EnabledGroups: "IPv6 Enabled Groups",
-    ipv6EnabledGroupsHelp:
-      "Peers in the selected groups will receive IPv6 overlay addresses (dual-stack). Remove all groups to disable IPv6. Changes apply on save and will restart affected clients.",
     selectIpv6Groups: "Select groups to enable IPv6...",
     ipv6PrefixLengthError: "Prefix length must be between /48 and /112",
-    ipv6FormatError:
-      "Please enter a valid IPv6 CIDR range, e.g. fd00:1234::/64",
     enableDnsWildcardRouting: "Enable DNS Wildcard Routing",
-    dnsWildcardRoutingHelp:
-      "Allow routing using DNS wildcards. This requires NetBird client v0.35 or higher. Changes will only take effect after restarting the clients.",
-    configureIdpDescription:
-      "Configure identity providers for user authentication in your network.",
-    setupKeysDescription:
-      "Setup keys are pre-authentication keys that allow to register new machines in your network.",
     restrictDashboard: "Restrict dashboard for regular users",
-    restrictDashboardHelp:
-      "Access to the dashboard will be limited and regular users will not be able to view any peers.",
     name: "Name",
     type: "Type",
     idpProviderType: "Provider Type",
@@ -1136,6 +908,16 @@ export default {
     idpClientSecret: "Client Secret",
     idpIssuerUrl: "Issuer URL",
     idpIssuerUrlHelp: "The OIDC issuer URL for this provider",
+    ipv6FormatError: "IPv6 format error",
+    jwtGroupAccessWarning: "JWT group access warning",
+    peerSessionExpirationHelp: "Peer session expiration help",
+    configureIdpDescription: "Configure IdP description",
+    languageDescription: "Language description",
+    groupPropagationHelp: "Group propagation help",
+    enablePeerExposeHelp: "Enable peer expose help",
+    allowedPeerGroupsHelp: "Allowed peer groups help",
+    forceAutomaticUpdatesHelp: "Force automatic updates help",
+    deleteAccountConfirm: "Delete account confirm",
   },
   reverseProxy: {
     title: "Reverse Proxy",
@@ -1178,12 +960,6 @@ export default {
     clusterDescription: "Description",
     accessLogsDescription: "View access logs for your reverse proxy services",
     noAccessLogs: "No access logs available",
-    servicesDescription:
-      "Expose services securely through NetBird's reverse proxy.",
-    betaNoticeCloud:
-      "NetBird's Reverse Proxy is currently in beta and available at no cost during this period. Features, functionality, and pricing are subject to change upon release.",
-    betaNoticeSelfHosted:
-      "NetBird's Reverse Proxy is currently in beta. Features, functionality, and pricing are subject to change upon release.",
     saveChanges: "Save Changes",
     addServiceBtn: "Add Service",
     editServiceBtn: "Edit Service",
@@ -1195,61 +971,41 @@ export default {
     accessControl: "Access Control",
     advancedSettings: "Advanced Settings",
     netBirdOnlyAccess: "NetBird-Only Access",
-    netBirdOnlyAccessDescription:
-      "Reachable only from connected peers in the selected NetBird groups.",
-    netBirdOnlyAccessTooltip:
-      "NetBird-Only Access requires a proxy cluster with at least one connected embedded proxy (netbird proxy). The selected cluster doesn't have one. Connect an embedded proxy to this cluster to enable this option.",
     sso: "SSO (Single Sign-On)",
-    ssoDescription:
-      "Require users to authenticate via SSO to access this service.",
     password: "Password",
     passwordDescription: "Require a password to access this service.",
     pinCode: "PIN Code",
     pinCodeDescription: "Require a numeric PIN code to access this service.",
     httpHeaders: "HTTP Headers",
-    httpHeadersDescription:
-      "Require specific HTTP headers to access this service.",
-    netBirdOnlyServiceNotice:
-      "This service is accessible via NetBird only. An allow rule for the NetBird network range is applied by default. Any rules you add here are layered on top.",
     preserveClientSourceIp: "Preserve Client Source IP",
-    preserveClientSourceIpHelp:
-      "Preserve client source IP addresses when forwarding traffic to the backend using PROXY Protocol v2.",
     sessionIdleTimeout: "Session Idle Timeout",
-    sessionIdleTimeoutHelp:
-      "Close the UDP session after this period of inactivity. Leave this field empty for no timeout.",
     connectionTimeout: "Connection Timeout",
-    connectionTimeoutHelp:
-      "Timeout for establishing backend connections. Leave this field empty for no timeout.",
     timeoutPlaceholder: "e.g. 10s, 30s, 1m",
     passHostHeader: "Pass Host Header",
-    passHostHeaderHelp:
-      "Forward the original Host header to the backend instead of rewriting it to the target address.",
     rewriteRedirects: "Rewrite Redirects",
-    rewriteRedirectsHelp:
-      "Rewrite Location headers in backend responses to use the public domain instead of the internal backend address.",
     directUpstream: "Direct Upstream",
-    directUpstreamHelp:
-      "Dial the upstream target from the proxy host instead of through the WireGuard tunnel. Turn on when the upstream is reachable without a WireGuard connection.",
-    directUpstreamHelpCluster:
-      "Required and locked on for proxy-cluster targets: the cluster has no WireGuard endpoint to fall back to.",
-    directUpstreamTooltip:
-      "Direct Upstream is only configurable on clusters with at least one connected embedded proxy (netbird proxy). The selected cluster doesn't have one.",
     learnMoreServices: "Services",
     learnMoreAuthentication: "Authentication",
     learnMoreAccessControl: "Access Control",
     learnMoreSettings: "Settings",
     noProtectionTitle: "No Protection Configured",
-    noProtectionDescription:
-      "This service has no authentication or access control rules configured. It will be publicly accessible to everyone on the internet. Are you sure you want to continue?",
     httpsService: "HTTPS Service",
     tlsPassthrough: "TLS Passthrough",
     tcpService: "TCP Service",
     udpService: "UDP Service",
     forwardTrafficDesc: "Forward traffic directly to your backend service.",
-    exposeServicesDesc:
-      "Expose services securely through NetBird's reverse proxy.",
     terminatedService: "This service has been terminated by the NetBird team as it violates the Terms of Service. For questions, please contact",
     terminated: "Terminated",
+    connectionTimeoutHelp: "Connection timeout help",
+    ssoDescription: "SSO description",
+    exposeServicesDesc: "Expose services description",
+    region: "Region",
+    directUpstreamHelp: "Direct upstream help",
+    servicesDescription: "Services description",
+    httpHeadersDescription: "HTTP headers description",
+    passHostHeaderHelp: "Pass host header help",
+    netBirdOnlyAccessDescription: "NetBird-only access description",
+    sessionIdleTimeoutHelp: "Session idle timeout help",
   },
   dns: {
     title: "DNS",
@@ -1279,13 +1035,9 @@ export default {
     dnsSettings: "DNS Settings",
     dnsSettingsDescription: "Manage your account's DNS settings.",
     disabledManagementGroup: "Disable DNS management for these groups",
-    disabledManagementGroupHelp:
-      "Peers in these groups will require manual domain name resolution",
     settingsSaved: "Settings saved successfully.",
     settingsSaving: "Saving the settings...",
     saveChanges: "Save Changes",
-    nameserversDescription:
-      "Add nameservers for domain name resolution in your NetBird network.",
     zonesDescription: "Configure DNS zones for your network.",
     tabNameserver: "Nameserver",
     tabDomains: "Domains",
@@ -1295,35 +1047,15 @@ export default {
     matchDomains: "Match Domains",
     enableNameserver: "Enable Nameserver",
     enableSearchDomainsNS: "Mark match domains as search domains",
-    nameserverModalDescription:
-      "Use a nameserver to resolve domains in your network",
     DNSName: "DNS Name",
     enterNameserverName: "Enter a name for this nameserver.",
     nameserverNameInputPlaceholder: "e.g., Public DNS",
     descriptionOptional: "Description (optional)",
-    writeDescription:
-      "Write a short description to add more context to this nameserver.",
-    descriptionPlaceholder:
-      "e.g., Berlin office resolver for remote developers",
-    advertiseToGroups:
-      "Advertise this nameserver to peers that belong to the following groups",
-    enableDisableNameserver:
-      "Use this switch to enable or disable the nameserver.",
-    addDomainHelp:
-      "Add domain if you want to have a specific one resolved by this nameserver.",
     searchDomainHelp: "E.g., 'peer.example.com' will be accessible with 'peer'",
-    updateZoneDescription:
-      "Use a zone to control domain name resolution for your network.",
     domainLabel: "Domain",
-    domainHelp:
-      "Enter a domain for this zone (e.g., company.internal, intra.example.com)",
     domainPlaceholder: "e.g., company.internal",
     distributionGroupsLabel: "Distribution Groups",
-    zoneGroupsHelp:
-      "Advertise this zone and its records to peers that belong to the following groups",
     enableSearchDomains: "Enable Search Domains",
-    searchDomainHelpZone:
-      "E.g., 'server.company.internal' will be accessible with 'server'",
     enableDNSZone: "Enable DNS Zone",
     enableDisableDNSZone: "Use this switch to enable or disable the dns zone.",
     addDNSZone: "Add DNS Zone",
@@ -1335,8 +1067,6 @@ export default {
     selectType: "Select type...",
     selectTTL: "Select TTL...",
     hostname: "Hostname",
-    hostnameHelp:
-      "Enter a subdomain, wildcard or leave empty to use the primary domain.",
     hostnamePlaceholder: "E.g., dev, * or leave empty for primary domain",
     ipv4Address: "IPv4 Address",
     ipv6Address: "IPv6 Address",
@@ -1352,21 +1082,15 @@ export default {
     dns: "DNS",
     recordTypeAAAA: "AAAA",
     recordTypeCNAME: "CNAME",
-    // Nameserver templates
     customDNS: "Custom DNS",
-    customDNSDescription:
-      "Use custom nameservers to resolve domains in your network. You can either use a public DNS or your own nameservers.",
-    // NameserverModal - notifications
     updateNameserverNotify: "Update Nameserver",
     nameserverUpdatedSuccess: "Nameserver was updated successfully.",
     updatingNameserver: "Updating your nameserver...",
     nameserverCreatedSuccess: "Nameserver was created successfully.",
     creatingNameserver: "Creating your nameserver...",
-    // NameserverModal - validation
     nameLengthError: "Name should be less than 40 characters",
     validIPError: "Please enter a valid IP, e.g., 192.168.1.0",
     ipPlaceholder: "e.g., 172.16.0.0",
-    // NameserverActionCell
     nameserverToggleSuccess: "Nameserver was successfully {status}.",
     nameserverToggleLoading: "Updating your nameserver...",
     nameserverDeletedSuccess: "The nameserver was successfully removed.",
@@ -1377,14 +1101,11 @@ export default {
     enable: "Enable",
     disable: "Disable",
     port: "Port",
-    // NameserverGroupTable
     searchNameserverPlaceholder: "Search by name, domains or nameservers...",
     noNameserversGroupTitle: "This group is not used within any nameservers yet",
     noNameserversGroupDesc: "Assign this group as a distribution group in your nameservers to see them listed here.",
     noNameserversGetStartedDesc: "It looks like you don't have any nameservers. Get started by adding one to your network. Select a predefined or add your custom nameservers.",
-    // NameserverNameserversCell
     serverCount: "{count} Servers",
-    // DNSZonesProvider - Zone notifications
     notifyZoneAddedTitle: "DNS Zone '{name}'",
     notifyZoneAddedDesc: "DNS Zone was added successfully.",
     notifyZoneAddedLoading: "Adding DNS Zone...",
@@ -1394,7 +1115,6 @@ export default {
     notifyZoneDeletedTitle: "DNS Zone '{name}'",
     notifyZoneDeletedDesc: "DNS Zone was deleted successfully.",
     notifyZoneDeletedLoading: "Deleting DNS Zone...",
-    // DNSZonesProvider - Record notifications
     notifyRecordAddedTitle: "{type} Record '{name}'",
     notifyRecordAddedDesc: "DNS Record was added successfully.",
     notifyRecordAddedLoading: "Adding DNS Record...",
@@ -1404,16 +1124,13 @@ export default {
     notifyRecordDeletedTitle: "{type} Record '{name}'",
     notifyRecordDeletedDesc: "DNS Record was deleted successfully.",
     notifyRecordDeletedLoading: "Deleting DNS Record...",
-    // DNSZonesProvider - Confirm/Ask dialogs
     confirmDeleteZoneDesc: "Are you sure you want to delete this zone? This action cannot be undone.",
     confirmDeleteRecordTitle: "Delete record '{name}'?",
     confirmDeleteRecordDesc: "Are you sure you want to delete this record? This action cannot be undone.",
     askForRecordTitle: "Add new record to '{name}'?",
     askForRecordDesc: "Add either an A, AAAA or a CNAME record to control domain name resolution for your network.",
     askForRecordCancel: "Later",
-    // DNSZoneModal
     validDomainErrorZone: "Please enter a valid domain, e.g. internal, company.internal or intra.example.com",
-    // DNSRecordModal
     validIPv4Error: "Please enter a valid IPv4 address, e.g. 192.168.1.1",
     validIPv6Error: "Please enter a valid IPv6 address, e.g. 2001:0db8:85a3::8a2e:0370:7334",
     validCnameError: "Please enter a valid domain, e.g. example.com or server.example.com",
@@ -1422,10 +1139,8 @@ export default {
     ipv4Placeholder: "192.168.1.1",
     ipv6Placeholder: "2001:0db8:85a3::8a2e:0370:7334",
     cnamePlaceholder: "e.g., example.com or intra.example.com",
-    // TTL plural units
     hours: "Hours",
     days: "Days",
-    // DNSZonesTable
     zoneColumn: "Zone",
     recordsColumn: "Records",
     searchDomainColumn: "Search Domain",
@@ -1434,18 +1149,25 @@ export default {
     noZonesGroupDesc: "Assign this group as a distribution group in your zones to see them listed here.",
     noZonesGetStartedDesc: "It looks like you don't have any zones. Control domain name resolution for your network by adding a zone.",
     addZone: "Add Zone",
-    // DNSZonesActionCell
     zoneActionsAria: "Zone actions",
-    // DNSZonesRecordsCell
     addRecordBtn: "Add",
-    // DNSRecordsTable
     contentColumn: "Content",
+    domainHelp: "Domain help",
+    writeDescription: "Write description",
+    enableDisableNameserver: "Enable/Disable Nameserver",
+    nameserversDescription: "Nameservers description",
+    nameserverModalDescription: "Nameserver modal description",
+    disabledManagementGroupHelp: "Disabled management group help",
+    descriptionPlaceholder: "Description placeholder",
+    zoneGroupsHelp: "Zone groups help",
+    updateZoneDescription: "Update zone description",
+    addDomainHelp: "Add domain help",
+    advertiseToGroups: "Advertise to Groups",
+    hostnameHelp: "Hostname help",
   },
   networks: {
     title: "Networks",
     description: "Manage networks and routing for your organization",
-    pageDescription:
-      "Access internal resources in LANs and VPCs without installing NetBird on every machine.",
     networkName: "Network Name",
     networkNamePlaceholder: "e.g., Engineering Network",
     createNetwork: "Create Network",
@@ -1458,8 +1180,6 @@ export default {
     resources: "Resources",
     policies: "Policies",
     routingPeers: "Routing Peers",
-    activePoliciesCount:
-      "{count, plural, one {# Active Policy} other {# Active Policies}}",
     noActivePolicies: "No Active Policies",
     goToPolicies: "Go to Policies",
     createResource: "Create Resource",
@@ -1473,11 +1193,7 @@ export default {
     addRoutingPeer: "Add Routing Peer",
     removeRoutingPeer: "Remove Routing Peer",
     networkRoutes: "Network Routes",
-    routesDescription:
-      "Access other networks like LANs and VPCs without installing NetBird on every resource.",
     learnMoreAbout: "Learn more about",
-    newNetworksRecommendation:
-      "We recommend using the new Networks concept to easier visualise and manage access to your resources.",
     goToNetworks: "Go to Networks",
     active: "Active",
     network: "Network",
@@ -1496,8 +1212,6 @@ export default {
     networkNameHelp: "Provide a unique name for the network.",
     networkNameModalPlaceholder: "e.g., Office Network",
     networkDescriptionLabel: "Description (optional)",
-    networkDescriptionHelp:
-      "Write a short description to add more context to this network.",
     networkDescriptionPlaceholder: "e.g., Berlin, Münzstraße 12",
     addResource: "Add Resource",
     editResourceBtn: "Edit Resource",
@@ -1505,228 +1219,103 @@ export default {
     resourceNameHelp: "Set an easily identifiable name for your resource",
     resourceNamePlaceholder: "e.g., Postgres Database",
     resourceDescriptionLabel: "Description",
-    resourceDescriptionHelp:
-      "Write a short description to add more context to this resource.",
     resourceDescriptionPlaceholder: "e.g., Production, Development",
     resourceGroupsLabel: "Resource Groups",
-    resourceGroupsHelp:
-      "Add this resource to a group (e.g., Databases, Web Servers) and reference the group in access policies to simplify management.",
     resourceGroupsPlaceholder: "Add or select resource group(s)...",
     accessControl: "Access Control",
     resourceTab: "Resource",
     optionalSettings: "Optional Settings",
     accessControlPolicies: "Access Control Policies",
-    accessControlPoliciesHelp:
-      "Define which source groups are allowed to access this resource. You can also restrict access to specific protocols and ports. Without policies access to this resource will not be possible.",
     routeType: "Route Type",
-    routeTypeHelp:
-      "Select your route type to add either a network range or a list of domains.",
     routeTypeNetworkRange: "Network Range",
     routeTypeDomains: "Domains",
     networkRange: "Network Range",
     networkRangeHelp: "Add a private IPv4 or IPv6 address or range",
-    networkRangePlaceholder:
-      "e.g., 172.16.0.1, 172.16.0.0/16, 2001:db8::1 or 2001:db8::/64",
     domains: "Domains",
     distributionGroups: "Distribution Groups",
     networkIdentifier: "Network Identifier",
     metric: "Metric",
-    metricHelp:
-      "Set a metric value to prioritize routes. Lower values take precedence.",
     metricPlaceholder: "Enter metric value (1-9999)",
     additionalSettings: "Additional Settings",
     accessControlGroups: "Access Control Groups",
     autoApply: "Auto Apply",
-
-    // NetworkProvider.tsx
     confirmDeleteNetworkTitle: "Delete network '{name}'?",
-    confirmDeleteNetworkDesc:
-      "Every resource and routing peers will be removed from this network. This action cannot be undone.",
     networkDeleted: "Network deleted successfully.",
     networkDeleting: "Deleting network...",
     confirmDeleteResourceTitle: "Delete resource '{name}'?",
-    confirmDeleteResourceDesc:
-      "Are you sure you want to delete this resource? This action cannot be undone.",
     resourceDeleted: "Resource deleted successfully.",
     resourceDeleting: "Deleting resource...",
     confirmRemoveRouterTitle: "Remove this router?",
-    confirmRemoveRouterDesc:
-      "Are you sure you want to remove this router?",
     removeRouter: "Remove {name}",
     routerRemoved: "Router deleted successfully.",
     routerRemoving: "Deleting router...",
     confirmAddRoutingPeerTitle: "Add Routing Peer to '{name}'?",
-    confirmAddRoutingPeerDesc:
-      "Without a routing peer, the resources inside this network will not be accessible by any peers.",
     later: "Later",
     confirmAddResourceTitle: "Add Resource to '{name}'?",
-    confirmAddResourceDesc:
-      "Peers will be able to access your network resources once you add them.",
-    multiResourceTitle:
-      "This policy is used by multiple resources",
-    multiResourceDesc:
-      "This policy uses one or many resource group(s) as destinations. {action} this policy will also affect following resources:",
-    deletePolicyDesc:
-      "Are you sure you want to delete this policy? This action cannot be undone.",
     remainingMore: "+ {count} more",
-
-    // NetworkRangeCell.tsx
     exitNode: "Exit Node",
-
-    // NetworkActionCell.tsx + network/page.tsx
     viewDetails: "View Details",
     renameNetwork: "Rename",
-
-    // PolicyCell.tsx
     accessPolicies: "Access Policie(s)",
-
-    // NetworkRoutingPeerCell.tsx + network/page.tsx
-    highAvailabilityInactiveText:
-      "High availability is currently {status} for this network.",
-    highAvailabilityActiveText:
-      "High availability is {status} for this network.",
-    highAvailabilityHelpActive:
-      "You can add more routing peers to increase the availability of this network.",
-    highAvailabilityHelpInactive:
-      "Go ahead and add more routing peers or groups with routing peers to enable high availability for this network.",
     highAvailability: "High Availability",
     peerCount: "{count} Peer(s)",
-
-    // ResourcesTable.tsx
     address: "Address",
     searchResources: "Search by name, address or group...",
     exposed: "Exposed",
     notExposed: "Not Exposed",
     noAssignedResources: "This group has no assigned resources",
-    noAssignedResourcesDesc:
-      "Assign this group to your resources inside your networks to see them listed here.",
     noNetworkResources: "This network has no resources",
-    noNetworkResourcesDesc:
-      "Add resources to this network to control what peers can access. Resources can be anything from a single IP, a subnet, or a domain.",
-
-    // ResourcesTabContent.tsx
-    resourcesTabDescription:
-      "Add resources to this network to control what peers can access. <link>Learn more</link>",
-
-    // ResourceActionCell.tsx
     resourceEdit: "Edit",
     resourceEnable: "Enable",
     resourceDisable: "Disable",
     resourceDelete: "Delete",
-
-    // ResourceAddressCell.tsx
     addressCopied: "{address} has been copied to your clipboard",
-
-    // ResourceEnabledCell.tsx
     updateResource: "Update Resource",
     resourceNowEnabled: "'{name}' is now enabled",
     resourceNowDisabled: "'{name}' is now disabled",
     updatingResource: "Updating resource...",
-
-    // ResourceExposeServiceCell.tsx
     expose: "Expose",
-
-    // ResourceSingleAddressInput.tsx
     addressLabel: "Address",
-    addressDescription:
-      "Enter a single IP address, CIDR block or domain name",
     addressPlaceholder: "Address (IP, CIDR or Domain)",
-    domainError:
-      "Please enter a valid domain, e.g. service.internal, example.com or *.example.com",
-    ipCidrError:
-      "Please enter a valid IP or CIDR, e.g., 10.0.0.21, 192.168.1.0/24, 2001:db8::1 or 2001:db8::/64",
-    ipAddressTooltip:
-      "A single host address, e.g., 10.0.0.1 or 192.168.1.5. Use this to give access to a specific machine or service.",
-    cidrBlockTooltip:
-      "To give access to an entire subnet, use a CIDR block. For example, 10.0.0.0/24 or 192.168.1.0/24.",
-    domainNameTooltip:
-      "A DNS domain name, e.g., service.internal, example.com or *.example.com to match all subdomains.",
-
-    // ResourceTypeCell.tsx
     singleIP: "Single IP",
     ipRange: "IP Range",
-
-    // NetworkRoutingPeersTabContent.tsx
-    routingPeersTabDescription:
-      "Add routing peers to this network to access resources inside this network. <link>Learn more</link>",
-
-    // NetworkRoutingPeersTable.tsx
     peer: "Peer",
     searchRoutingPeers: "Search by peer name, group name...",
     noRoutingPeers: "This network has no routing peers",
-    noRoutingPeersDesc:
-      "Add routing peers to this network to access resources inside this network.",
-
-    // RoutingPeersActionCell.tsx
     routerEdit: "Edit",
     routerEnable: "Enable",
     routerDisable: "Disable",
     remove: "Remove",
     networkRoutingPeer: "Network Routing Peer",
-
-    // RoutingPeerMasqueradeSwitch.tsx
     masquerade: "Masquerade",
-    masqueradeHelp:
-      "Allow access to your private networks without configuring routes on your local routers or other devices.",
-    masqueradeTooltip:
-      "Masquerade needs to be enabled for non-Linux routing peers.",
     masqueradeEnabled: "Masquerade is now enabled",
     masqueradeDisabled: "Masquerade is now disabled",
     updatingMasquerade: "Updating masquerade...",
-    masqueradeNonLinuxWarning:
-      "Group <important>{groupName}</important> contains at least one non-Linux peer. Disabled Masquerade will have no effect on non-Linux routing peers.",
-
-    // NetworkRoutesDeprecationInfo.tsx
-    routesDeprecationInfo:
-      "Network Routes will be deprecated and replaced with Networks.",
-
-    // NetworkModal.tsx
-    modalAccessDescription:
-      "Access internal resources in LANs and VPC by adding a network.",
     networkCreated: "Network created successfully.",
     networkCreating: "Creating network...",
     networkUpdated: "Network updated successfully.",
     networkUpdating: "Updating network...",
-
-    // NetworkResourceModal.tsx
     resourceCreated: "Resource Created",
-    resourceCreatedDesc:
-      'The resource "{name}" has been created successfully.',
     resourceCreating: "Creating resource...",
     resourceUpdated: "Resource Updated",
-    resourceUpdatedDesc:
-      'Resource "{name}" has been updated successfully.',
     resourceUpdating: "Updating resource...",
-    nameAlreadyExists:
-      "A resource with this name already exists. Please use another name.",
-    noPoliciesConfirmTitle:
-      "No Access Control Policies Configured",
-    noPoliciesConfirmDesc:
-      "Without access control policies, this resource will not be accessible by any peers. You can also create policies later. Are you sure you want to continue?",
-    resourceAddNewDesc: 'Add new resource to "{networkName}"',
-    resourceGroupsLearnMore:
-      "Learn more about <link>Resources</link>",
-
-    // NetworkResourceAccessControl.tsx
+    resourceAddNewDesc: "Add new resource to \\\"{networkName}\\\"",
     editPolicy: "Edit Policy",
     deletePolicy: "Delete Policy",
-
-    // ResourceGroupModal.tsx
     resourceGroupsModalTitle: "Resource Groups",
-    resourceGroupsModalDesc:
-      "Add this resource to a group (e.g., Databases, Web Servers) and reference the group in access policies to simplify management.",
     saveGroups: "Save Groups",
     groupUpdated: "'{name}' groups updated",
     updatingGroups: "Updating resource groups...",
-
-    // ResourcesTable column headers
     resourceColumn: "Resource",
     policiesColumn: "Policies",
+    addressDescription: "Address description",
+    networkDescriptionHelp: "Network description help",
+    activePoliciesCount: "Active policies count",
+    routeTypeHelp: "Route type help",
+    resourceDescriptionHelp: "Resource description help",
   },
   postureChecks: {
     title: "Posture Checks",
-    description:
-      "Define posture checks to ensure peers meet security requirements",
     descriptionOptional: "Description (optional)",
     createPostureCheck: "Create Posture Check",
     editPostureCheck: "Edit Posture Check",
@@ -1750,99 +1339,68 @@ export default {
     country: "Country",
     selectCountry: "Select country...",
     networkRange: "Network Range",
-    pageDescription:
-      "Define posture checks to ensure peers meet security requirements.",
     saveChanges: "Save Changes",
     updatePostureCheck: "Update Posture Check",
     nameAndDescription: "Name & Description",
     postureCheckName: "Name of the Posture Check",
-    postureCheckNameHelp:
-      "Set an easily identifiable name for your posture check.",
     postureCheckNamePlaceholder: "e.g., NetBird Version > 0.25.0",
-    postureCheckDescriptionHelp:
-      "Write a short description to add more context to this policy.",
-    postureCheckDescriptionPlaceholder:
-      "e.g., Check if the NetBird version is bigger than 0.25.0",
     netBirdClientVersion: "NetBird Client Version",
-    netBirdClientVersionHelp:
-      "Restrict access to peers with a specific NetBird client version.",
     netBirdClientVersionCheck: "Client Version Check",
     minimumRequiredVersion: "Minimum required version",
-    minimumRequiredVersionHelp:
-      "Only peers with the minimum specified NetBird client version will have access to the network.",
     minimumRequiredVersionPlaceholder: "e.g., 0.25.0",
-    minimumRequiredVersionError:
-      "Please enter a valid version, e.g., 0.2, 0.2.0, 0.2.0-alpha.1",
     countryAndRegion: "Country & Region",
-    countryAndRegionHelp:
-      "Restrict access in your network based on country or region.",
     countryAndRegionCheck: "Country & Region Check",
-    geoLite2License:
-      "This check includes GeoLite2 data created by MaxMind, available from",
     allowOrBlockLocation: "Allow or Block Location",
-    chooseAllowOrBlock:
-      "Choose whether you want to allow or block access from specific countries or regions",
     addLocation: "Add Location",
     learnMoreAbout: "Learn more about",
-    operatingSystemHelp:
-      "Restrict access in your network based on the operating system.",
     operatingSystemCheck: "Operating System Check",
     allVersions: "All versions",
     equalOrGreaterThan: "Equal or greater than",
     allowOrBlock: "Allow or Block",
-    allowOrBlockOSHelp:
-      "Choose whether you want to allow or block the operating system.",
     selectVersion: "Select version...",
     versionPlaceholder: "e.g., 6.0.0",
     useCustomVersion: "Use custom version number",
-    useCustomVersionHelp:
-      "Use a custom version number if you need more control.",
     kernelVersion: "Kernel Version",
     process: "Process",
-    processHelp:
-      "Restrict access in your network based on running processes of a peer.",
     processCheck: "Process Check",
     processes: "Processes",
-    processesHelp:
-      "Add the path of an executable file of the process. You can define a path for Linux, macOS and Windows. Peers will only be allowed to connect if the process is running on their system.",
     addProcess: "Add Process",
     linuxPathPlaceholder: "/usr/local/bin/netbird",
     macPathPlaceholder: "/Applications/NetBird.app/Contents/MacOS/netbird",
-    windowsPathPlaceholder: "C:\\ProgramData\\NetBird\\netbird.exe",
+    windowsPathPlaceholder: "C:\\\\\\\\ProgramData\\\\\\\\NetBird\\\\\\\\netbird.exe",
     validMacPath: "Please enter a valid macOS file path",
     validUnixPath: "Please enter a valid Unix file path",
     validWindowsPath: "Please enter a valid Windows file path",
-    peerNetworkRangeHelp:
-      "Restrict access by allowing or blocking peer network ranges.",
     peerNetworkRangeCheck: "Peer Network Range Check",
     allowOrBlockRanges: "Allow or Block Ranges",
-    allowOrBlockRangesHelp:
-      "Choose whether you want to allow or block specific peer network ranges",
     addNetworkRange: "Add Network Range",
     validCidr: "Please enter a valid CIDR, e.g., 192.168.1.0/24",
     cidrPlaceholder: "e.g., 172.16.0.0/16",
     noChecks: "You haven't added any posture checks yet",
-    noChecksDescription:
-      "Add various posture checks to further restrict access in your network. E.g., only clients with a specific NetBird client version, operating system or location are allowed to connect.",
     browseChecks: "Browse Checks",
     newPostureCheck: "New Posture Check",
     postureCheck: "Posture Check",
     addPostureChecks: "Add Posture Checks ({count, number})",
-    usePostureChecks:
-      "Use posture checks to further restrict access in your network.",
     removePostureCheck: "Remove Posture Check",
     confirmDeleteTitle: "Delete '{name}'?",
-    confirmDeleteDescription:
-      "Are you sure you want to delete this posture check? This action cannot be undone.",
-    assignedToPolicyCannotDelete:
-      "This posture check is assigned to a policy and cannot be deleted. Please remove the posture check from all policies before deleting it.",
     postureCheckDeleted: "Posture check was successfully deleted",
     deletingPostureCheck: "Deleting posture check...",
     disableThisCheck: "Disable this check?",
-    disableCheckConfirm:
-      "Are you sure you want to disable this check? All settings of this check will be lost.",
     on: "On",
     off: "Off",
+    allowOrBlockRangesHelp: "Allow or block ranges help",
+    operatingSystemHelp: "Operating system help",
+    netBirdClientVersionHelp: "NetBird client version help",
+    peerNetworkRangeHelp: "Peer network range help",
+    allowOrBlockOSHelp: "Allow or block OS help",
+    postureCheckNameHelp: "Posture check name help",
+    chooseAllowOrBlock: "Choose allow or block",
+    postureCheckDescriptionHelp: "Posture check description help",
+    geoLite2License: "GeoLite2 license",
+    pageDescription: "Page description",
+    useCustomVersionHelp: "Use custom version help",
+    countryAndRegionHelp: "Country and region help",
+    processHelp: "Process help",
   },
   setupKeys: {
     title: "Setup Keys",
@@ -1869,8 +1427,6 @@ export default {
     copyKey: "Copy Key",
     keyCopied: "Setup key copied to clipboard",
     key: "Key",
-    copyWarning:
-      "This is the only time the key will be shown. Copy it now and store it in a safe place.",
     created: "Setup key '{name}' successfully created",
     updated: "Setup key '{name}' successfully updated",
     deleted: "Setup key '{name}' successfully deleted",
@@ -1890,31 +1446,19 @@ export default {
     reusable: "Reusable",
     status: "Status",
     groupNotUsedTitle: "This group is not used within any setup keys yet",
-    groupNotUsedDescription:
-      "Assign this group when creating a new setup key to see them listed here.",
-    getStartedDescription:
-      "Add a setup key to register new machines in your network. The key links machines to your account during initial setup.",
     learnMore: "Learn more about",
     groups: "Groups",
     usage: "Usage",
     lastUsedOn: "Last used on",
-    // SetupKeyActionCell
     revoke: "Revoke",
     openActionsMenu: "Open actions menu",
     revokeConfirmTitle: "Revoke '{name}'?",
-    revokeConfirmDescription:
-      "Are you sure you want to revoke the setup key? This action cannot be undone.",
     revokeSuccessDescription: "Setup key was successfully revoked",
     revokeLoading: "Revoking the setup key...",
     deleteConfirmTitle: "Delete '{name}'?",
-    deleteConfirmDescription:
-      "Are you sure you want to delete the setup key? This action cannot be undone.",
     deleteSuccessDescription: "Setup key was successfully deleted",
     deleteLoading: "Deleting the setup key...",
-    // SetupKeyGroupsCell
     autoAssignedGroups: "Auto-assigned Groups",
-    autoAssignedGroupsDescription:
-      "These groups will be automatically assigned to peers enrolled with this key",
     groupsSavedDescription: "Groups of the setup key were successfully saved",
     groupsSaving: "Saving the groups of the setup key...",
   },
@@ -1922,8 +1466,6 @@ export default {
     title: "Activity",
     description: "View audit events and activity logs",
     auditEvents: "Audit Events",
-    auditEventsDescription:
-      "Audit configuration changes, access policy updates, and peer registration and login events across your network.",
     noEvents: "No events available",
     searchPlaceholder: "Search events...",
     searchByAuditNameUserPeerMeta: "Search by audit name, user, peer, meta...",
@@ -1934,8 +1476,6 @@ export default {
     ipAddress: "IP Address",
     details: "Details",
     code: "Code",
-
-    // UI strings used across activity components
     allEventTypes: "All Event Types",
     allUsers: "All Users",
     includeAllUsers: "Include all users",
@@ -1952,263 +1492,23 @@ export default {
     meta: "Meta",
     from: "from",
     unknown: "Unknown",
-
-    // Activity event descriptions (used by ActivityDescription.tsx)
-
-    // Setup Key
-    desc_setupkey_revoke:
-      "Setup-Key <Value>{name}</Value> with key <Value>{key}</Value> was revoked",
-    desc_setupkey_delete:
-      "Setup-Key <Value>{name}</Value> with key <Value>{key}</Value> was deleted",
-    desc_setupkey_add:
-      "Setup-Key <Value>{name}</Value> with key <Value>{key}</Value> was created",
-    desc_peer_setupkey_add:
-      "Peer <Value>{name}</Value> from <peerConnectionInfo></peerConnectionInfo> was added with the NetBird IP <Value>{ip}</Value> using the setup key <Value>{setup_key_name}</Value>",
-    desc_setupkey_group_delete:
-      "Group <Value>{group}</Value> was removed from the <Value>{setupkey}</Value> setup key",
-    desc_setupkey_group_add:
-      "Group <Value>{group}</Value> was added to the <Value>{setupkey}</Value> setup key",
-
-    // Dashboard
-    desc_dashboard_login:
-      "<Value>{username}</Value> logged in to the dashboard",
-
-    // Policy
     desc_policy_update: "Policy <Value>{name}</Value> has been updated",
     desc_policy_delete: "Policy <Value>{name}</Value> was deleted",
     desc_policy_add: "Policy <Value>{name}</Value> was created",
-
-    // Route
-    desc_route_delete_domains:
-      "Route <Value>{name}</Value> with the domain(s) <Value>{domains}</Value> was deleted",
-    desc_route_delete_range:
-      "Route <Value>{name}</Value> with the range <Value>{network_range}</Value> was deleted",
-    desc_route_update_domains:
-      "Route <Value>{name}</Value> with the domain(s) <Value>{domains}</Value> was updated",
-    desc_route_update_range:
-      "Route <Value>{name}</Value> with the range <Value>{network_range}</Value> was updated",
-    desc_route_add_domains:
-      "Route <Value>{name}</Value> with the domain(s) <Value>{domains}</Value> was created",
-    desc_route_add_range:
-      "Route <Value>{name}</Value> with the range <Value>{network_range}</Value> was created",
-
-    // User / Peer
-    desc_user_peer_delete:
-      "Peer <Value>{name}</Value> from <peerConnectionInfo></peerConnectionInfo> with NetBird IP <Value>{ip}</Value> was deleted",
-    desc_user_peer_add:
-      "Peer <Value>{name}</Value> from <peerConnectionInfo></peerConnectionInfo> was added with the NetBird IP <Value>{ip}</Value>",
-    desc_user_peer_update:
-      "Peer <Value>{name}</Value> from <peerConnectionInfo></peerConnectionInfo> with NetBird IP <Value>{ip}</Value> was updated",
     desc_user_join: "User <Value>{username}</Value> joined NetBird",
-    desc_user_invite:
-      "<Value>{username}</Value> <Value>{email}</Value> was invited.",
-    desc_user_create:
-      "<Value>{username}</Value> <Value>{email}</Value> was created by <Value>{initiator}</Value>",
-    desc_user_group_add:
-      "Group <Value>{group}</Value> was added to user <Value>{username}</Value>",
-    desc_user_block:
-      "User <Value>{username}</Value> <Value>{email}</Value> was blocked",
-    desc_user_unblock:
-      "User <Value>{username}</Value> <Value>{email}</Value> was unblocked",
-    desc_user_delete:
-      "User <Value>{username}</Value> <Value>{email}</Value> was deleted",
-    desc_user_group_delete:
-      "Group <Value>{group}</Value> was removed from user <Value>{username}</Value> <Value>{email}</Value>",
-    desc_user_role_update:
-      "Role <Value>{role}</Value> was updated of user <Value>{username}</Value> <Value>{email}</Value>",
-    desc_user_approve:
-      "User <Value>{username}</Value> <Value>{email}</Value> was approved",
-    desc_user_reject:
-      "User <Value>{username}</Value> <Value>{email}</Value> was rejected",
-    desc_user_password_change:
-      "Password was changed for user <Value>{username}</Value> <Value>{email}</Value>",
-
-    // Invite Link
-    desc_user_invite_link_create:
-      "Invite link was created for <Value>{username}</Value> <Value>{email}</Value>",
-    desc_user_invite_link_accept:
-      "Invite link was accepted by <Value>{username}</Value> <Value>{email}</Value>",
-    desc_user_invite_link_regenerate:
-      "Invite link was regenerated for <Value>{username}</Value> <Value>{email}</Value>",
-    desc_user_invite_link_delete:
-      "Invite link was deleted for <Value>{username}</Value> <Value>{email}</Value>",
-
-    // Service User
     desc_service_user_create: "Service user <Value>{name}</Value> was created",
     desc_service_user_delete: "Service user <Value>{name}</Value> was deleted",
-
-    // Peer
-    desc_peer_group_delete:
-      "Group <Value>{group}</Value> was removed from the peer with the NetBird IP <Value>{peer_ip}</Value>",
-    desc_peer_group_add:
-      "Group <Value>{group}</Value> was added to the peer with the NetBird IP <Value>{peer_ip}</Value>",
-    desc_peer_login_expire:
-      "Login of the peer <Value>{name}</Value> is expired",
-    desc_peer_ssh_disable:
-      "SSH Server of peer <Value>{name}</Value> was disabled",
-    desc_peer_ssh_enable:
-      "SSH Server of peer <Value>{name}</Value> was enabled",
-    desc_peer_login_expiration_disable:
-      "Login expiration of peer <Value>{name}</Value> was disabled",
-    desc_peer_login_expiration_enable:
-      "Login expiration of peer <Value>{name}</Value> was enabled",
-    desc_peer_rename:
-      "Peer with the NetBird IP <Value>{ip}</Value> was renamed to <Value>{name}</Value>",
-    desc_peer_approve:
-      "Peer with the NetBird IP <Value>{ip}</Value> was approved",
-    desc_peer_ip_update:
-      "Peer <Value>{name}</Value> IP address was updated from <Value>{old_ip}</Value> to <Value>{ip}</Value>",
-    desc_peer_user_add:
-      "Peer <Value>{name}</Value> from <peerConnectionInfo></peerConnectionInfo> was added with the NetBird IP <Value>{ip}</Value>",
-
-    // Group
     desc_group_add: "Group <Value>{name}</Value> was created",
     desc_group_delete: "Group <Value>{name}</Value> was deleted",
-    desc_group_update:
-      "Group <Value>{old_name}</Value> was renamed to <Value>{new_name}</Value>",
-
-    // Account
     desc_account_create: "<Value>{initiator}</Value> created an account",
-    desc_account_setting_peer_login_expiration_update:
-      "Global login expiration was updated",
-    desc_account_setting_peer_login_expiration_enable:
-      "Global login expiration was enabled",
-    desc_account_setting_peer_login_expiration_disable:
-      "Global login expiration was disabled",
-    desc_account_network_range_update:
-      "Account network range was updated from <Value>{old_network_range}</Value> to <Value>{new_network_range}</Value>",
-
-    // Nameserver
     desc_nameserver_group_add: "Nameserver <Value>{name}</Value> was added",
     desc_nameserver_group_delete: "Nameserver <Value>{name}</Value> was deleted",
     desc_nameserver_group_update: "Nameserver <Value>{name}</Value> was updated",
-
-    // Personal Access Token
-    desc_personal_access_token_create:
-      "Access token <Value>{name}</Value> for user <Value>{username}</Value> was created",
-    desc_personal_access_token_delete:
-      "Access token <Value>{name}</Value> for user <Value>{username}</Value> was deleted",
-
-    // Integration
-    desc_integration_create_platform:
-      "<Value>{platform}</Value> integration created",
     desc_integration_create: "Integration created",
-    desc_integration_delete_platform:
-      "<Value>{platform}</Value> integration deleted",
     desc_integration_delete: "Integration deleted",
-    desc_integration_update_platform:
-      "<Value>{platform}</Value> integration updated",
     desc_integration_update: "Integration updated",
-
-    // DNS
-    desc_dns_setting_disabled_management_group_add:
-      "Group <Value>{group}</Value> was added to disabled DNS group setting",
-    desc_dns_setting_disabled_management_group_delete:
-      "Group <Value>{group}</Value> was removed from disabled DNS group setting",
-
-    // Posture Checks
-    desc_posture_check_updated:
-      "Posture check <Value>{name}</Value> was updated",
-    desc_posture_check_created:
-      "Posture check <Value>{name}</Value> was created",
-    desc_posture_check_deleted:
-      "Posture check <Value>{name}</Value> was deleted",
     desc_transferred_owner_role: "Owner role was transferred",
-
-    // EDR / Integrated Validator
-    desc_integrated_validator_api_created:
-      "<Value>{platform}</Value> integration created",
-    desc_integrated_validator_api_updated:
-      "<Value>{platform}</Value> integration updated",
-    desc_integrated_validator_api_deleted:
-      "<Value>{platform}</Value> integration deleted",
-    desc_integrated_validator_host_check_approved:
-      "Peer approved by <Value>{platform}</Value> integration",
-    desc_integrated_validator_host_check_denied:
-      "Peer rejected by <Value>{platform}</Value> integration",
-    desc_integrated_validator_peer_compliance_bypassed:
-      "Peer <Value>{name}</Value> with the NetBird IP <Value>{ip}</Value> compliance bypassed for <Value>{platform}</Value> integration{original_reason}",
-    desc_integrated_validator_peer_compliance_bypass_revoked:
-      "Peer <Value>{name}</Value> with the NetBird IP <Value>{ip}</Value> compliance bypass revoked for <Value>{platform}</Value> integration",
-    desc_compliance_original_reason:
-      " (original non-compliant reason: <Value>{reason}</Value>)",
-
-    // Resource
-    desc_resource_group_add:
-      "Group <Value>{resource_name}</Value> added to resource <Value>{name}</Value>",
-    desc_resource_group_delete:
-      "Group <Value>{resource_name}</Value> removed from resource <Value>{name}</Value>",
-
-    // Reverse Proxy (peer expose)
-    desc_service_peer_expose:
-      "Peer <Value>{peer_name}</Value> exposed service <Value>{domain}</Value> with auth <Value>{auth}</Value>",
-    desc_service_peer_unexpose:
-      "Peer <Value>{peer_name}</Value> unexposed service <Value>{domain}</Value>",
-    desc_service_peer_expose_expire:
-      "Service <Value>{domain}</Value> exposed by peer <Value>{peer_name}</Value> was removed due to renewal expiration",
-
-    // Networks
-    desc_network_resource_create:
-      "Resource <Value>{name}</Value> created for network <Value>{network_name}</Value>",
-    desc_network_resource_update:
-      "Resource <Value>{name}</Value> updated for network <Value>{network_name}</Value>",
-    desc_network_resource_delete:
-      "Resource <Value>{name}</Value> deleted from network <Value>{network_name}</Value>",
-    desc_network_router_create:
-      "Routing peer created for network <Value>{network_name}</Value>",
-    desc_network_router_delete:
-      "Routing peer deleted from network <Value>{network_name}</Value>",
-    desc_network_router_update:
-      "Routing peer updated from network <Value>{network_name}</Value>",
-    desc_network_create:
-      "Network with name <Value>{name}</Value> created",
-    desc_network_delete:
-      "Network with name <Value>{name}</Value> deleted",
-    desc_network_update:
-      "Network with name <Value>{name}</Value> updated",
-
-    // Jobs
-    desc_peer_job_create:
-      "Remote job <Value>{job_type}</Value> created for peer <Value>{for_peer_name}</Value>",
-
-    // Flow Settings
-    desc_account_settings_extra_flow_group_remove:
-      "Limit traffic event group <Value>{group_name}</Value> removed",
-    desc_account_settings_extra_flow_group_add:
-      "Limit traffic event group <Value>{group_name}</Value> added",
-
-    // Identity Provider
-    desc_identityprovider_create:
-      "Identity provider <Value>{name}</Value> was created",
-    desc_identityprovider_update:
-      "Identity provider <Value>{name}</Value> was updated",
-    desc_identityprovider_delete:
-      "Identity provider <Value>{name}</Value> was deleted",
-
-    // Service (proxy cluster)
-    desc_service_create:
-      "Service <Value>{domain}</Value> in cluster <Value>{proxy_cluster}</Value> was created with authentication <Value>{auth}</Value>",
-    desc_service_update:
-      "Service <Value>{domain}</Value> in cluster <Value>{proxy_cluster}</Value> was updated with authentication <Value>{auth}</Value>",
-    desc_service_delete:
-      "Service <Value>{domain}</Value> in cluster <Value>{proxy_cluster}</Value> was deleted",
-
-    // Reseller / Distributor
-    desc_reseller_msp_created:
-      "Customer <Value>{msp_name}</Value> with domain <Value>{msp_domain}</Value> was created",
     desc_reseller_activated: "Distributor account was activated",
-    desc_reseller_msp_deleted:
-      "Customer <Value>{msp_name}</Value> with domain <Value>{msp_domain}</Value> was deleted",
-    desc_reseller_msp_unlinked:
-      "Customer <Value>{msp_name}</Value> with domain <Value>{msp_domain}</Value> was unlinked",
-    desc_reseller_msp_invite_requested:
-      "Invite requested for customer <Value>{msp_name}</Value> with domain <Value>{msp_domain}</Value>",
-    desc_reseller_msp_invite_accepted:
-      "Invite accepted by customer <Value>{msp_name}</Value> with domain <Value>{msp_domain}</Value>",
-    desc_reseller_msp_invite_declined:
-      "Invite declined by customer <Value>{msp_name}</Value> with domain <Value>{msp_domain}</Value>",
-    desc_reseller_msp_updated:
-      "Customer <Value>{msp_name}</Value> with domain <Value>{msp_domain}</Value> was updated",
   },
   controlCenter: {
     title: "Control Center",
@@ -2390,110 +1690,47 @@ export default {
     downgradeTo: "Downgrade to",
   },
   routes: {
-    // Table columns
     colName: "Name",
     colMetric: "Metric",
     colDistributionGroups: "Distribution Groups",
     colAccessControlGroups: "Access Control Groups",
     colAutoApply: "Auto Apply",
     tableTitle: "Network Routes",
-
-    // Create route modal - header
     setupExitNode: "Set Up Exit Node",
     addExitNode: "Add Exit Node",
     createNewRoute: "Create New Route",
     routeAllThroughPeer: "Route all traffic through the peer '{name}'",
     routeAllInternet: "Route all internet traffic through a peer",
     createDescription: "Access LANs and VPC by adding a network route.",
-
-    // Create route modal - create policy prompt
-    createPolicyConfirm:
-      "Do you want to create a new access control policy for the route '{name}'?",
-    createPolicyDescription:
-      "You have one or more access control groups added to this route. These groups allow you to limit access to this route by using them in access policies.",
     createPolicyConfirmText: "Create Policy",
     createPolicyCancelText: "Later",
-
-    // Tabs
     tabRoute: "Route",
     tabGroups: "Groups",
     tabNameDescription: "Name & Description",
     tabSettings: "Settings",
-
-    // Domains section
-    addDomainsHelp:
-      "Add domains that dynamically resolve to one or more IPv4 addresses. <br /> A maximum of 32 domains can be added.",
     addDomain: "Add Domain",
-    keepRoutesTooltip:
-      "DNS records for load-balanced systems often change. Keeping resolved addresses ensures ongoing connections to active resources remain uninterrupted.",
     keepRoutes: "Keep Routes",
-    keepRoutesHelp:
-      "Retain previously resolved routes after IP address updates to maintain stable connections.",
-
-    // Routing peer section
-    assignSinglePeer:
-      "Assign a single peer as a routing peer for the {type}",
-    assignPeerGroup:
-      "Assign a peer group with machines to be used as {type}",
     exitNode: "exit node",
     exitNodes: "exit nodes",
     networkRoute: "network route",
     routingPeers: "routing peers",
-
-    // Distribution groups help
-    routeAllTrafficPeer:
-      "Route all internet traffic through this peer for the following groups",
-    routeAllTrafficPeers:
-      "Route all internet traffic through the peer(s) for the following groups",
-    advertiseRouteToGroups:
-      "Advertise this route to peers that belong to the following groups",
-
-    // Access control groups
     accessControlGroupsOptional: "Access Control Groups (optional)",
-    accessControlGroupsHelpCreate:
-      "These groups allow you to limit access to this route. Simply use these groups as a destination when creating access policies.",
-    accessControlGroupsHelpUpdate:
-      "These groups offer a more granular control of internal services in your network. They can be used in access control policies to limit and control access of this route.",
-
-    // General / Name & Description
-    networkIdentifierHelp:
-      "Add a unique network identifier that is assigned to each device.",
     networkIdentifierPlaceholder: "e.g., aws-eu-central-1-vpc",
-    descriptionHelp:
-      "Write a short description to add more context to this route.",
-    descriptionPlaceholder:
-      "e.g., Route to access all devices in the AWS VPC, located in Frankfurt.",
-
-    // Settings
     enableRoute: "Enable Route",
-    enableRouteHelp:
-      "Use this switch to enable or disable the route.",
     autoApplyRoute: "Auto Apply Route",
-    autoApplyRouteHelp:
-      "Automatically apply this exit node to your distribution groups. This requires NetBird client v0.55.0 or higher.",
     metricHelp: "A lower metric indicates higher priority routes.",
-
-    // Footer links
     learnMore: "Learn more about",
     continueBtn: "Continue",
     addRouteBtn: "Add Route",
     addExitNodeBtn: "Add Exit Node",
-
-    // Update modal
     updateTitle: "Update {name}",
     updateTabDescription: "Description",
     metricError: "Metric must be between 1 and 9999",
-    networkIdentifierLengthError:
-      "Network identifier must be less than 40 characters",
     saveChanges: "Save Changes",
-
-    // Action cell
     deleteRouteNotify: "Delete Route {network_id}",
     routeRemoved: "Route was successfully removed",
     deletingRoute: "Deleting the route...",
     deleteDialogTitle: "Delete '{name}'?",
-    deleteDialogDescription:
-      "Are you sure you want to delete this route? This action cannot be undone.",
     deleteDialogConfirm: "Delete",
     routeEnabledSuccess: "The network route was successfully enabled",
     routeDisabledSuccess: "The network route was successfully disabled",
@@ -2502,98 +1739,48 @@ export default {
     actionDisable: "Disable",
     actionEnable: "Enable",
     actionDelete: "Delete",
-
-    // Auto apply cell
     autoApplyEnabled: "Auto Apply was enabled for the route",
     autoApplyDisabled: "Auto Apply was disabled for the route",
-
-    // Add routing peer modal
-    addRoutingPeerDescription:
-      "When you add multiple routing peers, NetBird enables high availability for this network.",
-    routeSelectorHelp:
-      "Network name and CIDR that you are adding the route to.",
-    assignSinglePeerRoute:
-      "Assign a single peer as a routing peer for the network route.",
     peerAddedToRoute: "Peer was successfully added to the route",
-
-    // NetworkRoutesTable column headers
     colNetwork: "Network",
     colType: "Type",
     colHighAvailability: "High Availability",
     filterStatus: "Status",
     searchRoutes: "Search by network, range, name or groups...",
-    groupNoRoutesTitle:
-      "This group is not used within any network routes yet",
-    groupNoRoutesDescription:
-      "Assign this group when creating a new route to see them listed here.",
-    getStartedDescription:
-      "It looks like you don't have any routes. Access LANs and VPC by adding a network route.",
-
-    // High availability cell
-    haDisabled:
-      "High availability is currently disabled for this route.",
-    haEnabled:
-      "High availability is enabled for this route.",
-    haAddMorePeersTooltip:
-      "Go ahead and add more routing peers to enable high availability for this network route.",
-    haIncreasePeersTooltip:
-      "You can add more peers to increase the availability of this network route.",
-    haAddToGroupTooltip:
-      "To configure, you must add more peers to a group in this route. You can do it in the Peers menu.",
-    haAddFromPeersTooltip:
-      "You can add more peers to a group in this route by going to the peers page.",
     haPeerCount: "{count} Peer(s)",
     haDisabledBadge: "Disabled",
     goToPeers: "Go to Peers",
     addPeer: "Add Peer",
-
-    // GroupedRouteActionCell
     deleteNetworkNotify: "Delete Network",
     networkRemoved: "Network was successfully removed",
     deletingNetwork: "Deleting the network...",
     deleteNetworkConfirmTitle: "Delete network '{name}'?",
-    deleteNetworkConfirmDescription:
-      "Are you sure you want to delete this network? All routes inside this network will be deleted. This action cannot be undone.",
-
-    // Badge labels
     exitNodeLabel: "Exit Node",
     routingPeersBadge: "Routing Peers",
+    additionalSettings: "Additional Settings",
+    haDisabled: "HA Disabled",
+    networkRangePlaceholder: "Network range placeholder",
+    haEnabled: "HA Enabled",
+    routeType: "Route Type",
+    routingPeerHelp: "Routing peer help",
+    routingPeer: "Routing Peer",
+    networkIdentifierLengthError: "Network identifier length error",
+    networkIdentifier: "Network Identifier",
+    networkRange: "Network Range",
   },
   onboarding: {
     title: "Get started with NetBird",
     addResource: "Add your first resource",
-    description:
-      "NetBird provides the flexibility of both a peer-to-peer overlay network and a remote network access solution. Choose what fits your needs, you can always combine both.",
     p2pTitle: "Peer-to-Peer Network",
-    p2pDescription_business:
-      "Install NetBird on two or more devices to create secure, direct WireGuard connections, like laptop to server or server to database. Add at least two machines to get started.",
-    p2pDescription_personal:
-      "Install NetBird on two or more devices in your homelab, such as your laptop, NAS, or Raspberry Pi, to create secure, direct WireGuard connections.",
     remoteAccessTitle: "Remote Network Access",
-    remoteAccessDescription_business:
-      "Enable employee remote access to VMs, Kubernetes clusters, and cloud or on-prem resources without installing NetBird on every machine.",
-    remoteAccessDescription_personal:
-      "Securely access your homelab remotely from anywhere without installing NetBird on every device.",
     recommended: "Recommended",
-    recommendedTooltip:
-      "Based on your previous choices, we recommend starting with {title}. You can always combine both options later.",
     congratulationsName: "Congratulations, {name}!",
     congratulations: "Congratulations!",
     completedOnboarding: "You’ve completed the onboarding.",
-    whatsNext:
-      "What’s next? Check out these guides to get the most out of NetBird. To learn more, explore the dashboard, visit our documentation, or browse our YouTube channel.",
     goToDashboard: "Go to Dashboard",
     videoAccessControlTitle: "Access Control in Under 5 Minutes",
-    videoAccessControlDescription:
-      "Learn how to manage access for your network resources effectively. Whether you want to restrict access to specific machines or allow certain users to connect.",
     videoIdPTitle: "Provision Users & Groups From Your IdP",
-    videoIdPDescription:
-      "Learn how to provision users and groups from your identity provider, such as Okta, Azure AD, or Google Workspace, to manage access control in NetBird and automate onboarding and offboarding processes.",
     videoHowNetBirdWorksTitle: "How NetBird Works",
-    videoHowNetBirdWorksDescription:
-      "Learn more about how NetBird works, its architecture, and how it can help you build secure networks.",
-
-    // OnboardingDemoCall.tsx experiment variants
     demoCall: {
       duration: "The call usually takes around {duration, number} minutes",
       v1: {
@@ -2642,34 +1829,20 @@ export default {
   },
   setupModal: {
     generateSetupKey: "Generate a setup key",
-    setupKeyHelpTooltip:
-      "A setup key is a one-time, pre-authentication token used to enroll an unattended machine with NetBird. Pass it to <code>netbird up</code> via <code>--setup-key</code> and the peer registers without an interactive login.",
     learnMore: "Learn more",
     defaultUserName: "there",
     helloMessage: "Hello {name}! 👋",
     timeToAddFirstDevice: "It's time to add your first device.",
     installNetBirdWithSetupKey: "Install NetBird with Setup Key",
     installNetBird: "Install NetBird",
-    getStartedWithSetupKey:
-      "To get started, install and run NetBird with the setup key as a parameter.",
-    getStartedWithEmail:
-      "To get started, install NetBird and log in with your email account.",
-    footerDescription:
-      "After that you should be connected. Add more devices to your network or manage your existing devices in the admin panel. If you have further questions check out our",
     installationGuide: "Installation Guide",
-    setupKeyOnceMessage:
-      "This setup key can be used only once within the next 24 hours.",
     setupKeyExpiredMessage: "When expired, the same key can not be used again.",
     setupKeyCreated: "Setup Key Created",
-    setupKeyCreatedDescription:
-      "A one-off setup key was generated for this install.",
     generatingSetupKey: "Generating setup key...",
     setupKeyCopied: "Setup Key Copied",
     setupKeyCopiedDescription: "Successfully copied to clipboard.",
     generateKey: "Generate Key",
     setupKey: "Setup Key",
-    setupKeyExpiryMessage:
-      "This setup key can be used only once and expires in 24 hours.",
     downloadNetBird: "Download NetBird",
     runNetBird: "Run NetBird",
     andLogInBrowser: "and log in the browser",
@@ -2678,11 +1851,7 @@ export default {
     addRepository: "Add our repository",
     installOnMacos: "Install on macOS",
     downloadMacInstaller: "Download and run macOS Installer",
-    managementUrlInstruction:
-      "Click on \"Settings\" then \"Advanced Settings\" from the NetBird icon in your system tray and enter the following \"Management URL\"",
     openTerminalAndRun: "Open Terminal and run NetBird",
-    clickConnectTray:
-      "Click on \"Connect\" from the NetBird icon in your system tray",
     signUpWithEmail: "Sign up using your email address",
     installWithTerminal: "Install manually with Terminal",
     installWithHomebrew: "Install manually with HomeBrew",
@@ -2700,20 +1869,18 @@ export default {
     readDocumentation: "Read our documentation",
     runningInDocker: "Running NetBird in Docker",
     installOnAndroid: "Install on Android",
-    downloadFromGooglePlay:
-      "Download and install the application from Google Play Store:",
     googlePlayAlt: "Download NetBird from Google Play",
-    changeServer:
-      "Click on \"Change Server\" and enter the following \"Server\"",
-    clickConnectButton:
-      "Click on the \"Connect\" button in the middle of the screen",
     installOnIos: "Install on iOS",
-    downloadFromAppStore:
-      "Download and install the application on the App Store:",
     appStoreAlt: "Download NetBird on the App Store",
+    setupKeyExpiryMessage: "Setup key expiry message",
+    downloadFromGooglePlay: "Download from Google Play",
+    clickConnectButton: "Click Connect Button",
+    clickConnectTray: "Click Connect Tray",
+    setupKeyCreatedDescription: "Setup key created description",
+    downloadFromAppStore: "Download from App Store",
+    changeServer: "Change Server",
   },
   untranslated: {
-    // app
     customers_1: "Customers -",
     customers_2: "Customers",
     integrations_3: "Integrations -",
@@ -2762,7 +1929,6 @@ export default {
     one_uppercase_letter_46: "One uppercase letter",
     password_47: "Password",
     instance_setup_48: "Instance Setup -",
-    // cloud
     add__customer_1: "Add  customer",
     cancel_2: "Cancel",
     company_3: "Company",
@@ -2836,7 +2002,6 @@ export default {
     posture_check_xyz_passed_71: "Posture Check XYZ passed",
     unknown_72: "Unknown",
     bearer_73: "Bearer",
-    // components
     select_an_existing_network_1: "Select an existing network...",
     code_2: "Code :",
     networks_3: "Networks",
@@ -2848,7 +2013,6 @@ export default {
     dialog_9: "Dialog",
     n__plural_10: "N {plural}",
     next_locale_11: "NEXT_LOCALE",
-    // contexts
     subscription__to_1: "Subscription  to  ()",
     successfully_subscribed_to_the__plan_2: "Successfully subscribed to the  plan",
     request_failed_with_status_code_3: "Request failed with status code",
@@ -2862,19 +2026,17 @@ export default {
     delete_target_11: "Delete target?",
     reverse_proxy_12: "Reverse proxy",
     target_13: "Target",
-    // hooks
     error_reading_localstorage_key_1: "Error reading localStorage key “”:",
     error_setting_localstorage_key_2: "Error setting localStorage key “”:",
     tried_setting_localstorage_key____even_though_envi_3: "Tried setting localStorage key “” even though environment is not a client",
     invalid_time_unit_4: "Invalid time unit:",
-    // modules
     delete_1: "Delete ''?",
     trial_ends_in__days_2: "Trial ends in  days",
     select_currency_3: "Select currency...",
     upgrade_your__plan_to_access_this_feature_4: "Upgrade your  plan to access this feature.",
     free_trial_5: "Free Trial",
     what_s_next_6: "What's next?",
-    smart_firewall_translates_natural_language_prompts_7: "Smart Firewall translates natural language prompts into network\n            policies. You can describe your access needs in plain language, and\n            AI will handle the rest. If you're interested in early access,\n            please fill out the form below.",
+    smart_firewall_translates_natural_language_prompts_7: "Smart Firewall translates natural language prompts into network\\\\n            policies. You can describe your access needs in plain language, and\\\\n            AI will handle the rest. If you're interested in early access,\\\\n            please fill out the form below.",
     thank_you_for_signing_up_8: "Thank you for signing up!",
     hello___i_m_here_to_help_you_configure_your_access_9: "Hello , I'm here to help you configure your access control rules securely and efficiently. How can I assist you today?",
     we_will_notify_you_by_email_as_soon_as_it_s_availa_10: "We will notify you by email as soon as it's available for your account.",
@@ -3096,7 +2258,7 @@ export default {
     congratulations_226: "Congratulations, !",
     skipped_onboarding_____step_227: "Skipped Onboarding -  (Step )",
     troubleshooting_228: "Troubleshooting -",
-    allows_access_to_this________issubnet_229: "Allows access to this ${\n				isSubnet ?",
+    allows_access_to_this________issubnet_229: "Allows access to this ${\\\\n				isSubnet ?",
     users_to_230: "Users to",
     set_the_rules__you_re_in_control_231: "Set the rules. You're in control",
     let_s_put_that_connection_to_the_test_232: "Let's put that connection to the test",
