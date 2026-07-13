@@ -35,6 +35,7 @@ import {
   WorkflowIcon,
   XIcon,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import * as React from "react";
 import { Fragment, useEffect, useMemo, useState } from "react";
 import Skeleton from "react-loading-skeleton";
@@ -131,7 +132,7 @@ export function PeerGroupSelector({
   closeOnSelect = false,
   resource,
   onResourceChange,
-  placeholder = "Add or select group(s)...",
+  placeholder,
   customTrigger,
   align = "start",
   side = "bottom",
@@ -145,6 +146,9 @@ export function PeerGroupSelector({
   selectedCluster,
   onClusterChange,
 }: Readonly<MultiSelectProps>) {
+  const tCommon = useTranslations("common");
+  const effectivePlaceholder =
+    placeholder ?? tCommon("addOrSelectGroups");
   const { data: fetchedResources, isLoading: isResourcesLoading } = useFetchApi<
     NetworkResource[]
   >("/networks/resources");
@@ -498,8 +502,8 @@ export function PeerGroupSelector({
               })}
 
               {values.length == 0 && !resource && !selectedCluster && (
-                <span className={cn(typeof placeholder === "string" && "pl-1")}>
-                  {placeholder}
+                <span className={cn(typeof effectivePlaceholder === "string" && "pl-1")}>
+                  {effectivePlaceholder}
                 </span>
               )}
             </div>
