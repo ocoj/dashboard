@@ -25,6 +25,7 @@ import { forEach, orderBy, sortBy } from "lodash";
 import { ArrowLeftIcon, ExternalLinkIcon, LayoutGridIcon, MessageSquareShareIcon, NetworkIcon } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { useTranslations } from "next-intl";
 import NetworkRoutesIcon from "@/assets/icons/NetworkRoutesIcon";
 import PeersProvider from "@/contexts/PeersProvider";
 import { usePermissions } from "@/contexts/PermissionsProvider";
@@ -65,6 +66,7 @@ export default function ControlCenter() {
 }
 
 function ControlCenterView() {
+  const t = useTranslations("controlCenter");
   const [nodes, setNodes, onNodesChange] = useNodesState<Node>([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState<Edge>([]);
   const reactFlow = useReactFlow();
@@ -132,7 +134,7 @@ function ControlCenterView() {
     );
     allNetworks.unshift({
       value: "",
-      label: "All Networks",
+      label: t("allNetworks"),
       icon: () => <LayoutGridIcon size={14} />,
     } as SelectOption);
     return allNetworks;
@@ -1457,7 +1459,7 @@ function ControlCenterView() {
         currentPeer: peerId,
         onPeerChange: handlePeerChange,
         userId: userId,
-        placeholder: "Search peers of user...",
+        placeholder: t("searchPeersOfUser"),
       },
     };
     setNodes([selectPeerNode]);
@@ -1731,10 +1733,8 @@ function ControlCenterView() {
                     size={"large"}
                   />
                 }
-                title={"Create New Network"}
-                description={
-                  "It looks like you don't have any networks. Access internal resources in your LANs and VPC by adding a network."
-                }
+                title={t("createNewNetwork")}
+                description={t("noNetworksDesc")}
                 button={
                   <div className={"gap-x-4 flex items-center justify-center"}>
                     <Button
@@ -1824,7 +1824,7 @@ function ControlCenterView() {
         <div className={"absolute right-0 top-0 z-10"}>
           <div className={"px-6 py-4"}>
             <SmallBadge
-              text={"Beta"}
+              text={t("beta")}
               variant={"sky"}
               className={"text-[12px] leading-none py-[3px] px-[6px]"}
               textClassName={"top-0"}
