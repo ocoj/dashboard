@@ -785,6 +785,10 @@ export default {
     localAuthDisabled: "Local auth disabled",
     rejectUserDesc: "Reject user description",
     inviteUserDescription2: "Invite user description",
+    disabled: "Disabled",
+    enabled: "Enabled",
+    idpSyncTitle: "Identity Provider Sync",
+    idpSyncDescription: "Sync users and groups from Okta, Microsoft or Google IdP",
   },
   userDropdown: {
     profileSettings: "Profile Settings",
@@ -1615,6 +1619,8 @@ export default {
     autoAssignedGroups: "Auto-assigned Groups",
     groupsSavedDescription: "Groups of the setup key were successfully saved",
     groupsSaving: "Saving the groups of the setup key...",
+    autoAssignedGroupsDescription: "Groups will be automatically assigned to peers when they join the network using this setup key.",
+    getStartedDescription: "Setup keys are used to register new machines in your NetBird network.",
   },
   activity: {
     title: "Activity",
