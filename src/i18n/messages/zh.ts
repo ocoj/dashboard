@@ -513,6 +513,19 @@ export default {
     viewDetails: "查看详情",
     zones: "区域",
   },
+  integrations: {
+    title: "集成",
+    connect: "连接",
+    description: "将 NetBird 与第三方服务和身份提供商连接",
+    eventStreaming: "事件流",
+    eventStreamingDesc: "事件流允许您将 NetBird 的审计和流量事件流式传输到不同的第三方服务。",
+    identityProviderSync: "身份提供商同步",
+    identityProviderSyncDesc: "配置您首选的身份提供商（IdP）以将您的用户和组同步到 NetBird。",
+    learnMore: "了解更多",
+    mdmEdr: "MDM 和 EDR",
+    mdmEdrDesc: "端点检测与响应（EDR）和移动设备管理（MDM）集成允许您仅限 IT 部门管理的设备访问网络。",
+  },
+
   invoices: {
     account: "账户",
     customers: "客户",
@@ -2116,7 +2129,7 @@ export default {
     installation_40: "Installation -",
     instance_setup_48: "Instance Setup -",
     integration_191: "Integration",
-    integrations_3: "Integrations -",
+    integrations_3: "集成 -",
     intune_was_successfully_57: "Intune was successfully",
     intune_was_successfully_deleted_59: "Intune was successfully deleted",
     intune_was_successfully_updated_60: "Intune was successfully updated",

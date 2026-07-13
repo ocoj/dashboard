@@ -1820,6 +1820,18 @@ export default {
     edrSyncTokenExpired: "EDR Sync Token Expired",
     edrSyncTokenExpiredHelp: "Notify when the EDR sync token has expired and needs renewal",
   },
+  integrations: {
+    title: "Integrations",
+    description: "Connect NetBird with third-party services and identity providers",
+    identityProviderSync: "Identity Provider Sync",
+    identityProviderSyncDesc: "Configure your preferred Identity Provider (IdP) to synchronize your users and groups to NetBird.",
+    eventStreaming: "Event Streaming",
+    eventStreamingDesc: "Event Streaming allows you to stream NetBirds audit & traffic events to different third-party services.",
+    mdmEdr: "MDM & EDR",
+    mdmEdrDesc: "Endpoint Detection and Response (EDR) and Mobile Device Management (MDM) integrations allow you to restrict network access only to devices managed by the IT department.",
+    connect: "Connect",
+    learnMore: "Learn more",
+  },
   invoices: {
     title: "Invoices",
     description: "View and export all your available invoices",
