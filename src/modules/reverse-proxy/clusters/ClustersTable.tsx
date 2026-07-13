@@ -21,6 +21,7 @@ import { PlusCircle, ServerIcon } from "lucide-react";
 
 import { usePathname } from "next/navigation";
 import React, { useMemo, useState } from "react";
+import { useTranslations } from "next-intl";
 import { useSWRConfig } from "swr";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
@@ -87,6 +88,7 @@ type Props = {
 };
 
 export default function ClustersTable({ headingTarget }: Readonly<Props>) {
+  const t = useTranslations("reverseProxy");
   const { mutate } = useSWRConfig();
   const path = usePathname();
   const { permission } = usePermissions();
@@ -110,18 +112,18 @@ export default function ClustersTable({ headingTarget }: Readonly<Props>) {
 
   const statusOptions = useMemo<RadioOption<boolean | undefined>[]>(
     () => [
-      { value: undefined, label: "All", dotClass: "bg-nb-gray-500" },
-      { value: true, label: "Online", dotClass: "bg-green-500" },
-      { value: false, label: "Offline", dotClass: "bg-red-500" },
+      { value: undefined, label: t("all"), dotClass: "bg-nb-gray-500" },
+      { value: true, label: t("online"), dotClass: "bg-green-500" },
+      { value: false, label: t("offline"), dotClass: "bg-red-500" },
     ],
     [],
   );
 
   const typeOptions = useMemo<RadioOption<string | undefined>[]>(
     () => [
-      { value: undefined, label: "All" },
-      { value: ReverseProxyClusterType.SHARED, label: "Shared" },
-      { value: ReverseProxyClusterType.ACCOUNT, label: "Self-Hosted" },
+      { value: undefined, label: t("all") },
+      { value: ReverseProxyClusterType.SHARED, label: t("shared") },
+      { value: ReverseProxyClusterType.ACCOUNT, label: t("selfHosted") },
     ],
     [],
   );
@@ -130,7 +132,7 @@ export default function ClustersTable({ headingTarget }: Readonly<Props>) {
     () => [
       {
         id: "online",
-        label: "Status",
+        label: t("status"),
         renderPicker: (p) => (
           <RadioPicker
             value={p.value as boolean | undefined}
@@ -144,7 +146,7 @@ export default function ClustersTable({ headingTarget }: Readonly<Props>) {
       },
       {
         id: "type",
-        label: "Type",
+        label: t("type"),
         renderPicker: (p) => (
           <RadioPicker
             value={p.value as string | undefined}
@@ -175,13 +177,13 @@ export default function ClustersTable({ headingTarget }: Readonly<Props>) {
         keepStateInLocalStorage={false}
         initialPageSize={25}
         showResetFilterButton={false}
-        text={"Clusters"}
+        text={t("clusters")}
         sorting={sorting}
         setSorting={setSorting}
         columns={ClustersColumns}
         data={rows}
         useRowId={true}
-        searchPlaceholder={"Search by cluster domain..."}
+        searchPlaceholder={t("searchClustersPlaceholder")}
         aboveTable={(table) => (
           <TableFilterChips table={table} filters={filterDefs} />
         )}
@@ -199,9 +201,9 @@ export default function ClustersTable({ headingTarget }: Readonly<Props>) {
                 size={"large"}
               />
             }
-            title={"No clusters available"}
+            title={t("noClustersTitle")}
             description={
-              "Set up a cluster to route traffic through your own infrastructure."
+              t("noClustersDesc")
             }
             button={
               <Button
@@ -210,7 +212,7 @@ export default function ClustersTable({ headingTarget }: Readonly<Props>) {
                 disabled={!permission?.services?.create}
               >
                 <PlusCircle size={16} />
-                Setup Self-Hosted Cluster
+                {t("setupClusterBtn")}
               </Button>
             }
           />
@@ -225,7 +227,7 @@ export default function ClustersTable({ headingTarget }: Readonly<Props>) {
                 disabled={!permission?.services?.create}
               >
                 <PlusCircle size={16} />
-                Setup Self-Hosted Cluster
+                {t("setupClusterBtn")}
               </Button>
             )}
           </>

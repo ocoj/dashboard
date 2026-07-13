@@ -11,6 +11,7 @@ import { useTranslations } from "next-intl";
 import { lazy, Suspense } from "react";
 import ReverseProxyIcon from "@/assets/icons/ReverseProxyIcon";
 import { usePermissions } from "@/contexts/PermissionsProvider";
+import ServerPaginationProvider from "@/contexts/ServerPaginationProvider";
 import { REVERSE_PROXY_EVENTS_DOCS_LINK } from "@/interfaces/ReverseProxy";
 import PageContainer from "@/layouts/PageContainer";
 
@@ -54,7 +55,9 @@ export default function ProxyLogsPage() {
 					hasAccess={permission.services?.read}
 				>
 					<Suspense fallback={<SkeletonTable />}>
-						<ReverseProxyEventsTable headingTarget={portalTarget} />
+						<ServerPaginationProvider url={"/events/proxy"}>
+							<ReverseProxyEventsTable headingTarget={portalTarget} />
+						</ServerPaginationProvider>
 					</Suspense>
 				</RestrictedAccess>
 			</div>

@@ -12,6 +12,7 @@ import {
 import ModalHeader from "@components/modal/ModalHeader";
 import Paragraph from "@components/Paragraph";
 import { validator } from "@utils/helpers";
+import { useTranslations } from "next-intl";
 import { ExternalLinkIcon, GlobeIcon, ServerIcon } from "lucide-react";
 import * as React from "react";
 import { useMemo, useState } from "react";
@@ -40,6 +41,8 @@ export const CustomDomainModal = ({
   onOpenChange,
   onDomainSubmit,
 }: Props) => {
+  const t = useTranslations("reverseProxy");
+  const tCommon = useTranslations("common");
   const { domains } = useReverseProxies();
   const [domain, setDomain] = useState("");
   const [selectedCluster, setSelectedCluster] = useState("");
@@ -91,8 +94,8 @@ export const CustomDomainModal = ({
       <ModalContent maxWidthClass={"relative max-w-lg"} showClose={true}>
         <ModalHeader
           icon={<GlobeIcon size={20} />}
-          title={"Add Custom Domain"}
-          description={"You will need to verify the domain with DNS records"}
+          title={t("addCustomDomainTitle")}
+          description={t("addCustomDomainDesc")}
           color={"netbird"}
         />
 
@@ -179,7 +182,7 @@ export const CustomDomainModal = ({
           </div>
           <div className={"flex gap-3 w-full justify-end"}>
             <ModalClose asChild={true}>
-              <Button variant={"secondary"}>Cancel</Button>
+              <Button variant={"secondary"}>{tCommon("cancel")}</Button>
             </ModalClose>
 
             <Button
@@ -188,7 +191,7 @@ export const CustomDomainModal = ({
               disabled={!canSubmit}
               data-testid={"submit-custom-domain"}
             >
-              Add Domain
+              {t("addDomainBtn")}
             </Button>
           </div>
         </ModalFooter>

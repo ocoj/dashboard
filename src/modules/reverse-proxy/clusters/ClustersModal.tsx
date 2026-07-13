@@ -25,6 +25,7 @@ import {
   SquareTerminalIcon,
 } from "lucide-react";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { useTranslations } from "next-intl";
 import { useSWRConfig } from "swr";
 import { useApiCall } from "@/utils/api";
 import { cn, validator } from "@utils/helpers";
@@ -82,6 +83,8 @@ const renderHighlightedCommand = (command: string, highlights: string[]) => {
 };
 
 export const ClustersModal = ({ open, onOpenChange }: Props) => {
+  const t = useTranslations("reverseProxy");
+  const tCommon = useTranslations("common");
   const { mutate } = useSWRConfig();
   const [tab, setTab] = useState("domain");
   const [domain, setDomain] = useState("");
@@ -315,8 +318,8 @@ spec:
       <ModalContent maxWidthClass={"relative max-w-[600px]"} showClose={true}>
         <ModalHeader
           icon={<ServerIcon size={16} />}
-          title={"Setup Cluster"}
-          description={"Setup a proxy cluster on infra you own"}
+          title={t("setupClusterTitle")}
+          description={t("setupClusterDesc")}
           color={"netbird"}
         />
 
@@ -343,7 +346,7 @@ spec:
               disabled={!domain.trim() || !!domainError}
             >
               <SquareTerminalIcon size={14} />
-              {isCloudDeploy ? "Deploy" : "Run the Proxy"}
+              {isCloudDeploy ? "Deploy" : t("clusterTabRunProxy")}
             </TabsTrigger>
           </TabsList>
 
