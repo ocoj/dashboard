@@ -2,6 +2,7 @@ import { IconCircleFilled } from "@tabler/icons-react";
 import useFetchApi from "@utils/api";
 import { cn } from "@utils/helpers";
 import { FileText } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Image, { StaticImageData } from "next/image";
 import { useRouter } from "next/navigation";
 import * as React from "react";
@@ -22,6 +23,7 @@ const platformImages: { [key in Platform]?: StaticImageData } = {
 };
 
 export const EventStreamingCard = () => {
+  const t = useTranslations("common");
   const { permission } = usePermissions();
   // Event Streaming is a licensed feature; the endpoint is not served on
   // open-source deployments, so skip the call there entirely.
@@ -71,7 +73,7 @@ export const EventStreamingCard = () => {
           <div className={""}>
             <div className={"flex items-center gap-3 justify-between"}>
               <div className={"font-medium text-sm flex gap-2 items-center"}>
-                Event Streaming
+                {t("eventStreaming")}
               </div>
               <div
                 className={cn(
@@ -80,12 +82,12 @@ export const EventStreamingCard = () => {
                 )}
               >
                 <IconCircleFilled size={8} />
-                {enabled ? "Enabled" : "Disabled"}
+                {enabled ? t("enabled") : t("disabled")}
               </div>
             </div>
 
             <p className={"text-xs font-light !text-nb-gray-300 "}>
-              Stream your activity events to third-party services.
+              {t("eventStreamingDescription")}
             </p>
           </div>
         </div>

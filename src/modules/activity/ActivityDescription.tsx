@@ -293,16 +293,22 @@ export default function ActivityDescription({ event }: Props) {
   if (event.activity_code == "user.block")
     return (
       <div className={"inline"}>
-        User <Value>{event.meta.username}</Value>{" "}
-        <Value>{event.meta.email}</Value> was blocked
+        {t.rich("desc_user_block", {
+          username: event.meta.username,
+          email: event.meta.email,
+          Value: (chunks) => <Value>{chunks}</Value>,
+        })}
       </div>
     );
 
   if (event.activity_code == "user.unblock")
     return (
       <div className={"inline"}>
-        User <Value>{event.meta.username}</Value>{" "}
-        <Value>{event.meta.email}</Value> was unblocked
+        {t.rich("desc_user_unblock", {
+          username: event.meta.username,
+          email: event.meta.email,
+          Value: (chunks) => <Value>{chunks}</Value>,
+        })}
       </div>
     );
 
@@ -475,13 +481,11 @@ export default function ActivityDescription({ event }: Props) {
   if (event.activity_code == "peer.login.expire") {
     return (
       <div className={"inline"}>
-        Login of the peer <Value>{m.name}</Value> expired
-        {m.reason && (
-          <>
-            {" "}
-            due to <Value>{m.reason}</Value>
-          </>
-        )}
+        {t.rich("desc_peer_login_expire", {
+          name: m.name,
+          reason: m.reason ? m.reason : "unknown",
+          Value: (chunks) => <Value>{chunks}</Value>,
+        })}
       </div>
     );
   }
