@@ -182,38 +182,38 @@ export default function AuthenticationTab({ account }: Readonly<Props>) {
 				<Breadcrumbs>
 					<Breadcrumbs.Item
 						href={"/settings"}
-						label={"Settings"}
+						label={t("title")}
 						icon={<SettingsIcon size={13} />}
 					/>
 					<Breadcrumbs.Item
 						href={"/settings"}
-						label={"Authentication"}
+						label={t("authentication")}
 						icon={<ShieldIcon size={14} />}
 						active
 					/>
 				</Breadcrumbs>
 				<div className={"flex items-start justify-between"}>
 					<div>
-						<h1>Authentication</h1>
+						<h1>{t("authentication")}</h1>
 						<Paragraph>
-							Learn more about
+							{t("learnMoreAbout")}{" "}
 							<InlineLink
 								href={
 									"https://docs.netbird.io/how-to/enforce-periodic-user-authentication"
 								}
 								target={"_blank"}
 							>
-								Authentication
+								{t("authentication")}
 								<ExternalLinkIcon size={12} />
 							</InlineLink>
-							or{" "}
+							{t("or")}{" "}
 							<InlineLink
 								href={
 									"https://docs.netbird.io/how-to/multi-factor-authentication"
 								}
 								target={"_blank"}
 							>
-								MFA
+								{t("mfa")}
 								<ExternalLinkIcon size={12} />
 							</InlineLink>
 						</Paragraph>
@@ -225,7 +225,7 @@ export default function AuthenticationTab({ account }: Readonly<Props>) {
 						onClick={saveChanges}
 						data-testid={"save-authentication-settings"}
 					>
-						Save Changes
+						{t("saveChanges")}
 					</Button>
 				</div>
 
@@ -256,13 +256,13 @@ export default function AuthenticationTab({ account }: Readonly<Props>) {
 									label={
 										<>
 											<IconDevicesCheck size={15} />
-											Peer Approval
+											{t("peerApproval")}
 										</>
 									}
 									disabled={
 										isAnyIntegrationEnabled || !permission.settings.update
 									}
-									helpText={"Require peers to be approved by an administrator."}
+									helpText={t("peerApprovalHelp")}
 								/>
 							</LockedFeatureBadge>
 						</div>
@@ -276,13 +276,12 @@ export default function AuthenticationTab({ account }: Readonly<Props>) {
 							label={
 								<>
 									<ShieldUserIcon size={15} />
-									User Approval Required
+									{t("userApprovalRequired")}
 								</>
 							}
 							helpText={
 								<>
-									Require manual approval for new users joining via <br />
-									domain matching. Users will be blocked until approved.
+									{t("userApprovalRequiredHelp")}
 								</>
 							}
 							disabled={!permission.settings.update}
@@ -299,9 +298,9 @@ export default function AuthenticationTab({ account }: Readonly<Props>) {
 								label={
 									<>
 										<KeyRound size={15} />
-										Enable Local MFA
+										{t("enableLocalMFA")}
 										<SmallBadge
-											text={"Beta"}
+											text={t("beta")}
 											variant={"sky"}
 											className={"text-[9px] leading-none py-[3px] px-[5px]"}
 											textClassName={"top-0"}
@@ -310,9 +309,7 @@ export default function AuthenticationTab({ account }: Readonly<Props>) {
 								}
 								helpText={
 									<>
-										Require multi-factor authentication for users
-										<br />
-										authenticating with local credentials.
+										{t("localMFAHelp")}
 									</>
 								}
 								disabled={!permission.settings.update}

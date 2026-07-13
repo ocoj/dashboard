@@ -227,7 +227,7 @@ export default function IdentityProvidersTab() {
 				columns={columns}
 				data={providers}
 				onRowClick={(row) => handleEdit(row.original)}
-				searchPlaceholder={"Search by name or type..."}
+				searchPlaceholder={t("idpSearchPlaceholder")}
 				getStartedCard={
 					<GetStartedTest
 						icon={
@@ -237,10 +237,8 @@ export default function IdentityProvidersTab() {
 								size={"large"}
 							/>
 						}
-						title={"Add Identity Provider"}
-						description={
-							"Configure an identity provider to enable SSO authentication for your users."
-						}
+						title={t("addIdentityProvider")}
+						description={t("idpEmptyDescription")}
 						button={
 							<Button
 								variant={"primary"}
@@ -248,7 +246,7 @@ export default function IdentityProvidersTab() {
 								disabled={!permission.identity_providers.create}
 							>
 								<PlusCircle size={16} />
-								Add Identity Provider
+								{t("addIdentityProvider")}
 							</Button>
 						}
 					/>
@@ -263,7 +261,7 @@ export default function IdentityProvidersTab() {
 								disabled={!permission.identity_providers.create}
 							>
 								<PlusCircle size={16} />
-								Add Identity Provider
+								{t("addIdentityProvider")}
 							</Button>
 						)}
 					</>

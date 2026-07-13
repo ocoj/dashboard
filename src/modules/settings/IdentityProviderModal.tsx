@@ -173,12 +173,12 @@ export default function IdentityProviderModal({
 					<ModalHeader
 						icon={<FingerprintIcon size={20} />}
 						title={
-							isEditing ? "Edit Identity Provider" : "Add Identity Provider"
+							isEditing ? t("editIdentityProvider") : t("addIdentityProvider")
 						}
 						description={
 							isEditing
-								? "Update the identity provider configuration"
-								: "Configure a new identity provider for authentication"
+								? t("updateIdpDescription")
+								: t("createIdpDescription")
 						}
 						color={"netbird"}
 					/>

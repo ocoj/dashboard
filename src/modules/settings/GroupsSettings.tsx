@@ -304,13 +304,12 @@ export default function GroupsSettings({ account }: Props) {
 				)}
 
 				<Callout variant={"info"} className={"mt-6"}>
-					Looking to view and manage your groups? You can find group management
-					under{"  "}
+					{t("groupManagementHelp")}{"  "}
 					<InlineButtonLink
 						onClick={() => router.push("/groups")}
 						variant={"dashed"}
 					>
-						{`Access Control › Groups`}
+						{t("accessControlGroups")}
 					</InlineButtonLink>
 				</Callout>
 			</div>

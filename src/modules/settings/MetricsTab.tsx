@@ -10,6 +10,7 @@ import {
   ExternalLinkIcon,
 } from "lucide-react";
 import React, { useState } from "react";
+import { useTranslations } from "next-intl";
 import { useSWRConfig } from "swr";
 import SettingsIcon from "@/assets/icons/SettingsIcon";
 import { usePermissions } from "@/contexts/PermissionsProvider";
@@ -21,6 +22,7 @@ type Props = {
 
 export default function MetricsTab({ account }: Readonly<Props>) {
   const { permission } = usePermissions();
+  const t = useTranslations("settings");
   const { mutate } = useSWRConfig();
   const saveRequest = useApiCall<Account>("/accounts/" + account.id, true);
 
@@ -56,12 +58,12 @@ export default function MetricsTab({ account }: Readonly<Props>) {
         <Breadcrumbs>
           <Breadcrumbs.Item
             href={"/settings"}
-            label={"Settings"}
+            label={t("title")}
             icon={<SettingsIcon size={13} />}
           />
           <Breadcrumbs.Item
             href={"/settings?tab=metrics"}
-            label={"Metrics"}
+            label={t("metrics")}
             icon={<ChartNoAxesCombined size={14} />}
             active
           />
