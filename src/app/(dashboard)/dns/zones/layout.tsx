@@ -4,9 +4,9 @@ import type { Metadata } from "next";
 import BlankLayout from "@/layouts/BlankLayout";
 
 export async function generateMetadata(): Promise<Metadata> {
-	const t = await getTranslations();
+	const t = await getTranslations("dns");
 	return {
-		title: `${t("dnsZones")} - ${globalMetaTitle}`,
+		title: `${t("dnsZones")} - ${t("dns")} - ${globalMetaTitle}`,
 	};
 }
 
