@@ -9,6 +9,7 @@ import { usePortalElement } from "@hooks/usePortalElement";
 import { ExternalLinkIcon } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { lazy, Suspense, useMemo } from "react";
+import { useTranslations } from "next-intl";
 import PeerIcon from "@/assets/icons/PeerIcon";
 import useDistributorRedirect from "@/cloud/distributor/useDistributorRedirect";
 import { useBypassedPeers } from "@/cloud/edr/useBypass";
@@ -44,6 +45,7 @@ export default function PeersPage() {
 }
 
 function PeersView() {
+  const t = useTranslations("peers");
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
@@ -93,19 +95,19 @@ function PeersView() {
         <Breadcrumbs>
           <Breadcrumbs.Item
             href={"/peers"}
-            label={"Peers"}
+            label={t("peers")}
             icon={<PeerIcon size={13} />}
             active
           />
         </Breadcrumbs>
-        <h1 ref={headingRef}>Peers</h1>
+        <h1 ref={headingRef}>{t("peers")}</h1>
         <Paragraph>
-            User devices and headless machines, such as servers and autonomous agents, connected to your network.{" "}
+            {t("peersDescription")}{" "}
           <InlineLink
             href={"https://docs.netbird.io/how-to/add-machines-to-your-network"}
             target={"_blank"}
           >
-            Learn more
+            {t("learnMore")}
             <ExternalLinkIcon size={12} />
           </InlineLink>
         </Paragraph>

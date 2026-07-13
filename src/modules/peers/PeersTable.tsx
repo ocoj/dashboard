@@ -193,7 +193,7 @@ function PeersTableColumns(
 							table.setSorting([{ id: "last_seen", desc: !desc }]);
 						}}
 					>
-						Last seen
+						{t("lastSeen")}
 					</DataTableHeader>
 				);
 			},
@@ -443,7 +443,7 @@ export default function PeersTable({
         showResetFilterButton={false}
         columns={columns}
         data={showBrowserPeers ? browserPeers : regularPeers}
-        searchPlaceholder={"Search by name, IP, owner or group..."}
+        searchPlaceholder={t("searchPlaceholder")}
         columnVisibility={{
           select: permission.groups.read,
           connected: false,
@@ -500,7 +500,7 @@ export default function PeersTable({
                   onKindChange?.(kind === "users" ? undefined : "users");
                 }}
               >
-                User Devices
+                {t("userDevices")}
               </ButtonGroup.Button>
               <ButtonGroup.Button
                 // Drop the left border so it doesn't stack with the first
@@ -512,7 +512,7 @@ export default function PeersTable({
                   onKindChange?.(kind === "servers" ? undefined : "servers");
                 }}
               >
-                Servers
+                {t("servers")}
               </ButtonGroup.Button>
             </ButtonGroup>
 
