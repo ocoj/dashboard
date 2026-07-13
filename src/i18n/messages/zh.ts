@@ -850,6 +850,9 @@ export default {
   },
   peers: {
     accessiblePeersDesc: "此节点可以连接到 NetBird 网络中的以下节点。",
+    peers: "节点",
+    selectAll: "全选",
+    selectRow: "选择行",
     actions: "操作",
     activePoliciesCount: "{count, plural, other {# 个活跃策略}}",
     addGroups: "添加组",
