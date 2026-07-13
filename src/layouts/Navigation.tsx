@@ -148,7 +148,7 @@ label={t('accessControl')}
                     <div className={"flex items-center gap-2"}>
                       {t('reverseProxy')}
                       <SmallBadge
-                        text={"Beta"}
+                        text={t("beta")}
                         variant={"sky"}
                         className={"text-[8px] leading-none py-[3px] px-[5px]"}
                         textClassName={"top-0"}
