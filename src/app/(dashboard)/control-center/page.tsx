@@ -1837,7 +1837,7 @@ function ControlCenterView() {
             <a href={"https://forms.gle/MKJnVXCiUM1KtxLy6"} target={"_blank"}>
               <Button variant={"secondary"} size={"xs"}>
                 <MessageSquareShareIcon size={12} />
-                Feedback
+                {t("feedback")}
               </Button>
             </a>
           </div>
