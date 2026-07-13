@@ -29,29 +29,30 @@ export default function AccessControlPage() {
 	const { ref: headingRef, portalTarget } =
 		usePortalElement<HTMLHeadingElement>();
 
-	return (
-		<PageContainer>
-			<GroupsProvider>
-				<div className={"p-default py-6"}>
-					<Breadcrumbs>
-						<Breadcrumbs.Item
-							href={"/access-control"}
-							label={t("title")}
-							icon={<AccessControlIcon size={14} />}
-						/>
-					</Breadcrumbs>
-					<h1 ref={headingRef}>{t("title")}</h1>
-					<Paragraph>
-						{t("accessControlDescription")}{" "}
-						<InlineLink
-							href={"https://docs.netbird.io/how-to/manage-network-access"}
-							target={"_blank"}
-						>
-							{t("learnMore")}
-							<ExternalLinkIcon size={12} />
-						</InlineLink>
-					</Paragraph>
-				</div>
+  return (
+    <PageContainer>
+      <GroupsProvider>
+        <div className={"p-default py-6"}>
+          <Breadcrumbs>
+            <Breadcrumbs.Item
+              href={"/access-control"}
+              label={"Access Control"}
+              icon={<AccessControlIcon size={14} />}
+            />
+          </Breadcrumbs>
+          <h1 ref={headingRef}>Access Control Policies</h1>
+          <Paragraph>
+            Policies connect users and agents to your network resources,
+            controlling what each identity can reach.{" "}
+            <InlineLink
+              href={"https://docs.netbird.io/how-to/manage-network-access"}
+              target={"_blank"}
+            >
+              Learn more
+              <ExternalLinkIcon size={12} />
+            </InlineLink>
+          </Paragraph>
+        </div>
 
 				<RestrictedAccess
 					page={t("title")}

@@ -4,6 +4,7 @@ import { ScrollArea } from "@components/ScrollArea";
 import { cn } from "@utils/helpers";
 import { isNetBirdCloud } from "@utils/netbird";
 import AccessControlIcon from "@/assets/icons/AccessControlIcon";
+import AgentNetworkIcon from "@/assets/icons/AgentNetworkIcon";
 import ControlCenterIcon from "@/assets/icons/ControlCenterIcon";
 import DNSIcon from "@/assets/icons/DNSIcon";
 import DocsIcon from "@/assets/icons/DocsIcon";
@@ -19,6 +20,7 @@ import { useAnnouncement } from "@/contexts/AnnouncementProvider";
 import { useApplicationContext } from "@/contexts/ApplicationProvider";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { headerHeight } from "@/layouts/Header";
+import { useAgentNetworkMode } from "@/modules/agent-network/useAgentNetworkMode";
 import { NavigationUsageInfo } from "@/modules/billing/NavigationUsageInfo";
 import { NetworkNavigation } from "@/modules/networks/misc/NetworkNavigation";
 import { SmallBadge } from "@components/ui/SmallBadge";
@@ -39,7 +41,10 @@ export default function Navigation({
   const { bannerHeight } = useAnnouncement();
   const { isNavigationCollapsed } = useApplicationContext();
   const { permission, isRestricted } = usePermissions();
-  const t = useTranslations('navigation');
+  const { only: agentNetworkOnly, enabled: agentNetworkEnabled } =
+    useAgentNetworkMode();
+
+  const t = useTranslations("navigation");
 
   return (
     <div
@@ -90,24 +95,8 @@ export default function Navigation({
                   icon={<PeerIcon />}
                   label={t('peers')}
                   href={"/peers"}
-                  collapsible
                   visible={!isRestricted}
-                >
-                  <SidebarItem
-                    label={t('userDevices')}
-                    isChild
-                    href={"/peers/users"}
-                    exactPathMatch={true}
-                    visible={!isRestricted}
-                  />
-                  <SidebarItem
-                    label={t('servers')}
-                    isChild
-                    href={"/peers/servers"}
-                    exactPathMatch={true}
-                    visible={!isRestricted}
-                  />
-                </SidebarItem>
+                />
 
                 <DistributorNavigation />
                 <SidebarItem
@@ -139,7 +128,7 @@ label={t('accessControl')}
                   />
                 </SidebarItem>
 
-                <NetworkNavigation />
+                {!agentNetworkOnly && <NetworkNavigation />}
 
                 <SidebarItem
                   icon={<ReverseProxyIcon size={16} />}
@@ -158,7 +147,7 @@ label={t('accessControl')}
                   href={"/reverse-proxy"}
                   collapsible
                   exactPathMatch={false}
-                  visible={permission?.services?.read}
+                  visible={permission?.services?.read && !agentNetworkOnly}
                 >
                   <SidebarItem
                     label={t('services')}
@@ -191,12 +180,71 @@ label={t('accessControl')}
                 </SidebarItem>
 
                 <SidebarItem
+                  icon={<AgentNetworkIcon size={16} />}
+                  labelClassName={"pr-0"}
+                  label={
+                    <div className={"flex items-center gap-2"}>
+                      Agent Network
+                      {!agentNetworkOnly && (
+                        <SmallBadge
+                          text={"Beta"}
+                          variant={"sky"}
+                          className={
+                            "text-[8px] leading-none py-[3px] px-[5px]"
+                          }
+                          textClassName={"top-0"}
+                        />
+                      )}
+                    </div>
+                  }
+                  href={"/agent-network/providers"}
+                  collapsible
+                  exactPathMatch={false}
+                  // Parent is visible when at least one child is permitted. All
+                  // Agent Network pages guard on services.read, so the section
+                  // tracks that (plus the feature gating).
+                  visible={agentNetworkEnabled && permission?.services?.read}
+                >
+                  <SidebarItem
+                    label="Providers"
+                    isChild
+                    href={"/agent-network/providers"}
+                    exactPathMatch={true}
+                    visible={agentNetworkEnabled && permission?.services?.read}
+                  />
+                  <SidebarItem
+                    label="Policies"
+                    isChild
+                    href={"/agent-network/policies"}
+                    exactPathMatch={true}
+                    visible={agentNetworkEnabled && permission?.services?.read}
+                  />
+                  <SidebarItem
+                    label="Usage & Logs"
+                    isChild
+                    href={"/agent-network/usage"}
+                    exactPathMatch={true}
+                    visible={agentNetworkEnabled && permission?.services?.read}
+                  />
+                  <SidebarItem
+                    label="Configuration"
+                    isChild
+                    href={"/agent-network/configuration"}
+                    exactPathMatch={true}
+                    visible={agentNetworkEnabled && permission?.services?.read}
+                  />
+                </SidebarItem>
+
+                <SidebarItem
                   icon={<DNSIcon />}
 label={t('dns')}
                   href={"/dns"}
                   collapsible
                   exactPathMatch={true}
-                  visible={permission.dns.read || permission.nameservers.read}
+                  visible={
+                    (permission.dns.read || permission.nameservers.read) &&
+                    !agentNetworkOnly
+                  }
                 >
                   <SidebarItem
                     label={t('nameservers')}
@@ -296,8 +344,9 @@ export function SidebarItemGroup({ children }: SidebarItemGroupProps) {
 }
 
 const ActivityNavigationItem = () => {
+  const t = useTranslations("navigation");
   const { permission } = usePermissions();
-  const t = useTranslations('navigation');
+  const { only: agentNetworkOnly } = useAgentNetworkMode();
 
   return (
     <SidebarItem
@@ -305,7 +354,7 @@ const ActivityNavigationItem = () => {
 label={t('activity')}
       href={"/events"}
       collapsible
-      visible={permission.events.read}
+      visible={permission.events.read && !agentNetworkOnly}
     >
       <SidebarItem
         label={t('auditEvents')}

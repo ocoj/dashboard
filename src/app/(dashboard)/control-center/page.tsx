@@ -4,7 +4,10 @@ import "@xyflow/react/dist/style.css";
 import Button from "@components/Button";
 import InlineLink from "@components/InlineLink";
 import { NoPeersGettingStarted } from "@components/NoPeersGettingStarted";
-import { SelectDropdown, SelectOption } from "@components/select/SelectDropdown";
+import {
+  SelectDropdown,
+  SelectOption,
+} from "@components/select/SelectDropdown";
 import SquareIcon from "@components/SquareIcon";
 import GetStartedTest from "@components/ui/GetStartedTest";
 import { SmallBadge } from "@components/ui/SmallBadge";
@@ -19,10 +22,16 @@ import {
   ReactFlowProvider,
   useEdgesState,
   useNodesState,
-  useReactFlow
+  useReactFlow,
 } from "@xyflow/react";
 import { forEach, orderBy, sortBy } from "lodash";
-import { ArrowLeftIcon, ExternalLinkIcon, LayoutGridIcon, MessageSquareShareIcon, NetworkIcon } from "lucide-react";
+import {
+  ArrowLeftIcon,
+  ExternalLinkIcon,
+  LayoutGridIcon,
+  MessageSquareShareIcon,
+  NetworkIcon,
+} from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
@@ -38,6 +47,14 @@ import { Policy } from "@/interfaces/Policy";
 import { User } from "@/interfaces/User";
 import PageContainer from "@/layouts/PageContainer";
 import { AccessControlUpdateModal } from "@/modules/access-control/AccessControlModal";
+import AgentPolicyModal from "@/modules/agent-network/AgentPolicyModal";
+import AIProvidersProvider, {
+  APIPolicy,
+  APIProvider,
+  useAIProviders,
+} from "@/modules/agent-network/AIProvidersProvider";
+import { AIProviderId } from "@/modules/agent-network/data/mockData";
+import { useAgentNetworkMode } from "@/modules/agent-network/useAgentNetworkMode";
 import { FlowSelector, FlowView } from "@/modules/control-center/FlowSelector";
 import { NetworkRoutingPeerCount } from "@/modules/control-center/NetworkRoutingPeerCount";
 import { ControlCenterCurrentUserBadge } from "@/modules/control-center/user/ControlCenterCurrentUserBadge";
@@ -45,13 +62,13 @@ import { EDGE_TYPES } from "@/modules/control-center/utils/edges";
 import {
   getFirstGroup,
   getPolicyProtocolAndPortText,
-  getResourcePolicyByGroups
+  getResourcePolicyByGroups,
 } from "@/modules/control-center/utils/helpers";
 import {
   applyD3ForceLayout,
   applyD3HierarchicalLayout,
   DEFAULT_MAX_ZOOM,
-  DEFAULT_MIN_ZOOM
+  DEFAULT_MIN_ZOOM,
 } from "@/modules/control-center/utils/layouts";
 import { NODE_TYPES } from "@/modules/control-center/utils/nodes";
 
@@ -59,7 +76,9 @@ export default function ControlCenter() {
   return (
     <ReactFlowProvider>
       <PoliciesProvider>
-        <ControlCenterView />
+        <AIProvidersProvider>
+          <ControlCenterView />
+        </AIProvidersProvider>
       </PoliciesProvider>
     </ReactFlowProvider>
   );
@@ -73,6 +92,8 @@ function ControlCenterView() {
   const [layoutInitialized, setLayoutInitialized] = useState(false);
   const [forceLayoutChange, setForceLayoutChange] = useState(false);
   const { loggedInUser } = useLoggedInUser();
+  const { only: agentNetworkOnly, enabled: agentNetworkEnabled } =
+    useAgentNetworkMode();
 
   const queryParams = useSearchParams();
   const queryTab = queryParams.get("tab");
@@ -100,6 +121,31 @@ function ControlCenterView() {
     "/users?service_user=false",
   );
 
+  // Agent-network data feeds the provider / agent-policy nodes that
+  // overlay the Group and Peer views. Gated on the feature flag so we
+  // don't hit these endpoints when the feature is disabled — the graph
+  // then behaves exactly as it did without agent-network.
+  const { data: agentProviders } = useFetchApi<APIProvider[]>(
+    "/agent-network/providers",
+    true,
+    true,
+    agentNetworkEnabled,
+  );
+  const { data: agentPolicies } = useFetchApi<APIPolicy[]>(
+    "/agent-network/policies",
+    true,
+    true,
+    agentNetworkEnabled,
+  );
+
+  // providerById lets the overlay look up a Provider's display payload
+  // by id without re-deriving it from the array on every call.
+  const providerById = useMemo(() => {
+    const m = new Map<string, APIProvider>();
+    (agentProviders ?? []).forEach((p) => m.set(p.id, p));
+    return m;
+  }, [agentProviders]);
+
   const isLoading =
     isPoliciesLoading ||
     isPeersLoading ||
@@ -118,6 +164,17 @@ function ControlCenterView() {
   const [selectedDestinationGroup, setSelectedDestinationGroup] = useState("");
 
   const [policyModalOpen, setPolicyModalOpen] = useState(false);
+
+  // Agent-network policy nodes (id prefix `agent-policy-`) open a
+  // different modal than access-control policies — they're managed by
+  // the AIProvidersProvider context and use AgentPolicyModal.
+  const [selectedAgentPolicy, setSelectedAgentPolicy] = useState("");
+  const [agentPolicyModalOpen, setAgentPolicyModalOpen] = useState(false);
+  const { policies: agentPolicyDomain } = useAIProviders();
+  const currentAgentPolicy = useMemo(
+    () => agentPolicyDomain?.find((p) => p.id === selectedAgentPolicy),
+    [agentPolicyDomain, selectedAgentPolicy],
+  );
 
   const networkOptions: SelectOption[] = useMemo(() => {
     let allNetworks = sortBy(
@@ -499,10 +556,106 @@ function ControlCenterView() {
       addDestinationResourceNodes(policy, allNodes, allEdges);
     });
 
+    // Agent-network overlay: append every Provider this group can reach
+    // via an agent-network policy, with a direct edge from the source
+    // group node. No-op when the feature is off (agentPolicies is empty).
+    addAgentNetworkProviderNodes(
+      groupId,
+      `select-group-node`,
+      allNodes,
+      allEdges,
+    );
+
     return applyD3HierarchicalLayout(allNodes, allEdges, 400, 120, "group", {
       policy: { width: 500, spacing: 60 },
       destinationGroup: { width: 1000, spacing: 100 },
       peersAndResources: { width: 1400, spacing: 80 },
+    });
+  };
+
+  // addAgentNetworkProviderNodes walks every agent-network policy that
+  // authorises `groupId` and lays out:
+  //
+  //   sourceNodeId → agent-policy-<policyId> → provider-<providerId>
+  //
+  // for each destination provider on each matching policy, mirroring the
+  // access-control layout. Idempotent — node/edge ids are stable so the
+  // same provider/policy referenced from multiple groups isn't
+  // duplicated. Returns immediately when there are no agent policies
+  // (i.e. the feature is disabled or unused).
+  const addAgentNetworkProviderNodes = (
+    groupId: string,
+    sourceNodeId: string,
+    allNodes: Node[],
+    allEdges: Edge[],
+  ) => {
+    if (!agentPolicies || agentPolicies.length === 0) return;
+    const matching = agentPolicies.filter((p) =>
+      (p.source_groups ?? []).includes(groupId),
+    );
+    if (matching.length === 0) return;
+
+    matching.forEach((policy) => {
+      const dests = policy.destination_provider_ids ?? [];
+      if (dests.length === 0) return;
+
+      const policyNodeId = `agent-policy-${policy.id}`;
+      if (!allNodes.some((n) => n.id === policyNodeId)) {
+        allNodes.push({
+          id: policyNodeId,
+          type: "agentPolicyNode",
+          data: {
+            id: policy.id,
+            name: policy.name,
+            enabled: policy.enabled !== false,
+          },
+          position: { x: 0, y: 0 },
+        });
+      }
+
+      const sourceEdgeId = `agent-src-${groupId}-${policy.id}`;
+      if (!allEdges.some((e) => e.id === sourceEdgeId)) {
+        allEdges.push({
+          id: sourceEdgeId,
+          source: sourceNodeId,
+          target: policyNodeId,
+          type: "in",
+          data: { enabled: policy.enabled !== false, type: "bezier" },
+        });
+      }
+
+      dests.forEach((providerId) => {
+        const provider = providerById.get(providerId);
+        if (!provider) return;
+        const providerNodeId = `provider-${providerId}`;
+        if (!allNodes.some((n) => n.id === providerNodeId)) {
+          allNodes.push({
+            id: providerNodeId,
+            type: "providerNode",
+            data: {
+              id: provider.id,
+              providerId: provider.provider_id as AIProviderId,
+              name: provider.name,
+              upstreamUrl: provider.upstream_url,
+              enabled: provider.enabled,
+            },
+            position: { x: 0, y: 0 },
+          });
+        }
+        const destEdgeId = `agent-dst-${policy.id}-${providerId}`;
+        if (!allEdges.some((e) => e.id === destEdgeId)) {
+          allEdges.push({
+            id: destEdgeId,
+            source: policyNodeId,
+            target: providerNodeId,
+            type: "in",
+            data: {
+              enabled: policy.enabled !== false && provider.enabled !== false,
+              type: "bezier",
+            },
+          });
+        }
+      });
     });
   };
 
@@ -990,6 +1143,18 @@ function ControlCenterView() {
 
       // Add destination resource nodes
       addDestinationResourceNodes(policy, allNodes, allEdges);
+    });
+
+    // Agent-network overlay: union the providers reachable through any
+    // group this peer belongs to, connecting each from the peer
+    // selector node. No-op when the feature is off.
+    peerGroups.forEach((g) => {
+      addAgentNetworkProviderNodes(
+        g.id ?? "",
+        `select-peer-node`,
+        allNodes,
+        allEdges,
+      );
     });
 
     return applyD3HierarchicalLayout(allNodes, allEdges, 400, 120, "peer", {
@@ -1609,7 +1774,20 @@ function ControlCenterView() {
     selectedUser,
     isLoading,
     layoutInitialized,
+    // Re-run the layout when agent-network data lands so the provider /
+    // agent-policy nodes get added even if their fetch resolved after
+    // the initial render. Stable (undefined) when the feature is off.
+    agentPolicies,
+    agentProviders,
   ]);
+
+  // When the agent-network fetch resolves, drop layoutInitialized so the
+  // layout effect re-runs and incorporates the freshly loaded
+  // providers/policies (otherwise the `if (layoutInitialized) return`
+  // gate short-circuits it).
+  useEffect(() => {
+    setLayoutInitialized(false);
+  }, [agentPolicies, agentProviders]);
 
   const resetView = () => {
     setLayoutInitialized(false);
@@ -1654,6 +1832,7 @@ function ControlCenterView() {
         _node.type === "groupNode" || _node.type === "sourceGroupNode";
       const isDestinationNode = _node.type === "destinationGroupNode";
       const isPolicyNode = _node.type === "policyNode";
+      const isAgentPolicyNode = _node.type === "agentPolicyNode";
 
       const networkId = isNetworkNode ? _node.id.replace("network-", "") : "";
       const groupId = isGroupNode ? _node.id.replace("group-", "") : "";
@@ -1661,6 +1840,9 @@ function ControlCenterView() {
         ? _node.id.replace("group-", "")
         : "";
       const policyId = isPolicyNode ? _node.id.replace("policy-", "") : "";
+      const agentPolicyId = isAgentPolicyNode
+        ? _node.id.replace("agent-policy-", "")
+        : "";
 
       if (networkId && currentView === FlowView.NETWORKS) {
         onNetworkSelect(networkId);
@@ -1676,6 +1858,10 @@ function ControlCenterView() {
       if (policyId) {
         setSelectedPolicy(policyId);
         setPolicyModalOpen(true);
+      }
+      if (agentPolicyId) {
+        setSelectedAgentPolicy(agentPolicyId);
+        setAgentPolicyModalOpen(true);
       }
     },
     [onNetworkSelect, onGroupSelect, onDestinationGroupSelect, currentView],
@@ -1704,6 +1890,16 @@ function ControlCenterView() {
           open={policyModalOpen}
           onSuccess={handlePolicyChange}
           onOpenChange={setPolicyModalOpen}
+        />
+      )}
+      {currentAgentPolicy && agentPolicyModalOpen && (
+        <AgentPolicyModal
+          open={agentPolicyModalOpen}
+          onOpenChange={(o) => {
+            setAgentPolicyModalOpen(o);
+            if (!o) setSelectedAgentPolicy("");
+          }}
+          policy={currentAgentPolicy}
         />
       )}
       <div style={{ width: "100%", height: "100%" }} className={"relative"}>
@@ -1798,7 +1994,10 @@ function ControlCenterView() {
                 <FlowSelector value={currentView} onChange={onViewChange} />
               )}
 
-              {currentView === "networks" && (
+              {/* Networks is dropped as a top-level pivot in the
+                  agent-network repackaging — keep the dropdown + per-network
+                  chrome for everyone else so flag-off behaviour is unchanged. */}
+              {!agentNetworkOnly && currentView === "networks" && (
                 <div className={"w-64"}>
                   <SelectDropdown
                     variant={"secondary"}
@@ -1814,7 +2013,7 @@ function ControlCenterView() {
                 </div>
               )}
 
-              {selectedNetwork && currentNetwork && (
+              {!agentNetworkOnly && selectedNetwork && currentNetwork && (
                 <NetworkRoutingPeerCount network={currentNetwork} />
               )}
             </div>

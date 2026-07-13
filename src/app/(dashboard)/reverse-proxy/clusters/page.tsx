@@ -27,40 +27,40 @@ export default function ReverseProxyClustersPage() {
 	const { ref: headingRef, portalTarget } =
 		usePortalElement<HTMLHeadingElement>();
 
-	return (
-		<PageContainer>
-			<div className={"p-default py-6"}>
-				<Breadcrumbs>
-					<Breadcrumbs.Item
-						href={"/reverse-proxy/services"}
-						label={t("title")}
-						icon={<ReverseProxyIcon size={16} />}
-					/>
-					<Breadcrumbs.Item
-						href={"/reverse-proxy/clusters"}
-						label={t("clusters")}
-						active={true}
-					/>
-				</Breadcrumbs>
-				<h1 ref={headingRef}>{t("clusters")}</h1>
-				<Paragraph>
-					{t("clustersDescription")}{" "}
-					<InlineLink href={REVERSE_PROXY_CLUSTERS_DOCS_LINK} target={"_blank"}>
-						{tCommon("learnMore")}
-						<ExternalLinkIcon size={12} />
-					</InlineLink>
-				</Paragraph>
-				<RestrictedAccess
-					page={t("clusters")}
-					hasAccess={permission.services?.read}
-				>
-					<Suspense fallback={<SkeletonTable />}>
-						<ReverseProxiesProvider>
-							<ClustersTable headingTarget={portalTarget} />
-						</ReverseProxiesProvider>
-					</Suspense>
-				</RestrictedAccess>
-			</div>
-		</PageContainer>
-	);
+  return (
+    <PageContainer>
+      <div className={"p-default py-6"}>
+        <Breadcrumbs>
+          <Breadcrumbs.Item
+            href={"/reverse-proxy/services"}
+            label={"Reverse Proxy"}
+            icon={<ReverseProxyIcon size={16} />}
+          />
+          <Breadcrumbs.Item
+            href={"/reverse-proxy/clusters"}
+            label={"Clusters"}
+            active={true}
+          />
+        </Breadcrumbs>
+        <h1 ref={headingRef}>Clusters</h1>
+        <Paragraph>
+          Proxy clusters route inbound traffic to your services. Shared clusters
+          are run by the platform; account clusters (self-hosted) run on your
+          own infrastructure.{" "}
+          <InlineLink href={REVERSE_PROXY_CLUSTERS_DOCS_LINK} target={"_blank"}>
+            Learn more
+            <ExternalLinkIcon size={12} />
+          </InlineLink>
+        </Paragraph>
+      </div>
+      <RestrictedAccess
+        page={"Clusters"}
+        hasAccess={permission?.services?.read}
+      >
+        <Suspense fallback={<SkeletonTable />}>
+          <ClustersTable headingTarget={portalTarget} />
+        </Suspense>
+      </RestrictedAccess>
+    </PageContainer>
+  );
 }

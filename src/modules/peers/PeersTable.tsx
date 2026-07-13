@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
 import Button from "@components/Button";
+import ButtonGroup from "@components/ButtonGroup";
 import { Checkbox } from "@components/Checkbox";
 import FullTooltip from "@components/FullTooltip";
 import { NoPeersGettingStarted } from "@components/NoPeersGettingStarted";
@@ -30,7 +31,7 @@ import {
 	TableFilterDef,
 	TableFiltersButton,
 } from "@components/table/TableFilters";
-import AddPeerButton from "@components/ui/AddPeerButton";
+import AddPeerDropdown from "@components/ui/AddPeerDropdown";
 import { NotificationCountBadge } from "@components/ui/NotificationCountBadge";
 import {
 	ColumnDef,
@@ -278,10 +279,14 @@ function PeersTableColumns(
 export type PeersTableKind = "users" | "servers";
 
 type Props = {
-	peers?: Peer[];
-	isLoading: boolean;
-	headingTarget?: HTMLHeadingElement | null;
-	kind?: PeersTableKind;
+  peers?: Peer[];
+  isLoading: boolean;
+  headingTarget?: HTMLHeadingElement | null;
+  // The active subset, URL-backed by the page so it survives remounts (e.g.
+  // SWR revalidate-on-focus). undefined = show all; the in-toolbar switch
+  // flips it via onKindChange.
+  kind?: PeersTableKind;
+  onKindChange?: (kind: PeersTableKind | undefined) => void;
 };
 
 // Peers split into two kinds:
@@ -294,10 +299,11 @@ const matchesKind = (peer: Peer, kind?: PeersTableKind) => {
 };
 
 export default function PeersTable({
-	peers,
-	isLoading,
-	headingTarget,
-	kind,
+  peers,
+  isLoading,
+  headingTarget,
+  kind,
+  onKindChange,
 }: Readonly<Props>) {
 	const t = useTranslations("peers");
 	const { mutate } = useSWRConfig();
@@ -354,6 +360,8 @@ export default function PeersTable({
 		return Array.from(map.values());
 	}, [kindFilteredPeers]);
 
+  const filterDefs = useMemo<TableFilterDef[]>(() => [], []) as any;
+
 	const { isUser } = useLoggedInUser();
 
 	const [selectedRows, setSelectedRows] = useState<RowSelectionState>({});
@@ -364,7 +372,13 @@ export default function PeersTable({
 		}
 	};
 
-	const [showBrowserPeers, setShowBrowserPeers] = useState(false);
+  // Clear any selection carried over from the previous subset so hidden peers
+  // aren't acted on by bulk actions when the kind changes.
+  useEffect(() => {
+    setSelectedRows({});
+  }, [kind]);
+
+  const [showBrowserPeers, setShowBrowserPeers] = useState(false);
 
 	const withBrowserPeers = useCallback(
 		(condition: boolean) => {
@@ -411,132 +425,106 @@ export default function PeersTable({
 		[],
 	);
 
-	// Filter definitions powering the consolidated `Filters` button +
-	// chip row. The Users filter is only meaningful for the User Devices
-	// view; servers (no real owner) skip it.
-	const filterDefs = useMemo<TableFilterDef[]>(() => {
-		const defs: TableFilterDef[] = [
-			{
-				id: "connected",
-				label: "Status",
-				renderPicker: (p) => (
-					<StatusPicker
-						value={p.value as boolean | undefined}
-						onChange={p.onChange}
-						close={p.close}
-					/>
-				),
-				formatChip: (v) => formatStatusChip(v as boolean | undefined),
-			},
-			{
-				id: "os_kind",
-				label: "OS",
-				renderPicker: (p) => (
-					<CheckboxListPicker
-						value={p.value as string[] | undefined}
-						onChange={p.onChange}
-						close={p.close}
-						options={osOptions}
-					/>
-				),
-				formatChip: (v) =>
-					formatCheckboxChip(v as string[] | undefined, osOptions, "platforms"),
-			},
-		];
-		if (!isUser) {
-			defs.push({
-				id: "group_names",
-				label: "Groups",
-				renderPicker: (p) => (
-					<GroupsPicker
-						value={p.value as string[] | undefined}
-						onChange={p.onChange}
-						close={p.close}
-						groups={tableGroups}
-					/>
-				),
-				formatChip: (v) => formatGroupsChip(v as string[] | undefined),
-			});
-		}
-		if (kind === "users" && !isUser && tableUsers.length > 0) {
-			defs.push({
-				id: "user_email",
-				label: "Users",
-				renderPicker: (p) => (
-					<UsersPicker
-						value={p.value as string | undefined}
-						onChange={p.onChange}
-						close={p.close}
-						options={tableUsers}
-					/>
-				),
-				formatChip: (v) => formatUsersChip(v as string | undefined, tableUsers),
-			});
-		}
-		return defs;
-	}, [isUser, kind, osOptions, tableGroups, tableUsers]);
+  return (
+    <>
+      <PeerMultiSelect
+        selectedPeers={selectedRows}
+        onCanceled={() => setSelectedRows({})}
+      />
+      <DataTable
+        headingTarget={headingTarget}
+        rowSelection={selectedRows}
+        setRowSelection={setSelectedRows}
+        useRowId={true}
+        text={"Peers"}
+        sorting={sorting}
+        setSorting={setSorting}
+        initialPageSize={25}
+        showResetFilterButton={false}
+        columns={PeersTableColumns as any}
+        data={showBrowserPeers ? browserPeers : regularPeers}
+        searchPlaceholder={"Search by name, IP, owner or group..."}
+        columnVisibility={{
+          select: permission.groups.read,
+          connected: false,
+          approval_required: false,
+          force_approved: false,
+          group_name_strings: false,
+          group_names: false,
+          ip: false,
+          serial: false,
+          user_name: false,
+          user_email: false,
+          actions: permission.peers.update,
+          groups: permission.groups.read,
+          os: false,
+          os_kind: false,
+          ipv6: false,
+        }}
+        isLoading={isLoading}
+        // Treat a selected kind as an active filter: when peers exist but the
+        // chosen kind has none, render the table's normal "Could not find any
+        // results" empty state (with column headers) instead of the
+        // "Get Started" card. With no peers at all (kind unselected), the card
+        // still shows.
+        hasServerSideFilters={kind !== undefined && (peers?.length ?? 0) > 0}
+        getStartedCard={
+          <NoPeersGettingStarted showBackground={true} />
+        }
+        rightSide={() => (
+          <>
+            {peers && peers.length > 0 && <AddPeerDropdown />}
+          </>
+        )}
+        aboveTable={(table) => (
+          <TableFilterChips table={table} filters={filterDefs} />
+        )}
+      >
+        {(table) => (
+          <>
+            <TableFiltersButton
+              table={table}
+              filters={filterDefs}
+              disabled={peers?.length == 0}
+            />
 
-	return (
-		<>
-			<PeerMultiSelect
-				selectedPeers={selectedRows}
-				onCanceled={() => setSelectedRows({})}
-			/>
-			<DataTable
-				headingTarget={headingTarget}
-				rowSelection={selectedRows}
-				setRowSelection={setSelectedRows}
-				useRowId={true}
-				text={t("title")}
-				sorting={sorting}
-				setSorting={setSorting}
-				initialPageSize={25}
-				showResetFilterButton={false}
-				columns={columns}
-				data={showBrowserPeers ? browserPeers : regularPeers}
-				searchPlaceholder={t("searchPlaceholder")}
-				columnVisibility={{
-					select: permission.groups.read,
-					connected: false,
-					approval_required: false,
-					force_approved: false,
-					group_name_strings: false,
-					group_names: false,
-					ip: false,
-					serial: false,
-					user_name: false,
-					user_email: false,
-					actions: permission.peers.update,
-					groups: permission.groups.read,
-					os: false,
-					os_kind: false,
-					ipv6: false,
-				}}
-				isLoading={isLoading}
-				getStartedCard={
-					<NoPeersGettingStarted
-						showBackground={true}
-						isUserDevice={kind ? kind === "users" : undefined}
-					/>
-				}
-				rightSide={() => (
-					<>
-						{peers && peers.length > 0 && (
-							<AddPeerButton isUserDevice={kind === "users"} />
-						)}
-					</>
-				)}
-				aboveTable={(table) => (
-					<TableFilterChips table={table} filters={filterDefs} />
-				)}
-			>
-				{(table) => (
-					<>
-						<TableFiltersButton
-							table={table}
-							filters={filterDefs}
-							disabled={peers?.length == 0}
-						/>
+            <ButtonGroup disabled={isLoading}>
+              <ButtonGroup.Button
+                className={"h-[42px]"}
+                variant={kind === "users" ? "tertiary" : "secondary"}
+                onClick={() => {
+                  // Reset to the first page: the new subset may have fewer
+                  // pages than the current index, which would show an empty
+                  // table (page index doesn't auto-reset on data change).
+                  table.setPageIndex(0);
+                  onKindChange?.(kind === "users" ? undefined : "users");
+                }}
+              >
+                User Devices
+              </ButtonGroup.Button>
+              <ButtonGroup.Button
+                // Drop the left border so it doesn't stack with the first
+                // button's right border into a doubled divider.
+                className={"h-[42px] !border-l-0"}
+                variant={kind === "servers" ? "tertiary" : "secondary"}
+                onClick={() => {
+                  table.setPageIndex(0);
+                  onKindChange?.(kind === "servers" ? undefined : "servers");
+                }}
+              >
+                Servers
+              </ButtonGroup.Button>
+            </ButtonGroup>
+
+            <DataTableResetFilterButton
+              table={table}
+              onClick={() => {
+                table.setPageIndex(0);
+                table.resetColumnFilters();
+                table.resetGlobalFilter();
+                resetSelectedRows();
+              }}
+            />
 
 						<DataTableResetFilterButton
 							table={table}

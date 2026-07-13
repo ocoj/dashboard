@@ -11,6 +11,7 @@ import { PlanFeatures } from "@/cloud/cloud-hooks/useIsFeatureLocked";
 import { useTrial } from "@/cloud/cloud-hooks/useTrial";
 import { useLoggedInUser } from "@/contexts/UsersProvider";
 import { PlanTier } from "@/interfaces/Subscription";
+import { useAgentNetworkMode } from "@/modules/agent-network/useAgentNetworkMode";
 
 type Props = {
   plan?: PlanTier;
@@ -143,12 +144,17 @@ export const SelfHostedUpgradeButton = ({
 }: {
   variant?: "primary" | "white";
 }) => {
+  const { only: agentNetworkOnly } = useAgentNetworkMode();
+  // Agent Network-only deployments point at the Agent Network pricing page
+  // (tagged so the visit is attributable); the regular self-hosted product
+  // keeps the on-prem pricing anchor.
+  const href = agentNetworkOnly
+    ? "https://netbird.ai/pricing?utm_source=dashboard_oss"
+    : "https://netbird.io/pricing#on-prem";
   return (
     <div className={"relative top-1 min-w-[160px]"}>
       <a
-        href={
-          "https://netbird.io/pricing#on-prem"
-        }
+        href={href}
         target={"_blank"}
         rel={"noopener noreferrer"}
         className={"w-full"}

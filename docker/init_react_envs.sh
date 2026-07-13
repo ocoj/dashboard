@@ -66,6 +66,8 @@ export NETBIRD_WASM_PATH=${NETBIRD_WASM_PATH}
 export NETBIRD_CSP=${NETBIRD_CSP}
 export NETBIRD_LICENSED=${NETBIRD_LICENSED:-false}
 export NETBIRD_CLOUD=${NETBIRD_CLOUD:-false}
+export NETBIRD_AGENT_NETWORK_ONLY=${NETBIRD_AGENT_NETWORK_ONLY:-false}
+export NETBIRD_AGENT_NETWORK_ENABLED=${NETBIRD_AGENT_NETWORK_ENABLED:-false}
 export NETBIRD_HUBSPOT_PORTAL_ID=${NETBIRD_HUBSPOT_PORTAL_ID}
 export NETBIRD_HUBSPOT_SIGNUP_FORM_ID=${NETBIRD_HUBSPOT_SIGNUP_FORM_ID}
 export NETBIRD_HUBSPOT_ONBOARDING_FORM_ID=${NETBIRD_HUBSPOT_ONBOARDING_FORM_ID}
@@ -78,7 +80,7 @@ echo "NetBird latest version: ${NETBIRD_LATEST_VERSION}"
 FIRST_PARTY_CSP="pkgs.netbird.io"
 FIRST_PARTY_CSP_CONNECT_SRC="wss://*.netbird.io"
 THIRD_PARTY_CSP="*.licdn.com *.linkedin.com *.vector.co *.sibforms.com *.hotjar.com *.hotjar.io *.redditstatic.com pixel-config.reddit.com *.clarity.ms c.bing.com *.microsoft.com googleads.g.doubleclick.net pagead2.googlesyndication.com www.google.com www.googleadservices.com *.google-analytics.com *.googletagmanager.com analytics.google.com *.hubapi.com *.hs-banner.com *.hubspot.com *.hubspot.net js.hs-analytics.com *.hsforms.net *.hscollectedforms.net *.hs-analytics.net *.hsforms.com track.hubspot.com *.hsadspixel.net static.hsappstatic.net"
-THIRD_PARTY_CSP_CONNECT_SRC="https://api.github.com/repos/netbirdio/netbird/releases/latest https://raw.githubusercontent.com/netbirdio/dashboard/ wss://ws.hotjar.com"
+THIRD_PARTY_CSP_CONNECT_SRC="https://api.github.com/repos/netbirdio/netbird/releases/latest https://raw.githubusercontent.com/netbirdio/dashboard/ wss://ws.hotjar.com https://api.hetzner.cloud https://api.digitalocean.com"
 THIRD_PARTY_CSP_SCRIPT_SRC="'sha256-7knV6EIjKUvCpYWE2rCYx8dYV2WCNb2bpTuitFXzBcA=' *.hs-scripts.com"
 
 CSP_DOMAINS=""
@@ -91,6 +93,8 @@ fi
 # Add AUTH_AUTHORITY to CSP
 if [[ -n "${AUTH_AUTHORITY}" ]]; then
     CSP_DOMAINS="$CSP_DOMAINS $AUTH_AUTHORITY"
+    AUTH_AUTHORITY_ORIGIN=$(echo "$AUTH_AUTHORITY" | sed -E 's|^(https?://[^/]+).*|\1|')
+    CSP_DOMAINS="$CSP_DOMAINS $AUTH_AUTHORITY_ORIGIN"
 fi
 
 # Add AUTH_AUDIENCE to CSP
@@ -137,8 +141,18 @@ CSP_CONNECT_SRC=$(echo $CSP_CONNECT_SRC | tr ' ' '\n' | sort -u | tr '\n' ' ' | 
 CSP_FRAME_SRC=$(echo $CSP_FRAME_SRC | tr ' ' '\n' | sort -u | tr '\n' ' ' | sed 's/ $//')
 CSP_SCRIPT_SRC=$(echo $CSP_SCRIPT_SRC | tr ' ' '\n' | sort -u | tr '\n' ' ' | sed 's/ $//')
 
+# upgrade-insecure-requests tells the browser to rewrite every http subresource,
+# fetch and WebSocket to https/wss. That is correct for https deployments but breaks
+# plain-http ones (e.g. local or self-hosted over http), where it would rewrite the
+# working http/ws endpoints to unreachable https/wss. Emit it only when the backend
+# is served over https, matching the ws:// vs wss:// scheme logic above.
+CSP_UPGRADE_INSECURE=" upgrade-insecure-requests;"
+if [[ "$NETBIRD_MGMT_API_ENDPOINT" == http://* || "$AUTH_AUTHORITY" == http://* ]]; then
+    CSP_UPGRADE_INSECURE=""
+fi
+
 # Update CSP in nginx config
-CSP_POLICY="default-src 'none'; connect-src 'self' $CSP_CONNECT_SRC; frame-src 'self' $CSP_FRAME_SRC; script-src 'self' 'wasm-unsafe-eval' $CSP_SCRIPT_SRC; font-src 'self'; img-src * data:; manifest-src 'self'; style-src 'self' 'unsafe-inline'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;"
+CSP_POLICY="default-src 'none'; connect-src 'self' $CSP_CONNECT_SRC; frame-src 'self' $CSP_FRAME_SRC; script-src 'self' 'wasm-unsafe-eval' $CSP_SCRIPT_SRC; font-src 'self'; img-src * data:; manifest-src 'self'; style-src 'self' 'unsafe-inline'; frame-ancestors 'self'; base-uri 'self'; form-action 'self';$CSP_UPGRADE_INSECURE"
 CSP_HEADER="add_header Content-Security-Policy \"$CSP_POLICY\" always;"
 
 echo "CSP header: $CSP_HEADER"
@@ -149,7 +163,7 @@ sed -i "s|add_header Content-Security-Policy \"[^\"]*\" always;|$CSP_HEADER|g" /
 }
 
 # replace ENVs in the config
-ENV_STR="\$\$USE_AUTH0 \$\$AUTH_AUDIENCE \$\$AUTH_AUTHORITY \$\$AUTH_CLIENT_ID \$\$AUTH_CLIENT_SECRET \$\$AUTH_SUPPORTED_SCOPES \$\$NETBIRD_MGMT_API_ENDPOINT \$\$NETBIRD_MGMT_GRPC_API_ENDPOINT \$\$NETBIRD_HOTJAR_TRACK_ID \$\$NETBIRD_GOOGLE_ANALYTICS_ID \$\$NETBIRD_GOOGLE_TAG_MANAGER_ID \$\$AUTH_REDIRECT_URI \$\$AUTH_SILENT_REDIRECT_URI \$\$NETBIRD_TOKEN_SOURCE \$\$NETBIRD_DRAG_QUERY_PARAMS \$\$NETBIRD_AUTH_SERVICE_URL \$\$NETBIRD_WASM_PATH \$\$NETBIRD_LICENSED \$\$NETBIRD_CLOUD \$\$NETBIRD_HUBSPOT_PORTAL_ID \$\$NETBIRD_HUBSPOT_SIGNUP_FORM_ID \$\$NETBIRD_HUBSPOT_ONBOARDING_FORM_ID \$\$NETBIRD_HUBSPOT_SURVEY_FORM_ID \$\$NETBIRD_ANALYTICS_EXCLUDED_EMAILS"
+ENV_STR="\$\$USE_AUTH0 \$\$AUTH_AUDIENCE \$\$AUTH_AUTHORITY \$\$AUTH_CLIENT_ID \$\$AUTH_CLIENT_SECRET \$\$AUTH_SUPPORTED_SCOPES \$\$NETBIRD_MGMT_API_ENDPOINT \$\$NETBIRD_MGMT_GRPC_API_ENDPOINT \$\$NETBIRD_HOTJAR_TRACK_ID \$\$NETBIRD_GOOGLE_ANALYTICS_ID \$\$NETBIRD_GOOGLE_TAG_MANAGER_ID \$\$AUTH_REDIRECT_URI \$\$AUTH_SILENT_REDIRECT_URI \$\$NETBIRD_TOKEN_SOURCE \$\$NETBIRD_DRAG_QUERY_PARAMS \$\$NETBIRD_AUTH_SERVICE_URL \$\$NETBIRD_WASM_PATH \$\$NETBIRD_LICENSED \$\$NETBIRD_CLOUD \$\$NETBIRD_AGENT_NETWORK_ONLY \$\$NETBIRD_AGENT_NETWORK_ENABLED \$\$NETBIRD_HUBSPOT_PORTAL_ID \$\$NETBIRD_HUBSPOT_SIGNUP_FORM_ID \$\$NETBIRD_HUBSPOT_ONBOARDING_FORM_ID \$\$NETBIRD_HUBSPOT_SURVEY_FORM_ID \$\$NETBIRD_ANALYTICS_EXCLUDED_EMAILS"
 
 OIDC_TRUSTED_DOMAINS="/usr/share/nginx/html/OidcTrustedDomains.js"
 envsubst "$ENV_STR" < "$OIDC_TRUSTED_DOMAINS".tmpl > "$OIDC_TRUSTED_DOMAINS"
@@ -158,3 +172,24 @@ for f in $(grep -R -l AUTH_SUPPORTED_SCOPES /usr/share/nginx/html); do
     envsubst "$ENV_STR" < "$f".copy > "$f"
     rm "$f".copy
 done
+
+# Reload nginx so the patched CSP header takes effect.
+# supervisord starts nginx (priority 100) before this script (priority 201) and
+# never reloads it, so without this nginx keeps serving the static default.conf
+# CSP that has no connect-src, breaking OIDC discovery over plain HTTP.
+reloaded=false
+for i in $(seq 1 10); do
+    if nginx -s reload 2>/dev/null; then
+        echo "Reloaded nginx to apply updated CSP configuration"
+        reloaded=true
+        break
+    fi
+    echo "Waiting for nginx to be ready before reload (attempt $i)..."
+    sleep 1
+done
+
+if [[ "$reloaded" != true ]]; then
+    echo "Failed to reload nginx after patching CSP header" >&2
+    nginx -t || true
+    exit 1
+fi

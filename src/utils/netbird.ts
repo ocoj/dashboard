@@ -17,6 +17,19 @@ export const getInstallUrl = () => {
 
 export type Edition = "cloud" | "licensed" | "oss";
 
+// testOnboardingEnabled lets e2e tests opt into rendering the onboarding flow,
+// which is disabled by default in the test build so it doesn't interfere with
+// other specs. Inert outside test builds (the APP_ENV check is tree-shaken).
+export const testOnboardingEnabled = (): boolean => {
+  if (process.env.APP_ENV !== "test") return false;
+  if (typeof window === "undefined") return false;
+  try {
+    return window.localStorage.getItem("netbird-test-onboarding") === "true";
+  } catch (e) {
+    return false;
+  }
+};
+
 // testEditionOverride lets e2e tests drive cloud/licensed/oss behavior against
 // the test build by setting localStorage. It is inert outside test builds,
 // where the APP_ENV check is replaced at compile time and tree-shaken away.
@@ -56,6 +69,29 @@ export const hasLicensedFlag = () => {
   const override = testEditionOverride();
   if (override) return override !== "oss";
   return config.licensed || isNetBirdCloud();
+};
+
+// isAgentNetworkOnly returns true for the dedicated Agent Network surface:
+// the regular UI (network routing, DNS, reverse proxy, activity) is hidden and
+// the Agent Network menu shows without a Beta badge.
+export const isAgentNetworkOnly = () => {
+  return config.agentNetworkOnly;
+};
+
+// pkgsDownloadUrl builds a NetBird client installer download link on
+// pkgs.netbird.io. In Agent Network-only mode the client ships from the
+// release-candidate channel, so the link gets a "/rc" suffix that
+// pkgs.netbird.io 302-redirects to the latest RC GitHub asset (e.g.
+// "windows/x64" -> "windows/x64/rc"). `path` is the platform path without a
+// leading slash, e.g. "windows/x64" or "macos/universal".
+export const pkgsDownloadUrl = (path: string) =>
+  `https://pkgs.netbird.io/${path}${isAgentNetworkOnly() ? "/rc" : ""}`;
+
+// isAgentNetworkEnabled returns true when the Agent Network product surface
+// (Providers, Policies, Usage & Logs) is available — in either the dedicated
+// "only" mode or alongside the regular UI (where it carries a Beta badge).
+export const isAgentNetworkEnabled = () => {
+  return config.agentNetworkEnabled || config.agentNetworkOnly;
 };
 
 export const isAuth0 = () => {
