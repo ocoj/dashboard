@@ -3,6 +3,7 @@ import { Modal } from "@components/modal/Modal";
 import { IconCirclePlus, IconDirectionSign } from "@tabler/icons-react";
 import * as React from "react";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { Group } from "@/interfaces/Group";
 import { Peer } from "@/interfaces/Peer";
@@ -20,6 +21,7 @@ export const AddExitNodeButton = ({
   distributionGroups,
 }: Props) => {
   const [modal, setModal] = useState(false);
+  const t = useTranslations("routes");
   const { permission } = usePermissions();
 
   return (
@@ -33,12 +35,12 @@ export const AddExitNodeButton = ({
           {!firstTime ? (
             <>
               <IconCirclePlus size={16} />
-              Add Exit Node
+              {t("addExitNodeBtn")}
             </>
           ) : (
             <>
               <IconDirectionSign size={16} className={"text-yellow-400"} />
-              Set Up Exit Node
+              {t("setupExitNode")}
             </>
           )}
         </Button>
