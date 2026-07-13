@@ -6,6 +6,10 @@ on:
     tags:
       - "**"
 
+permissions:
+  contents: read
+  packages: write
+
 # Cancel in-progress runs on the same ref when a new commit arrives.
 concurrency:
   group: build-and-push-${{ github.workflow }}-${{ github.ref }}
