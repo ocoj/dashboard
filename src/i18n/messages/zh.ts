@@ -46,7 +46,7 @@ export default {
     title: "活动日志",
     typeCount: "{count} 种类型",
     unknown: "未知",
-  },
+  }},
   auth: {
     accessDenied: "访问被拒绝",
     accountBlocked: "账户已被阻止",
@@ -70,7 +70,7 @@ export default {
     tooManyRequests: "请求过多",
     tryAgainLater: "请稍后再试",
     unauthorized: "未授权",
-  },
+  }},
   awsMarketplace: {
     activeStripePlan: "您似乎已经有一个活跃的订阅。要使用 AWS 作为账单提供商，请联系我们的支持团队。",
     changePlanLater: "您随时可以更改计划。",
@@ -81,7 +81,7 @@ export default {
     logout: "退出登录",
     subscribeTo: "订阅",
     thanksRegistering: "感谢您通过 AWS Marketplace 注册！",
-  },
+  }},
   common: {
     accessControlRules: "访问控制规则",
     accessTokens: "访问令牌",
@@ -227,7 +227,7 @@ export default {
     dashboard: "控制台",
     updateAvailable: "有新版本",
     latest: "最新",
-  },
+  }},
   controlCenter: {
     activePeers: "活跃节点",
     description: "网络概览",
@@ -252,7 +252,7 @@ export default {
     resourceCount: "{count} 个资源",
     peerAndResourceCount: "{peerCount} 个节点, {resourceCount} 个资源",
     routingPeerCount: "{count} 个路由节点",
-  },
+  }},
   dns: {
     DNSName: "DNS 名称",
     addDNSRecord: "添加 DNS 记录",
@@ -410,7 +410,7 @@ export default {
     zoneNamePlaceholder: "例如：example.com",
     zones: "区域",
     zonesDescription: "为您的网络配置 DNS 区域。",
-  },
+  }},
   errors: {
     accessError: "访问错误",
     generic: "发生错误",
@@ -424,7 +424,7 @@ export default {
     userAccountBlocked: "用户账户已被阻止",
     userApprovalPending: "用户待审批",
     validationError: "验证错误",
-  },
+  }},
   groups: {
     addPeerToGroup: "添加节点",
     addPeerToGroupTitle: "将节点添加到组",
@@ -484,7 +484,7 @@ export default {
     users: "用户",
     viewDetails: "查看详情",
     zones: "区域",
-  },
+  }},
   invoices: {
     account: "账户",
     customers: "客户",
@@ -502,7 +502,7 @@ export default {
     tenants: "租户",
     title: "发票",
     type: "类型",
-  },
+  }},
   navigation: {
     accessControl: "访问控制",
     accessLogs: "访问日志",
@@ -539,7 +539,7 @@ export default {
     users: "用户",
     zones: "区域",
     beta: "测试版",
-  },
+  }},
   networks: {
     accessControl: "访问控制",
     accessControlGroups: "访问控制组",
@@ -688,7 +688,7 @@ export default {
     updatingMasquerade: "正在更新 Masquerade...",
     updatingResource: "正在更新资源...",
     viewDetails: "查看详情",
-  },
+  }},
   notifications: {
     activateIncomingWebhooks: "激活传入 Webhook",
     add: "添加",
@@ -792,7 +792,7 @@ export default {
     webhookUpdateDescription: "更新您的 Webhook 端点和身份验证设置。",
     webhookUrl: "Webhook URL",
     webhookUrlHelp: "通知事件将通过 POST 请求发送到的完整 HTTP(S) URL。",
-  },
+  }},
   onboarding: {
     addResource: "添加您的第一个资源",
     completedOnboarding: "您已完成 onboarding。",
@@ -816,19 +816,19 @@ export default {
         feature2: "根据您的技术栈实现用例",
         feature3: "最佳实践与总体概览",
         title: "预约技术概览（非销售电话）",
-      },
+      }},
       v2: {
         cancel: "不用了",
         cta: "立即预约",
         desc: "获取 30 分钟技术概览。我们将针对您的具体用例进行介绍，并解答任何技术问题。<br/>我们为您提供技术上线支持。<br/>这不是销售电话。",
         title: "与我们的解决方案工程师交流",
-      },
+      }},
       v3: {
         cancel: "不用了",
         cta: "立即预约",
         desc: "获取 30 分钟技术概览。我们将针对您的具体用例进行介绍，并解答任何技术问题。<br/>我们为您提供技术上线支持。<br/>这不是销售电话。",
         title: "预约技术概览（非销售电话）",
-      },
+      }},
       v4: {
         cancel: "不用了",
         cta: "立即预约",
@@ -837,24 +837,24 @@ export default {
         feature2: "根据您的技术栈实现用例",
         feature3: "最佳实践与总体概览",
         title: "预约技术概览",
-      },
+      }},
       v5: {
         cancel: "不用了",
         cta: "立即预约",
         desc: "获取 30 分钟技术概览。我们将针对您的具体用例进行介绍，并解答任何技术问题。<br/>我们为您提供技术上线支持。",
         title: "与我们的解决方案工程师交流",
-      },
+      }},
       v6: {
         cancel: "不用了",
         cta: "立即预约",
         desc: "获取 30 分钟技术概览。我们将针对您的具体用例进行介绍，并解答任何技术问题。<br/>我们为您提供技术上线支持。",
         title: "预约技术概览",
-      },
-    },
-  },
+      }},
+    }},
+  }},
   pageNotFound: {
     title: "请求的页面不存在",
-  },
+  }},
   peers: {
     accessiblePeersDesc: "此节点可以连接到 NetBird 网络中的以下节点。",
     actions: "操作",
@@ -1029,14 +1029,16 @@ export default {
     peersDescription: "连接到网络的用户设备和服务器等无头设备。",
     agent: "代理",
     updateDescription: "更新描述",
+    selectAll: "全选",
+    selectRow: "选择行",
     operatingSystem: {
       android: "Android",
       ios: "iOS",
       linux: "Linux",
       macos: "macOS",
       windows: "Windows",
-    },
-  },
+    }},
+  }},
   policies: {
     accessControls: "访问控制",
     action: "动作",
@@ -1145,7 +1147,7 @@ export default {
     destinationHelp: "目标帮助",
     policyDescriptionPlaceholder: "策略描述占位符",
     createNewPolicyDescription: "创建新的访问控制策略",
-  },
+  }},
   postureChecks: {
     addCheck: "添加检查",
     addLocation: "添加位置",
@@ -1232,8 +1234,8 @@ export default {
     validUnixPath: "请输入有效的 Unix 文件路径",
     validWindowsPath: "请输入有效的 Windows 文件路径",
     versionPlaceholder: "例如：6.0.0",
-    windowsPathPlaceholder: "C:\\ProgramData\\NetBird\\netbird.exe"
-  },
+    windowsPathPlaceholder: "C:\\ProgramData\\NetBird\\netbird.exe",
+  }},
   reverseProxy: {
     accessControl: "访问控制",
     accessLogs: "访问日志",
@@ -1321,7 +1323,7 @@ export default {
     title: "反向代理",
     tlsPassthrough: "TLS 直通",
     udpService: "UDP 服务",
-  },
+  }},
   routes: {
     accessControlGroupsOptional: "访问控制组（可选）",
     actionDelete: "删除",
@@ -1400,7 +1402,7 @@ export default {
     tableTitle: "网络路由",
     updateTabDescription: "描述",
     updateTitle: "更新 {name}",
-  },
+  }},
   serviceUsers: {
     accessTokens: "访问令牌",
     accessTokensDescription: "访问令牌提供对 NetBird API 的访问权限。",
@@ -1440,7 +1442,7 @@ export default {
     userDeleted: "服务用户 '{name}' 已删除",
     userId: "用户 ID",
     userUpdated: "服务用户 '{name}' 更新成功",
-  },
+  }},
   settings: {
     account: "账户",
     addGroupPlaceholder: "添加组并按 Enter",
@@ -1546,7 +1548,7 @@ export default {
     userApprovalRequired: "需要用户审批",
     versionCustomPlaceholder: "例如：0.52.2",
     versionCustomPrefix: "版本",
-  },
+  }},
   setupKeys: {
     active: "活跃",
     all: "全部",
@@ -1606,7 +1608,7 @@ export default {
     usageLimit: "使用次数限制",
     usageLimitHelp: "例如，设置为 30 表示允许注册 30 台设备",
     usageLimitSuffix: "台设备",
-  },
+  }},
   setupModal: {
     addRepository: "添加我们的软件源",
     andLogInBrowser: "并在浏览器中登录",
@@ -1659,14 +1661,16 @@ export default {
     signUpWithEmail: "使用您的电子邮件地址注册",
     startDaemon: "启动 NetBird 守护进程",
     timeToAddFirstDevice: "是时候添加您的第一台设备了。",
-  },
+    getStartedWithEmail: "通过邮箱开始使用",
+    footerDescription: "安装完成后可设置多个设备并在此仪表板中管理。",
+  }},
   survey: {
     howDidYouHear: "您是如何了解到 NetBird 的？",
     improveHelp: "通过分享您如何发现 NetBird 来帮助我们改进。您的反馈对我们至关重要。",
     loveToHear: "我们期待您的反馈",
     selectOption: "请选择一个选项...",
     submitContinue: "提交并继续",
-  },
+  }},
   table: {
     cancel: "取消",
     empty: "暂无数据",
@@ -1691,12 +1695,12 @@ export default {
     to: "至",
     total: "共 {total} 项",
     usage: "使用情况",
-  },
+  }},
   theme: {
     dark: "深色",
     light: "浅色",
     system: "跟随系统",
-  },
+  }},
   untranslated: {
     a_flexible__innovative_solution_for_people_and_org_146: "A flexible, innovative solution for people and organizations to achieve more.",
     accept_258: "Accept",
@@ -2183,11 +2187,11 @@ export default {
     your_name_26: "Your name",
     zero_trust_assessment__read_38: "Zero Trust Assessment (Read)",
     zones___dns_14: "Zones - DNS -",
-  },
+  }},
   userDropdown: {
     plansAndBilling: "套餐与账单",
     profileSettings: "个人资料设置",
-  },
+  }},
   users: {
     accessTokens: "访问令牌",
     actions: "操作",
@@ -2365,7 +2369,7 @@ export default {
     userUnblockedNotify: "用户已取消阻止",
     valid: "有效",
     you: "你",
-  },
+  }},
   webhooks: {
     addHeader: "添加请求头",
     authHeaderConflict: "警告：您已添加 'Authorization' 请求头。这将覆盖上一步中的 {authType} 身份验证。请移除 'Authorization' 请求头。",
@@ -2393,5 +2397,5 @@ export default {
     urlError: "请输入有效的 URL，例如 https://api.example.com/webhook",
     urlPlaceholder: "https://api.example.com/webhook",
     username: "用户名",
-  },
+  }},
 };

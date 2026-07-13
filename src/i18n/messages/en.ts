@@ -144,7 +144,7 @@ export default {
     dashboard: "Dashboard",
     updateAvailable: "Update available",
     latest: "Latest",
-  },
+  }},
   navigation: {
     controlCenter: "Control Center",
     peers: "Peers",
@@ -181,7 +181,7 @@ export default {
     slack: "NetBird Slack",
     feedback: "Feedback",
     beta: "Beta",
-  },
+  }},
   table: {
     search: "Search...",
     noResults: "No results",
@@ -206,7 +206,7 @@ export default {
     inUse: "In Use",
     resources: "Resources",
     usage: "Usage",
-  },
+  }},
   auth: {
     login: "Login",
     logout: "Logout",
@@ -230,7 +230,7 @@ export default {
     tooManyRequests: "Too Many Requests",
     tryAgainLater: "Please try again later",
     contactAdmin: "Please contact your administrator",
-  },
+  }},
   errors: {
     generic: "An error occurred",
     networkError: "Network error",
@@ -244,10 +244,10 @@ export default {
     userAccountBlocked: "User Account Blocked",
     userApprovalPending: "User Approval Pending",
     accessError: "Access Error",
-  },
+  }},
   pageNotFound: {
     title: "The requested page was not found",
-  },
+  }},
   peers: {
     title: "Peers",
     name: "Name",
@@ -422,14 +422,16 @@ export default {
     peersDescription: "User devices and headless machines, such as servers and autonomous agents, connected to your network.",
     agent: "Agent",
     updateDescription: "Update Description",
+    selectAll: "Select All",
+    selectRow: "Select Row",
     operatingSystem: {
       linux: "Linux",
       windows: "Windows",
       macos: "macOS",
       android: "Android",
       ios: "iOS",
-    },
-  },
+    }},
+  }},
   policies: {
     title: "Policies",
     name: "Name",
@@ -538,7 +540,7 @@ export default {
     destinationHelp: "Destination help",
     policyDescriptionPlaceholder: "Policy description placeholder",
     createNewPolicyDescription: "Create a new access control policy",
-  },
+  }},
   groups: {
     title: "Groups",
     name: "Name",
@@ -598,7 +600,7 @@ export default {
     groupsDescription: "Groups description",
     createDescription: "Create group description",
     noGroupsMatching: "No groups matching",
-  },
+  }},
   users: {
     title: "Users",
     name: "Name",
@@ -776,16 +778,16 @@ export default {
     localAuthDisabled: "Local auth disabled",
     rejectUserDesc: "Reject user description",
     inviteUserDescription2: "Invite user description",
-  },
+  }},
   userDropdown: {
     profileSettings: "Profile Settings",
     plansAndBilling: "Plans & Billing",
-  },
+  }},
   theme: {
     light: "Light",
     dark: "Dark",
     system: "System",
-  },
+  }},
   serviceUsers: {
     title: "Service Users",
     role: "Role",
@@ -825,7 +827,7 @@ export default {
     createServiceUserTitle: "Create Service User",
     serviceUsersDescription: "Service users description",
     serviceUserCreateDesc: "Service user create description",
-  },
+  }},
   settings: {
     title: "Settings",
     general: "General",
@@ -931,7 +933,7 @@ export default {
     allowedPeerGroupsHelp: "Allowed peer groups help",
     forceAutomaticUpdatesHelp: "Force automatic updates help",
     deleteAccountConfirm: "Delete account confirm",
-  },
+  }},
   reverseProxy: {
     title: "Reverse Proxy",
     description: "Configure reverse proxy services and domains",
@@ -1019,7 +1021,7 @@ export default {
     passHostHeaderHelp: "Pass host header help",
     netBirdOnlyAccessDescription: "NetBird-only access description",
     sessionIdleTimeoutHelp: "Session idle timeout help",
-  },
+  }},
   dns: {
     title: "DNS",
     description: "Manage DNS nameservers and zones for your network",
@@ -1177,7 +1179,7 @@ export default {
     addDomainHelp: "Add domain help",
     advertiseToGroups: "Advertise to Groups",
     hostnameHelp: "Hostname help",
-  },
+  }},
   networks: {
     title: "Networks",
     description: "Manage networks and routing for your organization",
@@ -1326,7 +1328,7 @@ export default {
     activePoliciesCount: "Active policies count",
     routeTypeHelp: "Route type help",
     resourceDescriptionHelp: "Resource description help",
-  },
+  }},
   postureChecks: {
     title: "Posture Checks",
     descriptionOptional: "Description (optional)",
@@ -1414,7 +1416,7 @@ export default {
     useCustomVersionHelp: "Use custom version help",
     countryAndRegionHelp: "Country and region help",
     processHelp: "Process help",
-  },
+  }},
   setupKeys: {
     title: "Setup Keys",
     description: "Manage setup keys to onboard peers automatically",
@@ -1474,7 +1476,7 @@ export default {
     autoAssignedGroups: "Auto-assigned Groups",
     groupsSavedDescription: "Groups of the setup key were successfully saved",
     groupsSaving: "Saving the groups of the setup key...",
-  },
+  }},
   activity: {
     title: "Activity",
     description: "View audit events and activity logs",
@@ -1522,7 +1524,7 @@ export default {
     desc_integration_update: "Integration updated",
     desc_transferred_owner_role: "Owner role was transferred",
     desc_reseller_activated: "Distributor account was activated",
-  },
+  }},
   controlCenter: {
     title: "Control Center",
     description: "Overview of your network",
@@ -1547,7 +1549,7 @@ export default {
     resourceCount: "{count} Resource(s)",
     peerAndResourceCount: "{peerCount} Peer(s), {resourceCount} Resource(s)",
     routingPeerCount: "{count} Routing Peer(s)",
-  },
+  }},
   notifications: {
     title: "Notifications",
     description: "Choose how to be notified when important events occur in your account.",
@@ -1651,7 +1653,7 @@ export default {
     idpSyncTokenExpiredHelp: "Notify when the IdP sync token has expired and needs renewal",
     edrSyncTokenExpired: "EDR Sync Token Expired",
     edrSyncTokenExpiredHelp: "Notify when the EDR sync token has expired and needs renewal",
-  },
+  }},
   invoices: {
     title: "Invoices",
     description: "View and export all your available invoices",
@@ -1669,7 +1671,7 @@ export default {
     account: "Account",
     customers: "Customers",
     tenants: "Tenants",
-  },
+  }},
   webhooks: {
     endpointUrl: "Endpoint URL",
     enterEndpointUrl: "Enter your Endpoint URL",
@@ -1697,14 +1699,14 @@ export default {
     customAuthHelp: "Specify the header name and value for your custom authentication",
     customAuthNamePlaceholder: "e.g. X-API-Key",
     customAuthValuePlaceholder: "e.g. AIiaSyDaGmWKa4JsXZ-HjGw7ISLn_3namBGewQe",
-  },
+  }},
   survey: {
     loveToHear: "We'd love to hear from you",
     improveHelp: "Help us improve by sharing how you discovered NetBird. Your feedback truly helps us grow.",
     howDidYouHear: "How did you hear about NetBird?",
     selectOption: "Please select an option...",
     submitContinue: "Submit & Continue",
-  },
+  }},
   awsMarketplace: {
     thanksRegistering: "Thanks for registering via AWS Marketplace!",
     activeStripePlan: "It seems you already have an active subscription with us. In order to use AWS as a billing provider, please contact our support team.",
@@ -1715,7 +1717,7 @@ export default {
     logout: "Logout",
     subscribeTo: "Subscribe to",
     downgradeTo: "Downgrade to",
-  },
+  }},
   routes: {
     colName: "Name",
     colMetric: "Metric",
@@ -1794,7 +1796,7 @@ export default {
     networkIdentifierLengthError: "Network identifier length error",
     networkIdentifier: "Network Identifier",
     networkRange: "Network Range",
-  },
+  }},
   onboarding: {
     title: "Get started with NetBird",
     addResource: "Add your first resource",
@@ -1818,19 +1820,19 @@ export default {
         feature3: "Best practices and general overview",
         cta: "Book Now",
         cancel: "No Thanks",
-      },
+      }},
       v2: {
         title: "Talk to our Solutions Engineer",
         desc: "Get a 30-min technical overview. We’ll go over your specific use-case and answer any technical questions you might have. <br/> We’re offering this as a technical onboard support for you. <br/> This is NOT a sales call.",
         cta: "Book Now",
         cancel: "No Thanks",
-      },
+      }},
       v3: {
         title: "Book a Technical Overview (Not a Sales Call)",
         desc: "Get a 30-min technical overview. We’ll go over your specific use-case and answer any technical questions you might have. <br/> We’re offering this as a technical onboard support for you. <br/> This is NOT a sales call.",
         cta: "Book Now",
         cancel: "No Thanks",
-      },
+      }},
       v4: {
         title: "Book a Technical Overview",
         desc: "You’ll meet with a solutions engineer who will walk through how NetBird works, answer your implementation questions - no slides, no hard sell.",
@@ -1839,21 +1841,21 @@ export default {
         feature3: "Best practices and general overview",
         cta: "Book Now",
         cancel: "No Thanks",
-      },
+      }},
       v5: {
         title: "Talk to our Solutions Engineer",
         desc: "Get a 30-min technical overview. We’ll go over your specific use-case and answer any technical questions you might have. <br/> We’re offering this as a technical onboard support for you.",
         cta: "Book Now",
         cancel: "No Thanks",
-      },
+      }},
       v6: {
         title: "Book a Technical Overview",
         desc: "Get a 30-min technical overview. We’ll go over your specific use-case and answer any technical questions you might have. <br/> We’re offering this as a technical onboard support for you.",
         cta: "Book Now",
         cancel: "No Thanks",
-      },
-    },
-  },
+      }},
+    }},
+  }},
   setupModal: {
     generateSetupKey: "Generate a setup key",
     learnMore: "Learn more",
@@ -1906,7 +1908,9 @@ export default {
     setupKeyCreatedDescription: "Setup key created description",
     downloadFromAppStore: "Download from App Store",
     changeServer: "Change Server",
-  },
+    getStartedWithEmail: "Get started with email",
+    footerDescription: "After installation, you can set up multiple devices and manage them from this dashboard.",
+  }},
   untranslated: {
     customers_1: "Customers -",
     customers_2: "Customers",
@@ -2393,5 +2397,5 @@ export default {
     network_settings_successfully_updated_334: "Network settings successfully updated.",
     auto_assigned_groups_335: "Auto-assigned groups",
     unlimited_336: "Unlimited",
-  },
+  }},
 };
