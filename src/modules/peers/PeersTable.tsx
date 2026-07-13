@@ -441,7 +441,7 @@ export default function PeersTable({
         setSorting={setSorting}
         initialPageSize={25}
         showResetFilterButton={false}
-        columns={PeersTableColumns as any}
+        columns={columns}
         data={showBrowserPeers ? browserPeers : regularPeers}
         searchPlaceholder={"Search by name, IP, owner or group..."}
         columnVisibility={{
