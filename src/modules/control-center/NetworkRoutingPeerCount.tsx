@@ -1,6 +1,7 @@
 import Button from "@components/Button";
 import { cn } from "@utils/helpers";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import * as React from "react";
 import { useMemo } from "react";
 import CircleIcon from "@/assets/icons/CircleIcon";
@@ -14,6 +15,7 @@ export const NetworkRoutingPeerCount = ({ network }: Props) => {
   const router = useRouter();
   const routerCount = network?.routing_peers_count ?? 0;
 
+  const t = useTranslations("controlCenter");
   const routingPeerStatusColor = useMemo(() => {
     if (!network) return "bg-nb-gray-500";
     if (routerCount === 0) return "bg-nb-gray-500";
@@ -32,7 +34,7 @@ export const NetworkRoutingPeerCount = ({ network }: Props) => {
         size={8}
         className={cn("shrink-0 block", routingPeerStatusColor)}
       />
-      {routerCount} Routing Peer(s)
+      {t("routingPeerCount", { count: routerCount })}
     </Button>
   );
 };

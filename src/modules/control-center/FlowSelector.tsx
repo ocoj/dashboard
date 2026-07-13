@@ -6,6 +6,7 @@ import {
   UsersIcon,
 } from "lucide-react";
 import * as React from "react";
+import { useTranslations } from "next-intl";
 import { useAgentNetworkMode } from "@/modules/agent-network/useAgentNetworkMode";
 
 export enum FlowView {
@@ -21,6 +22,7 @@ type Props = {
 };
 
 export const FlowSelector = ({ value, onChange }: Props) => {
+  const t = useTranslations("controlCenter");
   const { only: agentNetworkOnly } = useAgentNetworkMode();
 
   return (
@@ -35,21 +37,21 @@ export const FlowSelector = ({ value, onChange }: Props) => {
           className={"text-xs px-3 py-1"}
         >
           <MonitorSmartphoneIcon size={12} />
-          Peer
+          {t("peer")}
         </SegmentedTabs.Trigger>
         <SegmentedTabs.Trigger
           value={FlowView.USERS}
           className={"text-xs px-3 py-1"}
         >
           <UsersIcon size={12} />
-          User
+          {t("user")}
         </SegmentedTabs.Trigger>
         <SegmentedTabs.Trigger
           value={FlowView.GROUPS}
           className={"text-xs px-3 py-1"}
         >
           <FolderGit2 size={12} />
-          Group
+          {t("group")}
         </SegmentedTabs.Trigger>
         {/* The agent-network repackaging drops Networks as a top-level
             pivot. Keep it for everyone else so flag-off behaviour is
@@ -60,7 +62,7 @@ export const FlowSelector = ({ value, onChange }: Props) => {
             className={"text-xs px-3 py-[0.45rem]"}
           >
             <NetworkIcon size={12} />
-            Networks
+            {t("networks")}
           </SegmentedTabs.Trigger>
         )}
       </SegmentedTabs.List>

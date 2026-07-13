@@ -3,6 +3,7 @@ import { cn } from "@utils/helpers";
 import { Handle, type Node, Position } from "@xyflow/react";
 import { NetworkIcon } from "lucide-react";
 import * as React from "react";
+import { useTranslations } from "next-intl";
 import CircleIcon from "@/assets/icons/CircleIcon";
 import { Network, NetworkResource } from "@/interfaces/Network";
 import { DeviceCard } from "@components/DeviceCard";
@@ -19,6 +20,7 @@ export const NetworkNode = ({ data }: NetworkNodeProps) => {
   );
 
   const n = data.network as Network;
+  const t = useTranslations("controlCenter");
   const routingPeersCount = n?.routing_peers_count ?? 0;
   const resourceIds = n?.resources || [];
   const resources =
@@ -61,7 +63,7 @@ export const NetworkNode = ({ data }: NetworkNodeProps) => {
               routingPeersCount > 1 && "bg-green-400",
             )}
           />
-          {routingPeersCount} Routing Peer(s)
+          {t("routingPeerCount", { count: routingPeersCount })}
         </div>
       </div>
 
