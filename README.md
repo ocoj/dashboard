@@ -14,18 +14,22 @@
 
 ## 技术栈
 
-- Next.js（静态导出 `output: "export"`）
-- React + TypeScript + Tailwind CSS
+- Next.js 16（静态导出 `output: "export"`）
+- React 18 + TypeScript + Tailwind CSS
 - next-intl 国际化
-- Nginx + Docker
+- Node.js + Docker（内置轻量 HTTP 服务器，无需 Nginx）
 
 ## 快速部署
 
-### 方式一：Docker 镜像（推荐）
+### 方式一：拉取预构建镜像（推荐）
 
 ```bash
+# 从 GitHub Container Registry 拉取
+docker pull ghcr.io/ocoj/dashboard:v2.90.3-zh
+
+# 运行（容器内监听 80 端口）
 docker run -d --name netbird-dashboard --restart unless-stopped \
-  -p 30443:443 \
+  -p 30443:80 \
   -e AUTH_AUTHORITY=<你的认证服务地址> \
   -e AUTH_CLIENT_ID=<客户端 ID> \
   -e AUTH_AUDIENCE=<Audience> \
@@ -35,33 +39,34 @@ docker run -d --name netbird-dashboard --restart unless-stopped \
   ghcr.io/ocoj/dashboard:v2.90.3-zh
 ```
 
+> 镜像由 GitHub Actions 自动构建，每次推送 tag 或 `i18n-next` 分支时触发。
+
+### 查看可用版本
+
+在 [GitHub Packages](https://github.com/ocoj/dashboard/pkgs/container/dashboard) 查看所有可用镜像 tag。
+
 ### 方式二：本地构建
 
 ```bash
-# 构建静态文件
 npm ci && npx next build
-
-# 构建 Docker 镜像
-docker build -f docker/Dockerfile -t netbird-dashboard .
-
-# 或使用构建脚本
-./build.sh
+docker build -f docker/Dockerfile -t netbird-dashboard:amd64 .
 ```
 
-### 方式三：SSH 部署到远程服务器
+### 方式三：构建脚本 + 远程部署
 
 ```bash
-# 本地构建并导出镜像
+# 构建并导出 tar.gz
 ./build.sh
 
 # 上传到服务器
-scp netbird-dashboard.tar.gz root@***REMOVED***:/tmp/
+scp netbird-dashboard.tar.gz user@your-server:/tmp/
 
 # 在服务器上加载并运行
-ssh root@***REMOVED***
+ssh user@your-server
 docker load < /tmp/netbird-dashboard.tar.gz
 docker run -d --name netbird-dashboard --restart unless-stopped \
-  -p 30443:443 \
+  -p 30443:80 \
+  -e AUTH_AUTHORITY=... \
   ...（环境变量同上）\
   netbird-dashboard:amd64
 ```
