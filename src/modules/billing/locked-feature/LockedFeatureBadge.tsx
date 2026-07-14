@@ -2,12 +2,12 @@ import { IconHelpCircle } from "@tabler/icons-react";
 import { cn } from "@utils/helpers";
 import { isNetBirdCloud } from "@utils/netbird";
 import { LockIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
 import * as React from "react";
 import {
   PlanFeatureAvailability,
   useIsFeatureLocked,
 } from "@/cloud/cloud-hooks/useIsFeatureLocked";
-import { PLAN_TEXT } from "@/modules/billing/locked-feature/LockedFeatureContent";
 import { LockedFeatureInfoCardProps } from "@/modules/billing/locked-feature/LockedFeatureInfoCard";
 import { LockedFeatureTooltip } from "@/modules/billing/locked-feature/LockedFeatureTooltip";
 
@@ -28,6 +28,7 @@ export const LockedFeatureBadge = ({
   disabled = false,
   center = false,
 }: Props) => {
+  const t = useTranslations("billing");
   const isLocked = useIsFeatureLocked(feature);
   if (disabled) return <>{children}</>;
   if (!isLocked) return <>{children}</>;
@@ -64,9 +65,9 @@ export const LockedFeatureBadge = ({
             <LockIcon size={12} className={"relative -top-[1px]"} />
             {isNetBirdCloud()
               ? plan == "team"
-                ? PLAN_TEXT.TEAM
-                : PLAN_TEXT.BUSINESS
-              : PLAN_TEXT.ENTERPRISE}
+                ? t("plan_team")
+                : t("plan_business")
+              : t("plan_enterprise")}
             <IconHelpCircle size={13} className={"relative -top-[1px]"} />
           </div>
         </LockedFeatureTooltip>

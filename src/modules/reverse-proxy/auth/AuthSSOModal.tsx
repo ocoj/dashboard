@@ -28,6 +28,7 @@ export default function AuthSSOModal({
   onRemove,
 }: Readonly<Props>) {
   const t = useTranslations("common");
+  const tr = useTranslations("reverseProxy");
   const { users } = useUsers();
   const [groups, setGroups] = useState<Group[]>(currentGroups);
   const isEditing = isEnabled;
@@ -47,8 +48,8 @@ export default function AuthSSOModal({
     <Modal open={open} onOpenChange={onOpenChange}>
       <ModalContent maxWidthClass="max-w-xl">
         <ModalHeader
-          title="SSO (Single Sign-On)"
-          description="Require users to authenticate via SSO to access this service."
+          title={tr("sso")}
+          description={tr("ssoDescription")}
         />
 
         <GradientFadedBackground />

@@ -510,6 +510,15 @@ export default function ActivityDescription({ event }: Props) {
       </div>
     );
 
+  if (event.activity_code == "peer.inactivity.expiration.disable")
+    return <div className={"inline"}>{t("desc_peer_inactivity_expiration_disable")}</div>;
+
+  if (event.activity_code == "account.setting.metrics.push.disable")
+    return <div className={"inline"}>{t("desc_account_settings_extra_metrics_push_disable")}</div>;
+
+  if (event.activity_code == "account.setting.metrics.push.enable")
+    return <div className={"inline"}>{t("desc_account_settings_extra_metrics_push_enable")}</div>;
+
   if (event.activity_code == "peer.login.expiration.disable")
     return (
       <div className={"inline"}>

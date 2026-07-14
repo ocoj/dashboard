@@ -86,9 +86,9 @@ export default function GroupsSettings({ account }: Props) {
 		const showConfirm = jwtGroupSync && jwtGroupsEntered;
 		const choice = showConfirm
 			? await confirm({
-					title: `JWT allow group - ${jwtAllowGroups[0]}`,
-					description: `Only users part of the ${jwtAllowGroups[0]} group will be able to access NetBird. Are you sure you want to save the changes?`,
-					confirmText: "Save",
+					title: t("jwtAllowGroupConfirmTitle", { group: jwtAllowGroups[0] || "" }),
+					description: t("jwtAllowGroupConfirmDesc", { group: jwtAllowGroups[0] || "" }),
+					confirmText: t("save"),
 					children: (
 						<div
 							className={
@@ -96,10 +96,10 @@ export default function GroupsSettings({ account }: Props) {
 							}
 						>
 							<AlertCircle size={14} />
-							To prevent losing access, ensure you are part of this group.
+							{t("jwtAllowGroupConfirmWarning")}
 						</div>
 					),
-					cancelText: "Cancel",
+					cancelText: t("cancel"),
 					type: "default",
 				})
 			: true;
@@ -107,8 +107,8 @@ export default function GroupsSettings({ account }: Props) {
 		if (!choice) return;
 
 		notify({
-			title: "Group Settings",
-			description: "Group settings were updated successfully.",
+			title: t("groupSettingsTitle"),
+			description: t("groupSettingsSuccess"),
 			promise: saveRequest
 				.put({
 					id: account.id,
@@ -131,7 +131,7 @@ export default function GroupsSettings({ account }: Props) {
 						jwtGroupSync,
 					]);
 				}),
-			loadingMessage: "Updating group settings...",
+			loadingMessage: t("updatingGroupSettings"),
 		});
 	};
 

@@ -6,6 +6,7 @@ import dayjs from "dayjs";
 import { isEmpty } from "lodash";
 import { RefreshCw, Repeat, Settings } from "lucide-react";
 import * as React from "react";
+import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useState } from "react";
 import { useSWRConfig } from "swr";
 import integrationImage from "@/assets/integrations/jumpcloud.png";
@@ -20,6 +21,7 @@ import { useIntegrations } from "@/modules/integrations/idp-sync/useIntegrations
 import { IntegrationCard } from "@/modules/integrations/IntegrationCard";
 
 export const Jumpcloud = () => {
+  const t = useTranslations("integrations");
   const { mutate } = useSWRConfig();
   const [setupModal, setSetupModal] = useState(false);
   const { permission } = usePermissions();
@@ -68,7 +70,7 @@ export const Jumpcloud = () => {
     <>
       <IntegrationCard
         name="Jumpcloud"
-        description="Jumpcloud is a unified identity, device, and access management platform."
+        description={t("jumpcloudDesc")}
         url={{
           title: "jumpcloud.com",
           href: "https://jumpcloud.com/",

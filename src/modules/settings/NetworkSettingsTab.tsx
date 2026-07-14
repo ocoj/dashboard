@@ -68,10 +68,10 @@ function NetworkSettingsTabContent({ account }: Readonly<Props>) {
 
 	const toggleNetworkDNSSetting = async (toggle: boolean) => {
 		notify({
-			title: "DNS Wildcard Routing",
-			description: `DNS Wildcard Routing successfully ${
-				toggle ? "enabled" : "disabled"
-			}.`,
+			title: t("dnsWildcardRoutingTitle"),
+			description: t("dnsWildcardRoutingToggleResult", {
+				status: toggle ? t("enabled") : t("disabled"),
+			}),
 			promise: saveRequest
 				.put({
 					id: account.id,
@@ -84,7 +84,7 @@ function NetworkSettingsTabContent({ account }: Readonly<Props>) {
 					setRoutingPeerDNSSetting(toggle);
 					mutate("/accounts");
 				}),
-			loadingMessage: "Updating DNS wildcard setting...",
+			loadingMessage: t("updatingDnsWildcard"),
 		});
 	};
 
@@ -125,8 +125,8 @@ function NetworkSettingsTabContent({ account }: Readonly<Props>) {
 		}
 
 		notify({
-			title: "Network Settings",
-			description: `Network settings successfully updated.`,
+			title: t("networkSettingsTitle"),
+			description: t("networkSettingsSuccess"),
 			promise: saveRequest
 				.put({
 					id: account.id,
@@ -141,7 +141,7 @@ function NetworkSettingsTabContent({ account }: Readonly<Props>) {
 						ipv6GroupNames,
 					]);
 				}),
-			loadingMessage: "Updating network settings...",
+			loadingMessage: t("updatingNetworkSettings"),
 		});
 	};
 
@@ -152,14 +152,14 @@ function NetworkSettingsTabContent({ account }: Readonly<Props>) {
 			allowOnlyTld: false,
 		});
 		if (!valid) {
-			return "Please enter a valid domain, e.g. example.com or intra.example.com";
+			return t("domainError");
 		}
 	}, [customDNSDomain]);
 
 	const networkRangeError = useMemo(() => {
 		if (networkRange == "") {
 			if (account.settings.network_range) {
-				return "Network range cannot be empty";
+				return t("networkRangeEmptyError");
 			}
 			return "";
 		}
@@ -167,10 +167,10 @@ function NetworkSettingsTabContent({ account }: Readonly<Props>) {
 		try {
 			const validCIDR = cidr.isValidCIDR(networkRange);
 			if (!validCIDR) {
-				return "Please enter a valid IPv4 CIDR range, e.g. 100.64.0.0/16 or 192.168.1.0/24";
+				return t("ipv4CidrError");
 			}
 		} catch (error) {
-			return "Please enter a valid IPv4 CIDR range, e.g. 100.64.0.0/16 or 192.168.1.0/24";
+			return t("ipv4CidrError");
 		}
 	}, [networkRange, account.settings.network_range]);
 

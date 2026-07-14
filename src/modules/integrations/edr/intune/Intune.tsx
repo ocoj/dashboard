@@ -4,6 +4,7 @@ import { SkeletonIntegration } from "@components/skeletons/SkeletonIntegration";
 import { useApiCall } from "@utils/api";
 import { Settings } from "lucide-react";
 import * as React from "react";
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { useSWRConfig } from "swr";
 import integrationImage from "@/assets/integrations/intune.png";
@@ -22,6 +23,7 @@ type Props = {
 };
 
 export const Intune = ({ account }: Props) => {
+  const t = useTranslations("integrations");
   const { mutate } = useSWRConfig();
   const [setupModal, setSetupModal] = useState(false);
   const { permission } = usePermissions();
@@ -86,7 +88,7 @@ export const Intune = ({ account }: Props) => {
     <>
       <IntegrationCard
         name="Intune"
-        description="Microsoft Intune is a cloud-based unified endpoint management for your organization."
+        description={t("intuneDesc")}
         url={{
           title: "microsoft.com",
           href: "https://www.microsoft.com/en-us/security/business/endpoint-management/microsoft-intune",

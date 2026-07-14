@@ -5,6 +5,7 @@ import NoResults from "@components/ui/NoResults";
 import { ColumnDef, SortingState } from "@tanstack/react-table";
 import { ClipboardList } from "lucide-react";
 import React, { useState } from "react";
+import { useTranslations } from "next-intl";
 import { useSWRConfig } from "swr";
 import DataTableRefreshButton from "@/components/table/DataTableRefreshButton";
 import { DataTableRowsPerPage } from "@/components/table/DataTableRowsPerPage";
@@ -39,7 +40,7 @@ const PeerRemoteJobsColumns: ColumnDef<Job>[] = [
     ),
     sortingFn: "datetime",
     cell: ({ row }) => (
-      <LastTimeRow date={row.original.created_at} text="Created at" />
+      <LastTimeRow date={row.original.created_at} text="创建时间" />
     ),
   },
   {
@@ -57,7 +58,7 @@ const PeerRemoteJobsColumns: ColumnDef<Job>[] = [
     sortingFn: "datetime",
     cell: ({ row }) =>
       row.original.completed_at ? (
-        <LastTimeRow date={row.original.completed_at} text="Completed at" />
+        <LastTimeRow date={row.original.completed_at} text="完成时间" />
       ) : (
         <EmptyRow />
       ),
@@ -86,6 +87,7 @@ export default function PeerRemoteJobsTable({
   headingTarget,
   peerID,
 }: Props) {
+  const t = useTranslations("common");
   const { mutate } = useSWRConfig();
 
   const [sorting, setSorting] = useState<SortingState>([
@@ -119,7 +121,7 @@ export default function PeerRemoteJobsTable({
         <NoResults
           className="py-4"
           title="This peer has no remote jobs"
-          description="Create a debug bundle or trigger other remote jobs to see them listed here."
+          description={t("createRemoteJobsDesc")}
           icon={<ClipboardList size={20} className="text-nb-gray-300" />}
         />
       }

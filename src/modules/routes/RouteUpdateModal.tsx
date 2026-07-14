@@ -411,8 +411,7 @@ function RouteUpdateModalContent({ onSuccess, route, cell }: ModalProps) {
 						<div>
 							<Label>{t("distributionGroups")}</Label>
 							<HelpText>
-								Advertise this route to peers that belong to the following
-								groups
+					{tr("advertDescription")}
 							</HelpText>
 							<PeerGroupSelector onChange={setGroups} values={groups} />
 						</div>
@@ -420,9 +419,7 @@ function RouteUpdateModalContent({ onSuccess, route, cell }: ModalProps) {
 						<div>
 							<Label>{tr("accessControlGroupsOptional")}</Label>
 							<HelpText>
-								These groups offer a more granular control of internal services
-								in your network. They can be used in access control policies to
-								limit and control access of this route.
+				{tr("accessControlGroupsUpdateHelp")}
 							</HelpText>
 							<PeerGroupSelector
 								onChange={setAccessControlGroups}

@@ -344,7 +344,7 @@ export function RouteModalContent({
 		if (networkRange == "") return "";
 		const validCIDR = cidr.isValidAddress(networkRange);
 		if (!validCIDR)
-			return "Please enter a valid IP or CIDR, e.g., 192.168.1.1, 192.168.1.0/24 or 2001:db8::/64";
+			return tr("cidrError");
 	}, [networkRange]);
 
 	const isGroupsEntered = useMemo(() => {
@@ -575,9 +575,7 @@ export function RouteModalContent({
 										side={"top"}
 										content={
 											<div className={"text-xs max-w-xs"}>
-										{tr("keepRoutesTooltip")}
-												Keeping resolved addresses ensures ongoing connections
-												to active resources remain uninterrupted.
+										{tr("keepRoutesTooltipContent")}
 											</div>
 										}
 										className={"w-full block"}
@@ -599,8 +597,7 @@ export function RouteModalContent({
 											}
 											helpText={
 												<div>
-										{tr("keepRoutesHelp")}
-													updates to maintain stable connections.
+											{tr("keepRoutesHelp")}
 												</div>
 											}
 										/>

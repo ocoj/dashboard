@@ -7,6 +7,7 @@ import dayjs from "dayjs";
 import { isEmpty } from "lodash";
 import { RefreshCw, Settings } from "lucide-react";
 import * as React from "react";
+import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useState } from "react";
 import { useSWRConfig } from "swr";
 import integrationImage from "@/assets/integrations/google-workspace.png";
@@ -22,6 +23,7 @@ import { useIntegrations } from "@/modules/integrations/idp-sync/useIntegrations
 import { IntegrationCard } from "@/modules/integrations/IntegrationCard";
 
 export const GoogleWorkspace = () => {
+  const t = useTranslations("integrations");
   const { mutate } = useSWRConfig();
   const [setupModal, setSetupModal] = useState(false);
   const { permission } = usePermissions();
@@ -72,7 +74,7 @@ export const GoogleWorkspace = () => {
     <>
       <IntegrationCard
         name="Google Workspace"
-        description="A flexible, innovative solution for people and organizations to achieve more."
+        description={t("googleWorkspaceDesc")}
         url={{
           title: "workspace.google.com",
           href: "https://workspace.google.com/",

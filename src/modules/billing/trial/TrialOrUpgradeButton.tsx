@@ -5,6 +5,7 @@ import { cn } from "@utils/helpers";
 import { isNetBirdCloud } from "@utils/netbird";
 import { ExternalLinkIcon, Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import * as React from "react";
 import { useState } from "react";
 import { PlanFeatures } from "@/cloud/cloud-hooks/useIsFeatureLocked";
@@ -32,6 +33,7 @@ export const TrialOrUpgradeButton = ({
   offerTrial = true,
   hidden = false,
 }: Props) => {
+  const t = useTranslations("billing");
   const { isTrialAvailable, startTrial, plans, canUpgrade } = useTrial();
   const [isLoading, setIsLoading] = useState(false);
   const { isOwnerOrAdmin } = useLoggedInUser();
@@ -53,8 +55,8 @@ export const TrialOrUpgradeButton = ({
       <div>
         <div>
           {isTrialAvailable && offerTrial
-            ? "Only the owner or an administrator can start a free trial."
-            : "Only the owner or an administrator can upgrade the plan."}
+            ? t("only_owner_admin_trial")
+            : t("only_owner_admin_upgrade_plan")}
         </div>
       </div>
     );
@@ -70,7 +72,7 @@ export const TrialOrUpgradeButton = ({
           className={cn("w-full h-[34px]")}
           disabled={!isOwnerOrAdmin}
         >
-          Go to Plans & Billing
+          {t("go_to_plans_billing")}
         </Button>
       </div>
     );
@@ -89,8 +91,7 @@ export const TrialOrUpgradeButton = ({
           disabled={canUpgrade}
           content={
             <div className={"text-xs max-w-sm"}>
-              Your plan was recently updated. Please wait for 48 hours from the
-              last update to change your plan again.
+              {t("plan_recently_updated")}
             </div>
           }
         >
@@ -110,7 +111,7 @@ export const TrialOrUpgradeButton = ({
             {isLoading ? (
               <Loader2 size={15} className={"animate-spin"} />
             ) : (
-              "Start 14-Day Free Trial"
+              t("start_14_day_trial")
             )}
             {!canUpgrade && (
               <IconHelpCircle size={13} className={"relative -top-[1px]"} />
@@ -125,7 +126,7 @@ export const TrialOrUpgradeButton = ({
             !isOwnerOrAdmin && "opacity-50",
           )}
         >
-          No credit card required
+          {t("no_credit_card")}
         </div>
       </div>
     );
@@ -144,6 +145,7 @@ export const SelfHostedUpgradeButton = ({
 }: {
   variant?: "primary" | "white";
 }) => {
+  const t = useTranslations("billing");
   const { only: agentNetworkOnly } = useAgentNetworkMode();
   // Agent Network-only deployments point at the Agent Network pricing page
   // (tagged so the visit is attributable); the regular self-hosted product
@@ -165,7 +167,7 @@ export const SelfHostedUpgradeButton = ({
           className={cn("w-full h-[34px]")}
           data-testid={"self-hosted-upgrade-cta"}
         >
-          Get a License
+          {t("get_a_license")}
           <ExternalLinkIcon size={13} className={"shrink-0"} />
         </Button>
       </a>

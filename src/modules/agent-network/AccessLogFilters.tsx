@@ -27,6 +27,7 @@ import { ColumnFiltersState, Table } from "@tanstack/react-table";
 import dayjs from "dayjs";
 import * as React from "react";
 import { useMemo, useState } from "react";
+import { useTranslations } from "next-intl";
 import { DateRange } from "react-day-picker";
 import { useGroups } from "@/contexts/GroupsProvider";
 import { useUsers } from "@/contexts/UsersProvider";
@@ -37,9 +38,12 @@ type FilterRow = Record<string, unknown>;
 // formatDateChip renders the active date-range filter as a compact chip body.
 // Quick-range presets (Last 14 Days, Last Month, …) show their label; a custom
 // range shows the compact "from – to" span.
-export function formatDateChip(value: DateRange | undefined): string | null {
+export function formatDateChip(
+  value: DateRange | undefined,
+  t?: (key: string, params?: Record<string, any>) => string,
+): string | null {
   if (!value?.from && !value?.to) return null;
-  const preset = dateRangePresetLabel(value);
+  const preset = dateRangePresetLabel(value, t);
   if (preset) return preset;
   const from = value?.from ? dayjs(value.from).format("MMM D") : "…";
   const to = value?.to ? dayjs(value.to).format("MMM D") : "…";
@@ -55,6 +59,7 @@ export function useAccessLogFilters() {
   const { providers } = useAIProviders();
   const { users } = useUsers();
   const { groups } = useGroups();
+  const t = useTranslations();
 
   // 14-day default window, computed once so it's stable across renders.
   const defaultDateRange = useMemo<DateRange>(
@@ -132,7 +137,7 @@ export function useAccessLogFilters() {
             />
           </div>
         ),
-        formatChip: (v) => formatDateChip(v as DateRange | undefined),
+        formatChip: (v) => formatDateChip(v as DateRange | undefined, t),
       },
       {
         id: "user",
@@ -194,7 +199,7 @@ export function useAccessLogFilters() {
           formatCheckboxChip(v as string[] | undefined, modelOptions, "models"),
       },
     ],
-    [userOptions, groups, providerOptions, modelOptions],
+    [userOptions, groups, providerOptions, modelOptions, t],
   );
 
   const filtersButton = (

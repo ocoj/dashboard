@@ -6,6 +6,7 @@ import dayjs from "dayjs";
 import { isEmpty } from "lodash";
 import { HistoryIcon, Settings } from "lucide-react";
 import * as React from "react";
+import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useState } from "react";
 import { useSWRConfig } from "swr";
 import integrationImage from "@/assets/integrations/fleetdm.png";
@@ -27,6 +28,7 @@ type Props = {
 };
 
 export const FleetDM = ({ account }: Props) => {
+  const t = useTranslations("integrations");
   const { mutate } = useSWRConfig();
   const [setupModal, setSetupModal] = useState(false);
   const { permission } = usePermissions();
@@ -90,7 +92,7 @@ export const FleetDM = ({ account }: Props) => {
     <>
       <IntegrationCard
         name={"FleetDM"}
-        description="Open-source device management platform for macOS, Windows, and Linux with osquery-based compliance policies."
+        description={t("fleetdmDesc")}
         url={{
           title: "fleetdm.com",
           href: "https://fleetdm.com/",

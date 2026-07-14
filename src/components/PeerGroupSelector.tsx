@@ -321,10 +321,10 @@ export function PeerGroupSelector({
 
   const searchPlaceholder = useMemo(() => {
     if (tab === "groups") return placeholderForSearch;
-    if (tab === "resources") return "Search resource...";
-    if (tab === "peers") return "Search peer by name or ip...";
-    if (tab === "clusters") return "Search cluster...";
-    return "Search...";
+    if (tab === "resources") return tCommon("searchResource");
+    if (tab === "peers") return tCommon("searchPeer");
+    if (tab === "clusters") return tCommon("searchCluster");
+    return tCommon("search");
   }, [tab, placeholderForSearch]);
 
   const filteredClusters = useMemo(() => {
@@ -633,8 +633,7 @@ export function PeerGroupSelector({
                         <FullTooltip
                           content={
                             <div className={"text-xs max-w-xs"}>
-                              This group is already part of the routing peer and
-                              can not be used for the access control groups.
+                              {tCommon("groupAlreadyRoutingPeer")}
                             </div>
                           }
                           disabled={!isDisabled}
@@ -942,6 +941,7 @@ const PolicyCounter = ({
   group: Group;
   policies: Policy[];
 }) => {
+  const tCommon = useTranslations("common");
   const count = useMemo(() => {
     if (!group.id) return 0;
     return policies.filter((policy) => {
@@ -963,7 +963,7 @@ const PolicyCounter = ({
       }
     >
       <ShieldCheck size={14} className={"shrink-0"} />
-      {count} {count === 1 ? "Policy" : "Policies"}
+      {count} {count === 1 ? tCommon("policy") : tCommon("policies")}
     </div>
   );
 };

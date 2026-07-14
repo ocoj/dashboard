@@ -135,7 +135,7 @@ export default function ActivityTable({
     () => [
       {
         id: "activity_code",
-        label: "Type",
+        label: t("type"),
         renderPicker: (p) => (
           <ActivityTypePicker
             value={p.value as string[] | undefined}
@@ -148,7 +148,7 @@ export default function ActivityTable({
       },
       {
         id: "initiator_email",
-        label: "Initiator",
+        label: t("initiator"),
         renderPicker: (p) => (
           <UsersPicker
             value={p.value as string | undefined}

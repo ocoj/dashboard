@@ -41,20 +41,20 @@ type Props = {
 	account: Account;
 };
 
-const latestOrCustomVersion = [
+const latestOrCustomVersion = (t: ReturnType<typeof useTranslations>): SelectOption[] => [
 	{
-		label: "Disabled",
+		label: t("disabled"),
 		value: "disabled",
 	},
 	{
-		label: "Latest Version",
+		label: t("latestVersion"),
 		value: "latest",
 	},
 	{
-		label: "Custom Version",
+		label: t("customVersion"),
 		value: "custom",
 	},
-] as SelectOption[];
+];
 
 export default function ClientSettingsTab({ account }: Readonly<Props>) {
 	const { isLoading: isGroupsLoading } = useGroups();
@@ -126,7 +126,7 @@ function ClientSettingsTabContent({ account }: Readonly<Props>) {
 	};
 
 	const versionError = useMemo(() => {
-		const msg = "Please enter a valid version, e.g., 0.2, 0.2.0, 0.2.0-alpha.1";
+		const msg = t("versionError");
 		if (autoUpdateCustomVersion == "") return "";
 		if (autoUpdateCustomVersion == "-") return "";
 		const validSemver = validator.isValidVersion(autoUpdateCustomVersion);
@@ -162,8 +162,8 @@ function ClientSettingsTabContent({ account }: Readonly<Props>) {
 			.filter(Boolean) as string[];
 
 		notify({
-			title: "Client Settings",
-			description: `Client settings successfully updated.`,
+			title: t("clientSettingsTitle"),
+			description: t("clientSettingsSuccess"),
 			promise: saveRequest
 				.put({
 					id: account.id,
@@ -185,16 +185,16 @@ function ClientSettingsTabContent({ account }: Readonly<Props>) {
 						peerExposeGroupNames,
 					]);
 				}),
-			loadingMessage: "Updating client settings...",
+			loadingMessage: t("updatingClientSettings"),
 		});
 	};
 
 	const toggleLazyConnection = async (toggle: boolean) => {
 		notify({
-			title: "Lazy Connections",
-			description: `Lazy Connections successfully ${
-				toggle ? "enabled" : "disabled"
-			}.`,
+			title: t("lazyConnectionsTitle"),
+			description: t("lazyConnectionsToggleResult", {
+				status: toggle ? t("enabled") : t("disabled"),
+			}),
 			promise: saveRequest
 				.put({
 					id: account.id,
@@ -207,16 +207,14 @@ function ClientSettingsTabContent({ account }: Readonly<Props>) {
 					setLazyConnection(toggle);
 					mutate("/accounts");
 				}),
-			loadingMessage: "Updating Lazy Connections setting...",
+			loadingMessage: t("updatingLazyConnections"),
 		});
 	};
 
   const toggleAgentNetworkOnly = async (toggle: boolean) => {
     notify({
-      title: "Agent Network Focused View",
-      description: `Agent Network focused view successfully ${
-        toggle ? "enabled" : "disabled"
-      }.`,
+      title: t("agentNetworkTitle"),
+      description: t("agentNetworkToggleResult", { status: toggle ? t("enabled") : t("disabled") }),
       promise: saveRequest
         .put({
           id: account.id,
@@ -229,7 +227,7 @@ function ClientSettingsTabContent({ account }: Readonly<Props>) {
           setAgentNetworkOnly(toggle);
           mutate("/accounts");
         }),
-      loadingMessage: "Updating Agent Network focused view setting...",
+      loadingMessage: t("updatingAgentNetwork"),
     });
   };
 
@@ -250,14 +248,14 @@ function ClientSettingsTabContent({ account }: Readonly<Props>) {
           />
         </Breadcrumbs>
         <div className={"flex items-start justify-between"}>
-          <h1>Clients</h1>
+          <h1>{t("clients")}</h1>
           <Button
             variant={"primary"}
             disabled={isSaveButtonDisabled}
             onClick={saveChanges}
             data-testid={"save-clients-settings"}
           >
-            Save Changes
+            {t("saveChanges")}
           </Button>
         </div>
 
@@ -287,7 +285,7 @@ function ClientSettingsTabContent({ account }: Readonly<Props>) {
 							<SelectDropdown
 								value={autoUpdateMethod}
 								onChange={handleUpdateMethodChange}
-								options={latestOrCustomVersion}
+								options={latestOrCustomVersion(t)}
 							/>
 							<Input
 								value={autoUpdateCustomVersion}
@@ -384,18 +382,16 @@ function ClientSettingsTabContent({ account }: Readonly<Props>) {
           <div>
             <Label>
               <ClockFadingIcon size={15} />
-              Lazy Connections
+              {t("lazyConnections")}
             </Label>
 
             <HelpText>
-              Instead of maintaining always-on connections, NetBird activates
-              them on-demand based on activity or signaling. This requires
-              NetBird client v0.50.1 or higher.{" "}
+              {t("lazyConnectionsDescription")}{" "}
               <InlineLink
                 href={"https://docs.netbird.io/how-to/lazy-connection"}
                 target={"_blank"}
               >
-                Learn more
+                {t("learnMore")}
                 <ExternalLinkIcon size={12} />
               </InlineLink>
             </HelpText>
@@ -404,14 +400,8 @@ function ClientSettingsTabContent({ account }: Readonly<Props>) {
               value={lazyConnection}
               onChange={toggleLazyConnection}
               data-testid="lazy-connections"
-              label={<>Enable Lazy Connections</>}
-              helpText={
-                <>
-                  Allow to establish connections between peers only when
-                  required. Changes will take effect after restarting the
-                  clients.
-                </>
-              }
+              label={<>{t("enableLazyConnections")}</>}
+              helpText={<>{t("lazyConnectionsHelp")}</>}
               disabled={!permission.settings.update}
             />
           </div>
@@ -420,22 +410,18 @@ function ClientSettingsTabContent({ account }: Readonly<Props>) {
             <div>
               <Label>
                 <AgentNetworkIcon size={15} />
-                Agent Network
+                {t("agentNetwork")}
               </Label>
               <HelpText>
-                Focus the dashboard on the Agent Network surface and hide
-                sections that are not relevant for it, such as Networks, DNS and
-                Reverse Proxy.
+                {t("agentNetworkDescription")}
               </HelpText>
               <FancyToggleSwitch
                 className={"mt-2"}
                 value={agentNetworkOnly}
                 onChange={toggleAgentNetworkOnly}
                 data-testid="agent-network-only"
-                label={"Agent Network focused view"}
-                helpText={
-                  "When enabled, the dashboard shows only the Agent Network related sections. Disable it to bring back the full dashboard."
-                }
+                label={t("agentNetworkFocusedView")}
+                helpText={t("agentNetworkFocusedViewHelp")}
                 disabled={!permission.settings.update}
               />
             </div>

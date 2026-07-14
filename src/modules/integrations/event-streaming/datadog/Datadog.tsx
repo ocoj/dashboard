@@ -2,6 +2,7 @@ import { notify } from "@components/Notification";
 import { SkeletonIntegration } from "@components/skeletons/SkeletonIntegration";
 import useFetchApi, { useApiCall } from "@utils/api";
 import * as React from "react";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { useSWRConfig } from "swr";
 import integrationImage from "@/assets/integrations/datadog.png";
@@ -13,6 +14,7 @@ import DatadogSetup from "@/modules/integrations/event-streaming/datadog/Datadog
 import { IntegrationCard } from "@/modules/integrations/IntegrationCard";
 
 export default function Datadog() {
+  const t = useTranslations("integrations");
   const { permission } = usePermissions();
   // Event Streaming is a licensed feature; skip the call on open-source.
   const { isLicensed } = useIsLicensed();
@@ -71,7 +73,7 @@ export default function Datadog() {
     <>
       <IntegrationCard
         name="Datadog"
-        description="Datadog is a monitoring service for cloud-scale applications."
+        description={t("datadogDesc")}
         url={{
           title: "datadoghq.com",
           href: "https://www.datadoghq.com/",

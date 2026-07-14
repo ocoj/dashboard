@@ -65,26 +65,26 @@ function ActionCell({ provider, onEdit }: ActionCellProps) {
 		"/identity-providers/" + provider.id,
 	);
 	const { permission } = usePermissions();
+	const t = useTranslations("settings");
 
 	const handleDelete = async () => {
 		const choice = await confirm({
-			title: `Delete '${provider.name}'?`,
-			description:
-				"Are you sure you want to delete this identity provider? This action cannot be undone.",
-			confirmText: "Delete",
-			cancelText: "Cancel",
+			title: t("deleteIdpConfirm", { name: provider.name || "" }),
+			description: t("deleteIdpConfirmDesc"),
+			confirmText: t("delete"),
+			cancelText: t("cancel"),
 			type: "danger",
 		});
 
 		if (!choice) return;
 
 		notify({
-			title: "Delete Identity Provider",
-			description: "Identity provider was deleted successfully.",
+			title: t("deleteIdpTitle"),
+			description: t("deleteIdpSuccess"),
 			promise: deleteRequest.del().then(() => {
 				mutate("/identity-providers");
 			}),
-			loadingMessage: "Deleting identity provider...",
+			loadingMessage: t("deletingIdp"),
 		});
 	};
 
@@ -102,7 +102,7 @@ function ActionCell({ provider, onEdit }: ActionCellProps) {
 						disabled={!permission.identity_providers.update}
 					>
 						<PencilIcon size={14} className="mr-2" />
-						Edit
+						{t("edit")}
 					</DropdownMenuItem>
 					<DropdownMenuItem
 						onClick={handleDelete}
@@ -110,7 +110,7 @@ function ActionCell({ provider, onEdit }: ActionCellProps) {
 						className="text-red-500 focus:text-red-500"
 					>
 						<Trash2 size={14} className="mr-2" />
-						Delete
+						{t("delete")}
 					</DropdownMenuItem>
 				</DropdownMenuContent>
 			</DropdownMenu>
@@ -221,7 +221,7 @@ export default function IdentityProvidersTab() {
 
 			<DataTable
 				isLoading={isLoading}
-				text={"Identity Providers"}
+				text={t("identityProviders")}
 				sorting={sorting}
 				setSorting={setSorting}
 				columns={columns}

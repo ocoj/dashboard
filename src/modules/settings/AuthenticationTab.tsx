@@ -135,8 +135,8 @@ export default function AuthenticationTab({ account }: Readonly<Props>) {
 		const expiration = convertToSeconds(expiresIn, expireInterval);
 
 		notify({
-			title: "Save Authentication Settings",
-			description: "Authentication settings successfully saved.",
+			title: t("saveAuthSettingsTitle"),
+			description: t("saveAuthSettingsSuccess"),
 			promise: saveRequest
 				.put({
 					id: account.id,
@@ -172,7 +172,7 @@ export default function AuthenticationTab({ account }: Readonly<Props>) {
 						isLocalMFAEnabled,
 					]);
 				}),
-			loadingMessage: "Saving the authentication settings...",
+			loadingMessage: t("savingAuthSettings"),
 		});
 	};
 
@@ -236,16 +236,14 @@ export default function AuthenticationTab({ account }: Readonly<Props>) {
 					<FullTooltip
 						content={
 							<div className={"text-xs max-w-sm"}>
-								Peer approval is disabled because the {activeIntegrationName}{" "}
-								integration is enabled. If you want to enable peer approval,
-								please disable first the {activeIntegrationName} integration.
+								{t("peerApprovalDisabledByIntegration", { name: activeIntegrationName || "" })}
 							</div>
 						}
 						disabled={!isAnyIntegrationEnabled}
 					>
 						<div className={"w-full"} data-auth-setting={"peer-approval"}>
 							<LockedFeatureBadge
-								featureText={"Peer approval"}
+								featureText={t("peerApprovalFeatureText")}
 								feature={"DEVICE_APPROVALS"}
 								disabled={peerApproval}
 							>
@@ -379,7 +377,7 @@ export default function AuthenticationTab({ account }: Readonly<Props>) {
 													className={"text-nb-gray-300"}
 												/>
 												<SelectValue
-													placeholder="Select interval..."
+													placeholder={t("selectInterval")}
 													data-testid={"peer-login-expiration-select-value"}
 												/>
 											</div>

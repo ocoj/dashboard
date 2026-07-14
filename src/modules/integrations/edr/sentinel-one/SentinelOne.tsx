@@ -7,6 +7,7 @@ import dayjs from "dayjs";
 import { isEmpty } from "lodash";
 import { HistoryIcon, Settings } from "lucide-react";
 import * as React from "react";
+import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useState } from "react";
 import { useSWRConfig } from "swr";
 import integrationImage from "@/assets/integrations/sentinelone.png";
@@ -28,6 +29,7 @@ type Props = {
 };
 
 export const SentinelOne = ({ account }: Props) => {
+  const t = useTranslations("integrations");
   const { mutate } = useSWRConfig();
   const [setupModal, setSetupModal] = useState(false);
   const { permission } = usePermissions();
@@ -91,7 +93,7 @@ export const SentinelOne = ({ account }: Props) => {
     <>
       <IntegrationCard
         name={"SentinelOne"}
-        description="AI-powered endpoint protection platform for real-time threat detection and automated response."
+        description={t("sentineloneDesc")}
         url={{
           title: "sentinelone.com",
           href: "https://www.sentinelone.com/",

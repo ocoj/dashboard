@@ -1938,18 +1938,18 @@ function ControlCenterView() {
                       onClick={() => router.push("/networks")}
                       disabled={!permission.networks.create}
                     >
-                      Go to Networks
+                      {t("goToNetworks")}
                     </Button>
                   </div>
                 }
                 learnMore={
                   <>
-                    Learn more about
+                    {t("learnMoreAbout")}
                     <InlineLink
                       href={"https://docs.netbird.io/how-to/networks"}
                       target={"_blank"}
                     >
-                      Networks
+                      {t("networks")}
                       <ExternalLinkIcon size={12} />
                     </InlineLink>
                   </>

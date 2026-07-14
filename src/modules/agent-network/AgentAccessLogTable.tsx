@@ -46,6 +46,7 @@ import {
 import Link from "next/link";
 import * as React from "react";
 import { useMemo, useState } from "react";
+import { useTranslations } from "next-intl";
 import { DateRange } from "react-day-picker";
 import AgentNetworkIcon from "@/assets/icons/AgentNetworkIcon";
 import { useGroups } from "@/contexts/GroupsProvider";
@@ -504,6 +505,8 @@ export default function AgentAccessLogTable({
       .map((m) => ({ value: m, label: m }));
   }, [providers]);
 
+  const t = useTranslations();
+
   const filterDefs = useMemo<TableFilterDef[]>(
     () => [
       {
@@ -533,7 +536,7 @@ export default function AgentAccessLogTable({
             />
           </div>
         ),
-        formatChip: (v) => formatDateChip(v as DateRange | undefined),
+        formatChip: (v) => formatDateChip(v as DateRange | undefined, t),
       },
       {
         id: "user",
@@ -639,6 +642,7 @@ export default function AgentAccessLogTable({
       groups,
       groupIdByName,
       setFilter,
+      t,
     ],
   );
 

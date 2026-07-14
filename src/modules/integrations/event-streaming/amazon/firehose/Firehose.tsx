@@ -2,6 +2,7 @@ import { notify } from "@components/Notification";
 import { SkeletonIntegration } from "@components/skeletons/SkeletonIntegration";
 import useFetchApi, { useApiCall } from "@utils/api";
 import * as React from "react";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { useSWRConfig } from "swr";
 import integrationImage from "@/assets/integrations/firehose.png";
@@ -13,6 +14,7 @@ import FirehoseSetup from "@/modules/integrations/event-streaming/amazon/firehos
 import { IntegrationCard } from "@/modules/integrations/IntegrationCard";
 
 export default function Firehose() {
+  const t = useTranslations("integrations");
   const { permission } = usePermissions();
   // Event Streaming is a licensed feature; skip the call on open-source.
   const { isLicensed } = useIsLicensed();
@@ -73,7 +75,7 @@ export default function Firehose() {
     <>
       <IntegrationCard
         name="Amazon Data Firehose"
-        description="Firehose delivers real-time data streaming to destinations such as Amazon S3, Amazon Redshift & more."
+        description={t("firehoseDesc")}
         url={{
           title: "aws.amazon.com/firehose",
           href: "https://aws.amazon.com/firehose",

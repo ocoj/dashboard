@@ -1,97 +1,104 @@
-# NetBird Dashboard
+# NetBird Dashboard - 中文汉化版
 
-This project is the UI for NetBird's Management service.
+基于 [NetBird Dashboard](https://github.com/netbirdio/dashboard) 的全面中文化版本。
 
-**Hosted version:** https://app.netbird.io/
+> **演示地址**：https://nb.lanxun.pro:30443  
+> **Docker 镜像**：`ghcr.io/ocoj/dashboard`
 
-See [NetBird repo](https://github.com/netbirdio/netbird)
+## 特性
 
-## Why?
+- ✅ 全站界面中文化（侧栏、表格、弹窗、Tooltip、通知等）
+- ✅ 支持中/英文切换（右上角语言选择器）
+- ✅ 跟随上游版本迭代
+- ✅ 静态导出，Nginx 部署，轻量高效
 
-The purpose of this project is simple - make it easy to manage VPN built with [NetBird](https://github.com/netbirdio/netbird).
-The dashboard makes it possible to:
+## 技术栈
 
-- track the status of your peers
-- remove peers
-- manage Setup Keys (to authenticate new peers)
-- list users
-- define access controls
+- Next.js（静态导出 `output: "export"`）
+- React + TypeScript + Tailwind CSS
+- next-intl 国际化
+- Nginx + Docker
 
-## Some Screenshots
+## 快速部署
 
-<img src="./src/assets/screenshots/peers.png" alt="peers"/>
-<img src="./src/assets/screenshots/add-peer.png" alt="add-peer"/>
+### 方式一：Docker 镜像（推荐）
 
-## Technologies Used
+```bash
+docker run -d --name netbird-dashboard --restart unless-stopped \
+  -p 30443:443 \
+  -e AUTH_AUTHORITY=<你的认证服务地址> \
+  -e AUTH_CLIENT_ID=<客户端 ID> \
+  -e AUTH_AUDIENCE=<Audience> \
+  -e AUTH_SUPPORTED_SCOPES='openid profile email' \
+  -e USE_AUTH0=false \
+  -e NETBIRD_MGMT_API_ENDPOINT=<NetBird 管理 API 地址> \
+  ghcr.io/ocoj/dashboard:v2.90.3-zh
+```
 
-- NextJS
-- ReactJS
-- Tailwind CSS
-- [React Flow](https://reactflow.dev/) for the Control Center
-- Auth0
-- Nginx
-- Docker
-- Let's Encrypt
+### 方式二：本地构建
 
-## How to run
+```bash
+# 构建静态文件
+npm ci && npx next build
 
-Disclaimer. We believe that proper user management system is not a trivial task and requires quite some effort to make it right. Therefore we decided to
-use Auth0 service that covers all our needs (user management, social login, JWT for the management API).
-Auth0 so far is the only 3rd party dependency that can't be really self-hosted.
+# 构建 Docker 镜像
+docker build -f docker/Dockerfile -t netbird-dashboard .
 
-1. Install [Docker](https://docs.docker.com/get-docker/)
-2. Register [Auth0](https://auth0.com/) account
-3. Running NetBird UI Dashboard requires the following Auth0 environmental variables to be set (see docker command below):
+# 或使用构建脚本
+./build.sh
+```
 
-   `AUTH0_DOMAIN` `AUTH0_CLIENT_ID` `AUTH0_AUDIENCE`
+### 方式三：SSH 部署到远程服务器
 
-   To obtain these, please use [Auth0 React SDK Guide](https://auth0.com/docs/quickstart/spa/react) up until "Configure Allowed Web Origins"
+```bash
+# 本地构建并导出镜像
+./build.sh
 
-4. NetBird UI Dashboard uses NetBird's Management Service HTTP API, so setting `NETBIRD_MGMT_API_ENDPOINT` is required. Most likely it will be `http://localhost:33071` if you are hosting Management API on the same server.
-5. Run docker container without SSL (Let's Encrypt):
+# 上传到服务器
+scp netbird-dashboard.tar.gz root@***REMOVED***:/tmp/
 
-   ```shell
-   docker run -d --name netbird-dashboard \
-     --rm -p 80:80 -p 443:443 \
-     -e AUTH0_DOMAIN=<SET YOUR AUTH DOMAIN> \
-     -e AUTH0_CLIENT_ID=<SET YOUR CLIENT ID> \
-     -e AUTH0_AUDIENCE=<SET YOUR AUDIENCE> \
-     -e NETBIRD_MGMT_API_ENDPOINT=<SET YOUR MANAGEMENT API URL> \
-     netbirdio/dashboard:main
-   ```
+# 在服务器上加载并运行
+ssh root@***REMOVED***
+docker load < /tmp/netbird-dashboard.tar.gz
+docker run -d --name netbird-dashboard --restart unless-stopped \
+  -p 30443:443 \
+  ...（环境变量同上）\
+  netbird-dashboard:amd64
+```
 
-6. Run docker container with SSL (Let's Encrypt):
+### 环境变量说明
 
-   ```shell
-   docker run -d --name netbird-dashboard \
-     --rm -p 80:80 -p 443:443 \
-     -e NGINX_SSL_PORT=443 \
-     -e LETSENCRYPT_DOMAIN=<YOUR PUBLIC DOMAIN> \
-     -e LETSENCRYPT_EMAIL=<YOUR EMAIL> \
-     -e AUTH0_DOMAIN=<SET YOUR AUTH DOMAIN> \
-     -e AUTH0_CLIENT_ID=<SET YOUR CLEITN ID> \
-     -e AUTH0_AUDIENCE=<SET YOUR AUDIENCE> \
-     -e NETBIRD_MGMT_API_ENDPOINT=<SET YOUR MANAGEMENT API URL> \
-     netbirdio/dashboard:main
-   ```
+| 变量 | 必填 | 说明 |
+|------|------|------|
+| `AUTH_AUTHORITY` | 是 | OIDC 认证服务地址 |
+| `AUTH_CLIENT_ID` | 是 | OAuth2 客户端 ID |
+| `AUTH_AUDIENCE` | 否 | JWT Audience |
+| `AUTH_SUPPORTED_SCOPES` | 否 | 支持的 OAuth Scope |
+| `USE_AUTH0` | 否 | 是否使用 Auth0（默认 false） |
+| `NETBIRD_MGMT_API_ENDPOINT` | 是 | NetBird 管理 API 地址 |
+| `NETBIRD_MGMT_GRPC_API_ENDPOINT` | 否 | gRPC API 地址 |
 
-## How to run local development
+## 本地开发
 
-1. Install [Node](https://nodejs.org/)
-2. Create and update the `.local-config.json` file. This file should contain values to be replaced from `config.json`
-3. Run `npm install` to install dependencies
-4. Run `npm run dev` to start the development server
+```bash
+npm install
+echo '{}' > .local-config.json
+npm run dev
+```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+打开 http://localhost:3000
 
-You can start editing by modifying the code inside `src/..`  
-The page auto-updates as you edit the file.
+## 切换语言
 
-## How to migrate from old dashboard (v1)
+- **界面操作**：右上角"选择语言" → 中文 / English
+- **Cookie 方式**：设置 `NEXT_LOCALE=zh` 或 `NEXT_LOCALE=en`
 
-The new dashboard comes with a new docker image `netbirdio/dashboard:main`.  
-To migrate from the old dashboard (v1) `wiretrustee/dashboard:main` to the new one, please follow the steps below.
+## 版本说明
 
-1. Stop the dashboard container `docker compose down dashboard`
-2. Replace the docker image name in your `docker-compose.yml` with `netbirdio/dashboard:main`
-3. Recreate the dashboard container `docker compose up -d --force-recreate dashboard`
+版本号格式：`v<上游版本>-zh`，如 `v2.90.3-zh` 表示基于上游 v2.90.3 的中文汉化版。
+
+## 相关链接
+
+- [NetBird 官方](https://netbird.io/)
+- [上游 Dashboard 仓库](https://github.com/netbirdio/dashboard)
+- [NetBird 文档](https://docs.netbird.io/)

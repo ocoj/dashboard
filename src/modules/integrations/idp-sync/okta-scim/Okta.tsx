@@ -10,6 +10,7 @@ import { isEmpty } from "lodash";
 import { RefreshCw, Repeat, Settings } from "lucide-react";
 import { useRouter } from "next/navigation";
 import * as React from "react";
+import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useState } from "react";
 import { useSWRConfig } from "swr";
 import integrationImage from "@/assets/integrations/okta.png";
@@ -25,6 +26,7 @@ import { IntegrationCard } from "@/modules/integrations/IntegrationCard";
 import { useEnterpriseConnections } from "@/modules/integrations/sso/useEnterpriseConnections";
 
 export const Okta = () => {
+  const t = useTranslations("integrations");
   const { mutate } = useSWRConfig();
   const [setupModal, setSetupModal] = useState(false);
   const { isOktaConnectionActive, isDataLoading: isSSOConnectionLoading } =
@@ -80,7 +82,7 @@ export const Okta = () => {
     <>
       <IntegrationCard
         name="Okta"
-        description="Okta is a platform to provision and manage user accounts in cloud-based applications."
+        description={t("oktaDesc")}
         url={{
           title: "okta.com",
           href: "https://www.okta.com/",

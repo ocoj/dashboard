@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 import { Callout } from "@components/Callout";
 import React, { useMemo, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 import { Network, NetworkResource } from "@/interfaces/Network";
 import { Peer } from "@/interfaces/Peer";
 import {
@@ -97,6 +98,7 @@ export default function ReverseProxyTargetModal({
   initialNetwork,
   onClusterPick,
 }: Readonly<Props>) {
+  const tr = useTranslations("reverseProxy");
   const existingTargets = reverseProxy.targets || [];
   const domain = reverseProxy.domain;
 
@@ -261,8 +263,8 @@ export default function ReverseProxyTargetModal({
         <ModalContent maxWidthClass="max-w-2xl">
           <ModalHeader
             icon={<Server className="text-netbird" size={16} />}
-            title={currentTarget ? "Edit Target" : "Add Target"}
-            description="Configure the target for your reverse proxy."
+            title={currentTarget ? tr("editTarget") : tr("addTarget")}
+            description={tr("configureTheTarget")}
             color="netbird"
           />
 

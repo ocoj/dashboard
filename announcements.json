@@ -1,9 +1,9 @@
 [
   {
-    "tag": "Preview",
-    "text": "The new NetBird desktop app is here - now available as a 0.75 release candidate.",
+    "tag": "预览版",
+    "text": "全新 NetBird 桌面应用已发布 - 现提供 0.75 候选版本。",
     "link": "https://github.com/netbirdio/netbird/discussions/6483",
-    "linkText": "Learn more",
+    "linkText": "了解更多",
     "variant": "important",
     "isExternal": true,
     "closeable": true,

@@ -2,6 +2,7 @@ import FullTooltip from "@components/FullTooltip";
 import InlineLink from "@components/InlineLink";
 import { ExternalLinkIcon } from "lucide-react";
 import * as React from "react";
+import { useTranslations } from "next-intl";
 
 type Props = {
   children: React.ReactNode;
@@ -11,6 +12,7 @@ export const ExitNodeHelpTooltip = ({
   children,
   hoverButton = false,
 }: Props) => {
+  const t = useTranslations("routes");
   return (
     <div
       onClick={(e) => {
@@ -21,10 +23,9 @@ export const ExitNodeHelpTooltip = ({
         hoverButton={hoverButton}
         content={
           <div className={"text-xs max-w-xs"}>
-            An exit node is a network route that routes all your internet
-            traffic through one of your peers.
+            {t("exitNodeTooltip")}
             <div className={"mt-2"}>
-              Learn more about{" "}
+              {t("learnMore")}{" "}
               <InlineLink
                 href={
                   "https://docs.netbird.io/how-to/configuring-default-routes-for-internet-traffic"
@@ -32,10 +33,10 @@ export const ExitNodeHelpTooltip = ({
                 target={"_blank"}
                 className={"mr-1"}
               >
-                Exit Nodes
+                {t("exitNodes")}
                 <ExternalLinkIcon size={10} />
               </InlineLink>
-              in our documentation.
+              {t("inOurDocumentation")}
             </div>
           </div>
         }

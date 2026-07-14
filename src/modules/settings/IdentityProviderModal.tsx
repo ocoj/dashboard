@@ -73,8 +73,6 @@ type Props = {
 	provider?: SSOIdentityProvider | null;
 };
 
-const copyMessage = "Redirect URL was copied to your clipboard!";
-const logoutCopyMessage = "Logout URL was copied to your clipboard!";
 const config = loadConfig();
 const redirectUrl = `${config.apiOrigin}/oauth2/callback`;
 const logoutUrl = `${config.apiOrigin}/oauth2/logout/callback`;
@@ -141,23 +139,23 @@ export default function IdentityProviderModal({
 
 		if (isEditing) {
 			notify({
-				title: "Update Identity Provider",
-				description: "Identity provider was updated successfully.",
+				title: t("updateIdpTitle"),
+				description: t("updateIdpSuccess"),
 				promise: updateRequest.put(payload).then(() => {
 					mutate("/identity-providers");
 					onClose();
 				}),
-				loadingMessage: "Updating identity provider...",
+				loadingMessage: t("updatingIdp"),
 			});
 		} else {
 			notify({
-				title: "Create Identity Provider",
-				description: "Identity provider was created successfully.",
+				title: t("createIdpTitle"),
+				description: t("createIdpSuccess"),
 				promise: createRequest.post(payload).then(() => {
 					mutate("/identity-providers");
 					onClose();
 				}),
-				loadingMessage: "Creating identity provider...",
+				loadingMessage: t("creatingIdp"),
 			});
 		}
 	};
@@ -200,7 +198,7 @@ export default function IdentityProviderModal({
 								}}
 							>
 								<SelectTrigger className="w-full">
-									<SelectValue placeholder="Select provider type..." />
+									<SelectValue placeholder={t("selectProviderType")} />
 								</SelectTrigger>
 								<SelectContent>
 									{SSOIdentityProviderOptions.map((idp) => (
@@ -219,7 +217,7 @@ export default function IdentityProviderModal({
 							<Label>{t("idpName")}</Label>
 							<HelpText>{t("idpNameHelp")}</HelpText>
 							<Input
-								placeholder={"e.g., Corporate SSO"}
+								placeholder={t("idpNamePlaceholder")}
 								value={name}
 								onChange={(e) => setName(e.target.value)}
 								customPrefix={
@@ -245,9 +243,9 @@ export default function IdentityProviderModal({
 
 						<div>
 							<Label>{t("idpClientId")}</Label>
-							<HelpText>The OAuth2 confidential client ID</HelpText>
+							<HelpText>{t("clientIdHelp")}</HelpText>
 							<Input
-								placeholder={"Enter client ID"}
+								placeholder={t("enterClientId")}
 								value={clientId}
 								onChange={(e) => setClientId(e.target.value)}
 								customPrefix={<IdCard size={16} className="text-nb-gray-300" />}
@@ -260,12 +258,12 @@ export default function IdentityProviderModal({
 								{isEditing
 									? clientIdChanged
 										? "Required when client ID is changed"
-										: "Leave empty to keep the existing secret, or enter a new one"
-									: "The OAuth2 client secret"}
+										: t("clientSecretOptionalOnEdit")
+									: t("clientSecretHelp")}
 							</HelpText>
 							<Input
 								type="password"
-								placeholder={isEditing ? "••••••••" : "Enter client secret"}
+								placeholder={isEditing ? "••••••••" : t("enterClientSecret")}
 								value={clientSecret}
 								onChange={(e) => setClientSecret(e.target.value)}
 								customPrefix={
@@ -286,14 +284,14 @@ export default function IdentityProviderModal({
 								<Label className={"text-xs mb-1"}>
 									{t("redirectCallback")}
 								</Label>
-								<Code codeToCopy={redirectUrl} message={copyMessage}>
+								<Code codeToCopy={redirectUrl} message={t("redirectUrlCopied")}>
 									<Code.Line>{redirectUrl}</Code.Line>
 								</Code>
 							</div>
 
 							<div>
 								<Label className={"text-xs mb-1"}>{t("logoutLabel")}</Label>
-								<Code codeToCopy={logoutUrl} message={logoutCopyMessage}>
+								<Code codeToCopy={logoutUrl} message={t("logoutUrlCopied")}>
 									<Code.Line>{logoutUrl}</Code.Line>
 								</Code>
 								<HelpText margin={false} className={"mt-1.5"}>
@@ -330,12 +328,12 @@ export default function IdentityProviderModal({
 								{isEditing ? (
 									<>
 										<SaveIcon size={16} />
-										Save Changes
+										{t("saveChanges")}
 									</>
 								) : (
 									<>
 										<PlusCircle size={16} />
-										Add Provider
+										{t("addProvider")}
 									</>
 								)}
 							</Button>

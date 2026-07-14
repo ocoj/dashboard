@@ -5,6 +5,7 @@ import {
   TooltipTrigger,
 } from "@components/Tooltip";
 import dayjs from "dayjs";
+import "dayjs/locale/zh-cn";
 import { History } from "lucide-react";
 import EmptyRow from "@/modules/common-table-rows/EmptyRow";
 
@@ -15,7 +16,7 @@ type Props = {
 };
 export default function LastTimeRow({
   date,
-  text = "Last seen on",
+  text = "最后上线于",
   prefix,
 }: Props) {
   const neverUsed = dayjs(date).isBefore(dayjs().subtract(2000, "years"));
@@ -32,7 +33,7 @@ export default function LastTimeRow({
             <>
               <History size={14} />
               {prefix && <>{prefix} </>}
-              {dayjs().to(date)}
+              {dayjs().locale("zh-cn").to(date)}
             </>
           </div>
         </TooltipTrigger>
@@ -40,7 +41,7 @@ export default function LastTimeRow({
           <div className={"text-neutral-300 flex flex-col gap-1"}>
             <span className={"text-xs"}>{text}</span>
             <span className={"text-neutral-200"}>
-              {dayjs(date).format("D MMMM, YYYY [at] h:mm A")}
+              {dayjs(date).locale("zh-cn").format("YYYY年M月D日 HH:mm")}
             </span>
           </div>
         </TooltipContent>

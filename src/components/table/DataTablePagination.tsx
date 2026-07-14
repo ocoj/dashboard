@@ -18,11 +18,12 @@ interface DataTablePaginationProps<TData> {
 
 export function DataTablePagination<TData>({
   table,
-  text = "rows",
+  text,
   paginationPadding = "px-8 py-8",
   totalRecords,
 }: DataTablePaginationProps<TData>) {
   const t = useTranslations('table');
+  const defaultText = text || t("rows");
   const rowsPerPage = table.getState().pagination.pageSize;
   const currentPage = table.getState().pagination.pageIndex + 1;
   const pageCount = table.getPageCount();
@@ -46,7 +47,7 @@ export function DataTablePagination<TData>({
             {showingFrom} {t('to')} {showingTo}
           </span>{" "}
           {t('of')} <span className={"font-medium text-white"}>{totalRows}</span>{" "}
-          {text}
+          {defaultText}
         </div>
         {pageCount > 1 && (
           <div className={"flex items-center gap-3"}>
@@ -66,7 +67,7 @@ export function DataTablePagination<TData>({
                 </ButtonGroup.Button>
                 <ButtonGroup.Button>
                   <div>
-                    {currentPage} of {pageCount}
+                    {currentPage} {t("of")} {pageCount}
                   </div>
                 </ButtonGroup.Button>
                 <ButtonGroup.Button

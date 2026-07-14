@@ -32,10 +32,8 @@ export default function MetricsTab({ account }: Readonly<Props>) {
 
   const toggleMetricsPush = async (toggle: boolean) => {
     notify({
-      title: "Metrics",
-      description: `Metrics push successfully ${
-        toggle ? "enabled" : "disabled"
-      }.`,
+      title: t("metrics"),
+      description: t("metricsToggleResult", { status: toggle ? t("enabled") : t("disabled") }),
       promise: saveRequest
         .put({
           id: account.id,
@@ -48,7 +46,7 @@ export default function MetricsTab({ account }: Readonly<Props>) {
           setMetricsPushEnabled(toggle);
           mutate("/accounts");
         }),
-      loadingMessage: "Updating metrics setting...",
+      loadingMessage: t("updatingMetrics"),
     });
   };
 
@@ -69,23 +67,22 @@ export default function MetricsTab({ account }: Readonly<Props>) {
           />
         </Breadcrumbs>
         <div>
-          <h1>Metrics</h1>
+          <h1>{t("metrics")}</h1>
           <Paragraph>
-            Help us improve NetBird by sharing performance metrics
-            such as connection timing, sync duration, and login latency.
+            {t("metricsDescription")}
           </Paragraph>
           <Paragraph>
-            Learn more about{" "}
+            {t("learnMoreAbout")}{" "}
             <InlineLink
               href={
                 "https://docs.netbird.io/manage/client-metrics"
               }
               target={"_blank"}
             >
-              Client Metrics
+              {t("clientMetrics")}
               <ExternalLinkIcon size={12} />
             </InlineLink>
-            in our documentation.
+            {t("inOurDocumentation")}
           </Paragraph>
         </div>
 
@@ -96,12 +93,10 @@ export default function MetricsTab({ account }: Readonly<Props>) {
           label={
             <>
               <ChartNoAxesCombined size={15} />
-              Share performance metrics
+              {t("sharePerformanceMetrics")}
             </>
           }
-          helpText={
-            "When enabled, clients will periodically send performance data to help us identify and fix issues."
-          }
+          helpText={t("sharePerformanceMetricsHelp")}
           disabled={!permission.settings.update}
         />
       </div>

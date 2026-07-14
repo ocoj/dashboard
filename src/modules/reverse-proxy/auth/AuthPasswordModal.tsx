@@ -24,6 +24,7 @@ export default function AuthPasswordModal({
   onRemove,
 }: Readonly<Props>) {
   const t = useTranslations("common");
+  const tr = useTranslations("reverseProxy");
   const [password, setPassword] = useState(currentPassword);
   const [isMasked, setIsMasked] = useState(isEnabled && currentPassword === "");
   const isEditing = isEnabled;
@@ -45,8 +46,8 @@ export default function AuthPasswordModal({
     <Modal open={open} onOpenChange={onOpenChange}>
       <ModalContent maxWidthClass="max-w-md">
         <ModalHeader
-          title="Password"
-          description="Require a password to access this service."
+          title={tr("password")}
+          description={tr("passwordDescription")}
         />
 
         <GradientFadedBackground />

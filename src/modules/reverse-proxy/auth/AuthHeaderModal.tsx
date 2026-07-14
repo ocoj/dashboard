@@ -203,6 +203,7 @@ export default function AuthHeaderModal({
 	onRemove,
 }: Readonly<Props>) {
 	const t = useTranslations("common");
+	const tr = useTranslations("reverseProxy");
 	const [items, dispatch] = useReducer(
 		headersReducer,
 		currentHeaders,
@@ -237,7 +238,7 @@ export default function AuthHeaderModal({
 			>
 				<ModalHeader
 					title="HTTP Headers"
-					description="Require specific HTTP headers to access this service."
+					description={tr("httpHeadersDescription")}
 				/>
 
 				<div className="px-8">
