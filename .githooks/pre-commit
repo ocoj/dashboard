@@ -1,0 +1,65 @@
+#!/bin/sh
+#
+# pre-commit hook: 防止文件被存放到错误的目录
+#
+# 规则:
+#   1. 禁止提交 internal/ 下的任何文件（本应被 gitignore 排除，双重保险）
+#   2. 禁止在 docs/ 下创建与内部文档同名的文件（防误放）
+#   3. 禁止在项目根目录创建新的 .md 文档（必须放入 docs/ 或 internal/）
+#
+# 启用: git config core.hooksPath .githooks
+
+set -e
+
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+HAS_ERROR=0
+
+# 检查新增的文件
+git diff --cached --name-only --diff-filter=A | while read -r file; do
+  # 规则 1: internal/ 下的文件不应该出现在暂存区
+  case "$file" in
+    internal/*)
+      echo "${RED}[ERROR]${NC} 禁止提交内部文件: $file"
+      echo "        internal/ 目录的文件不会上传 GitHub，请从暂存区移除:"
+      echo "        git rm --cached \"$file\""
+      HAS_ERROR=1
+      ;;
+  esac
+
+  # 规则 3: 根目录下的新 .md 文件（除公认的工程文件外）
+  case "$file" in
+    *.md)
+      parent=$(dirname "$file")
+      if [ "$parent" = "." ]; then
+        # 白名单：允许根目录下的公认工程文件
+        basename=$(basename "$file")
+        case "$basename" in
+          README.md|CHANGELOG.md|CONTRIBUTING.md|CONTRIBUTOR_LICENSE_AGREEMENT.md|DEPLOY.md|TERMS.md|AUTHORS|LICENSE)
+            ;;
+          *)
+            echo "${YELLOW}[WARN]${NC} 新文档建议放到 docs/（公开）或 internal/（内部）目录:"
+            echo "        $file"
+            ;;
+        esac
+      fi
+      ;;
+  esac
+done
+
+# 检查 docs/ 下是否误放了含敏感关键词的文件
+git diff --cached --name-only --diff-filter=A | while read -r file; do
+  case "$file" in
+    docs/*SESSION*|docs/*WORKFLOW*|docs/*TASK*|docs/*PROMPT*)
+      echo "${RED}[ERROR]${NC} 检测到可能包含敏感信息的文件放到了 docs/ 目录:"
+      echo "        $file"
+      echo "        请移到 internal/ 目录后再提交。"
+      HAS_ERROR=1
+      ;;
+  esac
+done
+
+if [ "$HAS_ERROR" = "1" ]; then
+  exit 1
+fi
