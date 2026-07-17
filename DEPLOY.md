@@ -53,21 +53,29 @@ docker run -d --name netbird-dashboard --restart unless-stopped \
 
 ## 版本策略
 
-| 镜像 tag | 含义 | 更新方式 |
+CI 通过 `git describe --tags --always` 自动派生版本号，无需手动打 tag。
+
+| 场景 | 版本号示例 |
+|------|-----------|
+| 正好在 tag `v2.90.4-zh` 上 | `v2.90.4-zh` |
+| tag 之后 3 个提交 | `v2.90.4-zh-3-g4d1bb9c` |
+| 无 tag（首次） | commit 短 hash |
+
+| 镜像 tag | 含义 | 触发条件 |
 |----------|------|---------|
-| `latest` | 每次 push i18n-clean 自动更新 | `docker pull` 即得最新 |
-| `v2.90.3-zh` | 手动打的版本快照 | 不变，用于回滚 |
+| `latest` | 每次 push i18n-clean 自动更新 | 分支 push |
+| `v2.90.4-zh` | 版本快照（可选） | `git tag` + push |
 | `i18n-clean` | 分支名镜像 | Actions 自动构建 |
 
 ### 发布新版本
 
 ```bash
-# 本地开发完成后：
+# 本地开发完成后 push 即可，版本号自动派生：
 git add -A
 git commit -m "描述修改"
 git push origin i18n-clean
 
-# 想留版本快照时：
+# 可选：打版本 tag 做快照
 git tag v2.90.4-zh        # 版本号跟着上游 vX.Y.Z-zh
 git push origin v2.90.4-zh
 
