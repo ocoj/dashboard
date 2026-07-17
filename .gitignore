@@ -53,3 +53,5 @@ e2e/playwright-report/
 /public/netbird.wasm
 .idea
 src/.local-config*
+# 本地项目文档，不同步到 GitHub
+docs/
