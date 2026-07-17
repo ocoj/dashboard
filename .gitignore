@@ -54,4 +54,4 @@ e2e/playwright-report/
 .idea
 src/.local-config*
 # 本地项目文档，不同步到 GitHub
-docs/
+internal/
