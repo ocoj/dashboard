@@ -2,6 +2,7 @@ import { notify } from "@components/Notification";
 import { useApiCall } from "@utils/api";
 import loadConfig from "@utils/config";
 import { isNetBirdCloud } from "@utils/netbird";
+import { useTranslations } from "next-intl";
 import * as React from "react";
 import { useEffect, useRef, useState } from "react";
 import { useSWRConfig } from "swr";
@@ -24,6 +25,7 @@ import { OnboardingProvider } from "@/modules/onboarding/OnboardingProvider";
 
 export const NetBirdCloudProvider = () => {
   const { mutate } = useSWRConfig();
+  const tc = useTranslations("common");
   const { subscription } = useBilling();
   const [awsUserId, setAwsUserId] = useState<string | undefined>();
   const { trackEvent, trackEventV2 } = useAnalytics();
@@ -86,10 +88,10 @@ export const NetBirdCloudProvider = () => {
         ...(isNewAccount ? { agent_network_only: true } : {}),
       };
       notify({
-        title: "Agent Network",
+        title: tc("agentNetwork"),
         description: isNewAccount
-          ? "Agent Network focused view enabled for your account."
-          : "Agent Network enabled for your account.",
+          ? tc("agentNetworkFocusedViewEnabled")
+          : tc("agentNetworkEnabled"),
         promise: accountRequest(
           { id: account.id, settings },
           "/" + account.id,
@@ -103,8 +105,8 @@ export const NetBirdCloudProvider = () => {
           localStorage.removeItem(SIGNUP_SOURCE_LOCAL_STORAGE_KEY);
         }),
         loadingMessage: isNewAccount
-          ? "Enabling Agent Network focused view..."
-          : "Enabling Agent Network...",
+          ? tc("enablingAgentNetworkFocusedView")
+          : tc("enablingAgentNetwork"),
       });
     } catch (e) {}
   }, [account]);
