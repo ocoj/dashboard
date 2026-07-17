@@ -1,24 +1,19 @@
-# 更新日志
+# 更改记录
 
-## v2.90.3-zh (2026-07-14)
+## [v2.90.4-zh] — 2026-07-17
 
-### 汉化收尾
-- 修复 22 处组件硬编码英文（集成卡片描述、反代认证弹窗、任务气泡、LastTimeRow）
-- 新增 18 个 i18n key（integrations/reverseProxy/common 命名空间）
-- 修复 zh.ts 翻译质量：英文逗号→中文逗号、术语统一"对等节点"→"节点"
-- "惰性连接"→"按需连接"、"Agent Network"→"客户端网络"
-- "headless machines"→"无图形界面设备，如服务器和自主代理"
-- globalMetaTitle → "NetBird 控制台"
-- 公告横幅 announcements.json 中文化
+- 同步上游 netbirdio/dashboard #709/#710/#714/#717
+  - Agent Network: clusters 视图 + dashboard_features 支持
+  - RDP: Linux/FreeBSD 支持 + Display Control + 错误分类
+  - 修复 IdP cards 间距
+- 新增 14 个翻译 key，汉化配置页面和 RDP 凭证弹窗
+- 版本策略：CI 用 `git describe --tags` 自动派生版本号，无需手动打 tag
+- CI 优化：checkout fetch-depth:0 + 自动版本 + 文档更新
 
-### 工程
-- Next.js 14 → 16.2.10（npm audit fix --force）
-- npm 依赖漏洞 7 → 5（0 high）
-- 重写中文 README + 修正 docker 端口/镜像说明
-- 分支重整：i18n-clean 为主，删除 i18n-next/i18n-chinese
-- GitHub Actions：push i18n-clean 自动构建 latest 镜像
+## [未发布]
 
-### 安全
-- 移除 git remote URL 中的明文 PAT
-- 确认代码库无敏感信息泄露
-
+- 初始化 NetBrid 汉化与部署项目
+- Dashboard 汉化：10/10 模块全部完成（Peers、Access Control、Routes、Reverse Proxy、DNS、Team、Dashboard、Activity Logs、Settings、Integrations）
+- OMV 部署：Docker Compose 部署方案设计完成
+- 项目目录整理：合并 `netbird-dashboard-build` + `netbird-dashboard-cn` → `netbird-dashboard`
+- i18n 资源整合：`zh_CN/` + `translations/` → `i18n/`
