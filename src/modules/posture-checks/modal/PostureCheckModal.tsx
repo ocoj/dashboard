@@ -79,9 +79,7 @@ export default function PostureCheckModal({
             title={
               postureCheck ? t("updatePostureCheck") : t("createPostureCheck")
             }
-            description={
-              "Use posture checks to further restrict access in your network."
-            }
+            description={t("createDescription")}
             color={"netbird"}
           />
 
@@ -89,7 +87,7 @@ export default function PostureCheckModal({
             <TabsList justify={"start"} className={"px-8"}>
               <TabsTrigger value={"checks"}>
                 <LayoutList size={16} />
-                Checks
+                {t("checks")}
               </TabsTrigger>
 
               <TabsTrigger

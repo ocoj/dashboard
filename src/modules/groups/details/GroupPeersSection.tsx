@@ -117,6 +117,7 @@ type Props = {
 
 export const GroupPeersSection = ({ peers, isLoading = true }: Props) => {
 	const t = useTranslations("common");
+		const tg = useTranslations("groups");
 	const { group, addPeersToGroup, removePeersFromGroup } = useGroupContext();
 	const [selectedRows, setSelectedRows] = useState<RowSelectionState>({});
 	const [open, setOpen] = useState(false);
@@ -133,9 +134,9 @@ export const GroupPeersSection = ({ peers, isLoading = true }: Props) => {
 				getStartedCard={
 					<NoResults
 						className={"py-4"}
-						title={"This group has no assigned peers yet"}
+						title={tg("noAssignedPeers")}
 						description={
-							"Install NetBird and assign existing peers to this group to see them listed here."
+							tg("noAssignedPeersDescription")
 						}
 						icon={<PeerIcon size={20} className={"fill-nb-gray-300"} />}
 					>
@@ -148,7 +149,7 @@ export const GroupPeersSection = ({ peers, isLoading = true }: Props) => {
 									onClick={() => setOpen(true)}
 								>
 									<PlusCircle size={16} />
-									Assign Peers
+									{tg("assignPeers")}
 								</Button>
 							</div>
 						)}
@@ -196,7 +197,7 @@ export const GroupPeersSection = ({ peers, isLoading = true }: Props) => {
 							useSave={false}
 							showHeader={false}
 							showClose={false}
-							buttonText={"Assign Peers"}
+							buttonText={tg("assignPeers")}
 							selectInitialPeers={false}
 							excludedPeers={peers}
 							onUpdate={(g) => {
@@ -215,7 +216,7 @@ export const GroupPeersSection = ({ peers, isLoading = true }: Props) => {
 											onClick={() => setOpen(true)}
 										>
 											<PlusCircle size={16} />
-											Assign Peers
+											{tg("assignPeers")}
 										</Button>
 									)}
 								</div>

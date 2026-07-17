@@ -8,6 +8,7 @@ import { ColumnDef, SortingState } from "@tanstack/react-table";
 import { removeAllSpaces } from "@utils/helpers";
 import { ArrowUpRightIcon, Layers3Icon } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import React, { useState } from "react";
 import { useSWRConfig } from "swr";
 import { NetworkAccessControlProvider } from "@/modules/networks/NetworkAccessControlProvider";
@@ -113,6 +114,7 @@ export const GroupResourcesSection = ({
   const [sorting, setSorting] = useState<SortingState>([]);
   const { permission } = usePermissions();
   const router = useRouter();
+  const tg = useTranslations("groups");
   const { mutate } = useSWRConfig();
 
   return (
@@ -142,13 +144,13 @@ export const GroupResourcesSection = ({
           columns={GroupResourcesColumns}
           keepStateInLocalStorage={false}
           data={resources}
-          searchPlaceholder={"Search by name, address or group..."}
+          searchPlaceholder={tg("searchResourcesPlaceholder")}
           getStartedCard={
             <NoResults
               className={"py-4"}
-              title={"This group has no assigned resources"}
+              title={tg("noAssignedResources")}
               description={
-                "Assign this group to your resources inside your networks to see them listed here."
+                tg("noAssignedResourcesDescription")
               }
               icon={<Layers3Icon size={20} />}
             >
@@ -159,7 +161,7 @@ export const GroupResourcesSection = ({
                     className={"mt-4"}
                     onClick={() => router.push("/networks")}
                   >
-                    Go to Networks
+                    {tg("goToNetworks")}
                     <ArrowUpRightIcon size={16} />
                   </Button>
                 </>

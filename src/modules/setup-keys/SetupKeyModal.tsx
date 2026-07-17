@@ -48,8 +48,6 @@ type Props = {
 	groups?: Group[];
 };
 
-const copyMessage = "Setup-Key was copied to your clipboard!";
-
 export default function SetupKeyModal({
 	children,
 	open,
@@ -59,6 +57,7 @@ export default function SetupKeyModal({
 	groups,
 }: Readonly<Props>) {
 	const t = useTranslations("setupKeys");
+	const tCommon = useTranslations("common");
 	const [successModal, setSuccessModal] = useState(false);
 	const [setupKey, setSetupKey] = useState<SetupKey>();
 	const [installModal, setInstallModal] = useState(false);
@@ -112,11 +111,10 @@ export default function SetupKeyModal({
 						<div className={"flex flex-col items-center justify-center gap-3"}>
 							<div>
 								<h2 className={"text-2xl text-center mb-2"}>
-									Setup key created successfully!
+									{t("successTitle")}
 								</h2>
 								<Paragraph className={"mt-0 text-sm text-center"}>
-									This key will not be shown again, so be sure to copy it and
-									store in a secure location.
+									{t("successDescription")}
 								</Paragraph>
 							</div>
 						</div>
@@ -127,7 +125,7 @@ export default function SetupKeyModal({
 						data-testid={"setup-key-copy-input"}
 						data-testid-setup-key-value={setupKey?.key || ""}
 					>
-						<Code message={copyMessage}>
+						<Code message={t("keyCopiedToClipboard")}>
 							<Code.Line>
 								{setupKey?.key || t("createError")}
 							</Code.Line>
@@ -142,7 +140,7 @@ export default function SetupKeyModal({
 									tabIndex={-1}
 									data-testid={"setup-key-close"}
 								>
-									Close
+									{tCommon("close")}
 								</Button>
 							</ModalClose>
 							<Button
@@ -151,7 +149,7 @@ export default function SetupKeyModal({
 								onClick={() => setInstallModal(true)}
 							>
 								<DownloadIcon size={14} />
-								Install NetBird
+								{tCommon("installNetBird")}
 							</Button>
 						</div>
 					</ModalFooter>

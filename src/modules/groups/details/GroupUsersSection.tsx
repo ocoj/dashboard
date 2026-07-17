@@ -129,6 +129,7 @@ type Props = {
 
 export const GroupUsersSection = ({ users, isLoading = true }: Props) => {
 	const t = useTranslations("common");
+	const tg = useTranslations("groups");
 	const { group, addUsersToGroup, removeUsersFromGroup } = useGroupContext();
 	const [selectedRows, setSelectedRows] = useState<RowSelectionState>({});
 	const [open, setOpen] = useState(false);
@@ -148,9 +149,9 @@ export const GroupUsersSection = ({ users, isLoading = true }: Props) => {
 				getStartedCard={
 					<NoResults
 						className={"py-4"}
-						title={"This group has no assigned users yet"}
+						title={tg("noAssignedUsers")}
 						description={
-							"Invite new users or assign existing ones to this group to see them listed here."
+							tg("noAssignedUsersDescription")
 						}
 						icon={<TeamIcon size={20} className={"fill-nb-gray-300"} />}
 					>
@@ -162,7 +163,7 @@ export const GroupUsersSection = ({ users, isLoading = true }: Props) => {
 									onClick={() => setOpen(true)}
 								>
 									<PlusCircle size={16} />
-									Assign Users
+									{tg("assignUsers")}
 								</Button>
 								<InviteUserButton show={true} groups={[group]} />
 							</div>
@@ -225,7 +226,7 @@ export const GroupUsersSection = ({ users, isLoading = true }: Props) => {
 										onClick={() => setOpen(true)}
 									>
 										<PlusCircle size={16} />
-										Assign Users
+										{tg("assignUsers")}
 									</Button>
 									<InviteUserButton show={true} groups={[group]} />
 								</div>

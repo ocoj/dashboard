@@ -42,6 +42,7 @@ export const AssignUserToGroupModal = ({
 	buttonText,
 }: Props) => {
 	const t = useTranslations("common");
+	const tg = useTranslations("groups");
 
 	return (
 		<Modal open={open} onOpenChange={setOpen} key={open ? "1" : "0"}>
@@ -54,7 +55,7 @@ export const AssignUserToGroupModal = ({
 					}}
 					excludedUsers={excludedUsers}
 					showClose={showClose}
-					buttonText={buttonText}
+					buttonText={buttonText || tg("assignUsers")}
 				/>
 			)}
 		</Modal>
@@ -74,9 +75,10 @@ export const AssignUserToGroupModalContent = ({
 	onSuccess,
 	excludedUsers,
 	showClose = true,
-	buttonText = "Assign Users",
+	buttonText,
 }: ContentProps) => {
 	const t = useTranslations("common");
+	const tg = useTranslations("groups");
 	const { data: users, isLoading } = useFetchApi<User[]>(
 		"/users?service_user=false",
 	);
@@ -157,7 +159,7 @@ export const AssignUserToGroupModalContent = ({
 									onSuccess?.(selectedUsers);
 								}}
 							>
-								{buttonText}
+								{buttonText || tg("assignUsers")}
 							</Button>
 						)}
 					</div>
