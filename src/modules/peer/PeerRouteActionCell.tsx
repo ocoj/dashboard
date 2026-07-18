@@ -8,6 +8,7 @@ import {
 } from "@components/Tooltip";
 import { useApiCall } from "@utils/api";
 import { Trash2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import * as React from "react";
 import { useMemo } from "react";
 import { useSWRConfig } from "swr";
@@ -20,6 +21,8 @@ type Props = {
   route: Route;
 };
 export default function PeerRouteActionCell({ route }: Props) {
+  const t = useTranslations("common");
+  const tr = useTranslations("routes");
   const { confirm } = useDialog();
   const routeRequest = useApiCall<Route>("/routes");
   const { mutate } = useSWRConfig();
@@ -36,22 +39,21 @@ export default function PeerRouteActionCell({ route }: Props) {
 
   const handleRevoke = async () => {
     notify({
-      title: "Delete Route " + route.network_id,
-      description: "Route was successfully removed",
+      title: tr("deleteRouteNotify", { network_id: route.network_id }),
+      description: tr("routeRemoved"),
       promise: routeRequest.del("", `/${route.id}`).then(() => {
         mutate("/routes");
       }),
-      loadingMessage: "Deleting the route...",
+      loadingMessage: tr("deletingRoute"),
     });
   };
 
   const handleConfirm = async () => {
     const choice = await confirm({
-      title: `Delete peer ${peer.name} from '${route.network_id}' network?`,
-      description:
-        "Are you sure you want to delete the peer from this route? This action cannot be undone.",
-      confirmText: "Delete",
-      cancelText: "Cancel",
+      title: t("deletePeerFromRoute", { name: peer.name, network: route.network_id }),
+      description: t("deletePeerFromRouteDesc"),
+      confirmText: t("delete"),
+      cancelText: t("cancel"),
       type: "danger",
     });
     if (!choice) return;
@@ -70,14 +72,16 @@ export default function PeerRouteActionCell({ route }: Props) {
               disabled={!!peerGroup}
             >
               <Trash2 size={16} />
-              Delete
+              {t("delete")}
             </Button>
           </TooltipTrigger>
           {peerGroup && (
             <TooltipContent>
               <div className={"max-w-xs text-sm"}>
-                <span className={"text-netbird"}>{peer.name}</span> is a part of
-                a group used in a network route. To remove this peer from the
+                {t.rich("removePeerFromRoute", { name: peer.name })}
+              </div>
+            </TooltipContent>
+          )}
                 network route, you need to disassociate this peer from the group
                 used in this route.
               </div>
