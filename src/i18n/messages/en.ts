@@ -2367,6 +2367,7 @@ export default {
     exitNodeTooltip: "An exit node is a network route that routes all your internet traffic through one of your peers.",
     inOurDocumentation: "in our documentation.",
     routeAllTrafficPeers: "Route all traffic through peers",
+    routeAllTrafficPeer: "Route all traffic through this peer",
     addRoutingPeerDescription: "Add a routing peer to this route",
     routeSelectorHelp: "Select a peer to act as a routing peer for this route",
     assignSinglePeerRoute: "Assign a single peer as a routing peer for the route",

@@ -1792,6 +1792,7 @@ export default {
     exitNodeTooltip: "出口节点是一种网络路由，可将您的所有互联网流量通过您的一个节点进行路由。",
     inOurDocumentation: "文档中。",
     routeAllTrafficPeers: "通过节点路由所有流量",
+    routeAllTrafficPeer: "通过此节点路由所有流量",
     addRoutingPeerDescription: "向此路由添加路由节点",
     routeSelectorHelp: "选择一个节点作为此路由的路由节点",
     assignSinglePeerRoute: "指定单个节点作为路由的路由节点",
