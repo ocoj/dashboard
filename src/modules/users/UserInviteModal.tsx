@@ -29,6 +29,7 @@ import { Group } from "@/interfaces/Group";
 import { Role, User, UserInvite } from "@/interfaces/User";
 import useGroupHelper from "@/modules/groups/useGroupHelper";
 import { UserRoleSelector } from "@/modules/users/UserRoleSelector";
+import { TransText } from "@/i18n/trans-text";
 import { isNetBirdCloud } from "@utils/netbird";
 
 type UserCreationMode = "create" | "invite";
@@ -133,8 +134,8 @@ export default function UserInviteModal({ children, groups }: Readonly<Props>) {
             <div className={"flex flex-col items-center justify-center gap-3"}>
               <div>
                 <h2 className={"text-2xl text-center mb-2"}>
-                  {isPasswordSuccess && "User created successfully!"}
-                  {isInviteSuccess && "Invite link created!"}
+                  {isPasswordSuccess && <TransText>User created successfully!</TransText>}
+                  {isInviteSuccess && <TransText>Invite link created!</TransText>}
                 </h2>
                 <Paragraph className={"mt-0 text-sm text-center"}>
                   {isPasswordSuccess &&
@@ -166,7 +167,7 @@ export default function UserInviteModal({ children, groups }: Readonly<Props>) {
               <Paragraph
                 className={"mt-3 text-xs text-nb-gray-400 text-center"}
               >
-                Expires on{" "}
+                <TransText>Expires on</TransText>{" "}
                 {new Date(successData.invite.expires_at).toLocaleString()}
               </Paragraph>
             )}

@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import { Callout } from "@components/Callout";
 import React from "react";
+import { TransText } from "@/i18n/trans-text";
 import { Network } from "@/interfaces/Network";
 import { ReverseProxyTarget } from "@/interfaces/ReverseProxy";
 import { useReverseProxies } from "@/contexts/ReverseProxiesProvider";
@@ -46,10 +47,12 @@ export default function ReverseProxyHTTPTargets({
 }: Readonly<Props>) {
   return (
     <div>
-      <Label>HTTPS Targets</Label>
+      <Label><TransText>HTTPS Targets</TransText></Label>
       <HelpText>
-        Add one or more devices running your service or resources to make it
-        publicly accessible.
+        <TransText>
+          Add one or more devices running your service or resources to make it
+          publicly accessible.
+        </TransText>
       </HelpText>
 
       {targets.length > 0 && (
@@ -107,7 +110,7 @@ export default function ReverseProxyHTTPTargets({
                           >
                             <div className="flex gap-3 items-center">
                               <Edit size={14} className="shrink-0" />
-                              Edit Target
+                              <TransText>Edit Target</TransText>
                             </div>
                           </DropdownMenuItem>
                           <DropdownMenuItem
@@ -117,7 +120,7 @@ export default function ReverseProxyHTTPTargets({
                           >
                             <div className="flex gap-3 items-center">
                               <MinusCircleIcon size={14} className="shrink-0" />
-                              Remove Target
+                              <TransText>Remove Target</TransText>
                             </div>
                           </DropdownMenuItem>
                         </DropdownMenuContent>
@@ -140,7 +143,7 @@ export default function ReverseProxyHTTPTargets({
         disabled={!!(initialNetwork && !initialNetwork.resources?.length)}
       >
         <PlusIcon size={14} />
-        Add Target
+        <TransText>Add Target</TransText>
       </Button>
 
       {initialNetwork && !initialNetwork.resources?.length && (
@@ -151,13 +154,18 @@ export default function ReverseProxyHTTPTargets({
             <AlertTriangle size={14} className="shrink-0 relative top-[3px]" />
           }
         >
-          There are currently no resources in your network{" "}
+          <TransText>
+            There are currently no resources in your network
+          </TransText>{" "}
           <span className={"text-netbird-100 font-medium"}>
             {initialNetwork?.name}
           </span>
-          . Add resources to your network before exposing it as a service.{" "}
+          {". "}
+          <TransText>
+            Add resources to your network before exposing it as a service.
+          </TransText>{" "}
           <InlineButtonLink variant={"default"} onClick={onNavigateToResources}>
-            Go to Resources
+            <TransText>Go to Resources</TransText>
             <ArrowUpRight size={14} />
           </InlineButtonLink>
         </Callout>

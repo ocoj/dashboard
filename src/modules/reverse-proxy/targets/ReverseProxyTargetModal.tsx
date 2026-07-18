@@ -53,6 +53,7 @@ import ReverseProxyAddressInput, {
   useReverseProxyAddress,
 } from "@/modules/reverse-proxy/targets/ReverseProxyAddressInput";
 import Separator from "@components/Separator";
+import { TransText } from "@/i18n/trans-text";
 
 /** Get initial host value based on target, resource, or peer */
 function getInitialHost(
@@ -261,8 +262,8 @@ export default function ReverseProxyTargetModal({
         <ModalContent maxWidthClass="max-w-2xl">
           <ModalHeader
             icon={<Server className="text-netbird" size={16} />}
-            title={currentTarget ? "Edit Target" : "Add Target"}
-            description="Configure the target for your reverse proxy."
+            title={currentTarget ? <TransText>Edit Target</TransText> : <TransText>Add Target</TransText>}
+            description={<TransText>Configure the target for your reverse proxy.</TransText>}
             color="netbird"
           />
 
@@ -478,7 +479,7 @@ export default function ReverseProxyTargetModal({
                         Skip TLS Verification
                       </>
                     }
-                    helpText="Skip certificate verification when connecting to this target. Useful if your service already uses a self-signed certificate."
+                    helpText={<TransText>Skip certificate verification when connecting to this target. Useful if your service already uses a self-signed certificate.</TransText>}
                   />
                 )}
             </div>

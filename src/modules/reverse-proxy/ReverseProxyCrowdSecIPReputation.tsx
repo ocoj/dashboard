@@ -1,5 +1,6 @@
 import * as React from "react";
 import { ReactNode } from "react";
+import { TransText } from "@/i18n/trans-text";
 import { Label } from "@components/Label";
 import HelpText from "@components/HelpText";
 import {
@@ -66,12 +67,12 @@ export const ReverseProxyCrowdSecIPReputation = ({
           />
         </div>
         <div>
-          <Label>CrowdSec IP Reputation</Label>
+          <Label><TransText>CrowdSec IP Reputation</TransText></Label>
           <HelpText>
-            Detect malicious IPs with CrowdSec.{" "}
-            <b className={"text-white"}>Enforce</b> to block them or{" "}
-            <b className={"text-white"}>Observe</b> to only log without
-            blocking.
+            <TransText>
+              Detect malicious IPs with CrowdSec. Enforce to block them or
+              Observe to only log without blocking.
+            </TransText>
           </HelpText>
         </div>
       </div>

@@ -4,7 +4,7 @@
 
 本仓库是 [NetBird Dashboard](https://github.com/netbirdio/dashboard) 的中文汉化分支 (`i18n-clean`)。
 
-**当前状态**：已合并上游 v2.90.4+，i18n 架构采用自建 TransText 方案。Settings/Access Control/Networks/Posture Checks/Activity 全部完成，**Routes 核心 6 文件本轮完成**。trans-map 2,698 条，tsc 零错误。**Agent Reach 已安装（6/15 渠道可用：Exa搜索、Jina网页、YouTube、B站、V2EX、RSS）。**
+**当前状态**：已合并上游 v2.90.4+，i18n 架构采用自建 TransText 方案。trans-map 2,769 条，tsc 零错误。**本会话大幅推进 Reverse Proxy 及多模块汉化。**
 
 ## 关键信息
 
@@ -39,15 +39,15 @@
 | Posture Checks | ✅ 完成 | 14/26 + 12 skip |
 | Activity | ✅ 完成 | 4/7 + 3 skip |
 | **Routes** | ✅ **本轮完成** | **6/13 + 7 skip** |
-| **Reverse Proxy** | **部分** | **4/61 核心表** |
-| **Integrations** | **少量** | **1/73** |
-| **Onboarding** | **少量** | **1/25** |
+| **Reverse Proxy** | **大半完成** | **32/61** |
+| **Integrations** | 少量 | 1/73 |
+| **Onboarding** | 少量 | 3/25 |
 | Control Center | 无需 | 0/18（无硬编码文本） |
 | DNS | 大部分 | 11/23 |
 | Groups | 大部分 | 11/22 |
 | Peers | 已有 | 3/13 |
 | Peer (详情) | 已有 | 4/22 |
-| Users | 已有 | 4/19 |
+| Users | 已有 | 7/19 |
 
 ### I18n 基础设施
 

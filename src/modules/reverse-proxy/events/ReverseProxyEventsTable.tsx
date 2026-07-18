@@ -30,6 +30,7 @@ import { ExternalLinkIcon } from "lucide-react";
 import ReverseProxyIcon from "@/assets/icons/ReverseProxyIcon";
 import dayjs from "dayjs";
 import React, { useCallback, useMemo, useState } from "react";
+import { TransText } from "@/i18n/trans-text";
 import { DateRange } from "react-day-picker";
 import { DatePickerWithRange } from "@components/DatePickerWithRange";
 import { useServerPagination } from "@/contexts/ServerPaginationProvider";
@@ -422,7 +423,7 @@ export default function ReverseProxyEventsTable({
           }
           learnMore={
             <>
-              Learn more about
+              <TransText>Learn more about</TransText>{" "}
               <InlineLink
                 href={REVERSE_PROXY_EVENTS_DOCS_LINK}
                 target={"_blank"}

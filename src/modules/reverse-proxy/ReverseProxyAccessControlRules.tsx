@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useReducer, useRef, useState } from "react";
+import { TransText } from "@/i18n/trans-text";
 import { Label } from "@components/Label";
 import HelpText from "@components/HelpText";
 import Button from "@components/Button";
@@ -243,12 +244,16 @@ export const ReverseProxyAccessControlRules = ({
         />
       )}
       <div>
-        <Label>Access Control Rules</Label>
+        <Label><TransText>Access Control Rules</TransText></Label>
         <HelpText>
-          Define rules to allow or block traffic based on country, IP address,
-          or CIDR block.
+          <TransText>
+            Define rules to allow or block traffic based on country, IP address,
+            or CIDR block.
+          </TransText>
           <br />
-          Block rules always take priority over allow rules.
+          <TransText>
+            Block rules always take priority over allow rules.
+          </TransText>
         </HelpText>
       </div>
       {rules.length > 0 && (
@@ -358,7 +363,7 @@ export const ReverseProxyAccessControlRules = ({
         data-testid="add-access-rule"
       >
         <PlusIcon size={14} />
-        Add Rule
+        <TransText>Add Rule</TransText>
       </Button>
     </div>
   );

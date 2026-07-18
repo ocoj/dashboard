@@ -15,6 +15,7 @@ import { ArrowRightFromLine, Globe, LockKeyhole } from "lucide-react";
 import { HelpTooltip } from "@components/HelpTooltip";
 import { Label } from "@components/Label";
 import HelpText from "@components/HelpText";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   value?: ServiceMode;
@@ -76,10 +77,12 @@ export const ReverseProxyServiceModeSelector = ({
   return (
     <div className="flex justify-between items-center gap-10 mt-2">
       <div>
-        <Label>Service Type</Label>
+        <Label><TransText>Service Type</TransText></Label>
         <HelpText>
-          Select a type to define how the proxy handles and forwards traffic to
-          your backend services.
+          <TransText>
+            Select a type to define how the proxy handles and forwards traffic to
+            your backend services.
+          </TransText>
         </HelpText>
       </div>
       <Select

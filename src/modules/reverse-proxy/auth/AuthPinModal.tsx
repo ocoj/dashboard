@@ -4,6 +4,7 @@ import ModalHeader from "@components/modal/ModalHeader";
 import PinCodeInput from "@components/PinCodeInput";
 import { GradientFadedBackground } from "@components/ui/GradientFadedBackground";
 import React, { useState } from "react";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   open: boolean;
@@ -43,8 +44,8 @@ export default function AuthPinModal({
     <Modal open={open} onOpenChange={onOpenChange}>
       <ModalContent maxWidthClass="max-w-md">
         <ModalHeader
-          title="PIN Code"
-          description="Require a numeric PIN code to access this service."
+          title={<TransText>PIN Code</TransText>}
+          description={<TransText>Require a numeric PIN code to access this service.</TransText>}
         />
 
         <GradientFadedBackground />
@@ -73,7 +74,7 @@ export default function AuthPinModal({
                 </Button>
                 <div className="flex gap-3">
                   <ModalClose asChild>
-                    <Button variant="secondary">Cancel</Button>
+                    <Button variant="secondary"><TransText>Cancel</TransText></Button>
                   </ModalClose>
                   <Button
                     variant="primary"
@@ -89,7 +90,7 @@ export default function AuthPinModal({
                 <div />
                 <div className="flex gap-3">
                   <ModalClose asChild>
-                    <Button variant="secondary">Cancel</Button>
+                    <Button variant="secondary"><TransText>Cancel</TransText></Button>
                   </ModalClose>
                   <Button
                     variant="primary"

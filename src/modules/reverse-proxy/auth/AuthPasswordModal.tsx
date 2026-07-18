@@ -3,6 +3,7 @@ import { Input } from "@components/Input";
 import { Modal, ModalClose, ModalContent } from "@components/modal/Modal";
 import ModalHeader from "@components/modal/ModalHeader";
 import React, { useState } from "react";
+import { TransText } from "@/i18n/trans-text";
 import { GradientFadedBackground } from "@components/ui/GradientFadedBackground";
 
 type Props = {
@@ -43,8 +44,8 @@ export default function AuthPasswordModal({
     <Modal open={open} onOpenChange={onOpenChange}>
       <ModalContent maxWidthClass="max-w-md">
         <ModalHeader
-          title="Password"
-          description="Require a password to access this service."
+          title={<TransText>Password</TransText>}
+          description={<TransText>Require a password to access this service.</TransText>}
         />
 
         <GradientFadedBackground />
@@ -83,7 +84,7 @@ export default function AuthPasswordModal({
                 </Button>
                 <div className="flex gap-3">
                   <ModalClose asChild>
-                    <Button variant="secondary">Cancel</Button>
+                    <Button variant="secondary"><TransText>Cancel</TransText></Button>
                   </ModalClose>
                   <Button
                     variant="primary"
@@ -99,7 +100,7 @@ export default function AuthPasswordModal({
                 <div />
                 <div className="flex gap-3">
                   <ModalClose asChild>
-                    <Button variant="secondary">Cancel</Button>
+                    <Button variant="secondary"><TransText>Cancel</TransText></Button>
                   </ModalClose>
                   <Button
                     variant="primary"

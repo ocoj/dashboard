@@ -30,6 +30,7 @@ import { OnboardingExplainDefaultPolicy } from "@/modules/onboarding/p2p/Onboard
 import { OnboardingFirstDevice } from "@/modules/onboarding/p2p/OnboardingFirstDevice";
 import { OnboardingSecondDevice } from "@/modules/onboarding/p2p/OnboardingSecondDevice";
 import { OnboardingTestP2P } from "@/modules/onboarding/p2p/OnboardingTestP2P";
+import { TransText } from "@/i18n/trans-text";
 import { OnboardingDemoCall } from "@/modules/onboarding/OnboardingDemoCall";
 
 export interface OnboardingState {
@@ -308,7 +309,7 @@ export const Onboarding = ({
         >
           <div data-testid={"regular-onboarding"}>
             <VisuallyHidden asChild>
-              <DialogTitle>Onboarding</DialogTitle>
+              <DialogTitle><TransText>Onboarding</TransText></DialogTitle>
             </VisuallyHidden>
             <div
               className={cn(
@@ -599,7 +600,7 @@ export const Onboarding = ({
                     "text-sm text-nb-gray-400 font-light pb-10 text-center px-4"
                   }
                 >
-                  Already know how NetBird works?
+                  <TransText>Already know how NetBird works?</TransText>
                   <InlineLink
                     href={"#"}
                     className={"!text-nb-gray-200 ml-1"}

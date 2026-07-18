@@ -2,6 +2,7 @@
 
 import Code from "@components/Code";
 import * as React from "react";
+import { TransText } from "@/i18n/trans-text";
 import { ReverseProxyEvent } from "@/interfaces/ReverseProxy";
 
 type Props = {
@@ -80,7 +81,7 @@ export default function ReverseProxyEventExpandedRow({ event }: Props) {
           "px-4 py-4 text-sm text-nb-gray-400 italic border-t border-nb-gray-900"
         }
       >
-        No metadata recorded for this request.
+        <TransText>No metadata recorded for this request.</TransText>
       </div>
     );
   }

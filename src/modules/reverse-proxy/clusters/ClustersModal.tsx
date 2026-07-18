@@ -28,6 +28,7 @@ import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useSWRConfig } from "swr";
 import { useApiCall } from "@/utils/api";
 import { cn, validator } from "@utils/helpers";
+import { TransText } from "@/i18n/trans-text";
 import { GRPC_API_ORIGIN, isNetBirdCloud } from "@/utils/netbird";
 import { SelectDropdown } from "@components/select/SelectDropdown";
 import {
@@ -315,8 +316,8 @@ spec:
       <ModalContent maxWidthClass={"relative max-w-[600px]"} showClose={true}>
         <ModalHeader
           icon={<ServerIcon size={16} />}
-          title={"Setup Cluster"}
-          description={"Setup a proxy cluster on infra you own"}
+          title={<TransText>Setup Cluster</TransText>}
+          description={<TransText>Setup a proxy cluster on infra you own</TransText>}
           color={"netbird"}
         />
 
@@ -350,7 +351,7 @@ spec:
           <TabsContent value={"domain"} className={"pb-8"}>
             <div className={"px-8 flex flex-col gap-6"}>
               <div>
-                <Label>Domain</Label>
+                <Label><TransText>Domain</TransText></Label>
                 <HelpText>
                   Enter a domain name that will be used for your cluster.
                 </HelpText>
@@ -365,7 +366,7 @@ spec:
                 />
               </div>
               <div>
-                <Label>Deployment Method</Label>
+                <Label><TransText>Deployment Method</TransText></Label>
                 <HelpText>{deployDescription}</HelpText>
                 <SelectDropdown
                   value={deployMethod}
@@ -409,7 +410,7 @@ spec:
           <TabsContent value={"dns"} className={"pb-8"}>
             <div className={"px-8 flex flex-col"}>
               <div>
-                <Label>Configure DNS</Label>
+                <Label><TransText>Configure DNS</TransText></Label>
                 <HelpText>
                   Add the following DNS records pointing to your machine&apos;s
                   public IP address.

@@ -1,3 +1,4 @@
+import { TransText } from "@/i18n/trans-text";
 import Badge from "@components/Badge";
 import Button from "@components/Button";
 import {

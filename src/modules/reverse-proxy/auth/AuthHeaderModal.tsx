@@ -17,6 +17,7 @@ import {
   UserIcon,
 } from "lucide-react";
 import React, { useMemo, useReducer, useRef } from "react";
+import { TransText } from "@/i18n/trans-text";
 import { useHasChanges } from "@/hooks/useHasChanges";
 import type { HeaderAuthConfig } from "@/interfaces/ReverseProxy";
 
@@ -234,8 +235,8 @@ export default function AuthHeaderModal({
         }}
       >
         <ModalHeader
-          title="HTTP Headers"
-          description="Require specific HTTP headers to access this service."
+          title={<TransText>HTTP Headers</TransText>}
+          description={<TransText>Require specific HTTP headers to access this service.</TransText>}
         />
 
         <div className="px-8">
@@ -266,9 +267,13 @@ export default function AuthHeaderModal({
 
           {items.length > 1 && (
             <Callout className="mt-4" variant="info">
-              Any request matching one of these headers will grant access.
+              <TransText>
+                Any request matching one of these headers will grant access.
+              </TransText>
               <br />
-              Matched headers are stripped before reaching your backend.
+              <TransText>
+                Matched headers are stripped before reaching your backend.
+              </TransText>
             </Callout>
           )}
 
@@ -280,7 +285,7 @@ export default function AuthHeaderModal({
                 </Button>
                 <div className="flex gap-3">
                   <ModalClose asChild>
-                    <Button variant="secondary">Cancel</Button>
+                    <Button variant="secondary"><TransText>Cancel</TransText></Button>
                   </ModalClose>
                   <Button
                     variant="primary"
@@ -296,7 +301,7 @@ export default function AuthHeaderModal({
                 <div />
                 <div className="flex gap-3">
                   <ModalClose asChild>
-                    <Button variant="secondary">Cancel</Button>
+                    <Button variant="secondary"><TransText>Cancel</TransText></Button>
                   </ModalClose>
                   <Button
                     variant="primary"
