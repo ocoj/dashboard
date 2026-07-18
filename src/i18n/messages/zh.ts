@@ -2194,6 +2194,7 @@ export default {
     installWithTerminal: "通过终端手动安装",
     installationGuide: "安装指南",
     learnMore: "了解更多",
+    managementUrlInstruction: "请使用以下管理服务器地址：",
     openCmdAndRun: "打开命令行并运行 NetBird",
     openTerminalAndRun: "打开终端并运行 NetBird",
     readDocumentation: "阅读我们的文档",

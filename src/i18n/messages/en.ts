@@ -2422,6 +2422,7 @@ export default {
   setupModal: {
     generateSetupKey: "Generate a setup key",
     learnMore: "Learn more",
+    managementUrlInstruction: "Use the following Management URL:",
     defaultUserName: "there",
     helloMessage: "Hello {name}! 👋",
     timeToAddFirstDevice: "It's time to add your first device.",
