@@ -4,8 +4,8 @@ import { Table } from "@tanstack/react-table";
 import { cn } from "@utils/helpers";
 import { Command, CommandGroup, CommandItem } from "cmdk";
 import { Check, ChevronDown, RowsIcon } from "lucide-react";
-import { useTranslations } from 'next-intl';
 import * as React from "react";
+import { TransText } from "@/i18n/trans-text";
 
 interface DataTablePaginationProps<TData> {
   table: Table<TData>;
@@ -18,7 +18,6 @@ export function DataTableRowsPerPage<TData>({
   table,
   disabled,
 }: DataTablePaginationProps<TData>) {
-  const t = useTranslations('table');
   const [open, setOpen] = React.useState(false);
 
   return (
@@ -38,7 +37,7 @@ export function DataTableRowsPerPage<TData>({
               <span className={"text-white"}>
                 {table.getState().pagination.pageSize}
               </span>
-              <span className={"text-nb-gray-300"}> {t('rowsPerPage')}</span>
+              <span className={"text-nb-gray-300"}> <TransText>rows per page</TransText></span>
             </div>
             <ChevronDown className="h-4 w-4 opacity-50" />
           </Button>

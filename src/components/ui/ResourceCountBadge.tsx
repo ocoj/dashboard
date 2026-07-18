@@ -1,7 +1,6 @@
 import Badge, { BadgeVariants } from "@components/Badge";
 import { cn, singularize } from "@utils/helpers";
 import { LayersIcon } from "lucide-react";
-import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import * as React from "react";
 import { Group } from "@/interfaces/Group";
@@ -16,7 +15,6 @@ export default function ResourceCountBadge({
   group,
   disableRedirect = false,
 }: Props) {
-  const t = useTranslations("common");
   const router = useRouter();
   const hasId = !!group?.id;
 
@@ -34,7 +32,7 @@ export default function ResourceCountBadge({
       useHover={hasId}
     >
       <LayersIcon size={12} />
-      {t("resourceCount", { count: group?.resources_count ?? 0 })}
+      {singularize("Resources", group?.resources_count, true)}
     </Badge>
   );
 }

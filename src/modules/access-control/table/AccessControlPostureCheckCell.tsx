@@ -1,18 +1,14 @@
-"use client";
-
 import Badge from "@components/Badge";
 import { IconCirclePlus } from "@tabler/icons-react";
 import { ShieldCheck } from "lucide-react";
 import React from "react";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { Policy } from "@/interfaces/Policy";
-import { useTranslations } from "next-intl";
 
 type Props = {
   policy: Policy;
 };
 export default function AccessControlPostureCheckCell({ policy }: Props) {
-  const t = useTranslations("policies");
   const { permission } = usePermissions();
 
   const isDisabled = !permission.policies.create || !permission.policies.update;
@@ -22,7 +18,7 @@ export default function AccessControlPostureCheckCell({ policy }: Props) {
     <div className={"flex"}>
       <Badge variant={"gray"} useHover={true}>
         <ShieldCheck size={14} className={"text-green-500"} />
-        {t("postureCheckCount", { count: policy.source_posture_checks.length })}
+        {policy.source_posture_checks.length} Posture Check(s)
       </Badge>
     </div>
   ) : (
@@ -36,7 +32,7 @@ export default function AccessControlPostureCheckCell({ policy }: Props) {
         disabled={isDisabled}
       >
         <IconCirclePlus size={14} />
-        {t("addPostureCheck")}
+        Add Posture Check
       </Badge>
     </div>
   );

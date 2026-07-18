@@ -20,7 +20,6 @@ import {
 } from "lucide-react";
 import { Callout } from "@components/Callout";
 import React from "react";
-import { useTranslations } from "next-intl";
 import { Network } from "@/interfaces/Network";
 import { ReverseProxyTarget } from "@/interfaces/ReverseProxy";
 import { useReverseProxies } from "@/contexts/ReverseProxiesProvider";
@@ -45,12 +44,12 @@ export default function ReverseProxyHTTPTargets({
   initialNetwork,
   onNavigateToResources,
 }: Readonly<Props>) {
-  const t = useTranslations("reverseProxy");
   return (
     <div>
-      <Label>{t("httpsTargetsLabel")}</Label>
+      <Label>HTTPS Targets</Label>
       <HelpText>
-        {t("httpsTargetsHelp")}
+        Add one or more devices running your service or resources to make it
+        publicly accessible.
       </HelpText>
 
       {targets.length > 0 && (
@@ -141,7 +140,7 @@ export default function ReverseProxyHTTPTargets({
         disabled={!!(initialNetwork && !initialNetwork.resources?.length)}
       >
         <PlusIcon size={14} />
-        {t("addTargetBtn")}
+        Add Target
       </Button>
 
       {initialNetwork && !initialNetwork.resources?.length && (

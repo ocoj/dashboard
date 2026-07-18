@@ -7,7 +7,6 @@ import { RestrictedAccess } from "@components/ui/RestrictedAccess";
 import { usePortalElement } from "@hooks/usePortalElement";
 import dayjs from "dayjs";
 import { ArrowLeftRightIcon, ExternalLinkIcon } from "lucide-react";
-import { useTranslations } from "next-intl";
 import React, { useMemo } from "react";
 import ActivityIcon from "@/assets/icons/ActivityIcon";
 import { useIsFeatureLocked } from "@/cloud/cloud-hooks/useIsFeatureLocked";
@@ -23,8 +22,6 @@ import { LockedFeatureOverlay } from "@/modules/billing/locked-feature/LockedFea
 import { EventStreamingCard } from "@/modules/integrations/event-streaming/EventStreamingCard";
 
 export default function NetworkTrafficPage() {
-  const t = useTranslations("activity");
-  const tCommon = useTranslations("common");
   const account = useAccount();
   const { permission } = usePermissions();
   const { ref: headingRef, portalTarget } =
@@ -46,41 +43,42 @@ export default function NetworkTrafficPage() {
       <div className="p-default py-6">
         <Breadcrumbs>
           <Breadcrumbs.Item
-            label={t("title")}
+            label="Activity"
             disabled
             icon={<ActivityIcon size={13} />}
           />
           <Breadcrumbs.Item
             href="/events/traffic"
-            label={t("trafficEvents")}
+            label="Traffic Events"
             icon={<ArrowLeftRightIcon size={15} />}
           />
         </Breadcrumbs>
 
-        <h1 ref={headingRef}>{t("trafficEvents")}</h1>
+        <h1 ref={headingRef}>Traffic Events</h1>
 
         <Paragraph>
-          {t("trafficEventsDescription")}
+          Traffic events is an experimental feature. Functionality and behavior
+          may evolve, including changes to how data is collected or reported.
         </Paragraph>
 
         <Paragraph>
-          {t("trafficEventsLearnMore")}{" "}
+          Learn more about{" "}
           <InlineLink href={TRAFFIC_EVENTS_DOC_LINK} target="_blank">
-            {t("trafficEvents")} <ExternalLinkIcon size={12} />
+            Traffic Events <ExternalLinkIcon size={12} />
           </InlineLink>{" "}
-          {t("trafficEventsInOurDoc")}
+          in our documentation.
         </Paragraph>
       </div>
 
       <RestrictedAccess
-        page={t("trafficEvents")}
+        page="Traffic Events"
         hasAccess={permission.events.read}
       >
         <div className={"p-default"}>
           <LockedFeatureInfoCard
             className={"mb-6"}
             feature={"TRAFFIC_EVENTS"}
-            featureText={t("trafficEvents")}
+            featureText={"Traffic Events"}
           />
         </div>
         <LockedFeatureOverlay feature={"TRAFFIC_EVENTS"}>

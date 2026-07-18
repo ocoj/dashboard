@@ -2,7 +2,6 @@ import Badge from "@components/Badge";
 import TextWithTooltip from "@components/ui/TextWithTooltip";
 import { cn } from "@utils/helpers";
 import { EyeIcon, FolderGit2, SquarePen } from "lucide-react";
-import { useTranslations } from "next-intl";
 import * as React from "react";
 import { useMemo, useState } from "react";
 import { useGroups } from "@/contexts/GroupsProvider";
@@ -25,7 +24,6 @@ export default function GroupBadgeWithEditPeers({
   useSave = true,
   onPeerAssignmentChange,
 }: Readonly<Props>) {
-  const t = useTranslations("common");
   const isNew = !group?.id;
   const [editGroupPeersModal, setEditGroupPeersModal] = useState(false);
   const { dropdownOptions, addDropdownOptions, updateGroupDropdown } =
@@ -89,7 +87,7 @@ export default function GroupBadgeWithEditPeers({
                   "text-[7px] relative -top-[0px] leading-[0] bg-green-900 border border-green-500/20 py-1.5 px-1 rounded-[3px] text-green-400"
                 }
               >
-                {t("new")}
+                NEW
               </span>
             )}
           </div>
@@ -106,7 +104,7 @@ export default function GroupBadgeWithEditPeers({
               >
                 {peerCount}
               </span>{" "}
-              {t("peers")}{" "}
+              Peers{" "}
             </span>
             {isAllGroup ? (
               <EyeIcon size={11} className={"shrink-0"} />

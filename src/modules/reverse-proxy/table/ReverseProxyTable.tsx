@@ -25,7 +25,6 @@ import { ColumnDef, SortingState } from "@tanstack/react-table";
 import { ExternalLinkIcon, PlusCircle } from "lucide-react";
 import { usePathname } from "next/navigation";
 import React, { useMemo } from "react";
-import { useTranslations } from "next-intl";
 import { useSWRConfig } from "swr";
 import ReverseProxyIcon from "@/assets/icons/ReverseProxyIcon";
 import { usePermissions } from "@/contexts/PermissionsProvider";
@@ -110,8 +109,6 @@ type Props = {
 
 export default function ReverseProxyTable({ headingTarget }: Readonly<Props>) {
   const { mutate } = useSWRConfig();
-  const t = useTranslations("reverseProxy");
-  const tCommon = useTranslations("common");
   const path = usePathname();
   const { permission } = usePermissions();
   const { reverseProxies, isLoading, openModal } = useReverseProxies();
@@ -184,7 +181,7 @@ export default function ReverseProxyTable({ headingTarget }: Readonly<Props>) {
       headingTarget={headingTarget}
       isLoading={isLoading}
       inset={false}
-      text={t("title")}
+      text={"Reverse Proxy"}
       sorting={sorting}
       setSorting={setSorting}
       columns={ReverseProxyColumns}
@@ -192,7 +189,7 @@ export default function ReverseProxyTable({ headingTarget }: Readonly<Props>) {
       useRowId={true}
       initialPageSize={25}
       showResetFilterButton={false}
-      searchPlaceholder={t("searchServicesPlaceholder")}
+      searchPlaceholder={"Search by URL, domain, or target..."}
       rowClassName={(row) => (row.original.enabled ? "" : "opacity-50")}
       aboveTable={(table) => (
         <TableFilterChips table={table} filters={filterDefs} />
@@ -221,9 +218,9 @@ export default function ReverseProxyTable({ headingTarget }: Readonly<Props>) {
               size={"large"}
             />
           }
-          title={t("createServicesTitle")}
+          title={"Create Services"}
           description={
-            t("createServicesDesc")
+            "Expose your internal services securely through NetBird's reverse proxy with automatic TLS and optional authentication to protect your services."
           }
           button={
             <Button
@@ -233,12 +230,12 @@ export default function ReverseProxyTable({ headingTarget }: Readonly<Props>) {
               data-testid={"add-service"}
             >
               <PlusCircle size={16} />
-              {t("addServiceBtn")}
+              Add Service
             </Button>
           }
           learnMore={
             <>
-              {tCommon("learnMore")}
+              Learn more about
               <InlineLink href={REVERSE_PROXY_DOCS_LINK} target={"_blank"}>
                 Services
                 <ExternalLinkIcon size={12} />
@@ -258,7 +255,7 @@ export default function ReverseProxyTable({ headingTarget }: Readonly<Props>) {
               data-testid={"add-service"}
             >
               <PlusCircle size={16} />
-              {t("addServiceBtn")}
+              Add Service
             </Button>
           )}
         </>

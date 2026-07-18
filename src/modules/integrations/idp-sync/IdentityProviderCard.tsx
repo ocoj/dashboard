@@ -3,7 +3,6 @@ import { cn } from "@utils/helpers";
 import { FingerprintIcon } from "lucide-react";
 import Image, { StaticImageData } from "next/image";
 import { useRouter } from "next/navigation";
-import { useTranslations } from "next-intl";
 import * as React from "react";
 import { useMemo } from "react";
 import azureEntraLogo from "@/assets/integrations/entra-id.png";
@@ -35,7 +34,6 @@ export const IdentityProviderCard = () => {
   } = useIntegrations();
   const enabled = !!isAnyIntegrationEnabled;
   const router = useRouter();
-  const t = useTranslations("users");
 
   const idpLogo = useMemo(() => {
     if (isAzureEnabled) return idpImages.azure;
@@ -81,7 +79,7 @@ export const IdentityProviderCard = () => {
           <div className={""}>
             <div className={"flex items-center gap-3 justify-between"}>
               <div className={"font-medium text-sm flex gap-2 items-center"}>
-                {t("idpSyncTitle")}
+                Identity Provider Sync
               </div>
               <div
                 className={cn(
@@ -90,12 +88,12 @@ export const IdentityProviderCard = () => {
                 )}
               >
                 <IconCircleFilled size={8} />
-                {enabled ? t("enabled") : t("disabled")}
+                {enabled ? "Enabled" : "Disabled"}
               </div>
             </div>
 
             <p className={"text-xs font-light !text-nb-gray-300 "}>
-              {t("idpSyncDescription")}
+              Sync users and groups from Okta, Microsoft or Google IdP
             </p>
           </div>
         </div>

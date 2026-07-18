@@ -1,6 +1,5 @@
 import { ToggleSwitch } from "@components/ToggleSwitch";
 import GroupBadge from "@components/ui/GroupBadge";
-import { useTranslations } from "next-intl";
 import React, { useMemo } from "react";
 import { useSWRConfig } from "swr";
 import { useGroups } from "@/contexts/GroupsProvider";
@@ -11,7 +10,6 @@ type Props = {
   route: Route;
 };
 export default function PeerRouteActiveCell({ route }: Props) {
-  const t = useTranslations("routes");
   const { updateRoute } = useRoutes();
   const { mutate } = useSWRConfig();
   const { groups } = useGroups();
@@ -31,7 +29,9 @@ export default function PeerRouteActiveCell({ route }: Props) {
       () => {
         mutate("/routes");
       },
-      enabled ? t("routeEnabledSuccess") : t("routeDisabledSuccess"),
+      enabled
+        ? "The network route was successfully enabled"
+        : "The network route was successfully disabled",
     );
   };
 

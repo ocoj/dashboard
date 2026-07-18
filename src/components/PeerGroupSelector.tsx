@@ -35,7 +35,6 @@ import {
   WorkflowIcon,
   XIcon,
 } from "lucide-react";
-import { useTranslations } from "next-intl";
 import * as React from "react";
 import { Fragment, useEffect, useMemo, useState } from "react";
 import Skeleton from "react-loading-skeleton";
@@ -80,7 +79,6 @@ interface MultiSelectProps {
   showRoutes?: boolean;
   disabledGroups?: Group[];
   "data-testid"?: string;
-  dataCy?: string;
   showResourceCounter?: boolean;
   showResources?: boolean;
   showPeers?: boolean;
@@ -122,7 +120,6 @@ export function PeerGroupSelector({
   showRoutes = false,
   disabledGroups,
   "data-testid": dataTestId = "group-selector-dropdown",
-  dataCy,
   showResourceCounter = true,
   showResources = false,
   showPeers = false,
@@ -132,7 +129,7 @@ export function PeerGroupSelector({
   closeOnSelect = false,
   resource,
   onResourceChange,
-  placeholder,
+  placeholder = "Add or select group(s)...",
   customTrigger,
   align = "start",
   side = "bottom",
@@ -146,9 +143,6 @@ export function PeerGroupSelector({
   selectedCluster,
   onClusterChange,
 }: Readonly<MultiSelectProps>) {
-  const tCommon = useTranslations("common");
-  const effectivePlaceholder =
-    placeholder ?? tCommon("addOrSelectGroups");
   const { data: fetchedResources, isLoading: isResourcesLoading } = useFetchApi<
     NetworkResource[]
   >("/networks/resources");
@@ -321,10 +315,10 @@ export function PeerGroupSelector({
 
   const searchPlaceholder = useMemo(() => {
     if (tab === "groups") return placeholderForSearch;
-    if (tab === "resources") return tCommon("searchResource");
-    if (tab === "peers") return tCommon("searchPeer");
-    if (tab === "clusters") return tCommon("searchCluster");
-    return tCommon("search");
+    if (tab === "resources") return "Search resource...";
+    if (tab === "peers") return "Search peer by name or ip...";
+    if (tab === "clusters") return "Search cluster...";
+    return "Search...";
   }, [tab, placeholderForSearch]);
 
   const filteredClusters = useMemo(() => {
@@ -400,7 +394,6 @@ export function PeerGroupSelector({
             )}
             disabled={disabled}
             data-testid={dataTestId}
-            data-cy={dataCy}
             ref={inputRef}
           >
             <div
@@ -502,8 +495,8 @@ export function PeerGroupSelector({
               })}
 
               {values.length == 0 && !resource && !selectedCluster && (
-                <span className={cn(typeof effectivePlaceholder === "string" && "pl-1")}>
-                  {effectivePlaceholder}
+                <span className={cn(typeof placeholder === "string" && "pl-1")}>
+                  {placeholder}
                 </span>
               )}
             </div>
@@ -633,7 +626,8 @@ export function PeerGroupSelector({
                         <FullTooltip
                           content={
                             <div className={"text-xs max-w-xs"}>
-                              {tCommon("groupAlreadyRoutingPeer")}
+                              This group is already part of the routing peer and
+                              can not be used for the access control groups.
                             </div>
                           }
                           disabled={!isDisabled}
@@ -941,7 +935,6 @@ const PolicyCounter = ({
   group: Group;
   policies: Policy[];
 }) => {
-  const tCommon = useTranslations("common");
   const count = useMemo(() => {
     if (!group.id) return 0;
     return policies.filter((policy) => {
@@ -963,7 +956,7 @@ const PolicyCounter = ({
       }
     >
       <ShieldCheck size={14} className={"shrink-0"} />
-      {count} {count === 1 ? tCommon("policy") : tCommon("policies")}
+      {count} {count === 1 ? "Policy" : "Policies"}
     </div>
   );
 };

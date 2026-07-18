@@ -2,7 +2,6 @@ import FullTooltip from "@components/FullTooltip";
 import useFetchApi from "@utils/api";
 import { uniqBy } from "lodash";
 import { RouteIcon } from "lucide-react";
-import { useTranslations } from "next-intl";
 import * as React from "react";
 import { useMemo } from "react";
 import Skeleton from "react-loading-skeleton";
@@ -12,7 +11,6 @@ type Props = {
   group_id: string;
 };
 export const AccessControlGroupCount = ({ group_id }: Props) => {
-  const t = useTranslations("common");
   const { data, isLoading } = useFetchApi<Route[]>("/routes");
 
   const routes = useMemo(() => {
@@ -62,7 +60,7 @@ export const AccessControlGroupCount = ({ group_id }: Props) => {
         }
       >
         <RouteIcon size={14} className={"shrink-0"} />
-        {t("routeCount", { count: routes.length })}
+        {routes.length} Route(s)
       </div>
     </FullTooltip>
   ) : null;

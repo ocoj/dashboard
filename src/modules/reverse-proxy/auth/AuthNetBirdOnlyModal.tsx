@@ -8,7 +8,6 @@ import { Group } from "@/interfaces/Group";
 import { useUsers } from "@/contexts/UsersProvider";
 import Badge from "@components/Badge";
 import { CircleUser } from "lucide-react";
-import { useTranslations } from "next-intl";
 
 type Props = {
   open: boolean;
@@ -27,8 +26,6 @@ export default function AuthNetBirdOnlyModal({
   onSave,
   onRemove,
 }: Readonly<Props>) {
-  const t = useTranslations("common");
-  const tr = useTranslations("reverseProxy");
   const { users } = useUsers();
   const [groups, setGroups] = useState<Group[]>(currentGroups);
   const isEditing = isEnabled;
@@ -48,8 +45,8 @@ export default function AuthNetBirdOnlyModal({
     <Modal open={open} onOpenChange={onOpenChange}>
       <ModalContent maxWidthClass="max-w-xl">
         <ModalHeader
-          title={tr("netBirdOnlyAccess")}
-          description={tr("netBirdOnlyAccessDescription")}
+          title="NetBird-Only Access"
+          description="Reachable from peers in selected groups only."
         />
 
         <GradientFadedBackground />
@@ -77,7 +74,7 @@ export default function AuthNetBirdOnlyModal({
                 </Button>
                 <div className="flex gap-3">
                   <ModalClose asChild>
-                    <Button variant="secondary">{t("cancel")}</Button>
+                    <Button variant="secondary">Cancel</Button>
                   </ModalClose>
                   <Button
                     variant="primary"
@@ -93,7 +90,7 @@ export default function AuthNetBirdOnlyModal({
                 <div />
                 <div className="flex gap-3">
                   <ModalClose asChild>
-                    <Button variant="secondary">{t("cancel")}</Button>
+                    <Button variant="secondary">Cancel</Button>
                   </ModalClose>
                   <Button
                     variant="primary"

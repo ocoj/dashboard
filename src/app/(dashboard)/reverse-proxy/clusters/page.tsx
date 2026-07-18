@@ -7,25 +7,21 @@ import SkeletonTable from "@components/skeletons/SkeletonTable";
 import { RestrictedAccess } from "@components/ui/RestrictedAccess";
 import { usePortalElement } from "@hooks/usePortalElement";
 import { ExternalLinkIcon } from "lucide-react";
-import { useTranslations } from "next-intl";
-import { lazy, Suspense } from "react";
+import React, { lazy, Suspense } from "react";
 import ReverseProxyIcon from "@/assets/icons/ReverseProxyIcon";
 import { usePermissions } from "@/contexts/PermissionsProvider";
-import ReverseProxiesProvider from "@/contexts/ReverseProxiesProvider";
 import { REVERSE_PROXY_CLUSTERS_DOCS_LINK } from "@/interfaces/ReverseProxy";
 import PageContainer from "@/layouts/PageContainer";
 
 const ClustersTable = lazy(
-	() => import("@/modules/reverse-proxy/clusters/ClustersTable"),
+  () => import("@/modules/reverse-proxy/clusters/ClustersTable"),
 );
 
 export default function ReverseProxyClustersPage() {
-	const t = useTranslations("reverseProxy");
-	const tCommon = useTranslations("common");
-	const { permission } = usePermissions();
+  const { permission } = usePermissions();
 
-	const { ref: headingRef, portalTarget } =
-		usePortalElement<HTMLHeadingElement>();
+  const { ref: headingRef, portalTarget } =
+    usePortalElement<HTMLHeadingElement>();
 
   return (
     <PageContainer>
@@ -33,26 +29,28 @@ export default function ReverseProxyClustersPage() {
         <Breadcrumbs>
           <Breadcrumbs.Item
             href={"/reverse-proxy/services"}
-            label={t("title")}
+            label={"Reverse Proxy"}
             icon={<ReverseProxyIcon size={16} />}
           />
           <Breadcrumbs.Item
             href={"/reverse-proxy/clusters"}
-            label={t("clusters")}
+            label={"Clusters"}
             active={true}
           />
         </Breadcrumbs>
-        <h1 ref={headingRef}>{t("clusters")}</h1>
+        <h1 ref={headingRef}>Clusters</h1>
         <Paragraph>
-          {t("clustersDescription")}{" "}
+          Proxy clusters route inbound traffic to your services. Shared clusters
+          are run by the platform; account clusters (self-hosted) run on your
+          own infrastructure.{" "}
           <InlineLink href={REVERSE_PROXY_CLUSTERS_DOCS_LINK} target={"_blank"}>
-            {tCommon("learnMore")}
+            Learn more
             <ExternalLinkIcon size={12} />
           </InlineLink>
         </Paragraph>
       </div>
       <RestrictedAccess
-        page={t("clusters")}
+        page={"Clusters"}
         hasAccess={permission?.services?.read}
       >
         <Suspense fallback={<SkeletonTable />}>

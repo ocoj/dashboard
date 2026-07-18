@@ -6,7 +6,6 @@ import { VerticalTabs } from "@components/VerticalTabs";
 import * as Tabs from "@radix-ui/react-tabs";
 import { isNetBirdCloud } from "@utils/netbird";
 import { CreditCardIcon, ExternalLinkIcon } from "lucide-react";
-import { useTranslations } from "next-intl";
 import * as React from "react";
 import { useState } from "react";
 import Skeleton from "react-loading-skeleton";
@@ -35,7 +34,6 @@ export const PlansAndBillingTab = () => {
 
 export const PlansAndBillingTabTrigger = () => {
   const { permission } = usePermissions();
-  const t = useTranslations("billing");
 
   const { isAccountWithMSPParent } = useMSP();
   if (isAccountWithMSPParent) return;
@@ -49,14 +47,12 @@ export const PlansAndBillingTabTrigger = () => {
       data-testid="settings-tab-plans-and-billing"
     >
       <CreditCardIcon size={14} />
-      {t("plans_and_billing")}
+      Plans & Billing
     </VerticalTabs.Trigger>
   );
 };
 
 const PlansAndBillingTabContent = () => {
-  const t = useTranslations("billing");
-  const tc = useTranslations("common");
   const {
     plans,
     subscription,
@@ -152,19 +148,19 @@ const PlansAndBillingTabContent = () => {
         <Breadcrumbs>
           <Breadcrumbs.Item
             href={"/settings"}
-            label={tc("settings")}
+            label={"Settings"}
             icon={<SettingsIcon size={13} />}
           />
           <Breadcrumbs.Item
             href={"/settings?tab=plans-and-billing"}
-            label={t("plans_and_billing")}
+            label={"Plans & Billing"}
             icon={<CreditCardIcon size={14} />}
             active
           />
         </Breadcrumbs>
 
         <div className={"flex items-center justify-between max-w-4xl mb-4"}>
-          <h1>{t("plans_and_billing")}</h1>
+          <h1>Plans & Billing</h1>
         </div>
 
         {isTrialAvailable && (
@@ -209,23 +205,24 @@ const PlansAndBillingTabContent = () => {
         <div className={"max-w-3xl"}>
           <h2>
             {subscription?.active
-              ? t("update_your_plan")
-              : t("upgrade_your_plan")}
+              ? "Update your NetBird Plan"
+              : "Upgrade your NetBird Plan"}
           </h2>
 
           <Paragraph>
-            {t("increase_limit_desc")}
+            Increase your user and peer limit by upgrading your plan.
           </Paragraph>
           <Paragraph>
-            {t("flexible_pricing_desc")}
+            With our flexible pricing, you are only billed for active users and
+            active peers.
           </Paragraph>
           <Paragraph>
-            {t("find_pricing_plan")}{" "}
+            Find out which{" "}
             <InlineLink href={"https://netbird.io/pricing"} target={"_blank"}>
-              {t("pricing_plan")}
+              Pricing Plan
               <ExternalLinkIcon size={12} />
             </InlineLink>
-            {t("suits_you_best")}
+            suits you the best by visiting our website.
           </Paragraph>
 
           <div

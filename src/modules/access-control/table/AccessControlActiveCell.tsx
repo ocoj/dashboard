@@ -1,18 +1,14 @@
-"use client";
-
 import { ToggleSwitch } from "@components/ToggleSwitch";
 import React, { useMemo } from "react";
 import { mutate } from "swr";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { usePolicies } from "@/contexts/PoliciesProvider";
 import { Policy } from "@/interfaces/Policy";
-import { useTranslations } from "next-intl";
 
 type Props = {
   policy: Policy;
 };
 export default function AccessControlActiveCell({ policy }: Readonly<Props>) {
-  const t = useTranslations("policies");
   const { updatePolicy, serializeRules } = usePolicies();
   const { permission } = usePermissions();
 
@@ -27,7 +23,9 @@ export default function AccessControlActiveCell({ policy }: Readonly<Props>) {
       () => {
         mutate("/policies");
       },
-      enabled ? t("policyEnabledSuccess") : t("policyDisabledSuccess"),
+      enabled
+        ? "The rule was successfully enabled"
+        : "The rule was successfully disabled",
     );
   };
 

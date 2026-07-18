@@ -6,7 +6,6 @@ import dayjs from "dayjs";
 import { isEmpty } from "lodash";
 import { HistoryIcon, Settings } from "lucide-react";
 import * as React from "react";
-import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useState } from "react";
 import { useSWRConfig } from "swr";
 import integrationImage from "@/assets/integrations/huntress.png";
@@ -31,7 +30,6 @@ export const HUNTRESS_NETBIRD_DOCUMENTATION_URL =
   "https://docs.netbird.io/how-to/huntress-edr";
 
 export const Huntress = ({ account }: Props) => {
-  const t = useTranslations("integrations");
   const { mutate } = useSWRConfig();
   const [setupModal, setSetupModal] = useState(false);
   const { permission } = usePermissions();
@@ -96,7 +94,7 @@ export const Huntress = ({ account }: Props) => {
     <>
       <IntegrationCard
         name={"Huntress"}
-        description={t("huntressDesc")}
+        description="EDR with comprehensive, enterprise-grade protection, continuously backed by 24/7 AI-assisted SOC."
         url={{
           title: "huntress.com",
           href: "https://huntress.com/",

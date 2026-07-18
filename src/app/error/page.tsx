@@ -5,7 +5,6 @@ import Button from "@components/Button";
 import Paragraph from "@components/Paragraph";
 import loadConfig from "@utils/config";
 import { ArrowRightIcon, RefreshCw } from "lucide-react";
-import { useTranslations } from "next-intl";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import NetBirdIcon from "@/assets/icons/NetBirdIcon";
@@ -16,9 +15,6 @@ export default function ErrorPage() {
   const { logout, isAuthenticated } = useOidc();
   const router = useRouter();
   const searchParams = useSearchParams();
-  const t = useTranslations("errors");
-  const tAuth = useTranslations("auth");
-  const tCommon = useTranslations("common");
   const [error, setError] = useState<{
     code: number;
     message: string;
@@ -62,19 +58,19 @@ export default function ErrorPage() {
     error?.message?.toLowerCase().includes("pending approval");
 
   const getTitle = () => {
-    if (isBlockedUser) return t("userAccountBlocked");
-    if (isPendingApproval) return t("userApprovalPending");
-    return t("accessError");
+    if (isBlockedUser) return "User Account Blocked";
+    if (isPendingApproval) return "User Approval Pending";
+    return "Access Error";
   };
 
   const getDescription = () => {
     if (isBlockedUser) {
-      return t("accessBlockedDescription");
+      return "Your access has been blocked by the NetBird account administrator, possibly due to new user approval requirements or security policies. Please contact your administrator to regain access.";
     }
     if (isPendingApproval) {
-      return t("pendingApprovalDescription");
+      return "Your account is pending approval from an administrator. Please wait for approval before accessing the dashboard.";
     }
-    return t("accessGenericDescription");
+    return "An error occurred while trying to access the dashboard. Please try again or contact your administrator.";
   };
 
   return (
@@ -98,19 +94,19 @@ export default function ErrorPage() {
       )}
 
       <Paragraph className="text-center mt-2 text-sm">
-        {t("contactAdminDescription")}
+        If you believe this is an error, please contact your administrator.
       </Paragraph>
 
       <div className="mt-5 space-y-3">
         {!isBlockedUser && !isPendingApproval && (
           <Button variant="default-outline" size="sm" onClick={handleRetry}>
             <RefreshCw size={16} className="mr-2" />
-            {tCommon("tryAgain")}
+            Try Again
           </Button>
         )}
 
         <Button variant="primary" size="sm" onClick={handleLogout}>
-          {isBlockedUser || isPendingApproval ? tAuth("signOut") : tCommon("logout")}
+          {isBlockedUser || isPendingApproval ? "Sign Out" : "Logout"}
           <ArrowRightIcon size={16} />
         </Button>
       </div>

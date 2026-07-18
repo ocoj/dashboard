@@ -1,7 +1,6 @@
 import { Callout } from "@components/Callout";
 import { InlineButtonLink } from "@components/InlineLink";
 import { cn } from "@utils/helpers";
-import { useTranslations } from "next-intl";
 import * as React from "react";
 import { useState } from "react";
 import { Peer } from "@/interfaces/Peer";
@@ -14,7 +13,6 @@ type Props = {
 };
 
 export const PeerSSHPolicyInfo = ({ peer, className }: Props) => {
-  const t = useTranslations("common");
   const { showSSHPolicyInfo } = usePeerSSHPolicyCheck(peer);
   const [policyModal, setPolicyModal] = useState(false);
   return (
@@ -22,9 +20,10 @@ export const PeerSSHPolicyInfo = ({ peer, className }: Props) => {
       <>
         <Callout className={cn("max-w-xl", className)} variant={"warning"}>
           <span>
-            {t("sshStep2")}{" "}
+            Starting from NetBird v0.61.0, SSH requires an explicit access
+            control policy to allow SSH connections to this machine.{" "}
             <InlineButtonLink onClick={() => setPolicyModal(true)}>
-              {t("createSSHPolicy")}
+              Create SSH Policy
             </InlineButtonLink>
           </span>
         </Callout>

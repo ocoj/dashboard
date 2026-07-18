@@ -11,7 +11,6 @@ import { useState } from "react";
 import { useUsers } from "@/contexts/UsersProvider";
 import { Group } from "@/interfaces/Group";
 import { HorizontalUsersStack } from "@/modules/users/HorizontalUsersStack";
-import { useTranslations } from "next-intl";
 
 type Props = {
   trigger?: React.ReactNode;
@@ -42,7 +41,6 @@ export const SingleGroupSelector = ({
     searchPredicate,
     { filter: true, debounce: 200 },
   );
-  const t = useTranslations("groups");
   return (
     <Popover
       open={open}
@@ -75,14 +73,14 @@ export const SingleGroupSelector = ({
           <DropdownInput
             value={search}
             onChange={setSearch}
-            placeholder={t("searchPlaceholder")}
+            placeholder={"Search groups..."}
             hideEnterIcon={true}
           />
 
           {values.length == 0 && !search && (
             <div className={"max-w-xs mx-auto px-4"}>
               <DropdownInfoText>
-                {t("noGroupsAvailable")}
+                {"Seems like you don't have any groups."}
               </DropdownInfoText>
             </div>
           )}
@@ -90,7 +88,8 @@ export const SingleGroupSelector = ({
           {filteredItems.length == 0 && search != "" && (
             <div className={"max-w-xs mx-auto px-4"}>
               <DropdownInfoText>
-                {t("noGroupsMatching")}
+                There are no groups matching your search. Try another search
+                term.
               </DropdownInfoText>
             </div>
           )}

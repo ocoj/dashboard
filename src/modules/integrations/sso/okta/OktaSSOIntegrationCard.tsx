@@ -4,7 +4,6 @@ import { SkeletonIntegration } from "@components/skeletons/SkeletonIntegration";
 import { cn } from "@utils/helpers";
 import { Settings } from "lucide-react";
 import * as React from "react";
-import { useTranslations } from "next-intl";
 import { useMemo, useState } from "react";
 import integrationImage from "@/assets/integrations/okta.png";
 import { usePermissions } from "@/contexts/PermissionsProvider";
@@ -18,7 +17,6 @@ import OktaSSOSetup from "@/modules/integrations/sso/okta/OktaSSOSetup";
 import { useEnterpriseConnections } from "@/modules/integrations/sso/useEnterpriseConnections";
 
 export const OktaSSOIntegrationCard = () => {
-  const t = useTranslations("integrations");
   const [setupModal, setSetupModal] = useState(false);
   const { oktaConnection, isDataLoading, toggleConnection, mutate, error } =
     useEnterpriseConnections();
@@ -44,7 +42,7 @@ export const OktaSSOIntegrationCard = () => {
     <>
       <IntegrationCard
         name="Okta"
-        description={t("oktaDesc")}
+        description="Okta is a platform to provision and manage user accounts in cloud-based applications."
         data={oktaConnection}
         url={{
           title: "okta.com",

@@ -7,7 +7,6 @@ import { RestrictedAccess } from "@components/ui/RestrictedAccess";
 import { usePortalElement } from "@hooks/usePortalElement";
 import useFetchApi from "@utils/api";
 import { ExternalLinkIcon, LogsIcon } from "lucide-react";
-import { useTranslations } from "next-intl";
 import React from "react";
 import ActivityIcon from "@/assets/icons/ActivityIcon";
 import { usePermissions } from "@/contexts/PermissionsProvider";
@@ -17,8 +16,6 @@ import ActivityTable from "@/modules/activity/ActivityTable";
 import { EventStreamingCard } from "@/modules/integrations/event-streaming/EventStreamingCard";
 
 export default function Activity() {
-  const t = useTranslations("activity");
-  const tCommon = useTranslations("common");
   const { permission } = usePermissions();
 
   const { data: events, isLoading } =
@@ -32,30 +29,31 @@ export default function Activity() {
       <div className={"p-default py-6"}>
         <Breadcrumbs>
           <Breadcrumbs.Item
-            label={t("title")}
+            label={"Activity"}
             disabled={true}
             icon={<ActivityIcon size={13} />}
           />
           <Breadcrumbs.Item
             href={"/events/audit"}
-            label={t("auditEvents")}
+            label={"Audit Events"}
             icon={<LogsIcon size={18} />}
           />
         </Breadcrumbs>
-        <h1 ref={headingRef}>{t("auditEvents")}</h1>
+        <h1 ref={headingRef}>Audit Events</h1>
         <Paragraph>
-          {t("auditEventsDescription")}{" "}
+          Audit configuration changes, access policy updates, and peer
+          registration and login events across your network.{" "}
           <InlineLink
             href={"https://docs.netbird.io/how-to/audit-events-logging"}
             target={"_blank"}
           >
-            {tCommon("learnMore")}
+            Learn more
             <ExternalLinkIcon size={12} />
           </InlineLink>
         </Paragraph>
       </div>
-<RestrictedAccess page={t("title")} hasAccess={permission.events.read}>
-			<EventStreamingCard />
+      <RestrictedAccess page={"Activity"} hasAccess={permission.events.read}>
+        <EventStreamingCard />
         <ActivityTable
           events={events}
           isLoading={isLoading}

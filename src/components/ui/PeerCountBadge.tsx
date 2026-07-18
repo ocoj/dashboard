@@ -1,7 +1,6 @@
 import Badge, { BadgeVariants } from "@components/Badge";
 import { cn, singularize } from "@utils/helpers";
 import { MonitorSmartphoneIcon } from "lucide-react";
-import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import * as React from "react";
 import { useMemo } from "react";
@@ -21,7 +20,6 @@ export default function PeerCountBadge({
   className,
   disableRedirect = false,
 }: Props) {
-  const t = useTranslations("common");
   const router = useRouter();
   const { dropdownOptions, groups } = useGroups();
 
@@ -63,7 +61,7 @@ export default function PeerCountBadge({
       useHover={canRedirect}
     >
       <MonitorSmartphoneIcon size={12} />
-      {t("peerCount", { count: peerCount })}
+      {singularize("Peers", peerCount, true)}
     </Badge>
   );
 }

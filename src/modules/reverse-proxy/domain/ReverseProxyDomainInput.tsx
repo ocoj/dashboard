@@ -3,7 +3,6 @@ import { Input } from "@components/Input";
 import { Label } from "@components/Label";
 import { Callout } from "@components/Callout";
 import React from "react";
-import { useTranslations } from "next-intl";
 import { CustomDomainSelector } from "./CustomDomainSelector";
 import { isNetBirdCloud } from "@utils/netbird";
 import InlineLink from "@components/InlineLink";
@@ -29,15 +28,13 @@ export default function ReverseProxyDomainInput({
   subdomainRequired = false,
   clusterOffline,
 }: Readonly<Props>) {
-  const t = useTranslations("reverseProxy");
-  const tCommon = useTranslations("common");
   return (
     <div>
-      <Label>{t("domain")}</Label>
+      <Label>Domain</Label>
       <HelpText>
         {subdomainRequired
-          ? t("domainHelp")
-          : t("domainHelp")}
+          ? "Enter a subdomain and select a domain for your service."
+          : "Optionally enter a subdomain, or use the domain directly."}
       </HelpText>
       <div className="flex items-start mt-2">
         <div className="flex-1 min-w-0">
@@ -52,10 +49,10 @@ export default function ReverseProxyDomainInput({
             }}
             error={
               domainAlreadyExists
-                ? t("domainAlreadyUsed")
+                ? "This domain is already used by another service."
                 : undefined
             }
-            placeholder={subdomainRequired ? t("subdomainPlaceholderRequired") : t("subdomainPlaceholder")}
+            placeholder={subdomainRequired ? "myapp" : "myapp (optional)"}
             className="!rounded-r-none !border-r-0"
           />
         </div>

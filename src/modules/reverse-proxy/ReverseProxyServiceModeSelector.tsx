@@ -1,5 +1,4 @@
 import React, { ReactNode, useEffect } from "react";
-import { useTranslations } from "next-intl";
 import {
   isL4Mode as isL4ServiceMode,
   type ReverseProxyDomain,
@@ -63,23 +62,9 @@ export const ReverseProxyServiceModeSelector = ({
   disabled,
   domain,
 }: Props) => {
-  const t = useTranslations("reverseProxy");
   const selected = value ?? ServiceMode.HTTP;
   const selectedMode = SERVICE_MODES[selected];
   const isL4Supported = domain?.supports_custom_ports !== undefined;
-
-  const modeLabels: Record<ServiceMode, string> = {
-    [ServiceMode.HTTP]: t("httpsService"),
-    [ServiceMode.TLS]: t("tlsPassthrough"),
-    [ServiceMode.TCP]: t("tcpService"),
-    [ServiceMode.UDP]: t("udpService"),
-  };
-  const modeDescs: Record<ServiceMode, string> = {
-    [ServiceMode.HTTP]: t("httpsServiceDesc"),
-    [ServiceMode.TLS]: t("tlsPassthroughDesc"),
-    [ServiceMode.TCP]: t("tcpServiceDesc"),
-    [ServiceMode.UDP]: t("udpServiceDesc"),
-  };
 
   // Reset to HTTP if the current L4 mode becomes unsupported (e.g. domain changed)
   useEffect(() => {
@@ -91,9 +76,10 @@ export const ReverseProxyServiceModeSelector = ({
   return (
     <div className="flex justify-between items-center gap-10 mt-2">
       <div>
-        <Label>{t("serviceTypeLabel")}</Label>
+        <Label>Service Type</Label>
         <HelpText>
-          {t("serviceTypeHelp")}
+          Select a type to define how the proxy handles and forwards traffic to
+          your backend services.
         </HelpText>
       </div>
       <Select
@@ -107,7 +93,7 @@ export const ReverseProxyServiceModeSelector = ({
             data-testid={"service-mode-select-button"}
           >
             {selectedMode.icon}
-            <SelectValue placeholder={t("serviceTypeSelect")} />
+            <SelectValue placeholder="Select type..." />
           </div>
         </SelectTrigger>
         <SelectContent data-testid={"service-mode-selection"}>
@@ -126,11 +112,11 @@ export const ReverseProxyServiceModeSelector = ({
                     triggerClassName={"ml-[0.01rem]"}
                     align={"center"}
                     side={"right"}
-                    content={<>{modeDescs[mode as ServiceMode]}</>}
+                    content={<>{config.description}</>}
                   />
                 }
               >
-                <span className="whitespace-nowrap">{modeLabels[mode as ServiceMode]}</span>
+                <span className="whitespace-nowrap">{config.label}</span>
               </SelectItem>
             ))}
         </SelectContent>

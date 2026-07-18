@@ -3,7 +3,6 @@ import { cn } from "@utils/helpers";
 import { Handle, type Node, Position } from "@xyflow/react";
 import * as React from "react";
 import { useMemo } from "react";
-import { useTranslations } from "next-intl";
 import { Group } from "@/interfaces/Group";
 import { useAnySourceGroupEnabled } from "@/modules/control-center/utils/helpers";
 
@@ -18,7 +17,6 @@ type GroupNodeProps = Node<
 >;
 
 export const GroupNode = ({ data, id }: GroupNodeProps) => {
-  const t = useTranslations("controlCenter");
   const { enabled, group, hoverable = true, onClick } = data;
   const sourceGroupEnabled = useAnySourceGroupEnabled(id);
   const isEnabled = enabled ?? sourceGroupEnabled;
@@ -27,13 +25,13 @@ export const GroupNode = ({ data, id }: GroupNodeProps) => {
     const peerCount = group?.peers_count || 0;
     const resourceCount = group?.resources_count || 0;
     if (resourceCount === 0) {
-      return t("peerCount", { count: peerCount });
+      return `${peerCount} Peer(s)`;
     }
     if (peerCount === 0) {
-      return t("resourceCount", { count: resourceCount });
+      return `${resourceCount} Resource(s)`;
     }
-    return t("peerAndResourceCount", { peerCount, resourceCount });
-  }, [group?.peers_count, group?.resources_count, t]);
+    return `${peerCount} Peer(s), ${resourceCount} Resource(s)`;
+  }, [group?.peers_count, group?.resources_count]);
 
   return (
     <div

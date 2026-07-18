@@ -2,7 +2,6 @@ import { notify } from "@components/Notification";
 import { SkeletonIntegration } from "@components/skeletons/SkeletonIntegration";
 import useFetchApi, { useApiCall } from "@utils/api";
 import * as React from "react";
-import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { useSWRConfig } from "swr";
 import integrationImage from "@/assets/integrations/s3.svg";
@@ -14,7 +13,6 @@ import S3Setup from "@/modules/integrations/event-streaming/amazon/s3/S3Setup";
 import { IntegrationCard } from "@/modules/integrations/IntegrationCard";
 
 export default function S3() {
-  const t = useTranslations("integrations");
   const { permission } = usePermissions();
   // Event Streaming is a licensed feature; skip the call on open-source.
   const { isLicensed } = useIsLicensed();
@@ -73,7 +71,7 @@ export default function S3() {
     <>
       <IntegrationCard
         name="Amazon S3"
-        description={t("amazonS3Desc")}
+        description="Amazon S3 is a scalable storage in the cloud."
         url={{
           title: "aws.amazon.com/s3",
           href: "https://aws.amazon.com/s3",

@@ -7,7 +7,6 @@ import {
   ChevronsLeft,
   ChevronsRight,
 } from "lucide-react";
-import { useTranslations } from 'next-intl';
 
 interface DataTablePaginationProps<TData> {
   table: Table<TData>;
@@ -18,12 +17,10 @@ interface DataTablePaginationProps<TData> {
 
 export function DataTablePagination<TData>({
   table,
-  text,
+  text = "rows",
   paginationPadding = "px-8 py-8",
   totalRecords,
 }: DataTablePaginationProps<TData>) {
-  const t = useTranslations('table');
-  const defaultText = text || t("rows");
   const rowsPerPage = table.getState().pagination.pageSize;
   const currentPage = table.getState().pagination.pageIndex + 1;
   const pageCount = table.getPageCount();
@@ -42,12 +39,12 @@ export function DataTablePagination<TData>({
         className={cn("flex items-center justify-between", paginationPadding)}
       >
         <div className="text-nb-gray-400">
-          {t('showing')}{" "}
+          Showing{" "}
           <span className={"font-medium text-white"}>
-            {showingFrom} {t('to')} {showingTo}
+            {showingFrom} to {showingTo}
           </span>{" "}
-          {t('of')} <span className={"font-medium text-white"}>{totalRows}</span>{" "}
-          {defaultText}
+          of <span className={"font-medium text-white"}>{totalRows}</span>{" "}
+          {text}
         </div>
         {pageCount > 1 && (
           <div className={"flex items-center gap-3"}>
@@ -67,7 +64,7 @@ export function DataTablePagination<TData>({
                 </ButtonGroup.Button>
                 <ButtonGroup.Button>
                   <div>
-                    {currentPage} {t("of")} {pageCount}
+                    {currentPage} of {pageCount}
                   </div>
                 </ButtonGroup.Button>
                 <ButtonGroup.Button

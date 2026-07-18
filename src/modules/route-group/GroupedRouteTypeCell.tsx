@@ -1,11 +1,8 @@
-"use client";
-
 import Badge from "@components/Badge";
 import GroupBadge from "@components/ui/GroupBadge";
 import { MonitorSmartphoneIcon } from "lucide-react";
 import * as React from "react";
 import { useMemo } from "react";
-import { useTranslations } from "next-intl";
 import { useGroups } from "@/contexts/GroupsProvider";
 import { GroupedRoute } from "@/interfaces/Route";
 
@@ -13,7 +10,6 @@ type Props = {
   groupedRoute: GroupedRoute;
 };
 export default function GroupedRouteTypeCell({ groupedRoute }: Props) {
-  const t = useTranslations("routes");
   const { groups } = useGroups();
 
   const group = useMemo(() => {
@@ -30,7 +26,7 @@ export default function GroupedRouteTypeCell({ groupedRoute }: Props) {
         <GroupBadge group={group} />
       ) : (
         <Badge variant={"gray"} className={"min-w-[130px]"}>
-          <MonitorSmartphoneIcon size={14} /> {t("routingPeersBadge")}
+          <MonitorSmartphoneIcon size={14} /> Routing Peers
         </Badge>
       )}
     </div>

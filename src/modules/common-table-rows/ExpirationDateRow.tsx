@@ -1,5 +1,4 @@
 import dayjs from "dayjs";
-import "dayjs/locale/zh-cn";
 import { Calendar } from "lucide-react";
 
 type Props = {
@@ -13,7 +12,7 @@ export default function ExpirationDateRow({ date }: Props) {
       }
     >
       <Calendar size={14} />
-      {dayjs(date).locale("zh-cn").format("YYYY年M月D日")}
+      {dayjs(date).format("D MMM YYYY")}
     </div>
   );
 }

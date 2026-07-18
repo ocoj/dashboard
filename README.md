@@ -1,109 +1,97 @@
-# NetBird Dashboard - 中文汉化版
+# NetBird Dashboard
 
-基于 [NetBird Dashboard](https://github.com/netbirdio/dashboard) 的全面中文化版本。
+This project is the UI for NetBird's Management service.
 
-> **演示地址**：https://nb.lanxun.pro:30443  
-> **Docker 镜像**：`ghcr.io/ocoj/dashboard`
+**Hosted version:** https://app.netbird.io/
 
-## 特性
+See [NetBird repo](https://github.com/netbirdio/netbird)
 
-- ✅ 全站界面中文化（侧栏、表格、弹窗、Tooltip、通知等）
-- ✅ 支持中/英文切换（右上角语言选择器）
-- ✅ 跟随上游版本迭代
-- ✅ 静态导出，Nginx 部署，轻量高效
+## Why?
 
-## 技术栈
+The purpose of this project is simple - make it easy to manage VPN built with [NetBird](https://github.com/netbirdio/netbird).
+The dashboard makes it possible to:
 
-- Next.js 16（静态导出 `output: "export"`）
-- React 18 + TypeScript + Tailwind CSS
-- next-intl 国际化
-- Node.js + Docker（内置轻量 HTTP 服务器，无需 Nginx）
+- track the status of your peers
+- remove peers
+- manage Setup Keys (to authenticate new peers)
+- list users
+- define access controls
 
-## 快速部署
+## Some Screenshots
 
-### 方式一：拉取预构建镜像（推荐）
+<img src="./src/assets/screenshots/peers.png" alt="peers"/>
+<img src="./src/assets/screenshots/add-peer.png" alt="add-peer"/>
 
-```bash
-# 从 GitHub Container Registry 拉取
-docker pull ghcr.io/ocoj/dashboard:v2.90.3-zh
+## Technologies Used
 
-# 运行（容器内监听 80 端口）
-docker run -d --name netbird-dashboard --restart unless-stopped \
-  -p 30443:80 \
-  -e AUTH_AUTHORITY=<你的认证服务地址> \
-  -e AUTH_CLIENT_ID=<客户端 ID> \
-  -e AUTH_AUDIENCE=<Audience> \
-  -e AUTH_SUPPORTED_SCOPES='openid profile email' \
-  -e USE_AUTH0=false \
-  -e NETBIRD_MGMT_API_ENDPOINT=<NetBird 管理 API 地址> \
-  ghcr.io/ocoj/dashboard:v2.90.3-zh
-```
+- NextJS
+- ReactJS
+- Tailwind CSS
+- [React Flow](https://reactflow.dev/) for the Control Center
+- Auth0
+- Nginx
+- Docker
+- Let's Encrypt
 
-> 镜像由 GitHub Actions 自动构建，每次推送 tag 或 `i18n-next` 分支时触发。
+## How to run
 
-### 查看可用版本
+Disclaimer. We believe that proper user management system is not a trivial task and requires quite some effort to make it right. Therefore we decided to
+use Auth0 service that covers all our needs (user management, social login, JWT for the management API).
+Auth0 so far is the only 3rd party dependency that can't be really self-hosted.
 
-在 [GitHub Packages](https://github.com/ocoj/dashboard/pkgs/container/dashboard) 查看所有可用镜像 tag。
+1. Install [Docker](https://docs.docker.com/get-docker/)
+2. Register [Auth0](https://auth0.com/) account
+3. Running NetBird UI Dashboard requires the following Auth0 environmental variables to be set (see docker command below):
 
-### 方式二：本地构建
+   `AUTH0_DOMAIN` `AUTH0_CLIENT_ID` `AUTH0_AUDIENCE`
 
-```bash
-npm ci && npx next build
-docker build -f docker/Dockerfile -t netbird-dashboard:amd64 .
-```
+   To obtain these, please use [Auth0 React SDK Guide](https://auth0.com/docs/quickstart/spa/react) up until "Configure Allowed Web Origins"
 
-### 方式三：构建脚本 + 远程部署
+4. NetBird UI Dashboard uses NetBird's Management Service HTTP API, so setting `NETBIRD_MGMT_API_ENDPOINT` is required. Most likely it will be `http://localhost:33071` if you are hosting Management API on the same server.
+5. Run docker container without SSL (Let's Encrypt):
 
-```bash
-# 构建并导出 tar.gz
-./build.sh
+   ```shell
+   docker run -d --name netbird-dashboard \
+     --rm -p 80:80 -p 443:443 \
+     -e AUTH0_DOMAIN=<SET YOUR AUTH DOMAIN> \
+     -e AUTH0_CLIENT_ID=<SET YOUR CLIENT ID> \
+     -e AUTH0_AUDIENCE=<SET YOUR AUDIENCE> \
+     -e NETBIRD_MGMT_API_ENDPOINT=<SET YOUR MANAGEMENT API URL> \
+     netbirdio/dashboard:main
+   ```
 
-# 上传到服务器
-scp netbird-dashboard.tar.gz user@your-server:/tmp/
+6. Run docker container with SSL (Let's Encrypt):
 
-# 在服务器上加载并运行
-ssh user@your-server
-docker load < /tmp/netbird-dashboard.tar.gz
-docker run -d --name netbird-dashboard --restart unless-stopped \
-  -p 30443:80 \
-  -e AUTH_AUTHORITY=... \
-  ...（环境变量同上）\
-  netbird-dashboard:amd64
-```
+   ```shell
+   docker run -d --name netbird-dashboard \
+     --rm -p 80:80 -p 443:443 \
+     -e NGINX_SSL_PORT=443 \
+     -e LETSENCRYPT_DOMAIN=<YOUR PUBLIC DOMAIN> \
+     -e LETSENCRYPT_EMAIL=<YOUR EMAIL> \
+     -e AUTH0_DOMAIN=<SET YOUR AUTH DOMAIN> \
+     -e AUTH0_CLIENT_ID=<SET YOUR CLEITN ID> \
+     -e AUTH0_AUDIENCE=<SET YOUR AUDIENCE> \
+     -e NETBIRD_MGMT_API_ENDPOINT=<SET YOUR MANAGEMENT API URL> \
+     netbirdio/dashboard:main
+   ```
 
-### 环境变量说明
+## How to run local development
 
-| 变量 | 必填 | 说明 |
-|------|------|------|
-| `AUTH_AUTHORITY` | 是 | OIDC 认证服务地址 |
-| `AUTH_CLIENT_ID` | 是 | OAuth2 客户端 ID |
-| `AUTH_AUDIENCE` | 否 | JWT Audience |
-| `AUTH_SUPPORTED_SCOPES` | 否 | 支持的 OAuth Scope |
-| `USE_AUTH0` | 否 | 是否使用 Auth0（默认 false） |
-| `NETBIRD_MGMT_API_ENDPOINT` | 是 | NetBird 管理 API 地址 |
-| `NETBIRD_MGMT_GRPC_API_ENDPOINT` | 否 | gRPC API 地址 |
+1. Install [Node](https://nodejs.org/)
+2. Create and update the `.local-config.json` file. This file should contain values to be replaced from `config.json`
+3. Run `npm install` to install dependencies
+4. Run `npm run dev` to start the development server
 
-## 本地开发
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-```bash
-npm install
-echo '{}' > .local-config.json
-npm run dev
-```
+You can start editing by modifying the code inside `src/..`  
+The page auto-updates as you edit the file.
 
-打开 http://localhost:3000
+## How to migrate from old dashboard (v1)
 
-## 切换语言
+The new dashboard comes with a new docker image `netbirdio/dashboard:main`.  
+To migrate from the old dashboard (v1) `wiretrustee/dashboard:main` to the new one, please follow the steps below.
 
-- **界面操作**：右上角"选择语言" → 中文 / English
-- **Cookie 方式**：设置 `NEXT_LOCALE=zh` 或 `NEXT_LOCALE=en`
-
-## 版本说明
-
-版本号格式：`v<上游版本>-zh`，如 `v2.90.3-zh` 表示基于上游 v2.90.3 的中文汉化版。
-
-## 相关链接
-
-- [NetBird 官方](https://netbird.io/)
-- [上游 Dashboard 仓库](https://github.com/netbirdio/dashboard)
-- [NetBird 文档](https://docs.netbird.io/)
+1. Stop the dashboard container `docker compose down dashboard`
+2. Replace the docker image name in your `docker-compose.yml` with `netbirdio/dashboard:main`
+3. Recreate the dashboard container `docker compose up -d --force-recreate dashboard`

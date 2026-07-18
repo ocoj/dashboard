@@ -10,7 +10,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@components/Tabs";
 import { Textarea } from "@components/Textarea";
 import { cn } from "@utils/helpers";
 import { isEmpty } from "lodash";
-import { useTranslations } from "next-intl";
 import { ExternalLinkIcon, LayoutList, ShieldCheck, Text } from "lucide-react";
 import React, { useState } from "react";
 import { usePermissions } from "@/contexts/PermissionsProvider";
@@ -63,8 +62,6 @@ export default function PostureCheckModal({
     isAtLeastOneCheckEnabled &&
     (permission.policies.create || permission.policies.update);
 
-  const t = useTranslations("postureChecks");
-  const tCommon = useTranslations("common");
   const [tab, setTab] = useState("checks");
 
   return (
@@ -77,9 +74,11 @@ export default function PostureCheckModal({
           <ModalHeader
             icon={<ShieldCheck size={19} />}
             title={
-              postureCheck ? t("updatePostureCheck") : t("createPostureCheck")
+              postureCheck ? "Update Posture Check" : "Create Posture Check"
             }
-            description={t("createDescription")}
+            description={
+              "Use posture checks to further restrict access in your network."
+            }
             color={"netbird"}
           />
 
@@ -87,7 +86,7 @@ export default function PostureCheckModal({
             <TabsList justify={"start"} className={"px-8"}>
               <TabsTrigger value={"checks"}>
                 <LayoutList size={16} />
-                {t("checks")}
+                Checks
               </TabsTrigger>
 
               <TabsTrigger
@@ -100,7 +99,7 @@ export default function PostureCheckModal({
                     "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
                   }
                 />
-                {t("nameAndDescription")}
+                Name & Description
               </TabsTrigger>
             </TabsList>
 
@@ -171,8 +170,10 @@ export default function PostureCheckModal({
             <TabsContent value={"general"} className={"pb-8 px-8"}>
               <div className={"flex flex-col gap-6"}>
                 <div>
-                  <Label>{t("postureCheckName")}</Label>
-                  <HelpText>{t("postureCheckNameHelp")}</HelpText>
+                  <Label>Name of the Posture Check</Label>
+                  <HelpText>
+                    Set an easily identifiable name for your posture check.
+                  </HelpText>
                   <Input
                     autoFocus={true}
                     tabIndex={0}
@@ -183,15 +184,18 @@ export default function PostureCheckModal({
                         payload: e.target.value,
                       })
                     }
-                    placeholder={t("postureCheckNamePlaceholder")}
+                    placeholder={"e.g., NetBird Version > 0.25.0"}
                     disabled={
                       !permission.policies.create || !permission.policies.update
                     }
                   />
                 </div>
                 <div>
-                  <Label>{t("descriptionOptional")}</Label>
-                  <HelpText>{t("postureCheckDescriptionHelp")}</HelpText>
+                  <Label>Description (optional)</Label>
+                  <HelpText>
+                    Write a short description to add more context to this
+                    policy.
+                  </HelpText>
                   <Textarea
                     value={check?.description}
                     onChange={(e) =>
@@ -200,7 +204,9 @@ export default function PostureCheckModal({
                         payload: e.target.value,
                       })
                     }
-                    placeholder={t("postureCheckDescriptionPlaceholder")}
+                    placeholder={
+                      "e.g., Check if the NetBird version is bigger than 0.25.0"
+                    }
                     rows={3}
                     disabled={
                       !permission.policies.create || !permission.policies.update
@@ -214,12 +220,12 @@ export default function PostureCheckModal({
           <ModalFooter className={"items-center"}>
             <div className={"w-full"}>
               <Paragraph className={"text-sm mt-auto"}>
-                {tCommon("learnMore")}{" "}
+                Learn more about
                 <InlineLink
                   href={"https://docs.netbird.io/how-to/manage-posture-checks"}
                   target={"_blank"}
                 >
-                  {t("title")}
+                  Posture Checks
                   <ExternalLinkIcon size={12} />
                 </InlineLink>
               </Paragraph>
@@ -231,7 +237,7 @@ export default function PostureCheckModal({
                     variant={"secondary"}
                     onClick={() => onOpenChange(false)}
                   >
-                    {tCommon("cancel")}
+                    Cancel
                   </Button>
                 )}
 
@@ -240,7 +246,7 @@ export default function PostureCheckModal({
                     variant={"secondary"}
                     onClick={() => setTab("checks")}
                   >
-                    {tCommon("back")}
+                    Back
                   </Button>
                 )}
 
@@ -250,7 +256,7 @@ export default function PostureCheckModal({
                     onClick={() => setTab("general")}
                     disabled={!isAtLeastOneCheckEnabled}
                   >
-                    {tCommon("next")}
+                    Continue
                   </Button>
                 )}
 
@@ -266,7 +272,7 @@ export default function PostureCheckModal({
                       }
                     }}
                   >
-                    {postureCheck ? t("saveChanges") : t("createPostureCheck")}
+                    {postureCheck ? "Save Changes" : "Create Posture Check"}
                   </Button>
                 )}
               </>

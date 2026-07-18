@@ -21,7 +21,6 @@ import {
   ExternalLinkIcon,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useTranslations } from "next-intl";
 import * as React from "react";
 import { Suspense, useMemo, useState } from "react";
 import { DateRange } from "react-day-picker";
@@ -476,12 +475,7 @@ export const TrafficEventsPeerTabTrigger = () => {
   return (
     <TabsTrigger value={"traffic-events"}>
       <ArrowLeftRightIcon size={16} />
-      <TrafficEventsTabLabel />
+      Traffic Events
     </TabsTrigger>
   );
-};
-
-const TrafficEventsTabLabel = () => {
-  const t = useTranslations("peers");
-  return t("tabTrafficEvents");
 };

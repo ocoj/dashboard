@@ -11,7 +11,6 @@ import { LockedFeatureOverlay } from "@/modules/billing/locked-feature/LockedFea
 import { PostureCheckBrowseModal } from "@/modules/posture-checks/modal/PostureCheckBrowseModal";
 import PostureCheckModal from "@/modules/posture-checks/modal/PostureCheckModal";
 import PostureCheckMinimalTable from "@/modules/posture-checks/table/PostureCheckMinimalTable";
-import { useTranslations } from "next-intl";
 
 type Props = {
   postureChecks: PostureCheck[];
@@ -24,7 +23,6 @@ export const PostureCheckTab = ({
   setPostureChecks,
   isLoading,
 }: Props) => {
-  const t = useTranslations("postureChecks");
   const addPostureChecks = (checks: PostureCheck[]) => {
     setPostureChecks((prev) => {
       const previous = prev.map((check) => {
@@ -79,7 +77,7 @@ export const PostureCheckTab = ({
             <LockedFeatureBadge
               position={"relative"}
               side={"bottom"}
-              featureText={t("title")}
+              featureText={"Posture Checks"}
               feature={"POSTURE_CHECKS"}
             />
             {postureChecks.length > 0 && (
@@ -90,7 +88,7 @@ export const PostureCheckTab = ({
                 }
               >
                 <Trash2Icon size={13} className={"mr-1"} />
-                {t("removeChecks")}
+                Remove Checks
               </button>
             )}
           </div>

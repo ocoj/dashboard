@@ -1,5 +1,3 @@
-"use client";
-
 import Badge from "@components/Badge";
 import { Callout } from "@components/Callout";
 import { Checkbox } from "@components/Checkbox";
@@ -20,7 +18,6 @@ import * as React from "react";
 import { useMemo, useState } from "react";
 import { useElementSize } from "@/hooks/useElementSize";
 import { PostureCheck } from "@/interfaces/PostureCheck";
-import { useTranslations } from "next-intl";
 
 interface MultiSelectProps {
   values?: string[];
@@ -35,7 +32,6 @@ export function SSHUsernameSelector({
   disabled = false,
   popoverWidth = "auto",
 }: Readonly<MultiSelectProps>) {
-  const t = useTranslations("policies");
   const searchRef = React.useRef<HTMLInputElement>(null);
   const [open, setOpen] = useState(false);
   const [inputRef, { width }] = useElementSize<HTMLButtonElement>();
@@ -92,7 +88,7 @@ export function SSHUsernameSelector({
               {values?.length === 0 && (
                 <Badge variant={"gray"} className={"font-normal py-1"}>
                   <CircleUserIcon size={12} className={"shrink-0"} />
-                  {t("sshAllLocalUsers")}
+                  All Local Users
                 </Badge>
               )}
 
@@ -151,7 +147,7 @@ export function SSHUsernameSelector({
                   ref={searchRef}
                   value={search}
                   onValueChange={setSearch}
-                  placeholder={t("sshUsernamePlaceholder")}
+                  placeholder={"E.g., root, ec2-user, ubuntu"}
                 />
                 <div
                   className={
@@ -206,7 +202,10 @@ export function SSHUsernameSelector({
                         <div
                           className={"text-neutral-500 dark:text-nb-gray-300"}
                         >
-                          {t("sshAddUsernameByPressing", { key: "Enter" })}
+                          Add username by pressing{" "}
+                          <span className={"font-bold text-netbird"}>
+                            {"'Enter'"}
+                          </span>
                         </div>
                       </CommandItem>
                     </div>

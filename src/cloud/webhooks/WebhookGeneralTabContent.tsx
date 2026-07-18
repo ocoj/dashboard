@@ -1,4 +1,3 @@
-import { useTranslations } from "next-intl";
 import React from "react";
 import HelpText from "@components/HelpText";
 import { Input } from "@components/Input";
@@ -16,20 +15,19 @@ type Props = {
 
 export function WebhookGeneralTabContent({
   value,
-  urlHelpText,
+  urlHelpText = "Full HTTP(S) URL where events will be sent via a POST request.",
   mask,
 }: Readonly<Props>) {
-  const t = useTranslations("webhooks");
   return (
     <TabsContent value={"general"} className={"px-8 text-sm"}>
       <div className={"mb-6"}>
         <Label>
-          {value.isEditing ? t("endpointUrl") : t("enterEndpointUrl")}
+          {value.isEditing ? "Endpoint URL" : "Enter your Endpoint URL"}
         </Label>
-        <HelpText>{urlHelpText || t("authHelpText")}</HelpText>
+        <HelpText>{urlHelpText}</HelpText>
         <Input
           customPrefix={<GlobeIcon size={16} />}
-          placeholder={t("urlPlaceholder")}
+          placeholder="https://api.example.com/webhook"
           maxWidthClass="w-full"
           value={value.url}
           error={value.urlError}
@@ -38,9 +36,9 @@ export function WebhookGeneralTabContent({
         />
       </div>
 
-      <Label>{t("authentication")}</Label>
+      <Label>Authentication</Label>
       <HelpText>
-        {t("authHelpText")}
+        Select your preferred authentication method for the endpoint.
       </HelpText>
       <AuthenticationSettings value={value} mask={mask} />
     </TabsContent>

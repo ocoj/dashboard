@@ -8,7 +8,6 @@ import { RestrictedAccess } from "@components/ui/RestrictedAccess";
 import { usePortalElement } from "@hooks/usePortalElement";
 import useFetchApi from "@utils/api";
 import { ExternalLinkIcon } from "lucide-react";
-import { useTranslations } from "next-intl";
 import React, { Suspense } from "react";
 import NetworkRoutesIcon from "@/assets/icons/NetworkRoutesIcon";
 import { usePermissions } from "@/contexts/PermissionsProvider";
@@ -17,9 +16,6 @@ import PageContainer from "@/layouts/PageContainer";
 import NetworksTable from "@/modules/networks/table/NetworksTable";
 
 export default function Networks() {
-  const t = useTranslations("networks");
-  const tCommon = useTranslations("common");
-  const tNavigation = useTranslations("navigation");
   const { data: networks, isLoading } = useFetchApi<Network[]>("/networks");
   const { permission } = usePermissions();
   const { ref: headingRef, portalTarget } =
@@ -30,19 +26,20 @@ export default function Networks() {
       <div className={"p-default py-6"}>
         <Breadcrumbs>
           <Breadcrumbs.Item
-            label={tNavigation("networkRouting")}
+            label={"Network Routing"}
             icon={<NetworkRoutesIcon size={13} />}
           />
-          <Breadcrumbs.Item href={"/networks"} label={t("title")} />
+          <Breadcrumbs.Item href={"/networks"} label={"Networks"} />
         </Breadcrumbs>
-        <h1 ref={headingRef}>{t("title")}</h1>
+        <h1 ref={headingRef}>Networks</h1>
         <Paragraph>
-          {t("pageDescription")}{" "}
+          Access internal resources in LANs and VPCs without installing NetBird
+          on every machine.{" "}
           <InlineLink
             href={"https://docs.netbird.io/how-to/networks"}
             target={"_blank"}
           >
-            {tCommon("learnMore")}
+            Learn more
             <ExternalLinkIcon size={12} />
           </InlineLink>
         </Paragraph>

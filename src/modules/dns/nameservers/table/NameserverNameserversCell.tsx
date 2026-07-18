@@ -1,5 +1,3 @@
-"use client";
-
 import Badge from "@components/Badge";
 import {
   Tooltip,
@@ -10,13 +8,11 @@ import {
 import { Server } from "lucide-react";
 import React from "react";
 import { NameserverGroup } from "@/interfaces/Nameserver";
-import { useTranslations } from "next-intl";
 
 type Props = {
   ns: NameserverGroup;
 };
 export default function NameserverNameserversCell({ ns }: Props) {
-  const t = useTranslations("dns");
   const nameservers = ns.nameservers ?? [];
 
   if (nameservers.length > 3) {
@@ -26,7 +22,7 @@ export default function NameserverNameserversCell({ ns }: Props) {
           <TooltipTrigger asChild={true}>
             <Badge variant={"gray"} className={"font-mono cursor-help"}>
               <Server size={10} className={"mr-1"} />
-              {t("serverCount", { count: nameservers.length })}
+              {nameservers.length} Servers
             </Badge>
           </TooltipTrigger>
           <TooltipContent className={"p-3"}>

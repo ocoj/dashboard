@@ -13,32 +13,29 @@ import {
 import { cn } from "@utils/helpers";
 import { CheckIcon, GlobeIcon } from "lucide-react";
 import { useState } from "react";
-import { useLocale } from "@/contexts/LocaleProvider";
-import { locales, type Locale, LOCALE_LABELS } from "@/i18n/config";
-import { useTranslations } from "next-intl";
+import {
+  useLocale,
+  locales,
+  type Locale,
+  LOCALE_LABELS,
+} from "@/i18n/locale-context";
+import { TransText } from "@/i18n/trans-text";
 
 /**
- * Header control that switches the active locale. Writes the choice to the
- * `NEXT_LOCALE` cookie (via {@link useLocale}) so it persists across reloads
- * and is picked up by {@link LocaleProvider} on the next load.
- *
- * Renders nothing until client-side detection has run, to avoid showing a
- * stale/default selection during hydration.
+ * Language switcher for the header.  Uses the lightweight {@link TransText}
+ * component and standalone locale context — no `next-intl` dependency.
  */
 export default function LocaleSwitcher() {
-  const t = useTranslations("common");
-
   const { locale, setLocale, mounted } = useLocale();
   const [open, setOpen] = useState(false);
 
   if (!mounted) {
-    // Reserve space without committing a potentially-wrong label pre-hydration.
     return (
       <Button
         size={"xs"}
         variant={"default-outline"}
         className={cn("!rounded-full h-[38px] w-[38px] !p-0")}
-        aria-label={t("selectLanguage")}
+        aria-label="Select Language"
         disabled
       >
         <GlobeIcon size={18} />
@@ -56,7 +53,7 @@ export default function LocaleSwitcher() {
             "!rounded-full h-[38px] w-[38px] !p-0",
             open && "text-white",
           )}
-          aria-label={t("selectLanguage")}
+          aria-label="Select Language"
         >
           <GlobeIcon size={18} />
         </Button>
@@ -64,7 +61,7 @@ export default function LocaleSwitcher() {
       <DropdownMenuContent className="w-48" align="end" forceMount>
         <DropdownMenuLabel className="font-normal">
           <div className="text-sm font-normal leading-none text-nb-gray-200 py-1 px-1">
-            {t("language")}
+            <TransText>Language</TransText>
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />

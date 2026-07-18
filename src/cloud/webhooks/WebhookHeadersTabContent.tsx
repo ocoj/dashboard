@@ -1,4 +1,3 @@
-import { useTranslations } from "next-intl";
 import React from "react";
 import Button from "@components/Button";
 import HelpText from "@components/HelpText";
@@ -20,12 +19,11 @@ type Props = {
 };
 
 export function WebhookHeadersTabContent({ value }: Readonly<Props>) {
-  const t = useTranslations("webhooks");
   return (
     <TabsContent value={"headers"} className={"px-8"}>
-      <Label>{t("httpHeaders")}</Label>
+      <Label>HTTP Headers (optional)</Label>
       <HelpText>
-        {t("httpHeadersHelp")}
+        If your endpoint requires additional headers, you can add them here.
       </HelpText>
       {value.httpHeaders.length > 0 && (
         <div className={"flex gap-3 w-full mb-3"}>
@@ -61,7 +59,7 @@ export function WebhookHeadersTabContent({ value }: Readonly<Props>) {
         data-testid="webhook-add-header"
       >
         <PlusIcon size={14} />
-        {t("addHeader")}
+        Add Header
       </Button>
 
       {value.authHeaderConflict && (
@@ -74,12 +72,15 @@ export function WebhookHeadersTabContent({ value }: Readonly<Props>) {
           }
           className={"mt-5"}
         >
-          {t("authHeaderConflict", {
-            authType:
-              value.authenticationType === AuthType.Basic
-                ? t("basicAuth")
-                : t("bearerToken"),
-          })}
+          Warning: You have added an {"'Authorization'"} header. This will
+          override the{" "}
+          <span className={"text-nb-gray-100 font-medium"}>
+            {value.authenticationType === AuthType.Basic
+              ? "Basic Auth"
+              : "Bearer Token"}
+          </span>{" "}
+          authentication from the previous step. Please remove the{" "}
+          {"'Authorization'"} header.
         </Callout>
       )}
     </TabsContent>

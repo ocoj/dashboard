@@ -4,7 +4,6 @@ import { SkeletonIntegration } from "@components/skeletons/SkeletonIntegration";
 import { useApiCall } from "@utils/api";
 import { Settings } from "lucide-react";
 import * as React from "react";
-import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { useSWRConfig } from "swr";
 import integrationImage from "@/assets/integrations/crowdstrike.png";
@@ -22,7 +21,6 @@ type Props = {
 };
 
 export const CrowdStrike = ({ account }: Props) => {
-  const t = useTranslations("integrations");
   const { permission } = usePermissions();
   const { mutate } = useSWRConfig();
   const [setupModal, setSetupModal] = useState(false);
@@ -92,7 +90,7 @@ export const CrowdStrike = ({ account }: Props) => {
     <>
       <IntegrationCard
         name="CrowdStrike"
-        description={t("crowdstrikeDesc")}
+        description="CrowdStrike is a cloud-native platform for protecting endpoints, cloud workloads, identities and data."
         url={{
           title: "crowdstrike.com",
           href: "https://www.crowdstrike.com/",

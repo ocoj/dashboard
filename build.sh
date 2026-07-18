@@ -3,7 +3,7 @@
 # Build the netbird-dashboard Docker image for linux/amd64 and export it as a
 # portable tarball that can be loaded and run on a remote server.
 #
-# The dashboard image is a Node.js server serving a Next.js *static export*:
+# The dashboard image is nginx serving a Next.js *static export*: the Dockerfile
 # only COPYs the pre-built out/ directory, so we build out/ on the host first
 # (the static files are arch-independent) and then assemble the amd64 image.
 #
@@ -62,7 +62,9 @@ echo "Copy and run on the server:"
 echo "  scp ${OUTPUT} user@your-server:/tmp/"
 echo "  docker load < /tmp/${OUTPUT}"
 echo
-echo "Run (dashboard serves on container port 80):"
+echo "Run (nginx serves on container port 80). Set the runtime env vars the"
+echo "dashboard templates at startup — for the Agent Network onboarding test,"
+echo "flip NETBIRD_AGENT_NETWORK_ONLY=true:"
 echo "  docker run -d --name ${IMAGE_NAME} --restart unless-stopped \\"
 echo "    -p 8080:80 \\"
 echo "    -e NETBIRD_MGMT_API_ENDPOINT=https://your-mgmt:443 \\"

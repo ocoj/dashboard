@@ -13,7 +13,6 @@ import {
   NetworkIcon,
   User2,
 } from "lucide-react";
-import { useTranslations } from "next-intl";
 import * as React from "react";
 import { useState } from "react";
 import NetBirdIcon from "@/assets/icons/NetBirdIcon";
@@ -81,52 +80,33 @@ export function UserRoleSelector({
   side = "bottom",
   align = "start",
 }: Readonly<MultiSelectProps>) {
-  const t = useTranslations("users");
   const [inputRef, { width }] = useElementSize<
     HTMLButtonElement | HTMLDivElement
   >();
   const { isOwner } = useLoggedInUser();
   const { confirm } = useDialog();
 
-  const getTranslatedRoleName = (roleValue: Role): string => {
-    switch (roleValue) {
-      case Role.Owner:
-        return t("owner");
-      case Role.Admin:
-        return t("admin");
-      case Role.NetworkAdmin:
-        return t("networkAdmin");
-      case Role.BillingAdmin:
-        return t("billingAdmin");
-      case Role.Auditor:
-        return t("auditor");
-      case Role.User:
-        return t("user");
-      default:
-        return "";
-    }
-  };
-
   const toggle = async (item: Role) => {
     if (item === Role.Owner) {
       let ok = await confirm({
-        title: t("transferOwnership"),
+        title: "Transfer Ownership?",
         type: "warning",
         description: (
           <div className={"inline-block"}>
-            {t("transferOwnershipPrefix")}{" "}
-            <span className={"text-netbird inline font-medium"}>{t("owner")}</span>{" "}
-            {t("transferOwnershipTo")}{" "}
+            This action will transfer the{" "}
+            <span className={"text-netbird inline font-medium"}>Owner</span>{" "}
+            role to{" "}
             {currentUser ? (
               <span className={"text-netbird inline font-medium"}>
                 {currentUser.name}
               </span>
             ) : (
-              t("transferOwnershipThisUser")
+              "this user"
             )}{" "}
-            {t("transferOwnershipSuffix1")}{" "}
-            <span className={"text-netbird inline font-medium"}>{t("admin")}</span>{" "}
-            {t("transferOwnershipSuffix2")}
+            and leave you with the{" "}
+            <span className={"text-netbird inline font-medium"}>Admin</span>{" "}
+            role. This action can only be undone if the new owner transfers the
+            role back to you.
           </div>
         ),
       });
@@ -171,7 +151,7 @@ export function UserRoleSelector({
                   <selectedRole.icon size={14} width={14} />
                   <div className={"flex flex-col text-sm font-medium"}>
                     <span className={"text-nb-gray-200 whitespace-nowrap"}>
-                      {getTranslatedRoleName(selectedRole.value)}
+                      {selectedRole?.name}
                     </span>
                   </div>
                 </div>
@@ -244,7 +224,7 @@ export function UserRoleSelector({
                               "flex flex-col text-sm font-medium text-nb-gray-200 whitespace-nowrap"
                             }
                           >
-                            {getTranslatedRoleName(item.value)}
+                            {item.name}
                           </div>
                         </div>
                       </CommandItem>

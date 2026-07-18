@@ -2,9 +2,9 @@ import FullTooltip from "@components/FullTooltip";
 import { cn } from "@utils/helpers";
 import { isNetBirdCloud } from "@utils/netbird";
 import { LockIcon, Sparkles } from "lucide-react";
-import { useTranslations } from "next-intl";
 import * as React from "react";
 import { usePermissions } from "@/contexts/PermissionsProvider";
+import { PLAN_TEXT } from "@/modules/billing/locked-feature/LockedFeatureContent";
 import { SelfHostedUpgradeButton } from "@/modules/billing/trial/TrialOrUpgradeButton";
 
 type Props = {
@@ -13,7 +13,6 @@ type Props = {
 
 export const FirewallGPTButton = ({ onClick }: Props) => {
   const { permission } = usePermissions();
-  const t = useTranslations("billing");
 
   if (!isNetBirdCloud()) {
     return (
@@ -23,10 +22,11 @@ export const FirewallGPTButton = ({ onClick }: Props) => {
           <div className={"flex flex-col gap-2 max-w-[280px] px-1 py-1"}>
             <div className={"flex items-center gap-1.5 text-sm font-normal"}>
               <LockIcon size={12} />
-              {t("plan_enterprise")}
+              {PLAN_TEXT.ENTERPRISE}
             </div>
             <div className={"text-xs text-nb-gray-300 font-light"}>
-              {t("smart_firewall_self_hosted_desc")}
+              Smart Firewall uses AI to help you create access policies and is
+              available with a NetBird Enterprise commercial license.
             </div>
             <SelfHostedUpgradeButton />
           </div>

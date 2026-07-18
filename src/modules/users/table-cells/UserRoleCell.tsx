@@ -1,7 +1,6 @@
 import Badge from "@components/Badge";
 import { cn } from "@utils/helpers";
 import { Cog, CreditCardIcon, EyeIcon, NetworkIcon, User2 } from "lucide-react";
-import { useTranslations } from "next-intl";
 import React from "react";
 import NetBirdIcon from "@/assets/icons/NetBirdIcon";
 import { Role, User } from "@/interfaces/User";
@@ -11,7 +10,6 @@ type Props = {
 };
 
 export default function UserRoleCell({ user }: Readonly<Props>) {
-  const t = useTranslations("users");
   const role = user.role;
 
   return (
@@ -20,37 +18,37 @@ export default function UserRoleCell({ user }: Readonly<Props>) {
         {role === Role.User && (
           <>
             <User2 size={14} />
-            {t("user")}
+            User
           </>
         )}
         {role === Role.Admin && (
           <>
             <Cog size={14} />
-            {t("admin")}
+            Admin
           </>
         )}
         {role === Role.Owner && (
           <>
             <NetBirdIcon size={14} />
-            {t("owner")}
+            Owner
           </>
         )}
         {role === Role.BillingAdmin && (
           <>
             <CreditCardIcon size={14} />
-            {t("billingAdmin")}
+            Billing Admin
           </>
         )}
         {role === Role.Auditor && (
           <>
             <EyeIcon size={14} />
-            {t("auditor")}
+            Auditor
           </>
         )}
         {role === Role.NetworkAdmin && (
           <>
             <NetworkIcon size={14} />
-            {t("networkAdmin")}
+            Network Admin
           </>
         )}
       </Badge>

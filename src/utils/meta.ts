@@ -1,1 +1,1 @@
-export const globalMetaTitle = "NetBird 控制台";
+export const globalMetaTitle = "NetBird Dashboard";

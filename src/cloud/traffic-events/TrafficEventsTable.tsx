@@ -21,7 +21,6 @@ import type { ColumnDef, SortingState } from "@tanstack/react-table";
 import dayjs from "dayjs";
 import { ArrowLeftRightIcon, ExternalLinkIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useTranslations } from "next-intl";
 import React, { useCallback, useMemo, useState } from "react";
 import { DateRange } from "react-day-picker";
 import {
@@ -223,7 +222,6 @@ export default function TrafficEventsTable({
   headingTarget,
   isSettingEnabled,
 }: Readonly<Props>) {
-  const t = useTranslations("activity");
   const router = useRouter();
   const { users } = useUsers();
   const { peers } = usePeers();
@@ -436,21 +434,24 @@ export default function TrafficEventsTable({
           size={"large"}
         />
       }
-      title={t("trafficEvents")}
-      description={t("trafficEventsEmptyDesc")}
+      title={"Traffic Events"}
+      description={
+        "Traffic Events help you understand the network activity in your organization. " +
+        "You can see which machines are connecting to each other, and what kind of traffic is flowing between them."
+      }
       button={
         <Button
           variant={"primary"}
           onClick={() => router.push("/settings?tab=networks")}
         >
-          {t("enableTrafficEvents")}
+          Enable Traffic Events
         </Button>
       }
       learnMore={
         <>
-          {t("trafficEventsLearnMore")}{" "}
+          Learn more about
           <InlineLink href={TRAFFIC_EVENTS_DOC_LINK} target={"_blank"}>
-            {t("trafficEvents")}
+            Traffic Events
             <ExternalLinkIcon size={12} />
           </InlineLink>
         </>
@@ -521,7 +522,7 @@ export default function TrafficEventsTable({
         destination_id: false,
       }}
       data={events}
-      searchPlaceholder={t("searchByIpPortPeerResource")}
+      searchPlaceholder={"Search by ip, port, peer or resource..."}
       aboveTable={(table) => (
         <TableFilterChips table={table} filters={filterDefs} />
       )}

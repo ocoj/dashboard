@@ -7,7 +7,6 @@ import { ArrowUpRight } from "lucide-react";
 import { useRouter } from "next/navigation";
 import * as React from "react";
 import { useMemo } from "react";
-import { useTranslations } from "next-intl";
 import { useReverseProxies } from "@/contexts/ReverseProxiesProvider";
 import { ReverseProxyDomainType } from "@/interfaces/ReverseProxy";
 import { isNetBirdCloud } from "@utils/netbird";
@@ -29,7 +28,6 @@ export function CustomDomainSelector({
   "data-testid": dataTestId,
 }: DomainSelectorProps) {
   const router = useRouter();
-  const t = useTranslations("reverseProxy");
   const { domains, isSelfHostedCluster } = useReverseProxies();
 
   const options: SelectOption[] = useMemo(() => {
@@ -110,9 +108,9 @@ export function CustomDomainSelector({
       options={options}
       popoverWidth={380}
       showSearch={true}
-      searchPlaceholder={t("searchDomainsPlaceholder")}
+      searchPlaceholder="Search domains..."
       disabled={disabled}
-      placeholder={t("selectDomain")}
+      placeholder="Select domain..."
       className={className}
       data-testid={dataTestId}
     />

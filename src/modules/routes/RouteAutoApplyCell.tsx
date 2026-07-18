@@ -1,9 +1,6 @@
-"use client";
-
 import { ToggleSwitch } from "@components/ToggleSwitch";
 import React, { useMemo } from "react";
 import { useSWRConfig } from "swr";
-import { useTranslations } from "next-intl";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { useRoutes } from "@/contexts/RoutesProvider";
 import { Route } from "@/interfaces/Route";
@@ -13,7 +10,6 @@ type Props = {
 };
 
 export default function RouteAutoApplyCell({ route }: Readonly<Props>) {
-  const t = useTranslations("routes");
   const { permission } = usePermissions();
   const { updateRoute } = useRoutes();
   const { mutate } = useSWRConfig();
@@ -35,8 +31,8 @@ export default function RouteAutoApplyCell({ route }: Readonly<Props>) {
         mutate("/routes");
       },
       checked
-        ? t("autoApplyEnabled")
-        : t("autoApplyDisabled"),
+        ? "Auto Apply was enabled for the route"
+        : "Auto Apply was disabled for the route",
     );
   };
 
@@ -53,3 +49,5 @@ export default function RouteAutoApplyCell({ route }: Readonly<Props>) {
     </div>
   );
 }
+
+

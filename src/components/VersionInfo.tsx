@@ -7,7 +7,6 @@ import * as React from "react";
 import Skeleton from "react-loading-skeleton";
 import useFetchApi from "@utils/api";
 import { isNetBirdCloud } from "@utils/netbird";
-import { useTranslations } from "next-intl";
 import { useApplicationContext } from "@/contexts/ApplicationProvider";
 import { VersionInfo as VersionInfoType } from "@/interfaces/Instance";
 
@@ -64,7 +63,6 @@ export const NavigationVersionInfo = () => {
 };
 
 const NavigationVersionInfoContent = () => {
-  const t = useTranslations("common");
   const { data: versionInfo, isLoading } = useFetchApi<VersionInfoType>(
     "/instance/version",
     true, // ignore errors
@@ -101,14 +99,14 @@ const NavigationVersionInfoContent = () => {
         <FullTooltip
           content={
             <span className="text-xs">
-              {t("latest")}: {formatVersion(versionInfo.management_available_version)}
+              Latest: {formatVersion(versionInfo.management_available_version)}
             </span>
           }
           side="top"
           className="w-full"
         >
           <div className="flex items-center justify-between w-full cursor-default">
-            <span>{t("management")}</span>
+            <span>Management</span>
             <span className="text-nb-gray-300 font-medium">
               {formatVersion(versionInfo.management_current_version)}
             </span>
@@ -117,14 +115,14 @@ const NavigationVersionInfoContent = () => {
         <FullTooltip
           content={
             <span className="text-xs">
-              {t("latest")}: {formatVersion(versionInfo.dashboard_available_version)}
+              Latest: {formatVersion(versionInfo.dashboard_available_version)}
             </span>
           }
           side="top"
           className="w-full"
         >
           <div className="flex items-center justify-between w-full cursor-default">
-            <span>{t("dashboard")}</span>
+            <span>Dashboard</span>
             <span className="text-nb-gray-300 font-medium">
               {formatVersion(dashboardVersion)}
             </span>
@@ -140,7 +138,7 @@ const NavigationVersionInfoContent = () => {
           className="flex items-center justify-center gap-1.5 text-white font-medium bg-netbird hover:bg-netbird-500 transition-colors rounded-md py-1.5 px-2 mt-1"
         >
           <ArrowUpCircle size={12} />
-          <span>{t("updateAvailable")}</span>
+          <span>Update available</span>
         </a>
       )}
     </div>

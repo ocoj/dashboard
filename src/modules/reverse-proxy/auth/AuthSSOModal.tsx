@@ -8,7 +8,6 @@ import { Group } from "@/interfaces/Group";
 import { useUsers } from "@/contexts/UsersProvider";
 import Badge from "@components/Badge";
 import { CircleUser } from "lucide-react";
-import { useTranslations } from "next-intl";
 
 type Props = {
   open: boolean;
@@ -27,8 +26,6 @@ export default function AuthSSOModal({
   onSave,
   onRemove,
 }: Readonly<Props>) {
-  const t = useTranslations("common");
-  const tr = useTranslations("reverseProxy");
   const { users } = useUsers();
   const [groups, setGroups] = useState<Group[]>(currentGroups);
   const isEditing = isEnabled;
@@ -48,8 +45,8 @@ export default function AuthSSOModal({
     <Modal open={open} onOpenChange={onOpenChange}>
       <ModalContent maxWidthClass="max-w-xl">
         <ModalHeader
-          title={tr("sso")}
-          description={tr("ssoDescription")}
+          title="SSO (Single Sign-On)"
+          description="Require users to authenticate via SSO to access this service."
         />
 
         <GradientFadedBackground />
@@ -78,7 +75,7 @@ export default function AuthSSOModal({
                 </Button>
                 <div className="flex gap-3">
                   <ModalClose asChild>
-                    <Button variant="secondary">{t("cancel")}</Button>
+                    <Button variant="secondary">Cancel</Button>
                   </ModalClose>
                   <Button variant="primary" onClick={handleSave}>
                     Save
@@ -90,7 +87,7 @@ export default function AuthSSOModal({
                 <div />
                 <div className="flex gap-3">
                   <ModalClose asChild>
-                    <Button variant="secondary">{t("cancel")}</Button>
+                    <Button variant="secondary">Cancel</Button>
                   </ModalClose>
                   <Button
                     variant="primary"

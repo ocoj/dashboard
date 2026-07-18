@@ -4,7 +4,6 @@ import { SkeletonIntegration } from "@components/skeletons/SkeletonIntegration";
 import useFetchApi, { useApiCall } from "@utils/api";
 import { Settings } from "lucide-react";
 import * as React from "react";
-import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { useSWRConfig } from "swr";
 import integrationImage from "@/assets/integrations/generic-http.png";
@@ -15,7 +14,6 @@ import GenericHTTPModal from "@/modules/integrations/event-streaming/generic-htt
 import { IntegrationCard } from "@/modules/integrations/IntegrationCard";
 
 export default function GenericHTTP() {
-  const t = useTranslations("integrations");
   const { permission } = usePermissions();
   // Event Streaming is a licensed feature; skip the call on open-source.
   const { isLicensed } = useIsLicensed();
@@ -74,7 +72,7 @@ export default function GenericHTTP() {
     <>
       <IntegrationCard
         name="Generic HTTP"
-        description={t("genericHttpDesc")}
+        description="Provide your custom HTTP endpoint to stream audit & traffic events."
         url={{
           title: "docs.netbird.io",
           href: "https://docs.netbird.io/how-to/stream-activity-to-generic-http",

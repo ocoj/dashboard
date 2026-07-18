@@ -1,4 +1,3 @@
-import { useTranslations } from "next-intl";
 import Breadcrumbs from "@components/Breadcrumbs";
 import Paragraph from "@components/Paragraph";
 import SkeletonTable, {
@@ -30,7 +29,6 @@ export const InvoicesTab = () => {
 
 export const InvoicesTabTrigger = () => {
   const { permission } = usePermissions();
-  const t = useTranslations("invoices");
 
   const { isAccountWithMSPParent } = useMSP();
   if (isAccountWithMSPParent) return;
@@ -43,15 +41,13 @@ export const InvoicesTabTrigger = () => {
         data-testid="settings-tab-invoices"
       >
         <ReceiptTextIcon size={14} />
-        {t("title")}
+        Invoices
       </VerticalTabs.Trigger>
     )
   );
 };
 
 const InvoicesTabContent = () => {
-  const t = useTranslations("invoices");
-  const tc = useTranslations("common");
   const { isActive: isDistributor } = useDistributor();
   const apiPath = isDistributor
     ? "/integrations/msp/reseller/invoices"
@@ -76,12 +72,12 @@ const InvoicesTabContent = () => {
         <Breadcrumbs>
           <Breadcrumbs.Item
             href={"/settings"}
-            label={tc("settings")}
+            label={"Settings"}
             icon={<SettingsIcon size={13} />}
           />
           <Breadcrumbs.Item
             href={"/settings?tab=invoices"}
-            label={t("title")}
+            label={"Invoices"}
             icon={<ReceiptTextIcon size={14} />}
             active
           />
@@ -90,8 +86,8 @@ const InvoicesTabContent = () => {
         <div className={"max-w-3xl mb-4"}>
           <div className={"flex justify-between items-center mb-5"}>
             <div>
-              <h1 ref={headingRef}>{t("title")}</h1>
-              <Paragraph>{t("description")}</Paragraph>
+              <h1 ref={headingRef}>Invoices</h1>
+              <Paragraph>View and export all your available invoices</Paragraph>
             </div>
           </div>
           <Suspense

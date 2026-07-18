@@ -1,4 +1,3 @@
-import { useTranslations } from "next-intl";
 import Button from "@components/Button";
 import {
   DropdownMenu,
@@ -19,7 +18,6 @@ import { RouteModalContent } from "@/modules/routes/RouteModal";
 export default function AddRouteDropdownButton() {
   const [modal, setModal] = useState(false);
   const [existingNetworkModal, setExistingNetworkModal] = useState(false);
-  const t = useTranslations("common");
   const { peer } = usePeer();
   const { permission } = usePermissions();
 
@@ -46,7 +44,7 @@ export default function AddRouteDropdownButton() {
           }}
         >
           <Button variant={"primary"}>
-            {t("addRoute")}
+            Add Route
             <ChevronDown size={16} />
           </Button>
         </DropdownMenuTrigger>
@@ -63,10 +61,10 @@ export default function AddRouteDropdownButton() {
                 size={"small"}
               />
               <div className={"flex flex-col text-left"}>
-                <div className={"text-left text-white"}>
-                  {t("newNetworkRoute")}
+                <div className={"text-left text-white"}>New Network Route</div>
+                <div className={"text-xs"}>
+                  Create a new network route with this peer
                 </div>
-                <div className={"text-xs"}>{t("newNetworkRouteDesc")}</div>
               </div>
             </div>
           </DropdownMenuItem>
@@ -85,10 +83,10 @@ export default function AddRouteDropdownButton() {
                 size={"small"}
               />
               <div className={"flex flex-col text-left"}>
-                <div className={"text-left text-white"}>
-                  {t("existingNetwork")}
+                <div className={"text-left text-white"}>Existing Network</div>
+                <div className={"text-xs"}>
+                  Add this peer to an existing network
                 </div>
-                <div className={"text-xs"}>{t("existingNetworkDesc")}</div>
               </div>
             </div>
           </DropdownMenuItem>

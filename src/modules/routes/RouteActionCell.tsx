@@ -1,5 +1,3 @@
-"use client";
-
 import Button from "@components/Button";
 import {
   DropdownMenu,
@@ -19,7 +17,6 @@ import {
 import * as React from "react";
 import { useState } from "react";
 import { useSWRConfig } from "swr";
-import { useTranslations } from "next-intl";
 import { useDialog } from "@/contexts/DialogProvider";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { useRoutes } from "@/contexts/RoutesProvider";
@@ -30,8 +27,6 @@ type Props = {
   route: Route;
 };
 export default function RouteActionCell({ route }: Props) {
-  const t = useTranslations("routes");
-  const tCommon = useTranslations("common");
   const { permission } = usePermissions();
   const { confirm } = useDialog();
   const routeRequest = useApiCall<Route>("/routes");
@@ -42,21 +37,22 @@ export default function RouteActionCell({ route }: Props) {
 
   const handleRevoke = async () => {
     notify({
-      title: t("deleteRouteNotify", { network_id: route.network_id }),
-      description: t("routeRemoved"),
+      title: "Delete Route " + route.network_id,
+      description: "Route was successfully removed",
       promise: routeRequest.del("", `/${route.id}`).then(() => {
         mutate("/routes");
       }),
-      loadingMessage: t("deletingRoute"),
+      loadingMessage: "Deleting the route...",
     });
   };
 
   const handleConfirm = async () => {
     const choice = await confirm({
-      title: t("deleteDialogTitle", { name: route.network_id }),
-      description: t("deleteDialogDescription"),
-      confirmText: t("deleteDialogConfirm"),
-      cancelText: tCommon("cancel"),
+      title: `Delete '${route.network_id}'?`,
+      description:
+        "Are you sure you want to delete this route? This action cannot be undone.",
+      confirmText: "Delete",
+      cancelText: "Cancel",
       type: "danger",
     });
     if (!choice) return;
@@ -72,8 +68,8 @@ export default function RouteActionCell({ route }: Props) {
         mutate("/routes");
       },
       nextEnabled
-        ? t("routeEnabledSuccess")
-        : t("routeDisabledSuccess"),
+        ? "The network route was successfully enabled"
+        : "The network route was successfully disabled",
     );
   };
 
@@ -99,7 +95,7 @@ export default function RouteActionCell({ route }: Props) {
             variant={"secondary"}
             className={"!px-3"}
             disabled={!permission.routes.update && !permission.routes.delete}
-            aria-label={t("routeActionsLabel")}
+            aria-label={"Route actions"}
           >
             <MoreVertical size={16} className={"shrink-0"} />
           </Button>
@@ -111,7 +107,7 @@ export default function RouteActionCell({ route }: Props) {
           >
             <div className={"flex gap-3 items-center"}>
               <SquarePenIcon size={14} className={"shrink-0"} />
-              {t("actionEdit")}
+              Edit
             </div>
           </DropdownMenuItem>
           <DropdownMenuItem
@@ -123,7 +119,7 @@ export default function RouteActionCell({ route }: Props) {
           >
             <div className={"flex gap-3 items-center"}>
               <PowerIcon size={14} className={"shrink-0"} />
-              {route.enabled ? t("actionDisable") : t("actionEnable")}
+              {route.enabled ? "Disable" : "Enable"}
             </div>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
@@ -134,7 +130,7 @@ export default function RouteActionCell({ route }: Props) {
           >
             <div className={"flex gap-3 items-center"}>
               <Trash2 size={14} className={"shrink-0"} />
-              {t("actionDelete")}
+              Delete
             </div>
           </DropdownMenuItem>
         </DropdownMenuContent>

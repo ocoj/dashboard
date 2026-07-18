@@ -3,7 +3,6 @@ import SquareIcon from "@components/SquareIcon";
 import AddPeerDropdown from "@components/ui/AddPeerDropdown";
 import GetStartedTest from "@components/ui/GetStartedTest";
 import { ExternalLinkIcon } from "lucide-react";
-import { useTranslations } from "next-intl";
 import * as React from "react";
 import PeerIcon from "@/assets/icons/PeerIcon";
 

@@ -1,4 +1,3 @@
-import { useTranslations } from "next-intl";
 import React, { useEffect, useState } from "react";
 import Button from "@components/Button";
 import { Input } from "@components/Input";
@@ -71,15 +70,13 @@ export function HeadersInput({
   const [key, setKey] = useState(value.key);
   const [headerValue, setHeaderValue] = useState(value.value);
 
-  const t = useTranslations("webhooks");
-
   const handleKeyChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newKey = e.target.value;
     setKey(newKey);
 
     let error = "";
     if (newKey === "" && headerValue !== "") {
-      error = t("headerKeyRequired");
+      error = "Header key is required when value is provided";
     }
 
     onChange({ ...value, key: newKey, error });
@@ -92,7 +89,7 @@ export function HeadersInput({
 
     let error = "";
     if (key === "" && newValue !== "") {
-      error = t("headerNameRequired");
+      error = "Header name is required when a value is provided";
     }
 
     onChange({ ...value, value: newValue, error });
@@ -102,7 +99,7 @@ export function HeadersInput({
   useEffect(() => {
     let error = "";
     if (key === "" && headerValue !== "") {
-      error = t("headerNameRequired");
+      error = "Header name is required when a value is provided";
       onError?.(true);
     } else {
       onError?.(false);
@@ -116,8 +113,8 @@ export function HeadersInput({
       <div className={"flex gap-2 w-full"}>
         <div className={"w-full"}>
           <Input
-            customPrefix={t("headerName")}
-            placeholder={t("headerNamePlaceholder")}
+            customPrefix={"Name"}
+            placeholder={"e.g., Authorization"}
             maxWidthClass={"w-full"}
             value={key}
             error={value.error}
@@ -130,8 +127,10 @@ export function HeadersInput({
 
         <div className={"w-full"}>
           <Input
-            customPrefix={t("headerValue")}
-            placeholder={t("headerValuePlaceholder")}
+            customPrefix={"Value"}
+            placeholder={
+              "e.g., Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InVURWw0SmJieUU4S00zY3NwcmdUSSJ9"
+            }
             maxWidthClass={"w-full"}
             value={headerValue}
             onChange={handleValueChange}

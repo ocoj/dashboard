@@ -1,8 +1,5 @@
-"use client";
-
 import { notify } from "@components/Notification";
 import { ToggleSwitch } from "@components/ToggleSwitch";
-import { useTranslations } from "next-intl";
 import { useApiCall } from "@utils/api";
 import * as React from "react";
 import { useMemo } from "react";
@@ -20,7 +17,6 @@ export const ResourceEnabledCell = ({
   resource,
   mutateAllResourcesOnUpdate,
 }: Props) => {
-  const t = useTranslations("networks");
   const { permission } = usePermissions();
 
   const { mutate } = useSWRConfig();
@@ -32,11 +28,11 @@ export const ResourceEnabledCell = ({
 
   const toggle = async (enabled: boolean) => {
     notify({
-      title: t("updateResource"),
-      description: enabled
-        ? t("resourceNowEnabled", { name: resource?.name })
-        : t("resourceNowDisabled", { name: resource?.name }),
-      loadingMessage: t("updatingResource"),
+      title: `Update Resource`,
+      description: `'${resource?.name}' is now ${
+        enabled ? "enabled" : "disabled"
+      }`,
+      loadingMessage: "Updating resource...",
       duration: 1200,
       promise: update({
         ...resource,

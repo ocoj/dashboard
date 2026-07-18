@@ -7,7 +7,6 @@ import { cn } from "@utils/helpers";
 import { Command, CommandGroup, CommandInput, CommandList } from "cmdk";
 import { trim, uniqBy } from "lodash";
 import { SearchIcon } from "lucide-react";
-import { useTranslations } from "next-intl";
 import * as React from "react";
 import { useMemo, useRef } from "react";
 import { ActivityEvent } from "@/interfaces/ActivityEvent";
@@ -35,7 +34,6 @@ export function ActivityTypePicker({
   onChange,
   events,
 }: Readonly<Props>) {
-  const t = useTranslations("activity");
   const searchRef = useRef<HTMLInputElement>(null);
   const selected = value ?? [];
 
@@ -45,7 +43,7 @@ export function ActivityTypePicker({
       activity_code: event.activity_code,
       activity: event.activity,
       group: event.activity_code.startsWith("service.user")
-        ? t("serviceUser")
+        ? "Service User"
         : event.activity_code.split(".")[0],
     }));
     return items.reduce<Record<string, GroupedItem[]>>((acc, item) => {
@@ -82,7 +80,7 @@ export function ActivityTypePicker({
               "dark:placeholder:text-nb-gray-400 font-light placeholder:text-neutral-500 pl-9",
             )}
             ref={searchRef}
-            placeholder={t("searchEvent")}
+            placeholder={"Search event..."}
           />
           <div
             className={
@@ -152,9 +150,8 @@ export function ActivityTypePicker({
 
 export function formatActivityTypeChip(
   value: string[] | undefined,
-  t?: (key: string, params?: Record<string, any>) => string,
 ): string | null {
   if (!value || value.length === 0) return null;
   if (value.length === 1) return value[0];
-  return t ? t("typeCount", { count: value.length }) : `${value.length} types`;
+  return `${value.length} types`;
 }

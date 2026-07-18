@@ -1,9 +1,6 @@
-"use client";
-
 import { Callout } from "@components/Callout";
 import FancyToggleSwitch from "@components/FancyToggleSwitch";
 import FullTooltip from "@components/FullTooltip";
-import { useTranslations } from "next-intl";
 import { getOperatingSystem } from "@hooks/useOperatingSystem";
 import useFetchApi from "@utils/api";
 import { cn } from "@utils/helpers";
@@ -28,7 +25,6 @@ export const RoutingPeerMasqueradeSwitch = ({
   routingPeerGroupId,
   "data-testid": dataTestId,
 }: Props) => {
-  const t = useTranslations("networks");
   return (
     <RoutingPeerMasqueradeTooltip show={disabled}>
       <div className={"flex flex-col gap-4"}>
@@ -40,10 +36,12 @@ export const RoutingPeerMasqueradeSwitch = ({
           label={
             <>
               <VenetianMask size={15} />
-              {t("masquerade")}
+              Masquerade
             </>
           }
-          helpText={t("masqueradeHelp")}
+          helpText={
+            "Allow access to your private networks without configuring routes on your local routers or other devices."
+          }
         />
         {routingPeerGroupId && !value && (
           <RoutingPeerGroupNonLinuxWarning
@@ -64,12 +62,11 @@ export const RoutingPeerMasqueradeTooltip = ({
   show = false,
   children,
 }: RoutingPeerMasqueradeTooltipProps) => {
-  const t = useTranslations("networks");
   return (
     <FullTooltip
       content={
         <div className={"text-xs"}>
-          {t("masqueradeTooltip")}
+          Masquerade needs to be enabled for non-Linux routing peers.
         </div>
       }
       delayDuration={250}
@@ -87,7 +84,6 @@ const RoutingPeerGroupNonLinuxWarning = ({
 }: {
   routingPeerGroupId: string;
 }) => {
-  const t = useTranslations("networks");
   const { groups } = useGroups();
   const { data: peers } = useFetchApi<Peer[]>("/peers", true);
   const group = groups?.find((g) => g.id === routingPeerGroupId);
@@ -116,12 +112,10 @@ const RoutingPeerGroupNonLinuxWarning = ({
           />
         }
       >
-        {t.rich("masqueradeNonLinuxWarning", {
-          important: (chunks) => (
-            <span className={"text-netbird font-normal"}>{chunks}</span>
-          ),
-          groupName: group?.name || "",
-        })}
+        Group <span className={"text-netbird font-normal"}>{group?.name}</span>{" "}
+        contains at least one non-Linux peer.
+        <br /> Disabled Masquerade will have no effect on non-Linux routing
+        peers.
       </Callout>
     )
   );

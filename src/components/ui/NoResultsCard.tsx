@@ -2,9 +2,9 @@ import Card from "@components/Card";
 import Paragraph from "@components/Paragraph";
 import { cn } from "@utils/helpers";
 import { FilterX } from "lucide-react";
-import { useTranslations } from "next-intl";
 import React from "react";
 import Skeleton from "react-loading-skeleton";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   icon?: React.ReactNode;
@@ -16,15 +16,11 @@ type Props = {
 
 export default function NoResultsCard({
   icon,
-  title,
-  description,
+  title = "Could not find any results",
+  description = "We couldn't find any results. Please try a different search term or change your filters.",
   children,
   className,
 }: Readonly<Props>) {
-  const t = useTranslations("table");
-
-  const displayTitle = title || t("noResultsCardTitle");
-  const displayDescription = description || t("noResultsDescription");
   return (
     <div className={cn("px-8 mt-8", className)}>
       <Card className={"w-full relative overflow-hidden"}>
@@ -55,11 +51,9 @@ export default function NoResultsCard({
             {icon || <FilterX size={24} />}
           </div>
           <div className={"text-center"}>
-            <h1 className={"text-2xl font-medium max-w-lg mx-auto"}>
-              {displayTitle}
-            </h1>
+            <h1 className={"text-2xl font-medium max-w-lg mx-auto"}><TransText>{title}</TransText></h1>
             <Paragraph className={"justify-center my-2 !text-nb-gray-400"}>
-              {displayDescription}
+              <TransText>{description}</TransText>
             </Paragraph>
             {children}
           </div>

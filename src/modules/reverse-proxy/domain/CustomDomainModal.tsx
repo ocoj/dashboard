@@ -12,7 +12,6 @@ import {
 import ModalHeader from "@components/modal/ModalHeader";
 import Paragraph from "@components/Paragraph";
 import { validator } from "@utils/helpers";
-import { useTranslations } from "next-intl";
 import { ExternalLinkIcon, GlobeIcon, ServerIcon } from "lucide-react";
 import * as React from "react";
 import { useMemo, useState } from "react";
@@ -41,8 +40,6 @@ export const CustomDomainModal = ({
   onOpenChange,
   onDomainSubmit,
 }: Props) => {
-  const t = useTranslations("reverseProxy");
-  const tCommon = useTranslations("common");
   const { domains } = useReverseProxies();
   const [domain, setDomain] = useState("");
   const [selectedCluster, setSelectedCluster] = useState("");
@@ -94,8 +91,8 @@ export const CustomDomainModal = ({
       <ModalContent maxWidthClass={"relative max-w-lg"} showClose={true}>
         <ModalHeader
           icon={<GlobeIcon size={20} />}
-          title={t("addCustomDomainTitle")}
-          description={t("addCustomDomainDesc")}
+          title={"Add Custom Domain"}
+          description={"You will need to verify the domain with DNS records"}
           color={"netbird"}
         />
 
@@ -120,13 +117,14 @@ export const CustomDomainModal = ({
               </Callout>
             ) : (
               <Callout variant="warning">
-                {t("noClustersNotice")}{" "}
-                {tCommon("learnMore")}{" "}
+                No proxy clusters are currently connected. Please ensure at
+                least one proxy is running before adding a domain. <br /> Learn
+                more about{" "}
                 <InlineLink
                   href={REVERSE_PROXY_CLUSTERS_DOCS_LINK}
                   target={"_blank"}
                 >
-                  {t("proxyClustersLabel")}
+                  Proxy Clusters
                   <ExternalLinkIcon size={12} />
                 </InlineLink>
               </Callout>
@@ -160,7 +158,7 @@ export const CustomDomainModal = ({
                   value={selectedCluster}
                   onChange={setSelectedCluster}
                   options={availableClusterOptions}
-                  placeholder={t("selectProxyCluster")}
+                  placeholder={"Select a proxy cluster..."}
                 />
               </div>
             </>
@@ -169,7 +167,7 @@ export const CustomDomainModal = ({
         <ModalFooter className={"items-center"}>
           <div className={"w-full"}>
             <Paragraph className={"text-sm mt-auto"}>
-              {tCommon("learnMore")}
+              Learn more about
               <InlineLink
                 href={REVERSE_PROXY_CUSTOM_DOMAINS_DOCS_LINK}
                 target={"_blank"}
@@ -181,7 +179,7 @@ export const CustomDomainModal = ({
           </div>
           <div className={"flex gap-3 w-full justify-end"}>
             <ModalClose asChild={true}>
-              <Button variant={"secondary"}>{tCommon("cancel")}</Button>
+              <Button variant={"secondary"}>Cancel</Button>
             </ModalClose>
 
             <Button
@@ -190,7 +188,7 @@ export const CustomDomainModal = ({
               disabled={!canSubmit}
               data-testid={"submit-custom-domain"}
             >
-              {t("addDomainBtn")}
+              Add Domain
             </Button>
           </div>
         </ModalFooter>

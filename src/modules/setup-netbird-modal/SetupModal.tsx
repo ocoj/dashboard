@@ -19,7 +19,6 @@ import {
   KeyRoundIcon,
   Loader2,
 } from "lucide-react";
-import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 import React, { useMemo, useState } from "react";
 import AndroidIcon from "@/assets/icons/AndroidIcon";
@@ -111,7 +110,6 @@ export function SetupModalContent({
   isUserDevice,
 }: Readonly<SetupModalContentProps>) {
   const os = useOperatingSystem();
-  const t = useTranslations("setupModal");
   const [isFirstRun] = useLocalStorage<boolean>("netbird-first-run", true);
   const pathname = usePathname();
   const isInstallPage = pathname === "/install";
@@ -142,11 +140,16 @@ export function SetupModalContent({
   const setupKeyContent = showKeyGenerator ? (
     <>
       <div className={"flex items-center gap-1.5 flex-wrap"}>
-        {t("generateSetupKey")}
+        Generate a setup key
         <HelpTooltip
-          content={t.rich("setupKeyHelpTooltip", {
-            code: (chunks) => <code>{chunks}</code>,
-          })}
+          content={
+            <>
+              A setup key is a one-time, pre-authentication token used to
+              enroll an unattended machine with NetBird. Pass it to{" "}
+              <code>netbird up</code> via <code>--setup-key</code> and the
+              peer registers without an interactive login.
+            </>
+          }
         />
         <InlineLink
           href={
@@ -154,7 +157,7 @@ export function SetupModalContent({
           }
           target={"_blank"}
         >
-          {t("learnMore")}
+          Learn more
           <ExternalLinkIcon size={12} />
         </InlineLink>
       </div>
@@ -169,24 +172,23 @@ export function SetupModalContent({
     if (title) return title;
 
     if (isFirstRun && !isInstallPage) {
-      let name = user?.given_name || t("defaultUserName");
+      let name = user?.given_name || "there";
       return (
         <>
-          {t("helloMessage", { name })} <br /> {t("timeToAddFirstDevice")}
+          Hello {name}! 👋 <br /> It&apos;s time to add your first device.
         </>
       );
     }
 
     return effectiveSetupKey
-      ? t("installNetBirdWithSetupKey")
-      : t("installNetBird");
+      ? "Install NetBird with Setup Key"
+      : "Install NetBird";
   }, [
     isFirstRun,
     isInstallPage,
     effectiveSetupKey,
     title,
     user?.given_name,
-    t,
   ]);
 
   return (
@@ -208,8 +210,8 @@ export function SetupModalContent({
             )}
           >
             {isUserDevice === false || effectiveSetupKey
-              ? t("getStartedWithSetupKey")
-              : t("getStartedWithEmail")}
+              ? "To get started, install and run NetBird with the setup key as a parameter."
+              : "To get started, install NetBird and log in with your email account."}
           </Paragraph>
         </div>
       )}
@@ -322,14 +324,16 @@ export function SetupModalContent({
         <ModalFooter variant={"setup"}>
           <div>
             <SmallParagraph>
-              {t("footerDescription")}{" "}
+              After that you should be connected. Add more devices to your
+              network or manage your existing devices in the admin panel. If you
+              have further questions check out our{" "}
               <InlineLink
                 href={
                   "https://docs.netbird.io/how-to/getting-started#installation"
                 }
                 target={"_blank"}
               >
-                {t("installationGuide")}
+                Installation Guide
                 <ExternalLinkIcon size={12} />
               </InlineLink>
             </SmallParagraph>
@@ -446,16 +450,15 @@ export const HostnameParameter = ({ hostname }: { hostname?: string }) => {
 };
 
 export const RoutingPeerSetupKeyInfo = () => {
-  const t = useTranslations("setupModal");
   return (
     <div
       className={
         "flex gap-2 mt-1 items-center text-xs text-nb-gray-300 font-normal mb-1"
       }
     >
-      {t("setupKeyOnceMessage")}
+      This setup key can be used only once within the next 24 hours.
       <br />
-      {t("setupKeyExpiredMessage")}
+      When expired, the same key can not be used again.
     </div>
   );
 };
@@ -473,7 +476,6 @@ function SetupKeyGenerator({
   generatedKey,
   onGenerated,
 }: SetupKeyGeneratorProps) {
-  const t = useTranslations("setupModal");
   const setupKeyRequest = useApiCall<SetupKey>("/setup-keys", true);
   const [isGenerating, setIsGenerating] = useState(false);
 
@@ -500,9 +502,9 @@ function SetupKeyGenerator({
       .finally(() => setIsGenerating(false));
 
     notify({
-      title: t("setupKeyCreated"),
-      description: t("setupKeyCreatedDescription"),
-      loadingMessage: t("generatingSetupKey"),
+      title: "Setup Key Created",
+      description: "A one-off setup key was generated for this install.",
+      loadingMessage: "Generating setup key...",
       promise: request,
     });
   };
@@ -512,8 +514,8 @@ function SetupKeyGenerator({
     try {
       await navigator.clipboard.writeText(generatedKey.key);
       notify({
-        title: t("setupKeyCopied"),
-        description: t("setupKeyCopiedDescription"),
+        title: "Setup Key Copied",
+        description: "Successfully copied to clipboard.",
       });
     } catch {}
   };
@@ -531,7 +533,7 @@ function SetupKeyGenerator({
           ) : (
             <KeyRoundIcon size={14} />
           )}
-          {t("generateKey")}
+          Generate Key
         </Button>
       </div>
     );
@@ -550,7 +552,7 @@ function SetupKeyGenerator({
           }
         >
           <KeyRoundIcon size={12} />
-          {t("setupKey")}
+          Setup Key
         </div>
         <div
           className={"text-nb-gray-300 text-[0.8rem] text-left mt-0.5 truncate"}
@@ -563,7 +565,7 @@ function SetupKeyGenerator({
           }
         >
 
-          {t("setupKeyExpiryMessage")}
+          This setup key can be used only once and expires in 24 hours.
         </div>
       </div>
       <Button variant={"secondary"} onClick={copy}>

@@ -1,5 +1,3 @@
-"use client";
-
 import {
   Accordion,
   AccordionContent,
@@ -12,7 +10,6 @@ import Steps from "@components/Steps";
 import TabsContentPadding, { TabsContent } from "@components/Tabs";
 import { IconBrandUbuntu } from "@tabler/icons-react";
 import { TerminalSquareIcon } from "lucide-react";
-import { useTranslations } from "next-intl";
 import React from "react";
 import { OperatingSystem } from "@/interfaces/OperatingSystem";
 import {
@@ -37,13 +34,12 @@ export default function LinuxTab({
 }: Readonly<Props>) {
   const runStep = setupKeyContent ? 3 : 2;
   const usingSetupKey = !!setupKey || !!setupKeyPlaceholder;
-  const t = useTranslations("setupModal");
   return (
     <TabsContent value={String(OperatingSystem.LINUX)}>
       <TabsContentPadding>
         <p className={"font-medium flex gap-3 items-center text-base"}>
           <TerminalSquareIcon size={16} />
-          {t("installWithCli")}
+          Install with Command-line
         </p>
         <Steps>
           <Steps.Step step={1}>
@@ -54,7 +50,7 @@ export default function LinuxTab({
           )}
           <Steps.Step step={runStep} line={false}>
             <p>
-              {t("runNetBird")} {!usingSetupKey && t("andLogInBrowser")}
+              Run NetBird {!usingSetupKey && "and log in the browser"}
               {showSetupKeyInfo && <RoutingPeerSetupKeyInfo />}
             </p>
             <NetBirdUpCommand
@@ -71,12 +67,12 @@ export default function LinuxTab({
           <AccordionItem value="item-1">
             <AccordionTrigger>
               <IconBrandUbuntu size={16} />
-              {t("installManuallyOnUbuntu")}
+              Install manually on Ubuntu
             </AccordionTrigger>
             <AccordionContent>
               <Steps>
                 <Steps.Step step={1}>
-                  <p>{t("addRepository")}</p>
+                  <p>Add our repository</p>
                   <Code>
                     <Code.Line>sudo apt-get update</Code.Line>
                     <Code.Line>
@@ -93,7 +89,7 @@ export default function LinuxTab({
                   </Code>
                 </Steps.Step>
                 <Steps.Step step={2}>
-                  <p>{t("installNetBird")}</p>
+                  <p>Install NetBird</p>
                   <Code
                     codeToCopy={[
                       `sudo apt-get update`,
@@ -110,7 +106,7 @@ export default function LinuxTab({
                 </Steps.Step>
                 <Steps.Step step={3} line={false}>
                   <p>
-                    {t("runNetBird")} {!usingSetupKey && t("andLogInBrowser")}
+                    Run NetBird {!usingSetupKey && "and log in the browser"}
                     {showSetupKeyInfo && <RoutingPeerSetupKeyInfo />}
                   </p>
                   <NetBirdUpCommand

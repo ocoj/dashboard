@@ -1,13 +1,8 @@
-import { getTranslations } from "next-intl/server";
 import { globalMetaTitle } from "@utils/meta";
 import type { Metadata } from "next";
 import BlankLayout from "@/layouts/BlankLayout";
 
-export async function generateMetadata(): Promise<Metadata> {
-	const t = await getTranslations("dns");
-	return {
-		title: `${t("dnsZones")} - ${t("dns")} - ${globalMetaTitle}`,
-	};
-}
-
+export const metadata: Metadata = {
+  title: `Zones - DNS - ${globalMetaTitle}`,
+};
 export default BlankLayout;

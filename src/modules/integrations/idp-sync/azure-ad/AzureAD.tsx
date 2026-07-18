@@ -7,7 +7,6 @@ import dayjs from "dayjs";
 import { isEmpty } from "lodash";
 import { RefreshCw, Settings } from "lucide-react";
 import * as React from "react";
-import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useState } from "react";
 import { useSWRConfig } from "swr";
 import integrationImage from "@/assets/integrations/entra-id.png";
@@ -22,7 +21,6 @@ import { useIntegrations } from "@/modules/integrations/idp-sync/useIntegrations
 import { IntegrationCard } from "@/modules/integrations/IntegrationCard";
 
 export const AzureAD = () => {
-  const t = useTranslations("integrations");
   const { mutate } = useSWRConfig();
   const [setupModal, setSetupModal] = useState(false);
   const { permission } = usePermissions();
@@ -73,7 +71,7 @@ export const AzureAD = () => {
     <>
       <IntegrationCard
         name="Entra ID (API)"
-        description={t("entraIdDesc")}
+        description="Microsoft Entra ID is a cloud-based identity and access management solution."
         url={{
           title: "microsoft.com",
           href: "https://www.microsoft.com/en-us/security/business/identity-access/microsoft-entra-id",

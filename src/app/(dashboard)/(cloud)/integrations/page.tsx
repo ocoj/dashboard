@@ -9,7 +9,6 @@ import {
   ShieldCheckIcon,
 } from "lucide-react";
 import { useSearchParams } from "next/navigation";
-import { useTranslations } from "next-intl";
 import React, { useState } from "react";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import PageContainer from "@/layouts/PageContainer";
@@ -21,7 +20,6 @@ import SSOTab from "@/modules/integrations/sso/SSOTab";
 import { isNetBirdCloud } from "@utils/netbird";
 
 export default function Integrations() {
-  const t = useTranslations("integrations");
   const searchParams = useSearchParams();
   const currentTab = searchParams.get("tab");
   const [tab, setTab] = useState(currentTab || "identity-provider");
@@ -34,7 +32,7 @@ export default function Integrations() {
         <VerticalTabs.List>
           <VerticalTabs.Trigger value="identity-provider">
             <FingerprintIcon size={14} />
-            {t("identityProviderSync")}
+            Identity Provider Sync
           </VerticalTabs.Trigger>
 
           {isNetBirdCloud() && (
@@ -46,15 +44,15 @@ export default function Integrations() {
 
           <VerticalTabs.Trigger value="event-streaming">
             <FileText size={14} />
-            {t("eventStreaming")}
+            Event Streaming
           </VerticalTabs.Trigger>
           <VerticalTabs.Trigger value="edr">
             <ShieldCheckIcon size={15} />
-            {t("mdmEdr")}
+            MDM & EDR
           </VerticalTabs.Trigger>
         </VerticalTabs.List>
         <RestrictedAccess
-          page={t("title")}
+          page={"Integrations"}
           hasAccess={
             permission?.edr?.read ||
             permission?.idp?.read ||

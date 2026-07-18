@@ -1,4 +1,3 @@
-import { useTranslations } from "next-intl";
 import Button from "@components/Button";
 import {
   DropdownMenu,
@@ -17,7 +16,6 @@ import { CreateDebugJobModalContent } from "../jobs/CreateDebugJobModal";
 
 export const RemoteJobDropdownButton = () => {
   const [modal, setModal] = useState(false);
-  const t = useTranslations("common");
   const { peer } = usePeer();
   const { permission } = usePermissions();
   const isConnected = peer?.connected;
@@ -41,7 +39,7 @@ export const RemoteJobDropdownButton = () => {
           }}
         >
           <Button variant={"primary"} disabled={disabled}>
-            {t("runRemoteJob")}
+            Run Remote Job
             <ChevronDown size={16} />
           </Button>
         </DropdownMenuTrigger>
@@ -54,12 +52,10 @@ export const RemoteJobDropdownButton = () => {
                 }
               >
                 <div>
-                  {t.rich("peerOfflineRemoteJob", {
-                    name: peer.name,
-                    bold: (chunks) => (
-                      <span className={"text-white font-medium"}>{chunks}</span>
-                    ),
-                  })}
+                  Peer{" "}
+                  <span className={"text-white font-medium"}>{peer.name}</span>{" "}
+                  is currently offline. Please connect the peer to run remote
+                  jobs.
                 </div>
               </div>
               <DropdownMenuSeparator />
@@ -77,8 +73,10 @@ export const RemoteJobDropdownButton = () => {
                 size={"small"}
               />
               <div className={"flex flex-col text-left"}>
-                <div className={"text-left text-white"}>{t("debugBundle")}</div>
-                <div className={"text-xs"}>{t("debugBundleDesc")}</div>
+                <div className={"text-left text-white"}>Debug Bundle</div>
+                <div className={"text-xs"}>
+                  Collect debug information for troubleshooting
+                </div>
               </div>
             </div>
           </DropdownMenuItem>

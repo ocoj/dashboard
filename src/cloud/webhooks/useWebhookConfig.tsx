@@ -1,4 +1,3 @@
-import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useReducer, useState } from "react";
 import { validator } from "@utils/helpers";
 import { uniqueId } from "lodash";
@@ -60,12 +59,10 @@ export function useWebhookConfig({
     }
   }, []);
 
-  const t = useTranslations("webhooks");
-
   const urlError = useMemo(() => {
     if (url === "") return "";
     if (!validator.isValidUrl(url)) {
-      return t("urlError");
+      return "Please enter a valid url, e.g., https://api.example.com/webhook";
     }
     return "";
   }, [url]);

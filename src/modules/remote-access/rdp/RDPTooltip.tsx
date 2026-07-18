@@ -1,5 +1,4 @@
 import FullTooltip from "@components/FullTooltip";
-import { useTranslations } from "next-intl";
 import * as React from "react";
 
 type Props = {
@@ -14,7 +13,6 @@ export const RDPTooltip = ({
   hasPermission,
   side = "top",
 }: Props) => {
-  const tc = useTranslations("common");
   return (
     <FullTooltip
       className={"w-full"}
@@ -22,9 +20,12 @@ export const RDPTooltip = ({
       content={
         <div className={"max-w-xs text-xs flex flex-col gap-2"}>
           {hasPermission ? (
-            <div>{tc("rdpTooltipOffline")}</div>
+            <div>This peer is offline and cannot be accessed via RDP.</div>
           ) : (
-            <div>{tc("rdpTooltipNoPermission")}</div>
+            <div>
+              You do not have permission to launch an RDP session. Please
+              contact your administrator.
+            </div>
           )}
         </div>
       }

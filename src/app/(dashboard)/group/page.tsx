@@ -12,7 +12,6 @@ import useFetchApi from "@utils/api";
 import { cn, singularize } from "@utils/helpers";
 import { FolderGit2Icon, Layers3Icon, PencilIcon } from "lucide-react";
 import { useSearchParams } from "next/navigation";
-import { useTranslations } from "next-intl";
 import React, { useState } from "react";
 import AccessControlIcon from "@/assets/icons/AccessControlIcon";
 import DNSIcon from "@/assets/icons/DNSIcon";
@@ -37,7 +36,6 @@ import { GroupUsersSection } from "@/modules/groups/details/GroupUsersSection";
 import useGroupDetails from "@/modules/groups/details/useGroupDetails";
 
 export default function GroupPage() {
-  const t = useTranslations("groups");
   const queryParameter = useSearchParams();
   const { isRestricted } = usePermissions();
   const groupId = queryParameter.get("id");
@@ -52,7 +50,7 @@ export default function GroupPage() {
   if (isRestricted) {
     return (
       <PageContainer>
-        <RestrictedAccess page={t("title")} />
+        <RestrictedAccess page={"Group Information"} />
       </PageContainer>
     );
   }
@@ -75,7 +73,7 @@ export default function GroupPage() {
             <Breadcrumbs>
               <Breadcrumbs.Item
                 href={"/groups"}
-                label={t("title")}
+                label={"Groups"}
                 icon={<FolderGit2Icon size={14} />}
               />
               <Breadcrumbs.Item label={group.name} active />
@@ -144,8 +142,6 @@ const validAllGroupTabs = [
 const validOtherGroupTabs = ["users", "peers", "setup-keys"];
 
 const GroupOverviewTabs = ({ group }: { group: Group }) => {
-  const t = useTranslations("groups");
-  const tNetworks = useTranslations("networks");
   const searchParams = useSearchParams();
 
   const getInitialTab = () => {
@@ -193,7 +189,7 @@ const GroupOverviewTabs = ({ group }: { group: Group }) => {
                 "fill-nb-gray-500 group-data-[state=active]/trigger:fill-netbird transition-all"
               }
             />
-            {singularize(t("users"), usersCount)}
+            {singularize("Users", usersCount)}
           </TabsTrigger>
         )}
 
@@ -209,7 +205,7 @@ const GroupOverviewTabs = ({ group }: { group: Group }) => {
                 "fill-nb-gray-500 group-data-[state=active]/trigger:fill-netbird transition-all"
               }
             />
-            {singularize(t("peers"), peersCount)}
+            {singularize("Peers", peersCount)}
           </TabsTrigger>
         )}
 
@@ -224,7 +220,7 @@ const GroupOverviewTabs = ({ group }: { group: Group }) => {
               "fill-nb-gray-500 group-data-[state=active]/trigger:fill-netbird transition-all"
             }
           />
-          {singularize(t("policies"), policiesCount)}
+          {singularize("Policies", policiesCount)}
         </TabsTrigger>
 
         <TabsTrigger
@@ -233,7 +229,7 @@ const GroupOverviewTabs = ({ group }: { group: Group }) => {
           className={groupDetails === null ? "animate-pulse" : ""}
         >
           <Layers3Icon size={14} />
-          {singularize(t("resources"), resourcesCount)}
+          {singularize("Resources", resourcesCount)}
         </TabsTrigger>
 
         <TabsTrigger
@@ -247,7 +243,7 @@ const GroupOverviewTabs = ({ group }: { group: Group }) => {
               "fill-nb-gray-500 group-data-[state=active]/trigger:fill-netbird transition-all"
             }
           />
-          {singularize(tNetworks("networkRoutes"), routesCount)}
+          {singularize("Network Routes", routesCount)}
         </TabsTrigger>
 
         <TabsTrigger
@@ -261,7 +257,7 @@ const GroupOverviewTabs = ({ group }: { group: Group }) => {
               "fill-nb-gray-500 group-data-[state=active]/trigger:fill-netbird transition-all"
             }
           />
-          {singularize(t("nameservers"), nameserversCount)}
+          {singularize("Nameservers", nameserversCount)}
         </TabsTrigger>
 
         <TabsTrigger
@@ -275,7 +271,7 @@ const GroupOverviewTabs = ({ group }: { group: Group }) => {
               "fill-nb-gray-500 group-data-[state=active]/trigger:fill-netbird transition-all"
             }
           />
-          {singularize(t("zones"), zonesCount)}
+          {singularize("Zones", zonesCount)}
         </TabsTrigger>
 
         {group.name !== "All" && (
@@ -290,7 +286,7 @@ const GroupOverviewTabs = ({ group }: { group: Group }) => {
                 "fill-nb-gray-500 group-data-[state=active]/trigger:fill-netbird transition-all"
               }
             />
-            {singularize(t("setupKeys"), setupKeysCount)}
+            {singularize("Setup Keys", setupKeysCount)}
           </TabsTrigger>
         )}
       </TabsList>

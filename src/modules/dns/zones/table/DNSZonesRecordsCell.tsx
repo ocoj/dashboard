@@ -1,5 +1,3 @@
-"use client";
-
 import Badge from "@components/Badge";
 import Button from "@components/Button";
 import { GlobeIcon, PlusCircle } from "lucide-react";
@@ -7,7 +5,6 @@ import * as React from "react";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { DNSZone } from "@/interfaces/DNS";
 import { useDNSZones } from "@/modules/dns/zones/DNSZonesProvider";
-import { useTranslations } from "next-intl";
 
 type Props = {
   zone: DNSZone;
@@ -16,7 +13,6 @@ type Props = {
 export const DNSZonesRecordsCell = ({ zone }: Props) => {
   const { permission } = usePermissions();
   const { openRecordModal } = useDNSZones();
-  const t = useTranslations("dns");
 
   const recordsCount = zone?.records?.length ?? 0;
 
@@ -46,7 +42,7 @@ export const DNSZonesRecordsCell = ({ zone }: Props) => {
         data-testid="add-dns-record"
       >
         <PlusCircle size={12} />
-        {t("addRecordBtn")}
+        Add
       </Button>
     </div>
   );

@@ -10,7 +10,6 @@ import { Modal } from "@components/modal/Modal";
 import useFetchApi from "@utils/api";
 import { ChevronDown, PlusCircle } from "lucide-react";
 import React, { memo, useState } from "react";
-import { useTranslations } from "next-intl";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { Peer } from "@/interfaces/Peer";
 import SetupModal from "@/modules/setup-netbird-modal/SetupModal";
@@ -25,7 +24,6 @@ type AddMode = "user" | "server" | "agent";
 // table: the operator picks what to add (User Device / Server / Autonomous
 // Agent) and the matching Install NetBird flow opens.
 function AddPeerDropdown() {
-  const t = useTranslations("peers");
   const { data: peers } = useFetchApi<Peer[]>("/peers");
   const { oidcUser: user } = useOidcUser();
 
@@ -56,19 +54,19 @@ function AddPeerDropdown() {
             data-testid={"add-peer-button"}
           >
             <PlusCircle size={16} />
-            {t("addPeer")}
+            Add Peer
             <ChevronDown size={16} />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align={"end"}>
           <DropdownMenuItem onClick={() => openMode("user")}>
-            {t("userDevice")}
+            User Device
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => openMode("server")}>
-            {t("server")}
+            Server
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => openMode("agent")}>
-            {t("agent")}
+            Agent
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

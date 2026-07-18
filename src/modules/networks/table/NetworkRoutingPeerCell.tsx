@@ -1,9 +1,6 @@
-"use client";
-
 import Badge from "@components/Badge";
 import Button from "@components/Button";
 import FullTooltip from "@components/FullTooltip";
-import { useTranslations } from "next-intl";
 import { cn } from "@utils/helpers";
 import { HelpCircle, PlusCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -17,10 +14,29 @@ type Props = {
   network: Network;
 };
 export default function NetworkRoutingPeerCell({ network }: Props) {
-  const t = useTranslations("networks");
-  const tCommon = useTranslations("common");
   const { permission } = usePermissions();
   const router = useRouter();
+  const disabledText = useMemo(
+    () => (
+      <>
+        High availability is currently{" "}
+        <span className={"text-yellow-400 font-medium"}>inactive</span> for this
+        network.
+      </>
+    ),
+    [],
+  );
+
+  const enabledText = useMemo(
+    () => (
+      <>
+        High availability is{" "}
+        <span className={"text-green-500 font-medium"}>active</span> for this
+        network.
+      </>
+    ),
+    [],
+  );
 
   const { openAddRoutingPeerModal } = useNetworksContext();
 
@@ -31,22 +47,26 @@ export default function NetworkRoutingPeerCell({ network }: Props) {
     network?.routing_peers_count && network.routing_peers_count > 0
   );
 
-  const statusLabel = isHighlyAvailable ? tCommon("active") : tCommon("inactive");
-  const tooltipText = isHighlyAvailable
-    ? t("highAvailabilityActiveText", { status: statusLabel })
-    : t("highAvailabilityInactiveText", { status: statusLabel });
-  const helpText = isHighlyAvailable
-    ? t("highAvailabilityHelpActive")
-    : t("highAvailabilityHelpInactive");
-
   return (
     <div className={"flex gap-3 items-center"}>
       <FullTooltip
         interactive={false}
         content={
           <div className={"max-w-xs text-xs"}>
-            <div>{tooltipText}</div>
-            <div className={"inline-flex mt-2"}>{helpText}</div>
+            <>
+              {isHighlyAvailable ? enabledText : disabledText}
+              {isHighlyAvailable ? (
+                <div className={"inline-flex mt-2"}>
+                  You can add more routing peers to increase the availability of
+                  this network.
+                </div>
+              ) : (
+                <div className={"inline-flex mt-2"}>
+                  Go ahead and add more routing peers or groups with routing
+                  peers to enable high availability for this network.
+                </div>
+              )}
+            </>
           </div>
         }
       >
@@ -68,7 +88,8 @@ export default function NetworkRoutingPeerCell({ network }: Props) {
                   isHighlyAvailable ? "bg-green-500" : "bg-yellow-400",
                 )}
               ></div>
-              {t("peerCount", { count: network?.routing_peers_count ?? 0 })}
+              {network?.routing_peers_count && network.routing_peers_count}{" "}
+              Peer(s)
             </>
 
             <HelpCircle size={12} />
@@ -81,10 +102,10 @@ export default function NetworkRoutingPeerCell({ network }: Props) {
         className={"!px-3"}
         onClick={() => openAddRoutingPeerModal(network)}
         disabled={!permission.networks.update}
-        aria-label={t("addRoutingPeer")}
+        aria-label={"Add routing peer"}
       >
         <PlusCircle size={12} />
-        {t("addRoutingPeerBtn")}
+        Add
       </Button>
     </div>
   );

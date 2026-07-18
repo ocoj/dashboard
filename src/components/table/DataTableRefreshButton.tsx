@@ -4,14 +4,13 @@ import { motion } from "framer-motion";
 import { RefreshCcw } from "lucide-react";
 import * as React from "react";
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   onClick: () => void;
   isDisabled?: boolean;
 };
 export default function DataTableRefreshButton({ onClick, isDisabled }: Props) {
-  const t = useTranslations("common");
   const [rotate, setRotate] = useState(false);
   const [disabled, setDisabled] = useState(false);
   const [hovered, setHovered] = useState(false);
@@ -59,7 +58,7 @@ export default function DataTableRefreshButton({ onClick, isDisabled }: Props) {
         }}
       >
         <span className={"text-xs text-neutral-300"}>
-          {disabled ? t("refreshCooldown") : t("refresh")}
+          {disabled ? <TransText>You can refresh it again in 5 seconds</TransText> : <TransText>Refresh</TransText>}
         </span>
       </TooltipContent>
     </Tooltip>

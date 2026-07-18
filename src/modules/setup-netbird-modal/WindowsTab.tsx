@@ -1,5 +1,3 @@
-"use client";
-
 import Button from "@components/Button";
 import Code from "@components/Code";
 import { SelectDropdown } from "@components/select/SelectDropdown";
@@ -7,7 +5,6 @@ import Steps from "@components/Steps";
 import TabsContentPadding, { TabsContent } from "@components/Tabs";
 import { GRPC_API_ORIGIN, pkgsDownloadUrl } from "@utils/netbird";
 import { DownloadIcon, PackageOpenIcon } from "lucide-react";
-import { useTranslations } from "next-intl";
 import Link from "next/link";
 import React, { useState } from "react";
 import { OperatingSystem } from "@/interfaces/OperatingSystem";
@@ -40,23 +37,22 @@ export default function WindowsTab({
   const baseMgmtStep = 2;
   const keyStep = GRPC_API_ORIGIN ? 3 : 2;
   const runStep = keyStep + (setupKeyContent ? 1 : 0);
-  const t = useTranslations("setupModal");
   return (
     <TabsContent value={String(OperatingSystem.WINDOWS)}>
       <TabsContentPadding>
         <p className={"font-medium flex gap-3 items-center text-base"}>
           <PackageOpenIcon size={16} />
-          {t("installOnWindows")}
+          Install on Windows
         </p>
         <Steps>
           <Steps.Step step={1}>
-            <p>{t("downloadWindowsInstaller")}</p>
+            <p>Download and run Windows Installer</p>
             <div className={"flex gap-4 mt-1"}>
               <SelectDropdown
                 value={windowsUrl}
                 className={"w-[170px]"}
                 onChange={setWindowsUrl}
-                placeholder={t("selectArchitecture")}
+                placeholder={"Select architecture"}
                 options={[
                   {
                     label: "64-Bit",
@@ -84,7 +80,7 @@ export default function WindowsTab({
               >
                 <Button variant={"primary"}>
                   <DownloadIcon size={14} />
-                  {t("downloadNetBird")}
+                  Download NetBird
                 </Button>
               </Link>
             </div>
@@ -93,7 +89,7 @@ export default function WindowsTab({
           {GRPC_API_ORIGIN && (
             <Steps.Step step={baseMgmtStep}>
               <p>
-                {t("managementUrlInstruction")}
+                {`Click on "Settings" then "Advanced Settings" from the NetBird icon in your system tray and enter the following "Management URL"`}
               </p>
               <Code>
                 <Code.Line>{GRPC_API_ORIGIN}</Code.Line>
@@ -108,7 +104,7 @@ export default function WindowsTab({
           {useCliRun ? (
             <Steps.Step step={runStep} line={false}>
               <p>
-                {t("openCmdAndRun")}{" "}
+                Open Command-line and run NetBird{" "}
                 {showSetupKeyInfo && <RoutingPeerSetupKeyInfo />}
               </p>
 
@@ -124,11 +120,11 @@ export default function WindowsTab({
               <Steps.Step step={runStep}>
                 <p>
                   {/* eslint-disable-next-line react/no-unescaped-entities */}
-                  {t("clickConnectTray")}
+                  Click on "Connect" from the NetBird icon in your system tray
                 </p>
               </Steps.Step>
               <Steps.Step step={runStep + 1} line={false}>
-                <p>{t("signUpWithEmail")}</p>
+                <p>Sign up using your email address</p>
               </Steps.Step>
             </>
           )}

@@ -3,7 +3,6 @@ import { ScrollArea } from "@components/ScrollArea";
 import TextWithTooltip from "@components/ui/TextWithTooltip";
 import { cn, generateColorFromString } from "@utils/helpers";
 import { orderBy } from "lodash";
-import { useTranslations } from "next-intl";
 import * as React from "react";
 import { useMemo } from "react";
 import { User } from "@/interfaces/User";
@@ -24,13 +23,12 @@ export const HorizontalUsersStack = ({
   side = "top",
   isAllGroup = false,
 }: Props) => {
-  const t = useTranslations("users");
   let usersToDisplay = orderBy(users?.slice(0, max) || [], ["name"]);
 
   const userCountText = useMemo(() => {
-    if (isAllGroup) return t("allUsers");
-    return t("userCount", { count: users?.length || 0 });
-  }, [users, isAllGroup, t]);
+    if (isAllGroup) return "All Users";
+    return `${users?.length || 0} User(s)`;
+  }, [users, isAllGroup]);
 
   return (
     <FullTooltip
@@ -60,7 +58,7 @@ export const HorizontalUsersStack = ({
                     <TextWithTooltip
                       text={
                         user?.email === "NetBird"
-                          ? t("system")
+                          ? "System"
                           : user?.name || user?.id
                       }
                       maxChars={500}

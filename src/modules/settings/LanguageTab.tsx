@@ -9,10 +9,14 @@ import {
 import SettingsIcon from "@/assets/icons/SettingsIcon";
 import * as Tabs from "@radix-ui/react-tabs";
 import { LanguagesIcon } from "lucide-react";
-import { useTranslations } from "next-intl";
 import React from "react";
-import { useLocale } from "@/contexts/LocaleProvider";
-import { locales, type Locale, LOCALE_LABELS } from "@/i18n/config";
+import {
+  useLocale,
+  locales,
+  type Locale,
+  LOCALE_LABELS,
+} from "@/i18n/locale-context";
+import { TransText } from "@/i18n/trans-text";
 
 const options: SelectOption[] = locales.map((locale) => ({
   value: locale,
@@ -20,19 +24,12 @@ const options: SelectOption[] = locales.map((locale) => ({
 }));
 
 /**
- * Settings tab for the user's display language. This is a pure client-side
- * preference (no server round-trip): selecting an option persists a cookie via
- * {@link useLocale.setLocale} and the active locale updates immediately, so the
- * whole dashboard re-renders in the new language on the spot.
- *
- * Rendered with `<Tabs.Content value="language">` so it shows only when the
- * "language" tab is active in the settings page. Unlike most settings tabs it
- * is intentionally available to every logged-in user (not gated by
- * `permission.settings.read`), since language is a personal preference.
+ * Settings tab for the user's display language.  Uses the lightweight
+ * {@link TransText} component and standalone locale context — no `next-intl`.
  */
 export default function LanguageTab() {
-  const t = useTranslations("settings");
   const { locale, setLocale } = useLocale();
+  const isZh = locale === "zh";
 
   return (
     <Tabs.Content value={"language"}>
@@ -40,21 +37,21 @@ export default function LanguageTab() {
         <Breadcrumbs>
           <Breadcrumbs.Item
             href={"/settings"}
-            label={t("title")}
+            label={isZh ? "设置" : "Settings"}
             icon={<SettingsIcon size={13} />}
           />
           <Breadcrumbs.Item
             href={"/settings?tab=language"}
-            label={t("language")}
+            label={isZh ? "语言" : "Language"}
             icon={<LanguagesIcon size={14} />}
             active
           />
         </Breadcrumbs>
-        <h1>{t("language")}</h1>
+        <h1><TransText>Language</TransText></h1>
 
         <div className={"flex flex-col gap-4 w-full mt-8"}>
           <div className={"flex flex-col gap-2"}>
-            <Label>{t("currentLanguage")}</Label>
+            <Label><TransText>Current Language</TransText></Label>
             <SelectDropdown
               value={locale}
               onChange={(value) => setLocale(value as Locale)}
@@ -62,7 +59,7 @@ export default function LanguageTab() {
             />
           </div>
           <p className={"text-sm text-nb-gray-400"}>
-            {t("languageDescription")}
+            <TransText>Choose your preferred language for the dashboard interface.</TransText>
           </p>
         </div>
       </div>

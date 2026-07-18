@@ -25,7 +25,6 @@ import {
   SquareTerminalIcon,
 } from "lucide-react";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { useTranslations } from "next-intl";
 import { useSWRConfig } from "swr";
 import { useApiCall } from "@/utils/api";
 import { cn, validator } from "@utils/helpers";
@@ -83,8 +82,6 @@ const renderHighlightedCommand = (command: string, highlights: string[]) => {
 };
 
 export const ClustersModal = ({ open, onOpenChange }: Props) => {
-  const t = useTranslations("reverseProxy");
-  const tCommon = useTranslations("common");
   const { mutate } = useSWRConfig();
   const [tab, setTab] = useState("domain");
   const [domain, setDomain] = useState("");
@@ -276,7 +273,7 @@ spec:
       ? "Launch a cloud server to run the proxy."
       : deployMethod === "kubernetes"
       ? "Apply this manifest to start the proxy."
-      : t("deploymentMethodHelp");
+      : "Run on your machine to start the proxy.";
 
   const generateToken = useCallback(async () => {
     setIsGeneratingToken(true);
@@ -318,8 +315,8 @@ spec:
       <ModalContent maxWidthClass={"relative max-w-[600px]"} showClose={true}>
         <ModalHeader
           icon={<ServerIcon size={16} />}
-          title={t("setupClusterTitle")}
-          description={t("setupClusterDesc")}
+          title={"Setup Cluster"}
+          description={"Setup a proxy cluster on infra you own"}
           color={"netbird"}
         />
 
@@ -330,7 +327,7 @@ spec:
           <TabsList justify={"start"} className={"px-8"}>
             <TabsTrigger value={"domain"}>
               <GlobeIcon size={14} />
-              {t("clusterTabDomain")}
+              Domain
             </TabsTrigger>
             {!isCloudDeploy && (
               <TabsTrigger
@@ -338,7 +335,7 @@ spec:
                 disabled={!domain.trim() || !!domainError}
               >
                 <ListIcon size={14} />
-                {t("clusterTabDnsRecords")}
+                DNS Records
               </TabsTrigger>
             )}
             <TabsTrigger
@@ -346,20 +343,20 @@ spec:
               disabled={!domain.trim() || !!domainError}
             >
               <SquareTerminalIcon size={14} />
-              {isCloudDeploy ? "Deploy" : t("clusterTabRunProxy")}
+              {isCloudDeploy ? "Deploy" : "Run the Proxy"}
             </TabsTrigger>
           </TabsList>
 
           <TabsContent value={"domain"} className={"pb-8"}>
             <div className={"px-8 flex flex-col gap-6"}>
               <div>
-                <Label>{t("domain")}</Label>
+                <Label>Domain</Label>
                 <HelpText>
-                  {t("domainFieldHelp")}
+                  Enter a domain name that will be used for your cluster.
                 </HelpText>
                 <Input
                   autoFocus={true}
-                  placeholder={t("domainFieldPlaceholder")}
+                  placeholder={"e.g., proxy.company.com"}
                   value={domain}
                   error={domainError}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -368,7 +365,7 @@ spec:
                 />
               </div>
               <div>
-                <Label>{t("deploymentMethod")}</Label>
+                <Label>Deployment Method</Label>
                 <HelpText>{deployDescription}</HelpText>
                 <SelectDropdown
                   value={deployMethod}
@@ -385,11 +382,24 @@ spec:
               </div>
               {!isCloudDeploy && (
                 <Callout variant={"info"}>
-                  {t("requirementsText")}
+                  In order to run the proxy, please make sure your machine meets
+                  the following requirements:
                   <ul className={"list-disc pl-4 mt-2 flex flex-col gap-1"}>
-                    <li>{t("requirementPublicIp")}</li>
-                    <li>{t("requirementDocker")}</li>
-                    <li>{t("requirementPorts")}</li>
+                    <li>
+                      <span className={"text-white font-medium"}>
+                        Publicly accessible IP address
+                      </span>
+                    </li>
+                    <li>
+                      <span className={"text-white font-medium"}>Docker</span>{" "}
+                      installed and running
+                    </li>
+                    <li>
+                      <span className={"text-white font-medium"}>
+                        Port 80 and 443
+                      </span>{" "}
+                      open and not in use
+                    </li>
                   </ul>
                 </Callout>
               )}
@@ -511,12 +521,12 @@ spec:
         <ModalFooter className={"items-center"}>
           <div className={"w-full"}>
             <Paragraph className={"text-sm mt-auto"}>
-              {tCommon("learnMore")}
+              Learn more about
               <InlineLink
                 href={REVERSE_PROXY_CLUSTERS_DOCS_LINK}
                 target={"_blank"}
               >
-                {t("proxyClustersLabel")}
+                Proxy Cluster
                 <ExternalLinkIcon size={12} />
               </InlineLink>
             </Paragraph>
@@ -525,24 +535,24 @@ spec:
             {tab === "domain" && (
               <>
                 <ModalClose asChild={true}>
-                  <Button variant={"secondary"}>{tCommon("cancel")}</Button>
+                  <Button variant={"secondary"}>Cancel</Button>
                 </ModalClose>
                 <Button
                   variant={"primary"}
                   onClick={() => (isCloudDeploy ? goToInstall() : setTab("dns"))}
                   disabled={!domain.trim() || !!domainError}
                 >
-                  {t("continue")}
+                  Continue
                 </Button>
               </>
             )}
             {tab === "dns" && (
               <>
                 <Button variant={"secondary"} onClick={() => setTab("domain")}>
-                  {t("back")}
+                  Back
                 </Button>
                 <Button variant={"primary"} onClick={goToInstall}>
-                  {t("continue")}
+                  Continue
                 </Button>
               </>
             )}
