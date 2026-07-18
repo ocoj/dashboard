@@ -36,7 +36,7 @@ docker rm netbird-dashboard
 # 3. 启动新容器（NPM 代理到 30000 端口，不要改 NPM 配置）
 docker run -d --name netbird-dashboard --restart unless-stopped \
   -p 30000:80 \
-  -e AUTH_AUTHORITY=https://nb.lanxun.pro \
+  -e AUTH_AUTHORITY=https://nb.lanxun.pro:30443/oauth2 \
   -e AUTH_CLIENT_ID=netbird-dashboard \
   -e AUTH_AUDIENCE=netbird-dashboard \
   -e AUTH_SUPPORTED_SCOPES="openid profile email" \
