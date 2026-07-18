@@ -41,7 +41,7 @@ docker run -d --name netbird-dashboard --restart unless-stopped \
   -e AUTH_AUDIENCE=netbird-dashboard \
   -e AUTH_SUPPORTED_SCOPES="openid profile email" \
   -e USE_AUTH0=false \
-  -e NETBIRD_MGMT_API_ENDPOINT=https://nb.lanxun.pro:30443/api \
+  -e NETBIRD_MGMT_API_ENDPOINT=https://nb.lanxun.pro:30443 \
   -e NETBIRD_MGMT_GRPC_API_ENDPOINT=https://nb.lanxun.pro:30443 \
   -e AUTH_REDIRECT_URI=https://nb.lanxun.pro:30443 \
   -e AUTH_SILENT_REDIRECT_URI=https://nb.lanxun.pro:30443/silent-renew \
