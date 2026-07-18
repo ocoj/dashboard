@@ -43,12 +43,13 @@ import {
 import CustomDomainClusterCell from "@/modules/reverse-proxy/domain/CustomDomainClusterCell";
 import { CustomDomainModal } from "./CustomDomainModal";
 import { CustomDomainVerificationModal } from "./CustomDomainVerificationModal";
+import { TransText } from "@/i18n/trans-text";
 
 const CustomDomainsColumns: ColumnDef<ReverseProxyDomain>[] = [
   {
     accessorKey: "domain",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Domain</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Domain</TransText></DataTableHeader>;
     },
     sortingFn: "text",
     cell: ({ row }) => <CustomDomainNameCell domain={row.original} />,
@@ -56,7 +57,7 @@ const CustomDomainsColumns: ColumnDef<ReverseProxyDomain>[] = [
   {
     accessorKey: "validated",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Status</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Status</TransText></DataTableHeader>;
     },
     filterFn: "exactMatch",
     cell: ({ row }) => <CustomDomainStatusCell domain={row.original} />,
@@ -64,7 +65,7 @@ const CustomDomainsColumns: ColumnDef<ReverseProxyDomain>[] = [
   {
     accessorKey: "target_cluster",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Cluster</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Cluster</TransText></DataTableHeader>;
     },
     cell: ({ row }) => <CustomDomainClusterCell domain={row.original} />,
   },

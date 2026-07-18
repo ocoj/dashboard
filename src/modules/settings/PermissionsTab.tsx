@@ -11,6 +11,7 @@ import SettingsIcon from "@/assets/icons/SettingsIcon";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { useHasChanges } from "@/hooks/useHasChanges";
 import { Account } from "@/interfaces/Account";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   account: Account;
@@ -65,14 +66,14 @@ export default function PermissionsTab({ account }: Props) {
           />
         </Breadcrumbs>
         <div className={"flex items-start justify-between"}>
-          <h1>Permissions</h1>
+          <h1><TransText>Permissions</TransText></h1>
           <Button
             variant={"primary"}
             disabled={!hasChanges || !permission.settings.update}
             onClick={saveChanges}
             data-testid="save-permissions-settings"
           >
-            Save Changes
+            <TransText>Save Changes</TransText>
           </Button>
         </div>
 
@@ -84,12 +85,10 @@ export default function PermissionsTab({ account }: Props) {
             label={
               <>
                 <GaugeIcon size={15} />
-                Restrict dashboard for regular users
+                <TransText>Restrict dashboard for regular users</TransText>
               </>
             }
-            helpText={
-              "Access to the dashboard will be limited and regular users will not be able to view any peers."
-            }
+            helpText={<TransText>Access to the dashboard will be limited and regular users will not be able to view any peers.</TransText>}
             disabled={!permission.settings.update}
           />
         </div>

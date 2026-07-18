@@ -2,6 +2,7 @@ import Badge from "@components/Badge";
 import { IconCirclePlus } from "@tabler/icons-react";
 import { ShieldCheck } from "lucide-react";
 import React from "react";
+import { TransText } from "@/i18n/trans-text";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { Policy } from "@/interfaces/Policy";
 
@@ -32,7 +33,7 @@ export default function AccessControlPostureCheckCell({ policy }: Props) {
         disabled={isDisabled}
       >
         <IconCirclePlus size={14} />
-        Add Posture Check
+        <TransText>Add Posture Check</TransText>
       </Badge>
     </div>
   );

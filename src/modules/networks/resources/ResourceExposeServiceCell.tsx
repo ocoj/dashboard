@@ -11,6 +11,7 @@ import { useNetworksContext } from "@/modules/networks/NetworkProvider";
 import ReverseProxyIcon from "@/assets/icons/ReverseProxyIcon";
 import Badge from "@components/Badge";
 import { CirclePlusIcon } from "lucide-react";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   resource: NetworkResource;
@@ -73,7 +74,7 @@ export const ResourceExposeServiceCell = ({ resource }: Props) => {
         disabled={!permission.services?.create}
       >
         <CirclePlusIcon size={12} />
-        Expose
+        <TransText>Expose</TransText>
       </Button>
     </div>
   );

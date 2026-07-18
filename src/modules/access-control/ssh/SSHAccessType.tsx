@@ -8,6 +8,7 @@ import {
   SelectValue,
 } from "@components/Select";
 import { usePermissions } from "@/contexts/PermissionsProvider";
+import { TransText } from "@/i18n/trans-text";
 import { ShieldHalfIcon, ShieldUserIcon } from "lucide-react";
 
 type Props = {
@@ -39,10 +40,10 @@ export const SSHAccessType = ({ value, onChange }: Props) => {
       </SelectTrigger>
       <SelectContent data-testid={"ssh-access-selection"}>
         <SelectItem value="full" className={"whitespace-nowrap"}>
-          Full Access
+          <TransText>Full Access</TransText>
         </SelectItem>
         <SelectItem value="limited" className={"whitespace-nowrap"}>
-          Limited Access
+          <TransText>Limited Access</TransText>
         </SelectItem>
       </SelectContent>
     </Select>

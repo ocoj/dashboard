@@ -15,6 +15,7 @@ import { useSWRConfig } from "swr";
 import { useDialog } from "@/contexts/DialogProvider";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { NameserverGroup } from "@/interfaces/Nameserver";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   ns: NameserverGroup;
@@ -112,7 +113,7 @@ export default function NameserverActionCell({ ns }: Readonly<Props>) {
           >
             <div className={"flex gap-3 items-center"}>
               <PowerIcon size={14} className={"shrink-0"} />
-              {ns.enabled ? "Disable" : "Enable"}
+              {ns.enabled ? <TransText>Disable</TransText> : <TransText>Enable</TransText>}
             </div>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
@@ -124,7 +125,7 @@ export default function NameserverActionCell({ ns }: Readonly<Props>) {
           >
             <div className={"flex gap-3 items-center"}>
               <Trash2 size={14} className={"shrink-0"} />
-              Delete
+              <TransText>Delete</TransText>
             </div>
           </DropdownMenuItem>
         </DropdownMenuContent>

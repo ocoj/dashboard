@@ -40,12 +40,13 @@ import NameserverDistributionGroupsCell from "@/modules/dns/nameservers/table/Na
 import NameserverMatchDomainsCell from "@/modules/dns/nameservers/table/NameserverMatchDomainsCell";
 import NameserverNameCell from "@/modules/dns/nameservers/table/NameserverNameCell";
 import NameserverNameserversCell from "@/modules/dns/nameservers/table/NameserverNameserversCell";
+import { TransText } from "@/i18n/trans-text";
 
 export const NameserverGroupTableColumns: ColumnDef<NameserverGroup>[] = [
   {
     accessorKey: "name",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Name</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Name</TransText></DataTableHeader>;
     },
     sortingFn: "text",
     cell: ({ row }) => <NameserverNameCell ns={row.original} />,
@@ -70,7 +71,7 @@ export const NameserverGroupTableColumns: ColumnDef<NameserverGroup>[] = [
     accessorFn: (row) => row.domains?.length || 0,
     id: "domains",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Match Domains</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Match Domains</TransText></DataTableHeader>;
     },
     cell: ({ row }) => <NameserverMatchDomainsCell ns={row.original} />,
   },
@@ -78,7 +79,7 @@ export const NameserverGroupTableColumns: ColumnDef<NameserverGroup>[] = [
     accessorFn: (row) => row.nameservers?.length || 0,
     id: "nameservers",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Nameservers</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Nameservers</TransText></DataTableHeader>;
     },
     cell: ({ row }) => <NameserverNameserversCell ns={row.original} />,
   },
@@ -86,7 +87,7 @@ export const NameserverGroupTableColumns: ColumnDef<NameserverGroup>[] = [
     accessorFn: (row) => row.groups?.length || 0,
     id: "groups",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Groups</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Groups</TransText></DataTableHeader>;
     },
     cell: ({ row }) => <NameserverDistributionGroupsCell ns={row.original} />,
   },
@@ -263,7 +264,7 @@ export default function NameserverGroupTable({
                   disabled={!permission.nameservers.create}
                 >
                   <PlusCircle size={16} />
-                  Add Nameserver
+                  <TransText>Add Nameserver</TransText>
                 </Button>
               </NameserverTemplateModal>
             </NoResults>
@@ -293,7 +294,7 @@ export default function NameserverGroupTable({
                         data-testid="open-add-nameserver"
                       >
                         <PlusCircle size={16} />
-                        Add Nameserver
+                        <TransText>Add Nameserver</TransText>
                       </Button>
                     </NameserverTemplateModal>
                   </div>
@@ -327,7 +328,7 @@ export default function NameserverGroupTable({
                   data-testid="open-add-nameserver"
                 >
                   <PlusCircle size={16} />
-                  Add Nameserver
+                  <TransText>Add Nameserver</TransText>
                 </Button>
               </NameserverTemplateModal>
             )}

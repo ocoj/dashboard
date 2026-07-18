@@ -18,6 +18,7 @@ import * as React from "react";
 import { useMemo, useState } from "react";
 import { useElementSize } from "@/hooks/useElementSize";
 import { PostureCheck } from "@/interfaces/PostureCheck";
+import { TransText } from "@/i18n/trans-text";
 
 interface MultiSelectProps {
   values?: string[];
@@ -88,7 +89,7 @@ export function SSHUsernameSelector({
               {values?.length === 0 && (
                 <Badge variant={"gray"} className={"font-normal py-1"}>
                   <CircleUserIcon size={12} className={"shrink-0"} />
-                  All Local Users
+                  <TransText>All Local Users</TransText>
                 </Badge>
               )}
 
@@ -202,7 +203,7 @@ export function SSHUsernameSelector({
                         <div
                           className={"text-neutral-500 dark:text-nb-gray-300"}
                         >
-                          Add username by pressing{" "}
+                          <TransText>Add username by pressing </TransText>
                           <span className={"font-bold text-netbird"}>
                             {"'Enter'"}
                           </span>

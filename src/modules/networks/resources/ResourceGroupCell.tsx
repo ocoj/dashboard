@@ -8,6 +8,7 @@ import { usePermissions } from "@/contexts/PermissionsProvider";
 import { Group } from "@/interfaces/Group";
 import { NetworkResource } from "@/interfaces/Network";
 import { useNetworksContext } from "@/modules/networks/NetworkProvider";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   resource?: NetworkResource;
@@ -45,7 +46,7 @@ export const ResourceGroupCell = ({ resource }: Props) => {
           disabled={!permission.networks.update}
         >
           <IconCirclePlus size={14} />
-          Add
+          <TransText>Add</TransText>
         </Badge>
       )}
     </button>

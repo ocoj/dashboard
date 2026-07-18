@@ -55,6 +55,7 @@ import { OperatingSystem } from "@/interfaces/OperatingSystem";
 import { Peer } from "@/interfaces/Peer";
 import { Policy } from "@/interfaces/Policy";
 import { Route } from "@/interfaces/Route";
+import { TransText } from "@/i18n/trans-text";
 import { AccessControlModalContent } from "@/modules/access-control/AccessControlModal";
 import useGroupHelper from "@/modules/groups/useGroupHelper";
 import { RoutingPeerMasqueradeSwitch } from "@/modules/networks/routing-peers/RoutingPeerMasqueradeSwitch";
@@ -398,17 +399,17 @@ export function RouteModalContent({
         title={
           exitNode
             ? isFirstExitNode
-              ? "Set Up Exit Node"
-              : "Add Exit Node"
-            : "Create New  Route"
+              ? <TransText>Set Up Exit Node</TransText>
+              : <TransText>Add Exit Node</TransText>
+            : <TransText>Create New Route</TransText>
         }
         truncate={!!peer}
         description={
           exitNode
             ? peer
               ? `Route all traffic through the peer '${peer.name}'`
-              : "Route all internet traffic through a peer"
-            : "Access LANs and VPC by adding a network route."
+              : <TransText>Route all internet traffic through a peer</TransText>
+            : <TransText>Access LANs and VPC by adding a network route.</TransText>
         }
         color={exitNode ? "yellow" : "netbird"}
       />
@@ -426,7 +427,7 @@ export function RouteModalContent({
                   "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
                 }
               />
-              Route
+              <TransText>Route</TransText>
             </TabsTrigger>
           )}
 
@@ -437,7 +438,7 @@ export function RouteModalContent({
                 "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
               }
             />
-            Groups
+            <TransText>Groups</TransText>
           </TabsTrigger>
           <TabsTrigger
             value={"general"}
@@ -450,7 +451,7 @@ export function RouteModalContent({
                 "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
               }
             />
-            Name & Description
+            <TransText>Name & Description</TransText>
           </TabsTrigger>
           <TabsTrigger
             value={"settings"}
@@ -462,16 +463,15 @@ export function RouteModalContent({
                 "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
               }
             />
-            Additional Settings
+            <TransText>Additional Settings</TransText>
           </TabsTrigger>
         </TabsList>
         <TabsContent value={"network"} className={"pb-8"}>
           <div className={"px-8 flex-col flex gap-4"}>
             <div className={cn(exitNode && "hidden")}>
-              <Label>Route Type</Label>
+              <Label><TransText>Route Type</TransText></Label>
               <HelpText>
-                Select your route type to add either a network range or a list
-                of domains.
+                <TransText>Select your route type to add either a network range or a list of domains.</TransText>
               </HelpText>
               <div className={"flex justify-between items-center w-full"}>
                 <ButtonGroup className={"w-full"}>
@@ -481,7 +481,7 @@ export function RouteModalContent({
                     className={"w-full"}
                   >
                     <NetworkIcon size={16} />
-                    Network Range
+                    <TransText>Network Range</TransText>
                   </ButtonGroup.Button>
                   <ButtonGroup.Button
                     variant={routeType == "domains" ? "tertiary" : "secondary"}
@@ -490,7 +490,7 @@ export function RouteModalContent({
                     data-testid="route-type-domains"
                   >
                     <GlobeIcon size={16} />
-                    Domains
+                    <TransText>Domains</TransText>
                   </ButtonGroup.Button>
                 </ButtonGroup>
               </div>
@@ -501,8 +501,8 @@ export function RouteModalContent({
                   routeType !== "ip-range" && "hidden",
                 )}
               >
-                <Label>Network Range</Label>
-                <HelpText>Add a private IPv4 or IPv6 address or range</HelpText>
+                <Label><TransText>Network Range</TransText></Label>
+                <HelpText><TransText>Add a private IPv4 or IPv6 address or range</TransText></HelpText>
                 <Input
                   ref={networkRangeRef}
                   customPrefix={<NetworkIcon size={16} />}
@@ -518,10 +518,9 @@ export function RouteModalContent({
               <div
                 className={cn("mt-5 mb-3", routeType !== "domains" && "hidden")}
               >
-                <Label>Domains</Label>
+                <Label><TransText>Domains</TransText></Label>
                 <HelpText>
-                  Add domains that dynamically resolve to one or more IPv4
-                  addresses. <br /> A maximum of 32 domains can be added.
+                  <TransText>Add domains that dynamically resolve to one or more IPv4 addresses.</TransText> <br /> <TransText>A maximum of 32 domains can be added.</TransText>
                 </HelpText>
                 <div>
                   {domainRoutes.length > 0 && (
@@ -562,7 +561,7 @@ export function RouteModalContent({
                     onClick={() => setDomainRoutes({ type: "ADD" })}
                   >
                     <PlusIcon size={14} />
-                    Add Domain
+                    <TransText>Add Domain</TransText>
                   </Button>
                 </div>
                 <div className={cn("mt-6 w-full")}>
@@ -570,9 +569,7 @@ export function RouteModalContent({
                     side={"top"}
                     content={
                       <div className={"text-xs max-w-xs"}>
-                        DNS records for load-balanced systems often change.
-                        Keeping resolved addresses ensures ongoing connections
-                        to active resources remain uninterrupted.
+                        <TransText>DNS records for load-balanced systems often change. Keeping resolved addresses ensures ongoing connections to active resources remain uninterrupted.</TransText>
                       </div>
                     }
                     className={"w-full block"}
@@ -584,7 +581,7 @@ export function RouteModalContent({
                         <>
                           <div className={"flex gap-2"}>
                             <GlobeLockIcon size={14} />
-                            Keep Routes
+                            <TransText>Keep Routes</TransText>
                             <CircleHelp
                               size={12}
                               className={"top-[1px] relative text-nb-gray-300"}
@@ -594,8 +591,7 @@ export function RouteModalContent({
                       }
                       helpText={
                         <div>
-                          Retain previously resolved routes after IP address
-                          updates to maintain stable connections.
+                          <TransText>Retain previously resolved routes after IP address updates to maintain stable connections.</TransText>
                         </div>
                       }
                     />
@@ -621,7 +617,7 @@ export function RouteModalContent({
                     data-testid="route-tab-routing-peer"
                   >
                     <MonitorSmartphoneIcon size={16} />
-                    Routing Peer
+                    <TransText>Routing Peer</TransText>
                   </SegmentedTabs.Trigger>
 
                   <SegmentedTabs.Trigger
@@ -630,13 +626,13 @@ export function RouteModalContent({
                     data-testid="route-tab-peer-group"
                   >
                     <FolderGit2 size={16} />
-                    Peer Group
+                    <TransText>Peer Group</TransText>
                   </SegmentedTabs.Trigger>
                 </SegmentedTabs.List>
                 <SegmentedTabs.Content value={"routing-peer"}>
                   <div>
                     <HelpText>
-                      Assign a single peer as a routing peer for the
+                      <TransText>Assign a single peer as a routing peer for the</TransText>
                       {exitNode ? " exit node." : " network route."}
                     </HelpText>
                     <PeerSelector
@@ -649,7 +645,7 @@ export function RouteModalContent({
                 <SegmentedTabs.Content value={"peer-group"}>
                   <div>
                     <HelpText>
-                      Assign a peer group with machines to be used as
+                      <TransText>Assign a peer group with machines to be used as</TransText>
                       {exitNode ? " exit nodes." : " routing peers."}
                     </HelpText>
                     <PeerGroupSelector
@@ -667,13 +663,13 @@ export function RouteModalContent({
         <TabsContent value={"access-control"} className={"pb-8"}>
           <div className={"px-8 flex-col flex gap-6"}>
             <div>
-              <Label>Distribution Groups</Label>
+              <Label><TransText>Distribution Groups</TransText></Label>
               <HelpText>
                 {exitNode
                   ? peer
-                    ? `Route all internet traffic through this peer for the following groups`
-                    : `Route all internet traffic through the peer(s) for the following groups`
-                  : "Advertise this route to peers that belong to the following groups"}
+                    ? <TransText>Route all internet traffic through this peer for the following groups</TransText>
+                    : <TransText>Route all internet traffic through the peer(s) for the following groups</TransText>
+                  : <TransText>Advertise this route to peers that belong to the following groups</TransText>}
               </HelpText>
               <PeerGroupSelector
                 data-testid={"distribution-groups-selector"}
@@ -682,10 +678,9 @@ export function RouteModalContent({
               />
             </div>
             <div>
-              <Label>Access Control Groups (optional)</Label>
+              <Label><TransText>Access Control Groups (optional)</TransText></Label>
               <HelpText>
-                These groups allow you to limit access to this route. Simply use
-                these groups as a destination when creating access policies.
+                <TransText>These groups allow you to limit access to this route. Simply use these groups as a destination when creating access policies.</TransText>
               </HelpText>
               <PeerGroupSelector
                 data-testid={"access-control-groups-selector"}
@@ -698,9 +693,9 @@ export function RouteModalContent({
         <TabsContent value={"general"} className={"px-8 pb-6"}>
           <div className={"flex flex-col gap-6"}>
             <div>
-              <Label>Network Identifier</Label>
+              <Label><TransText>Network Identifier</TransText></Label>
               <HelpText>
-                Add a unique network identifier that is assigned to each device.
+                <TransText>Add a unique network identifier that is assigned to each device.</TransText>
               </HelpText>
               <Input
                 error={networkIdentifierError}
@@ -714,9 +709,9 @@ export function RouteModalContent({
               />
             </div>
             <div>
-              <Label>Description (optional)</Label>
+              <Label><TransText>Description (optional)</TransText></Label>
               <HelpText>
-                Write a short description to add more context to this route.
+                <TransText>Write a short description to add more context to this route.</TransText>
               </HelpText>
               <Textarea
                 data-testid={"description"}
@@ -738,10 +733,10 @@ export function RouteModalContent({
               label={
                 <>
                   <Power size={15} />
-                  Enable Route
+                  <TransText>Enable Route</TransText>
                 </>
               }
-              helpText={"Use this switch to enable or disable the route."}
+              helpText={<TransText>Use this switch to enable or disable the route.</TransText>}
             />
 
             {exitNode && (
@@ -751,11 +746,11 @@ export function RouteModalContent({
                 label={
                   <>
                     <IconDirectionSign size={15} />
-                    Auto Apply Route
+                    <TransText>Auto Apply Route</TransText>
                   </>
                 }
                 helpText={
-                  "Automatically apply this exit node to your distribution groups. This requires NetBird client v0.55.0 or higher."
+                  <TransText>Automatically apply this exit node to your distribution groups. This requires NetBird client v0.55.0 or higher.</TransText>
                 }
               />
             )}
@@ -771,9 +766,9 @@ export function RouteModalContent({
 
             <div className={cn("flex justify-between")}>
               <div>
-                <Label>Metric</Label>
+                <Label><TransText>Metric</TransText></Label>
                 <HelpText className={"max-w-[200px]"}>
-                  A lower metric indicates higher priority routes.
+                  <TransText>A lower metric indicates higher priority routes.</TransText>
                 </HelpText>
               </div>
 
@@ -802,7 +797,7 @@ export function RouteModalContent({
       <ModalFooter className={"items-center"}>
         <div className={"w-full"}>
           <Paragraph className={"text-sm mt-auto"}>
-            Learn more about
+            <TransText>Learn more about</TransText>
             <InlineLink
               href={
                 exitNode
@@ -811,7 +806,7 @@ export function RouteModalContent({
               }
               target={"_blank"}
             >
-              {exitNode ? "Exit Nodes" : "Network Routes"}
+              {exitNode ? <TransText>Exit Nodes</TransText> : <TransText>Network Routes</TransText>}
               <ExternalLinkIcon size={12} />
             </InlineLink>
           </Paragraph>
@@ -819,13 +814,13 @@ export function RouteModalContent({
         <div className={"flex gap-3 w-full justify-end"}>
           {(tab == "network" || (tab == "access-control" && exitNode)) && (
             <ModalClose asChild={true}>
-              <Button variant={"secondary"}>Cancel</Button>
+              <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
             </ModalClose>
           )}
 
           {tab == "access-control" && !exitNode && (
             <Button variant={"secondary"} onClick={() => setTab("network")}>
-              Back
+              <TransText>Back</TransText>
             </Button>
           )}
 
@@ -834,13 +829,13 @@ export function RouteModalContent({
               variant={"secondary"}
               onClick={() => setTab("access-control")}
             >
-              Back
+              <TransText>Back</TransText>
             </Button>
           )}
 
           {tab == "settings" && (
             <Button variant={"secondary"} onClick={() => setTab("general")}>
-              Back
+              <TransText>Back</TransText>
             </Button>
           )}
 
@@ -851,7 +846,7 @@ export function RouteModalContent({
               disabled={!isNetworkEntered}
               data-testid="route-continue"
             >
-              Continue
+              <TransText>Continue</TransText>
             </Button>
           )}
           {tab == "access-control" && (
@@ -861,7 +856,7 @@ export function RouteModalContent({
               disabled={!isGroupsEntered}
               data-testid="route-continue"
             >
-              Continue
+              <TransText>Continue</TransText>
             </Button>
           )}
           {tab == "general" && (
@@ -871,7 +866,7 @@ export function RouteModalContent({
               disabled={!isNameEntered || !isNetworkEntered}
               data-testid="route-continue"
             >
-              Continue
+              <TransText>Continue</TransText>
             </Button>
           )}
           {tab == "settings" && (
@@ -882,7 +877,7 @@ export function RouteModalContent({
               onClick={createRouteHandler}
             >
               <PlusCircle size={16} />
-              {exitNode ? "Add Exit Node" : "Add Route"}
+              {exitNode ? <TransText>Add Exit Node</TransText> : <TransText>Add Route</TransText>}
             </Button>
           )}
         </div>

@@ -10,19 +10,20 @@ import ReverseProxyTargetActiveCell from "@/modules/reverse-proxy/targets/Revers
 import { ReverseProxyTargetProvider } from "@/modules/reverse-proxy/targets/ReverseProxyTargetContext";
 import { ReverseProxyTargetDevice } from "@/modules/reverse-proxy/targets/ReverseProxyTargetDevice";
 import { ReverseProxyTargetPath } from "@/modules/reverse-proxy/targets/ReverseProxyTargetPath";
+import { TransText } from "@/i18n/trans-text";
 
 const ReverseProxyTargetColumns: ColumnDef<ReverseProxyTarget>[] = [
   {
     accessorKey: "target_type",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Resource</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Resource</TransText></DataTableHeader>;
     },
     cell: ({ row }) => <ReverseProxyTargetDevice target={row.original} />,
   },
   {
     accessorKey: "path",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Location</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Location</TransText></DataTableHeader>;
     },
     cell: ({ row }) => <ReverseProxyTargetPath target={row.original} />,
   },
@@ -36,14 +37,14 @@ const ReverseProxyTargetColumns: ColumnDef<ReverseProxyTarget>[] = [
   {
     accessorKey: "host",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Destination</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Destination</TransText></DataTableHeader>;
     },
     cell: ({ row }) => <ReverseProxyDestinationCell target={row.original} />,
   },
   {
     accessorKey: "enabled",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Active</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Active</TransText></DataTableHeader>;
     },
     cell: ({ row }) => <ReverseProxyTargetActiveCell target={row.original} />,
   },

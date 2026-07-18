@@ -8,6 +8,7 @@ import ResourcesTable from "@/modules/networks/resources/ResourcesTable";
 import Paragraph from "@components/Paragraph";
 import InlineLink from "@components/InlineLink";
 import { ExternalLinkIcon } from "lucide-react";
+import { TransText } from "@/i18n/trans-text";
 
 type ResourcesSectionProps = {
   data?: NetworkResource[];
@@ -23,12 +24,12 @@ export const ResourcesTabContent = ({
       <div className={"flex justify-between items-center mb-5"}>
         <div>
           <Paragraph>
-            Add resources to this network to control what peers can access.{" "}
+            <TransText>Add resources to this network to control what peers can access.</TransText>{" "}
             <InlineLink
               href={"https://docs.netbird.io/how-to/networks#resources"}
               target={"_blank"}
             >
-              Learn more
+              <TransText>Learn more</TransText>
               <ExternalLinkIcon size={12} />
             </InlineLink>
           </Paragraph>

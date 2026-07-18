@@ -12,6 +12,7 @@ import { useUsers } from "@/contexts/UsersProvider";
 import Paragraph from "@components/Paragraph";
 import InlineLink from "@components/InlineLink";
 import { ExternalLinkIcon } from "lucide-react";
+import { TransText } from "@/i18n/trans-text";
 
 export const NetworkRoutingPeersTabContent = ({
   routers,
@@ -44,13 +45,12 @@ export const NetworkRoutingPeersTabContent = ({
       <div className={"flex justify-between items-center mb-5"}>
         <div>
           <Paragraph>
-            Add routing peers to this network to access resources inside this
-            network.{" "}
+            <TransText>Add routing peers to this network to access resources inside this network.</TransText>{" "}
             <InlineLink
               href={"https://docs.netbird.io/manage/networks#routing-peers"}
               target={"_blank"}
             >
-              Learn more
+              <TransText>Learn more</TransText>
               <ExternalLinkIcon size={12} />
             </InlineLink>
           </Paragraph>

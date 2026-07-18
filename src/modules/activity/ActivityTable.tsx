@@ -28,6 +28,7 @@ import { useSWRConfig } from "swr";
 import PeerIcon from "@/assets/icons/PeerIcon";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { ActivityEvent } from "@/interfaces/ActivityEvent";
+import { TransText } from "@/i18n/trans-text";
 import { ActivityEntryRow } from "@/modules/activity/ActivityEntryRow";
 import {
   ActivityTypePicker,
@@ -44,7 +45,7 @@ const ActivityFeedColumnsTable: ColumnDef<ActivityEvent>[] = [
   {
     accessorKey: "activity_code",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Code</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Code</TransText></DataTableHeader>;
     },
     sortingFn: "text",
     filterFn: "arrIncludesSomeExact",
@@ -200,7 +201,7 @@ export default function ActivityTable({
           button={<AddPeerButton />}
           learnMore={
             <>
-              Learn more in our{" "}
+              <TransText>Learn more in our</TransText>{" "}
               <InlineLink
                 href={"https://docs.netbird.io/how-to/getting-started"}
                 target={"_blank"}

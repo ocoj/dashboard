@@ -1,3 +1,4 @@
+import { TransText } from "@/i18n/trans-text";
 import Card from "@components/Card";
 import { SmallBadge } from "@components/ui/SmallBadge";
 import TextWithTooltip from "@components/ui/TextWithTooltip";

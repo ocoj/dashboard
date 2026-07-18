@@ -1,3 +1,4 @@
+import { TransText } from "@/i18n/trans-text";
 import { TabsTrigger } from "@components/Tabs";
 import { ShieldCheck } from "lucide-react";
 import * as React from "react";

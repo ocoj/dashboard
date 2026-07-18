@@ -6,6 +6,7 @@ import cidr from "ip-cidr";
 import { GlobeIcon, NetworkIcon, WorkflowIcon } from "lucide-react";
 import * as React from "react";
 import { useEffect, useMemo } from "react";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   value: string;
@@ -23,7 +24,7 @@ export const ResourceSingleAddressInput = ({
   label = "Address",
   className = "",
   onError,
-  description = "Enter a single IP address, CIDR block or domain name",
+  description = <TransText>Enter a single IP address, CIDR block or domain name</TransText>,
   placeholder = "Address (IP, CIDR or Domain)",
   autoFocus,
 }: Props) => {

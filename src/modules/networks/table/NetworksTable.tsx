@@ -37,12 +37,13 @@ import { NetworkPolicyCell } from "@/modules/networks/table/NetworkPolicyCell";
 import { NetworkResourceCell } from "@/modules/networks/table/NetworkResourceCell";
 import NetworkRoutingPeerCell from "@/modules/networks/table/NetworkRoutingPeerCell";
 import { GlobalSearchModal } from "@/modules/search/GlobalSearchModal";
+import { TransText } from "@/i18n/trans-text";
 
 export const NetworkTableColumns: ColumnDef<Network>[] = [
   {
     accessorKey: "name",
     header: ({ column }) => (
-      <DataTableHeader column={column}>Network</DataTableHeader>
+      <DataTableHeader column={column}><TransText>Network</TransText></DataTableHeader>
     ),
     sortingFn: "text",
     cell: ({ row }) => <NetworkNameCell network={row.original} />,
@@ -54,7 +55,7 @@ export const NetworkTableColumns: ColumnDef<Network>[] = [
     accessorKey: "resources",
     accessorFn: (network) => network?.resources?.length,
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Resources</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Resources</TransText></DataTableHeader>;
     },
     cell: ({ row }) => <NetworkResourceCell network={row.original} />,
   },
@@ -62,7 +63,7 @@ export const NetworkTableColumns: ColumnDef<Network>[] = [
     accessorKey: "policies",
     accessorFn: (network) => network?.policies?.length,
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Policies</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Policies</TransText></DataTableHeader>;
     },
     cell: ({ row }) => <NetworkPolicyCell network={row.original} />,
   },
@@ -70,7 +71,7 @@ export const NetworkTableColumns: ColumnDef<Network>[] = [
     accessorKey: "routers",
     accessorFn: (network) => network?.routers?.length,
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Routing Peers</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Routing Peers</TransText></DataTableHeader>;
     },
     cell: ({ row }) => <NetworkRoutingPeerCell network={row.original} />,
   },
@@ -252,7 +253,7 @@ const AddNetworkButton = () => {
       data-testid={"add-network"}
     >
       <PlusCircle size={16} />
-      Add Network
+      <TransText>Add Network</TransText>
     </Button>
   );
 };

@@ -14,6 +14,7 @@ import { useSWRConfig } from "swr";
 import SettingsIcon from "@/assets/icons/SettingsIcon";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { Account } from "@/interfaces/Account";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   account: Account;
@@ -67,23 +68,22 @@ export default function MetricsTab({ account }: Readonly<Props>) {
           />
         </Breadcrumbs>
         <div>
-          <h1>Metrics</h1>
+          <h1><TransText>Metrics</TransText></h1>
           <Paragraph>
-            Help us improve NetBird by sharing performance metrics
-            such as connection timing, sync duration, and login latency.
+            <TransText>Help us improve NetBird by sharing performance metrics such as connection timing, sync duration, and login latency.</TransText>
           </Paragraph>
           <Paragraph>
-            Learn more about{" "}
+            <TransText>Learn more about</TransText>{" "}
             <InlineLink
               href={
                 "https://docs.netbird.io/manage/client-metrics"
               }
               target={"_blank"}
             >
-              Client Metrics
+              <TransText>Client Metrics</TransText>
               <ExternalLinkIcon size={12} />
             </InlineLink>
-            in our documentation.
+            {" "}<TransText>in our documentation.</TransText>
           </Paragraph>
         </div>
 
@@ -94,12 +94,10 @@ export default function MetricsTab({ account }: Readonly<Props>) {
           label={
             <>
               <ChartNoAxesCombined size={15} />
-              Share performance metrics
+              <TransText>Share performance metrics</TransText>
             </>
           }
-          helpText={
-            "When enabled, clients will periodically send performance data to help us identify and fix issues."
-          }
+          helpText={<TransText>When enabled, clients will periodically send performance data to help us identify and fix issues.</TransText>}
           disabled={!permission.settings.update}
         />
       </div>

@@ -10,6 +10,7 @@ import { MoreVertical, PowerIcon, Trash2 } from "lucide-react";
 import * as React from "react";
 import { useState } from "react";
 import { mutate } from "swr";
+import { TransText } from "@/i18n/trans-text";
 import { useDialog } from "@/contexts/DialogProvider";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { usePolicies } from "@/contexts/PoliciesProvider";
@@ -84,7 +85,7 @@ export default function AccessControlActionCell({ policy }: Readonly<Props>) {
           >
             <div className={"flex gap-3 items-center"}>
               <PowerIcon size={14} className={"shrink-0"} />
-              {policy.enabled ? "Disable" : "Enable"}
+              {policy.enabled ? <TransText>Disable</TransText> : <TransText>Enable</TransText>}
             </div>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
@@ -96,7 +97,7 @@ export default function AccessControlActionCell({ policy }: Readonly<Props>) {
           >
             <div className={"flex gap-3 items-center"}>
               <Trash2 size={14} className={"shrink-0"} />
-              Delete
+              <TransText>Delete</TransText>
             </div>
           </DropdownMenuItem>
         </DropdownMenuContent>

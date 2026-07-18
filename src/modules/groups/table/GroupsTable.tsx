@@ -16,6 +16,7 @@ import { removeAllSpaces } from "@utils/helpers";
 import { Layers3Icon } from "lucide-react";
 import { usePathname } from "next/navigation";
 import React, { useMemo } from "react";
+import { TransText } from "@/i18n/trans-text";
 import AccessControlIcon from "@/assets/icons/AccessControlIcon";
 import DNSIcon from "@/assets/icons/DNSIcon";
 import NetworkRoutesIcon from "@/assets/icons/NetworkRoutesIcon";
@@ -35,7 +36,7 @@ export const GroupsTableColumns: ColumnDef<GroupUsage>[] = [
   {
     accessorKey: "name",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Name</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Name</TransText></DataTableHeader>;
     },
     cell: ({ row }) => {
       const in_use = !!row.getValue("in_use");
@@ -58,7 +59,7 @@ export const GroupsTableColumns: ColumnDef<GroupUsage>[] = [
       return (
         <DataTableHeader
           column={column}
-          tooltip={<div className={"text-xs normal-case"}>Users</div>}
+          tooltip={<div className={"text-xs normal-case"}><TransText>Users</TransText></div>}
         >
           <TeamIcon size={12} />
         </DataTableHeader>
@@ -81,7 +82,7 @@ export const GroupsTableColumns: ColumnDef<GroupUsage>[] = [
       return (
         <DataTableHeader
           column={column}
-          tooltip={<div className={"text-xs normal-case"}>Peers</div>}
+          tooltip={<div className={"text-xs normal-case"}><TransText>Peers</TransText></div>}
         >
           <PeerIcon size={12} />
         </DataTableHeader>
@@ -104,7 +105,7 @@ export const GroupsTableColumns: ColumnDef<GroupUsage>[] = [
       return (
         <DataTableHeader
           column={column}
-          tooltip={<div className={"text-xs normal-case"}>Policies</div>}
+          tooltip={<div className={"text-xs normal-case"}><TransText>Policies</TransText></div>}
         >
           <AccessControlIcon size={12} />
         </DataTableHeader>
@@ -127,7 +128,7 @@ export const GroupsTableColumns: ColumnDef<GroupUsage>[] = [
         <DataTableHeader
           column={column}
           tooltip={
-            <div className={"text-xs normal-case"}>Network Resources</div>
+            <div className={"text-xs normal-case"}><TransText>Network Resources</TransText></div>
           }
         >
           <Layers3Icon size={12} />
@@ -150,7 +151,7 @@ export const GroupsTableColumns: ColumnDef<GroupUsage>[] = [
       return (
         <DataTableHeader
           column={column}
-          tooltip={<div className={"text-xs normal-case"}>Network Routes</div>}
+          tooltip={<div className={"text-xs normal-case"}><TransText>Network Routes</TransText></div>}
         >
           <NetworkRoutesIcon size={12} />
         </DataTableHeader>
@@ -172,7 +173,7 @@ export const GroupsTableColumns: ColumnDef<GroupUsage>[] = [
       return (
         <DataTableHeader
           column={column}
-          tooltip={<div className={"text-xs normal-case"}>Nameservers</div>}
+          tooltip={<div className={"text-xs normal-case"}><TransText>Nameservers</TransText></div>}
         >
           <DNSIcon size={12} />
         </DataTableHeader>
@@ -194,7 +195,7 @@ export const GroupsTableColumns: ColumnDef<GroupUsage>[] = [
       return (
         <DataTableHeader
           column={column}
-          tooltip={<div className={"text-xs normal-case"}>Zones</div>}
+          tooltip={<div className={"text-xs normal-case"}><TransText>Zones</TransText></div>}
         >
           <DNSZoneIcon size={16} />
         </DataTableHeader>
@@ -217,7 +218,7 @@ export const GroupsTableColumns: ColumnDef<GroupUsage>[] = [
         <DataTableHeader
           column={column}
           center={true}
-          tooltip={<div className={"text-xs normal-case"}>Setup Keys</div>}
+          tooltip={<div className={"text-xs normal-case"}><TransText>Setup Keys</TransText></div>}
         >
           <SetupKeysIcon size={12} />
         </DataTableHeader>
@@ -237,7 +238,7 @@ export const GroupsTableColumns: ColumnDef<GroupUsage>[] = [
   {
     id: "in_use",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>In Use</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>In Use</TransText></DataTableHeader>;
     },
     sortingFn: "basic",
     accessorFn: (row) => {

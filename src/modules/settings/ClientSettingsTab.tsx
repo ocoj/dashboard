@@ -34,6 +34,7 @@ import ReverseProxyIcon from "@/assets/icons/ReverseProxyIcon";
 import { useAgentNetworkMode } from "@/modules/agent-network/useAgentNetworkMode";
 import useGroupHelper from "@/modules/groups/useGroupHelper";
 import { useGroups } from "@/contexts/GroupsProvider";
+import { TransText } from "@/i18n/trans-text";
 import { SkeletonSettings } from "@components/skeletons/SkeletonSettings";
 
 type Props = {
@@ -248,14 +249,14 @@ function ClientSettingsTabContent({ account }: Readonly<Props>) {
           />
         </Breadcrumbs>
         <div className={"flex items-start justify-between"}>
-          <h1>Clients</h1>
+          <h1><TransText>Clients</TransText></h1>
           <Button
             variant={"primary"}
             disabled={isSaveButtonDisabled}
             onClick={saveChanges}
             data-testid={"save-clients-settings"}
           >
-            Save Changes
+            <TransText>Save Changes</TransText>
           </Button>
         </div>
 
@@ -263,7 +264,7 @@ function ClientSettingsTabContent({ account }: Readonly<Props>) {
           <div className={"flex flex-col relative"}>
             <Label>
               <RefreshCcw size={15} />
-              Automatic Updates
+              <TransText>Automatic Updates</TransText>
               <SmallBadge
                 text={"Beta"}
                 variant={"sky"}
@@ -272,15 +273,13 @@ function ClientSettingsTabContent({ account }: Readonly<Props>) {
               />
             </Label>
             <HelpText>
-              Configure how NetBird clients receive update notifications. When
-              enabled, users will be prompted to install the selected version.
-              This requires at least NetBird{" "}
+              <TransText>Configure how NetBird clients receive update notifications. When enabled, users will be prompted to install the selected version. This requires at least NetBird</TransText>{" "}
               <span className={"text-white font-medium"}>v0.61.0</span>.{" "}
               <InlineLink
                 href={"https://docs.netbird.io/manage/peers/auto-update"}
                 target={"_blank"}
               >
-                Learn more
+                <TransText>Learn more</TransText>
                 <ExternalLinkIcon size={12} />
               </InlineLink>
             </HelpText>
@@ -312,12 +311,10 @@ function ClientSettingsTabContent({ account }: Readonly<Props>) {
               label={
                 <>
                   <AlertTriangle size={15} className={"text-yellow-400"} />
-                  Force Automatic Updates
+                  <TransText>Force Automatic Updates</TransText>
                 </>
               }
-              helpText={
-                "When enabled, updates are installed automatically in the background without user interaction."
-              }
+              helpText={<TransText>When enabled, updates are installed automatically in the background without user interaction.</TransText>}
               disabled={
                 !permission.settings.update || autoUpdateMethod === "disabled"
               }
@@ -333,9 +330,7 @@ function ClientSettingsTabContent({ account }: Readonly<Props>) {
                   />
                 }
               >
-                Enabling automatic updates will restart the NetBird client
-                during updates, which can temporarily disrupt active
-                connections. Use with caution in production environments.
+                <TransText>Enabling automatic updates will restart the NetBird client during updates, which can temporarily disrupt active connections. Use with caution in production environments.</TransText>
               </Callout>
             )}
           </div>
@@ -344,11 +339,11 @@ function ClientSettingsTabContent({ account }: Readonly<Props>) {
             <div>
               <Label>
                 <ReverseProxyIcon size={15} className={"fill-nb-gray-300"} />
-                Expose Services from CLI
+                <TransText>Expose Services from CLI</TransText>
               </Label>
               <HelpText>
-                Allow peers to expose local services through the NetBird reverse
-                proxy using the CLI. <br /> This requires at least NetBird{" "}
+                <TransText>Allow peers to expose local services through the NetBird reverse proxy using the CLI.</TransText> <br />{" "}
+                <TransText>This requires at least NetBird</TransText>{" "}
                 <span className={"text-white font-medium"}>v0.66.0</span>.{" "}
                 <InlineLink
                   href={
@@ -356,7 +351,7 @@ function ClientSettingsTabContent({ account }: Readonly<Props>) {
                   }
                   target={"_blank"}
                 >
-                  Learn more
+                  <TransText>Learn more</TransText>
                   <ExternalLinkIcon size={12} />
                 </InlineLink>
               </HelpText>
@@ -367,10 +362,8 @@ function ClientSettingsTabContent({ account }: Readonly<Props>) {
               value={peerExposeEnabled}
               onChange={setPeerExposeEnabled}
               data-testid="peer-expose"
-              label={"Enable Peer Expose"}
-              helpText={
-                "When enabled, peers can expose local HTTP services accessible via a public URL."
-              }
+              label={<TransText>Enable Peer Expose</TransText>}
+              helpText={<TransText>When enabled, peers can expose local HTTP services accessible via a public URL.</TransText>}
               disabled={!permission.settings.update}
             />
 
@@ -383,10 +376,9 @@ function ClientSettingsTabContent({ account }: Readonly<Props>) {
               )}
             >
               <div className={"mt-2"}>
-                <Label>Allowed peer groups</Label>
+                <Label><TransText>Allowed peer groups</TransText></Label>
                 <HelpText>
-                  Select which peer groups are allowed to expose services. At
-                  least one group is required.
+                  <TransText>Select which peer groups are allowed to expose services. At least one group is required.</TransText>
                 </HelpText>
                 <PeerGroupSelector
                   values={peerExposeGroups}
@@ -401,18 +393,16 @@ function ClientSettingsTabContent({ account }: Readonly<Props>) {
           <div>
             <Label>
               <ClockFadingIcon size={15} />
-              Lazy Connections
+              <TransText>Lazy Connections</TransText>
             </Label>
 
             <HelpText>
-              Instead of maintaining always-on connections, NetBird activates
-              them on-demand based on activity or signaling. This requires
-              NetBird client v0.50.1 or higher.{" "}
+              <TransText>Instead of maintaining always-on connections, NetBird activates them on-demand based on activity or signaling. This requires NetBird client v0.50.1 or higher.</TransText>{" "}
               <InlineLink
                 href={"https://docs.netbird.io/how-to/lazy-connection"}
                 target={"_blank"}
               >
-                Learn more
+                <TransText>Learn more</TransText>
                 <ExternalLinkIcon size={12} />
               </InlineLink>
             </HelpText>
@@ -421,13 +411,13 @@ function ClientSettingsTabContent({ account }: Readonly<Props>) {
               value={lazyConnection}
               onChange={toggleLazyConnection}
               data-testid="lazy-connections"
-              label={<>Enable Lazy Connections</>}
+              label={<TransText>Enable Lazy Connections</TransText>}
               helpText={
-                <>
+                <TransText>
                   Allow to establish connections between peers only when
                   required. Changes will take effect after restarting the
                   clients.
-                </>
+                </TransText>
               }
               disabled={!permission.settings.update}
             />
@@ -437,22 +427,18 @@ function ClientSettingsTabContent({ account }: Readonly<Props>) {
             <div>
               <Label>
                 <AgentNetworkIcon size={15} />
-                Agent Network
+                <TransText>Agent Network</TransText>
               </Label>
               <HelpText>
-                Focus the dashboard on the Agent Network surface and hide
-                sections that are not relevant for it, such as Networks, DNS and
-                Reverse Proxy.
+                <TransText>Focus the dashboard on the Agent Network surface and hide sections that are not relevant for it, such as Networks, DNS and Reverse Proxy.</TransText>
               </HelpText>
               <FancyToggleSwitch
                 className={"mt-2"}
                 value={agentNetworkOnly}
                 onChange={toggleAgentNetworkOnly}
                 data-testid="agent-network-only"
-                label={"Agent Network focused view"}
-                helpText={
-                  "When enabled, the dashboard shows only the Agent Network related sections. Disable it to bring back the full dashboard."
-                }
+                label={<TransText>Agent Network focused view</TransText>}
+                helpText={<TransText>When enabled, the dashboard shows only the Agent Network related sections. Disable it to bring back the full dashboard.</TransText>}
                 disabled={!permission.settings.update}
               />
             </div>

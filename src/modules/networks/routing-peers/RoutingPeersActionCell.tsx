@@ -20,6 +20,7 @@ import { useSWRConfig } from "swr";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { NetworkRouter } from "@/interfaces/Network";
 import { useNetworksContext } from "@/modules/networks/NetworkProvider";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   router: NetworkRouter;
@@ -83,7 +84,7 @@ export const RoutingPeersActionCell = ({ router }: Props) => {
           >
             <div className={"flex gap-3 items-center"}>
               <SquarePenIcon size={14} className={"shrink-0"} />
-              Edit
+              <TransText>Edit</TransText>
             </div>
           </DropdownMenuItem>
           <DropdownMenuItem
@@ -95,7 +96,7 @@ export const RoutingPeersActionCell = ({ router }: Props) => {
           >
             <div className={"flex gap-3 items-center"}>
               <PowerIcon size={14} className={"shrink-0"} />
-              {router.enabled ? "Disable" : "Enable"}
+              {router.enabled ? <TransText>Disable</TransText> : <TransText>Enable</TransText>}
             </div>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
@@ -109,7 +110,7 @@ export const RoutingPeersActionCell = ({ router }: Props) => {
           >
             <div className={"flex gap-3 items-center"}>
               <Trash2 size={14} className={"shrink-0"} />
-              Remove
+              <TransText>Remove</TransText>
             </div>
           </DropdownMenuItem>
         </DropdownMenuContent>

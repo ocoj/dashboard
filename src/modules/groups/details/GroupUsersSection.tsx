@@ -8,6 +8,7 @@ import { ColumnDef, RowSelectionState } from "@tanstack/react-table";
 import dayjs from "dayjs";
 import { MinusCircle, PlusCircle } from "lucide-react";
 import React, { lazy, useState } from "react";
+import { TransText } from "@/i18n/trans-text";
 import TeamIcon from "@/assets/icons/TeamIcon";
 import { useGroupContext } from "@/contexts/GroupProvider";
 import { usePermissions } from "@/contexts/PermissionsProvider";
@@ -52,7 +53,7 @@ export const GroupUsersTableColumns: ColumnDef<User>[] = [
   {
     accessorKey: "name",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Name</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Name</TransText></DataTableHeader>;
     },
     accessorFn: (row) => row.name + " " + row.email,
     sortingFn: "text",
@@ -65,7 +66,7 @@ export const GroupUsersTableColumns: ColumnDef<User>[] = [
   {
     accessorKey: "role",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Role</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Role</TransText></DataTableHeader>;
     },
     sortingFn: "text",
     cell: ({ row }) => <UserRoleCell user={row.original} />,
@@ -73,7 +74,7 @@ export const GroupUsersTableColumns: ColumnDef<User>[] = [
   {
     accessorKey: "status",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Status</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Status</TransText></DataTableHeader>;
     },
     sortingFn: "text",
     cell: ({ row }) => <UserStatusCell user={row.original} />,
@@ -81,7 +82,7 @@ export const GroupUsersTableColumns: ColumnDef<User>[] = [
   {
     accessorKey: "is_blocked",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Block User</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Block User</TransText></DataTableHeader>;
     },
     sortingFn: "text",
     cell: ({ row }) => <UserBlockCell user={row.original} />,
@@ -89,7 +90,7 @@ export const GroupUsersTableColumns: ColumnDef<User>[] = [
   {
     accessorKey: "last_login",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Last Login</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Last Login</TransText></DataTableHeader>;
     },
     sortingFn: "text",
     cell: ({ row }) => (
@@ -152,7 +153,7 @@ export const GroupUsersSection = ({ users, isLoading = true }: Props) => {
                   onClick={() => setOpen(true)}
                 >
                   <PlusCircle size={16} />
-                  Assign Users
+                  <TransText>Assign Users</TransText>
                 </Button>
                 <InviteUserButton show={true} groups={[group]} />
               </div>
@@ -173,7 +174,7 @@ export const GroupUsersSection = ({ users, isLoading = true }: Props) => {
                     <FullTooltip
                       content={
                         <span className={"text-xs"}>
-                          Remove Users from Group
+                          <TransText>Remove Users from Group</TransText>
                         </span>
                       }
                     >
@@ -215,7 +216,7 @@ export const GroupUsersSection = ({ users, isLoading = true }: Props) => {
                     onClick={() => setOpen(true)}
                   >
                     <PlusCircle size={16} />
-                    Assign Users
+                    <TransText>Assign Users</TransText>
                   </Button>
                   <InviteUserButton show={true} groups={[group]} />
                 </div>

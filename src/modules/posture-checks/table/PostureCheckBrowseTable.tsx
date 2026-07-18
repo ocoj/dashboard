@@ -1,3 +1,4 @@
+import { TransText } from "@/i18n/trans-text";
 import Button from "@components/Button";
 import { Checkbox } from "@components/Checkbox";
 import { DataTable } from "@components/table/DataTable";
@@ -118,7 +119,7 @@ export const PostureChecksColumns: ColumnDef<PostureCheck>[] = [
   {
     accessorKey: "name",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Name</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Name</TransText></DataTableHeader>;
     },
     cell: ({ row }) => (
       <PostureCheckNameCell small={true} check={row.original} />
@@ -127,7 +128,7 @@ export const PostureChecksColumns: ColumnDef<PostureCheck>[] = [
   {
     accessorKey: "id",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Checks</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Checks</TransText></DataTableHeader>;
     },
     cell: ({ row }) => <PostureCheckChecksCell check={row.original} />,
   },

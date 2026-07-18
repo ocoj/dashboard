@@ -28,6 +28,7 @@ import { useDialog } from "@/contexts/DialogProvider";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { useHasChanges } from "@/hooks/useHasChanges";
 import { Account } from "@/interfaces/Account";
+import { TransText } from "@/i18n/trans-text";
 import { Callout } from "@components/Callout";
 import { InlineButtonLink } from "@components/InlineLink";
 import { useRouter } from "next/navigation";
@@ -94,7 +95,7 @@ export default function GroupsSettings({ account }: Props) {
               }
             >
               <AlertCircle size={14} />
-              To prevent losing access, ensure you are part of this group.
+              <TransText>To prevent losing access, ensure you are part of this group.</TransText>
             </div>
           ),
           cancelText: "Cancel",
@@ -150,14 +151,14 @@ export default function GroupsSettings({ account }: Props) {
           />
         </Breadcrumbs>
         <div className={"flex items-start justify-between"}>
-          <h1>User Groups</h1>
+          <h1><TransText>User Groups</TransText></h1>
           <Button
             variant={"primary"}
             disabled={!hasChanges}
             onClick={saveChanges}
             data-testid="save-groups-settings"
           >
-            Save Changes
+            <TransText>Save Changes</TransText>
           </Button>
         </div>
 
@@ -169,12 +170,10 @@ export default function GroupsSettings({ account }: Props) {
             label={
               <>
                 <FolderInput size={15} />
-                Enable user group propagation
+                <TransText>Enable user group propagation</TransText>
               </>
             }
-            helpText={
-              "Allow group propagation from user's auto-groups to peers, sharing membership information."
-            }
+            helpText={<TransText>Allow group propagation from user's auto-groups to peers, sharing membership information.</TransText>}
             disabled={!permission.settings.update}
           />
           {(!isNetBirdCloud() || isLocalDev()) && (
@@ -184,12 +183,10 @@ export default function GroupsSettings({ account }: Props) {
               label={
                 <>
                   <FolderSync size={15} />
-                  Enable JWT group sync
+                  <TransText>Enable JWT group sync</TransText>
                 </>
               }
-              helpText={
-                "Extract & sync groups from JWT claims with user's auto-groups, auto-creating groups from tokens."
-              }
+              helpText={<TransText>Extract & sync groups from JWT claims with user's auto-groups, auto-creating groups from tokens.</TransText>}
               disabled={!permission.settings.update}
             />
           )}
@@ -212,11 +209,9 @@ export default function GroupsSettings({ account }: Props) {
                     )}
                   >
                     <div>
-                      <Label>JWT claim</Label>
+                      <Label><TransText>JWT claim</TransText></Label>
                       <HelpText>
-                        Specify the JWT claim for extracting group names, e.g.,
-                        roles or groups, to add to account groups (this claim
-                        should contain a list of group names).
+                        <TransText>Specify the JWT claim for extracting group names, e.g., roles or groups, to add to account groups (this claim should contain a list of group names).</TransText>
                       </HelpText>
                       <Input
                         customPrefix={
@@ -235,11 +230,9 @@ export default function GroupsSettings({ account }: Props) {
                       />
                     </div>
                     <div>
-                      <Label>JWT allow groups</Label>
+                      <Label><TransText>JWT allow groups</TransText></Label>
                       <HelpText>
-                        Limit access to NetBird for the specified group names,
-                        e.g., NetBird users. To use the groups, you need to
-                        configure them first in your IdP.
+                        <TransText>Limit access to NetBird for the specified group names, e.g., NetBird users. To use the groups, you need to configure them first in your IdP.</TransText>
                       </HelpText>
                       <div>
                         {jwtAllowGroups.length > 0 && (
@@ -305,8 +298,7 @@ export default function GroupsSettings({ account }: Props) {
                         }
                       >
                         <AlertCircle size={14} />
-                        To prevent losing access, ensure you are part of this
-                        group.
+                        <TransText>To prevent losing access, ensure you are part of this group.</TransText>
                       </div>
                     )}
                   </div>
@@ -317,13 +309,12 @@ export default function GroupsSettings({ account }: Props) {
         )}
 
         <Callout variant={"info"} className={"mt-6"}>
-          Looking to view and manage your groups? You can find group management
-          under{"  "}
+          <TransText>Looking to view and manage your groups? You can find group management under</TransText>{"  "}
           <InlineButtonLink
             onClick={() => router.push("/groups")}
             variant={"dashed"}
           >
-            {`Access Control › Groups`}
+            <TransText>Access Control › Groups</TransText>
           </InlineButtonLink>
         </Callout>
       </div>

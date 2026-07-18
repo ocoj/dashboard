@@ -34,6 +34,7 @@ import { usePermissions } from "@/contexts/PermissionsProvider";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { Group } from "@/interfaces/Group";
 import { SetupKey } from "@/interfaces/SetupKey";
+import { TransText } from "@/i18n/trans-text";
 import EmptyRow from "@/modules/common-table-rows/EmptyRow";
 import ExpirationDateRow from "@/modules/common-table-rows/ExpirationDateRow";
 import LastTimeRow from "@/modules/common-table-rows/LastTimeRow";
@@ -47,7 +48,7 @@ export const SetupKeysTableColumns: ColumnDef<SetupKey>[] = [
   {
     accessorKey: "name",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Name & Key</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Name & Key</TransText></DataTableHeader>;
     },
     sortingFn: "text",
     cell: ({ row }) => (
@@ -68,7 +69,7 @@ export const SetupKeysTableColumns: ColumnDef<SetupKey>[] = [
   {
     accessorKey: "usage_limit",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Usage</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Usage</TransText></DataTableHeader>;
     },
     cell: ({ row }) => (
       <SetupKeyUsageCell
@@ -86,7 +87,7 @@ export const SetupKeysTableColumns: ColumnDef<SetupKey>[] = [
   {
     accessorKey: "last_used",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Last used</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Last used</TransText></DataTableHeader>;
     },
     sortingFn: "datetime",
     cell: ({ row }) => (
@@ -107,7 +108,7 @@ export const SetupKeysTableColumns: ColumnDef<SetupKey>[] = [
     accessorFn: (item) => item.auto_groups?.length,
     id: "groups",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Groups</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Groups</TransText></DataTableHeader>;
     },
     cell: ({ row }) => <SetupKeyGroupsCell setupKey={row.original} />,
   },
@@ -115,7 +116,7 @@ export const SetupKeysTableColumns: ColumnDef<SetupKey>[] = [
   {
     accessorKey: "expires",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Expires</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Expires</TransText></DataTableHeader>;
     },
     cell: ({ row }) => {
       let expires = dayjs(row.original.expires);
@@ -303,7 +304,7 @@ export default function SetupKeysTable({
                 disabled={!permission.setup_keys.create}
               >
                 <PlusCircle size={16} />
-                Create Key
+                <TransText>Create Key</TransText>
               </Button>
             </NoResults>
           ) : (
@@ -330,19 +331,19 @@ export default function SetupKeysTable({
                   data-testid="open-create-setup-key"
                 >
                   <PlusCircle size={16} />
-                  Create Key
+                  <TransText>Create Key</TransText>
                 </Button>
               }
               learnMore={
                 <>
-                  Learn more about
+                  <TransText>Learn more about</TransText>
                   <InlineLink
                     href={
                       "https://docs.netbird.io/how-to/register-machines-using-setup-keys"
                     }
                     target={"_blank"}
                   >
-                    Setup Keys
+                    <TransText>Setup Keys</TransText>
                     <ExternalLinkIcon size={12} />
                   </InlineLink>
                 </>
@@ -361,7 +362,7 @@ export default function SetupKeysTable({
                 data-testid="open-create-setup-key"
               >
                 <PlusCircle size={16} />
-                Create Key
+                <TransText>Create Key</TransText>
               </Button>
             )}
           </>

@@ -20,6 +20,7 @@ import * as React from "react";
 import { useState } from "react";
 import { GeoLocation, GeoLocationCheck } from "@/interfaces/PostureCheck";
 import { PostureCheckCard } from "@/modules/posture-checks/ui/PostureCheckCard";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   value?: GeoLocationCheck;
@@ -39,9 +40,9 @@ export const PostureCheckGeoLocation = ({
       open={open}
       setOpen={setOpen}
       icon={<FlagIcon size={16} />}
-      title={"Country & Region"}
+      title={<TransText>Country &amp; Region</TransText>}
       description={
-        "Restrict access in your network based on country or region."
+        <TransText>Restrict access in your network based on country or region.</TransText>
       }
       iconClass={"bg-gradient-to-tr from-indigo-500 to-indigo-400"}
       modalWidthClass={"max-w-2xl"}
@@ -106,20 +107,19 @@ const CheckContent = ({ value, onChange, disabled }: Props) => {
       <div className={"flex flex-col px-8 gap-2 pb-6"}>
         <div className={"flex justify-between items-start gap-10 mt-2"}>
           <div>
-            <Label>Allow or Block Location</Label>
+            <Label><TransText>Allow or Block Location</TransText></Label>
             <HelpText className={""}>
-              Choose whether you want to allow or block access from specific
-              countries or regions
+              <TransText>Choose whether you want to allow or block access from specific countries or regions</TransText>
             </HelpText>
           </div>
           <RadioGroup value={allowDenyLocation} onChange={setAllowDenyLocation}>
             <RadioGroupItem value={"allow"} variant={"green"}>
               <ShieldCheck size={16} />
-              Allow
+              <TransText>Allow</TransText>
             </RadioGroupItem>
             <RadioGroupItem value={"deny"} variant={"red"}>
               <ShieldXIcon size={16} />
-              Block
+              <TransText>Block</TransText>
             </RadioGroupItem>
           </RadioGroup>
         </div>
@@ -190,7 +190,7 @@ const CheckContent = ({ value, onChange, disabled }: Props) => {
         </div>
         <div className={"flex gap-3 w-full justify-end"}>
           <ModalClose asChild={true}>
-            <Button variant={"secondary"}>Cancel</Button>
+            <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
           </ModalClose>
           <Button
             variant={"primary"}

@@ -19,6 +19,7 @@ import { ColumnDef, SortingState } from "@tanstack/react-table";
 import * as React from "react";
 import { useMemo, useState } from "react";
 import PeerIcon from "@/assets/icons/PeerIcon";
+import { TransText } from "@/i18n/trans-text";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { NetworkRouter } from "@/interfaces/Network";
 import { useNetworksContext } from "@/modules/networks/NetworkProvider";
@@ -38,7 +39,7 @@ const NetworkRouterColumns: ColumnDef<NetworkRouter>[] = [
     id: "name",
     accessorKey: "id",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Peer</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Peer</TransText></DataTableHeader>;
     },
     sortingFn: "text",
     cell: ({ row }) => <NetworkRoutingPeerName router={row.original} />,
@@ -51,7 +52,7 @@ const NetworkRouterColumns: ColumnDef<NetworkRouter>[] = [
     id: "metric",
     accessorKey: "metric",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Metric</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Metric</TransText></DataTableHeader>;
     },
     cell: ({ row }) => (
       <RouteMetricCell metric={row.original.metric} useHoverStyle={false} />
@@ -61,7 +62,7 @@ const NetworkRouterColumns: ColumnDef<NetworkRouter>[] = [
     id: "masquerade",
     accessorKey: "masquerade",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Masquerade</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Masquerade</TransText></DataTableHeader>;
     },
     cell: ({ row }) => <RoutingPeersMasqueradeCell router={row.original} />,
   },
@@ -168,7 +169,7 @@ export default function NetworkRoutingPeersTable({
           disabled={!permission.networks.update}
         >
           <IconCirclePlus size={16} />
-          Add
+          <TransText>Add</TransText>
         </Button>
       )}
     >

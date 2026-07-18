@@ -11,6 +11,7 @@ import SettingsIcon from "@/assets/icons/SettingsIcon";
 import { useAuthService } from "@/cloud/cloud-hooks/useAuthService";
 import { useDialog } from "@/contexts/DialogProvider";
 import { useLoggedInUser } from "@/contexts/UsersProvider";
+import { TransText } from "@/i18n/trans-text";
 import { Account } from "@/interfaces/Account";
 
 type Props = {
@@ -81,7 +82,7 @@ export default function DangerZoneTab({ account }: Props) {
             active
           />
         </Breadcrumbs>
-        <h1>Danger Zone</h1>
+        <h1><TransText>Danger Zone</TransText></h1>
         <div className={"gap-6 mt-6 max-w-lg"}>
           <Card
             className={
@@ -90,17 +91,14 @@ export default function DangerZoneTab({ account }: Props) {
           >
             <div className={"px-8 py-6"}>
               <p className={"text-xl font-medium mb-2 !text-red-50"}>
-                Delete NetBird account
+                <TransText>Delete NetBird account</TransText>
               </p>
               <p className={"!text-red-50/80"}>
-                Before proceeding to delete your Netbird account, please be
-                aware that this action is irreversible. Once your account is
-                deleted, you will permanently lose access to all associated
-                data, including your peers, users, groups, policies, and routes.
+                <TransText>Before proceeding to delete your Netbird account, please be aware that this action is irreversible. Once your account is deleted, you will permanently lose access to all associated data, including your peers, users, groups, policies, and routes.</TransText>
               </p>
               <div className={"mt-6"}>
                 <Button variant={"danger"} onClick={handleConfirm} size={"xs"}>
-                  Delete Account
+                  <TransText>Delete Account</TransText>
                 </Button>
               </div>
             </div>

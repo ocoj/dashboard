@@ -7,6 +7,7 @@ import {useMemo} from "react";
 import NetworkRoutesIcon from "@/assets/icons/NetworkRoutesIcon";
 import PeerIcon from "@/assets/icons/PeerIcon";
 import {Intent} from "@/modules/onboarding/Onboarding";
+import { TransText } from "@/i18n/trans-text";
 
 type Props =   {
     onSelect: (intent: Intent) => void,
@@ -58,7 +59,7 @@ export const OnboardingIntent = ({onSelect, useCases, isBusiness}: Props) => {
     return (
         <div className={"relative flex flex-col h-full justify-between"}>
             <div>
-                <h1 className={"text-xl text-center"}>Get started with NetBird</h1>
+                <h1 className={"text-xl text-center"}><TransText>Get started with NetBird</TransText></h1>
                 <div
                     className={
                         "text-sm text-nb-gray-300 font-light mt-2 block text-center sm:px-4"

@@ -20,6 +20,7 @@ import { PeerOSCell } from "@/modules/peers/PeerOSCell";
 import UserNameCell from "@/modules/users/table-cells/UserNameCell";
 import UserRoleCell from "@/modules/users/table-cells/UserRoleCell";
 import UserStatusCell from "@/modules/users/table-cells/UserStatusCell";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   group: Group;
@@ -135,7 +136,7 @@ export const AssignUserToGroupModalContent = ({
                   <span className={"text-netbird font-medium"}>
                     {Object.keys(selectedRows).length}
                   </span>{" "}
-                  User(s) selected
+                  <TransText>User(s) selected</TransText>
                 </div>
               )}
             </div>
@@ -191,7 +192,7 @@ const UsersTableColumns: ColumnDef<User>[] = [
   {
     accessorKey: "name",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Name</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Name</TransText></DataTableHeader>;
     },
     accessorFn: (row) => row.name + " " + row.email,
     sortingFn: "text",
@@ -200,7 +201,7 @@ const UsersTableColumns: ColumnDef<User>[] = [
   {
     accessorKey: "role",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Role</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Role</TransText></DataTableHeader>;
     },
     sortingFn: "text",
     cell: ({ row }) => <UserRoleCell user={row.original} />,
@@ -208,7 +209,7 @@ const UsersTableColumns: ColumnDef<User>[] = [
   {
     accessorKey: "status",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Status</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Status</TransText></DataTableHeader>;
     },
     sortingFn: "text",
     cell: ({ row }) => <UserStatusCell user={row.original} />,
@@ -216,7 +217,7 @@ const UsersTableColumns: ColumnDef<User>[] = [
   {
     accessorKey: "last_login",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Last Login</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Last Login</TransText></DataTableHeader>;
     },
     sortingFn: "text",
     cell: ({ row }) => (

@@ -15,6 +15,7 @@ import useGroupHelper from "@/modules/groups/useGroupHelper";
 import { useNetworksContext } from "@/modules/networks/NetworkProvider";
 import { FolderGit2 } from "lucide-react";
 import Separator from "@components/Separator";
+import { TransText } from "@/i18n/trans-text";
 
 type ResourceGroupModalProps = {
   resource?: NetworkResource;
@@ -82,9 +83,9 @@ const ResourceGroupModalContent = ({
   return (
     <ModalContent maxWidthClass={"max-w-2xl"}>
       <ModalHeader
-        title={"Resource Groups"}
+        title={<TransText>Resource Groups</TransText>}
         description={
-          "Add this resource to a group (e.g., Databases, Web Servers) and reference the group in access policies to simplify management."
+          <TransText>Add this resource to a group (e.g., Databases, Web Servers) and reference the group in access policies to simplify management.</TransText>
         }
         icon={<FolderGit2 size={18} />}
       />
@@ -106,11 +107,11 @@ const ResourceGroupModalContent = ({
       <ModalFooter className={"items-center"}>
         <div className={"flex gap-3 w-full justify-end"}>
           <ModalClose asChild={true}>
-            <Button variant={"secondary"}>Cancel</Button>
+            <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
           </ModalClose>
 
           <Button variant={"primary"} onClick={updateResource}>
-            Save Groups
+            <TransText>Save Groups</TransText>
           </Button>
         </div>
       </ModalFooter>

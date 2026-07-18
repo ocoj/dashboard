@@ -1,3 +1,4 @@
+import { TransText } from "@/i18n/trans-text";
 import { TabsContent } from "@components/Tabs";
 import { cn } from "@utils/helpers";
 import { Trash2Icon } from "lucide-react";

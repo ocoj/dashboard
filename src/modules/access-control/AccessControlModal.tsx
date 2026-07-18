@@ -56,6 +56,7 @@ import { SSHAccessType } from "@/modules/access-control/ssh/SSHAccessType";
 import { SSHAuthorizedGroups } from "@/modules/access-control/ssh/SSHAuthorizedGroups";
 import { useUsers } from "@/contexts/UsersProvider";
 import { HelpTooltip } from "@components/HelpTooltip";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   children?: React.ReactNode;
@@ -236,11 +237,13 @@ export function AccessControlModalContent({
         icon={<AccessControlIcon className={"fill-netbird"} />}
         title={
           policy
-            ? "Update Access Control Policy"
-            : "Create New Access Control Policy"
+            ? <TransText>Update Access Control Policy</TransText>
+            : <TransText>Create New Access Control Policy</TransText>
         }
         description={
-          "Use this policy to restrict access to groups of resources."
+          <TransText>
+            Use this policy to restrict access to groups of resources.
+          </TransText>
         }
         color={"netbird"}
       />
@@ -249,7 +252,7 @@ export function AccessControlModalContent({
         <TabsList justify={"start"} className={"px-8"}>
           <TabsTrigger value={"policy"}>
             <ArrowRightLeft size={16} />
-            Policy
+            <TransText>Policy</TransText>
           </TabsTrigger>
           <PostureCheckTabTrigger disabled={!canContinueToPostureChecks} />
           <TabsTrigger value={"general"} disabled={!canContinueToPostureChecks}>
@@ -259,7 +262,7 @@ export function AccessControlModalContent({
                 "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
               }
             />
-            Name & Description
+            <TransText>Name & Description</TransText>
           </TabsTrigger>
         </TabsList>
 
@@ -270,7 +273,7 @@ export function AccessControlModalContent({
               data-testid={"protocol-wrapper"}
             >
               <div className={"w-full"}>
-                <Label>Protocol</Label>
+                <Label><TransText>Protocol</TransText></Label>
                 <HelpText className={"max-w-sm"}>
                   Allow only specified network protocols. To change traffic
                   direction and ports, select{" "}
@@ -307,11 +310,11 @@ export function AccessControlModalContent({
                         align={"center"}
                         side={"right"}
                         content={
-                          <>
+                          <TransText>
                             Select NetBird SSH for SSH-specific policies with
                             fine-grained access control, or use TCP with port 22
                             for basic network-level SSH access
-                          </>
+                          </TransText>
                         }
                       />
                     }
@@ -326,14 +329,14 @@ export function AccessControlModalContent({
               <div className={"w-full self-start"}>
                 <Label className={"mb-2"}>
                   <FolderDown size={15} />
-                  Source
+                  <TransText>Source</TransText>
                   <HelpTooltip
                     content={
-                      <>
+                      <TransText>
                         Typically a group of user devices (e.g., Developers,
                         Marketing) or individual devices in peer-to-peer
                         connections that will access the destination.
-                      </>
+                      </TransText>
                     }
                   />
                 </Label>
@@ -369,14 +372,14 @@ export function AccessControlModalContent({
               <div className={"w-full self-start"}>
                 <Label className={"mb-2"}>
                   <FolderInput size={15} />
-                  Destination
+                  <TransText>Destination</TransText>
                   <HelpTooltip
                     content={
-                      <>
+                      <TransText>
                         Typically a group of peers or resources (e.g., Servers,
                         Databases, Internal Services) that will be accessed by
                         the source. Can also be an individual peer or resource.
-                      </>
+                      </TransText>
                     }
                   />
                 </Label>
@@ -418,8 +421,10 @@ export function AccessControlModalContent({
                   }
                   className="mb-4"
                 >
-                  Some destination groups contain resources. Resources only
-                  support incoming traffic and cannot initiate connections.
+                  <TransText>
+                    Some destination groups contain resources. Resources only
+                    support incoming traffic and cannot initiate connections.
+                  </TransText>
                 </Callout>
               )}
 
@@ -436,9 +441,11 @@ export function AccessControlModalContent({
                     }
                     className="mb-6"
                   >
-                    SSH access only works on peers, not on routed resources.
-                    Please ensure your destination groups contain peers for SSH
-                    connectivity.
+                    <TransText>
+                      SSH access only works on peers, not on routed resources.
+                      Please ensure your destination groups contain peers for SSH
+                      connectivity.
+                    </TransText>
                   </Callout>
                 )}
                 <div
@@ -447,12 +454,14 @@ export function AccessControlModalContent({
                   <div className={"w-full"}>
                     <Label className={"flex items-center gap-2"}>
                       <SquareTerminalIcon size={15} />
-                      SSH Access
+                      <TransText>SSH Access</TransText>
                     </Label>
                     <HelpText>
-                      Select {`'Full Access'`} to allow SSH as any local user,
-                      or {`'Limited Access'`} to specify which local users each
-                      group is allowed to use.
+                      <TransText>
+                        Select 'Full Access' to allow SSH as any local user,
+                        or 'Limited Access' to specify which local users each
+                        group is allowed to use.
+                      </TransText>
                     </HelpText>
                   </div>
                   <SSHAccessType
@@ -477,11 +486,13 @@ export function AccessControlModalContent({
                 <div>
                   <Label className={"flex items-center gap-2"}>
                     <Shield size={14} />
-                    Ports
+                    <TransText>Ports</TransText>
                   </Label>
                   <HelpText>
-                    Allow network traffic and access only to specified ports.
-                    Select ports or port ranges between 1 and 65535.
+                    <TransText>
+                      Allow network traffic and access only to specified ports.
+                      Select ports or port ranges between 1 and 65535.
+                    </TransText>
                   </HelpText>
                 </div>
                 <div className={""}>
@@ -506,10 +517,10 @@ export function AccessControlModalContent({
               label={
                 <>
                   <Power size={15} />
-                  Enable Policy
+                  <TransText>Enable Policy</TransText>
                 </>
               }
-              helpText={"Use this switch to enable or disable the policy."}
+              helpText={<TransText>Use this switch to enable or disable the policy.</TransText>}
             />
           </div>
         </TabsContent>
@@ -521,9 +532,11 @@ export function AccessControlModalContent({
         <TabsContent value={"general"} className={"px-8 pb-6"}>
           <div className={"flex flex-col gap-6"}>
             <div>
-              <Label>Name of the Rule</Label>
+              <Label><TransText>Name of the Rule</TransText></Label>
               <HelpText>
-                Set an easily identifiable name for your policy.
+                <TransText>
+                  Set an easily identifiable name for your policy.
+                </TransText>
               </HelpText>
               <Input
                 autoFocus={true}
@@ -538,9 +551,11 @@ export function AccessControlModalContent({
               />
             </div>
             <div>
-              <Label>Description (optional)</Label>
+              <Label><TransText>Description (optional)</TransText></Label>
               <HelpText>
-                Write a short description to add more context to this policy.
+                <TransText>
+                  Write a short description to add more context to this policy.
+                </TransText>
               </HelpText>
               <Textarea
                 value={description}
@@ -562,12 +577,12 @@ export function AccessControlModalContent({
       <ModalFooter className={"items-center"}>
         <div className={"w-full"}>
           <Paragraph className={"text-sm mt-auto"}>
-            Learn more about
+            <TransText>Learn more about</TransText>
             <InlineLink
               href={"https://docs.netbird.io/how-to/manage-network-access"}
               target={"_blank"}
             >
-              Access Controls
+              <TransText>Access Controls</TransText>
               <ExternalLinkIcon size={12} />
             </InlineLink>
           </Paragraph>
@@ -578,7 +593,7 @@ export function AccessControlModalContent({
               {tab == "policy" && (
                 <>
                   <ModalClose asChild={true}>
-                    <Button variant={"secondary"}>Cancel</Button>
+                    <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
                   </ModalClose>
                   <Button
                     variant={"primary"}
@@ -586,7 +601,7 @@ export function AccessControlModalContent({
                     disabled={!canContinueToPostureChecks}
                     data-testid="policy-continue"
                   >
-                    Continue
+                    <TransText>Continue</TransText>
                   </Button>
                 </>
               )}
@@ -597,7 +612,7 @@ export function AccessControlModalContent({
                     variant={"secondary"}
                     onClick={() => setTab("policy")}
                   >
-                    Back
+                    <TransText>Back</TransText>
                   </Button>
                   <Button
                     variant={"primary"}
@@ -605,7 +620,7 @@ export function AccessControlModalContent({
                     disabled={!canContinueToPostureChecks}
                     data-testid="policy-continue"
                   >
-                    Continue
+                    <TransText>Continue</TransText>
                   </Button>
                 </>
               )}
@@ -616,7 +631,7 @@ export function AccessControlModalContent({
                     variant={"secondary"}
                     onClick={() => setTab("posture_checks")}
                   >
-                    Back
+                    <TransText>Back</TransText>
                   </Button>
 
                   <Button
@@ -632,7 +647,7 @@ export function AccessControlModalContent({
                     data-testid={"submit-policy"}
                   >
                     <PlusCircle size={16} />
-                    Add Policy
+                    <TransText>Add Policy</TransText>
                   </Button>
                 </>
               )}
@@ -640,7 +655,7 @@ export function AccessControlModalContent({
           ) : (
             <>
               <ModalClose asChild={true}>
-                <Button variant={"secondary"}>Cancel</Button>
+                <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
               </ModalClose>
               <Button
                 variant={"primary"}
@@ -653,7 +668,7 @@ export function AccessControlModalContent({
                   }
                 }}
               >
-                Save Changes
+                <TransText>Save Changes</TransText>
               </Button>
             </>
           )}

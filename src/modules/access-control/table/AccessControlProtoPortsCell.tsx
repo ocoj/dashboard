@@ -9,6 +9,7 @@ import {
 import { Share2 } from "lucide-react";
 import React, { useMemo } from "react";
 import { Policy } from "@/interfaces/Policy";
+import { TransText } from "@/i18n/trans-text";
 import EmptyRow from "@/modules/common-table-rows/EmptyRow";
 import { parsePortsToStrings } from "@/modules/access-control/useAccessControl";
 
@@ -70,7 +71,7 @@ export default function AccessControlProtoPortsCell({
                   variant={"gray"}
                   className={"uppercase tracking-wider font-medium"}
                 >
-                  All
+                  <TransText>All</TransText>
                 </Badge>
               )}
 

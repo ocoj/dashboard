@@ -31,6 +31,7 @@ import {
   DNSZone,
 } from "@/interfaces/DNS";
 import { useDNSZones } from "@/modules/dns/zones/DNSZonesProvider";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   children?: React.ReactNode;
@@ -169,7 +170,7 @@ export function DNSRecordModalContent({
   return (
     <ModalContent maxWidthClass={"max-w-xl"}>
       <ModalHeader
-        title={record ? "Update DNS Record" : "Add DNS Record"}
+        title={record ? <TransText>Update DNS Record</TransText> : <TransText>Add DNS Record</TransText>}
         description={
           record
             ? `Update record of '${zone.domain}' zone`
@@ -181,9 +182,9 @@ export function DNSRecordModalContent({
       <div className={"px-8 py-6 flex flex-col gap-6"}>
         <div className={"flex items-center justify-between gap-10"}>
           <div>
-            <Label>Record Type</Label>
+            <Label><TransText>Record Type</TransText></Label>
             <HelpText className={"max-w-sm"}>
-              Select the type of record you want to add
+              <TransText>Select the type of record you want to add</TransText>
             </HelpText>
           </div>
           <div className={"min-w-[130px]"}>
@@ -209,10 +210,9 @@ export function DNSRecordModalContent({
           </div>
         </div>
         <div className={"w-full mb-3"}>
-          <Label>Hostname</Label>
+          <Label><TransText>Hostname</TransText></Label>
           <HelpText>
-            Enter a subdomain, wildcard or leave empty to use the primary
-            domain.
+            <TransText>Enter a subdomain, wildcard or leave empty to use the primary domain.</TransText>
           </HelpText>
           <div className={"flex w-full"}>
             <Input
@@ -240,7 +240,7 @@ export function DNSRecordModalContent({
         <div className={"flex gap-4 items-start mb-3"}>
           {type === "A" && (
             <div className={"flex-1"}>
-              <Label>IPv4 Address</Label>
+              <Label><TransText>IPv4 Address</TransText></Label>
               <Input
                 className={"mt-1.5 font-mono text-[0.82rem]"}
                 placeholder={"192.168.1.1"}
@@ -257,7 +257,7 @@ export function DNSRecordModalContent({
 
           {type === "AAAA" && (
             <div className={"flex-1"}>
-              <Label>IPv6 Address</Label>
+              <Label><TransText>IPv6 Address</TransText></Label>
               <Input
                 className={"mt-1.5 font-mono text-[0.82rem]"}
                 placeholder={"2001:0db8:85a3::8a2e:0370:7334"}
@@ -274,7 +274,7 @@ export function DNSRecordModalContent({
 
           {type === "CNAME" && (
             <div className={"flex-1"}>
-              <Label>Target Domain</Label>
+              <Label><TransText>Target Domain</TransText></Label>
               <Input
                 className={"mt-1.5"}
                 placeholder={"e.g., example.com or intra.example.com"}
@@ -290,7 +290,7 @@ export function DNSRecordModalContent({
           )}
 
           <div className={"min-w-[200px]"}>
-            <Label>TTL (Time to Live)</Label>
+            <Label><TransText>TTL (Time to Live)</TransText></Label>
             <div className={"mt-2.5"}>
               <Select value={ttl} onValueChange={(v) => setTtl(v)}>
                 <SelectTrigger
@@ -323,9 +323,9 @@ export function DNSRecordModalContent({
       <ModalFooter className={"items-center"}>
         <div className={"w-full"}>
           <Paragraph className={"text-sm mt-auto"}>
-            Learn more about
+            <TransText>Learn more about</TransText>
             <InlineLink href={DNS_RECORDS_DOCS_LINK} target={"_blank"}>
-              DNS Records
+              <TransText>DNS Records</TransText>
               <ExternalLinkIcon size={12} />
             </InlineLink>
           </Paragraph>
@@ -334,7 +334,7 @@ export function DNSRecordModalContent({
         <div className={"flex gap-3 w-full justify-end"}>
           <>
             <ModalClose asChild={true}>
-              <Button variant={"secondary"}>Cancel</Button>
+              <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
             </ModalClose>
             <Button
               variant={"primary"}
@@ -342,7 +342,7 @@ export function DNSRecordModalContent({
               disabled={!canUpdateOrCreate}
               data-testid="submit-dns-record"
             >
-              {record ? "Save Changes" : "Add Record"}
+              {record ? <TransText>Save Changes</TransText> : <TransText>Add Record</TransText>}
             </Button>
           </>
         </div>

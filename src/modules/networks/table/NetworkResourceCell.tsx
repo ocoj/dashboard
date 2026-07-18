@@ -6,6 +6,7 @@ import * as React from "react";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { Network } from "@/interfaces/Network";
 import { useNetworksContext } from "@/modules/networks/NetworkProvider";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   network: Network;
@@ -42,7 +43,7 @@ export const NetworkResourceCell = ({ network }: Props) => {
         data-testid={"add-resource"}
       >
         <PlusCircle size={12} />
-        Add
+        <TransText>Add</TransText>
       </Button>
     </div>
   ) : (
@@ -55,7 +56,7 @@ export const NetworkResourceCell = ({ network }: Props) => {
         data-testid={"add-resource"}
       >
         <PlusCircle size={12} />
-        Add
+        <TransText>Add</TransText>
       </Button>
     </>
   );

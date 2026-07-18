@@ -4,7 +4,7 @@
 
 本仓库是 [NetBird Dashboard](https://github.com/netbirdio/dashboard) 的中文汉化分支 (`i18n-clean`)。
 
-**当前状态**：已合并上游 v2.90.4+，i18n 架构已从 next-intl 迁移到自建 TransText 方案。全局可见组件和 Peers/Users 模块已完成汉化，约 205 个业务页面组件仍为英文硬编码。
+**当前状态**：已合并上游 v2.90.4+，i18n 架构采用自建 TransText 方案。Settings/Access Control/Networks/Posture Checks/Activity 全部完成，**Routes 核心 6 文件本轮完成**。trans-map 2,698 条，tsc 零错误。**Agent Reach 已安装（6/15 渠道可用：Exa搜索、Jina网页、YouTube、B站、V2EX、RSS）。**
 
 ## 关键信息
 
@@ -28,45 +28,39 @@
 
 ## 当前进度
 
-### 已完成（22 个文件）
+### 已完成模块
 
-**全局组件 (9 个)**：
-- `src/layouts/Navigation.tsx` — 侧栏导航全部 29 个标签
-- `src/components/ui/LocaleSwitcher.tsx` — 语言切换
-- `src/modules/settings/LanguageTab.tsx` — 设置页语言
-- `src/layouts/AppLayout.tsx` — LocaleProvider 包裹
-- `src/components/ui/NoResults.tsx` + `NoResultsCard.tsx`
-- `src/components/ui/PageNotFound.tsx`
-- `src/components/table/DataTableRefreshButton.tsx` + `DataTableRowsPerPage.tsx`
+| 模块 | 进度 | 文件数 |
+|------|------|--------|
+| Settings | ✅ 完成 | 11/11 |
+| Setup Keys | ✅ 完成 | 2/9 (Modal + Table) |
+| Access Control | ✅ 完成 | 9/9 + 7 skip |
+| Networks | ✅ 完成 | 24/36 + 12 skip |
+| Posture Checks | ✅ 完成 | 14/26 + 12 skip |
+| Activity | ✅ 完成 | 4/7 + 3 skip |
+| **Routes** | ✅ **本轮完成** | **6/13 + 7 skip** |
+| **Reverse Proxy** | **部分** | **4/61 核心表** |
+| **Integrations** | **少量** | **1/73** |
+| **Onboarding** | **少量** | **1/25** |
+| Control Center | 无需 | 0/18（无硬编码文本） |
+| DNS | 大部分 | 11/23 |
+| Groups | 大部分 | 11/22 |
+| Peers | 已有 | 3/13 |
+| Peer (详情) | 已有 | 4/22 |
+| Users | 已有 | 4/19 |
 
-**Peers 模块 (7 个)**：
-- `src/modules/peers/PeersTable.tsx` — 9 列标题 + 4 按钮 + 5 tooltip
-- `src/modules/peers/PeerActionCell.tsx` — 7 菜单项 + 动态 Disable/Enable
-- `src/modules/peers/PeerMultiSelect.tsx` — 3 状态文本 + 帮助文本
-- `src/modules/peer/MinimalPeersTable.tsx` — 4 列标题 + 3 过滤按钮
-- `src/modules/peer/EphemeralPeerIndicator.tsx` — 临时节点提示
-- `src/modules/peer/ExpirationDisabledIndicator.tsx` — 过期禁用提示
-- `src/modules/peer/PeerExpirationToggle.tsx` — 权限提示 + 设置链接
+### I18n 基础设施
 
-**Users 模块 (6 个)**：
-- `src/modules/users/UsersTable.tsx` — 5 列标题
-- `src/modules/users/UserInvitesTable.tsx` — 5 列标题
-- `src/modules/users/ServiceUsersTable.tsx` — 3 列标题
-- `src/modules/users/ChangePasswordModal.tsx` — 6 字段标签 + 帮助文本
-- `src/modules/users/UserInviteModal.tsx` — 部分标签
-- `src/modules/users/UserPeersSection.tsx` — Peers 标题
-
-**I18n 基础设施**：TransText 组件、LocaleProvider、trans-map（~2,645 条翻译）、build-trans-map.js
+TransText 组件、LocaleProvider、trans-map（**2,698 条翻译**）、build-trans-map.js
 
 **编译**：`tsc --noEmit` 零错误
 
-### 待汉化（约 205 个 .tsx 文件）
+### 待汉化模块（按优先级）
 
-按优先级排列：
-1. **Settings 模块** — `src/modules/settings/`（大部分 Tab，约 20 个文件）
-2. **DNS / Networks / Groups / Policies** 等管理系统
-3. **弹窗/Modal** — 各模块下的 Modal 文件
-4. **Access Control / Posture Checks / Setup Keys / Activity** 等
+1. **Reverse Proxy** — `src/modules/reverse-proxy/` (4/61，核心表头已完成，最大文件 ReverseProxyModal.tsx 44KB 待处理)
+2. **Integrations** — `src/modules/integrations/` (1/73，大部分文本通过 props 传入)
+3. **Onboarding** — `src/modules/onboarding/` (1/25)
+4. **DNS 剩余** / **Groups 剩余** / **Peers 剩余** / **Users 剩余** 等
 
 ## 汉化操作方法
 
@@ -100,6 +94,15 @@ node scripts/build-trans-map.js
 - **禁止用 Python 序列化翻译文件**（反斜杠加倍问题）
 - **不对动态变量文本使用 TransText**（如 `Bypass {name} compliance check`），精确匹配无法工作
 - **不对 notify/confirm 等 JS API 调用中的字符串使用 TransText**，仅包裹 JSX 文本节点
+- **对于包含 `${variable}` 的模板字符串**，保留原样，不要尝试包裹
+
+### 组件属性处理
+- **ModalHeader**：`title/description` 接受 `ReactNode`，可用 `<TransText>` 包裹
+- **NoResults**：内部已集成 TransText，title/description 传字符串即可
+- **GetStartedTest**：内部已集成 TransText，title/description 传字符串即可
+- **DataTableHeader**：children 需手动包裹 `<TransText>`
+- **HTML 属性**（如 `placeholder`、`aria-label`）：无法使用 TransText，跳过
+- **PostureCheckCard**：`title/description` 类型已改为 `ReactNode`，可用 `<TransText>` 包裹
 
 ### 常用命令
 
@@ -110,8 +113,8 @@ npx tsc --noEmit
 # 检查 trans-map 中是否有某翻译
 grep "'Add Peer'" src/i18n/trans-map.ts
 
-# 查找某个模块中硬编码的英文
-grep -rn '>[A-Z][a-z]' src/modules/settings/ --include="*.tsx" | grep -v 'className\|href\|TransText\|//'
+# 统计模块 TransText 覆盖率
+for dir in src/modules/*/; do name=$(basename "$dir"); total=$(find "$dir" -name '*.tsx' | wc -l); trans=$(grep -rl 'TransText' "$dir" | wc -l); printf "%-28s %s/%s\n" "$name" "$trans" "$total"; done
 
 # 重新生成翻译 map
 node scripts/build-trans-map.js
@@ -121,16 +124,42 @@ node scripts/build-trans-map.js
 
 - `<TransText>English Text</TransText>` — 在中文 locale 下自动翻译，英文 locale 下显示原文
 - 开发环境下未翻译的文本会显示橙色虚线边框（方便发现遗漏）
-- 不支持动态变量文本；对于带变量的模式（如 "Showing X to Y of Z"），保留原样或使用局部判断
+- 不支持动态变量文本
 
 ## 本次会话目标
 
-优先完成 Settings 模块的汉化：
-1. Settings 各 Tab 页面（`src/modules/settings/`）
-2. 然后 DNS / Networks / Policies 模块
-3. 最后 Groups / Access Control / 其余模块
+继续推进汉化覆盖：
+
+1. **Reverse Proxy** — 重点攻克 `ReverseProxyModal.tsx`（44KB 最大文件）及剩余表格
+2. **Integrations** — 核心卡片和配置页面
+3. **Onboarding** — 引导流程关键页面
+4. **DNS/Groups/Peers/Users** — 补充剩余空白
 
 每批完成后运行 `npx tsc --noEmit` 验证。
+
+## Agent Reach 互联网能力
+
+已安装 Agent Reach v1.5.0，可直接使用以下命令获取外部信息：
+
+```bash
+# 全网搜索
+mcporter call 'exa.web_search_exa(query: "query", numResults: 5)'
+
+# 读网页
+curl -s "https://r.jina.ai/URL"
+
+# YouTube 字幕
+yt-dlp --write-sub --skip-download -o "/tmp/%(id)s" "URL"
+
+# B站搜索
+bili search "query" --type video -n 5
+
+# V2EX 热门
+curl -s "https://www.v2ex.com/api/topics/hot.json" -H "User-Agent: agent-reach/1.0"
+
+# 状态检查
+agent-reach doctor
+```
 
 ## 术语参考
 
@@ -146,3 +175,6 @@ node scripts/build-trans-map.js
 | Posture Check | 安全态势检查 |
 | Access Control | 访问控制 |
 | Reverse Proxy | 反向代理 |
+| Masquerade | 地址伪装 |
+| Routing Peer | 路由节点 |
+| CIDR Block | CIDR 块 |

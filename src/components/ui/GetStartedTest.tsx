@@ -3,6 +3,7 @@ import Paragraph from "@components/Paragraph";
 import { cn } from "@utils/helpers";
 import React from "react";
 import Skeleton from "react-loading-skeleton";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   icon?: React.ReactNode;
@@ -56,12 +57,12 @@ export default function GetStartedTest({
                     <h1
                       className={"text-3xl font-medium max-w-lg mx-auto mt-3"}
                     >
-                      {title}
+                      {title && <TransText>{title}</TransText>}
                     </h1>
                     <Paragraph
                       className={cn("justify-center mt-3", button && "mb-3")}
                     >
-                      {description}
+                      {description && <TransText>{description}</TransText>}
                     </Paragraph>
                   </div>
                   {button && <div>{button}</div>}

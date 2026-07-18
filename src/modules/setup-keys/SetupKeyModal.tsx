@@ -37,6 +37,7 @@ import { Group } from "@/interfaces/Group";
 import { SetupKey } from "@/interfaces/SetupKey";
 import useGroupHelper from "@/modules/groups/useGroupHelper";
 import SetupModal from "@/modules/setup-netbird-modal/SetupModal";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   children?: React.ReactNode;
@@ -110,11 +111,10 @@ export default function SetupKeyModal({
             <div className={"flex flex-col items-center justify-center gap-3"}>
               <div>
                 <h2 className={"text-2xl text-center mb-2"}>
-                  Setup key created successfully!
+                  <TransText>Setup key created successfully!</TransText>
                 </h2>
                 <Paragraph className={"mt-0 text-sm text-center"}>
-                  This key will not be shown again, so be sure to copy it and
-                  store in a secure location.
+                  <TransText>This key will not be shown again, so be sure to copy it and store in a secure location.</TransText>
                 </Paragraph>
               </div>
             </div>
@@ -140,7 +140,7 @@ export default function SetupKeyModal({
                   tabIndex={-1}
                   data-testid={"setup-key-close"}
                 >
-                  Close
+                  <TransText>Close</TransText>
                 </Button>
               </ModalClose>
               <Button
@@ -149,7 +149,7 @@ export default function SetupKeyModal({
                 onClick={() => setInstallModal(true)}
               >
                 <DownloadIcon size={14} />
-                Install NetBird
+                <TransText>Install NetBird</TransText>
               </Button>
             </div>
           </ModalFooter>
@@ -227,8 +227,8 @@ export function SetupKeyModalContent({
     <ModalContent maxWidthClass={"max-w-xl"}>
       <ModalHeader
         icon={<SetupKeysIcon className={"fill-netbird"} />}
-        title={"Create New Setup Key"}
-        description={"Use this key to register new machines in your network"}
+        title={<TransText>Create New Setup Key</TransText>}
+        description={<TransText>Use this key to register new machines in your network</TransText>}
         color={"netbird"}
       />
 
@@ -237,8 +237,8 @@ export function SetupKeyModalContent({
       <div className={"px-8 py-6 flex flex-col gap-8"}>
         {/* Name Field */}
         <div>
-          <Label>Name</Label>
-          <HelpText>Set an easily identifiable name for your key</HelpText>
+          <Label><TransText>Name</TransText></Label>
+          <HelpText><TransText>Set an easily identifiable name for your key</TransText></HelpText>
           <Input
             placeholder={"e.g., AWS Servers"}
             value={name}
@@ -255,7 +255,7 @@ export function SetupKeyModalContent({
             label={
               <>
                 <IconRepeat size={15} />
-                Make this key reusable
+                <TransText>Make this key reusable</TransText>
               </>
             }
             helpText={"Use this type to enroll multiple peers"}
@@ -265,9 +265,9 @@ export function SetupKeyModalContent({
         {/* Usage Limit */}
         <div className={cn("flex justify-between", !reusable && "opacity-50")}>
           <div>
-            <Label>Usage limit</Label>
+            <Label><TransText>Usage limit</TransText></Label>
             <HelpText className={"max-w-[200px]"}>
-              For example, set to 30 if you want to enroll 30 peers
+              <TransText>For example, set to 30 if you want to enroll 30 peers</TransText>
             </HelpText>
           </div>
 
@@ -290,11 +290,11 @@ export function SetupKeyModalContent({
         {/* Expires in Days */}
         <div className={"flex justify-between"}>
           <div>
-            <Label>Expires in</Label>
+            <Label><TransText>Expires in</TransText></Label>
             <HelpText>
-              Days until the key expires.
+              <TransText>Days until the key expires.</TransText>
               <br />
-              Leave empty for no expiration.
+              <TransText>Leave empty for no expiration.</TransText>
             </HelpText>
           </div>
           <Input
@@ -321,7 +321,7 @@ export function SetupKeyModalContent({
             label={
               <>
                 <PowerOffIcon size={15} />
-                Ephemeral Peers
+                <TransText>Ephemeral Peers</TransText>
               </>
             }
             helpText={
@@ -338,7 +338,7 @@ export function SetupKeyModalContent({
             label={
               <>
                 <GlobeIcon size={15} />
-                Allow Extra DNS Labels
+                <TransText>Allow Extra DNS Labels</TransText>
               </>
             }
             helpText={
@@ -349,10 +349,9 @@ export function SetupKeyModalContent({
 
         {/* Auto-Assigned Groups */}
         <div>
-          <Label>Auto-assigned groups</Label>
+          <Label><TransText>Auto-assigned groups</TransText></Label>
           <HelpText>
-            These groups will be automatically assigned to peers enrolled with
-            this key
+            <TransText>These groups will be automatically assigned to peers enrolled with this key</TransText>
           </HelpText>
           <PeerGroupSelector
             onChange={setSelectedGroups}
@@ -366,21 +365,21 @@ export function SetupKeyModalContent({
       <ModalFooter className={"items-center"}>
         <div className={"w-full"}>
           <Paragraph className={"text-sm mt-auto"}>
-            Learn more about
+            <TransText>Learn more about</TransText>
             <InlineLink
               href={
                 "https://docs.netbird.io/how-to/register-machines-using-setup-keys"
               }
               target={"_blank"}
             >
-              Setup Keys
+              <TransText>Setup Keys</TransText>
               <ExternalLinkIcon size={12} />
             </InlineLink>
           </Paragraph>
         </div>
         <div className={"flex gap-3 w-full justify-end"}>
           <ModalClose asChild={true}>
-            <Button variant={"secondary"}>Cancel</Button>
+            <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
           </ModalClose>
 
           <Button
@@ -390,7 +389,7 @@ export function SetupKeyModalContent({
             data-testid={"create-setup-key"}
           >
             <PlusCircle size={16} />
-            Create Setup Key
+            <TransText>Create Setup Key</TransText>
           </Button>
         </div>
       </ModalFooter>

@@ -1,3 +1,4 @@
+import { TransText } from "@/i18n/trans-text";
 import Button from "@components/Button";
 import Paragraph from "@components/Paragraph";
 import { IconCirclePlus } from "@tabler/icons-react";

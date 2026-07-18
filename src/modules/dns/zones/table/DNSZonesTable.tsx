@@ -40,12 +40,13 @@ import { DNSZonesSearchDomainCell } from "@/modules/dns/zones/table/DNSZonesSear
 import { Group } from "@/interfaces/Group";
 import DNSZoneIcon from "@/assets/icons/DNSZoneIcon";
 import { useGroups } from "@/contexts/GroupsProvider";
+import { TransText } from "@/i18n/trans-text";
 
 export const DNSZonesColumns: ColumnDef<DNSZone>[] = [
   {
     accessorKey: "domain",
     header: ({ column }) => (
-      <DataTableHeader column={column}>Zone</DataTableHeader>
+      <DataTableHeader column={column}><TransText>Zone</TransText></DataTableHeader>
     ),
     sortingFn: "text",
     cell: ({ row }) => <DNSZonesNameCell zone={row.original} />,
@@ -56,7 +57,7 @@ export const DNSZonesColumns: ColumnDef<DNSZone>[] = [
   {
     accessorKey: "records",
     header: ({ column }) => (
-      <DataTableHeader column={column}>Records</DataTableHeader>
+      <DataTableHeader column={column}><TransText>Records</TransText></DataTableHeader>
     ),
     sortingFn: "text",
     cell: ({ row }) => <DNSZonesRecordsCell zone={row.original} />,
@@ -64,7 +65,7 @@ export const DNSZonesColumns: ColumnDef<DNSZone>[] = [
   {
     accessorKey: "distribution_groups",
     header: ({ column }) => (
-      <DataTableHeader column={column}>Groups</DataTableHeader>
+      <DataTableHeader column={column}><TransText>Groups</TransText></DataTableHeader>
     ),
     cell: ({ row }) => <DNSZonesGroupCell zone={row.original} />,
   },
@@ -77,7 +78,7 @@ export const DNSZonesColumns: ColumnDef<DNSZone>[] = [
   {
     accessorKey: "enable_search_domain",
     header: ({ column }) => (
-      <DataTableHeader column={column}>Search Domain</DataTableHeader>
+      <DataTableHeader column={column}><TransText>Search Domain</TransText></DataTableHeader>
     ),
     cell: ({ row }) => <DNSZonesSearchDomainCell zone={row.original} />,
   },
@@ -341,7 +342,7 @@ const AddZoneButton = ({ distributionGroups }: AddZoneButtonProps) => {
       data-testid="add-dns-zone"
     >
       <PlusCircle size={16} />
-      Add Zone
+      <TransText>Add Zone</TransText>
     </Button>
   );
 };

@@ -1,3 +1,4 @@
+import { TransText } from "@/i18n/trans-text";
 import Button from "@components/Button";
 import InlineLink from "@components/InlineLink";
 import SquareIcon from "@components/SquareIcon";
@@ -47,7 +48,7 @@ const Columns: ColumnDef<PostureCheck>[] = [
   {
     accessorKey: "name",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Name</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Name</TransText></DataTableHeader>;
     },
     cell: ({ row }) => <PostureCheckNameCell check={row.original} />,
   },
@@ -60,14 +61,14 @@ const Columns: ColumnDef<PostureCheck>[] = [
     id: "checks",
     accessorFn: (row) => Object.keys(row.checks).length,
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Checks</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Checks</TransText></DataTableHeader>;
     },
     cell: ({ row }) => <PostureCheckChecksCell check={row.original} />,
   },
   {
     id: "access_control_usage",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Policies</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Policies</TransText></DataTableHeader>;
     },
     cell: ({ row }) => <PostureCheckPolicyUsageCell check={row.original} />,
   },

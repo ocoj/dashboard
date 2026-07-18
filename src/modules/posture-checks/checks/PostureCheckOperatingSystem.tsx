@@ -1,3 +1,4 @@
+import { TransText } from "@/i18n/trans-text";
 import Button from "@components/Button";
 import FancyToggleSwitch from "@components/FancyToggleSwitch";
 import HelpText from "@components/HelpText";
@@ -244,7 +245,7 @@ const CheckContent = ({ value, onChange, disabled }: Props) => {
         </div>
         <div className={"flex gap-3 w-full justify-end"}>
           <ModalClose asChild={true}>
-            <Button variant={"secondary"}>Cancel</Button>
+            <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
           </ModalClose>
           <Button
             disabled={!!versionError}

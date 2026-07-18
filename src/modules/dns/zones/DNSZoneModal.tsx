@@ -23,6 +23,7 @@ import { useDNSZones } from "@/modules/dns/zones/DNSZonesProvider";
 import useGroupHelper from "@/modules/groups/useGroupHelper";
 import { Group } from "@/interfaces/Group";
 import DNSZoneIcon from "@/assets/icons/DNSZoneIcon";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   children?: React.ReactNode;
@@ -130,9 +131,9 @@ export function DNSZoneModalContent({
     <ModalContent maxWidthClass={"max-w-2xl"}>
       <ModalHeader
         icon={<DNSZoneIcon size={20} className={"fill-netbird"} />}
-        title={zone ? "Update DNS Zone" : "Add DNS Zone"}
+        title={zone ? <TransText>Update DNS Zone</TransText> : <TransText>Add DNS Zone</TransText>}
         description={
-          "Use a zone to control domain name resolution for your network."
+          <TransText>Use a zone to control domain name resolution for your network.</TransText>
         }
         color={"netbird"}
       />
@@ -141,10 +142,9 @@ export function DNSZoneModalContent({
 
       <div className={"px-8 pt-6 pb-7 flex-col flex gap-6"}>
         <div>
-          <Label>Domain</Label>
+          <Label><TransText>Domain</TransText></Label>
           <HelpText>
-            Enter a domain for this zone (e.g., company.internal,
-            intra.example.com)
+            <TransText>Enter a domain for this zone (e.g., company.internal, intra.example.com)</TransText>
           </HelpText>
           <Input
             disabled={!!zone}
@@ -159,10 +159,9 @@ export function DNSZoneModalContent({
           />
         </div>
         <div className={"mb-2"}>
-          <Label>Distribution Groups</Label>
+          <Label><TransText>Distribution Groups</TransText></Label>
           <HelpText>
-            Advertise this zone and its records to peers that belong to the
-            following groups
+            <TransText>Advertise this zone and its records to peers that belong to the following groups</TransText>
           </HelpText>
           <PeerGroupSelector
             onChange={setGroups}
@@ -180,7 +179,7 @@ export function DNSZoneModalContent({
           label={
             <>
               <ScanSearch size={15} />
-              Enable Search Domains
+              <TransText>Enable Search Domains</TransText>
             </>
           }
           helpText={
@@ -195,7 +194,7 @@ export function DNSZoneModalContent({
           label={
             <>
               <Power size={15} />
-              Enable DNS Zone
+              <TransText>Enable DNS Zone</TransText>
             </>
           }
           helpText={"Use this switch to enable or disable the dns zone."}
@@ -205,16 +204,16 @@ export function DNSZoneModalContent({
       <ModalFooter className={"items-center"}>
         <div className={"w-full"}>
           <Paragraph className={"text-sm mt-auto"}>
-            Learn more about
+            <TransText>Learn more about</TransText>
             <InlineLink href={DNS_ZONE_DOCS_LINK} target={"_blank"}>
-              DNS Zones
+              <TransText>DNS Zones</TransText>
               <ExternalLinkIcon size={12} />
             </InlineLink>
           </Paragraph>
         </div>
         <div className={"flex gap-3 w-full justify-end"}>
           <ModalClose asChild={true}>
-            <Button variant={"secondary"}>Cancel</Button>
+            <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
           </ModalClose>
           <Button
             variant={"primary"}
@@ -222,7 +221,7 @@ export function DNSZoneModalContent({
             disabled={!canUpdateOrCreate}
             data-testid="submit-dns-zone"
           >
-            {zone ? "Save Changes" : "Add Zone"}
+            {zone ? <TransText>Save Changes</TransText> : <TransText>Add Zone</TransText>}
           </Button>
         </div>
       </ModalFooter>
