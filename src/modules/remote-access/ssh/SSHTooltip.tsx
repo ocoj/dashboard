@@ -1,6 +1,7 @@
 import FullTooltip from "@components/FullTooltip";
 import InlineLink from "@components/InlineLink";
 import { ArrowUpRightIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
 import * as React from "react";
 import { useState } from "react";
 import { usePeer } from "@/contexts/PeerProvider";
@@ -19,11 +20,12 @@ export const SSHTooltip = ({
   isSSHEnabled,
   side = "top",
 }: Props) => {
+  const t = useTranslations("common");
   const [showTooltip, setShowTooltip] = useState(false);
 
   const tooltipContent = () => {
     if (!hasPermission) {
-      return <NoPermissionText />;
+      return <div className={"max-w-[200px] text-xs"}><div>{t("sshNoPermission")}</div></div>;
     }
     if (!isSSHEnabled) {
       return <SSHDisabledText setShowTooltip={setShowTooltip} />;
@@ -48,21 +50,11 @@ export const SSHTooltip = ({
   );
 };
 
-const NoPermissionText = () => {
-  return (
-    <div className={"max-w-xs text-xs flex flex-col gap-2"}>
-      <div>
-        You do not have permission to launch the SSH console. Please contact
-        your administrator.
-      </div>
-    </div>
-  );
-};
-
 const IsOfflineText = () => {
+  const t = useTranslations("common");
   return (
     <div className={"max-w-[200px] text-xs"}>
-      <div>Connecting via SSH is only available when the peer is online.</div>
+      <div>{t("sshOffline")}</div>
     </div>
   );
 };
@@ -72,15 +64,12 @@ const SSHDisabledText = ({
 }: {
   setShowTooltip: (show: boolean) => void;
 }) => {
+  const t = useTranslations("common");
   const { setSSHInstructionsModal } = usePeer();
 
   return (
     <div className={"max-w-xs text-xs flex flex-col gap-2"}>
-      <div>
-        SSH Access is currently disabled for this peer. Please enable SSH access
-        for this peer and make sure to add an explicit access control policy
-        allowing SSH access.
-      </div>
+      <div>{t("sshDisabled")}</div>
       <div>
         <InlineLink
           onClick={(e) => {
@@ -92,7 +81,7 @@ const SSHDisabledText = ({
           href={"#"}
           target={"_blank"}
         >
-          Enable SSH Access <ArrowUpRightIcon size={12} />
+          {t("enableSSH")} <ArrowUpRightIcon size={12} />
         </InlineLink>
       </div>
     </div>
