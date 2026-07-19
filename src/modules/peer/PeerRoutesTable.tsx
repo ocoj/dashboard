@@ -13,6 +13,7 @@ import PeerRouteActiveCell from "@/modules/peer/PeerRouteActiveCell";
 import PeerRouteNameCell from "@/modules/peer/PeerRouteNameCell";
 import GroupedRouteNetworkRangeCell from "@/modules/route-group/GroupedRouteNetworkRangeCell";
 import RouteDistributionGroupsCell from "@/modules/routes/RouteDistributionGroupsCell";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   peerRoutes?: Route[];

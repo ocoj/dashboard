@@ -22,6 +22,7 @@ import { SegmentedTabs } from "@components/SegmentedTabs";
 import NetBirdIcon from "@/assets/icons/NetBirdIcon";
 import { Peer } from "@/interfaces/Peer";
 import { PeerSSHPolicyModal } from "@/modules/peer/PeerSSHPolicyModal";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   open?: boolean;
@@ -47,9 +48,9 @@ export const PeerSSHInstructions = ({
       >
         <ModalHeader
           icon={<TerminalSquare size={16} className={"text-netbird"} />}
-          title={"Enable SSH Access"}
+          title={<TransText>Enable SSH Access</TransText>}
           description={
-            "Allow remote SSH access from other connected network participants."
+            <TransText>Allow remote SSH access from other connected network participants.</TransText>
           }
           color={"netbird"}
         />

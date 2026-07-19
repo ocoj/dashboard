@@ -53,7 +53,7 @@ export const GroupUsersTableColumns: ColumnDef<User>[] = [
   {
     accessorKey: "name",
     header: ({ column }) => {
-      return <DataTableHeader column={column}><TransText>Name</TransText></DataTableHeader>;
+      return <DataTableHeader column={column}>"Name"</DataTableHeader>;
     },
     accessorFn: (row) => row.name + " " + row.email,
     sortingFn: "text",
@@ -66,7 +66,7 @@ export const GroupUsersTableColumns: ColumnDef<User>[] = [
   {
     accessorKey: "role",
     header: ({ column }) => {
-      return <DataTableHeader column={column}><TransText>Role</TransText></DataTableHeader>;
+      return <DataTableHeader column={column}>"Role"</DataTableHeader>;
     },
     sortingFn: "text",
     cell: ({ row }) => <UserRoleCell user={row.original} />,
@@ -74,7 +74,7 @@ export const GroupUsersTableColumns: ColumnDef<User>[] = [
   {
     accessorKey: "status",
     header: ({ column }) => {
-      return <DataTableHeader column={column}><TransText>Status</TransText></DataTableHeader>;
+      return <DataTableHeader column={column}>"Status"</DataTableHeader>;
     },
     sortingFn: "text",
     cell: ({ row }) => <UserStatusCell user={row.original} />,
@@ -82,7 +82,7 @@ export const GroupUsersTableColumns: ColumnDef<User>[] = [
   {
     accessorKey: "is_blocked",
     header: ({ column }) => {
-      return <DataTableHeader column={column}><TransText>Block User</TransText></DataTableHeader>;
+      return <DataTableHeader column={column}>"Block User"</DataTableHeader>;
     },
     sortingFn: "text",
     cell: ({ row }) => <UserBlockCell user={row.original} />,
@@ -90,7 +90,7 @@ export const GroupUsersTableColumns: ColumnDef<User>[] = [
   {
     accessorKey: "last_login",
     header: ({ column }) => {
-      return <DataTableHeader column={column}><TransText>Last Login</TransText></DataTableHeader>;
+      return <DataTableHeader column={column}>"Last Login"</DataTableHeader>;
     },
     sortingFn: "text",
     cell: ({ row }) => (
@@ -153,7 +153,7 @@ export const GroupUsersSection = ({ users, isLoading = true }: Props) => {
                   onClick={() => setOpen(true)}
                 >
                   <PlusCircle size={16} />
-                  <TransText>Assign Users</TransText>
+                  "Assign Users"
                 </Button>
                 <InviteUserButton show={true} groups={[group]} />
               </div>
@@ -174,7 +174,7 @@ export const GroupUsersSection = ({ users, isLoading = true }: Props) => {
                     <FullTooltip
                       content={
                         <span className={"text-xs"}>
-                          <TransText>Remove Users from Group</TransText>
+                          "Remove Users from Group"
                         </span>
                       }
                     >
@@ -216,7 +216,7 @@ export const GroupUsersSection = ({ users, isLoading = true }: Props) => {
                     onClick={() => setOpen(true)}
                   >
                     <PlusCircle size={16} />
-                    <TransText>Assign Users</TransText>
+                    "Assign Users"
                   </Button>
                   <InviteUserButton show={true} groups={[group]} />
                 </div>

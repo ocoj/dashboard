@@ -178,7 +178,7 @@ export function ChangePasswordModalContent({
       <ModalFooter className={"items-center"}>
         <div className={"flex gap-3 w-full justify-end"}>
           <ModalClose asChild={true}>
-            <Button variant={"secondary"}>Cancel</Button>
+            <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
           </ModalClose>
 
           <Button
@@ -186,7 +186,7 @@ export function ChangePasswordModalContent({
             disabled={isDisabled || isLoading}
             onClick={changePassword}
           >
-            Change Password
+            <TransText>Change Password</TransText>
           </Button>
         </div>
       </ModalFooter>

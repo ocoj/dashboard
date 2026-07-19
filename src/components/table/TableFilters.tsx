@@ -7,6 +7,7 @@ import {
   PopoverTrigger,
 } from "@components/Popover";
 import { Table } from "@tanstack/react-table";
+import { TransText } from "@/i18n/trans-text";
 import { cn } from "@utils/helpers";
 import {
   ChevronLeftIcon,
@@ -70,7 +71,7 @@ export function TableFiltersButton<TData>({
         >
           <FilterIcon size={16} className={"shrink-0"} />
           <span className={"flex items-center gap-1.5"}>
-            Filters
+            <TransText>Filters</TransText>
             {activeCount > 0 && (
               <span
                 className={

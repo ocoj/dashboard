@@ -12,6 +12,7 @@ import ReverseProxyIcon from "@/assets/icons/ReverseProxyIcon";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { REVERSE_PROXY_CLUSTERS_DOCS_LINK } from "@/interfaces/ReverseProxy";
 import PageContainer from "@/layouts/PageContainer";
+import { TransText } from "@/i18n/trans-text";
 
 const ClustersTable = lazy(
   () => import("@/modules/reverse-proxy/clusters/ClustersTable"),
@@ -38,13 +39,11 @@ export default function ReverseProxyClustersPage() {
             active={true}
           />
         </Breadcrumbs>
-        <h1 ref={headingRef}>Clusters</h1>
+        <h1 ref={headingRef}><TransText>Clusters</TransText></h1>
         <Paragraph>
-          Proxy clusters route inbound traffic to your services. Shared clusters
-          are run by the platform; account clusters (self-hosted) run on your
-          own infrastructure.{" "}
+          <TransText>Proxy clusters route inbound traffic to your services. Shared clusters are run by the platform; account clusters (self-hosted) run on your own infrastructure.</TransText>{" "}
           <InlineLink href={REVERSE_PROXY_CLUSTERS_DOCS_LINK} target={"_blank"}>
-            Learn more
+            <TransText>Learn more</TransText>
             <ExternalLinkIcon size={12} />
           </InlineLink>
         </Paragraph>

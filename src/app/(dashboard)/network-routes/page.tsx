@@ -17,6 +17,7 @@ import { Route } from "@/interfaces/Route";
 import PageContainer from "@/layouts/PageContainer";
 import useGroupedRoutes from "@/modules/route-group/useGroupedRoutes";
 import { Callout } from "@components/Callout";
+import { TransText } from "@/i18n/trans-text";
 
 const NetworkRoutesTable = lazy(
   () => import("@/modules/route-group/NetworkRoutesTable"),
@@ -42,10 +43,9 @@ export default function NetworkRoutes() {
               />
               <Breadcrumbs.Item href={"/network-routes"} label={"Routes"} />
             </Breadcrumbs>
-            <h1 ref={headingRef}>Routes</h1>
+            <h1 ref={headingRef}><TransText>Routes</TransText></h1>
             <Paragraph>
-              Access other networks like LANs and VPCs without installing
-              NetBird on every resource.{" "}
+              <TransText>Access other networks like LANs and VPCs without installing NetBird on every resource.</TransText>{" "}
               <InlineLink
                 href={
                   "https://docs.netbird.io/how-to/routing-traffic-to-private-networks"
@@ -55,17 +55,16 @@ export default function NetworkRoutes() {
                   "Learn more about routing traffic to private networks"
                 }
               >
-                Learn more
+                <TransText>Learn more</TransText>
                 <ExternalLinkIcon size={12} />
               </InlineLink>
             </Paragraph>
 
             <Callout className={"max-w-xl mt-5"} variant={"warning"}>
               <span>
-                We recommend using the new Networks concept to easier visualise
-                and manage access to your resources.{" "}
+                <TransText>We recommend using the new Networks concept to easier visualise and manage access to your resources.</TransText>{" "}
                 <InlineLink href={"/networks"}>
-                  Go to Networks
+                  <TransText>Go to Networks</TransText>
                   <ArrowUpRightIcon size={14} />
                 </InlineLink>
               </span>

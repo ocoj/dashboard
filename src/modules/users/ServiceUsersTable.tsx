@@ -215,7 +215,7 @@ export default function ServiceUsersTable({
                     disabled={!permission.users.create}
                   >
                     <PlusCircle size={16} />
-                    Create Service User
+                    <TransText>Create Service User</TransText>
                   </Button>
                 </ServiceUserModal>
               </div>
@@ -223,14 +223,14 @@ export default function ServiceUsersTable({
           }
           learnMore={
             <>
-              Learn more about
+              <TransText>Learn more about</TransText>
               <InlineLink
                 href={
                   "https://docs.netbird.io/how-to/access-netbird-public-api"
                 }
                 target={"_blank"}
               >
-                Service Users
+                <TransText>Service Users</TransText>
                 <ExternalLinkIcon size={12} />
               </InlineLink>
             </>
@@ -248,7 +248,7 @@ export default function ServiceUsersTable({
                 disabled={!permission.users.create}
               >
                 <PlusCircle size={16} />
-                Create Service User
+                <TransText>Create Service User</TransText>
               </Button>
             </ServiceUserModal>
           )}

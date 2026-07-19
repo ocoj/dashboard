@@ -11,7 +11,7 @@ export const PostureCheckTabTrigger = ({ disabled = false }: Props) => {
   return (
     <TabsTrigger value={"posture_checks"} disabled={disabled}>
       <ShieldCheck size={16} />
-      Posture Checks
+      <TransText>Posture Checks</TransText>
     </TabsTrigger>
   );
 };

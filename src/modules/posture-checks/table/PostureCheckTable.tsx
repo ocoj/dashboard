@@ -243,19 +243,19 @@ export default function PostureCheckTable({
                     onClick={() => setPostureCheckModal(true)}
                   >
                     <IconCirclePlus size={16} />
-                    Create Posture Check
+                    <TransText>Create Posture Check</TransText>
                   </Button>
                 }
                 learnMore={
                   <>
-                    Learn more about
+                    <TransText>Learn more about</TransText>
                     <InlineLink
                       href={
                         "https://docs.netbird.io/how-to/manage-posture-checks"
                       }
                       target={"_blank"}
                     >
-                      Posture Checks
+                      <TransText>Posture Checks</TransText>
                       <ExternalLinkIcon size={12} />
                     </InlineLink>
                   </>

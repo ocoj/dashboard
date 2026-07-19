@@ -6,6 +6,7 @@ import { TooltipProvider } from "@components/Tooltip";
 import { cn } from "@utils/helpers";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import "dayjs/locale/zh-cn";
 import { Viewport } from "next";
 import localFont from "next/font/local";
 import React, { Suspense } from "react";

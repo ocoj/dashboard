@@ -475,7 +475,7 @@ const PeerOverviewTabContent = () => {
           {/* Remote Access Buttons */}
           <div>
             <Label><TransText>Remote Access</TransText></Label>
-            <HelpText>Connect directly to this peer via SSH or RDP.</HelpText>
+            <HelpText><TransText>Connect directly to this peer via SSH or RDP.</TransText></HelpText>
             <div className="flex gap-3">
               <SSHButton peer={peer} />
               <RDPButton peer={peer} />

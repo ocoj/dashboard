@@ -36,6 +36,7 @@ import { usePeer } from "@/contexts/PeerProvider";
 import { Pagination } from "@/interfaces/Pagination";
 import { useAccount } from "@/modules/account/useAccount";
 import InlineLink from "@components/InlineLink";
+import { TransText } from "@/i18n/trans-text";
 import { TRAFFIC_EVENTS_DOC_LINK } from "@/cloud/traffic-events/TrafficEventSetting";
 
 export const TrafficEventsPeerTabContent = () => {
@@ -481,7 +482,7 @@ export const TrafficEventsPeerTabTrigger = () => {
   return (
     <TabsTrigger value={"traffic-events"}>
       <ArrowLeftRightIcon size={16} />
-      Traffic Events
+      <TransText>Traffic Events</TransText>
     </TabsTrigger>
   );
 };

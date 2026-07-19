@@ -58,7 +58,7 @@ const NetworkResourceColumns: ColumnDef<NetworkResource>[] = [
     id: "name",
     accessorKey: "name",
     header: ({ column }) => {
-      return <DataTableHeader column={column}><TransText>Resource</TransText></DataTableHeader>;
+      return <DataTableHeader column={column}>"Resource"</DataTableHeader>;
     },
     cell: ({ row }) => {
       return <ResourceNameCell resource={row.original} />;
@@ -74,7 +74,7 @@ const NetworkResourceColumns: ColumnDef<NetworkResource>[] = [
     id: "address",
     accessorKey: "address",
     header: ({ column }) => {
-      return <DataTableHeader column={column}><TransText>Address</TransText></DataTableHeader>;
+      return <DataTableHeader column={column}>"Address"</DataTableHeader>;
     },
     cell: ({ row }) => {
       return <ResourceAddressCell resource={row.original} />;
@@ -91,7 +91,7 @@ const NetworkResourceColumns: ColumnDef<NetworkResource>[] = [
       return groups.map((group) => group.name).join(", ");
     },
     header: ({ column }) => {
-      return <DataTableHeader column={column}><TransText>Groups</TransText></DataTableHeader>;
+      return <DataTableHeader column={column}>"Groups"</DataTableHeader>;
     },
     cell: ({ row }) => {
       return <ResourceGroupCell resource={row.original} />;
@@ -109,7 +109,7 @@ const NetworkResourceColumns: ColumnDef<NetworkResource>[] = [
     id: "policies",
     accessorKey: "id",
     header: ({ column }) => {
-      return <DataTableHeader column={column}><TransText>Policies</TransText></DataTableHeader>;
+      return <DataTableHeader column={column}>"Policies"</DataTableHeader>;
     },
     cell: ({ row }) => {
       return <ResourcePolicyCell resource={row.original} />;
@@ -313,7 +313,7 @@ export default function ResourcesTable({
                 className={"mt-4"}
                 onClick={() => router.push("/networks")}
               >
-                <TransText>Go to Networks</TransText>
+                "Go to Networks"
                 <ArrowUpRightIcon size={16} />
               </Button>
             </>
@@ -340,7 +340,7 @@ export default function ResourcesTable({
                 data-testid={"add-resource"}
               >
                 <IconCirclePlus size={16} />
-                <TransText>Add</TransText>
+                "Add"
               </Button>
             )
           : undefined

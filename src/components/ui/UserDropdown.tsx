@@ -23,6 +23,7 @@ import useOSDetection from "@/hooks/useOperatingSystem";
 import { ChangePasswordModalContent } from "@/modules/users/ChangePasswordModal";
 import { isNetBirdCloud } from "@utils/netbird";
 import { Modal } from "@components/modal/Modal";
+import { TransText } from "@/i18n/trans-text";
 
 export default function UserDropdown() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -106,7 +107,7 @@ export default function UserDropdown() {
             >
               <div className={"flex gap-3 items-center"}>
                 <KeyRound size={14} />
-                Change Password
+                <TransText>Change Password</TransText>
               </div>
             </DropdownMenuItem>
           )}
@@ -114,7 +115,7 @@ export default function UserDropdown() {
           <DropdownMenuItem onClick={logout}>
             <div className={"flex gap-3 items-center"}>
               <LogOutIcon size={14} />
-              Log out
+              <TransText>Log out</TransText>
             </div>
             <DropdownMenuShortcut>
               {isMac ? "⇧⌘L" : "⇧ ⊞ L"}
@@ -137,7 +138,7 @@ const ProfileSettingsDropdownItem = ({ onClick }: { onClick: () => void }) => {
     <DropdownMenuItem onClick={onClick}>
       <div className={"flex gap-3 items-center"}>
         <User2 size={14} />
-        Profile Settings
+        <TransText>Profile Settings</TransText>
       </div>
     </DropdownMenuItem>
   );
@@ -154,7 +155,7 @@ const PlansAndBillingDropdownItem = ({ onClick }: { onClick: () => void }) => {
       <DropdownMenuItem onClick={onClick}>
         <div className={"flex gap-3 items-center"}>
           <CreditCardIcon size={14} />
-          Plans & Billing
+          <TransText>Plans & Billing</TransText>
         </div>
       </DropdownMenuItem>
     )

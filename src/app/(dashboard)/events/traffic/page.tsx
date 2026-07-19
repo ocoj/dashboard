@@ -20,6 +20,7 @@ import { useAccount } from "@/modules/account/useAccount";
 import { LockedFeatureInfoCard } from "@/modules/billing/locked-feature/LockedFeatureInfoCard";
 import { LockedFeatureOverlay } from "@/modules/billing/locked-feature/LockedFeatureOverlay";
 import { EventStreamingCard } from "@/modules/integrations/event-streaming/EventStreamingCard";
+import { TransText } from "@/i18n/trans-text";
 
 export default function NetworkTrafficPage() {
   const account = useAccount();

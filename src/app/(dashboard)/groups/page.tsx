@@ -10,6 +10,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import InlineLink from "@/components/InlineLink";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import PageContainer from "@/layouts/PageContainer";
+import { TransText } from "@/i18n/trans-text";
 
 const GroupsTable = lazy(() => import("@/modules/groups/table/GroupsTable"));
 
@@ -29,14 +30,14 @@ export default function GroupsPage() {
             active
           />
         </Breadcrumbs>
-        <h1 ref={headingRef}>Groups</h1>
+        <h1 ref={headingRef}><TransText>Groups</TransText></h1>
         <Paragraph>
-          Organize peers, users and resources into groups to manage access.{" "}
+          <TransText>Organize peers, users and resources into groups to manage access.</TransText>{" "}
           <InlineLink
             href={"https://docs.netbird.io/how-to/manage-network-access"}
             target={"_blank"}
           >
-            Learn more
+            <TransText>Learn more</TransText>
             <ExternalLinkIcon size={12} />
           </InlineLink>
         </Paragraph>

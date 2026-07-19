@@ -382,14 +382,14 @@ export default function UsersTable({
             }
             learnMore={
               <>
-                Learn more about
+                <TransText>Learn more about</TransText>
                 <InlineLink
                   href={
                     "https://docs.netbird.io/how-to/add-users-to-your-network"
                   }
                   target={"_blank"}
                 >
-                  Users
+                  <TransText>Users</TransText>
                   <ExternalLinkIcon size={12} />
                 </InlineLink>
               </>
@@ -446,7 +446,7 @@ export default function UsersTable({
                 onClick={() => setShowInvites(true)}
               >
                 <Link2 size={14} />
-                Show Invites
+                <TransText>Show Invites</TransText>
                 <NotificationCountBadge count={validInvitesCount} />
               </Button>
             )}
@@ -486,7 +486,7 @@ export const InviteUserButton = ({
   const button = (
     <Button variant={"primary"} className={className} disabled={isDisabled}>
       <MailPlus size={16} />
-      {isCloud ? "Invite User" : "Add User"}
+      {isCloud ? <TransText>Invite User</TransText> : <TransText>Add User</TransText>}
     </Button>
   );
 
@@ -498,7 +498,7 @@ export const InviteUserButton = ({
         content={
           <div className={"flex flex-col"}>
             <p className={"max-w-[200px] text-xs"}>
-              Local authentication is disabled. Use your IdP for authentication.
+              <TransText>Local authentication is disabled. Use your IdP for authentication.</TransText>
             </p>
             <div className={"text-xs mt-1.5"}>
               <InlineLink
@@ -508,7 +508,7 @@ export const InviteUserButton = ({
                 target={"_blank"}
                 className={"flex gap-1 items-center"}
               >
-                Learn more
+                <TransText>Learn more</TransText>
                 <ExternalLinkIcon size={12} />
               </InlineLink>
             </div>

@@ -14,6 +14,7 @@ import { ActivityEvent } from "@/interfaces/ActivityEvent";
 import PageContainer from "@/layouts/PageContainer";
 import ActivityTable from "@/modules/activity/ActivityTable";
 import { EventStreamingCard } from "@/modules/integrations/event-streaming/EventStreamingCard";
+import { TransText } from "@/i18n/trans-text";
 
 export default function Activity() {
   const { permission } = usePermissions();
@@ -47,7 +48,7 @@ export default function Activity() {
             href={"https://docs.netbird.io/how-to/audit-events-logging"}
             target={"_blank"}
           >
-            Learn more
+            <TransText>Learn more</TransText>
             <ExternalLinkIcon size={12} />
           </InlineLink>
         </Paragraph>

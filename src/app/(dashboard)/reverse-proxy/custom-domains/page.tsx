@@ -13,6 +13,7 @@ import { usePermissions } from "@/contexts/PermissionsProvider";
 import ReverseProxiesProvider from "@/contexts/ReverseProxiesProvider";
 import { REVERSE_PROXY_CUSTOM_DOMAINS_DOCS_LINK } from "@/interfaces/ReverseProxy";
 import PageContainer from "@/layouts/PageContainer";
+import { TransText } from "@/i18n/trans-text";
 
 const CustomDomainsTable = lazy(
   () => import("@/modules/reverse-proxy/domain/CustomDomainsTable"),
@@ -39,14 +40,14 @@ export default function ReverseProxyCustomDomainsPage() {
             active={true}
           />
         </Breadcrumbs>
-        <h1 ref={headingRef}>Domains</h1>
+        <h1 ref={headingRef}><TransText>Domains</TransText></h1>
         <Paragraph>
-          Add and manage custom domains for your reverse proxy services.{" "}
+          <TransText>Add and manage custom domains for your reverse proxy services.</TransText>{" "}
           <InlineLink
             href={REVERSE_PROXY_CUSTOM_DOMAINS_DOCS_LINK}
             target={"_blank"}
           >
-            Learn more
+            <TransText>Learn more</TransText>
             <ExternalLinkIcon size={12} />
           </InlineLink>
         </Paragraph>

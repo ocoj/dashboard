@@ -11,6 +11,7 @@ import MinimalPeersTable from "@/modules/peer/MinimalPeersTable";
 import NoResults from "@components/ui/NoResults";
 import PeerIcon from "@/assets/icons/PeerIcon";
 import Paragraph from "@components/Paragraph";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   user: User;
@@ -37,7 +38,7 @@ export const UserPeersSection = ({ user }: Props) => {
         <div className={"flex justify-between items-center mb-5"}>
           <div>
             <h2 ref={headingRef}>Peers</h2>
-            <Paragraph>View all peers registered by this user.</Paragraph>
+            <Paragraph>"View all peers registered by this user."</Paragraph>
           </div>
         </div>
 

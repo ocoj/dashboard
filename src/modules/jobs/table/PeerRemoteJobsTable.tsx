@@ -16,6 +16,7 @@ import { JobParametersCell } from "@/modules/jobs/table/JobParametersCell";
 import JobStatusCell from "@/modules/jobs/table/JobStatusCell";
 import { JobTypeCell } from "@/modules/jobs/table/JobTypeCell";
 import { RemoteJobDropdownButton } from "@/modules/peer/RemoteJobDropdownButton";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   jobs?: Job[];
@@ -118,8 +119,8 @@ export default function PeerRemoteJobsTable({
       getStartedCard={
         <NoResults
           className="py-4"
-          title="This peer has no remote jobs"
-          description="Create a debug bundle or trigger other remote jobs to see them listed here."
+          title={"This peer has no remote jobs"}
+          description={"Create a debug bundle or trigger other remote jobs to see them listed here."}
           icon={<ClipboardList size={20} className="text-nb-gray-300" />}
         />
       }

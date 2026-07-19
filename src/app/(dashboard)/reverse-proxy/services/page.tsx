@@ -15,6 +15,7 @@ import { REVERSE_PROXY_DOCS_LINK } from "@/interfaces/ReverseProxy";
 import PageContainer from "@/layouts/PageContainer";
 import { Callout } from "@components/Callout";
 import { isNetBirdCloud } from "@utils/netbird";
+import { TransText } from "@/i18n/trans-text";
 
 const ReverseProxyTable = lazy(
   () => import("@/modules/reverse-proxy/table/ReverseProxyTable"),
@@ -41,25 +42,22 @@ export default function ReverseProxyServicesPage() {
             active={true}
           />
         </Breadcrumbs>
-        <h1 ref={headingRef}>Services</h1>
+        <h1 ref={headingRef}><TransText>Services</TransText></h1>
         <Paragraph>
-          Expose services securely through NetBird&apos;s reverse proxy.{" "}
+          <TransText>Expose services securely through NetBird&apos;s reverse proxy.</TransText>{" "}
           <InlineLink href={REVERSE_PROXY_DOCS_LINK} target={"_blank"}>
-            Learn more
+            <TransText>Learn more</TransText>
             <ExternalLinkIcon size={12} />
           </InlineLink>
         </Paragraph>
 
         {isNetBirdCloud() ? (
           <Callout className={"max-w-xl mt-5"} variant={"info"}>
-            NetBird&apos;s Reverse Proxy is currently in beta and available at
-            no cost during this period. Features, functionality, and pricing are
-            subject to change upon release.
+            <TransText>NetBird&apos;s Reverse Proxy is currently in beta and available at no cost during this period. Features, functionality, and pricing are subject to change upon release.</TransText>
           </Callout>
         ) : (
           <Callout className={"max-w-xl mt-5"} variant={"info"}>
-            NetBird&apos;s Reverse Proxy is currently in beta. <br /> Features
-            and functionality are subject to change upon release.
+            <TransText>NetBird&apos;s Reverse Proxy is currently in beta. Features and functionality are subject to change upon release.</TransText>
           </Callout>
         )}
       </div>

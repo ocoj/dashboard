@@ -34,7 +34,7 @@ const GroupResourcesColumns: ColumnDef<NetworkResourceWithNetwork>[] = [
     id: "name",
     accessorKey: "name",
     header: ({ column }) => {
-      return <DataTableHeader column={column}><TransText>Resource</TransText></DataTableHeader>;
+      return <DataTableHeader column={column}>"Resource"</DataTableHeader>;
     },
     cell: ({ row }) => {
       return <ResourceNameCell resource={row.original} />;
@@ -50,7 +50,7 @@ const GroupResourcesColumns: ColumnDef<NetworkResourceWithNetwork>[] = [
     id: "address",
     accessorKey: "address",
     header: ({ column }) => {
-      return <DataTableHeader column={column}><TransText>Address</TransText></DataTableHeader>;
+      return <DataTableHeader column={column}>"Address"</DataTableHeader>;
     },
     cell: ({ row }) => {
       return <ResourceAddressCell resource={row.original} />;
@@ -60,7 +60,7 @@ const GroupResourcesColumns: ColumnDef<NetworkResourceWithNetwork>[] = [
     id: "enabled",
     accessorKey: "enabled",
     header: ({ column }) => {
-      return <DataTableHeader column={column}><TransText>Active</TransText></DataTableHeader>;
+      return <DataTableHeader column={column}>"Active"</DataTableHeader>;
     },
     cell: ({ row }) => (
       <ResourceEnabledCell
@@ -76,7 +76,7 @@ const GroupResourcesColumns: ColumnDef<NetworkResourceWithNetwork>[] = [
       return groups.map((group) => group.name).join(", ");
     },
     header: ({ column }) => {
-      return <DataTableHeader column={column}><TransText>Groups</TransText></DataTableHeader>;
+      return <DataTableHeader column={column}>"Groups"</DataTableHeader>;
     },
     cell: ({ row }) => {
       return <ResourceGroupCell resource={row.original} />;
@@ -86,7 +86,7 @@ const GroupResourcesColumns: ColumnDef<NetworkResourceWithNetwork>[] = [
     id: "policies",
     accessorKey: "id",
     header: ({ column }) => {
-      return <DataTableHeader column={column}><TransText>Policies</TransText></DataTableHeader>;
+      return <DataTableHeader column={column}>"Policies"</DataTableHeader>;
     },
     cell: ({ row }) => {
       return <ResourcePolicyCell resource={row.original} />;
@@ -160,7 +160,7 @@ export const GroupResourcesSection = ({
                     className={"mt-4"}
                     onClick={() => router.push("/networks")}
                   >
-                    <TransText>Go to Networks</TransText>
+                    "Go to Networks"
                     <ArrowUpRightIcon size={16} />
                   </Button>
                 </>

@@ -39,7 +39,7 @@ const NetworkRouterColumns: ColumnDef<NetworkRouter>[] = [
     id: "name",
     accessorKey: "id",
     header: ({ column }) => {
-      return <DataTableHeader column={column}><TransText>Peer</TransText></DataTableHeader>;
+      return <DataTableHeader column={column}>"Peer"</DataTableHeader>;
     },
     sortingFn: "text",
     cell: ({ row }) => <NetworkRoutingPeerName router={row.original} />,
@@ -52,7 +52,7 @@ const NetworkRouterColumns: ColumnDef<NetworkRouter>[] = [
     id: "metric",
     accessorKey: "metric",
     header: ({ column }) => {
-      return <DataTableHeader column={column}><TransText>Metric</TransText></DataTableHeader>;
+      return <DataTableHeader column={column}>"Metric"</DataTableHeader>;
     },
     cell: ({ row }) => (
       <RouteMetricCell metric={row.original.metric} useHoverStyle={false} />
@@ -62,7 +62,7 @@ const NetworkRouterColumns: ColumnDef<NetworkRouter>[] = [
     id: "masquerade",
     accessorKey: "masquerade",
     header: ({ column }) => {
-      return <DataTableHeader column={column}><TransText>Masquerade</TransText></DataTableHeader>;
+      return <DataTableHeader column={column}>"Masquerade"</DataTableHeader>;
     },
     cell: ({ row }) => <RoutingPeersMasqueradeCell router={row.original} />,
   },
@@ -169,7 +169,7 @@ export default function NetworkRoutingPeersTable({
           disabled={!permission.networks.update}
         >
           <IconCirclePlus size={16} />
-          <TransText>Add</TransText>
+          "Add"
         </Button>
       )}
     >

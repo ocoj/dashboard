@@ -66,7 +66,7 @@ export const AccessControlTableColumns: ColumnDef<Policy>[] = [
     id: "name",
     accessorFn: (row) => removeAllSpaces(row?.name),
     header: ({ column }) => {
-      return <DataTableHeader column={column}><TransText>Name</TransText></DataTableHeader>;
+      return <DataTableHeader column={column}>"Name"</DataTableHeader>;
     },
     sortingFn: "text",
     filterFn: "fuzzy",
@@ -96,7 +96,7 @@ export const AccessControlTableColumns: ColumnDef<Policy>[] = [
     },
     sortingFn: "basic",
     header: ({ column }) => {
-      return <DataTableHeader column={column}><TransText>Sources</TransText></DataTableHeader>;
+      return <DataTableHeader column={column}>"Sources"</DataTableHeader>;
     },
     cell: ({ cell }) => <AccessControlSourcesCell policy={cell.row.original} />,
   },
@@ -112,7 +112,7 @@ export const AccessControlTableColumns: ColumnDef<Policy>[] = [
     },
     sortingFn: "basic",
     header: ({ column }) => {
-      return <DataTableHeader column={column}><TransText>Direction</TransText></DataTableHeader>;
+      return <DataTableHeader column={column}>"Direction"</DataTableHeader>;
     },
     cell: ({ cell }) => (
       <AccessControlDirectionCell policy={cell.row.original} />
@@ -130,7 +130,7 @@ export const AccessControlTableColumns: ColumnDef<Policy>[] = [
     },
     sortingFn: "basic",
     header: ({ column }) => {
-      return <DataTableHeader column={column}><TransText>Destinations</TransText></DataTableHeader>;
+      return <DataTableHeader column={column}>"Destinations"</DataTableHeader>;
     },
     cell: ({ cell }) => (
       <AccessControlDestinationsCell policy={cell.row.original} />
@@ -142,7 +142,7 @@ export const AccessControlTableColumns: ColumnDef<Policy>[] = [
     accessorFn: (row) => row.rules?.[0]?.protocol || "",
     sortingFn: "text",
     header: ({ column }) => {
-      return <DataTableHeader column={column}><TransText>Proto & Ports</TransText></DataTableHeader>;
+      return <DataTableHeader column={column}>"Proto & Ports"</DataTableHeader>;
     },
     cell: ({ cell }) => (
       <AccessControlProtoPortsCell policy={cell.row.original} />
@@ -531,7 +531,7 @@ export default function AccessControlTable({
                     disabled={!permission.policies.create}
                   >
                     <PlusCircle size={16} />
-                    <TransText>Add Policy</TransText>
+                    "Add Policy"
                   </Button>
                 </AccessControlModal>
               </div>
@@ -562,21 +562,21 @@ export default function AccessControlTable({
                       disabled={!permission.policies.create}
                     >
                       <PlusCircle size={16} />
-                      <TransText>Add Policy</TransText>
+                      "Add Policy"
                     </Button>
                   </AccessControlModal>
                 </div>
               }
               learnMore={
                 <>
-                  <TransText>Learn more about</TransText>
+                  "Learn more about"
                   <InlineLink
                     href={
                       "https://docs.netbird.io/how-to/manage-network-access"
                     }
                     target={"_blank"}
                   >
-                    <TransText>Access Controls</TransText>
+                    "Access Controls"
                     <ExternalLinkIcon size={12} />
                   </InlineLink>
                 </>
@@ -596,7 +596,7 @@ export default function AccessControlTable({
                     data-testid="open-add-policy"
                   >
                     <PlusCircle size={16} />
-                    <TransText>Add Policy</TransText>
+                    "Add Policy"
                   </Button>
                 </AccessControlModal>
               </div>

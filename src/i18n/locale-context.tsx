@@ -9,6 +9,7 @@ import React, {
   useState,
 } from "react";
 import Cookies from "js-cookie";
+import dayjs from "dayjs";
 
 /** Supported locales. */
 export const locales = ["en", "zh"] as const;
@@ -92,6 +93,12 @@ export default function LocaleProvider({ children }: Props) {
   useEffect(() => {
     if (typeof document !== "undefined") {
       document.documentElement.lang = locale;
+    }
+    // Sync dayjs locale with the active locale
+    if (locale === "zh") {
+      dayjs.locale("zh-cn");
+    } else {
+      dayjs.locale("en");
     }
   }, [locale]);
 

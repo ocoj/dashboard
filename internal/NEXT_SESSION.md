@@ -4,7 +4,7 @@
 
 本仓库是 [NetBird Dashboard](https://github.com/netbirdio/dashboard) 的中文汉化分支 (`i18n-clean`)。
 
-**当前状态**：已合并上游 v2.90.4+，i18n 架构采用自建 TransText 方案。trans-map 2,769 条，tsc 零错误。**本会话大幅推进 Reverse Proxy 及多模块汉化。**
+**当前状态**：已合并上游 v2.90.4+，i18n 架构采用自建 TransText 方案（zh-map.ts 单文件，~2,280 条）。**2026-07-19 完成网络连通性修复 + 第 3 轮汉化 + 版本规则落地。**
 
 ## 关键信息
 
@@ -177,4 +177,31 @@ agent-reach doctor
 | Reverse Proxy | 反向代理 |
 | Masquerade | 地址伪装 |
 | Routing Peer | 路由节点 |
+
+## 服务端配置（2026-07-19 会话记录）
+
+### 当前配置状态
+
+**netbird-server**（OMV ***REMOVED***）：
+- `network_mode: host`（关键！解决 P2P 连通）
+- 监听 `:8081`，配置文件 `/srv/.../Compose/netbird/config.yaml`
+- STUN UDP 3478 直连宿主机
+
+**NPM 代理路由**（容器名 npm，端口 30081）：
+- `nb.lanxun.pro:30443` → 管理/API/WS/gRPC → `***REMOVED***:8081`，Dashboard → `***REMOVED***:30000`
+- Advanced config 含完整 WebSocket/gRPC 路由规则
+- 登录：***REMOVED*** / 凭据见 Vaultwarden `NPM代理服务器`
+
+**备份**：
+- compose: `compose.yml.bak` / `.bak2` / `.bak3`
+- config: `config.yaml.bak` / `.bak2`
+
+### 操作红线
+- 不动 KVM/OpenWrt（主路由）和其他容器
+- netbird-server 重启后需等待 peer 自动重连（约 30s）
+- 部署只动 netbird-server 容器，dashboard 不受影响
+
+### 版本
+- `package.json`：2.90.4，构建自动追加 `-zh` → 显示 `v2.90.4-zh`
+- VERSION.md 详细规则
 | CIDR Block | CIDR 块 |

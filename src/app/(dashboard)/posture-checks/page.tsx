@@ -15,6 +15,7 @@ import { usePermissions } from "@/contexts/PermissionsProvider";
 import PoliciesProvider from "@/contexts/PoliciesProvider";
 import { PostureCheck } from "@/interfaces/PostureCheck";
 import PageContainer from "@/layouts/PageContainer";
+import { TransText } from "@/i18n/trans-text";
 
 const PostureCheckTable = lazy(
   () => import("@/modules/posture-checks/table/PostureCheckTable"),
@@ -44,14 +45,14 @@ export default function PostureChecksPage() {
               icon={<ShieldCheck size={15} />}
             />
           </Breadcrumbs>
-          <h1 ref={headingRef}>Posture Checks</h1>
+          <h1 ref={headingRef}><TransText>Posture Checks</TransText></h1>
           <Paragraph>
-            Use posture checks to further restrict access in your network.{" "}
+            <TransText>Use posture checks to further restrict access in your network.</TransText>{" "}
             <InlineLink
               href={"https://docs.netbird.io/how-to/manage-posture-checks"}
               target={"_blank"}
             >
-              Learn more
+              <TransText>Learn more</TransText>
               <ExternalLinkIcon size={12} />
             </InlineLink>
           </Paragraph>

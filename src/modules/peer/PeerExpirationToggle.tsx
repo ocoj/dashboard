@@ -16,8 +16,8 @@ type Props = {
   peer: Peer;
   value: boolean;
   onChange: (value: boolean) => void;
-  title?: string;
-  description?: string;
+  title?: React.ReactNode;
+  description?: React.ReactNode;
   icon?: React.ReactNode;
   className?: string;
   type?: "login-expiration" | "inactivity-expiration";
@@ -27,8 +27,8 @@ export const PeerExpirationToggle = ({
   peer,
   value,
   onChange,
-  title = "Session Expiration",
-  description = "Enable to require SSO login peers to re-authenticate when their session expires after a certain period of time.",
+  title = <TransText>Session Expiration</TransText>,
+  description = <TransText>Enable to require SSO login peers to re-authenticate when their session expires after a certain period of time.</TransText>,
   icon,
   className,
   variant = "default",

@@ -41,7 +41,7 @@ const MinimalPeersTableColumns: ColumnDef<Peer>[] = [
   {
     accessorKey: "name",
     header: ({ column }) => {
-      return <DataTableHeader column={column}><TransText>Name</TransText></DataTableHeader>;
+      return <DataTableHeader column={column}>"Name"</DataTableHeader>;
     },
     sortingFn: "text",
     cell: ({ row }) => <PeerNameCell peer={row.original} />,
@@ -66,14 +66,14 @@ const MinimalPeersTableColumns: ColumnDef<Peer>[] = [
   {
     accessorKey: "dns_label",
     header: ({ column }) => {
-      return <DataTableHeader column={column}><TransText>Address</TransText></DataTableHeader>;
+      return <DataTableHeader column={column}>"Address"</DataTableHeader>;
     },
     cell: ({ row }) => <PeerAddressCell peer={row.original} />,
   },
   {
     accessorKey: "last_seen",
     header: ({ column }) => {
-      return <DataTableHeader column={column}><TransText>Last seen</TransText></DataTableHeader>;
+      return <DataTableHeader column={column}>"Last seen"</DataTableHeader>;
     },
     sortingFn: "datetime",
     cell: ({ row }) => <PeerLastSeenCell peer={row.original} />,
@@ -81,7 +81,7 @@ const MinimalPeersTableColumns: ColumnDef<Peer>[] = [
   {
     accessorKey: "os",
     header: ({ column }) => {
-      return <DataTableHeader column={column}><TransText>OS</TransText></DataTableHeader>;
+      return <DataTableHeader column={column}>"OS"</DataTableHeader>;
     },
     cell: ({ row }) => <PeerOSCell os={row.original.os} />,
   },
@@ -183,7 +183,7 @@ export default function MinimalPeersTable({
                   : "secondary"
               }
             >
-              <TransText>All</TransText>
+              "All"
             </ButtonGroup.Button>
             <ButtonGroup.Button
               onClick={() => {
@@ -202,7 +202,7 @@ export default function MinimalPeersTable({
                   : "secondary"
               }
             >
-              <TransText>Online</TransText>
+              "Online"
             </ButtonGroup.Button>
             <ButtonGroup.Button
               onClick={() => {
@@ -221,7 +221,7 @@ export default function MinimalPeersTable({
                   : "secondary"
               }
             >
-              <TransText>Offline</TransText>
+              "Offline"
             </ButtonGroup.Button>
           </ButtonGroup>
 

@@ -17,6 +17,7 @@ import { usePermissions } from "@/contexts/PermissionsProvider";
 import { User } from "@/interfaces/User";
 import PageContainer from "@/layouts/PageContainer";
 import { IdentityProviderCard } from "@/modules/integrations/idp-sync/IdentityProviderCard";
+import { TransText } from "@/i18n/trans-text";
 
 const UsersTable = lazy(() => import("@/modules/users/UsersTable"));
 
@@ -46,15 +47,14 @@ export default function TeamUsers() {
             icon={<User2 size={16} />}
           />
         </Breadcrumbs>
-        <h1 ref={headingRef}>Users</h1>
+        <h1 ref={headingRef}><TransText>Users</TransText></h1>
         <Paragraph>
-          Manage users and their permissions. Same-domain email users are added
-          automatically on first sign-in.{" "}
+          <TransText>Manage users and their permissions. Same-domain email users are added automatically on first sign-in.</TransText>{" "}
           <InlineLink
             href={"https://docs.netbird.io/how-to/add-users-to-your-network"}
             target={"_blank"}
           >
-            Learn more
+            <TransText>Learn more</TransText>
             <ExternalLinkIcon size={12} />
           </InlineLink>
         </Paragraph>

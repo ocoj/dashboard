@@ -43,7 +43,7 @@ export const NetworkTableColumns: ColumnDef<Network>[] = [
   {
     accessorKey: "name",
     header: ({ column }) => (
-      <DataTableHeader column={column}><TransText>Network</TransText></DataTableHeader>
+      <DataTableHeader column={column}>"Network"</DataTableHeader>
     ),
     sortingFn: "text",
     cell: ({ row }) => <NetworkNameCell network={row.original} />,
@@ -55,7 +55,7 @@ export const NetworkTableColumns: ColumnDef<Network>[] = [
     accessorKey: "resources",
     accessorFn: (network) => network?.resources?.length,
     header: ({ column }) => {
-      return <DataTableHeader column={column}><TransText>Resources</TransText></DataTableHeader>;
+      return <DataTableHeader column={column}>"Resources"</DataTableHeader>;
     },
     cell: ({ row }) => <NetworkResourceCell network={row.original} />,
   },
@@ -63,7 +63,7 @@ export const NetworkTableColumns: ColumnDef<Network>[] = [
     accessorKey: "policies",
     accessorFn: (network) => network?.policies?.length,
     header: ({ column }) => {
-      return <DataTableHeader column={column}><TransText>Policies</TransText></DataTableHeader>;
+      return <DataTableHeader column={column}>"Policies"</DataTableHeader>;
     },
     cell: ({ row }) => <NetworkPolicyCell network={row.original} />,
   },
@@ -71,7 +71,7 @@ export const NetworkTableColumns: ColumnDef<Network>[] = [
     accessorKey: "routers",
     accessorFn: (network) => network?.routers?.length,
     header: ({ column }) => {
-      return <DataTableHeader column={column}><TransText>Routing Peers</TransText></DataTableHeader>;
+      return <DataTableHeader column={column}>"Routing Peers"</DataTableHeader>;
     },
     cell: ({ row }) => <NetworkRoutingPeerCell network={row.original} />,
   },
@@ -253,7 +253,7 @@ const AddNetworkButton = () => {
       data-testid={"add-network"}
     >
       <PlusCircle size={16} />
-      <TransText>Add Network</TransText>
+      "Add Network"
     </Button>
   );
 };

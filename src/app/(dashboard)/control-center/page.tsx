@@ -70,6 +70,7 @@ import {
   DEFAULT_MIN_ZOOM,
 } from "@/modules/control-center/utils/layouts";
 import { NODE_TYPES } from "@/modules/control-center/utils/nodes";
+import { TransText } from "@/i18n/trans-text";
 
 export default function ControlCenter() {
   return (
@@ -1944,7 +1945,7 @@ function ControlCenterView() {
                 }
                 learnMore={
                   <>
-                    Learn more about
+                    <TransText>Learn more about</TransText>
                     <InlineLink
                       href={"https://docs.netbird.io/how-to/networks"}
                       target={"_blank"}
