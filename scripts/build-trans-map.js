@@ -94,7 +94,10 @@ let matched = 0;
 let unmatched = 0;
 
 for (const [fullKey, english] of Object.entries(en)) {
-  if (zh[fullKey]) {
+  // First-wins: when multiple namespace keys produce the same English text
+  // (e.g. common.save + untranslated.save_139), keep the first (proper)
+  // translation instead of letting the untranslated fallback overwrite it.
+  if (zh[fullKey] && !(english in map)) {
     map[english] = zh[fullKey];
     matched++;
   } else {
