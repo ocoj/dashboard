@@ -2852,7 +2852,7 @@ export default {
     test_connection_142: "Test Connection",
     thank_you_for_signing_up_8: "Thank you for signing up!",
     the_server_268: "The server",
-    this_peer_is_offline_and_cannot_be_accessed_via_rd_254: "This peer is offline and cannot be accessed via RDP.",
+    this_peer_is_offline_and_cannot_be_accessed_via_rd_254: "此对等节点离线，无法通过 RDP 访问。",
     time_67: "Time",
     time_to_bring_in_your_second_device_236: "Time to bring in your second device",
     traffic_68: "Traffic",

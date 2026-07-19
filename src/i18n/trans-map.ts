@@ -5,7 +5,7 @@
  * To add translations, edit src/i18n/messages/en.ts and zh.ts, then re-run:
  *   node scripts/build-trans-map.js
  *
- * Generated: 2026-07-18T13:03:50.032Z
+ * Generated: 2026-07-19T00:46:40.287Z
  * Keys matched: 2769 / 2981 en keys
  */
 
@@ -2025,7 +2025,7 @@ const translations: Record<string, string> = {
   'This peer has no network routes': '此节点没有网络路由',
   'This peer has no services': '此节点未配置服务',
   'This peer is an ephemeral peer. If it is disconnected for more than 10 minutes it will be removed.': '此节点是临时节点。如果断开连接超过 10 分钟，它将被自动删除。',
-  'This peer is offline and cannot be accessed via RDP.': 'This peer is offline and cannot be accessed via RDP.',
+  'This peer is offline and cannot be accessed via RDP.': '此对等节点离线，无法通过 RDP 访问。',
   'This service has been terminated by the NetBird team as it violates the Terms of Service. For questions, please contact': '此服务已被 NetBird 团队终止，因为它违反了服务条款。如有问题，请联系',
   'This service has no authentication or access control configured. Anyone with the URL will be able to access it.': '此服务未配置身份验证或访问控制，任何拥有 URL 的人都可以访问。',
   'This service is accessible via NetBird only. An allow rule for the NetBird network range is applied by default. Any rules you add here are layered on top.': '此服务仅可通过 NetBird 访问。默认已应用 NetBird 网络范围的允许规则。您在此添加的任何规则将叠加生效。',

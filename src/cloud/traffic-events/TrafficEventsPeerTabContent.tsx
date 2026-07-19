@@ -86,6 +86,9 @@ export const TrafficEventsPeerTabContent = () => {
     return url;
   };
 
+  // Only fetch when traffic events are enabled; otherwise the management API
+  // may not support the endpoint and would return 404, triggering an error
+  // notification.  When disabled the component shows its own "disabled" UI.
   const { data: events, isLoading } = useFetchApi<Pagination<TrafficEvent[]>>(
     buildApiUrl(
       page,
@@ -95,6 +98,9 @@ export const TrafficEventsPeerTabContent = () => {
       dateRange?.from,
       dateRange?.to,
     ),
+    true,   // ignoreError – suppress the red notification for unsupported endpoints
+    true,   // revalidate
+    isEnabled, // allowFetch – skip the request entirely when feature is off
   );
 
   const isInbound = trafficType === TrafficEventDirection.INGRESS;
