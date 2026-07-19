@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import translations from "./trans-map";
+import translations from "./zh-map";
 import { useLocale } from "./locale-context";
 
 type TransTextProps = {
@@ -26,7 +26,7 @@ type TransTextProps = {
  *   // en → "Add Peer"
  *
  * The component uses exact string matching against the auto-generated
- * translation map (`trans-map.ts`).  If a translation is not found it
+ * translation map (`zh-map.ts`).  If a translation is not found it
  * renders the English source text unchanged.
  */
 export function TransText({ children, en }: TransTextProps) {

@@ -86,14 +86,10 @@ check_patch() {
 check_patch "src/layouts/AppLayout.tsx" "LocaleProvider" "AppLayout → LocaleProvider"
 check_patch "src/modules/settings/LanguageTab.tsx" "locale-context" "LanguageTab → locale-context"
 
-# 3. Build translation map
+# 3. Translation map (hand-maintained in src/i18n/zh-map.ts)
 echo ""
-echo "--- Rebuilding translation map ---"
-if node scripts/build-trans-map.js 2>/dev/null; then
-  echo -e "${GREEN}✓ Translation map rebuilt.${NC}"
-else
-  echo -e "${YELLOW}⚠ Could not rebuild trans-map (may be OK if no changes).${NC}"
-fi
+echo "--- Translation map ---"
+echo -e "${GREEN}✓ zh-map.ts is hand-maintained — review after upstream merge.${NC}"
 
 # 4. TypeScript check
 echo ""
