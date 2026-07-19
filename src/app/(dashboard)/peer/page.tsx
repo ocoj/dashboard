@@ -621,7 +621,7 @@ function PeerInformationCard({ peer }: Readonly<{ peer: Peer }>) {
             label={
               <>
                 <MonitorSmartphoneIcon size={16} className={"shrink-0"} />
-                Hostname
+                <TransText>Hostname</TransText>
               </>
             }
             value={peer.hostname}
@@ -631,7 +631,7 @@ function PeerInformationCard({ peer }: Readonly<{ peer: Peer }>) {
             label={
               <>
                 <FlagIcon size={16} className={"shrink-0"} />
-                Region
+                <TransText>Region</TransText>
               </>
             }
             tooltip={false}
@@ -661,7 +661,7 @@ function PeerInformationCard({ peer }: Readonly<{ peer: Peer }>) {
             label={
               <>
                 <Cpu size={16} className={"shrink-0"} />
-                Operating System
+                <TransText>Operating System</TransText>
               </>
             }
             value={peer.os}
@@ -672,7 +672,7 @@ function PeerInformationCard({ peer }: Readonly<{ peer: Peer }>) {
               label={
                 <>
                   <Barcode size={16} className={"shrink-0"} />
-                  Serial Number
+                  <TransText>Serial Number</TransText>
                 </>
               }
               value={peer.serial_number}
@@ -684,7 +684,7 @@ function PeerInformationCard({ peer }: Readonly<{ peer: Peer }>) {
               label={
                 <>
                   <CalendarDays size={16} className={"shrink-0"} />
-                  Registered on
+                  <TransText>Registered on</TransText>
                 </>
               }
               value={
@@ -700,7 +700,7 @@ function PeerInformationCard({ peer }: Readonly<{ peer: Peer }>) {
             label={
               <>
                 <History size={16} className={"shrink-0"} />
-                Last seen
+                <TransText>Last seen</TransText>
               </>
             }
             value={
@@ -717,7 +717,7 @@ function PeerInformationCard({ peer }: Readonly<{ peer: Peer }>) {
             label={
               <>
                 <NetBirdIcon size={16} className={"shrink-0"} />
-                Agent Version
+                <TransText>Agent Version</TransText>
               </>
             }
             value={peer.version}
@@ -728,7 +728,7 @@ function PeerInformationCard({ peer }: Readonly<{ peer: Peer }>) {
               label={
                 <>
                   <NetBirdIcon size={16} className={"shrink-0"} />
-                  UI Version
+                  <TransText>UI Version</TransText>
                 </>
               }
               value={peer.ui_version?.replace("netbird-desktop-ui/", "")}
