@@ -49,6 +49,7 @@ import { toASCII } from "punycode";
 import React, { useMemo, useState } from "react";
 import Skeleton from "react-loading-skeleton";
 import { useSWRConfig } from "swr";
+import { TransText } from "@/i18n/trans-text";
 import {
   TrafficEventsPeerTabContent,
   TrafficEventsPeerTabTrigger,
@@ -313,7 +314,7 @@ const PeerHeader = () => {
               className={"w-full"}
               onClick={() => router.push(peerListPath(user))}
             >
-              Cancel
+              <TransText>Cancel</TransText>
             </Button>
             <Button
               variant={"primary"}
@@ -325,7 +326,7 @@ const PeerHeader = () => {
                 !permission.groups.update
               }
             >
-              Save Changes
+              <TransText>Save Changes</TransText>
             </Button>
           </div>
         )}
@@ -355,20 +356,20 @@ const PeerOverviewTabs = () => {
       <TabsList justify={"start"} className={"px-8"}>
         <TabsTrigger value={"overview"}>
           <ListIcon size={16} />
-          Overview
+          <TransText>Overview</TransText>
         </TabsTrigger>
 
         {permission.routes.read && (
           <TabsTrigger value={"network-routes"}>
             <NetworkIcon size={16} />
-            Network Routes
+            <TransText>Network Routes</TransText>
           </TabsTrigger>
         )}
 
         {peer?.id && (
           <TabsTrigger value={"accessible-peers"}>
             <MonitorSmartphoneIcon size={16} />
-            Accessible Peers
+            <TransText>Accessible Peers</TransText>
           </TabsTrigger>
         )}
 
@@ -378,14 +379,14 @@ const PeerOverviewTabs = () => {
               size={16}
               className="fill-nb-gray-400 group-data-[state=active]/trigger:fill-netbird"
             />
-            {singularize("Services", flatTargets.length)}
+            <TransText>Services</TransText>
           </TabsTrigger>
         )}
 
         {peer?.id && permission.peers.delete && (
           <TabsTrigger value={"peer-job"}>
             <RadioTowerIcon size={16} />
-            Remote Jobs
+            <TransText>Remote Jobs</TransText>
           </TabsTrigger>
         )}
 

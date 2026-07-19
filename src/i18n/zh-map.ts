@@ -4,6 +4,16 @@
  */
 
 const zhMap: Record<string, string> = {
+  'Auto Update': '自动更新',
+  'Danger zone': '危险区域',
+  'NetBird IP Address': 'NetBird IP 地址',
+  'NetBird IPv6 Address': 'NetBird IPv6 地址',
+  'Owner': '所有者',
+  'Preview': '预览',
+  'Public IP Address': '公网 IP 地址',
+  'Show Invites': '显示邀请',
+  'You': '您',
+  'development': '开发版',
   '\'{name}\' groups updated': '「{name}」的组已更新',
   '\'{name}\' is now disabled': '「{name}」已禁用',
   '\'{name}\' is now enabled': '「{name}」已启用',
