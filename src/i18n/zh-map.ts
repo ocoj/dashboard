@@ -690,6 +690,7 @@ const zhMap: Record<string, string> = {
   'Disconnecting': '正在断开连接',
   'Distribution Groups': '分发组',
   'Distributor account was activated': '分销商账户已激活',
+  'DNS label': 'DNS 标签',
   'DNS': 'DNS',
   'DNS Domain': 'DNS 域名',
   'DNS label has been copied to your clipboard': 'DNS 标签已复制到剪贴板',

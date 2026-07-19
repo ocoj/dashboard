@@ -1,5 +1,6 @@
 "use client";
 
+import { TransText } from "@/i18n/trans-text";
 import { RestrictedAccess } from "@components/ui/RestrictedAccess";
 import { VerticalTabs } from "@components/VerticalTabs";
 import {

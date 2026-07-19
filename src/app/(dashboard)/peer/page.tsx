@@ -474,7 +474,7 @@ const PeerOverviewTabContent = () => {
 
           {/* Remote Access Buttons */}
           <div>
-            <Label>Remote Access</Label>
+            <Label><TransText>Remote Access</TransText></Label>
             <HelpText>Connect directly to this peer via SSH or RDP.</HelpText>
             <div className="flex gap-3">
               <SSHButton peer={peer} />
@@ -550,7 +550,7 @@ function PeerInformationCard({ peer }: Readonly<{ peer: Peer }>) {
             label={
               <>
                 <MapPin size={16} className={"shrink-0"} />
-                NetBird IP Address
+                <TransText>NetBird IP Address</TransText>
               </>
             }
             valueToCopy={peer.ip}
@@ -571,7 +571,7 @@ function PeerInformationCard({ peer }: Readonly<{ peer: Peer }>) {
               label={
                 <>
                   <MapPin size={16} className={"shrink-0"} />
-                  NetBird IPv6 Address
+                  <TransText>NetBird IPv6 Address</TransText>
                 </>
               }
               valueToCopy={peer.ipv6}
@@ -591,7 +591,7 @@ function PeerInformationCard({ peer }: Readonly<{ peer: Peer }>) {
             label={
               <>
                 <NetworkIcon size={16} className={"shrink-0"} />
-                Public IP Address
+                <TransText>Public IP Address</TransText>
               </>
             }
             value={peer.connection_ip}
@@ -603,7 +603,7 @@ function PeerInformationCard({ peer }: Readonly<{ peer: Peer }>) {
             label={
               <>
                 <Globe size={16} className={"shrink-0"} />
-                Domain Name
+                <TransText>Domain Name</TransText>
               </>
             }
             className={
@@ -637,7 +637,7 @@ function PeerInformationCard({ peer }: Readonly<{ peer: Peer }>) {
             tooltip={false}
             value={
               isEmpty(peer.country_code) ? (
-                "Unknown"
+                <TransText>Unknown</TransText>
               ) : (
                 <>
                   {isLoading ? (
@@ -705,7 +705,7 @@ function PeerInformationCard({ peer }: Readonly<{ peer: Peer }>) {
             }
             value={
               peer.connected
-                ? "just now"
+                ? <TransText>just now</TransText>
                 : dayjs(peer.last_seen).format("D MMMM, YYYY [at] h:mm A") +
                   " (" +
                   dayjs().to(peer.last_seen) +
