@@ -64,40 +64,40 @@ export default function NetBirdSettings() {
             <>
               <VerticalTabs.Trigger value="authentication" data-testid="settings-tab-authentication">
                 <ShieldIcon size={14} />
-                Authentication
+                <TransText>Authentication</TransText>
               </VerticalTabs.Trigger>
               {permission.setup_keys.read && (
                 <VerticalTabs.Trigger value="setup-keys">
                   <KeyRound size={14} />
-                  Setup Keys
+                  <TransText>Setup Keys</TransText>
                 </VerticalTabs.Trigger>
               )}
               {account?.settings?.embedded_idp_enabled &&
                 permission?.identity_providers?.read && (
                   <VerticalTabs.Trigger value="identity-providers">
                     <FingerprintIcon size={14} />
-                    Identity Providers
+                    <TransText>Identity Providers</TransText>
                   </VerticalTabs.Trigger>
                 )}
               <VerticalTabs.Trigger value="groups" data-testid="settings-tab-groups">
                 <FolderGit2Icon size={14} />
-                Groups
+                <TransText>Groups</TransText>
               </VerticalTabs.Trigger>
               <VerticalTabs.Trigger value="permissions" data-testid="settings-tab-permissions">
                 <LockIcon size={14} />
-                Permissions
+                <TransText>Permissions</TransText>
               </VerticalTabs.Trigger>
               <VerticalTabs.Trigger value="networks" data-testid="settings-tab-networks">
                 <NetworkIcon size={14} />
-                Networks
+                <TransText>Networks</TransText>
               </VerticalTabs.Trigger>
               <VerticalTabs.Trigger value="clients" data-testid="settings-tab-clients">
                 <MonitorSmartphoneIcon size={14} />
-                Clients
+                <TransText>Clients</TransText>
               </VerticalTabs.Trigger>
               <VerticalTabs.Trigger value="metrics">
                 <ChartNoAxesCombined size={14} />
-                Metrics
+                <TransText>Metrics</TransText>
               </VerticalTabs.Trigger>
             </>
           )}
@@ -137,7 +137,7 @@ const DangerZoneTabTrigger = () => {
     isOwner && (
       <VerticalTabs.Trigger value="danger-zone" disabled={!isOwner}>
         <AlertOctagonIcon size={14} />
-        Danger zone
+        <TransText>Danger zone</TransText>
       </VerticalTabs.Trigger>
     )
   );
