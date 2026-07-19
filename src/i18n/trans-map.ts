@@ -5,8 +5,8 @@
  * To add translations, edit src/i18n/messages/en.ts and zh.ts, then re-run:
  *   node scripts/build-trans-map.js
  *
- * Generated: 2026-07-19T01:47:47.796Z
- * Keys matched: 2253 / 2981 en keys
+ * Generated: 2026-07-19T02:23:03.396Z
+ * Keys matched: 2254 / 2982 en keys
  */
 
 const translations: Record<string, string> = {
@@ -2039,6 +2039,7 @@ const translations: Record<string, string> = {
   'Timestamp': '时间戳',
   'TLS Passthrough': 'TLS 直通',
   'to': '至',
+  'To get started, install NetBird and log in using your email account. After that you should be connected. If you have further questions check out our': '要开始使用，请安装 NetBird 并使用您的电子邮件账户登录。完成后您应该已连接。如果您有更多问题，请查看我们的',
   'To give access to an entire subnet, use a CIDR block. For example, 10.0.0.0/24 or 192.168.1.0/24.': '要允许访问整个子网，请使用 CIDR 块。例如：10.0.0.0/24 或 192.168.1.0/24。',
   'To prevent losing access, ensure you are part of this group.': '为防止失去访问权限，请确保您是该组的成员。',
   'Today': '今天',

@@ -431,6 +431,7 @@ export default {
     domainNamePreview: "Domain Name Preview",
     learnMore: "Learn more",
     addNewDeviceTitle: "Add new device to your network",
+    blockedViewText: "To get started, install NetBird and log in using your email account. After that you should be connected. If you have further questions check out our",
     installationGuide: "Installation Guide",
     addNewServerTitle: "Add new server to your network",
     saveGroups: "Save Groups",

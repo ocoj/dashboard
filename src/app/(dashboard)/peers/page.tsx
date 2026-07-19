@@ -10,6 +10,7 @@ import { ExternalLinkIcon } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { lazy, Suspense, useMemo } from "react";
 import PeerIcon from "@/assets/icons/PeerIcon";
+import { TransText } from "@/i18n/trans-text";
 import useDistributorRedirect from "@/cloud/distributor/useDistributorRedirect";
 import { useBypassedPeers } from "@/cloud/edr/useBypass";
 import PeersProvider, { usePeers } from "@/contexts/PeersProvider";
@@ -98,14 +99,14 @@ function PeersView() {
             active
           />
         </Breadcrumbs>
-        <h1 ref={headingRef}>Peers</h1>
+        <h1 ref={headingRef}><TransText>Peers</TransText></h1>
         <Paragraph>
-            User devices and headless machines, such as servers and autonomous agents, connected to your network.{" "}
+          <TransText>User devices and headless machines, such as servers and autonomous agents, connected to your network.</TransText>{" "}
           <InlineLink
             href={"https://docs.netbird.io/how-to/add-machines-to-your-network"}
             target={"_blank"}
           >
-            Learn more
+            <TransText>Learn more</TransText>
             <ExternalLinkIcon size={12} />
           </InlineLink>
         </Paragraph>
@@ -127,16 +128,14 @@ function PeersBlockedView() {
   return (
     <div className={"flex items-center justify-center flex-col"}>
       <div className={"p-default py-6 max-w-3xl text-center"}>
-        <h1>Add new device to your network</h1>
+        <h1><TransText>Add new device to your network</TransText></h1>
         <Paragraph className={"inline"}>
-          To get started, install NetBird and log in using your email account.
-          After that you should be connected. If you have further questions
-          check out our{" "}
+          <TransText>To get started, install NetBird and log in using your email account. After that you should be connected. If you have further questions check out our</TransText>{" "}
           <InlineLink
             href={"https://docs.netbird.io/how-to/getting-started#installation"}
             target={"_blank"}
           >
-            Installation Guide
+            <TransText>Installation Guide</TransText>
             <ExternalLinkIcon size={12} />
           </InlineLink>
         </Paragraph>

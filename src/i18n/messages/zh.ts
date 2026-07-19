@@ -1166,6 +1166,7 @@ export default {
     activePoliciesCount: "{count, plural, other {# 个活跃策略}}",
     addGroups: "添加组",
     addNewDeviceTitle: "添加新设备到您的网络",
+    blockedViewText: "要开始使用，请安装 NetBird 并使用您的电子邮件账户登录。完成后您应该已连接。如果您有更多问题，请查看我们的",
     addNewServerTitle: "添加新服务器到您的网络",
     addServicesDescription: "添加服务以通过反向代理安全地暴露它们。",
     addPeer: "添加节点",
