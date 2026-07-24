@@ -18,6 +18,7 @@ import PageContainer from "@/layouts/PageContainer";
 import useGroupedRoutes from "@/modules/route-group/useGroupedRoutes";
 import { Callout } from "@components/Callout";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 const NetworkRoutesTable = lazy(
   () => import("@/modules/route-group/NetworkRoutesTable"),
@@ -38,10 +39,10 @@ export default function NetworkRoutes() {
           <div className={"p-default py-6"}>
             <Breadcrumbs>
               <Breadcrumbs.Item
-                label={"Network Routing"}
+                label={zhMap["Network Routing"] || "Network Routing"}
                 icon={<NetworkRoutesIcon size={13} />}
               />
-              <Breadcrumbs.Item href={"/network-routes"} label={"Routes"} />
+              <Breadcrumbs.Item href={"/network-routes"} label={zhMap["Routes"] || "Routes"} />
             </Breadcrumbs>
             <h1 ref={headingRef}><TransText>Routes</TransText></h1>
             <Paragraph>

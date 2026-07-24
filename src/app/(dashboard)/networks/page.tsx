@@ -15,6 +15,7 @@ import { Network } from "@/interfaces/Network";
 import PageContainer from "@/layouts/PageContainer";
 import NetworksTable from "@/modules/networks/table/NetworksTable";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 export default function Networks() {
   const { data: networks, isLoading } = useFetchApi<Network[]>("/networks");
@@ -27,10 +28,10 @@ export default function Networks() {
       <div className={"p-default py-6"}>
         <Breadcrumbs>
           <Breadcrumbs.Item
-            label={"Network Routing"}
+            label={zhMap["Network Routing"] || "Network Routing"}
             icon={<NetworkRoutesIcon size={13} />}
           />
-          <Breadcrumbs.Item href={"/networks"} label={"Networks"} />
+          <Breadcrumbs.Item href={"/networks"} label={zhMap["Networks"] || "Networks"} />
         </Breadcrumbs>
         <h1 ref={headingRef}><TransText>Networks</TransText></h1>
         <Paragraph>
