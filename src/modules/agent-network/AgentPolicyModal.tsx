@@ -48,6 +48,8 @@ import { useAIProviders } from "@/modules/agent-network/AIProvidersProvider";
 import AgentPolicyGuardrailsTab from "@/modules/agent-network/AgentPolicyGuardrailsTab";
 import AgentPolicyLimitsTab from "@/modules/agent-network/AgentPolicyLimitsTab";
 import useGroupHelper from "@/modules/groups/useGroupHelper";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -213,7 +215,7 @@ function AgentPolicyModalContent({
     <ModalContent maxWidthClass={"max-w-3xl"}>
       <ModalHeader
         icon={<AccessControlIcon className={"fill-netbird"} />}
-        title={policy ? "Update Agent Policy" : "Create Agent Policy"}
+        title={policy ? zhMap["Update Agent Policy"] || "Update Agent Policy" : zhMap["Create Agent Policy"] || "Create Agent Policy"}
         description={
           "Govern which groups can call which AI providers and under what guardrails."
         }

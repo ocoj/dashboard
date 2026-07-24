@@ -10,6 +10,8 @@ import { SelectDropdown } from "@components/select/SelectDropdown";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@components/Tabs";
 import { Plug } from "lucide-react";
 import * as React from "react";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -132,7 +134,7 @@ export function AgentConnectTabs({
                 <SmallParagraph className={"!mb-0"}>
                   {claudeMode === "config"
                     ? "Add to ~/.claude/settings.json:"
-                    : "Run in your shell:"}
+                    : zhMap["Run in your shell:"] || "Run in your shell:"}
                 </SmallParagraph>
                 <button
                   type={"button"}
@@ -206,7 +208,7 @@ export function AgentConnectTabs({
                 <SmallParagraph className={"!mb-0"}>
                   {claudeMode === "config"
                     ? "Add to ~/.claude/settings.json:"
-                    : "Run in your shell:"}
+                    : zhMap["Run in your shell:"] || "Run in your shell:"}
                 </SmallParagraph>
                 <button
                   type={"button"}
@@ -377,7 +379,7 @@ export default function AgentConnectModal({
         <div className={"px-8 pt-5"}>
           <div className={"flex items-center gap-3"}>
             <SquareIcon color={"netbird"} margin={""} icon={<Plug size={16} />} />
-            <h2 className={"text-lg my-0 leading-[1.5]"}>Configure Your Agent</h2>
+            <h2 className={"text-lg my-0 leading-[1.5]"}>{zhMap["Configure Your Agent"] || "Configure Your Agent"}</h2>
           </div>
           <Paragraph className={"text-sm mt-3"}>
             Point your agent at the NetBird endpoint as its base URL. No provider

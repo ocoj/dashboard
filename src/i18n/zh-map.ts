@@ -2417,6 +2417,17 @@ const zhMap: Record<string, string> = {
   'Remove Date filter': '移除日期筛选',
   'Requests': '请求',
   'Retention Period': '保留期限',
+  'Create a policy to control access to Agent Network providers.': '创建策略来控制对客户端网络供应商的访问。',
+  'Create Agent Policy': '创建 Agent 策略',
+  'Edit Provider': '编辑供应商',
+  'e.g. OpenAI': '例如 OpenAI',
+  'Govern which groups can call which AI providers and under what guardrails.': '管理哪些组可以调用哪些 AI 供应商以及在什么护栏下。',
+  'Mappings': '映射',
+  'Search providers...': '搜索供应商...',
+  'Select provider...': '选择供应商...',
+  'Update Agent Policy': '更新 Agent 策略',
+  'Update this policy.': '更新此策略。',
+  'Update this provider\'s configuration.': '更新此供应商的配置。',
 }
 
 export default zhMap;
