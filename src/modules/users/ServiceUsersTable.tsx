@@ -173,7 +173,7 @@ export default function ServiceUsersTable({
     <DataTable
       headingTarget={headingTarget}
       isLoading={isLoading}
-      text={"Service Users"}
+      text={zhMap["Service Users"] || "Service Users"}
       sorting={sorting}
       setSorting={setSorting}
       columns={ServiceUsersTableColumns}
@@ -201,7 +201,7 @@ export default function ServiceUsersTable({
               size={"large"}
             />
           }
-          title={"Create Service User"}
+          title={zhMap["Create Service User"] || "Create Service User"}
           description={
             "It looks like you don't have any service users. Get started by creating a service user."
           }

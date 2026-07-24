@@ -679,7 +679,7 @@ export const InviteUserButton = ({
         disabled={!permission.users.create}
       >
         <MailPlus size={16} />
-        {isCloud ? "Invite User" : "Add User"}
+        {isCloud ? zhMap["Invite User"] || "Invite User" : zhMap["Add User"] || "Add User"}
       </Button>
     </UserInviteModal>
   );

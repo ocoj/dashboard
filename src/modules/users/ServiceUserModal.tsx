@@ -21,6 +21,8 @@ import React, { useMemo, useState } from "react";
 import { useSWRConfig } from "swr";
 import { Role, User } from "@/interfaces/User";
 import { UserRoleSelector } from "@/modules/users/UserRoleSelector";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   children: React.ReactNode;
@@ -74,9 +76,9 @@ export function ServiceUserModalContent({ onSuccess }: Readonly<ModalProps>) {
     <ModalContent maxWidthClass={"max-w-lg"}>
       <ModalHeader
         icon={<IconSettings2 />}
-        title={"Create Service User"}
+        title={zhMap["Create Service User"] || "Create Service User"}
         description={
-          "Service users are non-login users that are not associated with any specific person."
+          zhMap["Service users are non-login users that are not associated with any specific person."] || "Service users are non-login users that are not associated with any specific person."
         }
         color={"netbird"}
       />
@@ -116,7 +118,7 @@ export function ServiceUserModalContent({ onSuccess }: Readonly<ModalProps>) {
               href={"https://docs.netbird.io/how-to/access-netbird-public-api"}
               target={"_blank"}
             >
-              Service Users
+              <TransText>Service Users</TransText>
               <ExternalLinkIcon size={12} />
             </InlineLink>
           </Paragraph>
@@ -133,7 +135,7 @@ export function ServiceUserModalContent({ onSuccess }: Readonly<ModalProps>) {
             data-testid={"create-service-user"}
           >
             <PlusCircle size={16} />
-            Create Service User
+            <TransText>Create Service User</TransText>
           </Button>
         </div>
       </ModalFooter>
