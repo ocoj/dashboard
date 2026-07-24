@@ -14,7 +14,6 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  DOCKERHUB_IMAGE: netbirdio/dashboard
   GHCR_IMAGE: ghcr.io/ocoj/dashboard
 
 permissions:
@@ -90,7 +89,6 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: |
-            ${{ env.DOCKERHUB_IMAGE }}
             ${{ env.GHCR_IMAGE }}
           flavor: |
             latest=false
@@ -101,12 +99,6 @@ jobs:
             type=raw,value=latest,enable=${{ startsWith(github.ref, 'refs/tags/') }}
             type=ref,event=pr
             type=sha
-
-      - name: Log in to Docker Hub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.NB_DOCKER_USER }}
-          password: ${{ secrets.NB_DOCKER_TOKEN }}
 
       - name: Log in to the GitHub Container registry
         uses: docker/login-action@v3
