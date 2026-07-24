@@ -2428,6 +2428,8 @@ const zhMap: Record<string, string> = {
   'Update Agent Policy': '更新 Agent 策略',
   'Update this policy.': '更新此策略。',
   'Update this provider\'s configuration.': '更新此供应商的配置。',
+  'Configure how NetBird clients receive update notifications. When enabled, users will be prompted to install the selected version. This requires at least NetBird': '配置 NetBird 客户端如何接收更新通知。启用后，将提示用户安装所选版本。这需要至少 NetBird',
+  'When enabled, updates are installed automatically in the background without user interaction.': '启用后，更新将在后台自动安装，无需用户交互。',
 }
 
 export default zhMap;
