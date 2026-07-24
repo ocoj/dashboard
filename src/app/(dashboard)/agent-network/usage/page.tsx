@@ -89,8 +89,7 @@ export default function UsageAndLogsPage() {
         </Breadcrumbs>
         <h1><TransText>Usage & Logs</TransText></h1>
         <Paragraph>
-          Per-request audit with real caller identity, cost attribution, and
-          budget controls.
+          <TransText>Per-request audit with real caller identity, cost attribution, and budget controls.</TransText>
         </Paragraph>
       </div>
 
@@ -110,11 +109,11 @@ export default function UsageAndLogsPage() {
                 <TabsList justify={"start"} className={"px-8"}>
                   <TabsTrigger value={TAB_USAGE}>
                     <LayoutDashboard size={16} />
-                    Usage
+                    <TransText>Usage</TransText>
                   </TabsTrigger>
                   <TabsTrigger value={TAB_ACCESS_LOGS}>
                     <ScrollText size={16} />
-                    Access Logs
+                    <TransText>Access Logs</TransText>
                   </TabsTrigger>
                 </TabsList>
 

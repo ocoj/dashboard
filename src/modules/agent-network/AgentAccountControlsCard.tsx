@@ -19,6 +19,8 @@ import { Clock, FileText, ScrollText } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import AgentNetworkIcon from "@/assets/icons/AgentNetworkIcon";
 import { useAIProviders } from "@/modules/agent-network/AIProvidersProvider";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 // Retention options for access-log rows. "0" keeps them indefinitely. Usage
 // records are retained independently and aren't affected by this.
@@ -87,19 +89,19 @@ export default function AgentAccountControlsCard() {
       <Breadcrumbs>
         <Breadcrumbs.Item
           href={"/agent-network/providers"}
-          label={"Agent Network"}
+          label={zhMap["Agent Network"] || "Agent Network"}
           icon={<AgentNetworkIcon size={16} />}
         />
         <Breadcrumbs.Item
           href={"/agent-network/configuration?tab=log-settings"}
-          label={"Log Collection"}
+          label={zhMap["Log Collection"] || "Log Collection"}
           icon={<ScrollText size={14} />}
           active
         />
       </Breadcrumbs>
 
       <div className={"flex items-start justify-between"}>
-        <h1>Log Collection</h1>
+        <h1><TransText>Log Collection</TransText></h1>
 
         <Button
           variant={"primary"}
@@ -107,7 +109,7 @@ export default function AgentAccountControlsCard() {
           onClick={onSave}
           data-testid={"save-account-controls"}
         >
-          Save Changes
+          <TransText>Save Changes</TransText>
         </Button>
       </div>
 
@@ -120,11 +122,11 @@ export default function AgentAccountControlsCard() {
             label={
               <>
                 <ScrollText size={15} />
-                Enable Log Collection
+                <TransText>Enable Log Collection</TransText>
               </>
             }
             helpText={
-              <>Persist access log entries for every agent-network request.</>
+              <><TransText>Persist access log entries for every agent-network request.</TransText></>
             }
           />
 
@@ -138,10 +140,10 @@ export default function AgentAccountControlsCard() {
           >
             <div className={"flex justify-between gap-10 mt-2"}>
               <div className={"w-full"}>
-                <Label>Retention Period</Label>
+                <Label><TransText>Retention Period</TransText></Label>
                 <HelpText className={"mt-1"}>
-                  How long access logs are kept before they&apos;re deleted.
-                  Usage history is kept separately.
+                  <TransText>How long access logs are kept before they&apos;re deleted.
+                  Usage history is kept separately.</TransText>
                 </HelpText>
               </div>
               <div className={"w-40 shrink-0"}>
@@ -156,13 +158,13 @@ export default function AgentAccountControlsCard() {
                   >
                     <div className={"flex items-center gap-3"}>
                       <Clock size={15} className={"text-nb-gray-300"} />
-                      <SelectValue placeholder={"Select retention..."} />
+                      <SelectValue placeholder={zhMap["Select retention..."] || "Select retention..."} />
                     </div>
                   </SelectTrigger>
                   <SelectContent>
                     {RETENTION_OPTIONS.map((o) => (
                       <SelectItem key={o.value} value={o.value}>
-                        {o.label}
+                        {zhMap[o.label] || o.label}
                       </SelectItem>
                     ))}
                   </SelectContent>
@@ -179,13 +181,13 @@ export default function AgentAccountControlsCard() {
           label={
             <>
               <FileText size={15} />
-              Enable Prompt Collection
+              <TransText>Enable Prompt Collection</TransText>
             </>
           }
           helpText={
             <>
-              Capture prompt and completion bodies. A policy guardrail must also
-              be enabled.
+              <TransText>Capture prompt and completion bodies. A policy guardrail must also
+              be enabled.</TransText>
             </>
           }
         />

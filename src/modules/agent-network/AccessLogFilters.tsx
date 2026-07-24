@@ -31,6 +31,7 @@ import { DateRange } from "react-day-picker";
 import { useGroups } from "@/contexts/GroupsProvider";
 import { useUsers } from "@/contexts/UsersProvider";
 import { useAIProviders } from "@/modules/agent-network/AIProvidersProvider";
+import zhMap from "@/i18n/zh-map";
 
 type FilterRow = Record<string, unknown>;
 
@@ -123,7 +124,7 @@ export function useAccessLogFilters() {
     () => [
       {
         id: "date",
-        label: "Date",
+        label: zhMap["Date"] || "Date",
         renderPicker: (p) => (
           <div className={"p-1"}>
             <DatePickerWithRange
@@ -136,7 +137,7 @@ export function useAccessLogFilters() {
       },
       {
         id: "user",
-        label: "User",
+        label: zhMap["User"] || "User",
         renderPicker: (p) => (
           <UsersPicker
             value={p.value as string | undefined}
@@ -150,7 +151,7 @@ export function useAccessLogFilters() {
       },
       {
         id: "group",
-        label: "Group",
+        label: zhMap["Group"] || "Group",
         renderPicker: (p) => (
           <GroupsPicker
             value={p.value as string[] | undefined}
@@ -163,7 +164,7 @@ export function useAccessLogFilters() {
       },
       {
         id: "provider",
-        label: "Provider",
+        label: zhMap["Provider"] || "Provider",
         renderPicker: (p) => (
           <CheckboxListPicker
             value={p.value as string[] | undefined}
@@ -181,7 +182,7 @@ export function useAccessLogFilters() {
       },
       {
         id: "model",
-        label: "Model",
+        label: zhMap["Model"] || "Model",
         renderPicker: (p) => (
           <CheckboxListPicker
             value={p.value as string[] | undefined}

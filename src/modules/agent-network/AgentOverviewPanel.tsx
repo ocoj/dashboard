@@ -30,6 +30,8 @@ import {
   buildUsageOverviewQuery,
 } from "@/modules/agent-network/agentAccessLogApi";
 import { useAgentNetworkMode } from "@/modules/agent-network/useAgentNetworkMode";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 // Register the chart.js building blocks we use. Idempotent, so it's safe
 // even when another agent-network chart already registered them.
@@ -120,12 +122,12 @@ function OverviewContent({
           <div className={"flex items-start justify-between gap-3"}>
             <div>
               <h3 className={"text-sm font-medium text-nb-gray-100"}>
-                {metric === "tokens" ? "Token usage" : "Cost"} by day
+                {metric === "tokens" ? <TransText>Token usage</TransText> : <TransText>Cost</TransText>} by day
               </h3>
               <p className={"text-xs text-nb-gray-400 leading-snug mt-0.5"}>
                 {metric === "tokens"
-                  ? "Input and output tokens per day."
-                  : "Estimated spend per day."}
+                  ? <TransText>Input and output tokens per day.</TransText>
+                  : <TransText>Estimated spend per day.</TransText>}
               </p>
             </div>
             <ButtonGroup>
@@ -134,14 +136,14 @@ function OverviewContent({
                 onClick={() => setMetric("tokens")}
                 className={"!h-[30px] !px-3 !py-0 text-xs"}
               >
-                Tokens
+                <TransText>Tokens</TransText>
               </ButtonGroup.Button>
               <ButtonGroup.Button
                 variant={metric === "cost" ? "tertiary" : "secondary"}
                 onClick={() => setMetric("cost")}
                 className={"!h-[30px] !px-3 !py-0 text-xs"}
               >
-                Cost
+                <TransText>Cost</TransText>
               </ButtonGroup.Button>
             </ButtonGroup>
           </div>
@@ -180,7 +182,7 @@ function DailyBreakdownTable({ daily }: { daily: DayBucket[] }) {
         id: "date",
         accessorKey: "key",
         header: ({ column }) => (
-          <DataTableHeader column={column}>Date</DataTableHeader>
+          <DataTableHeader column={column}><TransText>Date</TransText></DataTableHeader>
         ),
         cell: ({ row }) => (
           <span className={"text-nb-gray-200 px-3 py-2 whitespace-nowrap"}>
@@ -192,7 +194,7 @@ function DailyBreakdownTable({ daily }: { daily: DayBucket[] }) {
         id: "input",
         accessorKey: "input",
         header: ({ column }) => (
-          <DataTableHeader column={column}>Input Tokens</DataTableHeader>
+          <DataTableHeader column={column}><TransText>Input Tokens</TransText></DataTableHeader>
         ),
         cell: ({ row }) => <NumberCell value={row.original.input} />,
       },
@@ -200,7 +202,7 @@ function DailyBreakdownTable({ daily }: { daily: DayBucket[] }) {
         id: "output",
         accessorKey: "output",
         header: ({ column }) => (
-          <DataTableHeader column={column}>Output Tokens</DataTableHeader>
+          <DataTableHeader column={column}><TransText>Output Tokens</TransText></DataTableHeader>
         ),
         cell: ({ row }) => <NumberCell value={row.original.output} />,
       },
@@ -208,7 +210,7 @@ function DailyBreakdownTable({ daily }: { daily: DayBucket[] }) {
         id: "total",
         accessorFn: (row) => row.input + row.output,
         header: ({ column }) => (
-          <DataTableHeader column={column}>Total Tokens</DataTableHeader>
+          <DataTableHeader column={column}><TransText>Total Tokens</TransText></DataTableHeader>
         ),
         cell: ({ row }) => (
           <NumberCell value={row.original.input + row.original.output} />
@@ -218,7 +220,7 @@ function DailyBreakdownTable({ daily }: { daily: DayBucket[] }) {
         id: "cost",
         accessorKey: "cost",
         header: ({ column }) => (
-          <DataTableHeader column={column}>Cost</DataTableHeader>
+          <DataTableHeader column={column}><TransText>Cost</TransText></DataTableHeader>
         ),
         cell: ({ row }) => (
           <span
@@ -234,7 +236,7 @@ function DailyBreakdownTable({ daily }: { daily: DayBucket[] }) {
 
   return (
     <DataTable
-      text={"Days"}
+      text={zhMap["Days"] || "Days"}
       columns={columns}
       data={rows}
       sorting={sorting}
@@ -253,15 +255,15 @@ function DailyBreakdownTable({ daily }: { daily: DayBucket[] }) {
               size={"large"}
             />
           }
-          title={"No usage recorded yet"}
+          title={zhMap["No usage recorded yet"] || "No usage recorded yet"}
           description={
-            "Daily token and cost totals appear here as agents send requests through the providers you've connected."
+            zhMap["Daily token and cost totals appear here as agents send requests through the providers you've connected."] || "Daily token and cost totals appear here as agents send requests through the providers you've connected."
           }
           learnMore={
             <>
-              Learn more about
+              <TransText>Learn more about</TransText>
               <InlineLink href={"https://docs.netbird.io/"} target={"_blank"}>
-                Agent Network
+                {zhMap["Agent Network"] || "Agent Network"}
                 <ExternalLinkIcon size={12} />
               </InlineLink>
             </>
@@ -295,13 +297,13 @@ function ConsumptionByDayChart({
           labels,
           datasets: [
             {
-              label: "Input tokens",
+              label: zhMap["Input tokens"] || "Input tokens",
               data: daily.map((d) => d.input),
               backgroundColor: "rgba(99, 102, 241, 0.6)", // indigo-500
               stack: "tokens",
             },
             {
-              label: "Output tokens",
+              label: zhMap["Output tokens"] || "Output tokens",
               data: daily.map((d) => d.output),
               backgroundColor: "rgba(34, 197, 94, 0.6)", // green-500
               stack: "tokens",
@@ -312,7 +314,7 @@ function ConsumptionByDayChart({
           labels,
           datasets: [
             {
-              label: "Cost (USD)",
+              label: zhMap["Cost (USD)"] || "Cost (USD)",
               data: daily.map((d) => d.cost),
               backgroundColor: "rgba(246, 131, 48, 0.65)", // netbird orange
             },
@@ -375,7 +377,7 @@ function ChartEmptyState() {
       }
     >
       <ActivityIcon size={20} />
-      <span>No usage in the selected range</span>
+      <span><TransText>No usage in the selected range</TransText></span>
     </div>
   );
 }
