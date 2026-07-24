@@ -2339,6 +2339,17 @@ const zhMap: Record<string, string> = {
   'Connect your first provider to set up your agent network endpoint.': '连接您的第一个供应商以设置客户端网络端点。',
   'Global limits cap token usage and spend across every policy. Apply a limit account-wide, or scope it to specific groups or users.': '全局限制控制所有策略的 Token 用量和支出。可以账户级应用，或限定到特定组或用户。',
   'Route OpenAI, Anthropic, and other LLM APIs through NetBird to enforce access control, track token spend, and capture prompts.': '通过 NetBird 路由 OpenAI、Anthropic 及其他 LLM API，以实施访问控制、追踪 Token 消耗并捕获提示词。',
+  'Agent config': 'Agent 配置',
+  'API Base URL': 'API 基础 URL',
+  'Configure your agent': '配置您的 Agent',
+  'Configure Your Agent': '配置您的 Agent',
+  'Copy endpoint': '复制端点',
+  'Create your first policy': '创建您的第一个策略',
+  'Endpoint copied to clipboard': '端点已复制到剪贴板',
+  'Per-request audit with real caller identity, cost attribution, and budget controls.': '逐请求审计，包含真实调用者身份、成本归属和预算控制。',
+  'Policies connect user and agent groups to AI providers, with optional token and budget limits and guardrails for model access and prompt capture.': '策略将用户和 Agent 组连接到 AI 供应商，可选 Token 和预算限制，以及模型访问和提示捕获护栏。',
+  'Run in your shell:': '在 Shell 中运行：',
+  'Shell': 'Shell',
 }
 
 export default zhMap;

@@ -37,7 +37,7 @@ function EndpointBadge({ endpoint }: { endpoint: string }) {
             "text-[10px] text-nb-gray-400 uppercase tracking-wider font-medium inline-flex items-center gap-1.5"
           }
         >
-          API Base URL
+          <TransText>API Base URL</TransText>
           <HelpTooltip
             iconSize={11}
             content={
@@ -65,11 +65,11 @@ function EndpointBadge({ endpoint }: { endpoint: string }) {
         className={
           "inline-flex items-center gap-1.5 rounded-md border border-nb-gray-700 bg-nb-gray-800/60 px-2.5 py-1.5 text-[11px] font-medium text-nb-gray-200 hover:bg-nb-gray-800 hover:text-white transition-colors shrink-0"
         }
-        onClick={() => copy("Endpoint copied to clipboard")}
-        aria-label={"Copy endpoint"}
+        onClick={() => copy(zhMap["Endpoint copied to clipboard"] || "Endpoint copied to clipboard")}
+        aria-label={zhMap["Copy endpoint"] || "Copy endpoint"}
       >
         <Copy size={12} />
-        Copy
+        <TransText>Copy</TransText>
       </button>
       <button
         type={"button"}
@@ -77,10 +77,10 @@ function EndpointBadge({ endpoint }: { endpoint: string }) {
           "inline-flex items-center gap-1.5 rounded-md border border-nb-gray-700 bg-nb-gray-800/60 px-2.5 py-1.5 text-[11px] font-medium text-nb-gray-200 hover:bg-nb-gray-800 hover:text-white transition-colors shrink-0"
         }
         onClick={() => setConnectOpen(true)}
-        aria-label={"Agent config"}
+        aria-label={zhMap["Agent config"] || "Agent config"}
       >
         <Plug size={12} />
-        Agent Config
+        <TransText>Agent Config</TransText>
       </button>
       <AgentConnectModal
         open={connectOpen}
@@ -116,7 +116,7 @@ function EndpointHeader() {
               "text-[10px] text-nb-gray-500 uppercase tracking-wider font-medium inline-flex items-center gap-1.5"
             }
           >
-            API Base URL
+            <TransText>API Base URL</TransText>
             <span onClick={(e) => e.stopPropagation()}>
               <HelpTooltip
                 iconSize={11}
@@ -135,7 +135,7 @@ function EndpointHeader() {
             </span>
           </div>
           <span className={"text-xs text-nb-gray-400 leading-tight mt-0.5"}>
-            Connect your first provider to set up your agent network endpoint.
+            <TransText>Connect your first provider to set up your agent network endpoint.</TransText>
           </span>
         </div>
       </button>

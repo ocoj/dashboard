@@ -12,6 +12,8 @@ import { cn } from "@utils/helpers";
 import { ExternalLinkIcon, PlusCircle } from "lucide-react";
 import { usePathname } from "next/navigation";
 import React, { useState } from "react";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 import AIAccessIcon from "@/assets/icons/AgentNetworkIcon";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { AIProvider } from "@/modules/agent-network/data/mockData";
@@ -157,9 +159,9 @@ export default function AgentProvidersTable({
               size={"large"}
             />
           }
-          title={"Connect a provider"}
+          title={zhMap["Connect a provider"] || "Connect a provider"}
           description={
-            "Route OpenAI, Anthropic, and other LLM APIs through NetBird to enforce access control, track token spend, and capture prompts."
+            zhMap["Route OpenAI, Anthropic, and other LLM APIs through NetBird to enforce access control, track token spend, and capture prompts."] || "Route OpenAI, Anthropic, and other LLM APIs through NetBird to enforce access control, track token spend, and capture prompts."
           }
           button={
             <div className={"gap-x-4 flex items-center justify-center"}>
@@ -168,12 +170,12 @@ export default function AgentProvidersTable({
           }
           learnMore={
             <>
-              Learn more about
+              <TransText>Learn more about</TransText>
               <InlineLink
                 href={"https://docs.netbird.io/agent-network/providers"}
                 target={"_blank"}
               >
-                Agent Network Providers
+                <TransText>Agent Network Providers</TransText>
                 <ExternalLinkIcon size={12} />
               </InlineLink>
             </>
@@ -198,7 +200,7 @@ const AddProviderButton = () => {
   return (
     <Button variant={"primary"} onClick={openWizard}>
       <PlusCircle size={16} />
-      Connect Provider
+      <TransText>Connect Provider</TransText>
     </Button>
   );
 };
