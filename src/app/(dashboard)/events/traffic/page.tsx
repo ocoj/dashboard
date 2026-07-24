@@ -21,6 +21,7 @@ import { LockedFeatureInfoCard } from "@/modules/billing/locked-feature/LockedFe
 import { LockedFeatureOverlay } from "@/modules/billing/locked-feature/LockedFeatureOverlay";
 import { EventStreamingCard } from "@/modules/integrations/event-streaming/EventStreamingCard";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 export default function NetworkTrafficPage() {
   const account = useAccount();
@@ -44,42 +45,41 @@ export default function NetworkTrafficPage() {
       <div className="p-default py-6">
         <Breadcrumbs>
           <Breadcrumbs.Item
-            label="Activity"
+            label={zhMap["Activity"] || "Activity"}
             disabled
             icon={<ActivityIcon size={13} />}
           />
           <Breadcrumbs.Item
             href="/events/traffic"
-            label="Traffic Events"
+            label={zhMap["Traffic Events"] || "Traffic Events"}
             icon={<ArrowLeftRightIcon size={15} />}
           />
         </Breadcrumbs>
 
-        <h1 ref={headingRef}>Traffic Events</h1>
+        <h1 ref={headingRef}><TransText>Traffic Events</TransText></h1>
 
         <Paragraph>
-          Traffic events is an experimental feature. Functionality and behavior
-          may evolve, including changes to how data is collected or reported.
+          <TransText>Traffic events is an experimental feature. Functionality and behavior may evolve, including changes to how data is collected or reported.</TransText>
         </Paragraph>
 
         <Paragraph>
-          Learn more about{" "}
+          <TransText>Learn more about</TransText>{" "}
           <InlineLink href={TRAFFIC_EVENTS_DOC_LINK} target="_blank">
-            Traffic Events <ExternalLinkIcon size={12} />
+            {zhMap["Traffic Events"] || "Traffic Events"} <ExternalLinkIcon size={12} />
           </InlineLink>{" "}
-          in our documentation.
+          <TransText>in our documentation.</TransText>
         </Paragraph>
       </div>
 
       <RestrictedAccess
-        page="Traffic Events"
+        page={zhMap["Traffic Events"] || "Traffic Events"}
         hasAccess={permission.events.read}
       >
         <div className={"p-default"}>
           <LockedFeatureInfoCard
             className={"mb-6"}
             feature={"TRAFFIC_EVENTS"}
-            featureText={"Traffic Events"}
+            featureText={zhMap["Traffic Events"] || "Traffic Events"}
           />
         </div>
         <LockedFeatureOverlay feature={"TRAFFIC_EVENTS"}>
