@@ -53,6 +53,7 @@ import AccessControlNameCell from "@/modules/access-control/table/AccessControlN
 import AccessControlProtoPortsCell from "@/modules/access-control/table/AccessControlProtoPortsCell";
 import AccessControlSourcesCell from "@/modules/access-control/table/AccessControlSourcesCell";
 import { FirewallGPTModal } from "@/modules/firewall-gpt/FirewallGPTModal";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   policies?: Policy[];
@@ -569,7 +570,7 @@ export default function AccessControlTable({
               }
               learnMore={
                 <>
-                  "Learn more about"
+                  zhMap["Learn more about"] || "Learn more about"
                   <InlineLink
                     href={
                       "https://docs.netbird.io/how-to/manage-network-access"

@@ -84,6 +84,7 @@ import {
   SERVICE_MODES,
 } from "@/modules/reverse-proxy/ReverseProxyServiceModeSelector";
 import { ReverseProxyAccessControlRules } from "@/modules/reverse-proxy/ReverseProxyAccessControlRules";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -456,7 +457,7 @@ export default function ReverseProxyModal({
         description:
           "This service has no authentication or access control rules configured. It will be publicly accessible to everyone on the internet. Are you sure you want to continue?",
         type: "warning",
-        confirmText: reverseProxy ? "Save Changes" : "Add Service",
+        confirmText: reverseProxy ? zhMap["Save Changes"] || "Save Changes" : zhMap["Add Service"] || "Add Service",
         cancelText: "Cancel",
         maxWidthClass: "max-w-lg",
       });

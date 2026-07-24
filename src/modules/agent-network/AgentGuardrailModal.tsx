@@ -33,6 +33,7 @@ import {
 } from "@/modules/agent-network/data/mockData";
 import { useAIProviders } from "@/modules/agent-network/AIProvidersProvider";
 import { PostureCheckCard } from "@/modules/posture-checks/ui/PostureCheckCard";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -217,7 +218,7 @@ export default function AgentGuardrailModal({
                 onClick={handleSubmit}
                 disabled={!canSubmit}
               >
-                {guardrail ? "Save Changes" : "Create Guardrail"}
+                {guardrail ? zhMap["Save Changes"] || "Save Changes" : zhMap["Create Guardrail"] || "Create Guardrail"}
               </Button>
             )}
           </div>

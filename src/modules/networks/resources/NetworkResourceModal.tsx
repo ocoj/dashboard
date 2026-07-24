@@ -43,6 +43,7 @@ import useGroupHelper from "@/modules/groups/useGroupHelper";
 import NetworkResourceAccessControl from "@/modules/networks/resources/NetworkResourceAccessControl";
 import { ResourceSingleAddressInput } from "@/modules/networks/resources/ResourceSingleAddressInput";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open?: boolean;
@@ -162,7 +163,7 @@ export function ResourceModalContent({
       description:
         "Without access control policies, this resource will not be accessible by any peers. You can also create policies later. Are you sure you want to continue?",
       type: "warning",
-      confirmText: resource ? "Save Changes" : "Add Resource",
+      confirmText: resource ? zhMap["Save Changes"] || "Save Changes" : zhMap["Add Resource"] || "Add Resource",
       cancelText: "Cancel",
       maxWidthClass: "max-w-lg",
     });

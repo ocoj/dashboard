@@ -54,6 +54,7 @@ import ReverseProxyAddressInput, {
 } from "@/modules/reverse-proxy/targets/ReverseProxyAddressInput";
 import Separator from "@components/Separator";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 /** Get initial host value based on target, resource, or peer */
 function getInitialHost(
@@ -584,7 +585,7 @@ export default function ReverseProxyTargetModal({
                 disabled={!canAddTarget || errors.options}
               >
                 {currentTarget ? (
-                  "Save Changes"
+                  zhMap["Save Changes"] || "Save Changes"
                 ) : (
                   <>
                     <PlusCircle size={16} />

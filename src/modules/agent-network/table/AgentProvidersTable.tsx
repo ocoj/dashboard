@@ -145,7 +145,7 @@ export default function AgentProvidersTable({
       setSorting={setSorting}
       columns={columns}
       data={providers}
-      searchPlaceholder={"Search by name..."}
+      searchPlaceholder={zhMap["Search by name..."] || "Search by name..."}
       onRowClick={(row) => {
         setEditingProvider(row.original);
         setEditOpen(true);

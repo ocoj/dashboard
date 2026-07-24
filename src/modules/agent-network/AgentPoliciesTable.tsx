@@ -478,7 +478,7 @@ export default function AgentPoliciesTable({ headingTarget }: Readonly<Props>) {
         columns={columns}
         data={policies}
         initialSearch={initialSearch}
-        searchPlaceholder={"Search by name or description..."}
+        searchPlaceholder={zhMap["Search by name or description..."] || "Search by name or description..."}
         onRowClick={(row) => openEdit(row.original)}
         getStartedCard={
           <GetStartedTest

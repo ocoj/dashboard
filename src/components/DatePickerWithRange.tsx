@@ -10,6 +10,7 @@ import { debounce } from "lodash";
 import { Calendar as CalendarIcon } from "lucide-react";
 import React, { useMemo, useState } from "react";
 import { DateRange } from "react-day-picker";
+import zhMap from "@/i18n/zh-map";
 
 interface Props {
   value?: DateRange;
@@ -68,7 +69,7 @@ export function dateRangePresetLabel(
   if (!value?.from && !value?.to) return null;
   if (isEqualDateRange(value, defaultRanges.allTime)) return "All Time";
   if (isEqualDateRange(value, defaultRanges.lastMonth)) return "Last Month";
-  if (isEqualDateRange(value, defaultRanges.last14Days)) return "Last 14 Days";
+  if (isEqualDateRange(value, defaultRanges.last14Days)) return zhMap["Last 14 Days"] || "Last 14 Days";
   if (isEqualDateRange(value, defaultRanges.last2Days)) return "Last 2 Days";
   if (isEqualDateRange(value, defaultRanges.last7Days)) return "Last 7 Days";
   if (isEqualDateRange(value, defaultRanges.yesterday)) return "Yesterday";
@@ -173,7 +174,7 @@ export function DatePickerWithRange({
                 onClick={() => updateRangeAndClose(defaultRanges.lastMonth)}
               />
               <CalendarButton
-                label={"Last 14 Days"}
+                label={zhMap["Last 14 Days"] || "Last 14 Days"}
                 active={isActive.last14Days}
                 onClick={() => updateRangeAndClose(defaultRanges.last14Days)}
               />
