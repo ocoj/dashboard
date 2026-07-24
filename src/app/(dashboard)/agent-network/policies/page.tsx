@@ -38,8 +38,7 @@ export default function AgentNetworkPoliciesPage() {
         </Breadcrumbs>
         <h1><TransText>Policies</TransText></h1>
         <Paragraph>
-          Bind IdP groups to providers: Engineering gets Claude, Finance
-          doesn&apos;t. Enforce token limits, budgets, and guardrails.
+          <TransText>Bind IdP groups to providers: Engineering gets Claude, Finance doesn't. Enforce token limits, budgets, and guardrails.</TransText>
         </Paragraph>
       </div>
 

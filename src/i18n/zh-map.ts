@@ -2331,6 +2331,14 @@ const zhMap: Record<string, string> = {
   'Manage users and their permissions. Same-domain email users are added automatically on first sign-in.': '管理用户及其权限。同域邮箱用户首次登录时将自动添加。',
   'Use service users to create API tokens and avoid losing automated access.': '使用服务用户创建 API 令牌，避免失去自动化访问。',
   'User Role': '用户角色',
+  'Agent Network Providers': '客户端网络供应商',
+  'Bind IdP groups to providers: Engineering gets Claude, Finance doesn	. Enforce token limits, budgets, and guardrails.': '将 IdP 组绑定到供应商：工程团队使用 Claude，财务团队不可用。强制执行 Token 限制、预算和护栏。',
+  'Connect a provider': '连接供应商',
+  'Connect AI providers and gateways like LiteLLM, OpenAI, and Anthropic through one keyless endpoint, accessible only via NetBird\'s tunnel.': '通过一个无密钥端点连接 LiteLLM、OpenAI、Anthropic 等 AI 供应商，仅可通过 NetBird 隧道访问。',
+  'Connect Provider': '连接供应商',
+  'Connect your first provider to set up your agent network endpoint.': '连接您的第一个供应商以设置客户端网络端点。',
+  'Global limits cap token usage and spend across every policy. Apply a limit account-wide, or scope it to specific groups or users.': '全局限制控制所有策略的 Token 用量和支出。可以账户级应用，或限定到特定组或用户。',
+  'Route OpenAI, Anthropic, and other LLM APIs through NetBird to enforce access control, track token spend, and capture prompts.': '通过 NetBird 路由 OpenAI、Anthropic 及其他 LLM API，以实施访问控制、追踪 Token 消耗并捕获提示词。',
 }
 
 export default zhMap;
