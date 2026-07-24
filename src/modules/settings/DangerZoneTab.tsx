@@ -72,12 +72,12 @@ export default function DangerZoneTab({ account }: Props) {
         <Breadcrumbs>
           <Breadcrumbs.Item
             href={"/settings"}
-            label={"Settings"}
+            label={<TransText>Settings</TransText>}
             icon={<SettingsIcon size={13} />}
           />
           <Breadcrumbs.Item
             href={"/settings"}
-            label={"Danger Zone"}
+            label={<TransText>Danger Zone</TransText>}
             icon={<AlertOctagonIcon size={14} />}
             active
           />

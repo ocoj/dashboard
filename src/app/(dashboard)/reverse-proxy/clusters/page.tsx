@@ -13,6 +13,7 @@ import { usePermissions } from "@/contexts/PermissionsProvider";
 import { REVERSE_PROXY_CLUSTERS_DOCS_LINK } from "@/interfaces/ReverseProxy";
 import PageContainer from "@/layouts/PageContainer";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 const ClustersTable = lazy(
   () => import("@/modules/reverse-proxy/clusters/ClustersTable"),
@@ -30,12 +31,12 @@ export default function ReverseProxyClustersPage() {
         <Breadcrumbs>
           <Breadcrumbs.Item
             href={"/reverse-proxy/services"}
-            label={"Reverse Proxy"}
+            label={zhMap["Reverse Proxy"]}
             icon={<ReverseProxyIcon size={16} />}
           />
           <Breadcrumbs.Item
             href={"/reverse-proxy/clusters"}
-            label={"Clusters"}
+            label={zhMap["Clusters"]}
             active={true}
           />
         </Breadcrumbs>

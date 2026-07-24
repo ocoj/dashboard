@@ -19,6 +19,7 @@ import { useUsers } from "@/contexts/UsersProvider";
 import PageContainer from "@/layouts/PageContainer";
 import type { PeersTableKind } from "@/modules/peers/PeersTable";
 import { SetupModalContent } from "@/modules/setup-netbird-modal/SetupModal";
+import zhMap from "@/i18n/zh-map";
 
 const PeersTable = lazy(() => import("@/modules/peers/PeersTable"));
 
@@ -94,7 +95,7 @@ function PeersView() {
         <Breadcrumbs>
           <Breadcrumbs.Item
             href={"/peers"}
-            label={"Peers"}
+            label={zhMap["Peers"]}
             icon={<PeerIcon size={13} />}
             active
           />

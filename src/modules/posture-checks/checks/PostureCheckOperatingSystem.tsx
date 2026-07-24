@@ -231,7 +231,7 @@ const CheckContent = ({ value, onChange, disabled }: Props) => {
       <ModalFooter className={"items-center"}>
         <div className={"w-full"}>
           <Paragraph className={"text-sm mt-auto"}>
-            Learn more about
+            <TransText>Learn more about</TransText>
             <InlineLink
               href={
                 "https://docs.netbird.io/how-to/manage-posture-checks#operating-system-version-check"

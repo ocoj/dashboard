@@ -9,6 +9,7 @@ import { DNSRecordNameCell } from "@/modules/dns/zones/records/DNSRecordNameCell
 import { DNSRecordTimeToLiveCell } from "@/modules/dns/zones/records/DNSRecordTimeToLiveCell";
 import { DNSRecordTypeCell } from "@/modules/dns/zones/records/DNSRecordTypeCell";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   zone: DNSZone;
@@ -66,7 +67,7 @@ export default function DNSRecordsTable({ zone }: Props) {
         rowClassName={"last:pb-10"}
         className={"bg-nb-gray-960 py-2"}
         inset={true}
-        text={"DNS Records"}
+        text={zhMap["DNS Records"]}
         initialPageSize={zone?.records?.length}
         manualPagination={true}
         sorting={sorting}

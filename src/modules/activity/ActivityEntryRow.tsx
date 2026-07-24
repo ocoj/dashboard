@@ -12,6 +12,7 @@ import { User } from "@/interfaces/User";
 import ActivityDescription from "@/modules/activity/ActivityDescription";
 import ActivityTypeIcon from "@/modules/activity/ActivityTypeIcon";
 import { getColorFromCode } from "@/modules/activity/utils";
+import zhMap from "@/i18n/zh-map";
 
 export type ActionColor = "green" | "red" | "blue-darker" | "netbird";
 
@@ -106,7 +107,7 @@ export const ActivityEntryRow = ({ event }: { event: ActivityEvent }) => {
               {isExternal && (
                 <span className={"flex items-center"}>
                   <SmallBadge
-                    text={"External"}
+                    text={zhMap["External"]}
                     variant={"sky"}
                     className={
                       "text-[10px] py-[0.2rem] px-1.5 rounded-full leading-none -top-0"

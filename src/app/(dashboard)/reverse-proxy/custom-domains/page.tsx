@@ -14,6 +14,7 @@ import ReverseProxiesProvider from "@/contexts/ReverseProxiesProvider";
 import { REVERSE_PROXY_CUSTOM_DOMAINS_DOCS_LINK } from "@/interfaces/ReverseProxy";
 import PageContainer from "@/layouts/PageContainer";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 const CustomDomainsTable = lazy(
   () => import("@/modules/reverse-proxy/domain/CustomDomainsTable"),
@@ -31,12 +32,12 @@ export default function ReverseProxyCustomDomainsPage() {
         <Breadcrumbs>
           <Breadcrumbs.Item
             href={"/reverse-proxy/services"}
-            label={"Reverse Proxy"}
+            label={zhMap["Reverse Proxy"]}
             icon={<ReverseProxyIcon size={16} />}
           />
           <Breadcrumbs.Item
             href={"/reverse-proxy/custom-domains"}
-            label={"Custom Domains"}
+            label={zhMap["Custom Domains"]}
             active={true}
           />
         </Breadcrumbs>

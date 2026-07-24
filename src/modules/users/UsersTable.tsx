@@ -119,7 +119,7 @@ export const UsersTableColumns: ColumnDef<User>[] = [
     cell: ({ row }) => (
       <LastTimeRow
         date={dayjs(row.original.last_login).toDate()}
-        text={"Last login on"}
+        text={zhMap["Last login on"]}
       />
     ),
   },
@@ -331,7 +331,7 @@ export default function UsersTable({
       headingTarget={headingTarget}
       isLoading={isLoading}
       keepStateInLocalStorage={keepStateInLocalStorage}
-      text={"Users"}
+      text={zhMap["Users"]}
       sorting={sorting}
       setSorting={setSorting}
       columns={columns}

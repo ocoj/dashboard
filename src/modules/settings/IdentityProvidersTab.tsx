@@ -194,12 +194,12 @@ export default function IdentityProvidersTab() {
         <Breadcrumbs>
           <Breadcrumbs.Item
             href={"/settings"}
-            label={"Settings"}
+            label={<TransText>Settings</TransText>}
             icon={<SettingsIcon size={13} />}
           />
           <Breadcrumbs.Item
             href={"/settings?tab=identity-providers"}
-            label={"Identity Providers"}
+            label={<TransText>Identity Providers</TransText>}
             icon={<FingerprintIcon size={14} />}
             active
           />
@@ -223,7 +223,7 @@ export default function IdentityProvidersTab() {
 
       <DataTable
         isLoading={isLoading}
-        text={"Identity Providers"}
+        text={zhMap["Identity Providers"]}
         sorting={sorting}
         setSorting={setSorting}
         columns={columns}

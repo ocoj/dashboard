@@ -43,12 +43,12 @@ export default function SetupKeysTab() {
         <Breadcrumbs>
           <Breadcrumbs.Item
             href={"/settings"}
-            label={"Settings"}
+            label={<TransText>Settings</TransText>}
             icon={<SettingsIcon size={13} />}
           />
           <Breadcrumbs.Item
             href={"/settings?tab=setup-keys"}
-            label={"Setup Keys"}
+            label={<TransText>Setup Keys</TransText>}
             icon={<KeyRound size={14} />}
             active
           />

@@ -92,7 +92,7 @@ const PeersTableColumns: ColumnDef<Peer>[] = [
         <Checkbox
           checked={table.getIsAllPageRowsSelected()}
           onCheckedChange={(value) => table.toggleAllRowsSelected(!!value)}
-          aria-label="Select all"
+          aria-label={zhMap["Select all"]}
         />
       </div>
     ),
@@ -102,7 +102,7 @@ const PeersTableColumns: ColumnDef<Peer>[] = [
           checked={row.getIsSelected()}
           variant={"tableCell"}
           onCheckedChange={(value) => row.toggleSelected(!!value)}
-          aria-label="Select row"
+          aria-label={zhMap["Select row"]}
         />
       </div>
     ),
@@ -487,7 +487,7 @@ export default function PeersTable({
         rowSelection={selectedRows}
         setRowSelection={setSelectedRows}
         useRowId={true}
-        text={"Peers"}
+        text={zhMap["Peers"]}
         sorting={sorting}
         setSorting={setSorting}
         initialPageSize={25}

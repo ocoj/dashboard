@@ -564,7 +564,7 @@ export default function ReverseProxyTargetModal({
           <ModalFooter className={"items-center"}>
             <div className={"w-full"}>
               <Paragraph className={"text-sm mt-auto"}>
-                Learn more about
+                <TransText>Learn more about</TransText>
                 <InlineLink
                   href={REVERSE_PROXY_TARGETS_DOCS_LINK}
                   target={"_blank"}

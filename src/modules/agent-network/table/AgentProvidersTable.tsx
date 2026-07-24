@@ -140,7 +140,7 @@ export default function AgentProvidersTable({
       <DataTable
       headingTarget={headingTarget}
       isLoading={isLoading}
-      text={"Providers"}
+      text={zhMap["Providers"]}
       sorting={sorting}
       setSorting={setSorting}
       columns={columns}

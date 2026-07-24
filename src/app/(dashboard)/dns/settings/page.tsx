@@ -25,6 +25,7 @@ import PageContainer from "@/layouts/PageContainer";
 import useGroupHelper from "@/modules/groups/useGroupHelper";
 import { useGroupIdsToGroups } from "@/modules/groups/useGroupIdsToGroups";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 export default function NameServerSettings() {
   const { permission } = usePermissions();
@@ -42,12 +43,12 @@ export default function NameServerSettings() {
         <Breadcrumbs>
           <Breadcrumbs.Item
             href={"/dns"}
-            label={"DNS"}
+            label={zhMap["DNS"]}
             icon={<DNSIcon size={13} />}
           />
           <Breadcrumbs.Item
             href={"/dns/settings"}
-            label={"DNS Settings"}
+            label={zhMap["DNS Settings"]}
             active
             icon={<IconSettings2 size={15} />}
           />

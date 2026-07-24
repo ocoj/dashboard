@@ -5,6 +5,7 @@ import ModalHeader from "@components/modal/ModalHeader";
 import React, { useState } from "react";
 import { TransText } from "@/i18n/trans-text";
 import { GradientFadedBackground } from "@components/ui/GradientFadedBackground";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -65,7 +66,7 @@ export default function AuthPasswordModal({
                 setPassword(e.target.value);
               }
             }}
-            placeholder="Enter password..."
+            placeholder={zhMap["Enter password..."]}
             autoComplete="off"
             data-1p-ignore
             data-lpignore="true"

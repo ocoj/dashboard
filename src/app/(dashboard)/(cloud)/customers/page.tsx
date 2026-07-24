@@ -16,6 +16,7 @@ import { DistributorCustomer } from "@/cloud/distributor/interfaces/Distributor"
 import PageContainer from "@/layouts/PageContainer";
 import { RestrictedAccess } from "@components/ui/RestrictedAccess";
 import { usePermissions } from "@/contexts/PermissionsProvider";
+import zhMap from "@/i18n/zh-map";
 
 export default function CustomersPage() {
   const { isDistributorInfoLoading } = useDistributor();
@@ -37,7 +38,7 @@ const CustomersPageContent = () => {
         <Breadcrumbs>
           <Breadcrumbs.Item
             href={"/customers"}
-            label={"Customers"}
+            label={zhMap["Customers"]}
             icon={<MSPIcon size={15} />}
           />
         </Breadcrumbs>

@@ -92,7 +92,7 @@ export const SetupKeysTableColumns: ColumnDef<SetupKey>[] = [
     },
     sortingFn: "datetime",
     cell: ({ row }) => (
-      <LastTimeRow date={row.original.last_used} text={"Last used on"} />
+      <LastTimeRow date={row.original.last_used} text={zhMap["Last used on"]} />
     ),
   },
   {
@@ -271,7 +271,7 @@ export default function SetupKeysTable({
         inset={false}
         minimal={isGroupPage}
         keepStateInLocalStorage={!isGroupPage}
-        text={"Setup Keys"}
+        text={zhMap["Setup Keys"]}
         sorting={sorting}
         setSorting={setSorting}
         initialPageSize={25}

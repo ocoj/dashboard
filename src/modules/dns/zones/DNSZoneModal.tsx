@@ -24,6 +24,7 @@ import useGroupHelper from "@/modules/groups/useGroupHelper";
 import { Group } from "@/interfaces/Group";
 import DNSZoneIcon from "@/assets/icons/DNSZoneIcon";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   children?: React.ReactNode;
@@ -183,6 +184,7 @@ export function DNSZoneModalContent({
             </>
           }
           helpText={
+            zhMap["E.g., 'server.company.internal' will be accessible with 'server'"] ||
             "E.g., 'server.company.internal' will be accessible with 'server'"
           }
         />
@@ -197,7 +199,7 @@ export function DNSZoneModalContent({
               <TransText>Enable DNS Zone</TransText>
             </>
           }
-          helpText={"Use this switch to enable or disable the dns zone."}
+          helpText={zhMap["Use this switch to enable or disable the dns zone."] || "Use this switch to enable or disable the dns zone."}
         />
       </div>
 

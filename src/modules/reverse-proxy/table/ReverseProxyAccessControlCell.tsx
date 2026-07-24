@@ -22,6 +22,7 @@ import { useCountries } from "@/contexts/CountryProvider";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { useReverseProxies } from "@/contexts/ReverseProxiesProvider";
 import { CrowdSecMode, ReverseProxy } from "@/interfaces/ReverseProxy";
+import zhMap from "@/i18n/zh-map";
 
 type RuleEntry = {
   key: string;
@@ -230,7 +231,7 @@ export default function ReverseProxyAccessControlCell({
             openModal({ proxy: reverseProxy, initialTab: "access-control" });
           }}
           disabled={!permission?.services?.update}
-          aria-label="Configure access control"
+          aria-label={zhMap["Configure access control"]}
         >
           <Settings size={12} />
         </Button>

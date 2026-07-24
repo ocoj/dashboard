@@ -8,6 +8,7 @@ import {
 } from "@components/DropdownMenu";
 import { Modal } from "@components/modal/Modal";
 import SquareIcon from "@components/SquareIcon";
+import { TransText } from "@/i18n/trans-text";
 import { BugPlay, ChevronDown } from "lucide-react";
 import React, { useState } from "react";
 import { usePeer } from "@/contexts/PeerProvider";
@@ -39,7 +40,7 @@ export const RemoteJobDropdownButton = () => {
           }}
         >
           <Button variant={"primary"} disabled={disabled}>
-            Run Remote Job
+            <TransText>Run Remote Job</TransText>
             <ChevronDown size={16} />
           </Button>
         </DropdownMenuTrigger>

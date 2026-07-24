@@ -14,6 +14,7 @@ import { usePermissions } from "@/contexts/PermissionsProvider";
 import { NameserverGroup } from "@/interfaces/Nameserver";
 import PageContainer from "@/layouts/PageContainer";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 const NameserverGroupTable = lazy(
   () => import("@/modules/dns/nameservers/table/NameserverGroupTable"),
@@ -34,12 +35,12 @@ export default function NameServers() {
         <Breadcrumbs>
           <Breadcrumbs.Item
             href={"/dns/nameservers"}
-            label={"DNS"}
+            label={zhMap["DNS"]}
             icon={<DNSIcon size={13} />}
           />
           <Breadcrumbs.Item
             href={"/dns/nameservers"}
-            label={"Nameservers"}
+            label={zhMap["Nameservers"]}
             active
             icon={<DNSIcon size={13} />}
           />

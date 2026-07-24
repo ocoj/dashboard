@@ -107,7 +107,7 @@ export function TableFiltersButton<TData>({
                 <ChevronLeftIcon size={16} />
               </button>
               <span className={"text-sm font-medium text-nb-gray-100"}>
-                {activeFilter.label}
+                <TransText>{activeFilter.label}</TransText>
               </span>
             </div>
             <div className={"p-2"}>
@@ -138,7 +138,9 @@ export function TableFiltersButton<TData>({
                   }
                   onClick={() => setActiveFilterId(f.id)}
                 >
-                  <span className={"flex-1"}>{f.label}</span>
+                  <span className={"flex-1"}>
+                    <TransText>{f.label}</TransText>
+                  </span>
                   {chip && (
                     <span
                       className={
@@ -223,7 +225,9 @@ function FilterChip<TData>({ def, text, table }: FilterChipProps<TData>) {
               "hover:bg-nb-gray-900 transition-colors",
             )}
           >
-            <span className={"text-nb-gray-400"}>{def.label}:</span>
+            <span className={"text-nb-gray-400"}>
+              <TransText>{def.label}</TransText>:
+            </span>
             <span className={"font-medium"}>{text}</span>
           </button>
         </PopoverTrigger>
@@ -255,7 +259,7 @@ function FilterChip<TData>({ def, text, table }: FilterChipProps<TData>) {
             }
           >
             <span className={"text-sm font-medium text-nb-gray-100"}>
-              {def.label}
+              <TransText>{def.label}</TransText>
             </span>
           </div>
           <div className={"p-2"}>

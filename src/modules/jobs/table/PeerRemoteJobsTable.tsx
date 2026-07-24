@@ -17,6 +17,7 @@ import JobStatusCell from "@/modules/jobs/table/JobStatusCell";
 import { JobTypeCell } from "@/modules/jobs/table/JobTypeCell";
 import { RemoteJobDropdownButton } from "@/modules/peer/RemoteJobDropdownButton";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   jobs?: Job[];
@@ -29,36 +30,36 @@ const PeerRemoteJobsColumns: ColumnDef<Job>[] = [
   {
     accessorKey: "Type",
     header: ({ column }) => (
-      <DataTableHeader column={column}>Type</DataTableHeader>
+      <DataTableHeader column={column}><TransText>Type</TransText></DataTableHeader>
     ),
     cell: ({ row }) => <JobTypeCell job={row.original} />,
   },
   {
     accessorKey: "CreatedAt",
     header: ({ column }) => (
-      <DataTableHeader column={column}>Created</DataTableHeader>
+      <DataTableHeader column={column}><TransText>Created</TransText></DataTableHeader>
     ),
     sortingFn: "datetime",
     cell: ({ row }) => (
-      <LastTimeRow date={row.original.created_at} text="Created at" />
+      <LastTimeRow date={row.original.created_at} text={zhMap["Created at"] || "Created at"} />
     ),
   },
   {
     accessorKey: "Status",
     header: ({ column }) => (
-      <DataTableHeader column={column}>Status</DataTableHeader>
+      <DataTableHeader column={column}><TransText>Status</TransText></DataTableHeader>
     ),
     cell: ({ row }) => <JobStatusCell job={row.original} />,
   },
   {
     accessorKey: "CompletedAt",
     header: ({ column }) => (
-      <DataTableHeader column={column}>Completed</DataTableHeader>
+      <DataTableHeader column={column}><TransText>Completed</TransText></DataTableHeader>
     ),
     sortingFn: "datetime",
     cell: ({ row }) =>
       row.original.completed_at ? (
-        <LastTimeRow date={row.original.completed_at} text="Completed at" />
+        <LastTimeRow date={row.original.completed_at} text={zhMap["Completed at"] || "Completed at"} />
       ) : (
         <EmptyRow />
       ),
@@ -66,7 +67,7 @@ const PeerRemoteJobsColumns: ColumnDef<Job>[] = [
   {
     accessorKey: "Parameters",
     header: ({ column }) => (
-      <DataTableHeader column={column}>Parameters</DataTableHeader>
+      <DataTableHeader column={column}><TransText>Parameters</TransText></DataTableHeader>
     ),
     cell: ({ row }) => (
       <JobParametersCell parameters={row.original.workload.parameters} />
@@ -75,7 +76,7 @@ const PeerRemoteJobsColumns: ColumnDef<Job>[] = [
   {
     id: "ResultOrReason",
     header: ({ column }) => (
-      <DataTableHeader column={column}>Output</DataTableHeader>
+      <DataTableHeader column={column}><TransText>Output</TransText></DataTableHeader>
     ),
     cell: ({ row }) => <JobOutputCell job={row.original} />,
   },
@@ -110,17 +111,17 @@ export default function PeerRemoteJobsTable({
       showSearchAndFilters={true}
       inset={false}
       tableClassName="mt-0"
-      text="Jobs"
+      text={zhMap["Jobs"] || "Jobs"}
       columns={PeerRemoteJobsColumns}
       keepStateInLocalStorage={false}
       data={jobs}
-      searchPlaceholder="Search by type, status, or parameters..."
+      searchPlaceholder={zhMap["Search by type, status, or parameters..."] || "Search by type, status, or parameters..."}
       isLoading={isLoading}
       getStartedCard={
         <NoResults
           className="py-4"
-          title={"This peer has no remote jobs"}
-          description={"Create a debug bundle or trigger other remote jobs to see them listed here."}
+          title={zhMap["This peer has no remote jobs"] || "This peer has no remote jobs"}
+          description={zhMap["Create a debug bundle or trigger other remote jobs to see them listed here."] || "Create a debug bundle or trigger other remote jobs to see them listed here."}
           icon={<ClipboardList size={20} className="text-nb-gray-300" />}
         />
       }

@@ -22,6 +22,7 @@ import UserNameCell from "@/modules/users/table-cells/UserNameCell";
 import UserRoleCell from "@/modules/users/table-cells/UserRoleCell";
 import UserStatusCell from "@/modules/users/table-cells/UserStatusCell";
 import { InviteUserButton } from "@/modules/users/UsersTable";
+import zhMap from "@/i18n/zh-map";
 
 const UsersTable = lazy(() => import("@/modules/users/UsersTable"));
 
@@ -33,7 +34,7 @@ export const GroupUsersTableColumns: ColumnDef<User>[] = [
         <Checkbox
           checked={table.getIsAllPageRowsSelected()}
           onCheckedChange={(value) => table.toggleAllRowsSelected(!!value)}
-          aria-label="Select all"
+          aria-label={zhMap["Select all"]}
         />
       </div>
     ),
@@ -43,7 +44,7 @@ export const GroupUsersTableColumns: ColumnDef<User>[] = [
           checked={row.getIsSelected()}
           variant={"tableCell"}
           onCheckedChange={(value) => row.toggleSelected(!!value)}
-          aria-label="Select row"
+          aria-label={zhMap["Select row"]}
         />
       </div>
     ),
@@ -53,7 +54,7 @@ export const GroupUsersTableColumns: ColumnDef<User>[] = [
   {
     accessorKey: "name",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>"Name"</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Name</TransText></DataTableHeader>;
     },
     accessorFn: (row) => row.name + " " + row.email,
     sortingFn: "text",
@@ -66,7 +67,7 @@ export const GroupUsersTableColumns: ColumnDef<User>[] = [
   {
     accessorKey: "role",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>"Role"</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Role</TransText></DataTableHeader>;
     },
     sortingFn: "text",
     cell: ({ row }) => <UserRoleCell user={row.original} />,
@@ -74,7 +75,7 @@ export const GroupUsersTableColumns: ColumnDef<User>[] = [
   {
     accessorKey: "status",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>"Status"</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Status</TransText></DataTableHeader>;
     },
     sortingFn: "text",
     cell: ({ row }) => <UserStatusCell user={row.original} />,
@@ -82,7 +83,7 @@ export const GroupUsersTableColumns: ColumnDef<User>[] = [
   {
     accessorKey: "is_blocked",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>"Block User"</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Block User</TransText></DataTableHeader>;
     },
     sortingFn: "text",
     cell: ({ row }) => <UserBlockCell user={row.original} />,
@@ -90,13 +91,13 @@ export const GroupUsersTableColumns: ColumnDef<User>[] = [
   {
     accessorKey: "last_login",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>"Last Login"</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Last Login</TransText></DataTableHeader>;
     },
     sortingFn: "text",
     cell: ({ row }) => (
       <LastTimeRow
         date={dayjs(row.original.last_login).toDate()}
-        text={"Last login on"}
+        text={zhMap["Last login on"]}
       />
     ),
   },

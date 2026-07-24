@@ -209,7 +209,7 @@ export default function DNSZonesTable({
     <DataTable
       headingTarget={headingTarget}
       isLoading={isLoading}
-      text={"DNS Zones"}
+      text={zhMap["DNS Zones"]}
       sorting={sorting}
       setSorting={setSorting}
       columns={DNSZonesColumns}
@@ -278,7 +278,7 @@ export default function DNSZonesTable({
             }
             learnMore={
               <>
-                Learn more about
+                <TransText>Learn more about</TransText>
                 <InlineLink href={DNS_ZONE_DOCS_LINK} target={"_blank"}>
                   DNS Zones
                   <ExternalLinkIcon size={12} />

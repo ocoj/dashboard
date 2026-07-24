@@ -32,6 +32,7 @@ import {
 } from "@/interfaces/DNS";
 import { useDNSZones } from "@/modules/dns/zones/DNSZonesProvider";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   children?: React.ReactNode;
@@ -199,7 +200,7 @@ export function DNSRecordModalContent({
                 className="w-full pl-4"
                 data-testid={"dns-record-type-select"}
               >
-                <SelectValue placeholder="Select type..." />
+                <SelectValue placeholder={zhMap["Select type..."]} />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="A">A</SelectItem>
@@ -299,7 +300,7 @@ export function DNSRecordModalContent({
                 >
                   <div className={"flex items-center gap-2"}>
                     <ClockIcon size={14} className={"text-nb-gray-300"} />
-                    <SelectValue placeholder="Select TTL..." />
+                    <SelectValue placeholder={zhMap["Select TTL..."]} />
                   </div>
                 </SelectTrigger>
                 <SelectContent>

@@ -72,7 +72,7 @@ export const GroupsTableColumns: ColumnDef<GroupUsage>[] = [
         groupName={row.original.name}
         href={`/group?id=${row.original.id}&tab=users`}
         hidden={row.original.name === "All"}
-        text={"User(s)"}
+        text={zhMap["User(s)"]}
         count={row.original.users_count}
       />
     ),
@@ -95,7 +95,7 @@ export const GroupsTableColumns: ColumnDef<GroupUsage>[] = [
         groupName={row.original.name}
         href={`/group?id=${row.original.id}&tab=peers`}
         hidden={row.original.name === "All"}
-        text={"Peer(s)"}
+        text={zhMap["Peer(s)"]}
         count={row.original.peers_count}
       />
     ),
@@ -141,7 +141,7 @@ export const GroupsTableColumns: ColumnDef<GroupUsage>[] = [
         icon={<Layers3Icon size={10} />}
         groupName={row.original.name}
         href={`/group?id=${row.original.id}&tab=resources`}
-        text={"Network Resource(s)"}
+        text={zhMap["Network Resource(s)"]}
         count={row.original.resources_count}
       />
     ),
@@ -163,7 +163,7 @@ export const GroupsTableColumns: ColumnDef<GroupUsage>[] = [
         icon={<NetworkRoutesIcon size={10} />}
         groupName={row.original.name}
         href={`/group?id=${row.original.id}&tab=network-routes`}
-        text={"Network Route(s)"}
+        text={zhMap["Network Route(s)"]}
         count={row.original.routes_count}
       />
     ),
@@ -185,7 +185,7 @@ export const GroupsTableColumns: ColumnDef<GroupUsage>[] = [
         icon={<DNSIcon size={10} />}
         groupName={row.original.name}
         href={`/group?id=${row.original.id}&tab=nameservers`}
-        text={"Nameserver(s)"}
+        text={zhMap["Nameserver(s)"]}
         count={row.original.nameservers_count}
       />
     ),
@@ -207,7 +207,7 @@ export const GroupsTableColumns: ColumnDef<GroupUsage>[] = [
         icon={<DNSZoneIcon size={14} />}
         groupName={row.original.name}
         href={`/group?id=${row.original.id}&tab=zones`}
-        text={"Zone(s)"}
+        text={zhMap["Zone(s)"]}
         count={row.original.zones_count}
       />
     ),
@@ -231,7 +231,7 @@ export const GroupsTableColumns: ColumnDef<GroupUsage>[] = [
         groupName={row.original.name}
         href={`/group?id=${row.original.id}&tab=setup-keys`}
         hidden={row.original.name === "All"}
-        text={"Setup Key(s)"}
+        text={zhMap["Setup Key(s)"]}
         count={row.original.setup_keys_count}
       />
     ),
@@ -326,7 +326,7 @@ export default function GroupsTable({ headingTarget }: Readonly<Props>) {
   return (
     <DataTable
       headingTarget={headingTarget}
-      text={"Groups"}
+      text={zhMap["Groups"]}
       sorting={sorting}
       isLoading={isLoading}
       setSorting={setSorting}

@@ -150,7 +150,7 @@ export default function NetworksTable({
           <DataTable
             headingTarget={headingTarget}
             isLoading={isLoading}
-            text={"Networks"}
+            text={zhMap["Networks"]}
             sorting={sorting}
             setSorting={setSorting}
             columns={NetworkTableColumns}
@@ -191,7 +191,7 @@ export default function NetworksTable({
                 }
                 learnMore={
                   <>
-                    Learn more about
+                    <TransText>Learn more about</TransText>
                     <InlineLink
                       href={"https://docs.netbird.io/how-to/networks"}
                       target={"_blank"}
@@ -254,7 +254,7 @@ const AddNetworkButton = () => {
       data-testid={"add-network"}
     >
       <PlusCircle size={16} />
-      "Add Network"
+      <TransText>Add Network</TransText>
     </Button>
   );
 };

@@ -7,6 +7,7 @@ import {
   DropdownMenuTrigger,
 } from "@components/DropdownMenu";
 import { Modal } from "@components/modal/Modal";
+import { TransText } from "@/i18n/trans-text";
 import useFetchApi from "@utils/api";
 import { ChevronDown, PlusCircle } from "lucide-react";
 import React, { memo, useState } from "react";
@@ -54,19 +55,19 @@ function AddPeerDropdown() {
             data-testid={"add-peer-button"}
           >
             <PlusCircle size={16} />
-            Add Peer
+            <TransText>Add Peer</TransText>
             <ChevronDown size={16} />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align={"end"}>
           <DropdownMenuItem onClick={() => openMode("user")}>
-            User Device
+            <TransText>User Device</TransText>
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => openMode("server")}>
-            Server
+            <TransText>Server</TransText>
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => openMode("agent")}>
-            Agent
+            <TransText>Agent</TransText>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

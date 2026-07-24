@@ -20,6 +20,7 @@ import {
   LOCALE_LABELS,
 } from "@/i18n/locale-context";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 /**
  * Language switcher for the header.  Uses the lightweight {@link TransText}
@@ -35,7 +36,7 @@ export default function LocaleSwitcher() {
         size={"xs"}
         variant={"default-outline"}
         className={cn("!rounded-full h-[38px] w-[38px] !p-0")}
-        aria-label="Select Language"
+        aria-label={zhMap["Select Language"]}
         disabled
       >
         <GlobeIcon size={18} />
@@ -53,7 +54,7 @@ export default function LocaleSwitcher() {
             "!rounded-full h-[38px] w-[38px] !p-0",
             open && "text-white",
           )}
-          aria-label="Select Language"
+          aria-label={zhMap["Select Language"]}
         >
           <GlobeIcon size={18} />
         </Button>

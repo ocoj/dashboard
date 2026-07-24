@@ -472,7 +472,7 @@ export default function AgentPoliciesTable({ headingTarget }: Readonly<Props>) {
         key={`policies-${initialSearch ?? ""}`}
         headingTarget={headingTarget}
         isLoading={isLoading}
-        text={"Policies"}
+        text={zhMap["Policies"]}
         sorting={sorting}
         setSorting={setSorting}
         columns={columns}

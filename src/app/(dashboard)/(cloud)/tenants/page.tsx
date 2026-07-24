@@ -19,6 +19,7 @@ import { usePermissions } from "@/contexts/PermissionsProvider";
 import { useLoggedInUser } from "@/contexts/UsersProvider";
 import { User } from "@/interfaces/User";
 import PageContainer from "@/layouts/PageContainer";
+import zhMap from "@/i18n/zh-map";
 
 export default function TenantsPage() {
   const { isActive, isMSPInMSPContext, isMspInfoLoading } = useMSP();
@@ -55,7 +56,7 @@ const TenantsPageContent = () => {
         <Breadcrumbs>
           <Breadcrumbs.Item
             href={"/tenants"}
-            label={"Tenants"}
+            label={zhMap["Tenants"]}
             icon={<MSPIcon size={15} />}
           />
         </Breadcrumbs>

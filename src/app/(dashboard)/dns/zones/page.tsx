@@ -16,6 +16,7 @@ import PageContainer from "@/layouts/PageContainer";
 import { DNSZonesProvider } from "@/modules/dns/zones/DNSZonesProvider";
 import DNSZoneIcon from "@/assets/icons/DNSZoneIcon";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 const DNSZonesTable = lazy(
   () => import("@/modules/dns/zones/table/DNSZonesTable"),
@@ -33,10 +34,10 @@ export default function DNSZonePage() {
     <PageContainer>
       <div className={"p-default py-6"}>
         <Breadcrumbs>
-          <Breadcrumbs.Item label={"DNS"} icon={<DNSIcon size={13} />} />
+          <Breadcrumbs.Item label={zhMap["DNS"]} icon={<DNSIcon size={13} />} />
           <Breadcrumbs.Item
             href={"/dns/zones"}
-            label={"Zones"}
+            label={zhMap["Zones"]}
             active
             icon={<DNSZoneIcon size={16} />}
           />

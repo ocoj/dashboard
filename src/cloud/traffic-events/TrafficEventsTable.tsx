@@ -43,6 +43,7 @@ import { useServerPagination } from "@/contexts/ServerPaginationProvider";
 import { useUsers } from "@/contexts/UsersProvider";
 import { NetworkResource } from "@/interfaces/Network";
 import zhMap from "@/i18n/zh-map";
+import { TransText } from "@/i18n/trans-text";
 
 export const getTrafficEventTypeText = (
   t: TrafficEventType,
@@ -437,22 +438,22 @@ export default function TrafficEventsTable({
       }
       title={zhMap["Traffic Events"] || "Traffic Events"}
       description={
-        "Traffic Events help you understand the network activity in your organization. " +
-        "You can see which machines are connecting to each other, and what kind of traffic is flowing between them."
+        zhMap["Traffic Events help you understand the network activity in your organization."] || "Traffic Events help you understand the network activity in your organization. "
+        + (zhMap["You can see which machines are connecting to each other, and what kind of traffic is flowing between them."] || "You can see which machines are connecting to each other, and what kind of traffic is flowing between them.")
       }
       button={
         <Button
           variant={"primary"}
           onClick={() => router.push("/settings?tab=networks")}
         >
-          Enable Traffic Events
+          <TransText>Enable Traffic Events</TransText>
         </Button>
       }
       learnMore={
         <>
-          Learn more about
+          <TransText>Learn more about</TransText>
           <InlineLink href={TRAFFIC_EVENTS_DOC_LINK} target={"_blank"}>
-            Traffic Events
+            {zhMap["Traffic Events"] || "Traffic Events"}
             <ExternalLinkIcon size={12} />
           </InlineLink>
         </>
@@ -467,15 +468,15 @@ export default function TrafficEventsTable({
           size={"large"}
         />
       }
-      title={"No traffic events yet"}
+      title={zhMap["No traffic events yet"] || "No traffic events yet"}
       description={
-        "We haven't detected any traffic events yet. This could be because you just enabled the feature, or because there hasn't been any network activity."
+        zhMap["We haven't detected any traffic events yet. This could be because you just enabled the feature, or because there hasn't been any network activity."] || "We haven't detected any traffic events yet. This could be because you just enabled the feature, or because there hasn't been any network activity."
       }
       learnMore={
         <>
-          Learn more about
+          <TransText>Learn more about</TransText>
           <InlineLink href={TRAFFIC_EVENTS_DOC_LINK} target={"_blank"}>
-            Traffic Events
+            {zhMap["Traffic Events"] || "Traffic Events"}
             <ExternalLinkIcon size={12} />
           </InlineLink>
         </>

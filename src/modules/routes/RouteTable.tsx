@@ -11,6 +11,7 @@ import RouteAutoApplyCell from "@/modules/routes/RouteAutoApplyCell";
 import RouteDistributionGroupsCell from "@/modules/routes/RouteDistributionGroupsCell";
 import RouteMetricCell from "@/modules/routes/RouteMetricCell";
 import RoutePeerCell from "@/modules/routes/RoutePeerCell";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   row: GroupedRoute;
@@ -145,7 +146,7 @@ export default function RouteTable({ row }: Props) {
         showSearchAndFilters={false}
         className={"bg-nb-gray-960 py-2"}
         inset={true}
-        text={"Network Routes"}
+        text={zhMap["Network Routes"]}
         manualPagination={true}
         sorting={sorting}
         columnVisibility={{

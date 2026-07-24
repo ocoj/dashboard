@@ -140,12 +140,12 @@ export default function GroupsSettings({ account }: Props) {
         <Breadcrumbs>
           <Breadcrumbs.Item
             href={"/settings"}
-            label={"Settings"}
+            label={<TransText>Settings</TransText>}
             icon={<SettingsIcon size={13} />}
           />
           <Breadcrumbs.Item
             href={"/settings"}
-            label={"User Groups"}
+            label={<TransText>User Groups</TransText>}
             icon={<FolderGit2Icon size={14} />}
             active
           />

@@ -10,6 +10,7 @@ import { useLoggedInUser } from "@/contexts/UsersProvider";
 import { PlanTier } from "@/interfaces/Subscription";
 import { LockedFeatureInfoCardProps } from "@/modules/billing/locked-feature/LockedFeatureInfoCard";
 import { TrialOrUpgradeButton } from "@/modules/billing/trial/TrialOrUpgradeButton";
+import { TransText } from "@/i18n/trans-text";
 import zhMap from "@/i18n/zh-map";
 
 export enum PLAN_TEXT {
@@ -42,7 +43,7 @@ export const LockedFeatureContent = ({
             size={isTooltip ? 12 : 14}
             className={cn("relative", isTooltip && "-top-[1px]")}
           />
-            { isNetBirdCloud()? (plan == "team" ? PLAN_TEXT.TEAM : PLAN_TEXT.BUSINESS) : PLAN_TEXT.ENTERPRISE }
+            <TransText>{ isNetBirdCloud()? (plan == "team" ? PLAN_TEXT.TEAM : PLAN_TEXT.BUSINESS) : PLAN_TEXT.ENTERPRISE }</TransText>
         </div>
         <div
           className={cn(
@@ -80,20 +81,21 @@ const AvailableOnPlanText = ({
   featureText: string;
   plan: PlanTier;
 }) => {
-  const isOrAre = featureText.includes("Posture Checks") ? "are" : "is";
   const teamOrBusiness =
-    plan == "team" ? zhMap["Team plan or higher"] || "Team plan or higher. " : zhMap["Business plan"] || "Business plan. ";
+    plan == "team" ? zhMap["Team plan or higher."] || "Team plan or higher. " : zhMap["Business plan."] || "Business plan. ";
   if (!isNetBirdCloud()) {
+      const enterpriseText = zhMap["is available with a NetBird Enterprise commercial license, or on NetBird Cloud with the"] || "is available with a NetBird Enterprise commercial license, or on NetBird Cloud with the";
       return (
       <>
-        {featureText} {isOrAre} available with a NetBird Enterprise commercial license, or on NetBird Cloud with the {teamOrBusiness}
+        {featureText} {enterpriseText} {teamOrBusiness}
       </>
       )
   }
 
+  const cloudText = zhMap["is available on the"] || "is available on the";
   return (
     <>
-      {featureText} {isOrAre} available on the {teamOrBusiness}
+      {featureText} {cloudText} {teamOrBusiness}
     </>
   );
 };
@@ -120,28 +122,28 @@ const UpgradeOrTrialText = ({
   }
 
   if (hasReseller) {
-    return <>Contact your account administrator to upgrade the plan.</>;
+    return <>{zhMap["Contact your account administrator to upgrade the plan."] || "Contact your account administrator to upgrade the plan."}</>;
   }
 
   if (isAccountWithMSPParent && !isMSPInTenantContext) {
     return (
       <>
-        Contact your account administrator{" "}
-        <span className={"text-nb-gray-200 font-medium"}>{mspContact}</span> to
-        upgrade the plan.
+        {zhMap["Contact your account administrator"] || "Contact your account administrator"}{" "}
+        <span className={"text-nb-gray-200 font-medium"}>{mspContact}</span>{" "}
+        {zhMap["to upgrade the plan."] || "to upgrade the plan."}
       </>
     );
   }
 
   if (!isOwnerOrAdmin)
-    return "Only the owner or an admin can upgrade the plan.";
+    return zhMap["Only the owner or an admin can upgrade the plan."] || "Only the owner or an admin can upgrade the plan.";
 
   if (isTrialAvailable && offerTrial)
-    return "Upgrade or start a 14-day free trial to access this feature.";
+    return zhMap["Upgrade or start a 14-day free trial to access this feature."] || "Upgrade or start a 14-day free trial to access this feature.";
 
-  return `Upgrade your ${
-    isMSPInTenantContext ? "tenants" : "current"
-  } plan to access this feature.`;
+  return `${zhMap["Upgrade your"] || "Upgrade your"} ${
+    isMSPInTenantContext ? (zhMap["tenants"] || "tenants") : (zhMap["current"] || "current")
+  } ${zhMap["plan to access this feature."] || "plan to access this feature."}`;
 };
 
 const GetMSPSupportButton = () => {
@@ -161,7 +163,7 @@ const GetMSPSupportButton = () => {
           className={cn("w-full h-[34px]")}
         >
           <MailIcon size={15} className={"shrink-0"} />
-          Get Support
+          <TransText>Get Support</TransText>
         </Button>
       </a>
     </div>

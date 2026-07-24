@@ -4,6 +4,7 @@ import { LayersIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import * as React from "react";
 import { Group } from "@/interfaces/Group";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   group?: Group;
@@ -32,7 +33,7 @@ export default function ResourceCountBadge({
       useHover={hasId}
     >
       <LayersIcon size={12} />
-      {singularize("Resources", group?.resources_count, true)}
+      {singularize(zhMap["Resources"] || "Resources", group?.resources_count, true)}
     </Badge>
   );
 }

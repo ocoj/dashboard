@@ -29,6 +29,7 @@ import { useReverseProxies } from "@/contexts/ReverseProxiesProvider";
 import { Group } from "@/interfaces/Group";
 import { isL4Mode, ReverseProxy } from "@/interfaces/ReverseProxy";
 import FullTooltip from "@components/FullTooltip";
+import zhMap from "@/i18n/zh-map";
 
 const AUTH_METHODS: {
   key: "password_auth" | "pin_auth" | "bearer_auth";
@@ -243,7 +244,7 @@ export default function ReverseProxyAuthCell({
             openModal({ proxy: reverseProxy, initialTab: "auth" });
           }}
           disabled={!permission?.services?.update}
-          aria-label="Configure authentication"
+          aria-label={zhMap["Configure authentication"]}
         >
           <Settings size={12} />
         </Button>

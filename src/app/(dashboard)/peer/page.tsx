@@ -82,6 +82,7 @@ import { PeerSSHToggle } from "@/modules/peer/PeerSSHToggle";
 import { RDPButton } from "@/modules/remote-access/rdp/RDPButton";
 import { SSHButton } from "@/modules/remote-access/ssh/SSHButton";
 import { PeerExpirationSettings } from "@/modules/peer/PeerExpirationSettings";
+import zhMap from "@/i18n/zh-map";
 
 export default function PeerPage() {
   const queryParameter = useSearchParams();
@@ -144,7 +145,7 @@ function PeerOverview() {
             <Breadcrumbs>
               <Breadcrumbs.Item
                 href={peerListPath(user)}
-                label={"Peers"}
+                label={zhMap["Peers"]}
                 icon={<PeerIcon size={13} />}
               />
               <Breadcrumbs.Item label={peer.ip} active />
@@ -456,9 +457,9 @@ const PeerOverviewTabContent = () => {
           <PeerExpirationSettings />
           {permission.groups.read && (
             <div>
-              <Label>Assigned Groups</Label>
+              <Label><TransText>Assigned Groups</TransText></Label>
               <HelpText>
-                Use groups to control what this peer can access.
+                <TransText>Use groups to control what this peer can access.</TransText>
               </HelpText>
               <PeerGroupSelector
                 disabled={!permission.groups.update}

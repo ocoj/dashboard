@@ -122,7 +122,7 @@ export const TrafficEventSetting = ({ account }: Props) => {
     <>
       <div className={"mt-4"}>
         <h2 className={"text-lg font-medium"}>
-          Experimental
+          <TransText>Experimental</TransText>
           <FlaskConicalIcon
             size={16}
             className={"inline ml-1.5 relative -top-[2px]"}
@@ -156,8 +156,10 @@ export const TrafficEventSetting = ({ account }: Props) => {
               }
               helpText={
                 <>
-                  Enable traffic events for all peers. This requires NetBird
-                  client v0.39 or higher.
+                  <TransText>
+                    Enable traffic events for all peers. This requires NetBird
+                    client v0.39 or higher.
+                  </TransText>
                 </>
               }
               disabled={!permission.settings.update}
@@ -177,22 +179,28 @@ export const TrafficEventSetting = ({ account }: Props) => {
                 value={trafficPacketCounterEnabled}
                 onChange={toggleTrafficPacketCounter}
                 data-testid="traffic-reporting-kernel"
-                label={<>Enable Traffic Reporting (Kernel)</>}
+                label={<><TransText>Enable Traffic Reporting (Kernel)</TransText></>}
                 helpText={
                   <>
-                    Traffic reporting is always enabled in userspace, and this
-                    setting only applies to kernel. If enabled, network packets
-                    and their size will be counted and reported.
+                    <TransText>
+                      Traffic reporting is always enabled in userspace, and this
+                      setting only applies to kernel. If enabled, network packets
+                      and their size will be counted and reported.
+                    </TransText>
                   </>
                 }
                 disabled={!permission.settings.update}
               />
               <div className={"mt-2"}>
-                <Label>Limit To Specific Groups</Label>
+                <Label><TransText>Limit To Specific Groups</TransText></Label>
                 <HelpText className={"mb-3"}>
-                  Select peer groups for which traffic events will be logged.{" "}
+                  <TransText>
+                    Select peer groups for which traffic events will be logged.
+                  </TransText>{" "}
                   <br />
-                  If no group is selected, logging applies to all peers.
+                  <TransText>
+                    If no group is selected, logging applies to all peers.
+                  </TransText>
                 </HelpText>
                 {!groups ? (
                   <Skeleton height={46} />

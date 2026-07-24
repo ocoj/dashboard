@@ -16,6 +16,7 @@ import PageContainer from "@/layouts/PageContainer";
 import { Callout } from "@components/Callout";
 import { isNetBirdCloud } from "@utils/netbird";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 const ReverseProxyTable = lazy(
   () => import("@/modules/reverse-proxy/table/ReverseProxyTable"),
@@ -33,12 +34,12 @@ export default function ReverseProxyServicesPage() {
         <Breadcrumbs>
           <Breadcrumbs.Item
             href={"/reverse-proxy/services"}
-            label={"Reverse Proxy"}
+            label={zhMap["Reverse Proxy"]}
             icon={<ReverseProxyIcon size={16} />}
           />
           <Breadcrumbs.Item
             href={"/reverse-proxy/services"}
-            label={"Services"}
+            label={zhMap["Services"]}
             active={true}
           />
         </Breadcrumbs>

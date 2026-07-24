@@ -16,6 +16,7 @@ import PoliciesProvider from "@/contexts/PoliciesProvider";
 import { Policy } from "@/interfaces/Policy";
 import PageContainer from "@/layouts/PageContainer";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 const AccessControlTable = lazy(
   () => import("@/modules/access-control/table/AccessControlTable"),
@@ -35,7 +36,7 @@ export default function AccessControlPage() {
           <Breadcrumbs>
             <Breadcrumbs.Item
               href={"/access-control"}
-              label={"Access Control"}
+              label={zhMap["Access Control"]}
               icon={<AccessControlIcon size={14} />}
             />
           </Breadcrumbs>

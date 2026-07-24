@@ -57,6 +57,7 @@ import { SSHAuthorizedGroups } from "@/modules/access-control/ssh/SSHAuthorizedG
 import { useUsers } from "@/contexts/UsersProvider";
 import { HelpTooltip } from "@components/HelpTooltip";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   children?: React.ReactNode;
@@ -275,10 +276,14 @@ export function AccessControlModalContent({
               <div className={"w-full"}>
                 <Label><TransText>Protocol</TransText></Label>
                 <HelpText className={"max-w-sm"}>
-                  Allow only specified network protocols. To change traffic
-                  direction and ports, select{" "}
-                  <b className={"text-white"}>TCP</b> or{" "}
-                  <b className={"text-white"}>UDP</b> protocol.
+                  {zhMap["Allow only specified network protocols. To change traffic direction and ports, select TCP or UDP protocol."] || (
+                    <>
+                      Allow only specified network protocols. To change traffic
+                      direction and ports, select{" "}
+                      <b className={"text-white"}>TCP</b> or{" "}
+                      <b className={"text-white"}>UDP</b> protocol.
+                    </>
+                  )}
                 </HelpText>
               </div>
               <Select
@@ -294,7 +299,7 @@ export function AccessControlModalContent({
                     data-testid={"protocol-select-button"}
                   >
                     <Share2 size={15} className={"text-nb-gray-300"} />
-                    <SelectValue placeholder="Select protocol..." />
+                    <SelectValue placeholder={zhMap["Select protocol..."]} />
                   </div>
                 </SelectTrigger>
                 <SelectContent data-testid={"protocol-selection"}>

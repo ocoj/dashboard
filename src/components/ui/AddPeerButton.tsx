@@ -1,6 +1,7 @@
 import { useOidcUser } from "@axa-fr/react-oidc";
 import Button from "@components/Button";
 import { Modal, ModalTrigger } from "@components/modal/Modal";
+import { TransText } from "@/i18n/trans-text";
 import useFetchApi from "@utils/api";
 import { PlusCircle } from "lucide-react";
 import React, { memo, useState } from "react";
@@ -40,7 +41,7 @@ function AddPeerButton({ isUserDevice }: Readonly<Props>) {
           data-testid={"add-peer-button"}
         >
           <PlusCircle size={16} />
-          Add Peer
+          <TransText>Add Peer</TransText>
         </Button>
       </ModalTrigger>
       <SetupModal user={user} isUserDevice={isUserDevice} />

@@ -34,6 +34,7 @@ import { GroupResourcesSection } from "@/modules/groups/details/GroupResourcesSe
 import { GroupSetupKeysSection } from "@/modules/groups/details/GroupSetupKeysSection";
 import { GroupUsersSection } from "@/modules/groups/details/GroupUsersSection";
 import useGroupDetails from "@/modules/groups/details/useGroupDetails";
+import zhMap from "@/i18n/zh-map";
 
 export default function GroupPage() {
   const queryParameter = useSearchParams();
@@ -73,7 +74,7 @@ export default function GroupPage() {
             <Breadcrumbs>
               <Breadcrumbs.Item
                 href={"/groups"}
-                label={"Groups"}
+                label={zhMap["Groups"]}
                 icon={<FolderGit2Icon size={14} />}
               />
               <Breadcrumbs.Item label={group.name} active />
@@ -189,7 +190,7 @@ const GroupOverviewTabs = ({ group }: { group: Group }) => {
                 "fill-nb-gray-500 group-data-[state=active]/trigger:fill-netbird transition-all"
               }
             />
-            {singularize("Users", usersCount)}
+            {singularize(zhMap["Users"] || "Users", usersCount)}
           </TabsTrigger>
         )}
 
@@ -205,7 +206,7 @@ const GroupOverviewTabs = ({ group }: { group: Group }) => {
                 "fill-nb-gray-500 group-data-[state=active]/trigger:fill-netbird transition-all"
               }
             />
-            {singularize("Peers", peersCount)}
+            {singularize(zhMap["Peers"] || "Peers", peersCount)}
           </TabsTrigger>
         )}
 
@@ -220,7 +221,7 @@ const GroupOverviewTabs = ({ group }: { group: Group }) => {
               "fill-nb-gray-500 group-data-[state=active]/trigger:fill-netbird transition-all"
             }
           />
-          {singularize("Policies", policiesCount)}
+          {singularize(zhMap["Policies"] || "Policies", policiesCount)}
         </TabsTrigger>
 
         <TabsTrigger
@@ -229,7 +230,7 @@ const GroupOverviewTabs = ({ group }: { group: Group }) => {
           className={groupDetails === null ? "animate-pulse" : ""}
         >
           <Layers3Icon size={14} />
-          {singularize("Resources", resourcesCount)}
+          {singularize(zhMap["Resources"] || "Resources", resourcesCount)}
         </TabsTrigger>
 
         <TabsTrigger
@@ -243,7 +244,7 @@ const GroupOverviewTabs = ({ group }: { group: Group }) => {
               "fill-nb-gray-500 group-data-[state=active]/trigger:fill-netbird transition-all"
             }
           />
-          {singularize("Network Routes", routesCount)}
+          {singularize(zhMap["Network Routes"] || "Network Routes", routesCount)}
         </TabsTrigger>
 
         <TabsTrigger
@@ -257,7 +258,7 @@ const GroupOverviewTabs = ({ group }: { group: Group }) => {
               "fill-nb-gray-500 group-data-[state=active]/trigger:fill-netbird transition-all"
             }
           />
-          {singularize("Nameservers", nameserversCount)}
+          {singularize(zhMap["Nameservers"] || "Nameservers", nameserversCount)}
         </TabsTrigger>
 
         <TabsTrigger
@@ -271,7 +272,7 @@ const GroupOverviewTabs = ({ group }: { group: Group }) => {
               "fill-nb-gray-500 group-data-[state=active]/trigger:fill-netbird transition-all"
             }
           />
-          {singularize("Zones", zonesCount)}
+          {singularize(zhMap["Zones"] || "Zones", zonesCount)}
         </TabsTrigger>
 
         {group.name !== "All" && (
@@ -286,7 +287,7 @@ const GroupOverviewTabs = ({ group }: { group: Group }) => {
                 "fill-nb-gray-500 group-data-[state=active]/trigger:fill-netbird transition-all"
               }
             />
-            {singularize("Setup Keys", setupKeysCount)}
+            {singularize(zhMap["Setup Keys"] || "Setup Keys", setupKeysCount)}
           </TabsTrigger>
         )}
       </TabsList>

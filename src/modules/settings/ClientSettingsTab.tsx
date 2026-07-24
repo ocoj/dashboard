@@ -36,6 +36,7 @@ import useGroupHelper from "@/modules/groups/useGroupHelper";
 import { useGroups } from "@/contexts/GroupsProvider";
 import { TransText } from "@/i18n/trans-text";
 import { SkeletonSettings } from "@components/skeletons/SkeletonSettings";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   account: Account;
@@ -238,12 +239,12 @@ function ClientSettingsTabContent({ account }: Readonly<Props>) {
         <Breadcrumbs>
           <Breadcrumbs.Item
             href={"/settings"}
-            label={"Settings"}
+            label={<TransText>Settings</TransText>}
             icon={<SettingsIcon size={13} />}
           />
           <Breadcrumbs.Item
             href={"/settings?tab=clients"}
-            label={"Clients"}
+            label={<TransText>Clients</TransText>}
             icon={<MonitorSmartphoneIcon size={14} />}
             active
           />
@@ -266,7 +267,7 @@ function ClientSettingsTabContent({ account }: Readonly<Props>) {
               <RefreshCcw size={15} />
               <TransText>Automatic Updates</TransText>
               <SmallBadge
-                text={"Beta"}
+                text={zhMap["Beta"]}
                 variant={"sky"}
                 className={"text-[9px] leading-none py-[3px] px-[5px]"}
                 textClassName={"top-0"}
@@ -383,7 +384,7 @@ function ClientSettingsTabContent({ account }: Readonly<Props>) {
                 <PeerGroupSelector
                   values={peerExposeGroups}
                   onChange={setPeerExposeGroups}
-                  placeholder="Select peer groups..."
+                  placeholder={zhMap["Select peer groups..."]}
                   data-testid="peer-expose-groups-selector"
                 />
               </div>

@@ -180,7 +180,7 @@ export default function PostureCheckTable({
           <DataTable
             headingTarget={headingTarget}
             isLoading={isLoading}
-            text={"Posture Check"}
+            text={zhMap["Posture Check"]}
             sorting={sorting}
             wrapperClassName={""}
             setSorting={setSorting}

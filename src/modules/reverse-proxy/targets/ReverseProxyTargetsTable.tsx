@@ -11,6 +11,7 @@ import { ReverseProxyTargetProvider } from "@/modules/reverse-proxy/targets/Reve
 import { ReverseProxyTargetDevice } from "@/modules/reverse-proxy/targets/ReverseProxyTargetDevice";
 import { ReverseProxyTargetPath } from "@/modules/reverse-proxy/targets/ReverseProxyTargetPath";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 const ReverseProxyTargetColumns: ColumnDef<ReverseProxyTarget>[] = [
   {
@@ -74,7 +75,7 @@ export default function ReverseProxyTargetsTable({ reverseProxy }: Props) {
         tableCellClassName={"py-0"}
         className={"bg-nb-gray-960 py-2"}
         inset={true}
-        text={"Targets"}
+        text={zhMap["Targets"]}
         initialPageSize={reverseProxy?.targets?.length}
         manualPagination={true}
         sorting={sorting}

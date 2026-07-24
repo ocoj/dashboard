@@ -1,3 +1,4 @@
+import { TransText } from "@/i18n/trans-text";
 import InlineLink from "@components/InlineLink";
 import Paragraph from "@components/Paragraph";
 import SkeletonTable, {
@@ -37,13 +38,16 @@ export const AccessiblePeersSection = ({ peerID }: Props) => {
         <div className={"flex justify-between items-center mb-5"}>
           <div>
             <Paragraph>
-              This peer can connect to the following peers within the NetBird
-              network.{" "}
+              <TransText>
+                This peer can connect to the following peers within the NetBird
+                network.
+              </TransText>
+              {" "}
               <InlineLink
                 href={"https://docs.netbird.io/how-to/manage-network-access"}
                 target={"_blank"}
               >
-                Learn more
+                <TransText>Learn more</TransText>
                 <ExternalLinkIcon size={12} />
               </InlineLink>
             </Paragraph>

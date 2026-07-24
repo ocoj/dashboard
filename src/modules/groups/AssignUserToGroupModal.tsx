@@ -105,7 +105,7 @@ export const AssignUserToGroupModalContent = ({
         rowSelection={selectedRows}
         setRowSelection={setSelectedRows}
         onRowClick={(row) => row.toggleSelected()}
-        text={"Users"}
+        text={zhMap["Users"]}
         resetRowSelectionOnSearch={false}
         uniqueKey={group?.id ?? group?.name}
         sorting={sorting}
@@ -173,7 +173,7 @@ const UsersTableColumns: ColumnDef<User>[] = [
         <Checkbox
           checked={table.getIsAllPageRowsSelected()}
           onCheckedChange={(value) => table.toggleAllRowsSelected(!!value)}
-          aria-label="Select all"
+          aria-label={zhMap["Select all"]}
         />
       </div>
     ),
@@ -183,7 +183,7 @@ const UsersTableColumns: ColumnDef<User>[] = [
           checked={row.getIsSelected()}
           variant={"tableCell"}
           onCheckedChange={(value) => row.toggleSelected(!!value)}
-          aria-label="Select row"
+          aria-label={zhMap["Select row"]}
         />
       </div>
     ),
@@ -224,7 +224,7 @@ const UsersTableColumns: ColumnDef<User>[] = [
     cell: ({ row }) => (
       <LastTimeRow
         date={dayjs(row.original.last_login).toDate()}
-        text={"Last login on"}
+        text={zhMap["Last login on"]}
       />
     ),
   },

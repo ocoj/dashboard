@@ -8,6 +8,7 @@ import ActiveInactiveRow from "@/modules/common-table-rows/ActiveInactiveRow";
 import { ExitNodePeerIndicator } from "@/modules/exit-node/ExitNodePeerIndicator";
 import { EphemeralPeerIndicator } from "@/modules/peer/EphemeralPeerIndicator";
 import { ExpirationDisabledIndicator } from "@/modules/peer/ExpirationDisabledIndicator";
+import zhMap from "@/i18n/zh-map";
 import { usePeerIssueIcon } from "@/modules/peer/PeerIssueIcon";
 
 type Props = {
@@ -36,7 +37,7 @@ export default function PeerNameCell({ peer, linkToPeer = true }: Props) {
             "hover:text-neutral-100 hover:bg-nb-gray-900/60 cursor-pointer",
         )}
         data-testid="peer-name-cell"
-        aria-label={`View details of peer ${peer.name}`}
+        aria-label={zhMap["View details of peer"] + " " + peer.name}
         onClick={(e) => {
           if (!linkToPeer) return;
           e.preventDefault();

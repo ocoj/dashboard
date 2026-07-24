@@ -390,7 +390,7 @@ export default function ReverseProxyEventsTable({
       isLoading={isLoading}
       inset={false}
       tableCellClassName={"py-1 px-2"}
-      text={"Proxy Events"}
+      text={zhMap["Proxy Events"]}
       sorting={sorting}
       setSorting={setSorting}
       columns={columns}

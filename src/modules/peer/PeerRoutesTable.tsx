@@ -14,6 +14,7 @@ import PeerRouteNameCell from "@/modules/peer/PeerRouteNameCell";
 import GroupedRouteNetworkRangeCell from "@/modules/route-group/GroupedRouteNetworkRangeCell";
 import RouteDistributionGroupsCell from "@/modules/routes/RouteDistributionGroupsCell";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   peerRoutes?: Route[];
@@ -25,7 +26,7 @@ export const RouteTableColumns: ColumnDef<Route>[] = [
   {
     accessorKey: "network_id",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Name</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Name</TransText></DataTableHeader>;
     },
     sortingFn: "text",
     cell: ({ row }) => <PeerRouteNameCell route={row.original} />,
@@ -33,7 +34,7 @@ export const RouteTableColumns: ColumnDef<Route>[] = [
   {
     accessorKey: "network",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Network</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Network</TransText></DataTableHeader>;
     },
     cell: ({ row }) => (
       <GroupedRouteNetworkRangeCell
@@ -47,7 +48,7 @@ export const RouteTableColumns: ColumnDef<Route>[] = [
     accessorFn: (r) => r.groups?.length,
     header: ({ column }) => {
       return (
-        <DataTableHeader column={column}>Distribution Groups</DataTableHeader>
+        <DataTableHeader column={column}><TransText>Distribution Groups</TransText></DataTableHeader>
       );
     },
     cell: ({ row }) => <RouteDistributionGroupsCell route={row.original} />,
@@ -57,7 +58,7 @@ export const RouteTableColumns: ColumnDef<Route>[] = [
     accessorKey: "enabled",
     sortingFn: "basic",
     header: ({ column }) => (
-      <DataTableHeader column={column}>Active</DataTableHeader>
+      <DataTableHeader column={column}><TransText>Active</TransText></DataTableHeader>
     ),
     cell: ({ row }) => <PeerRouteActiveCell route={row.original} />,
   },
@@ -88,7 +89,7 @@ export default function PeerRoutesTable({
         wrapperProps={{
           className: cn("w-full"),
         }}
-        text={"Network Routes"}
+        text={zhMap["Network Routes"]}
         tableClassName={"mt-0"}
         getStartedCard={
           <NoResults

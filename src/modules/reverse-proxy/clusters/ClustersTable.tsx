@@ -177,7 +177,7 @@ export default function ClustersTable({ headingTarget }: Readonly<Props>) {
         keepStateInLocalStorage={false}
         initialPageSize={25}
         showResetFilterButton={false}
-        text={"Clusters"}
+        text={zhMap["Clusters"]}
         sorting={sorting}
         setSorting={setSorting}
         columns={ClustersColumns}

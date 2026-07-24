@@ -67,7 +67,7 @@ export const AccessControlTableColumns: ColumnDef<Policy>[] = [
     id: "name",
     accessorFn: (row) => removeAllSpaces(row?.name),
     header: ({ column }) => {
-      return <DataTableHeader column={column}><TransText>"Name"</TransText></DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Name</TransText></DataTableHeader>;
     },
     sortingFn: "text",
     filterFn: "fuzzy",
@@ -97,7 +97,7 @@ export const AccessControlTableColumns: ColumnDef<Policy>[] = [
     },
     sortingFn: "basic",
     header: ({ column }) => {
-      return <DataTableHeader column={column}><TransText>"Sources"</TransText></DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Sources</TransText></DataTableHeader>;
     },
     cell: ({ cell }) => <AccessControlSourcesCell policy={cell.row.original} />,
   },
@@ -113,7 +113,7 @@ export const AccessControlTableColumns: ColumnDef<Policy>[] = [
     },
     sortingFn: "basic",
     header: ({ column }) => {
-      return <DataTableHeader column={column}><TransText>"Direction"</TransText></DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Direction</TransText></DataTableHeader>;
     },
     cell: ({ cell }) => (
       <AccessControlDirectionCell policy={cell.row.original} />
@@ -131,7 +131,7 @@ export const AccessControlTableColumns: ColumnDef<Policy>[] = [
     },
     sortingFn: "basic",
     header: ({ column }) => {
-      return <DataTableHeader column={column}><TransText>"Destinations"</TransText></DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Destinations</TransText></DataTableHeader>;
     },
     cell: ({ cell }) => (
       <AccessControlDestinationsCell policy={cell.row.original} />
@@ -143,7 +143,7 @@ export const AccessControlTableColumns: ColumnDef<Policy>[] = [
     accessorFn: (row) => row.rules?.[0]?.protocol || "",
     sortingFn: "text",
     header: ({ column }) => {
-      return <DataTableHeader column={column}><TransText>"Proto & Ports"</TransText></DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Proto & Ports</TransText></DataTableHeader>;
     },
     cell: ({ cell }) => (
       <AccessControlProtoPortsCell policy={cell.row.original} />
@@ -483,7 +483,7 @@ export default function AccessControlTable({
               ]
             : undefined
         }
-        text={"Access Control Policies"}
+        text={zhMap["Access Control Policies"]}
         sorting={sorting}
         setSorting={setSorting}
         initialPageSize={25}
@@ -532,7 +532,7 @@ export default function AccessControlTable({
                     disabled={!permission.policies.create}
                   >
                     <PlusCircle size={16} />
-                    "Add Policy"
+                    <TransText>Add Policy</TransText>
                   </Button>
                 </AccessControlModal>
               </div>
@@ -563,7 +563,7 @@ export default function AccessControlTable({
                       disabled={!permission.policies.create}
                     >
                       <PlusCircle size={16} />
-                      "Add Policy"
+                      <TransText>Add Policy</TransText>
                     </Button>
                   </AccessControlModal>
                 </div>
@@ -577,7 +577,7 @@ export default function AccessControlTable({
                     }
                     target={"_blank"}
                   >
-                    "Access Controls"
+                    <TransText>Access Controls</TransText>
                     <ExternalLinkIcon size={12} />
                   </InlineLink>
                 </>
@@ -597,7 +597,7 @@ export default function AccessControlTable({
                     data-testid="open-add-policy"
                   >
                     <PlusCircle size={16} />
-                    "Add Policy"
+                    <TransText>Add Policy</TransText>
                   </Button>
                 </AccessControlModal>
               </div>

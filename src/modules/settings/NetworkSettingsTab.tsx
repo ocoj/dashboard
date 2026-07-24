@@ -24,6 +24,7 @@ import useGroupHelper from "@/modules/groups/useGroupHelper";
 import { useGroups } from "@/contexts/GroupsProvider";
 import { SkeletonSettings } from "@components/skeletons/SkeletonSettings";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   account: Account;
@@ -191,12 +192,12 @@ function NetworkSettingsTabContent({ account }: Readonly<Props>) {
         <Breadcrumbs>
           <Breadcrumbs.Item
             href={"/settings"}
-            label={"Settings"}
+            label={<TransText>Settings</TransText>}
             icon={<SettingsIcon size={13} />}
           />
           <Breadcrumbs.Item
             href={"/settings?tab=networks"}
-            label={"Networks"}
+            label={<TransText>Networks</TransText>}
             icon={<NetworkIcon size={14} />}
             active
           />
@@ -313,7 +314,7 @@ function NetworkSettingsTabContent({ account }: Readonly<Props>) {
             <PeerGroupSelector
               values={ipv6EnabledGroups}
               onChange={setIpv6EnabledGroups}
-              placeholder="Select groups to enable IPv6..."
+              placeholder={zhMap["Select groups to enable IPv6..."]}
               showResourceCounter={false}
               disabled={!permission.settings.update}
               data-testid="ipv6-enabled-groups-selector"

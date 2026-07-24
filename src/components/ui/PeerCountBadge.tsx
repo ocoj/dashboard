@@ -7,6 +7,7 @@ import { useMemo } from "react";
 import { useGroups } from "@/contexts/GroupsProvider";
 import { Group } from "@/interfaces/Group";
 import ResourceCountBadge from "@components/ui/ResourceCountBadge";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   group?: Group;
@@ -61,7 +62,7 @@ export default function PeerCountBadge({
       useHover={canRedirect}
     >
       <MonitorSmartphoneIcon size={12} />
-      {singularize("Peers", peerCount, true)}
+      {singularize(zhMap["Peers"] || "Peers", peerCount, true)}
     </Badge>
   );
 }

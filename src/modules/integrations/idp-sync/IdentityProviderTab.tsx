@@ -32,7 +32,7 @@ export default function IdentityProviderTab() {
         <Breadcrumbs>
           <Breadcrumbs.Item
             href={"/integrations"}
-            label={"Integrations"}
+            label={<TransText>Integrations</TransText>}
             icon={<IntegrationIcon size={13} />}
           />
           <Breadcrumbs.Item
@@ -44,15 +44,17 @@ export default function IdentityProviderTab() {
         </Breadcrumbs>
         <h1><TransText>Identity Provider Sync</TransText></h1>
         <Paragraph>
-          Configure your preferred Identity Provider (IdP) to synchronize your
-          users and groups to NetBird.
+          <TransText>
+            Configure your preferred Identity Provider (IdP) to synchronize your
+            users and groups to NetBird.
+          </TransText>
         </Paragraph>
         <Paragraph>
           <InlineLink
             href={"https://docs.netbird.io/how-to/idp-sync"}
             target={"_blank"}
           >
-            Learn more
+            <TransText>Learn more</TransText>
             <ExternalLinkIcon size={12} />
           </InlineLink>
         </Paragraph>

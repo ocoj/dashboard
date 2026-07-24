@@ -1,3 +1,4 @@
+import { TransText } from "@/i18n/trans-text";
 import FullTooltip from "@components/FullTooltip";
 import { PowerOffIcon } from "lucide-react";
 import * as React from "react";
@@ -43,8 +44,7 @@ export const Ephemeral = () => {
       interactive={false}
       content={
         <div className={"max-w-xs text-xs"}>
-          Peers that are offline for over 10 minutes will be removed
-          automatically.
+          <TransText>Peers that are offline for over 10 minutes will be removed automatically.</TransText>
         </div>
       }
     >

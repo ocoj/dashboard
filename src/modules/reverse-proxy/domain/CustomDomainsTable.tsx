@@ -176,7 +176,7 @@ export default function CustomDomainsTable({ headingTarget }: Readonly<Props>) {
         initialPageSize={10000}
         showResetFilterButton={false}
         keepStateInLocalStorage={false}
-        text={"Domains"}
+        text={zhMap["Domains"]}
         sorting={sorting}
         setSorting={setSorting}
         columns={CustomDomainsColumns}
@@ -214,7 +214,7 @@ export default function CustomDomainsTable({ headingTarget }: Readonly<Props>) {
             }
             learnMore={
               <>
-                Learn more about
+                <TransText>Learn more about</TransText>
                 <InlineLink href={REVERSE_PROXY_DOCS_LINK} target={"_blank"}>
                   Custom Domains
                   <ExternalLinkIcon size={12} />

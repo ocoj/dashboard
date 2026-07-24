@@ -183,7 +183,7 @@ export default function ReverseProxyTable({ headingTarget }: Readonly<Props>) {
       headingTarget={headingTarget}
       isLoading={isLoading}
       inset={false}
-      text={"Reverse Proxy"}
+      text={zhMap["Reverse Proxy"]}
       sorting={sorting}
       setSorting={setSorting}
       columns={ReverseProxyColumns}

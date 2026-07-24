@@ -4,6 +4,7 @@ import { Input } from "@components/Input";
 import { Label } from "@components/Label";
 import { MinusCircleIcon, PlusIcon } from "lucide-react";
 import { useCallback, useState } from "react";
+import zhMap from "@/i18n/zh-map";
 
 const HEADER_NAME_RE = /^[A-Za-z0-9!#$%&'*+\-.^_`|~]+$/;
 const BLOCKED_HEADERS = new Set([
@@ -143,7 +144,7 @@ export default function ReverseProxyTargetCustomHeaders({
           {headerEntries.map((entry, index) => (
             <div key={entry.id} className="flex items-center gap-2">
               <Input
-                placeholder="Header, e.g., Authorization"
+                placeholder={zhMap["Header, e.g., Authorization"]}
                 aria-label={`Header name for entry ${entry.id}`}
                 value={entry.name}
                 onChange={(e) =>
@@ -155,7 +156,7 @@ export default function ReverseProxyTargetCustomHeaders({
                 data-testid={`custom-header-name-${index}`}
               />
               <Input
-                placeholder="Value, e.g., Bearer eyJhbGci..."
+                placeholder={zhMap["Value, e.g., Bearer eyJhbGci..."]}
                 aria-label={`Header value for entry ${entry.id}`}
                 value={entry.value}
                 onChange={(e) =>
@@ -170,7 +171,7 @@ export default function ReverseProxyTargetCustomHeaders({
                 variant="default-outline"
                 className="!px-2 shrink-0"
                 onClick={() => removeHeader(entry.id)}
-                aria-label="Remove header"
+                aria-label={zhMap["Remove header"]}
               >
                 <MinusCircleIcon size={14} />
               </Button>

@@ -16,6 +16,7 @@ import { HelpTooltip } from "@components/HelpTooltip";
 import { Label } from "@components/Label";
 import HelpText from "@components/HelpText";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   value?: ServiceMode;
@@ -96,7 +97,7 @@ export const ReverseProxyServiceModeSelector = ({
             data-testid={"service-mode-select-button"}
           >
             {selectedMode.icon}
-            <SelectValue placeholder="Select type..." />
+            <SelectValue placeholder={zhMap["Select type..."]} />
           </div>
         </SelectTrigger>
         <SelectContent data-testid={"service-mode-selection"}>

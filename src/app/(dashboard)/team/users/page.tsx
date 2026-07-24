@@ -18,6 +18,7 @@ import { User } from "@/interfaces/User";
 import PageContainer from "@/layouts/PageContainer";
 import { IdentityProviderCard } from "@/modules/integrations/idp-sync/IdentityProviderCard";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 const UsersTable = lazy(() => import("@/modules/users/UsersTable"));
 
@@ -37,12 +38,12 @@ export default function TeamUsers() {
         <Breadcrumbs>
           <Breadcrumbs.Item
             href={"/team"}
-            label={"Team"}
+            label={zhMap["Team"]}
             icon={<TeamIcon size={13} />}
           />
           <Breadcrumbs.Item
             href={"/team/users"}
-            label={"Users"}
+            label={zhMap["Users"]}
             active
             icon={<User2 size={16} />}
           />

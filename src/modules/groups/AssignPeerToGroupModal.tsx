@@ -259,7 +259,7 @@ export const AssignGroupToPeerModalContent = ({
           rowSelection={selectedRows}
           setRowSelection={setSelectedRows}
           onRowClick={(row) => row.toggleSelected()}
-          text={"Peers"}
+          text={zhMap["Peers"]}
           resetRowSelectionOnSearch={false}
           uniqueKey={group?.id ?? group?.name}
           sorting={sorting}
@@ -340,7 +340,7 @@ export const PeersTableColumns: ColumnDef<Peer>[] = [
         <Checkbox
           checked={table.getIsAllPageRowsSelected()}
           onCheckedChange={(value) => table.toggleAllRowsSelected(!!value)}
-          aria-label="Select all"
+          aria-label={zhMap["Select all"]}
         />
       </div>
     ),
@@ -353,7 +353,7 @@ export const PeersTableColumns: ColumnDef<Peer>[] = [
             variant={"tableCell"}
             checked={row.getIsSelected()}
             onCheckedChange={(value) => row.toggleSelected(!!value)}
-            aria-label="Select row"
+            aria-label={zhMap["Select row"]}
           />
         </div>
       );

@@ -1,3 +1,4 @@
+import zhMap from "@/i18n/zh-map";
 import * as React from "react";
 import { useMemo, useState } from "react";
 import { useGroups } from "@/contexts/GroupsProvider";
@@ -47,6 +48,7 @@ export const DNSZonesGroupCell = ({ zone }: Props) => {
     <GroupsRow
       label={"Distribution Groups"}
       description={
+        zhMap["Advertise this zone to peers that belong to the following groups"] ||
         "Advertise this zone to peers that belong to the following groups"
       }
       groups={groupIDs || []}

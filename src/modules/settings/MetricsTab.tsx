@@ -57,12 +57,12 @@ export default function MetricsTab({ account }: Readonly<Props>) {
         <Breadcrumbs>
           <Breadcrumbs.Item
             href={"/settings"}
-            label={"Settings"}
+            label={<TransText>Settings</TransText>}
             icon={<SettingsIcon size={13} />}
           />
           <Breadcrumbs.Item
             href={"/settings?tab=metrics"}
-            label={"Metrics"}
+            label={<TransText>Metrics</TransText>}
             icon={<ChartNoAxesCombined size={14} />}
             active
           />

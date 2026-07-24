@@ -152,7 +152,7 @@ function UserOverview({ user, initialGroups }: Readonly<Props>) {
         <Breadcrumbs>
           <Breadcrumbs.Item
             href={"/team"}
-            label={"Team"}
+            label={zhMap["Team"]}
             disabled={!permission.users.read}
             icon={<TeamIcon size={13} />}
           />
@@ -160,13 +160,13 @@ function UserOverview({ user, initialGroups }: Readonly<Props>) {
           {isServiceUser ? (
             <Breadcrumbs.Item
               href={"/team/service-users"}
-              label={"Service Users"}
+              label={zhMap["Service Users"]}
               icon={<IconSettings2 size={17} />}
             />
           ) : (
             <Breadcrumbs.Item
               href={"/team/users"}
-              label={"Users"}
+              label={zhMap["Users"]}
               disabled={!permission.users.read}
               icon={<User2 size={16} />}
             />

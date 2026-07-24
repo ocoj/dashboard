@@ -40,6 +40,7 @@ import { usePermissions } from "@/contexts/PermissionsProvider";
 import { Nameserver, NameserverGroup } from "@/interfaces/Nameserver";
 import useGroupHelper from "@/modules/groups/useGroupHelper";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   children?: React.ReactNode;
@@ -362,7 +363,7 @@ export function NameserverModalContent({
                   <TransText>Enable Nameserver</TransText>
                 </>
               }
-              helpText={"Use this switch to enable or disable the nameserver."}
+              helpText={zhMap["Use this switch to enable or disable the nameserver."] || "Use this switch to enable or disable the nameserver."}
               disabled={!canAction}
             />
           </div>
@@ -431,6 +432,7 @@ export function NameserverModalContent({
                   </>
                 }
                 helpText={
+                  zhMap["E.g., 'peer.example.com' will be accessible with 'peer'"] ||
                   "E.g., 'peer.example.com' will be accessible with 'peer'"
                 }
                 disabled={!canAction}

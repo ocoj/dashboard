@@ -14,6 +14,7 @@ import * as React from "react";
 import { useMemo, useState } from "react";
 import { useElementSize } from "@/hooks/useElementSize";
 import { SmallUserAvatar } from "@/modules/users/SmallUserAvatar";
+import zhMap from "@/i18n/zh-map";
 
 interface Props {
   value?: string;
@@ -247,7 +248,7 @@ export function UsersDropdownSelector({
                     {user.external && (
                       <span className={"flex items-center ml-auto relative"}>
                         <SmallBadge
-                          text={"External"}
+                          text={zhMap["External"]}
                           variant={"sky"}
                           className={
                             "text-[8.5px] py-[0.15rem] px-[.32rem] leading-none rounded-full -top-0"

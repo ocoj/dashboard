@@ -125,7 +125,7 @@ export const PeerSSHInstructions = ({
         <ModalFooter className={"items-center"}>
           <div className={"w-full"}>
             <Paragraph className={"text-sm mt-auto"}>
-              Learn more about
+              <TransText>Learn more about</TransText>
               <InlineLink
                 href={"https://docs.netbird.io/how-to/ssh"}
                 target={"_blank"}

@@ -1,3 +1,4 @@
+import { TransText } from "@/i18n/trans-text";
 import Button from "@components/Button";
 import HelpText from "@components/HelpText";
 import InlineLink from "@components/InlineLink";
@@ -370,7 +371,7 @@ export function ConfigurationContent({
       <ModalFooter className={"items-center gap-4"}>
         <div className={"w-full"}>
           <Paragraph className={"text-sm mt-auto"}>
-            Learn more about
+            <TransText>Learn more about</TransText>
             <InlineLink
               href={"https://docs.netbird.io/how-to/sentinelone-edr"}
               target={"_blank"}

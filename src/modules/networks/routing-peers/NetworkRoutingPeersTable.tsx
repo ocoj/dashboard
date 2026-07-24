@@ -40,7 +40,7 @@ const NetworkRouterColumns: ColumnDef<NetworkRouter>[] = [
     id: "name",
     accessorKey: "id",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>"Peer"</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Peer</TransText></DataTableHeader>;
     },
     sortingFn: "text",
     cell: ({ row }) => <NetworkRoutingPeerName router={row.original} />,
@@ -53,7 +53,7 @@ const NetworkRouterColumns: ColumnDef<NetworkRouter>[] = [
     id: "metric",
     accessorKey: "metric",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>"Metric"</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Metric</TransText></DataTableHeader>;
     },
     cell: ({ row }) => (
       <RouteMetricCell metric={row.original.metric} useHoverStyle={false} />
@@ -63,7 +63,7 @@ const NetworkRouterColumns: ColumnDef<NetworkRouter>[] = [
     id: "masquerade",
     accessorKey: "masquerade",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>"Masquerade"</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Masquerade</TransText></DataTableHeader>;
     },
     cell: ({ row }) => <RoutingPeersMasqueradeCell router={row.original} />,
   },
@@ -138,7 +138,7 @@ export default function NetworkRoutingPeersTable({
       showSearchAndFilters={true}
       inset={false}
       tableClassName={"mt-0"}
-      text={"Routing Peers"}
+      text={zhMap["Routing Peers"]}
       columns={NetworkRouterColumns}
       keepStateInLocalStorage={false}
       initialPageSize={25}

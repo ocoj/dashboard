@@ -570,8 +570,8 @@ export default function ReverseProxyModal({
   const modalDescription = useMemo(
     () =>
       isL4Mode
-        ? "Forward traffic directly to your backend service."
-        : "Expose services securely through NetBird's reverse proxy.",
+        ? zhMap["Forward traffic directly to your backend service."] || "Forward traffic directly to your backend service."
+        : zhMap["Expose services securely through NetBird's reverse proxy."] || "Expose services securely through NetBird's reverse proxy.",
     [isL4Mode],
   );
 

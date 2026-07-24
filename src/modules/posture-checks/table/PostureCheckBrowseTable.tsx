@@ -44,7 +44,7 @@ export default function PostureCheckBrowseTable({ onAdd }: Readonly<Props>) {
         setRowSelection={setSelectedRows}
         isLoading={isLoading}
         keepStateInLocalStorage={false}
-        text={"Posture Check"}
+        text={zhMap["Posture Check"]}
         sorting={sorting}
         wrapperClassName={""}
         setSorting={setSorting}
@@ -100,7 +100,7 @@ export const PostureChecksColumns: ColumnDef<PostureCheck>[] = [
         <Checkbox
           checked={table.getIsAllPageRowsSelected()}
           onCheckedChange={(value) => table.toggleAllRowsSelected(!!value)}
-          aria-label="Select all"
+          aria-label={zhMap["Select all"]}
         />
       </div>
     ),
@@ -109,7 +109,7 @@ export const PostureChecksColumns: ColumnDef<PostureCheck>[] = [
         <Checkbox
           checked={row.getIsSelected()}
           onCheckedChange={(value) => row.toggleSelected(!!value)}
-          aria-label="Select row"
+          aria-label={zhMap["Select row"]}
           variant={"tableCell"}
         />
       </div>

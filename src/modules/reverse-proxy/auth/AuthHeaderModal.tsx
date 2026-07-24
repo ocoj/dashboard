@@ -20,6 +20,7 @@ import React, { useMemo, useReducer, useRef } from "react";
 import { TransText } from "@/i18n/trans-text";
 import { useHasChanges } from "@/hooks/useHasChanges";
 import type { HeaderAuthConfig } from "@/interfaces/ReverseProxy";
+import zhMap from "@/i18n/zh-map";
 
 type HeaderType = "basic" | "bearer" | "custom";
 
@@ -400,7 +401,7 @@ function HeaderItemRow({
               <div className="flex flex-col gap-2">
                 <Input
                   customPrefix={<UserIcon size={16} />}
-                  placeholder="Username"
+                  placeholder={zhMap["Username"]}
                   maxWidthClass="w-full"
                   value={item.username}
                   onChange={(e) => onChange({ username: e.target.value })}
@@ -409,7 +410,7 @@ function HeaderItemRow({
                 />
                 <Input
                   customPrefix={<KeyRoundIcon size={16} />}
-                  placeholder="Password"
+                  placeholder={zhMap["Password"]}
                   maxWidthClass="w-full"
                   value={item.password}
                   onChange={(e) => onChange({ password: e.target.value })}

@@ -7,32 +7,34 @@ import * as React from "react";
 import { useState } from "react";
 import { EnterpriseConnectionDomain } from "@/interfaces/IdentityProvider";
 import LastTimeRow from "@/modules/common-table-rows/LastTimeRow";
+import zhMap from "@/i18n/zh-map";
+import { TransText } from "@/i18n/trans-text";
 
 export const DomainTableColumns: ColumnDef<EnterpriseConnectionDomain>[] = [
   {
     accessorKey: "name",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Domain</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Domain</TransText></DataTableHeader>;
     },
     sortingFn: "text",
   },
   {
     accessorKey: "validation_status",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Status</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Status</TransText></DataTableHeader>;
     },
     sortingFn: "text",
   },
   {
     accessorKey: "validation_last_updated",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Last Check</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Last Check</TransText></DataTableHeader>;
     },
     sortingFn: "text",
     cell: ({ row }) => (
       <LastTimeRow
         date={dayjs(row.original.validation_last_updated).toDate()}
-        text={"Last checked on"}
+        text={zhMap["Last checked on"]}
       />
     ),
   },
@@ -60,7 +62,7 @@ export const DomainVerificationTable = ({ domains }: Props) => {
         tableClassName={"w-full mt-0"}
         minimal={true}
         showSearchAndFilters={false}
-        text={"Domains"}
+        text={zhMap["Domains"]}
         sorting={sorting}
         setSorting={setSorting}
         columns={DomainTableColumns}

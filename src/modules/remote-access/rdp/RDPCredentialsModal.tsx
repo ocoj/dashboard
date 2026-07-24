@@ -1,3 +1,4 @@
+import { TransText } from "@/i18n/trans-text";
 import * as React from "react";
 import { useCallback, useMemo, useState } from "react";
 import { Modal, ModalContent, ModalFooter } from "@components/modal/Modal";
@@ -203,7 +204,7 @@ export const RDPCredentialsModal = ({
         <ModalFooter className={"items-center"}>
           <div className={"w-full"}>
             <Paragraph className={"text-sm mt-auto"}>
-              Learn more about
+              <TransText>Learn more about</TransText>
               <InlineLink href={RDP_DOCS_LINK} target={"_blank"}>
                 RDP
                 <ExternalLinkIcon size={12} />

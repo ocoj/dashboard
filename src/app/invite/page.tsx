@@ -18,6 +18,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useMemo, useState } from "react";
 import NetBirdIcon from "@/assets/icons/NetBirdIcon";
 import { UserInviteInfo } from "@/interfaces/User";
+import zhMap from "@/i18n/zh-map";
 
 export default function InviteAcceptPage() {
   return (
@@ -247,7 +248,7 @@ function InviteAcceptContent() {
             <div>
               <Input
                 type="password"
-                placeholder="Password"
+                placeholder={zhMap["Password"]}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 customPrefix={
@@ -268,7 +269,7 @@ function InviteAcceptContent() {
             <div>
               <Input
                 type="password"
-                placeholder="Confirm Password"
+                placeholder={zhMap["Confirm Password"]}
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 customPrefix={

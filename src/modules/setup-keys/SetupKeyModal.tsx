@@ -38,6 +38,7 @@ import { SetupKey } from "@/interfaces/SetupKey";
 import useGroupHelper from "@/modules/groups/useGroupHelper";
 import SetupModal from "@/modules/setup-netbird-modal/SetupModal";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   children?: React.ReactNode;
@@ -258,7 +259,7 @@ export function SetupKeyModalContent({
                 <TransText>Make this key reusable</TransText>
               </>
             }
-            helpText={"Use this type to enroll multiple peers"}
+            helpText={zhMap["Use this type to enroll multiple peers"] || "Use this type to enroll multiple peers"}
           />
         </div>
 
@@ -325,7 +326,7 @@ export function SetupKeyModalContent({
               </>
             }
             helpText={
-              "Peers that are offline for over 10 minutes will be removed automatically"
+              zhMap["Peers that are offline for over 10 minutes will be removed automatically"] || "Peers that are offline for over 10 minutes will be removed automatically"
             }
           />
         </div>
@@ -342,7 +343,7 @@ export function SetupKeyModalContent({
               </>
             }
             helpText={
-              "Enable multiple subdomain labels when enrolling peers (e.g., host.dev.example.com)."
+              zhMap["Enable multiple subdomain labels when enrolling peers (e.g., host.dev.example.com)."] || "Enable multiple subdomain labels when enrolling peers (e.g., host.dev.example.com)."
             }
           />
         </div>

@@ -16,6 +16,7 @@ import PoliciesProvider from "@/contexts/PoliciesProvider";
 import { PostureCheck } from "@/interfaces/PostureCheck";
 import PageContainer from "@/layouts/PageContainer";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 const PostureCheckTable = lazy(
   () => import("@/modules/posture-checks/table/PostureCheckTable"),
@@ -35,12 +36,12 @@ export default function PostureChecksPage() {
           <Breadcrumbs>
             <Breadcrumbs.Item
               href={"/access-control"}
-              label={"Access Control"}
+              label={zhMap["Access Control"]}
               icon={<AccessControlIcon size={14} />}
             />
             <Breadcrumbs.Item
               href={"/posture-checks"}
-              label={"Posture Checks"}
+              label={zhMap["Posture Checks"]}
               active
               icon={<ShieldCheck size={15} />}
             />

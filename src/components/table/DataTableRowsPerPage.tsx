@@ -37,7 +37,7 @@ export function DataTableRowsPerPage<TData>({
               <span className={"text-white"}>
                 {table.getState().pagination.pageSize}
               </span>
-              <span className={"text-nb-gray-300"}> <TransText>rows per page</TransText></span>
+              <span className={"text-nb-gray-300"}> <TransText>Rows per page</TransText></span>
             </div>
             <ChevronDown className="h-4 w-4 opacity-50" />
           </Button>

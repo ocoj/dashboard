@@ -42,6 +42,7 @@ import { TransText } from "@/i18n/trans-text";
 import { LockedFeatureBadge } from "@/modules/billing/locked-feature/LockedFeatureBadge";
 import { useIntegrations } from "@/modules/integrations/edr/useIntegrations";
 import { isNetBirdCloud } from "@utils/netbird";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   account: Account;
@@ -181,12 +182,12 @@ export default function AuthenticationTab({ account }: Readonly<Props>) {
         <Breadcrumbs>
           <Breadcrumbs.Item
             href={"/settings"}
-            label={"Settings"}
+            label={<TransText>Settings</TransText>}
             icon={<SettingsIcon size={13} />}
           />
           <Breadcrumbs.Item
             href={"/settings"}
-            label={"Authentication"}
+            label={<TransText>Authentication</TransText>}
             icon={<ShieldIcon size={14} />}
             active
           />
@@ -296,7 +297,7 @@ export default function AuthenticationTab({ account }: Readonly<Props>) {
                     <KeyRound size={15} />
                     <TransText>Enable Local MFA</TransText>
                     <SmallBadge
-                      text={"Beta"}
+                      text={zhMap["Beta"]}
                       variant={"sky"}
                       className={"text-[9px] leading-none py-[3px] px-[5px]"}
                       textClassName={"top-0"}

@@ -76,7 +76,7 @@ export default function AgentNetworkConfigurationPage() {
                     className={"w-full"}
                   >
                     <ConfigTabHeader
-                      label={"Global Limits"}
+                      label={zhMap["Global Limits"]}
                       href={"/agent-network/configuration?tab=budget-settings"}
                     >
                       <TransText>Account-wide caps on token usage and spend, applied across
@@ -100,7 +100,7 @@ export default function AgentNetworkConfigurationPage() {
 
                   <Tabs.Content value={TAB_CLUSTERS} className={"w-full"}>
                     <ConfigTabHeader
-                      label={"Clusters"}
+                      label={zhMap["Clusters"]}
                       href={"/agent-network/configuration?tab=clusters"}
                     >
                       {agentNetworkOnly

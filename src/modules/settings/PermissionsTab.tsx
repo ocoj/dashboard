@@ -55,12 +55,12 @@ export default function PermissionsTab({ account }: Props) {
         <Breadcrumbs>
           <Breadcrumbs.Item
             href={"/settings"}
-            label={"Settings"}
+            label={<TransText>Settings</TransText>}
             icon={<SettingsIcon size={13} />}
           />
           <Breadcrumbs.Item
             href={"/settings?tab=permissions"}
-            label={"Permissions"}
+            label={<TransText>Permissions</TransText>}
             icon={<LockIcon size={14} />}
             active
           />

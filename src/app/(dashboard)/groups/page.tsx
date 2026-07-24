@@ -11,6 +11,7 @@ import InlineLink from "@/components/InlineLink";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import PageContainer from "@/layouts/PageContainer";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 const GroupsTable = lazy(() => import("@/modules/groups/table/GroupsTable"));
 
@@ -25,7 +26,7 @@ export default function GroupsPage() {
         <Breadcrumbs>
           <Breadcrumbs.Item
             href={"/groups"}
-            label={"Groups"}
+            label={zhMap["Groups"]}
             icon={<FolderGit2Icon size={14} />}
             active
           />

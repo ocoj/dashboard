@@ -559,7 +559,7 @@ export default function UserInvitesTable({
     <DataTable
       headingTarget={headingTarget}
       isLoading={isLoading}
-      text={"Invites"}
+      text={zhMap["Invites"]}
       sorting={sorting}
       setSorting={setSorting}
       columns={InvitesTableColumns}
@@ -594,7 +594,7 @@ export default function UserInvitesTable({
           }
           learnMore={
             <>
-              Learn more about
+              <TransText>Learn more about</TransText>
               <InlineLink
                 href={
                   "https://docs.netbird.io/how-to/add-users-to-your-network"

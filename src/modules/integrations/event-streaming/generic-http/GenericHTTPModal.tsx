@@ -1,3 +1,4 @@
+import { TransText } from "@/i18n/trans-text";
 import Button from "@components/Button";
 import FancyToggleSwitch from "@components/FancyToggleSwitch";
 import HelpText from "@components/HelpText";
@@ -358,7 +359,7 @@ export function GenericHTTPModalContent({
       <ModalFooter className={"items-center"}>
         <div className={"w-full"}>
           <Paragraph className={"text-sm mt-auto"}>
-            Learn more about
+            <TransText>Learn more about</TransText>
             <InlineLink
               href={
                 "https://docs.netbird.io/how-to/stream-activity-to-generic-http"

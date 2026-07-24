@@ -337,7 +337,7 @@ export default function NetworkRoutesTable({
               }
               learnMore={
                 <>
-                  Learn more about
+                  <TransText>Learn more about</TransText>
                   <InlineLink
                     href={
                       "https://docs.netbird.io/how-to/routing-traffic-to-private-networks"

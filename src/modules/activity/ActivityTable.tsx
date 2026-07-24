@@ -165,7 +165,7 @@ export default function ActivityTable({
       headingTarget={headingTarget}
       paginationClassName={"max-w-[800px]"}
       as={"div"}
-      text={"Audit Events"}
+      text={zhMap["Audit Events"]}
       sorting={sorting}
       setSorting={setSorting}
       initialPageSize={25}

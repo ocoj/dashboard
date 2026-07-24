@@ -217,7 +217,7 @@ export default function NameserverGroupTable({
       <DataTable
         headingTarget={headingTarget}
         isLoading={isLoading}
-        text={"Network Routes"}
+        text={zhMap["Network Routes"]}
         sorting={sorting}
         setSorting={setSorting}
         wrapperComponent={isGroupPage ? Card : undefined}
@@ -303,7 +303,7 @@ export default function NameserverGroupTable({
               }
               learnMore={
                 <>
-                  Learn more about
+                  <TransText>Learn more about</TransText>
                   <InlineLink
                     href={
                       "https://docs.netbird.io/how-to/manage-dns-in-your-network"

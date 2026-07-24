@@ -29,12 +29,14 @@ export function PostureCheckNoChecksInfo({
         }
       >
         <h2 className={"text-lg my-0 leading-[1.5 text-center]"}>
-          {"You haven't added any posture checks yet"}
+          <TransText>You haven't added any posture checks yet</TransText>
         </h2>
         <Paragraph className={cn("text-sm text-center max-w-md mt-1")}>
-          Add various posture checks to further restrict access in your network.
-          E.g., only clients with a specific NetBird client version, operating
-          system or location are allowed to connect.
+          <TransText>
+            Add various posture checks to further restrict access in your network.
+            E.g., only clients with a specific NetBird client version, operating
+            system or location are allowed to connect.
+          </TransText>
         </Paragraph>
       </div>
       <div className={"flex items-center justify-center gap-4 mt-5"}>
@@ -49,7 +51,7 @@ export function PostureCheckNoChecksInfo({
           onClick={onBrowseClick}
         >
           <FolderSearch size={14} />
-          Browse Checks
+          <TransText>Browse Checks</TransText>
         </Button>
         <Button
           variant={"primary"}
@@ -58,7 +60,7 @@ export function PostureCheckNoChecksInfo({
           disabled={!permission.policies.create || !permission.policies.update}
         >
           <IconCirclePlus size={14} />
-          New Posture Check
+          <TransText>New Posture Check</TransText>
         </Button>
       </div>
     </div>
