@@ -18,6 +18,8 @@ import { Jumpcloud } from "@/modules/integrations/idp-sync/jumpcloud/Jumpcloud";
 import { Okta } from "@/modules/integrations/idp-sync/okta-scim/Okta";
 import { useIntegrations } from "@/modules/integrations/idp-sync/useIntegrations";
 import { Callout } from "@components/Callout";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 export default function IdentityProviderTab() {
   const account = useAccount();
@@ -35,12 +37,12 @@ export default function IdentityProviderTab() {
           />
           <Breadcrumbs.Item
             href={"/settings?tab=identity-provider"}
-            label={"Identity Provider Sync"}
+            label={zhMap["Identity Provider Sync"] || "Identity Provider Sync"}
             icon={<FingerprintIcon size={14} />}
             active
           />
         </Breadcrumbs>
-        <h1>Identity Provider Sync</h1>
+        <h1><TransText>Identity Provider Sync</TransText></h1>
         <Paragraph>
           Configure your preferred Identity Provider (IdP) to synchronize your
           users and groups to NetBird.

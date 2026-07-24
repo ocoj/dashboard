@@ -2439,6 +2439,9 @@ const zhMap: Record<string, string> = {
   '"Direction"': '方向',
   '"Destinations"': '目标',
   '"Proto & Ports"': '协议与端口',
+  'Groups will be assigned to peers added by this user.': '组将分配给此用户添加的节点。',
+  'Set a role for the user to assign access permissions.': '为用户设置角色以分配访问权限。',
+  'Sync users and groups from Okta, Microsoft or Google IdP': '从 Okta、Microsoft 或 Google IdP 同步用户和组',
 
 }
 

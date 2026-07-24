@@ -11,6 +11,8 @@ import googleLogo from "@/assets/integrations/google-workspace.png";
 import jumpcloudLogo from "@/assets/integrations/jumpcloud.png";
 import oktaLogo from "@/assets/integrations/okta.png";
 import { useIntegrations } from "@/modules/integrations/idp-sync/useIntegrations";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type IDP = "azure" | "google" | "okta" | "jumpcloud" | "generic" | "entraScim";
 const idpImages: { [key in IDP]?: StaticImageData } = {
@@ -79,7 +81,7 @@ export const IdentityProviderCard = () => {
           <div className={""}>
             <div className={"flex items-center gap-3 justify-between"}>
               <div className={"font-medium text-sm flex gap-2 items-center"}>
-                Identity Provider Sync
+                <TransText>Identity Provider Sync</TransText>
               </div>
               <div
                 className={cn(
@@ -93,7 +95,7 @@ export const IdentityProviderCard = () => {
             </div>
 
             <p className={"text-xs font-light !text-nb-gray-300 "}>
-              Sync users and groups from Okta, Microsoft or Google IdP
+              <TransText>Sync users and groups from Okta, Microsoft or Google IdP</TransText>
             </p>
           </div>
         </div>

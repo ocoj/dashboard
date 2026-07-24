@@ -46,6 +46,7 @@ import UserStatusCell from "@/modules/users/table-cells/UserStatusCell";
 import { UserPeersSection } from "@/modules/users/UserPeersSection";
 import { UserRoleSelector } from "@/modules/users/UserRoleSelector";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 export default function UserPage() {
   const queryParameter = useSearchParams();
@@ -240,7 +241,7 @@ function UserOverview({ user, initialGroups }: Readonly<Props>) {
               <div>
                 <Label><TransText>Auto-assigned groups</TransText></Label>
                 <HelpText>
-                  Groups will be assigned to peers added by this user.
+                  <TransText>Groups will be assigned to peers added by this user.</TransText>
                 </HelpText>
                 <PeerGroupSelector
                   disabled={isUser}
@@ -255,7 +256,7 @@ function UserOverview({ user, initialGroups }: Readonly<Props>) {
               <div className={"w-2/3"}>
                 <Label><TransText>User Role</TransText></Label>
                 <HelpText>
-                  Set a role for the user to assign access permissions.
+                  <TransText>Set a role for the user to assign access permissions.</TransText>
                 </HelpText>
               </div>
               <div className={"w-1/3"}>

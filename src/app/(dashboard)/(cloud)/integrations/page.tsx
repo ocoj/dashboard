@@ -18,6 +18,8 @@ import EventStreamingTab from "@/modules/integrations/event-streaming/EventStrea
 import IdentityProviderTab from "@/modules/integrations/idp-sync/IdentityProviderTab";
 import SSOTab from "@/modules/integrations/sso/SSOTab";
 import { isNetBirdCloud } from "@utils/netbird";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 export default function Integrations() {
   const searchParams = useSearchParams();
@@ -32,7 +34,7 @@ export default function Integrations() {
         <VerticalTabs.List>
           <VerticalTabs.Trigger value="identity-provider">
             <FingerprintIcon size={14} />
-            Identity Provider Sync
+            <TransText>Identity Provider Sync</TransText>
           </VerticalTabs.Trigger>
 
           {isNetBirdCloud() && (

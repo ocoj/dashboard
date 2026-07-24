@@ -31,6 +31,7 @@ import useGroupHelper from "@/modules/groups/useGroupHelper";
 import { UserRoleSelector } from "@/modules/users/UserRoleSelector";
 import { TransText } from "@/i18n/trans-text";
 import { isNetBirdCloud } from "@utils/netbird";
+import zhMap from "@/i18n/zh-map";
 
 type UserCreationMode = "create" | "invite";
 
@@ -407,7 +408,7 @@ export function UserInviteModalContent({
         <div className={"mb-4"}>
           <Label>Auto-assigned groups</Label>
           <HelpText>
-            Groups will be assigned to peers added by this user.
+            <TransText>Groups will be assigned to peers added by this user.</TransText>
           </HelpText>
           <PeerGroupSelector
             onChange={setSelectedGroups}

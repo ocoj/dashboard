@@ -12,6 +12,7 @@ import NoResults from "@components/ui/NoResults";
 import PeerIcon from "@/assets/icons/PeerIcon";
 import Paragraph from "@components/Paragraph";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   user: User;
@@ -37,8 +38,8 @@ export const UserPeersSection = ({ user }: Props) => {
       <div className={"max-w-6xl"}>
         <div className={"flex justify-between items-center mb-5"}>
           <div>
-            <h2 ref={headingRef}>Peers</h2>
-            <Paragraph>"View all peers registered by this user."</Paragraph>
+            <h2 ref={headingRef}><TransText>Peers</TransText></h2>
+            <Paragraph><TransText>View all peers registered by this user.</TransText></Paragraph>
           </div>
         </div>
 
