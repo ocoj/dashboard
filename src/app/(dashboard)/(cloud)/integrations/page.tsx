@@ -46,7 +46,7 @@ export default function Integrations() {
 
           <VerticalTabs.Trigger value="event-streaming">
             <FileText size={14} />
-            Event Streaming
+            <TransText>Event Streaming</TransText>
           </VerticalTabs.Trigger>
           <VerticalTabs.Trigger value="edr">
             <ShieldCheckIcon size={15} />

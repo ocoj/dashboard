@@ -42,6 +42,7 @@ import { usePeers } from "@/contexts/PeersProvider";
 import { useServerPagination } from "@/contexts/ServerPaginationProvider";
 import { useUsers } from "@/contexts/UsersProvider";
 import { NetworkResource } from "@/interfaces/Network";
+import zhMap from "@/i18n/zh-map";
 
 export const getTrafficEventTypeText = (
   t: TrafficEventType,
@@ -434,7 +435,7 @@ export default function TrafficEventsTable({
           size={"large"}
         />
       }
-      title={"Traffic Events"}
+      title={zhMap["Traffic Events"] || "Traffic Events"}
       description={
         "Traffic Events help you understand the network activity in your organization. " +
         "You can see which machines are connecting to each other, and what kind of traffic is flowing between them."
@@ -492,7 +493,7 @@ export default function TrafficEventsTable({
       {...paginationProps}
       serverSidePagination={false}
       headingTarget={headingTarget}
-      text={"Traffic Events"}
+      text={zhMap["Traffic Events"] || "Traffic Events"}
       isLoading={isLoading}
       tableCellClassName={"py-2"}
       sorting={sorting}

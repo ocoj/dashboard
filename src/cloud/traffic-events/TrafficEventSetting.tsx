@@ -23,6 +23,8 @@ import { usePermissions } from "@/contexts/PermissionsProvider";
 import { Account } from "@/interfaces/Account";
 import { LockedFeatureBadge } from "@/modules/billing/locked-feature/LockedFeatureBadge";
 import useGroupHelper from "@/modules/groups/useGroupHelper";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   account: Account;
@@ -52,7 +54,7 @@ export const TrafficEventSetting = ({ account }: Props) => {
       setTrafficPacketCounterEnabled(false);
     }
     notify({
-      title: "Traffic Events",
+      title: zhMap["Traffic Events"] || "Traffic Events",
       description: `Traffic events successfully ${
         toggle ? "enabled" : "disabled"
       }.`,
@@ -140,7 +142,7 @@ export const TrafficEventSetting = ({ account }: Props) => {
       <div className={"relative"}>
         <LockedFeatureBadge
           center={true}
-          featureText={"Traffic Events"}
+          featureText={zhMap["Traffic Events"] || "Traffic Events"}
           feature={"TRAFFIC_EVENTS"}
           disabled={trafficEventsEnabled}
         >
@@ -152,7 +154,7 @@ export const TrafficEventSetting = ({ account }: Props) => {
               label={
                 <>
                   <ArrowLeftRightIcon size={15} />
-                  Enable Traffic Events
+                  <TransText>Enable Traffic Events</TransText>
                 </>
               }
               helpText={
@@ -231,7 +233,7 @@ export const TrafficEventGroupsSetting = ({
     const groupIds = groups.map((group) => group.id) as string[];
 
     notify({
-      title: "Traffic Events Groups",
+      title: zhMap["Traffic Events Groups"] || "Traffic Events Groups",
       description: "Traffic events groups successfully updated.",
       promise: saveRequest
         .put({

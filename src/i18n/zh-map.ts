@@ -2442,7 +2442,7 @@ const zhMap: Record<string, string> = {
   'Groups will be assigned to peers added by this user.': '组将分配给此用户添加的节点。',
   'Set a role for the user to assign access permissions.': '为用户设置角色以分配访问权限。',
   'Sync users and groups from Okta, Microsoft or Google IdP': '从 Okta、Microsoft 或 Google IdP 同步用户和组',
-  'Search by name, domain or id...': '按名称、域名或 ID 搜索...',  'Search by name, email or group...': '按名称、邮箱或组搜索...',  'Search user by name or email...': '按用户名或邮箱搜索...',  'Search by name, IP or owner...': '按名称、IP 或所有者搜索...',  'Search group by name...': '按名称搜索组...',  'Search by name, type or group...': '按名称、类型或组搜索...',  'Search by name or email...': '按名称或邮箱搜索...',
+  'Search by name, domain or id...': '按名称、域名或 ID 搜索...',  'Search by name, email or group...': '按名称、邮箱或组搜索...',  'Search user by name or email...': '按用户名或邮箱搜索...',  'Search by name, IP or owner...': '按名称、IP 或所有者搜索...',  'Search group by name...': '按名称搜索组...',  'Search by name, type or group...': '按名称、类型或组搜索...',  'Search by name or email...': '按名称或邮箱搜索...',  'Audit configuration changes, access policy updates, and peer registration and login events across your network.': '审计配置变更、访问策略更新以及网络中节点的注册和登录事件。',  'Traffic Events Groups': '流量事件组',
 }
 
 export default zhMap;

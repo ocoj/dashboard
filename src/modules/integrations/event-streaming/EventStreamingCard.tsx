@@ -12,6 +12,7 @@ import s3Logo from "@/assets/integrations/s3.svg";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { useIsLicensed } from "@/hooks/useIsLicensed";
 import { EventStream } from "@/interfaces/EventStream";
+import { TransText } from "@/i18n/trans-text";
 
 type Platform = "datadog" | "s3" | "firehose" | "generic_http";
 const platformImages: { [key in Platform]?: StaticImageData } = {
@@ -71,7 +72,7 @@ export const EventStreamingCard = () => {
           <div className={""}>
             <div className={"flex items-center gap-3 justify-between"}>
               <div className={"font-medium text-sm flex gap-2 items-center"}>
-                Event Streaming
+                <TransText>Event Streaming</TransText>
               </div>
               <div
                 className={cn(
@@ -85,7 +86,7 @@ export const EventStreamingCard = () => {
             </div>
 
             <p className={"text-xs font-light !text-nb-gray-300 "}>
-              Stream your activity events to third-party services.
+              <TransText>Stream your activity events to third-party services.</TransText>
             </p>
           </div>
         </div>
