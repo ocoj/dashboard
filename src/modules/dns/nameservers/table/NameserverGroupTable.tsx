@@ -41,6 +41,7 @@ import NameserverMatchDomainsCell from "@/modules/dns/nameservers/table/Nameserv
 import NameserverNameCell from "@/modules/dns/nameservers/table/NameserverNameCell";
 import NameserverNameserversCell from "@/modules/dns/nameservers/table/NameserverNameserversCell";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 export const NameserverGroupTableColumns: ColumnDef<NameserverGroup>[] = [
   {
@@ -246,7 +247,7 @@ export default function NameserverGroupTable({
         }}
         columns={NameserverGroupTableColumns}
         data={nameserverGroupsWithNames}
-        searchPlaceholder={"Search by name, domains or nameservers..."}
+        searchPlaceholder={zhMap["Search by name, domains or nameservers..."] || "Search by name, domains or nameservers..."}
         getStartedCard={
           isGroupPage ? (
             <NoResults

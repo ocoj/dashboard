@@ -35,6 +35,7 @@ import ClustersFeaturesCell from "@/modules/reverse-proxy/clusters/ClustersFeatu
 import { ClustersModal } from "@/modules/reverse-proxy/clusters/ClustersModal";
 import ClustersNameCell from "@/modules/reverse-proxy/clusters/ClustersNameCell";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 const ClustersColumns: ColumnDef<ReverseProxyCluster>[] = [
   {
@@ -182,7 +183,7 @@ export default function ClustersTable({ headingTarget }: Readonly<Props>) {
         columns={ClustersColumns}
         data={rows}
         useRowId={true}
-        searchPlaceholder={"Search by cluster domain..."}
+        searchPlaceholder={zhMap["Search by cluster domain..."] || "Search by cluster domain..."}
         aboveTable={(table) => (
           <TableFilterChips table={table} filters={filterDefs} />
         )}

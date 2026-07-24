@@ -121,7 +121,7 @@ const SettingDisabledManagementGroups = ({
       <div className={"px-8 py-8"}>
         <Label><TransText>Disable DNS management for these groups</TransText></Label>
         <HelpText>
-          Peers in these groups will require manual domain name resolution
+          <TransText>Peers in these groups will require manual domain name resolution</TransText>
         </HelpText>
         <PeerGroupSelector
           data-testid={"dns-groups-selector"}

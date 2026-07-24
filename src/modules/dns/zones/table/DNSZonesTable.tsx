@@ -41,6 +41,7 @@ import { Group } from "@/interfaces/Group";
 import DNSZoneIcon from "@/assets/icons/DNSZoneIcon";
 import { useGroups } from "@/contexts/GroupsProvider";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 export const DNSZonesColumns: ColumnDef<DNSZone>[] = [
   {
@@ -223,7 +224,7 @@ export default function DNSZonesTable({
       keepStateInLocalStorage={!isGroupPage}
       initialPageSize={25}
       showResetFilterButton={false}
-      searchPlaceholder={"Search by domain, ip, content or group..."}
+      searchPlaceholder={zhMap["Search by domain, ip, content or group..."] || "Search by domain, ip, content or group..."}
       aboveTable={(table) => (
         <TableFilterChips table={table} filters={filterDefs} />
       )}
@@ -266,7 +267,7 @@ export default function DNSZonesTable({
                 size={"large"}
               />
             }
-            title={"Create New Zone"}
+            title={zhMap["Create New Zone"] || "Create New Zone"}
             description={
               "It looks like you don't have any zones. Control domain name resolution for your network by adding a zone."
             }

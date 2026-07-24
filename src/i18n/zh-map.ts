@@ -2430,6 +2430,8 @@ const zhMap: Record<string, string> = {
   'Update this provider\'s configuration.': '更新此供应商的配置。',
   'Configure how NetBird clients receive update notifications. When enabled, users will be prompted to install the selected version. This requires at least NetBird': '配置 NetBird 客户端如何接收更新通知。启用后，将提示用户安装所选版本。这需要至少 NetBird',
   'When enabled, updates are installed automatically in the background without user interaction.': '启用后，更新将在后台自动安装，无需用户交互。',
+  'Create New Zone': '创建新区域',
+  'Peers in these groups will require manual domain name resolution': '这些组中的节点将需要手动域名解析',
 }
 
 export default zhMap;
