@@ -2332,7 +2332,7 @@ const zhMap: Record<string, string> = {
   'Use service users to create API tokens and avoid losing automated access.': '使用服务用户创建 API 令牌，避免失去自动化访问。',
   'User Role': '用户角色',
   'Agent Network Providers': '客户端网络供应商',
-  'Bind IdP groups to providers: Engineering gets Claude, Finance doesn	. Enforce token limits, budgets, and guardrails.': '将 IdP 组绑定到供应商：工程团队使用 Claude，财务团队不可用。强制执行 Token 限制、预算和护栏。',
+  'Bind IdP groups to providers: Engineering gets Claude, Finance doesn\'t. Enforce token limits, budgets, and guardrails.': '将 IdP 组绑定到供应商：工程团队使用 Claude，财务团队不可用。强制执行 Token 限制、预算和护栏。',
   'Connect a provider': '连接供应商',
   'Connect AI providers and gateways like LiteLLM, OpenAI, and Anthropic through one keyless endpoint, accessible only via NetBird\u2019s tunnel.': '通过一个无密钥端点连接 LiteLLM、OpenAI、Anthropic 等 AI 供应商，仅可通过 NetBird 隧道访问。',
   'Connect Provider': '连接供应商',
