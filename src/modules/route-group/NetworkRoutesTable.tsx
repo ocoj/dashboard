@@ -43,12 +43,14 @@ import GroupedRouteTypeCell from "@/modules/route-group/GroupedRouteTypeCell";
 import { RouteAddRoutingPeerProvider } from "@/modules/routes/RouteAddRoutingPeerProvider";
 import RouteModal from "@/modules/routes/RouteModal";
 import RouteTable from "@/modules/routes/RouteTable";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 export const GroupedRouteTableColumns: ColumnDef<GroupedRoute>[] = [
   {
     accessorKey: "network_id",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Name</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Name</TransText></DataTableHeader>;
     },
     sortingFn: "text",
     cell: ({ row }) => <GroupedRouteNameCell groupedRoute={row.original} />,
@@ -93,7 +95,7 @@ export const GroupedRouteTableColumns: ColumnDef<GroupedRoute>[] = [
   {
     accessorKey: "network",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Network</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Network</TransText></DataTableHeader>;
     },
     cell: ({ row }) => (
       <GroupedRouteNetworkRangeCell
@@ -106,7 +108,7 @@ export const GroupedRouteTableColumns: ColumnDef<GroupedRoute>[] = [
     id: "type",
     accessorFn: (row) => row.is_using_route_groups,
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Type</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Type</TransText></DataTableHeader>;
     },
     sortingFn: "text",
     cell: ({ row }) => <GroupedRouteTypeCell groupedRoute={row.original} />,
@@ -116,7 +118,7 @@ export const GroupedRouteTableColumns: ColumnDef<GroupedRoute>[] = [
     accessorKey: "high_availability_count",
     header: ({ column }) => {
       return (
-        <DataTableHeader column={column}>High Availability</DataTableHeader>
+        <DataTableHeader column={column}><TransText>High Availability</TransText></DataTableHeader>
       );
     },
     cell: ({ row }) => (
@@ -239,7 +241,7 @@ export default function NetworkRoutesTable({
       <DataTable
         headingTarget={headingTarget}
         isLoading={isLoading}
-        text={"Network Routes"}
+        text={zhMap["Network Routes"] || "Network Routes"}
         sorting={sorting}
         setSorting={setSorting}
         columns={GroupedRouteTableColumns}
@@ -342,7 +344,7 @@ export default function NetworkRoutesTable({
                     }
                     target={"_blank"}
                   >
-                    Network Routes
+                    <TransText>Network Routes</TransText>
                     <ExternalLinkIcon size={12} />
                   </InlineLink>
                 </>
