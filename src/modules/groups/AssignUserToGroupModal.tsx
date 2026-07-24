@@ -21,6 +21,7 @@ import UserNameCell from "@/modules/users/table-cells/UserNameCell";
 import UserRoleCell from "@/modules/users/table-cells/UserRoleCell";
 import UserStatusCell from "@/modules/users/table-cells/UserStatusCell";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   group: Group;
@@ -114,7 +115,7 @@ export const AssignUserToGroupModalContent = ({
         data={data}
         isLoading={isLoading}
         tableCellClassName={"!py-1 scale-[95%]"}
-        searchPlaceholder={"Search by name, email or role..."}
+        searchPlaceholder={zhMap["Search by name, email or role..."] || "Search by name, email or role..."}
         searchClassName={"w-[350px]"}
         minimal={false}
         columnVisibility={{}}

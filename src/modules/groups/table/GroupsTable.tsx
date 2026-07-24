@@ -31,6 +31,7 @@ import GroupsCountCell from "@/modules/groups/table/GroupsCountCell";
 import GroupsNameCell from "@/modules/groups/table/GroupsNameCell";
 import useGroupsUsage, { GroupUsage } from "@/modules/groups/useGroupsUsage";
 import DNSZoneIcon from "@/assets/icons/DNSZoneIcon";
+import zhMap from "@/i18n/zh-map";
 
 export const GroupsTableColumns: ColumnDef<GroupUsage>[] = [
   {
@@ -333,7 +334,7 @@ export default function GroupsTable({ headingTarget }: Readonly<Props>) {
       data={groups}
       initialPageSize={25}
       showResetFilterButton={false}
-      searchPlaceholder={"Search group by name..."}
+      searchPlaceholder={zhMap["Search group by name..."] || "Search group by name..."}
       rightSide={() => <AddGroupButton />}
       aboveTable={(table) => (
         <TableFilterChips table={table} filters={filterDefs} />

@@ -38,6 +38,7 @@ import { NetworkResourceCell } from "@/modules/networks/table/NetworkResourceCel
 import NetworkRoutingPeerCell from "@/modules/networks/table/NetworkRoutingPeerCell";
 import { GlobalSearchModal } from "@/modules/search/GlobalSearchModal";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 export const NetworkTableColumns: ColumnDef<Network>[] = [
   {
@@ -156,7 +157,7 @@ export default function NetworksTable({
             data={data}
             initialPageSize={25}
             showResetFilterButton={false}
-            searchPlaceholder={"Search by network name or description..."}
+            searchPlaceholder={zhMap["Search by network name or description..."] || "Search by network name or description..."}
             columnVisibility={{
               description: false,
               active: false,

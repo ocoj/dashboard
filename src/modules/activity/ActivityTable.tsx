@@ -34,6 +34,7 @@ import {
   ActivityTypePicker,
   formatActivityTypeChip,
 } from "@/modules/activity/ActivityTypePicker";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   events?: ActivityEvent[];
@@ -173,7 +174,7 @@ export default function ActivityTable({
       tableClassName={"px-8 pt-4"}
       columns={ActivityFeedColumnsTable}
       data={events}
-      searchPlaceholder={"Search by audit name, user, peer, meta..."}
+      searchPlaceholder={zhMap["Search by audit name, user, peer, meta..."] || "Search by audit name, user, peer, meta..."}
       isLoading={isLoading}
       aboveTable={(table) => (
         <TableFilterChips table={table} filters={filterDefs} />

@@ -43,6 +43,7 @@ import SetupKeyGroupsCell from "@/modules/setup-keys/SetupKeyGroupsCell";
 import SetupKeyModal from "@/modules/setup-keys/SetupKeyModal";
 import SetupKeyNameCell from "@/modules/setup-keys/SetupKeyNameCell";
 import SetupKeyUsageCell from "@/modules/setup-keys/SetupKeyUsageCell";
+import zhMap from "@/i18n/zh-map";
 
 export const SetupKeysTableColumns: ColumnDef<SetupKey>[] = [
   {
@@ -277,7 +278,7 @@ export default function SetupKeysTable({
         showResetFilterButton={false}
         columns={SetupKeysTableColumns}
         data={setupKeys}
-        searchPlaceholder={"Search by name, type or group..."}
+        searchPlaceholder={zhMap["Search by name, type or group..."] || "Search by name, type or group..."}
         columnVisibility={{
           valid: false,
           group_strings: false,

@@ -22,6 +22,7 @@ import PeerAddressCell from "@/modules/peers/PeerAddressCell";
 import PeerNameCell from "@/modules/peers/PeerNameCell";
 import { PeerOSCell } from "@/modules/peers/PeerOSCell";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   group: Group;
@@ -268,7 +269,7 @@ export const AssignGroupToPeerModalContent = ({
           data={data}
           isLoading={isLoading && !initialPeersSet}
           tableCellClassName={"!py-1 scale-[95%]"}
-          searchPlaceholder={"Search by name, IP or owner..."}
+          searchPlaceholder={zhMap["Search by name, IP or owner..."] || "Search by name, IP or owner..."}
           searchClassName={"w-[350px]"}
           minimal={false}
           columnVisibility={{

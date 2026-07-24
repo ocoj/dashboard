@@ -23,6 +23,7 @@ import { ResourceEnabledCell } from "@/modules/networks/resources/ResourceEnable
 import { ResourceGroupCell } from "@/modules/networks/resources/ResourceGroupCell";
 import ResourceNameCell from "@/modules/networks/resources/ResourceNameCell";
 import { ResourcePolicyCell } from "@/modules/networks/resources/ResourcePolicyCell";
+import zhMap from "@/i18n/zh-map";
 
 const GroupResourcesColumns: ColumnDef<NetworkResourceWithNetwork>[] = [
   {
@@ -143,7 +144,7 @@ export const GroupResourcesSection = ({
           columns={GroupResourcesColumns}
           keepStateInLocalStorage={false}
           data={resources}
-          searchPlaceholder={"Search by name, address or group..."}
+          searchPlaceholder={zhMap["Search by name, address or group..."] || "Search by name, address or group..."}
           getStartedCard={
             <NoResults
               className={"py-4"}

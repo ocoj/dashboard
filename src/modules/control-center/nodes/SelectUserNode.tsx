@@ -12,6 +12,7 @@ import { User } from "@/interfaces/User";
 import TruncatedText from "@components/ui/TruncatedText";
 import TextWithTooltip from "@components/ui/TextWithTooltip";
 import { SmallUserAvatar } from "@/modules/users/SmallUserAvatar";
+import zhMap from "@/i18n/zh-map";
 
 type UserNodeProps = Node<
   {
@@ -86,7 +87,7 @@ export const SelectUserNode = ({ data, id }: UserNodeProps) => {
         onChange={data.onUserChange}
         options={userSelectOptions}
         showSearch={true}
-        searchPlaceholder={"Search user by name or email..."}
+        searchPlaceholder={zhMap["Search user by name or email..."] || "Search user by name or email..."}
         popoverWidth={280}
         className={cn(
           "!bg-nb-gray-920  !hover:bg-nb-gray-925 !text-nb-gray-300",

@@ -39,6 +39,7 @@ import {
 } from "@components/DropdownMenu";
 import { idpIcon } from "@/assets/icons/IdentityProviderIcons";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 export const idpTypeLabels: Record<SSOIdentityProviderType, string> = {
   oidc: "OIDC",
@@ -228,7 +229,7 @@ export default function IdentityProvidersTab() {
         columns={columns}
         data={providers}
         onRowClick={(row) => handleEdit(row.original)}
-        searchPlaceholder={"Search by name or type..."}
+        searchPlaceholder={zhMap["Search by name or type..."] || "Search by name or type..."}
         getStartedCard={
           <GetStartedTest
             icon={

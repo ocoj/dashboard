@@ -27,6 +27,7 @@ import { NetworkRoutingPeerName } from "@/modules/networks/routing-peers/Network
 import { RoutingPeersActionCell } from "@/modules/networks/routing-peers/RoutingPeersActionCell";
 import { RoutingPeersMasqueradeCell } from "@/modules/networks/routing-peers/RoutingPeersMasqueradeCell";
 import RouteMetricCell from "@/modules/routes/RouteMetricCell";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   routers?: NetworkRouter[];
@@ -146,7 +147,7 @@ export default function NetworkRoutingPeersTable({
         <TableFilterChips table={table} filters={filterDefs} />
       )}
       data={routers}
-      searchPlaceholder={"Search by peer name, group name..."}
+      searchPlaceholder={zhMap["Search by peer name, group name..."] || "Search by peer name, group name..."}
       isLoading={isLoading}
       getStartedCard={
         <NoResults

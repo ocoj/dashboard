@@ -15,6 +15,7 @@ import { useSWRConfig } from "swr";
 import { PostureCheck } from "@/interfaces/PostureCheck";
 import { PostureCheckChecksCell } from "@/modules/posture-checks/table/cells/PostureCheckChecksCell";
 import { PostureCheckNameCell } from "@/modules/posture-checks/table/cells/PostureCheckNameCell";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   onAdd: (checks: PostureCheck[]) => void;
@@ -55,7 +56,7 @@ export default function PostureCheckBrowseTable({ onAdd }: Readonly<Props>) {
         tableClassName={"mt-6 !border-0"}
         rowClassName={"!border-b-0 px-10"}
         data={postureChecks}
-        searchPlaceholder={"Search by name and description..."}
+        searchPlaceholder={zhMap["Search by name and description..."] || "Search by name and description..."}
         onRowClick={(row) => row.toggleSelected()}
         rightSide={(table) => (
           <>

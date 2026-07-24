@@ -44,6 +44,7 @@ import CustomDomainClusterCell from "@/modules/reverse-proxy/domain/CustomDomain
 import { CustomDomainModal } from "./CustomDomainModal";
 import { CustomDomainVerificationModal } from "./CustomDomainVerificationModal";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 const CustomDomainsColumns: ColumnDef<ReverseProxyDomain>[] = [
   {
@@ -181,7 +182,7 @@ export default function CustomDomainsTable({ headingTarget }: Readonly<Props>) {
         columns={CustomDomainsColumns}
         data={data}
         useRowId={true}
-        searchPlaceholder={"Search by domain..."}
+        searchPlaceholder={zhMap["Search by domain..."] || "Search by domain..."}
         aboveTable={(table) => (
           <TableFilterChips table={table} filters={filterDefs} />
         )}

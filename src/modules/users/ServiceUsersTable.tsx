@@ -37,6 +37,7 @@ import UserActionCell from "@/modules/users/table-cells/UserActionCell";
 import UserRoleCell from "@/modules/users/table-cells/UserRoleCell";
 import UserStatusCell from "@/modules/users/table-cells/UserStatusCell";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 export const ServiceUsersTableColumns: ColumnDef<User>[] = [
   {
@@ -190,7 +191,7 @@ export default function ServiceUsersTable({
         is_current: false,
         role_filter: false,
       }}
-      searchPlaceholder={"Search by name or role..."}
+      searchPlaceholder={zhMap["Search by name or role..."] || "Search by name or role..."}
       getStartedCard={
         <GetStartedTest
           icon={

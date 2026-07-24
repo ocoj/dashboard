@@ -63,6 +63,7 @@ import { PeerOSCell } from "@/modules/peers/PeerOSCell";
 import PeerStatusCell from "@/modules/peers/PeerStatusCell";
 import PeerVersionCell from "@/modules/peers/PeerVersionCell";
 import { removeAllSpaces } from "@utils/helpers";
+import zhMap from "@/i18n/zh-map";
 
 // Stable key per OS family for the filter column. Mirrors the icon
 // selection in PeerOSCell so the chip label and the displayed OS icon
@@ -493,7 +494,7 @@ export default function PeersTable({
         showResetFilterButton={false}
         columns={PeersTableColumns}
         data={showBrowserPeers ? browserPeers : regularPeers}
-        searchPlaceholder={"Search by name, IP, owner or group..."}
+        searchPlaceholder={zhMap["Search by name, IP, owner or group..."] || "Search by name, IP, owner or group..."}
         columnVisibility={{
           select: permission.groups.read,
           connected: false,

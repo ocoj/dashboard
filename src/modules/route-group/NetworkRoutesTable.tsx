@@ -255,7 +255,7 @@ export default function NetworkRoutesTable({
         keepStateInLocalStorage={!isGroupPage}
         initialPageSize={25}
         showResetFilterButton={false}
-        searchPlaceholder={"Search by network, range, name or groups..."}
+        searchPlaceholder={zhMap["Search by network, range, name or groups..."] || "Search by network, range, name or groups..."}
         aboveTable={(table) => (
           <TableFilterChips table={table} filters={filterDefs} />
         )}

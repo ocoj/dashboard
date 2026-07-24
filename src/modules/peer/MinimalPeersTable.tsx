@@ -23,6 +23,7 @@ import PeerLastSeenCell from "@/modules/peers/PeerLastSeenCell";
 import PeerNameCell from "@/modules/peers/PeerNameCell";
 import { PeerOSCell } from "@/modules/peers/PeerOSCell";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   peers?: Peer[];
@@ -137,7 +138,7 @@ export default function MinimalPeersTable({
       columns={columns}
       keepStateInLocalStorage={false}
       data={peers}
-      searchPlaceholder={"Search by name, IP, owner or group..."}
+      searchPlaceholder={zhMap["Search by name, IP, owner or group..."] || "Search by name, IP, owner or group..."}
       isLoading={isLoading}
       getStartedCard={
         !getStartedCard ? (

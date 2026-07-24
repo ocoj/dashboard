@@ -37,6 +37,7 @@ import { PostureCheckChecksCell } from "@/modules/posture-checks/table/cells/Pos
 import { PostureCheckNameCell } from "@/modules/posture-checks/table/cells/PostureCheckNameCell";
 import { PostureCheckPolicyUsageCell } from "@/modules/posture-checks/table/cells/PostureCheckPolicyUsageCell";
 import PoliciesProvider from "@/contexts/PoliciesProvider";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   isLoading: boolean;
@@ -199,7 +200,7 @@ export default function PostureCheckTable({
               setCurrentCellClicked(cell);
             }}
             data={data}
-            searchPlaceholder={"Search by name and description..."}
+            searchPlaceholder={zhMap["Search by name and description..."] || "Search by name and description..."}
             rightSide={() => (
               <>
                 {data && data?.length > 0 && (

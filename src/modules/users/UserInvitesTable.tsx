@@ -75,6 +75,7 @@ import {
 import UserInviteModal from "@/modules/users/UserInviteModal";
 import { useAccount } from "@/modules/account/useAccount";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 // Name cell for invites - same styling as UserNameCell but for invites
 function InviteNameCell({ invite }: { invite: UserInvite }) {
@@ -565,7 +566,7 @@ export default function UserInvitesTable({
       data={invitesWithGroupNames}
       initialPageSize={25}
       showResetFilterButton={false}
-      searchPlaceholder={"Search by name or email..."}
+      searchPlaceholder={zhMap["Search by name or email..."] || "Search by name or email..."}
       aboveTable={(table) => (
         <TableFilterChips table={table} filters={filterDefs} />
       )}

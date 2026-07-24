@@ -59,6 +59,7 @@ import UserInviteModal from "@/modules/users/UserInviteModal";
 import UserInvitesTable from "@/modules/users/UserInvitesTable";
 import { useAccount } from "@/modules/account/useAccount";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 export const UsersTableColumns: ColumnDef<User>[] = [
   {
@@ -360,7 +361,7 @@ export default function UsersTable({
             }
           : onRowClick
       }
-      searchPlaceholder={"Search by name, email or role..."}
+      searchPlaceholder={zhMap["Search by name, email or role..."] || "Search by name, email or role..."}
       getStartedCard={
         !getStartedCard ? (
           <GetStartedTest

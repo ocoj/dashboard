@@ -43,6 +43,7 @@ import ReverseProxyTargetsCell from "@/modules/reverse-proxy/table/ReverseProxyT
 import ReverseProxyTargetsTable from "@/modules/reverse-proxy/targets/ReverseProxyTargetsTable";
 import { ReverseProxyTypeCell } from "@/modules/reverse-proxy/table/ReverseProxyTypeCell";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 const ReverseProxyColumns: ColumnDef<ReverseProxy>[] = [
   {
@@ -190,7 +191,7 @@ export default function ReverseProxyTable({ headingTarget }: Readonly<Props>) {
       useRowId={true}
       initialPageSize={25}
       showResetFilterButton={false}
-      searchPlaceholder={"Search by URL, domain, or target..."}
+      searchPlaceholder={zhMap["Search by URL, domain, or target..."] || "Search by URL, domain, or target..."}
       rowClassName={(row) => (row.original.enabled ? "" : "opacity-50")}
       aboveTable={(table) => (
         <TableFilterChips table={table} filters={filterDefs} />

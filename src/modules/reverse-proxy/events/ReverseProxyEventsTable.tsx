@@ -54,6 +54,7 @@ import { ReverseProxyEventsAuthMethodCell } from "@/modules/reverse-proxy/events
 import { ReverseProxyEventsDurationCell } from "@/modules/reverse-proxy/events/ReverseProxyEventsDurationCell";
 import { ReverseProxyEventsBytesCell } from "@/modules/reverse-proxy/events/ReverseProxyEventsBytesCell";
 import ReverseProxyEventExpandedRow from "@/modules/reverse-proxy/events/ReverseProxyEventExpandedRow";
+import zhMap from "@/i18n/zh-map";
 
 export const makeEventsColumns = (
   servicesMap: Map<string, ReverseProxy>,
@@ -405,7 +406,7 @@ export default function ReverseProxyEventsTable({
       renderExpandedRow={(event) => (
         <ReverseProxyEventExpandedRow event={event} />
       )}
-      searchPlaceholder={"Search by IP, host, path, user..."}
+      searchPlaceholder={zhMap["Search by IP, host, path, user..."] || "Search by IP, host, path, user..."}
       getStartedCard={
         <GetStartedTest
           icon={

@@ -40,6 +40,7 @@ import ResourceAddressCell from "@/modules/networks/resources/ResourceAddressCel
 import { ResourceGroupCell } from "@/modules/networks/resources/ResourceGroupCell";
 import ResourceNameCell from "@/modules/networks/resources/ResourceNameCell";
 import { ResourcePolicyCell } from "@/modules/networks/resources/ResourcePolicyCell";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   resources?: NetworkResource[];
@@ -289,7 +290,7 @@ export default function ResourcesTable({
         <TableFilterChips table={table} filters={filterDefs} />
       )}
       data={resources}
-      searchPlaceholder={"Search by name, address or group..."}
+      searchPlaceholder={zhMap["Search by name, address or group..."] || "Search by name, address or group..."}
       isLoading={isLoading}
       getStartedCard={
         <NoResults
