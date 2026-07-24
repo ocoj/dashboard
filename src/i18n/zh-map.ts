@@ -2403,7 +2403,7 @@ const zhMap: Record<string, string> = {
   'Models': '模型',
   'No Access Log Entries Yet': '暂无访问日志条目',
   'No active proxy clusters are available. Connect at least one proxy under': '没有可用的活跃代理集群。请先在',
-  'No agent-network requests detected yet. This may be because no AI providers are connected, policies don\'t allow traffic to them, log collection is disabled, or no traffic has occurred.': '尚未检测到客户端网络请求。可能因为没有连接 AI 供应商、策略不允许流量、日志收集未启用或尚未产生流量。',
+  'No agent-network requests detected yet. This may be because no AI providers are connected, policies don’t allow traffic to them, log collection is disabled, or no traffic has occurred.': '尚未检测到客户端网络请求。可能因为没有连接 AI 供应商、策略不允许流量、日志收集未启用或尚未产生流量。',
   'No usage in the selected range': '所选范围内无使用记录',
   'No usage recorded yet': '暂无使用记录',
   'OpenAI API': 'OpenAI API',
@@ -2433,6 +2433,12 @@ const zhMap: Record<string, string> = {
   'When enabled, updates are installed automatically in the background without user interaction.': '启用后，更新将在后台自动安装，无需用户交互。',
   'Create New Zone': '创建新区域',
   'Peers in these groups will require manual domain name resolution': '这些组中的节点将需要手动域名解析',
+  '"Name"': '名称',
+  '"Sources"': '来源',
+  '"Direction"': '方向',
+  '"Destinations"': '目标',
+  '"Proto & Ports"': '协议与端口',
+
 }
 
 export default zhMap;

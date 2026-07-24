@@ -67,7 +67,7 @@ export const AccessControlTableColumns: ColumnDef<Policy>[] = [
     id: "name",
     accessorFn: (row) => removeAllSpaces(row?.name),
     header: ({ column }) => {
-      return <DataTableHeader column={column}>"Name"</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>"Name"</TransText></DataTableHeader>;
     },
     sortingFn: "text",
     filterFn: "fuzzy",
@@ -97,7 +97,7 @@ export const AccessControlTableColumns: ColumnDef<Policy>[] = [
     },
     sortingFn: "basic",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>"Sources"</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>"Sources"</TransText></DataTableHeader>;
     },
     cell: ({ cell }) => <AccessControlSourcesCell policy={cell.row.original} />,
   },
@@ -113,7 +113,7 @@ export const AccessControlTableColumns: ColumnDef<Policy>[] = [
     },
     sortingFn: "basic",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>"Direction"</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>"Direction"</TransText></DataTableHeader>;
     },
     cell: ({ cell }) => (
       <AccessControlDirectionCell policy={cell.row.original} />
@@ -131,7 +131,7 @@ export const AccessControlTableColumns: ColumnDef<Policy>[] = [
     },
     sortingFn: "basic",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>"Destinations"</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>"Destinations"</TransText></DataTableHeader>;
     },
     cell: ({ cell }) => (
       <AccessControlDestinationsCell policy={cell.row.original} />
@@ -143,7 +143,7 @@ export const AccessControlTableColumns: ColumnDef<Policy>[] = [
     accessorFn: (row) => row.rules?.[0]?.protocol || "",
     sortingFn: "text",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>"Proto & Ports"</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>"Proto & Ports"</TransText></DataTableHeader>;
     },
     cell: ({ cell }) => (
       <AccessControlProtoPortsCell policy={cell.row.original} />
