@@ -129,12 +129,9 @@ export const TrafficEventSetting = ({ account }: Props) => {
           />
         </h2>
         <div className={"text-sm text-gray-400"}>
-          Traffic events is an experimental feature. Functionality and behavior
-          may evolve, including changes to how data is collected or reported.
-          Traffic events data retention is limited to 48 hours and capped at a
-          maximum of 50,000 events.{" "}
+          <TransText>Traffic events is an experimental feature. Functionality and behavior may evolve, including changes to how data is collected or reported. Traffic events data retention is limited to 48 hours and capped at a maximum of 50,000 events.</TransText>{" "}
           <InlineLink href={TRAFFIC_EVENTS_DOC_LINK} target={"_blank"}>
-            Learn more
+            <TransText>Learn more</TransText>
             <ExternalLinkIcon size={12} />
           </InlineLink>
         </div>

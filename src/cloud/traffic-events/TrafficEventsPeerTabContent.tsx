@@ -38,6 +38,7 @@ import { useAccount } from "@/modules/account/useAccount";
 import InlineLink from "@components/InlineLink";
 import { TransText } from "@/i18n/trans-text";
 import { TRAFFIC_EVENTS_DOC_LINK } from "@/cloud/traffic-events/TrafficEventSetting";
+import zhMap from "@/i18n/zh-map";
 
 export const TrafficEventsPeerTabContent = () => {
   const account = useAccount();
@@ -212,11 +213,11 @@ export const TrafficEventsPeerTabContent = () => {
               traffic events for this peer.
             </Paragraph>
             <Paragraph>
-              Learn more about{" "}
+              <TransText>Learn more about</TransText>{" "}
               <InlineLink href={TRAFFIC_EVENTS_DOC_LINK} target="_blank">
-                Traffic Events <ExternalLinkIcon size={12} />
+                {zhMap["Traffic Events"] || "Traffic Events"} <ExternalLinkIcon size={12} />
               </InlineLink>{" "}
-              in our documentation.
+              <TransText>in our documentation.</TransText>
             </Paragraph>
           </div>
         </div>
@@ -364,7 +365,7 @@ const TrafficEventsPeerDetailTable = ({
       globalFilter={searchQuery}
       onGlobalFilterChange={onSearchChange}
       manualFiltering={true}
-      searchPlaceholder={"Search by ip, port, peer or resource..."}
+      searchPlaceholder={zhMap["Search by ip, port, peer or resource..."] || "Search by ip, port, peer or resource..."}
       columnVisibility={{
         user: false,
         source: true,
@@ -391,7 +392,7 @@ const TrafficEventsPeerDetailTable = ({
         <NoResults
           className={"py-4"}
           title={
-            isSettingEnabled ? "No Traffic Events" : "Traffic Events Disabled"
+            isSettingEnabled ? zhMap["No Traffic Events"] || "No Traffic Events" : zhMap["Traffic Events Disabled"] || "Traffic Events Disabled"
           }
           description={
             isSettingEnabled

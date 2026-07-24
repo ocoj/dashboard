@@ -523,7 +523,7 @@ export default function TrafficEventsTable({
         destination_id: false,
       }}
       data={events}
-      searchPlaceholder={"Search by ip, port, peer or resource..."}
+      searchPlaceholder={zhMap["Search by ip, port, peer or resource..."] || "Search by ip, port, peer or resource..."}
       aboveTable={(table) => (
         <TableFilterChips table={table} filters={filterDefs} />
       )}

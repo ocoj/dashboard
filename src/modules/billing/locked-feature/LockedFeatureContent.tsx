@@ -10,6 +10,7 @@ import { useLoggedInUser } from "@/contexts/UsersProvider";
 import { PlanTier } from "@/interfaces/Subscription";
 import { LockedFeatureInfoCardProps } from "@/modules/billing/locked-feature/LockedFeatureInfoCard";
 import { TrialOrUpgradeButton } from "@/modules/billing/trial/TrialOrUpgradeButton";
+import zhMap from "@/i18n/zh-map";
 
 export enum PLAN_TEXT {
   TEAM = "Available on Team",
@@ -81,7 +82,7 @@ const AvailableOnPlanText = ({
 }) => {
   const isOrAre = featureText.includes("Posture Checks") ? "are" : "is";
   const teamOrBusiness =
-    plan == "team" ? "Team plan or higher. " : "Business plan. ";
+    plan == "team" ? zhMap["Team plan or higher"] || "Team plan or higher. " : zhMap["Business plan"] || "Business plan. ";
   if (!isNetBirdCloud()) {
       return (
       <>
