@@ -359,7 +359,7 @@ const zhMap: Record<string, string> = {
   'Bearer': 'Bearer',
   'Before proceeding to delete your Netbird account, please be aware that this action is irreversible. Once your account is deleted, you will permanently lose access to all associated data, including your peers, users, groups, policies, and routes.': '在继续删除您的 NetBird 账户之前，请注意此操作不可逆。一旦账户被删除，您将永久失去对所有关联数据的访问权限，包括您的节点、用户、组、策略和路由。',
   'Best practices and general overview': '最佳实践与总体概览',
-  'Beta': 'Beta',
+  'Beta': '测试版',
   'Bidirectional': '双向',
   'Block': 'Block',
   'Block rules always take priority over allow rules.': '阻止规则始终优先于允许规则。',
