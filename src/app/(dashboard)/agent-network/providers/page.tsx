@@ -11,6 +11,8 @@ import { Copy, ExternalLinkIcon, Globe, Plug } from "lucide-react";
 import React, { Suspense, useState } from "react";
 import AgentNetworkIcon from "@/assets/icons/AgentNetworkIcon";
 import { usePermissions } from "@/contexts/PermissionsProvider";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 import PageContainer from "@/layouts/PageContainer";
 import AgentConnectModal from "@/modules/agent-network/AgentConnectModal";
 import AIProviderModal from "@/modules/agent-network/AIProviderModal";
@@ -170,7 +172,7 @@ export default function AgentNetworkProvidersPage() {
           agent-network state, so they must not mount for users without
           services.read. */}
       <RestrictedAccess
-        page={"Providers"}
+        page={zhMap["Providers"] || "Providers"}
         hasAccess={permission?.services?.read}
       >
         <AIProvidersProvider>
@@ -178,16 +180,16 @@ export default function AgentNetworkProvidersPage() {
             <Breadcrumbs>
               <Breadcrumbs.Item
                 href={"/agent-network/providers"}
-                label={"Agent Network"}
+                label={zhMap["Agent Network"] || "Agent Network"}
                 icon={<AgentNetworkIcon size={16} />}
               />
               <Breadcrumbs.Item
                 href={"/agent-network/providers"}
-                label={"Providers"}
+                label={zhMap["Providers"] || "Providers"}
                 active={true}
               />
             </Breadcrumbs>
-            <h1 ref={headingRef}>Providers</h1>
+            <h1 ref={headingRef}><TransText>Providers</TransText></h1>
             <Paragraph>
               Connect AI providers and gateways like LiteLLM, OpenAI, and
               Anthropic through one keyless endpoint, accessible only via

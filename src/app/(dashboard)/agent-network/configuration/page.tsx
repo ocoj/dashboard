@@ -15,6 +15,8 @@ import GroupsProvider from "@/contexts/GroupsProvider";
 import PeersProvider from "@/contexts/PeersProvider";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { REVERSE_PROXY_CLUSTERS_DOCS_LINK } from "@/interfaces/ReverseProxy";
+import { TransText } from '@/i18n/trans-text';
+import zhMap from "@/i18n/zh-map";
 import PageContainer from "@/layouts/PageContainer";
 import { useAgentNetworkMode } from "@/modules/agent-network/useAgentNetworkMode";
 import AgentAccountControlsCard from "@/modules/agent-network/AgentAccountControlsCard";
@@ -62,7 +64,7 @@ export default function AgentNetworkConfigurationPage() {
           </VerticalTabs.Trigger>
         </VerticalTabs.List>
         <RestrictedAccess
-          page={"Configuration"}
+          page={zhMap["Configuration"] || "Configuration"}
           hasAccess={permission?.services?.read}
         >
           <GroupsProvider>
@@ -142,7 +144,7 @@ function ConfigTabHeader({
       <Breadcrumbs>
         <Breadcrumbs.Item
           href={"/agent-network/providers"}
-          label={"Agent Network"}
+          label={zhMap["Agent Network"] || "Agent Network"}
           icon={<AgentNetworkIcon size={16} />}
         />
         <Breadcrumbs.Item href={href} label={label} active />

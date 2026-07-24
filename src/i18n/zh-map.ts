@@ -2331,6 +2331,15 @@ const zhMap: Record<string, string> = {
   'Manage users and their permissions. Same-domain email users are added automatically on first sign-in.': '管理用户及其权限。同域邮箱用户首次登录时将自动添加。',
   'Use service users to create API tokens and avoid losing automated access.': '使用服务用户创建 API 令牌，避免失去自动化访问。',
   'User Role': '用户角色',
+  'API Base URL': 'API 基础 URL',
+  'Agent Config': 'Agent 配置',
+  'Agent Network Providers': '客户端网络供应商',
+  'Agent config': 'Agent 配置',
+  'Connect AI providers and gateways like LiteLLM, OpenAI, and Anthropic through one keyless endpoint, accessible only via NetBird': '通过一个无密钥端点连接 LiteLLM、OpenAI、Anthropic 等 AI 供应商，仅可通过 NetBird 隧道访问。',
+  'Connect Provider': '连接供应商',
+  'Copy endpoint': '复制端点',
+  'Endpoint copied to clipboard': '端点已复制到剪贴板',
+  'Route OpenAI, Anthropic, and other LLM APIs through NetBird to enforce access control, track token spend, and capture prompts.': '通过 NetBird 路由 OpenAI、Anthropic 及其他 LLM API，以实施访问控制、追踪 Token 消耗并捕获提示词。',
 }
 
 export default zhMap;
