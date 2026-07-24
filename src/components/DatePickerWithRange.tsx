@@ -70,10 +70,10 @@ export function dateRangePresetLabel(
   if (isEqualDateRange(value, defaultRanges.allTime)) return "All Time";
   if (isEqualDateRange(value, defaultRanges.lastMonth)) return "Last Month";
   if (isEqualDateRange(value, defaultRanges.last14Days)) return zhMap["Last 14 Days"] || "Last 14 Days";
-  if (isEqualDateRange(value, defaultRanges.last2Days)) return "Last 2 Days";
-  if (isEqualDateRange(value, defaultRanges.last7Days)) return "Last 7 Days";
-  if (isEqualDateRange(value, defaultRanges.yesterday)) return "Yesterday";
-  if (isEqualDateRange(value, defaultRanges.today)) return "Today";
+  if (isEqualDateRange(value, defaultRanges.last2Days)) return zhMap["Last 2 Days"] || "Last 2 Days";
+  if (isEqualDateRange(value, defaultRanges.last7Days)) return zhMap["Last 7 Days"] || "Last 7 Days";
+  if (isEqualDateRange(value, defaultRanges.yesterday)) return zhMap["Yesterday"] || "Yesterday";
+  if (isEqualDateRange(value, defaultRanges.today)) return zhMap["Today"] || "Today";
   return null;
 }
 
@@ -184,7 +184,7 @@ export function DatePickerWithRange({
                 onClick={() => updateRangeAndClose(defaultRanges.yesterday)}
               />
               <CalendarButton
-                label={"Today"}
+                label={zhMap["Today"] || "Today"}
                 active={isActive.today}
                 onClick={() => updateRangeAndClose(defaultRanges.today)}
               />

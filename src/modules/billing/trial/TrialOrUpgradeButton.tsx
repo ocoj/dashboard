@@ -12,6 +12,7 @@ import { useTrial } from "@/cloud/cloud-hooks/useTrial";
 import { useLoggedInUser } from "@/contexts/UsersProvider";
 import { PlanTier } from "@/interfaces/Subscription";
 import { useAgentNetworkMode } from "@/modules/agent-network/useAgentNetworkMode";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   plan?: PlanTier;
@@ -165,7 +166,7 @@ export const SelfHostedUpgradeButton = ({
           className={cn("w-full h-[34px]")}
           data-testid={"self-hosted-upgrade-cta"}
         >
-          Get a License
+          <TransText>Get a License</TransText>
           <ExternalLinkIcon size={13} className={"shrink-0"} />
         </Button>
       </a>
