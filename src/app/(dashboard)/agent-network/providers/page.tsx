@@ -191,14 +191,12 @@ export default function AgentNetworkProvidersPage() {
             </Breadcrumbs>
             <h1 ref={headingRef}><TransText>Providers</TransText></h1>
             <Paragraph>
-              Connect AI providers and gateways like LiteLLM, OpenAI, and
-              Anthropic through one keyless endpoint, accessible only via
-              NetBird’s tunnel.
+              <TransText>Connect AI providers and gateways like LiteLLM, OpenAI, and Anthropic through one keyless endpoint, accessible only via NetBird’s tunnel.</TransText>{" "}
               <InlineLink
                 href={"https://docs.netbird.io/agent-network/providers"}
                 target={"_blank"}
               >
-                Learn more
+                <TransText>Learn more</TransText>
                 <ExternalLinkIcon size={12} />
               </InlineLink>
             </Paragraph>

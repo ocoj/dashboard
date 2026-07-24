@@ -2340,6 +2340,10 @@ const zhMap: Record<string, string> = {
   'Copy endpoint': '复制端点',
   'Endpoint copied to clipboard': '端点已复制到剪贴板',
   'Route OpenAI, Anthropic, and other LLM APIs through NetBird to enforce access control, track token spend, and capture prompts.': '通过 NetBird 路由 OpenAI、Anthropic 及其他 LLM API，以实施访问控制、追踪 Token 消耗并捕获提示词。',
+  'Global limits cap token usage and spend across every policy. Apply a limit account-wide, or scope it to specific groups or users.': '全局限制控制所有策略的 Token 用量和支出。可以账户级应用，或限定到特定组或用户。',
+  'Connect AI providers and gateways like LiteLLM, OpenAI, and Anthropic through one keyless endpoint, accessible only via NetBird's tunnel.': '通过一个无密钥端点连接 LiteLLM、OpenAI、Anthropic 等 AI 供应商，仅可通过 NetBird 隧道访问。',
+  'Bind IdP groups to providers: Engineering gets Claude, Finance doesn't. Enforce token limits, budgets, and guardrails.': '将 IdP 组绑定到供应商：工程团队使用 Claude，财务团队不可用。强制执行 Token 限制、预算和护栏。',
+  'Account-wide caps on token usage and spend, applied across every policy. Scope a limit to specific groups or users, or leave it account-wide.': '账户级 Token 用量和支出上限，应用于所有策略。可将限制范围限定到特定组或用户，或保持账户级。',
 }
 
 export default zhMap;
