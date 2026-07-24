@@ -2361,6 +2361,7 @@ const zhMap: Record<string, string> = {
   'sk-...': 'sk-...',
   'The API key issued by the provider.': '供应商颁发的 API 密钥。',
   'this session': '本会话',
+  'This is a default rule that allows connections between all the resources': '此默认规则允许所有资源之间的连接',
   'This policy allowed the request': '此策略允许该请求',
   'Toggle password visibility': '切换密码可见性',
   'Token usage': 'Token 使用量',
