@@ -556,7 +556,7 @@ export default function AIProviderModal({
                   <TransText>No active proxy clusters are available. Connect at least one</TransText>
                   proxy under
                   <InlineLink href={"/reverse-proxy/services"}>
-                    {" "}Reverse Proxy
+                    {" "}{zhMap["Reverse Proxy"] || "Reverse Proxy"}
                   </InlineLink>
                   {" "}<TransText>before adding a provider.</TransText>
                 </Callout>

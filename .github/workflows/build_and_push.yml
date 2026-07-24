@@ -15,19 +15,11 @@ concurrency:
 
 env:
   DOCKERHUB_IMAGE: netbirdio/dashboard
-  GHCR_IMAGE: ghcr.io/netbirdio/dashboard-cloud
+  GHCR_IMAGE: ghcr.io/ocoj/dashboard
 
 permissions:
   contents: read
   packages: write
-
-# Cancel in-progress runs on the same ref when a new commit arrives.
-concurrency:
-  group: build-and-push-${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
-env:
-  GHCR_IMAGE: ghcr.io/ocoj/dashboard
 
 jobs:
   build_n_push:
