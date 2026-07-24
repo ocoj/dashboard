@@ -511,7 +511,7 @@ export default function AccessControlTable({
           setEditModal(true);
           setCurrentCellClicked(cell);
         }}
-        searchPlaceholder={"Search by name and description..."}
+        searchPlaceholder={zhMap["Search by name and description..."] || "Search by name and description..."}
         getStartedCard={
           isGroupPage ? (
             <NoResults
