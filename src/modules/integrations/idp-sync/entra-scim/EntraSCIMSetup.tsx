@@ -39,6 +39,8 @@ import entraAssignUsers from "@/modules/integrations/idp-sync/entra-scim/images/
 import entraEditExternalId from "@/modules/integrations/idp-sync/entra-scim/images/entra-edit-externalid.png";
 import entraGroupMapping from "@/modules/integrations/idp-sync/entra-scim/images/entra-group-attribute-mapping.png";
 import { Lightbox } from "@components/ui/Lightbox";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 interface Props extends GenericSCIMProps {
   open: boolean;
@@ -138,7 +140,7 @@ export function SetupContent({
           mutate("/integrations/scim-idp");
           onSuccess();
         }),
-      loadingMessage: "Setting up integration...",
+      loadingMessage: zhMap["Setting up integration..."] || "Setting up integration...",
     });
   };
 
@@ -247,21 +249,22 @@ export function SetupContent({
             }
           >
             <Shield size={16} />
-            Required Permissions
+            <TransText>Required Permissions</TransText>
           </div>
           <p className={"mt-2 !text-nb-gray-300 !leading-[1.5]"}>
-            Ensure that you have an{" "}
+            <TransText>Ensure that you have an</TransText>{" "}
             <span className={"text-nb-gray-100 font-semibold"}>
-              Azure AD user account
+              <TransText>Azure AD user account</TransText>
             </span>{" "}
-            with the following{" "}
+            <TransText>with the following</TransText>{" "}
             <span className={"text-nb-gray-100 font-semibold"}>
-              permissions
+              <TransText>permissions</TransText>
             </span>
             .{" "}
-            {
-              "If you don't have the required permissions, ask your Azure AD administrator to grant them to you."
-            }
+            <TransText>
+              If you don't have the required permissions, ask your Azure AD
+              administrator to grant them to you.
+            </TransText>
           </p>
           <div
             className={
@@ -274,7 +277,7 @@ export function SetupContent({
               }
             >
               <PlusCircle size={14} className={"text-sky-500"} />
-              Create Azure AD applications
+              <TransText>Create Azure AD applications</TransText>
             </div>
             <div
               className={
@@ -282,17 +285,21 @@ export function SetupContent({
               }
             >
               <Settings2 size={14} className={"text-sky-500"} />
-              Manage Azure AD applications
+              <TransText>Manage Azure AD applications</TransText>
             </div>
           </div>
 
           {!entraConnection && !isSSOLoading && isAuth0() && (
             <Callout className={"max-w-xl mt-5 text-left"} variant={"warning"}>
               <span>
-                It seems your account is currently not logged in via Entra ID.
-                Please logout and simply sign in with the{" "}
-                <span className={"font-medium"}>Continue with Entra ID </span>{" "}
-                button on the login page.
+                <TransText>
+                  It seems your account is currently not logged in via Entra ID.
+                  Please logout and simply sign in with the
+                </TransText>{" "}
+                <span className={"font-medium"}>
+                  <TransText>Continue with Entra ID</TransText>{" "}
+                </span>{" "}
+                <TransText>button on the login page.</TransText>
               </span>
             </Callout>
           )}
@@ -303,39 +310,44 @@ export function SetupContent({
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <BoxIcon size={20} />
-            Configure SCIM in Microsoft Entra ID
+            <TransText>Configure SCIM in Microsoft Entra ID</TransText>
           </p>
           <Steps>
             <Steps.Step step={1}>
               <p>
-                Navigate to{"  "}
+                <TransText>Navigate to</TransText>{"  "}
                 <InlineLink
                   className={"inline"}
                   target={"_blank"}
                   href={"https://portal.azure.com/"}
                 >
-                  Azure Portal
+                  <TransText>Azure Portal</TransText>
                 </InlineLink>
               </p>
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
-                Go to <Mark>Azure Active Directory</Mark> then{" "}
+                <TransText>Go to</TransText>{" "}
+                <Mark>Azure Active Directory</Mark>{" "}
+                <TransText>then</TransText>{" "}
                 <Mark>Enterprise applications</Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={3}>
               <p className={"font-normal"}>
-                Click
-                <Mark>+ New application</Mark> to create a new enterprise
-                application and then click{" "}
+                <TransText>Click</TransText>{" "}
+                <Mark>+ New application</Mark>{" "}
+                <TransText>
+                  to create a new enterprise application and then click
+                </TransText>{" "}
                 <Mark>+ Create your own application</Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={4}>
               <p className={"font-normal"}>
-                Enter <Mark copy={true}>NetBird SCIM</Mark> as the name and
-                select
+                <TransText>Enter</TransText>{" "}
+                <Mark copy={true}>NetBird SCIM</Mark>{" "}
+                <TransText>as the name and select</TransText>{" "}
                 <Mark>
                   Integrate any other application you don&apos;t find in the
                   gallery (Non-gallery)
@@ -344,7 +356,7 @@ export function SetupContent({
             </Steps.Step>
             <Steps.Step step={5} line={false}>
               <p className={"font-normal"}>
-                Click <Mark>Create</Mark>
+                <TransText>Click</TransText> <Mark>Create</Mark>
               </p>
             </Steps.Step>
           </Steps>
@@ -355,35 +367,40 @@ export function SetupContent({
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <BoxIcon size={20} />
-            Enable Provisioning
+            <TransText>Enable Provisioning</TransText>
           </p>
           <Steps>
             <Steps.Step step={1}>
               <p>
-                Once the application is created, click <Mark>Manage</Mark>, then
-                click <Mark>Provisioning</Mark>. Under the Create configuration
-                section, click <Mark>Connect your application</Mark>
+                <TransText>Once the application is created, click</TransText>{" "}
+                <Mark>Manage</Mark>,{" "}
+                <TransText>then click</TransText>{" "}
+                <Mark>Provisioning</Mark>.{" "}
+                <TransText>
+                  Under the Create configuration section, click
+                </TransText>{" "}
+                <Mark>Connect your application</Mark>
               </p>
               <Lightbox image={entraGetStarted} />
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
-                Fill in the form with the following details
+                <TransText>Fill in the form with the following details</TransText>
               </p>
               <MinimalList
                 data={[
                   {
-                    label: "Authentication Method",
+                    label: zhMap["Authentication Method"] || "Authentication Method",
                     value: "Bearer authentication",
                     noCopy: true,
                   },
                   {
-                    label: "Tenant URL",
+                    label: zhMap["Tenant URL"] || "Tenant URL",
                     value:
                       "https://api.netbird.io/api/scim/v2?aadOptscim062020",
                   },
                   {
-                    label: "Secret token",
+                    label: zhMap["Secret token"] || "Secret token",
                     value:
                       authToken === "" ? (
                         <Skeleton height={17} width={200} />
@@ -395,25 +412,33 @@ export function SetupContent({
                 ]}
               />
               <Callout variant={"warning"}>
-                The <span className={"font-medium"}>'?aadOptscim062020'</span>{" "}
-                flag appended to the Tenant URL is required to ensure Microsoft
-                Entra ID sends SCIM 2.0 compliant requests.{" "}
+                <TransText>The</TransText>{" "}
+                <span className={"font-medium"}>'?aadOptscim062020'</span>{" "}
+                <TransText>
+                  flag appended to the Tenant URL is required to ensure Microsoft
+                  Entra ID sends SCIM 2.0 compliant requests.
+                </TransText>{" "}
                 <InlineLink
                   target={"_blank"}
                   href={
                     "https://learn.microsoft.com/en-us/entra/identity/app-provisioning/application-provisioning-config-problem-scim-compatibility#flags-to-alter-the-scim-behavior"
                   }
                 >
-                  Learn more
+                  <TransText>Learn more</TransText>
                   <ExternalLinkIcon size={12} />
                 </InlineLink>
               </Callout>
             </Steps.Step>
             <Steps.Step step={3} line={false}>
               <p className={"font-normal"}>
-                After that click <Mark>Test Connection</Mark> to verify the SCIM
-                connection. If the connection is successful click{" "}
-                <Mark>Create</Mark> to save the configuration.
+                <TransText>After that click</TransText>{" "}
+                <Mark>Test Connection</Mark>{" "}
+                <TransText>
+                  to verify the SCIM connection. If the connection is
+                  successful click
+                </TransText>{" "}
+                <Mark>Create</Mark>{" "}
+                <TransText>to save the configuration.</TransText>
               </p>
             </Steps.Step>
           </Steps>
@@ -424,27 +449,31 @@ export function SetupContent({
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <BoxIcon size={20} />
-            Group Attribute Mapping
+            <TransText>Group Attribute Mapping</TransText>
           </p>
           <Steps>
             <Steps.Step step={1}>
               <p>
-                Navigate to the <Mark>Attribute mapping</Mark> section and
-                select the <Mark>Groups</Mark> tab
+                <TransText>Navigate to the</TransText>{" "}
+                <Mark>Attribute mapping</Mark>{" "}
+                <TransText>section and select the</TransText>{" "}
+                <Mark>Groups</Mark> <TransText>tab</TransText>
               </p>
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
-                In the attribute mappings list, locate the{" "}
-                <Mark>externalId</Mark> row <br />
-                and click <Mark>Delete</Mark>
+                <TransText>In the attribute mappings list, locate the</TransText>{" "}
+                <Mark>externalId</Mark> <TransText>row</TransText> <br />
+                <TransText>and click</TransText> <Mark>Delete</Mark>
               </p>
               <Lightbox image={entraGroupMapping} />
             </Steps.Step>
             <Steps.Step step={3} line={false}>
               <p className={"font-normal"}>
-                Click <Mark>Save</Mark> to apply the updated group attribute
-                mapping configuration
+                <TransText>Click</TransText> <Mark>Save</Mark>{" "}
+                <TransText>
+                  to apply the updated group attribute mapping configuration
+                </TransText>
               </p>
             </Steps.Step>
           </Steps>
@@ -455,19 +484,23 @@ export function SetupContent({
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <BoxIcon size={20} />
-            User Attribute Mapping
+            <TransText>User Attribute Mapping</TransText>
           </p>
           <Steps>
             <Steps.Step step={1}>
               <p>
-                Navigate to the <Mark>Attribute mapping</Mark> section and
-                select the <Mark>Users</Mark> tab
+                <TransText>Navigate to the</TransText>{" "}
+                <Mark>Attribute mapping</Mark>{" "}
+                <TransText>section and select the</TransText>{" "}
+                <Mark>Users</Mark> <TransText>tab</TransText>
               </p>
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
-                In the attribute mappings list, remove all attribute mappings
-                except for the following:
+                <TransText>
+                  In the attribute mappings list, remove all attribute mappings
+                  except for the following:
+                </TransText>
               </p>
               <div>
                 <Mark>userName</Mark>
@@ -481,19 +514,23 @@ export function SetupContent({
             </Steps.Step>
             <Steps.Step step={3}>
               <p className={"font-normal"}>
-                In the attribute mappings list, locate the{" "}
-                <Mark>externalId</Mark> row <br />
-                and click <Mark>Edit</Mark>. Change the{" "}
-                <Mark>Source attribute</Mark> from <Mark>mailNickname</Mark> to{" "}
-                <Mark>objectId</Mark> and click <Mark>Ok</Mark> to save the
-                change
+                <TransText>In the attribute mappings list, locate the</TransText>{" "}
+                <Mark>externalId</Mark> <TransText>row</TransText> <br />
+                <TransText>and click</TransText> <Mark>Edit</Mark>.{" "}
+                <TransText>Change the</TransText>{" "}
+                <Mark>Source attribute</Mark> <TransText>from</TransText>{" "}
+                <Mark>mailNickname</Mark> <TransText>to</TransText>{" "}
+                <Mark>objectId</Mark> <TransText>and click</TransText>{" "}
+                <Mark>Ok</Mark> <TransText>to save the change</TransText>
               </p>
               <Lightbox image={entraEditExternalId} />
             </Steps.Step>
             <Steps.Step step={4} line={false}>
               <p className={"font-normal"}>
-                Click <Mark>Save</Mark> to apply the final attribute mapping
-                configuration
+                <TransText>Click</TransText> <Mark>Save</Mark>{" "}
+                <TransText>
+                  to apply the final attribute mapping configuration
+                </TransText>
               </p>
             </Steps.Step>
           </Steps>
@@ -504,25 +541,32 @@ export function SetupContent({
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <BoxIcon size={20} />
-            Assign Users and Groups
+            <TransText>Assign Users and Groups</TransText>
           </p>
           <Steps>
             <Steps.Step step={1}>
               <p>
-                Navigate to your NetBird enterprise application and click on{" "}
-                <Mark>Users and groups</Mark> in the left menu
+                <TransText>
+                  Navigate to your NetBird enterprise application and click on
+                </TransText>{" "}
+                <Mark>Users and groups</Mark>{" "}
+                <TransText>in the left menu</TransText>
               </p>
               <Lightbox image={entraAssignUsers} />
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
-                Click <Mark>+ Add user/group</Mark> and select the users and
-                groups you want to synchronize to NetBird
+                <TransText>Click</TransText> <Mark>+ Add user/group</Mark>{" "}
+                <TransText>
+                  and select the users and groups you want to synchronize to
+                  NetBird
+                </TransText>
               </p>
             </Steps.Step>
             <Steps.Step step={3} line={false}>
               <p className={"font-normal"}>
-                Click <Mark>Assign</Mark> to save the assignments
+                <TransText>Click</TransText> <Mark>Assign</Mark>{" "}
+                <TransText>to save the assignments</TransText>
               </p>
             </Steps.Step>
           </Steps>
@@ -533,23 +577,31 @@ export function SetupContent({
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <BoxIcon size={20} />
-            Start provisioning
+            <TransText>Start provisioning</TransText>
           </p>
           <Steps>
             <Steps.Step step={1}>
               <p>
-                After assigning users and groups, navigate back to the
-                provisioning configuration, click <Mark>Overview</Mark>, then
-                click the <Mark>Start provisioning</Mark> button to enable
-                automatic synchronization
+                <TransText>
+                  After assigning users and groups, navigate back to the
+                  provisioning configuration, click
+                </TransText>{" "}
+                <Mark>Overview</Mark>,{" "}
+                <TransText>then click the</TransText>{" "}
+                <Mark>Start provisioning</Mark>{" "}
+                <TransText>button to enable automatic synchronization</TransText>
               </p>
               <Lightbox image={entraStartProvisioning} />
             </Steps.Step>
             <Steps.Step step={2} line={false}>
               <p className={"font-normal"}>
-                The first sync will begin shortly after provisioning is started.{" "}
+                <TransText>
+                  The first sync will begin shortly after provisioning is
+                  started.
+                </TransText>{" "}
                 <br />
-                Click <Mark>Finish Setup</Mark> below to finalize this setup.
+                <TransText>Click</TransText> <Mark>Finish Setup</Mark>{" "}
+                <TransText>below to finalize this setup.</TransText>
               </p>
             </Steps.Step>
           </Steps>
@@ -564,7 +616,7 @@ export function SetupContent({
             onClick={() => setStep(step + 1)}
             disabled={!connectorId || connectorId === ""}
           >
-            Continue
+            <TransText>Continue</TransText>
             <IconArrowRight size={16} />
           </Button>
         )}
@@ -575,7 +627,7 @@ export function SetupContent({
             onClick={() => setStep(step - 1)}
           >
             <IconArrowLeft size={16} />
-            Back
+            <TransText>Back</TransText>
           </Button>
         )}
         {step >= 0 && step < maxSteps && (
@@ -585,7 +637,7 @@ export function SetupContent({
             disabled={!entraConnection && isAuth0()}
             onClick={() => setStep(step + 1)}
           >
-            {step == 0 ? "Get Started" : "Continue"}
+            {step == 0 ? <TransText>Get Started</TransText> : <TransText>Continue</TransText>}
             <IconArrowRight size={16} />
           </Button>
         )}
@@ -596,7 +648,7 @@ export function SetupContent({
             onClick={finishSetup}
             disabled={integrationId === "" || authToken === ""}
           >
-            Finish Setup
+            <TransText>Finish Setup</TransText>
           </Button>
         )}
       </ModalFooter>
@@ -608,8 +660,8 @@ export function SetupContent({
         >
           <Clock4 size={12} />
           <div>
-            Estimated setup time:
-            <span className={"font-medium"}> 10-20 Minutes</span>
+            <TransText>Estimated setup time:</TransText>
+            <span className={"font-medium"}> <TransText>10-20 Minutes</TransText></span>
           </div>
         </div>
       )}

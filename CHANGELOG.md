@@ -15,7 +15,8 @@
 - Agent Network：token 成本计量标签（input/output/cache read/cache write）
 - AIProvidersProvider：toast 通知（端点设置失败/账户控制更新）
 - VersionInfo：侧栏 Installed/Latest 版本显示
-- zh-map 新增约 20 条翻译
+- EntraSCIMSetup：完整汉化 SCIM 设置向导（6 步引导，Azure 门户 UI 元素名保留英文）
+- zh-map 新增约 78 条翻译
 
 ## [v2.90.4-zh] — 2026-07-19
 
