@@ -57,3 +57,6 @@ scripts/i18n-patches/
 
 # 内部文档（含凭据/IP，禁止同步 GitHub）
 internal/
+
+# 内部文档（会话提示词等，禁止放 docs/，应放 internal/）
+docs/NEW_SESSION_PROMPT.md

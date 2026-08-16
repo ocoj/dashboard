@@ -23,8 +23,8 @@
 ### 网络连通性修复
 - **根因**：netbird-server Docker bridge 模式，relay/signal 经 NPM 代理后源 IP 被 NAT 改写，peer 间无法获取真实端点
 - **修复**：netbird-server → `network_mode: host`，STUN (UDP 3478) 直连，WireGuard P2P 恢复
-- NPM 路由：API/WS/gRPC → `***REMOVED***:8081`，Dashboard → `***REMOVED***:30000`
-- KK 网络策略：`***REMOVED***/24` 资源 + 3 routing peer + kk Access 全协议允许
+- NPM 路由：API/WS/gRPC 与 Dashboard 经内网代理转发（端口配置见 `internal/` 部署文档）
+- KK 网络策略：内网网段资源 + 3 routing peer + kk Access 全协议允许
 
 ### i18n 汉化（第 3 轮）
 - dayjs 中文 locale 动态切换（LocaleProvider → dayjs.locale()）
