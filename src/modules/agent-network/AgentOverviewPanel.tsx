@@ -237,19 +237,19 @@ function DailyBreakdownTable({ daily }: { daily: DayBucket[] }) {
                 <div className={"text-xs flex flex-col gap-1"}>
                   <BreakdownRow
                     value={d.input.toLocaleString()}
-                    label={"input"}
+                    label={zhMap["input"] || "input"}
                   />
                   <BreakdownRow
                     value={d.output.toLocaleString()}
-                    label={"output"}
+                    label={zhMap["output"] || "output"}
                   />
                   <BreakdownRow
                     value={d.cacheRead.toLocaleString()}
-                    label={"cache read"}
+                    label={zhMap["cache read"] || "cache read"}
                   />
                   <BreakdownRow
                     value={d.cacheWrite.toLocaleString()}
-                    label={"cache write"}
+                    label={zhMap["cache write"] || "cache write"}
                   />
                   <BreakdownTotal value={total.toLocaleString()} />
                 </div>
@@ -294,22 +294,22 @@ function DailyBreakdownTable({ daily }: { daily: DayBucket[] }) {
                       <BreakdownRow
                         mono={true}
                         value={usd(d.inputCost ?? 0)}
-                        label={"input"}
+                        label={zhMap["input"] || "input"}
                       />
                       <BreakdownRow
                         mono={true}
                         value={usd(d.outputCost ?? 0)}
-                        label={"output"}
+                        label={zhMap["output"] || "output"}
                       />
                       <BreakdownRow
                         mono={true}
                         value={usd(d.cacheReadCost ?? 0)}
-                        label={"cache read"}
+                        label={zhMap["cache read"] || "cache read"}
                       />
                       <BreakdownRow
                         mono={true}
                         value={usd(d.cacheWriteCost ?? 0)}
-                        label={"cache write"}
+                        label={zhMap["cache write"] || "cache write"}
                       />
                     </>
                   ) : (
@@ -317,12 +317,12 @@ function DailyBreakdownTable({ daily }: { daily: DayBucket[] }) {
                       <BreakdownRow
                         mono={true}
                         value={usd(d.cost - d.cacheCost)}
-                        label={"input + output"}
+                        label={zhMap["input + output"] || "input + output"}
                       />
                       <BreakdownRow
                         mono={true}
                         value={usd(d.cacheCost)}
-                        label={"cache"}
+                        label={zhMap["cache"] || "cache"}
                       />
                     </>
                   )}

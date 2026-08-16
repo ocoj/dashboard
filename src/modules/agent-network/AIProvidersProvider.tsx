@@ -22,6 +22,7 @@ import {
   ProviderModel,
 } from "@/modules/agent-network/data/mockData";
 import { useAgentNetworkMode } from "@/modules/agent-network/useAgentNetworkMode";
+import zhMap from "@/i18n/zh-map";
 
 export type APIProviderModel = {
   id: string;
@@ -1003,7 +1004,7 @@ export default function AIProvidersProvider({ children }: Readonly<Props>) {
         const code = (err as { code?: number })?.code;
         if (code !== 409) {
           notify({
-            title: "Failed to set up the agent network endpoint",
+            title: zhMap["Failed to set up the agent network endpoint"] || "Failed to set up the agent network endpoint",
             description: err instanceof Error ? err.message : String(err),
           });
           return false;
@@ -1025,8 +1026,8 @@ export default function AIProvidersProvider({ children }: Readonly<Props>) {
       // would 404 the PUT anyway.
       if (!settings) {
         notify({
-          title: "Failed to update account controls",
-          description: "Agent Network has not been set up yet.",
+          title: zhMap["Failed to update account controls"] || "Failed to update account controls",
+          description: zhMap["Agent Network has not been set up yet."] || "Agent Network has not been set up yet.",
         });
         return false;
       }
@@ -1040,7 +1041,7 @@ export default function AIProvidersProvider({ children }: Readonly<Props>) {
         return true;
       } catch (err) {
         notify({
-          title: "Failed to update account controls",
+          title: zhMap["Failed to update account controls"] || "Failed to update account controls",
           description: err instanceof Error ? err.message : String(err),
         });
         return false;

@@ -1134,15 +1134,15 @@ function CostBreakdown({
           {/* All four buckets, including zeros: a zero cache-read line is
               information (the request missed the cache), and a fixed set of
               rows keeps the hover comparable between requests. */}
-          <CostRow amount={inputCostUsd ?? 0} label={"input"} />
-          <CostRow amount={outputCostUsd ?? 0} label={"output"} />
-          <CostRow amount={cacheRead} label={"cache read"} />
-          <CostRow amount={cacheWrite} label={"cache write"} />
+          <CostRow amount={inputCostUsd ?? 0} label={zhMap["input"] || "input"} />
+          <CostRow amount={outputCostUsd ?? 0} label={zhMap["output"] || "output"} />
+          <CostRow amount={cacheRead} label={zhMap["cache read"] || "cache read"} />
+          <CostRow amount={cacheWrite} label={zhMap["cache write"] || "cache write"} />
         </>
       ) : (
         <>
-          <CostRow amount={costUsd - cache} label={"input + output"} />
-          <CostRow amount={cache} label={"cache"} />
+          <CostRow amount={costUsd - cache} label={zhMap["input + output"] || "input + output"} />
+          <CostRow amount={cache} label={zhMap["cache"] || "cache"} />
         </>
       )}
       <div

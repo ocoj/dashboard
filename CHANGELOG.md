@@ -1,5 +1,22 @@
 # 更改记录
 
+## [v2.91.1-zh] — 2026-08-16
+
+### 上游同步（v2.90.7 → v2.91.1）
+- 同步 netbirdio/dashboard #718..#759，含 v2.90.8/9/10、v2.91.0、v2.91.1
+- Next.js 16.1 → 16.3，Docker 基础镜像 Alpine 3.24
+- Agent Network：新增 Kimi(Moonshot AI) 供应商、prompt-cache tokens 计量、per-provider disable-metadata 开关
+- Linux 安装 Tab 重构：多发行版支持（Debian/Fedora/RHEL/AlmaLinux/openSUSE/Amazon Linux）
+- Entra ID SCIM 向导更新（新 Azure 门户 UI）
+- 版本检测修复、导航图标对齐、移除 onboarding 预约弹窗
+
+### i18n 增量汉化
+- LinuxTab：发行版选择器说明、标题、placeholder、note 汉化
+- Agent Network：token 成本计量标签（input/output/cache read/cache write）
+- AIProvidersProvider：toast 通知（端点设置失败/账户控制更新）
+- VersionInfo：侧栏 Installed/Latest 版本显示
+- zh-map 新增约 20 条翻译
+
 ## [v2.90.4-zh] — 2026-07-19
 
 ### 网络连通性修复
