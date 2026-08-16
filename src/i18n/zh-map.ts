@@ -1089,6 +1089,7 @@ const zhMap: Record<string, string> = {
   'Install with Command-line': '通过命令行安装',
   'Installation -': 'Installation -',
   'Installation Guide': '安装指南',
+  'Installed': '已安装',
   'Instance Setup -': 'Instance Setup -',
   'Instead of maintaining always-on connections, NetBird activates them on-demand based on activity or signaling. This requires NetBird client v0.50.1 or higher.': 'NetBird 不再维持常开连接，而是根据活动或信号按需激活连接。这需要 NetBird 客户端 v0.50.1 或更高版本。',
   'Integration': 'Integration',

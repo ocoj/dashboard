@@ -7,6 +7,7 @@ import * as React from "react";
 import Skeleton from "react-loading-skeleton";
 import useFetchApi from "@utils/api";
 import { isNetBirdCloud } from "@utils/netbird";
+import { isNewerVersion } from "@utils/version";
 import { useApplicationContext } from "@/contexts/ApplicationProvider";
 import { VersionInfo as VersionInfoType } from "@/interfaces/Instance";
 import { TransText } from "@/i18n/trans-text";
@@ -18,29 +19,14 @@ function formatVersion(version: string): string {
   return version;
 }
 
-function compareVersions(current: string, latest: string): boolean {
-  // Returns true if latest is newer than current
-  if (!current || !latest) return false;
-  if (current === "development") return false;
-
-  // Strip "v" prefix if present
-  const normalizedCurrent = current.replace(/^v/, "");
-  const normalizedLatest = latest.replace(/^v/, "");
-
-  const currentParts = normalizedCurrent
-    .split(".")
-    .map((p) => parseInt(p, 10) || 0);
-  const latestParts = normalizedLatest
-    .split(".")
-    .map((p) => parseInt(p, 10) || 0);
-
-  for (let i = 0; i < Math.max(currentParts.length, latestParts.length); i++) {
-    const c = currentParts[i] || 0;
-    const l = latestParts[i] || 0;
-    if (l > c) return true;
-    if (l < c) return false;
-  }
-  return false;
+// Builds can carry a suffix that overflows the sidebar: semver build metadata
+// ("0.77.0+enterprise.1" on enterprise builds) or a numeric CI build number
+// ("0.76.3-31256681241"). Show the release only and keep the full string for the
+// tooltip. Pre-release labels like "-rc.1" are left intact so they stay visible.
+function formatShortVersion(version: string): string {
+  return formatVersion(version)
+    .replace(/\+.*$/, "")
+    .replace(/^(v?\d+(?:\.\d+)*)-\d+$/, "$1");
 }
 
 export const NavigationVersionInfo = () => {
@@ -78,12 +64,18 @@ const NavigationVersionInfoContent = () => {
 
   if (!versionInfo) return null;
 
-  // Compare versions to detect updates (returns false for "development" versions)
-  const managementUpdateAvailable = compareVersions(
-    versionInfo.management_current_version,
-    versionInfo.management_available_version,
-  );
-  const dashboardUpdateAvailable = compareVersions(
+  // Prefer the server's verdict: it knows the release channel the installation
+  // runs on and compares with a full semver implementation. Fall back to a local
+  // comparison for management servers that don't report the flag yet.
+  const managementUpdateAvailable =
+    versionInfo.management_update_available ??
+    isNewerVersion(
+      versionInfo.management_current_version,
+      versionInfo.management_available_version,
+    );
+  // The dashboard's installed version is baked in at build time and the server
+  // never sees it, so this one is always compared here.
+  const dashboardUpdateAvailable = isNewerVersion(
     dashboardVersion,
     versionInfo.dashboard_available_version,
   );
@@ -99,9 +91,16 @@ const NavigationVersionInfoContent = () => {
       <div className="flex flex-col gap-1 text-nb-gray-400">
         <FullTooltip
           content={
-            <span className="text-xs">
-              <TransText>Latest</TransText>: {formatVersion(versionInfo.management_available_version)}
-            </span>
+            <div className="text-xs flex flex-col gap-1">
+              <span>
+                <TransText>Installed</TransText>:{" "}
+                {formatVersion(versionInfo.management_current_version)}
+              </span>
+              <span>
+                <TransText>Latest</TransText>:{" "}
+                {formatVersion(versionInfo.management_available_version)}
+              </span>
+            </div>
           }
           side="top"
           className="w-full"
@@ -109,15 +108,22 @@ const NavigationVersionInfoContent = () => {
           <div className="flex items-center justify-between w-full cursor-default">
             <span><TransText>Management</TransText></span>
             <span className="text-nb-gray-300 font-medium">
-              {formatVersion(versionInfo.management_current_version)}
+              {formatShortVersion(versionInfo.management_current_version)}
             </span>
           </div>
         </FullTooltip>
         <FullTooltip
           content={
-            <span className="text-xs">
-              <TransText>Latest</TransText>: {formatVersion(versionInfo.dashboard_available_version)}
-            </span>
+            <div className="text-xs flex flex-col gap-1">
+              <span>
+                <TransText>Installed</TransText>:{" "}
+                {formatVersion(dashboardVersion)}
+              </span>
+              <span>
+                <TransText>Latest</TransText>:{" "}
+                {formatVersion(versionInfo.dashboard_available_version)}
+              </span>
+            </div>
           }
           side="top"
           className="w-full"
@@ -125,7 +131,7 @@ const NavigationVersionInfoContent = () => {
           <div className="flex items-center justify-between w-full cursor-default">
             <span><TransText>Dashboard</TransText></span>
             <span className="text-nb-gray-300 font-medium">
-              {formatVersion(dashboardVersion)}
+              {formatShortVersion(dashboardVersion)}
             </span>
           </div>
         </FullTooltip>

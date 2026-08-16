@@ -14,8 +14,8 @@ import {
   TableFiltersButton,
 } from "@components/table/TableFilters";
 import NoResults from "@components/ui/NoResults";
-import { IconCirclePlus } from "@tabler/icons-react";
 import { ColumnDef, SortingState } from "@tanstack/react-table";
+import { PlusCircle } from "lucide-react";
 import * as React from "react";
 import { useMemo, useState } from "react";
 import PeerIcon from "@/assets/icons/PeerIcon";
@@ -169,8 +169,8 @@ export default function NetworkRoutingPeersTable({
           onClick={() => network && openAddRoutingPeerModal(network)}
           disabled={!permission.networks.update}
         >
-          <IconCirclePlus size={16} />
-          "Add"
+          <PlusCircle size={16} />
+          <TransText>Add</TransText>
         </Button>
       )}
     >

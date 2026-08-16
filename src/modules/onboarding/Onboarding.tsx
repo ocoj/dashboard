@@ -31,7 +31,6 @@ import { OnboardingFirstDevice } from "@/modules/onboarding/p2p/OnboardingFirstD
 import { OnboardingSecondDevice } from "@/modules/onboarding/p2p/OnboardingSecondDevice";
 import { OnboardingTestP2P } from "@/modules/onboarding/p2p/OnboardingTestP2P";
 import { TransText } from "@/i18n/trans-text";
-import { OnboardingDemoCall } from "@/modules/onboarding/OnboardingDemoCall";
 
 export interface OnboardingState {
   intent: Intent;
@@ -112,7 +111,6 @@ export const Onboarding = ({
 
   const [onboarding, dispatch] = useReducer(onboardingReducer, initial);
   const { step, intent } = onboarding;
-  const [demoCallModal, setDemoCallModal] = useState(false);
 
   const [resource, setResource] = useState<NetworkResource>();
   const [firstRoutingPeer, setFirstRoutingPeer] = useState<Peer>();
@@ -396,21 +394,9 @@ export const Onboarding = ({
                             payload: new Date().toISOString(),
                           });
                         }
-
-                        const companySize = fields?.find(
-                          (f) => f.name === "planned_users",
-                        );
-                        if (Number(companySize?.value) >= 50) {
-                          setDemoCallModal(true);
-                        }
                       }}
                     />
                   )}
-
-                  <OnboardingDemoCall
-                    open={demoCallModal}
-                    onOpenChange={setDemoCallModal}
-                  />
 
                   {step === 2 && (
                     <OnboardingIntent
