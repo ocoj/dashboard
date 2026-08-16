@@ -18,6 +18,7 @@ import JumpcloudConfiguration from "@/modules/integrations/idp-sync/jumpcloud/Ju
 import JumpcloudSetup from "@/modules/integrations/idp-sync/jumpcloud/JumpcloudSetup";
 import { useIntegrations } from "@/modules/integrations/idp-sync/useIntegrations";
 import { IntegrationCard } from "@/modules/integrations/IntegrationCard";
+import zhMap from "@/i18n/zh-map";
 
 export const Jumpcloud = () => {
   const { mutate } = useSWRConfig();
@@ -91,7 +92,7 @@ export const Jumpcloud = () => {
             onClick={() => setSetupModal(true)}
           >
             <Repeat size={13} />
-            Connect Jumpcloud
+            {zhMap["Connect"] || "Connect"} Jumpcloud
           </Button>
         }
       >

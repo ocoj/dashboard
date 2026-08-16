@@ -23,6 +23,7 @@ import OktaSetup from "@/modules/integrations/idp-sync/okta-scim/OktaSetup";
 import { useIntegrations } from "@/modules/integrations/idp-sync/useIntegrations";
 import { IntegrationCard } from "@/modules/integrations/IntegrationCard";
 import { useEnterpriseConnections } from "@/modules/integrations/sso/useEnterpriseConnections";
+import zhMap from "@/i18n/zh-map";
 
 export const Okta = () => {
   const { mutate } = useSWRConfig();
@@ -101,7 +102,7 @@ export const Okta = () => {
               onClick={() => setSetupModal(true)}
             >
               <Repeat size={13} />
-              Connect Okta
+              {zhMap["Connect"] || "Connect"} Okta
             </Button>
           ) : (
             <FullTooltip
