@@ -54,3 +54,6 @@ e2e/playwright-report/
 .idea
 src/.local-config*
 scripts/i18n-patches/
+
+# 内部文档（含凭据/IP，禁止同步 GitHub）
+internal/
