@@ -90,7 +90,9 @@ export const IdentityProviderCard = () => {
                 )}
               >
                 <IconCircleFilled size={8} />
-                {enabled ? "Enabled" : "Disabled"}
+                {enabled
+                  ? zhMap["Enabled"] || "Enabled"
+                  : zhMap["Disabled"] || "Disabled"}
               </div>
             </div>
 

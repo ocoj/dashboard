@@ -597,7 +597,7 @@ export const Onboarding = ({
                       onSkip(intent, step);
                     }}
                   >
-                    Skip to Dashboard
+                    <TransText>Skip to Dashboard</TransText>
                   </InlineLink>
                 </span>
               )}

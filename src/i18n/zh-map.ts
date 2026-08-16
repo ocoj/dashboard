@@ -2553,6 +2553,17 @@ const zhMap: Record<string, string> = {
   'to verify the SCIM connection. If the connection is successful click': '以验证 SCIM 连接。如果连接成功，点击',
   'with the following': '以及以下',
 
+  'Get started with NetBird': '开始使用 NetBird',
+  'NetBird provides the flexibility of both a peer-to-peer overlay network and a remote network access solution. Choose what fits your needs, you can always combine both.': 'NetBird 既提供点对点覆盖网络，也提供远程网络访问解决方案，两者兼具灵活性。选择适合您的方式，您随时可以将两者结合使用。',
+  'Install NetBird on two or more devices to create secure, direct WireGuard connections, like laptop to server or server to database. Add at least two machines to get started.': '在至少两台设备上安装 NetBird，以创建安全、直接的 WireGuard 连接，例如笔记本电脑到服务器或服务器到数据库。',
+  'Install NetBird on two or more devices in your homelab, such as your laptop, NAS, or Raspberry Pi, to create secure, direct WireGuard connections.': '在家庭实验室中的两台或更多设备（如笔记本电脑、NAS 或树莓派）上安装 NetBird，以创建安全、直接的 WireGuard 连接。',
+  'Enable employee remote access to VMs, Kubernetes clusters, and cloud or on-prem resources without installing NetBird on every machine.': '让员工远程访问虚拟机、Kubernetes 集群以及云上或本地的资源，而无需在每台机器上安装 NetBird。',
+  'Securely access your homelab remotely from anywhere without installing NetBird on every device.': '从任何地方安全地远程访问您的家庭实验室，而无需在每台设备上安装 NetBird。',
+  'Based on your previous choices, we recommend starting with': '根据您之前的选择，我们建议从',
+  'You can always combine both options later.': '您之后随时可以结合使用两种方案。',
+  'Synchronize users and groups from Microsoft Entra ID via the SCIM protocol.': '通过 SCIM 协议从 Microsoft Entra ID 同步用户和组。',
+  'Provide your own custom SCIM provider to sync users and groups.': '提供您自己的自定义 SCIM 提供商以同步用户和组。',
+
 }
 
 export default zhMap;

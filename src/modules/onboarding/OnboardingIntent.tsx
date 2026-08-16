@@ -8,6 +8,7 @@ import NetworkRoutesIcon from "@/assets/icons/NetworkRoutesIcon";
 import PeerIcon from "@/assets/icons/PeerIcon";
 import {Intent} from "@/modules/onboarding/Onboarding";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props =   {
     onSelect: (intent: Intent) => void,
@@ -65,9 +66,11 @@ export const OnboardingIntent = ({onSelect, useCases, isBusiness}: Props) => {
                         "text-sm text-nb-gray-300 font-light mt-2 block text-center sm:px-4"
                     }
                 >
-                    NetBird provides the flexibility of both a peer-to-peer overlay network and a remote network access
-                    solution.
-                    Choose what fits your needs, you can always combine both.
+                    <TransText>
+                      NetBird provides the flexibility of both a peer-to-peer
+                      overlay network and a remote network access solution.
+                      Choose what fits your needs, you can always combine both.
+                    </TransText>
                 </div>
                 <div
                     className={cn(
@@ -76,18 +79,18 @@ export const OnboardingIntent = ({onSelect, useCases, isBusiness}: Props) => {
                     )}
                 >
                     <IntentCard
-                        title={"Peer-to-Peer Network"}
+                        title={zhMap["Peer-to-Peer Network"] || "Peer-to-Peer Network"}
                         description={
-                        isBusiness ? "Install NetBird on two or more devices to create secure, direct WireGuard connections, like laptop to server or server to database. Add at least two machines to get started." :"Install NetBird on two or more devices in your homelab, such as your laptop, NAS, or Raspberry Pi, to create secure, direct WireGuard connections."
+                        isBusiness ? zhMap["Install NetBird on two or more devices to create secure, direct WireGuard connections, like laptop to server or server to database. Add at least two machines to get started."] || "Install NetBird on two or more devices to create secure, direct WireGuard connections, like laptop to server or server to database. Add at least two machines to get started." : zhMap["Install NetBird on two or more devices in your homelab, such as your laptop, NAS, or Raspberry Pi, to create secure, direct WireGuard connections."] || "Install NetBird on two or more devices in your homelab, such as your laptop, NAS, or Raspberry Pi, to create secure, direct WireGuard connections."
                         }
                         recommended={isP2PRecommended}
                         icon={<PeerIcon size={18} className={"fill-netbird"}/>}
                         onClick={() => onSelect(Intent.P2P)}
                     />
                     <IntentCard
-                        title={"Remote Network Access"}
+                        title={zhMap["Remote Network Access"] || "Remote Network Access"}
                         description={
-                        isBusiness ? "Enable employee remote access to VMs, Kubernetes clusters, and cloud or on-prem resources without installing NetBird on every machine." : "Securely access your homelab remotely from anywhere without installing NetBird on every device."
+                        isBusiness ? zhMap["Enable employee remote access to VMs, Kubernetes clusters, and cloud or on-prem resources without installing NetBird on every machine."] || "Enable employee remote access to VMs, Kubernetes clusters, and cloud or on-prem resources without installing NetBird on every machine." : zhMap["Securely access your homelab remotely from anywhere without installing NetBird on every device."] || "Securely access your homelab remotely from anywhere without installing NetBird on every device."
                         }
                         recommended={isNetworksRecommended}
                         icon={<NetworkRoutesIcon size={18} className={"fill-netbird"}/>}
@@ -142,8 +145,15 @@ const IntentCard = ({
                                 <FullTooltip
                                     content={
                                         <div className={"text-xs max-w-xs"}>
-                                            Based on your previous choices, we recommend starting with{" "}
-                                            {title}. You can always combine both options later.
+                                            <TransText>
+                                              Based on your previous choices, we
+                                              recommend starting with
+                                            </TransText>{" "}
+                                            {title}.{" "}
+                                            <TransText>
+                                              You can always combine both options
+                                              later.
+                                            </TransText>
                                         </div>
                                     }
                                 >
@@ -154,7 +164,7 @@ const IntentCard = ({
                           "hover:bg-netbird/20 cursor-help transition-all self-center",
                       )}
                   >
-                    Recommended
+                    <TransText>Recommended</TransText>
                     <HelpCircle size={10} className={"ml-1"}/>
                   </span>
                                 </FullTooltip>
