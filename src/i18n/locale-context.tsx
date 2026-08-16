@@ -90,15 +90,17 @@ export default function LocaleProvider({ children }: Props) {
     setMounted(true);
   }, []);
 
+  // 在 render 阶段同步设置 dayjs locale，确保子组件（如 LastTimeRow）在
+  // 同一次 render 就能拿到正确的 locale，避免 SSR 后英文相对时间不刷新。
+  if (locale === "zh") {
+    dayjs.locale("zh-cn");
+  } else {
+    dayjs.locale("en");
+  }
+
   useEffect(() => {
     if (typeof document !== "undefined") {
       document.documentElement.lang = locale;
-    }
-    // Sync dayjs locale with the active locale
-    if (locale === "zh") {
-      dayjs.locale("zh-cn");
-    } else {
-      dayjs.locale("en");
     }
   }, [locale]);
 

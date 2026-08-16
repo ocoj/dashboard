@@ -2564,6 +2564,9 @@ const zhMap: Record<string, string> = {
   'Synchronize users and groups from Microsoft Entra ID via the SCIM protocol.': '通过 SCIM 协议从 Microsoft Entra ID 同步用户和组。',
   'Provide your own custom SCIM provider to sync users and groups.': '提供您自己的自定义 SCIM 提供商以同步用户和组。',
 
+  'New': '新',
+  'The new NetBird desktop app is here - now available in the v0.75 release.': '全新 NetBird 桌面应用已发布 - 现提供 v0.75 版本。',
+
 }
 
 export default zhMap;
