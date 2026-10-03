@@ -23,7 +23,9 @@ function formatVersion(version: string): string {
 
 // A pre-release label names the release itself, so it stays in the short form.
 // Anything else after the release names the build and is dropped.
-const PRERELEASE_LABEL = /^(rc|alpha|beta)[\w.]*$/i;
+// `zh` is our localisation variant label (v2.94.0-zh) and names the release too,
+// so it must stay visible in the sidebar (see VERSION.md).
+const PRERELEASE_LABEL = /^(rc|alpha|beta|zh)[\w.]*$/i;
 
 // A goreleaser snapshot is built from an unreleased tree and versioned as the
 // NEXT release ("0.77.1-SNAPSHOT-a1b2c3d" is built after 0.77.0 shipped), so
