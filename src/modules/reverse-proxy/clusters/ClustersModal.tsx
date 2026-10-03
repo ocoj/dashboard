@@ -560,7 +560,7 @@ spec:
                 href={REVERSE_PROXY_CLUSTERS_DOCS_LINK}
                 target={"_blank"}
               >
-                Proxy Cluster
+                <TransText>Proxy Cluster</TransText>
                 <ExternalLinkIcon size={12} />
               </InlineLink>
             </Paragraph>

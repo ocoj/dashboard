@@ -196,7 +196,7 @@ export default function NetworksTable({
                       href={"https://docs.netbird.io/how-to/networks"}
                       target={"_blank"}
                     >
-                      Networks
+                      <TransText>Networks</TransText>
                       <ExternalLinkIcon size={12} />
                     </InlineLink>
                   </>

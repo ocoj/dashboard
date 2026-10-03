@@ -192,7 +192,7 @@ export default function AgentProvidersTable({
                   href={"https://docs.netbird.io/agent-network/providers"}
                   target={"_blank"}
                 >
-                  Agent Network Providers
+                  <TransText>Agent Network Providers</TransText>
                   <ExternalLinkIcon size={12} />
                 </InlineLink>
               </>

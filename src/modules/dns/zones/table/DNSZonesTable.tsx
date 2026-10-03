@@ -280,7 +280,7 @@ export default function DNSZonesTable({
               <>
                 <TransText>Learn more about</TransText>
                 <InlineLink href={DNS_ZONE_DOCS_LINK} target={"_blank"}>
-                  DNS Zones
+                  <TransText>DNS Zones</TransText>
                   <ExternalLinkIcon size={12} />
                 </InlineLink>
               </>

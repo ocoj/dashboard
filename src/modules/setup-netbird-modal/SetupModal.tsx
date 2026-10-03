@@ -155,7 +155,7 @@ export function SetupModalContent({
   const setupKeyContent = showKeyGenerator ? (
     <>
       <div className={"flex items-center gap-1.5 flex-wrap"}>
-        Generate a setup key
+        <TransText>Generate a setup key</TransText>
         <HelpTooltip
           content={
             <>
@@ -172,7 +172,7 @@ export function SetupModalContent({
           }
           target={"_blank"}
         >
-          Learn more
+          <TransText>Learn more</TransText>
           <ExternalLinkIcon size={12} />
         </InlineLink>
       </div>
@@ -354,7 +354,7 @@ export function SetupModalContent({
                 }
                 target={"_blank"}
               >
-                Installation Guide
+                <TransText>Installation Guide</TransText>
                 <ExternalLinkIcon size={12} />
               </InlineLink>
             </SmallParagraph>

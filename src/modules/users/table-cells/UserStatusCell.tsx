@@ -52,7 +52,7 @@ export default function UserStatusCell({ user }: Readonly<Props>) {
           }
           target={"_blank"}
         >
-          Learn more <ExternalLinkIcon size={12} />
+          <TransText>Learn more</TransText> <ExternalLinkIcon size={12} />
         </InlineLink>
       </div>
     </div>
@@ -78,7 +78,7 @@ export default function UserStatusCell({ user }: Readonly<Props>) {
           href={"https://docs.netbird.io/how-to/approve-users"}
           target={"_blank"}
         >
-          Learn more <ExternalLinkIcon size={12} />
+          <TransText>Learn more</TransText> <ExternalLinkIcon size={12} />
         </InlineLink>
       </div>
     </div>

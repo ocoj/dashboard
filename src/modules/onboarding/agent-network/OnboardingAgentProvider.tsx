@@ -53,7 +53,7 @@ export const OnboardingAgentProvider = ({ onBack, onNext }: Props) => {
           <TransText>Go Back</TransText>
         </Button>
         <Button variant={"primary"} disabled={!connected} onClick={onNext}>
-          Continue
+          <TransText>Continue</TransText>
           <ArrowRightIcon size={16} />
         </Button>
       </div>

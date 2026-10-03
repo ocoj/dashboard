@@ -126,7 +126,7 @@ export const CustomDomainModal = ({
                   href={REVERSE_PROXY_CLUSTERS_DOCS_LINK}
                   target={"_blank"}
                 >
-                  Proxy Clusters
+                  <TransText>Proxy Clusters</TransText>
                   <ExternalLinkIcon size={12} />
                 </InlineLink>
               </Callout>
@@ -174,7 +174,7 @@ export const CustomDomainModal = ({
                 href={REVERSE_PROXY_CUSTOM_DOMAINS_DOCS_LINK}
                 target={"_blank"}
               >
-                Custom Domains
+                <TransText>Custom Domains</TransText>
                 <ExternalLinkIcon size={12} />
               </InlineLink>
             </Paragraph>

@@ -386,7 +386,7 @@ export function GenericHTTPModalContent({
               disabled={!config.canContinueToHeaders}
               onClick={() => setTab("headers")}
             >
-              Continue
+              <TransText>Continue</TransText>
               <IconArrowRight size={16} />
             </Button>
           )}
@@ -396,7 +396,7 @@ export function GenericHTTPModalContent({
               disabled={!config.canContinueToHeaders || !canContinueToBodyTemplate}
               onClick={() => setTab("template")}
             >
-              Continue
+              <TransText>Continue</TransText>
               <IconArrowRight size={16} />
             </Button>
           )}

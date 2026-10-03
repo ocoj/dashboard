@@ -405,12 +405,12 @@ function AgentPolicyModalContent({
       <ModalFooter className={"items-center"}>
         <div className={"w-full"}>
           <Paragraph className={"text-sm mt-auto"}>
-            Learn more about
+            <TransText>Learn more about</TransText>
             <InlineLink
               href={"https://docs.netbird.io/agent-network"}
               target={"_blank"}
             >
-              Agent Network
+              <TransText>Agent Network</TransText>
               <ExternalLinkIcon size={12} />
             </InlineLink>
           </Paragraph>

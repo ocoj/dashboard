@@ -216,7 +216,7 @@ export default function CustomDomainsTable({ headingTarget }: Readonly<Props>) {
               <>
                 <TransText>Learn more about</TransText>
                 <InlineLink href={REVERSE_PROXY_DOCS_LINK} target={"_blank"}>
-                  Custom Domains
+                  <TransText>Custom Domains</TransText>
                   <ExternalLinkIcon size={12} />
                 </InlineLink>
               </>

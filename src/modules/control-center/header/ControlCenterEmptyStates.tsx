@@ -13,6 +13,7 @@ import { useControlCenterData } from "@/modules/control-center/hooks/useControlC
 import { useNetworksContext } from "@/modules/networks/NetworkProvider";
 import { useCanvasTransitionActive } from "@/modules/control-center/utils/canvas-transition";
 import zhMap from "@/i18n/zh-map";
+import { TransText } from "@/i18n/trans-text";
 
 // Must stay a literal: Tailwind only emits classes it finds as static text.
 const EMPTY_STATE_REVEAL_IN =
@@ -101,7 +102,7 @@ export function ControlCenterEmptyStates() {
                     href={"https://docs.netbird.io/how-to/networks#resources"}
                     target={"_blank"}
                   >
-                    Resources
+                    <TransText>Resources</TransText>
                     <ExternalLinkIcon size={12} />
                   </InlineLink>
                 </>
@@ -154,7 +155,7 @@ export function ControlCenterEmptyStates() {
                     href={"https://docs.netbird.io/how-to/networks"}
                     target={"_blank"}
                   >
-                    Networks
+                    <TransText>Networks</TransText>
                     <ExternalLinkIcon size={12} />
                   </InlineLink>
                 </>

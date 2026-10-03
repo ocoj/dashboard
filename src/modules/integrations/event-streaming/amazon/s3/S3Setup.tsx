@@ -207,7 +207,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
-                Click <Mark><TransText>Create bucket</TransText></Mark> at the top right corner
+                <TransText>Click</TransText> <Mark><TransText>Create bucket</TransText></Mark> at the top right corner
               </p>
             </Steps.Step>
             <Steps.Step step={3}>
@@ -324,7 +324,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
             disabled={!regionEntered}
             onClick={() => setStep(2)}
           >
-            Continue
+            <TransText>Continue</TransText>
             <IconArrowRight size={16} />
           </Button>
         )}
@@ -344,7 +344,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
               disabled={!bucketNameEntered}
               onClick={() => setStep(3)}
             >
-              Continue
+              <TransText>Continue</TransText>
               <IconArrowRight size={16} />
             </Button>
           </>

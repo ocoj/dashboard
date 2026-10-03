@@ -388,7 +388,7 @@ function DailyBreakdownTable({ daily }: { daily: DayBucket[] }) {
                 href={"https://docs.netbird.io/agent-network"}
                 target={"_blank"}
               >
-                Agent Network
+                <TransText>Agent Network</TransText>
                 <ExternalLinkIcon size={12} />
               </InlineLink>
             </>

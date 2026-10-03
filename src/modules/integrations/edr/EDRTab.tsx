@@ -15,6 +15,7 @@ import { Intune } from "./intune/Intune";
 import { FleetDM } from "@/modules/integrations/edr/fleetdm/FleetDM";
 import { Huntress } from "@/modules/integrations/edr/huntress/Huntress";
 import zhMap from "@/i18n/zh-map";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   account: Account;
@@ -51,7 +52,7 @@ export default function EDRTab({ account }: Props) {
             }
             target={"_blank"}
           >
-            Learn more
+            <TransText>Learn more</TransText>
             <ExternalLinkIcon size={12} />
           </InlineLink>
         </Paragraph>

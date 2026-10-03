@@ -209,7 +209,7 @@ export default function AuthenticationTab({ account }: Readonly<Props>) {
                 }
                 target={"_blank"}
               >
-                Learn more
+                <TransText>Learn more</TransText>
                 <ExternalLinkIcon size={12} />
               </InlineLink>
             </Paragraph>

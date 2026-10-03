@@ -120,9 +120,9 @@ export const MSPDomainVerificationModal = ({
         <ModalFooter className={"items-center"}>
           <div className={"w-full"}>
             <Paragraph className={"text-sm mt-auto"}>
-              Learn more about
+              <TransText>Learn more about</TransText>
               <InlineLink href={"#"} target={"_blank"}>
-                Domain Verification
+                <TransText>Domain Verification</TransText>
                 <ExternalLinkIcon size={12} />
               </InlineLink>
             </Paragraph>

@@ -22,6 +22,7 @@ import { useSWRConfig } from "swr";
 import { AccountMFA } from "@/cloud/mfa/AccountMFASettings";
 import { useDialog } from "@/contexts/DialogProvider";
 import { usePermissions } from "@/contexts/PermissionsProvider";
+import { TransText } from "@/i18n/trans-text";
 
 const config = loadConfig();
 
@@ -82,7 +83,7 @@ const ListItem = ({ userId }: Props) => {
                   }
                   target={"_blank"}
                 >
-                  Learn more
+                  <TransText>Learn more</TransText>
                   <ExternalLinkIcon size={10} />
                 </InlineLink>
               </div>
@@ -148,7 +149,7 @@ const MFAStatus = ({
       ) : (
         <div className={"h-[30px] flex items-center"}>
           <InlineLink href={"/settings?tab=authentication"}>
-            Activate
+            <TransText>Activate</TransText>
             <ArrowUpRightIcon size={14} />
           </InlineLink>
         </div>

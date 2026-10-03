@@ -1,6 +1,7 @@
 import InlineLink from "@components/InlineLink";
 import { ExternalLinkIcon } from "lucide-react";
 import * as React from "react";
+import { TransText } from "@/i18n/trans-text";
 
 export const DistributorDocsLink = () => {
   return (
@@ -10,7 +11,7 @@ export const DistributorDocsLink = () => {
         href={"https://docs.netbird.io/manage/for-partners/distributor-portal"}
         target={"_blank"}
       >
-        Customers
+        <TransText>Customers</TransText>
         <ExternalLinkIcon size={12} />
       </InlineLink>
     </>

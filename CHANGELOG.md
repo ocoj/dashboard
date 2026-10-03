@@ -1,5 +1,46 @@
 # 更改记录
 
+## [v2.94.0-zh] — 2026-10-03
+
+### 上游同步（v2.91.1 → v2.94.0）
+- 同步 netbirdio/dashboard v2.92.0 / v2.93.0 / v2.94.0
+- 真实增量：406 个文件，+58,463 / −8,305（其中 src/ 358 文件）
+- **Control Center 草稿模式**：47 个新组件（画布草稿、变更集、审查部署）
+- **Cloud 登录域名（Sign-in Domains）**：5 个新组件
+- Agent Network：新增 `connect` 页、ConnectProvidersTable、Kimi/Claude Code/Codex 供应商
+- 上游引入单元测试基建（vitest + testing-library + jsdom，35 个测试文件）
+- 移除 `firewall-gpt` 模块（21 个文件）；Docker rootless 支持
+- 依赖：Next.js 16.3.0 → 16.3.4；**Node 引擎 >=20.9.0 → >=24.0.0**
+- 新增 `announcement` 配置项（`config.json`）
+
+### 同步技术要点
+- 2026-08 的 `git filter-repo` 重写全部提交 SHA，merge-base 退化到根提交，
+  常规 `git merge` 会重放 622 个提交。改用「嫁接提交 + 真三方合并」修复基线，
+  分支历史已重新与上游对齐，后续可直接 `git merge netbirdio/main`
+- 解决 44 个文件的 72 个冲突块：导入取并集，逻辑取上游，保留我方汉化层
+- 保留我方定制：`build_and_push.yml`（GHCR CI）、`docker/`、`next.config.js`
+
+### 环境
+- Node 升级至 24（本地 nvm v24.21.0 + CI `node-version: 24`）
+- npm 11.19.0；`npm install` 同步依赖
+
+### i18n 汉化
+- 三批汉化：冲突文件恢复 + 新增模块 → 全站独占元素文案 → 字符串属性
+- 独占元素文案覆盖达 100%（剩余 9 处为 TCP/UDP/URL/DNS 及 MS Graph 权限名，应保留英文）
+- 字符串属性统一为 `zhMap["X"] || "X"` 写法（322 处）
+- TransText 覆盖：238 → 428 个 tsx 文件
+- `zh-map.ts`：2557 → 2972 条（无重复）
+
+### 验证
+- `npx tsc --noEmit` 零错误
+- `npx next build` 通过，侧栏版本显示 `v2.94.0-zh`
+
+### 已知遗留
+- 混合内容文本（句子与内联组件交错，约 132 处）需逐句人工处理，
+  主要分布在 integrations 与 activity 模块
+- 上游 `GoogleWorkspaceSetup` / `AzureADSetup` 等文件的示例 placeholder
+  含疑似演示用长串（上游原有，非本次引入）
+
 ## [v2.91.1-zh] — 2026-08-16
 
 ### 上游同步（v2.90.7 → v2.91.1）

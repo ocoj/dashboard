@@ -121,7 +121,7 @@ export const DomainVerificationModal = ({
             <Paragraph className={"text-sm mt-auto"}>
               <TransText>Learn more about</TransText>
               <InlineLink href={"#"} target={"_blank"}>
-                Domain Verification
+                <TransText>Domain Verification</TransText>
                 <ExternalLinkIcon size={12} />
               </InlineLink>
             </Paragraph>

@@ -6,6 +6,7 @@ import { ExternalLinkIcon } from "lucide-react";
 import * as React from "react";
 import PeerIcon from "@/assets/icons/PeerIcon";
 import zhMap from "@/i18n/zh-map";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   showBackground?: boolean;
@@ -37,7 +38,7 @@ export const NoPeersGettingStarted = ({
             href={"https://docs.netbird.io/how-to/getting-started"}
             target={"_blank"}
           >
-            Getting Started Guide
+            <TransText>Getting Started Guide</TransText>
             <ExternalLinkIcon size={12} />
           </InlineLink>
         </>

@@ -217,7 +217,7 @@ export default function OktaSSOSetup({ open, onOpenChange }: Props) {
                 </Steps.Step>
                 <Steps.Step step={2}>
                   <p className={"font-normal"}>
-                    Click <Mark>+ Add Integration</Mark> and then{" "}
+                    <TransText>Click</TransText> <Mark>+ Add Integration</Mark> and then{" "}
                     <Mark><TransText>Done</TransText></Mark>
                   </p>
                 </Steps.Step>

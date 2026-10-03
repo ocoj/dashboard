@@ -81,7 +81,7 @@ export const MSPUnlinkModal = ({ open, setOpen, tenant }: Props) => {
           <ModalFooter className={"items-center"}>
             <div className={"w-full"}>
               <Paragraph className={"text-sm mt-auto"}>
-                Learn more about
+                <TransText>Learn more about</TransText>
                 <InlineLink href={"https://docs.netbird.io/"} target={"_blank"}>
                   Unlinking Tenants
                   <ExternalLinkIcon size={12} />

@@ -74,7 +74,7 @@ export const OnboardingAgentDevice = ({
         </Button>
         {deviceConnected ? (
           <Button variant={"primary"} onClick={onNext}>
-            Continue
+            <TransText>Continue</TransText>
             <ArrowRightIcon size={16} />
           </Button>
         ) : (

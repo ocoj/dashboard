@@ -184,12 +184,12 @@ export default function AgentGuardrailModal({
         <ModalFooter className={"items-center"}>
           <div className={"w-full"}>
             <Paragraph className={"text-sm mt-auto"}>
-              Learn more about
+              <TransText>Learn more about</TransText>
               <InlineLink
                 href={"https://docs.netbird.io/agent-network"}
                 target={"_blank"}
               >
-                Agent Network
+                <TransText>Agent Network</TransText>
                 <ExternalLinkIcon size={12} />
               </InlineLink>
             </Paragraph>
@@ -420,14 +420,14 @@ function ModelAllowlistContent({
       <ModalFooter className={"items-center"}>
         <div className={"w-full"}>
           <Paragraph className={"text-sm mt-auto"}>
-            Learn more about
+            <TransText>Learn more about</TransText>
             <InlineLink
               href={
                 "https://docs.netbird.io/agent-network/policies/guardrails#model-allowlist"
               }
               target={"_blank"}
             >
-              Model Allowlist
+              <TransText>Model Allowlist</TransText>
               <ExternalLinkIcon size={12} />
             </InlineLink>
           </Paragraph>
@@ -493,14 +493,14 @@ function PromptCaptureContent({ onConfirm }: { onConfirm: () => void }) {
       <ModalFooter className={"items-center"}>
         <div className={"w-full"}>
           <Paragraph className={"text-sm mt-auto"}>
-            Learn more about
+            <TransText>Learn more about</TransText>
             <InlineLink
               href={
                 "https://docs.netbird.io/agent-network/policies/guardrails#prompt-capture"
               }
               target={"_blank"}
             >
-              Prompt Capture
+              <TransText>Prompt Capture</TransText>
               <ExternalLinkIcon size={12} />
             </InlineLink>
           </Paragraph>

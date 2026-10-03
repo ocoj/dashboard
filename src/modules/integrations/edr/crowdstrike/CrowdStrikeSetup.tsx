@@ -224,7 +224,7 @@ export function SetupContent({ onSuccess, account }: ModalProps) {
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
-                Click <Mark><TransText>Create API client</TransText></Mark> and enter
+                <TransText>Click</TransText> <Mark><TransText>Create API client</TransText></Mark> and enter
                 <Mark copy><TransText>NetBird</TransText></Mark>
                 as the client name and select <Mark>Hosts (Read)</Mark> and{" "}
                 <Mark>Zero Trust Assessment (Read)</Mark> as the scope
@@ -232,7 +232,7 @@ export function SetupContent({ onSuccess, account }: ModalProps) {
             </Steps.Step>
             <Steps.Step step={3} line={false}>
               <p className={"font-normal"}>
-                Click <Mark><TransText>Create</TransText></Mark> and enter your credentials
+                <TransText>Click</TransText> <Mark><TransText>Create</TransText></Mark> and enter your credentials
               </p>
             </Steps.Step>
           </Steps>
@@ -330,7 +330,7 @@ export function SetupContent({ onSuccess, account }: ModalProps) {
         >
           <Clock4 size={12} />
           <div>
-            Estimated setup time:
+            <TransText>Estimated setup time:</TransText>
             <span className={"font-medium"}> 5-10 Minutes</span>
           </div>
         </div>

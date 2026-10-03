@@ -60,7 +60,7 @@ export const OIDCError = () => {
             className={"mt-5"}
             onClick={() => logout("/", { client_id: config.clientId })}
           >
-            Continue
+            <TransText>Continue</TransText>
             <ArrowRightIcon size={16} />
           </Button>
 

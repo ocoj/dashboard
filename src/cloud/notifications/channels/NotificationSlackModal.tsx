@@ -120,7 +120,7 @@ function SlackModalContent({ onSave }: Readonly<ModalContentProps>) {
                   href={"https://api.slack.com/apps?new_app=1"}
                   target={"_blank"}
                 >
-                  Slack App Management
+                  <TransText>Slack App Management</TransText>
                   <ExternalLinkIcon size={12} />
                 </InlineLink>{" "}
                 click <Mark><TransText>Create an app</TransText></Mark> <br />
@@ -148,20 +148,20 @@ function SlackModalContent({ onSave }: Readonly<ModalContentProps>) {
           <Steps>
             <Steps.Step step={1}>
               <p className={"font-normal"}>
-                In the app settings, go to <Mark><TransText>Incoming Webhooks</TransText></Mark> and
+                <TransText>In the app settings, go to</TransText> <Mark><TransText>Incoming Webhooks</TransText></Mark> and
                 toggle <Mark><TransText>Activate Incoming Webhooks</TransText></Mark> to <Mark><TransText>On</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
-                Click <Mark><TransText>Add New Webhook</TransText></Mark> and select the channel where
+                <TransText>Click</TransText> <Mark><TransText>Add New Webhook</TransText></Mark> and select the channel where
                 you want to receive notifications and confirm with{" "}
                 <Mark><TransText>Allow</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={3} line={false}>
               <p className={"font-normal"}>
-                Copy the generated <Mark><TransText>Webhook URL</TransText></Mark> and paste it below.
+                <TransText>Copy the generated</TransText> <Mark><TransText>Webhook URL</TransText></Mark> and paste it below.
               </p>
             </Steps.Step>
           </Steps>
@@ -211,7 +211,7 @@ function SlackModalContent({ onSave }: Readonly<ModalContentProps>) {
             onClick={() => setStep(step + 1)}
             data-testid="slack-continue"
           >
-            Continue
+            <TransText>Continue</TransText>
             <IconArrowRight size={16} />
           </Button>
         )}

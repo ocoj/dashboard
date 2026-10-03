@@ -134,12 +134,12 @@ function NotificationWebhookModalContent({
       <ModalFooter className={"items-center"}>
         <div className={"w-full"}>
           <Paragraph className={"text-sm mt-auto"}>
-            Learn more about
+            <TransText>Learn more about</TransText>
             <InlineLink
               href={NOTIFICATION_CHANNELS_WEBHOOK_DOCS_LINK}
               target={"_blank"}
             >
-              Webhook Notifications
+              <TransText>Webhook Notifications</TransText>
               <ExternalLinkIcon size={12} />
             </InlineLink>
           </Paragraph>

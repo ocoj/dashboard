@@ -41,7 +41,7 @@ export default function EventStreamingTab() {
             href={"https://docs.netbird.io/how-to/activity-event-streaming"}
             target={"_blank"}
           >
-            Learn more
+            <TransText>Learn more</TransText>
             <ExternalLinkIcon size={12} />
           </InlineLink>
         </Paragraph>

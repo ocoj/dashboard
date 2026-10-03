@@ -281,7 +281,7 @@ const CheckContent = ({ value, onChange, disabled }: Props) => {
               }
               target={"_blank"}
             >
-              Process Check
+              <TransText>Process Check</TransText>
               <ExternalLinkIcon size={12} />
             </InlineLink>
           </Paragraph>

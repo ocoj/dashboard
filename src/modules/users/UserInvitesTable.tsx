@@ -628,7 +628,7 @@ export default function UserInvitesTable({
                 }
                 target={"_blank"}
               >
-                Users
+                <TransText>Users</TransText>
                 <ExternalLinkIcon size={12} />
               </InlineLink>
             </>

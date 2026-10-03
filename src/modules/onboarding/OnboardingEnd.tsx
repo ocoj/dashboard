@@ -64,7 +64,7 @@ export const OnboardingEnd = ({ onFinish }: Props) => {
 
         <div className={"mt-10 flex items-center justify-center"}>
           <Button variant={"secondaryLighter"} onClick={onFinish}>
-            Go to Dashboard
+            <TransText>Go to Dashboard</TransText>
             <ArrowRightIcon size={16} />
           </Button>
         </div>

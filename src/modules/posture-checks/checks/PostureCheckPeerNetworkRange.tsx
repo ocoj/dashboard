@@ -199,7 +199,7 @@ const CheckContent = ({ value, onChange, disabled }: Props) => {
               }
               target={"_blank"}
             >
-              Peer Network Range Check
+              <TransText>Peer Network Range Check</TransText>
               <ExternalLinkIcon size={12} />
             </InlineLink>
           </Paragraph>

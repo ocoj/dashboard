@@ -437,7 +437,7 @@ export default function ReverseProxyTargetModal({
                 </div>
                 <div className="w-[150px]">
                   <Label>
-                    Port
+                    <TransText>Port</TransText>
                     <HelpTooltip
                       content={
                         "Enter the port where your service (e.g., webserver, app, API) is currently listening. If left empty, defaults to port 80 for HTTP or 443 for HTTPS."
@@ -568,7 +568,7 @@ export default function ReverseProxyTargetModal({
                   href={REVERSE_PROXY_TARGETS_DOCS_LINK}
                   target={"_blank"}
                 >
-                  Targets
+                  <TransText>Targets</TransText>
                   <ExternalLinkIcon size={12} />
                 </InlineLink>
               </Paragraph>

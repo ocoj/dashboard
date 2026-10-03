@@ -316,12 +316,12 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
             </Steps.Step>
             <Steps.Step step={1}>
               <p className={"font-normal"}>
-                Click <Mark><TransText>Create Service User</TransText></Mark>
+                <TransText>Click</TransText> <Mark><TransText>Create Service User</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={3}>
               <p className={"font-normal"}>
-                Enter <Mark copy><TransText>NetBird Integration</TransText></Mark> as the name, a
+                <TransText>Enter</TransText> <Mark copy><TransText>NetBird Integration</TransText></Mark> as the name, a
                 optional description and select your preferred expiration date.
                 Click <Mark><TransText>Next</TransText></Mark>
               </p>
@@ -469,7 +469,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
         >
           <Clock4 size={12} />
           <div>
-            Estimated setup time:
+            <TransText>Estimated setup time:</TransText>
             <span className={"font-medium"}> 10-20 Minutes</span>
           </div>
         </div>

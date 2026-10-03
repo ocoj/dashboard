@@ -72,7 +72,7 @@ export default function MetricsTab({ account }: Readonly<Props>) {
               href={"https://docs.netbird.io/manage/client-metrics"}
               target={"_blank"}
             >
-              Learn more
+              <TransText>Learn more</TransText>
               <ExternalLinkIcon size={12} />
             </InlineLink>
           </Paragraph>

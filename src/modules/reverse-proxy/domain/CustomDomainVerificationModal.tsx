@@ -107,7 +107,7 @@ export const CustomDomainVerificationModal = ({
                     href={REVERSE_PROXY_CLUSTERS_DOCS_LINK}
                     target={"_blank"}
                   >
-                    Proxy Clusters
+                    <TransText>Proxy Clusters</TransText>
                     <ExternalLinkIcon size={12} />
                   </InlineLink>
                 </Callout>
@@ -156,7 +156,7 @@ export const CustomDomainVerificationModal = ({
                 href={REVERSE_PROXY_DOMAIN_VERIFICATION_LINK}
                 target={"_blank"}
               >
-                Domain Verification
+                <TransText>Domain Verification</TransText>
                 <ExternalLinkIcon size={12} />
               </InlineLink>
             </Paragraph>

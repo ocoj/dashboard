@@ -285,7 +285,7 @@ export function SetupContent({ onSuccess }: ModalProps) {
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
-                Click <Mark><TransText>CREATE CREDENTIALS</TransText></Mark> at the top and select{" "}
+                <TransText>Click</TransText> <Mark><TransText>CREATE CREDENTIALS</TransText></Mark> at the top and select{" "}
                 <Mark><TransText>Service account</TransText></Mark>
               </p>
             </Steps.Step>
@@ -335,7 +335,7 @@ export function SetupContent({ onSuccess }: ModalProps) {
             </Steps.Step>
             <Steps.Step step={1}>
               <p className={"font-normal"}>
-                Click <Mark><TransText>NetBird</TransText></Mark> to edit the service account. Copy the
+                <TransText>Click</TransText> <Mark><TransText>NetBird</TransText></Mark> to edit the service account. Copy the
                 service account email address.
               </p>
               <Lightbox image={googleEditServiceAccount} />
@@ -379,7 +379,7 @@ export function SetupContent({ onSuccess }: ModalProps) {
             </Steps.Step>
             <Steps.Step step={3}>
               <p className={"font-normal"}>
-                Select <Mark><TransText>JSON</TransText></Mark> as the key type and click{" "}
+                <TransText>Select</TransText> <Mark><TransText>JSON</TransText></Mark> as the key type and click{" "}
                 <Mark><TransText>Create</TransText></Mark>
               </p>
             </Steps.Step>
@@ -446,13 +446,13 @@ export function SetupContent({ onSuccess }: ModalProps) {
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
-                Select <Mark><TransText>Account</TransText></Mark> on the left menu and then click{" "}
+                <TransText>Select</TransText> <Mark><TransText>Account</TransText></Mark> on the left menu and then click{" "}
                 <Mark><TransText>Admin Roles</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={3} line={false}>
               <p className={"font-normal"}>
-                Click <Mark><TransText>Create new role</TransText></Mark> and fill in the form with the
+                <TransText>Click</TransText> <Mark><TransText>Create new role</TransText></Mark> and fill in the form with the
                 following values
               </p>
             </Steps.Step>
@@ -519,7 +519,7 @@ export function SetupContent({ onSuccess }: ModalProps) {
           <Steps>
             <Steps.Step step={1}>
               <p className={"font-normal"}>
-                Click <Mark><TransText>Assign service accounts</TransText></Mark>
+                <TransText>Click</TransText> <Mark><TransText>Assign service accounts</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={2}>
@@ -538,7 +538,7 @@ export function SetupContent({ onSuccess }: ModalProps) {
             </Steps.Step>
             <Steps.Step step={3} line={false}>
               <p className={"font-normal"}>
-                Click <Mark><TransText>ASSIGN ROLE</TransText></Mark>
+                <TransText>Click</TransText> <Mark><TransText>ASSIGN ROLE</TransText></Mark>
               </p>
               <Lightbox image={googleAssignServiceAccount} />
             </Steps.Step>
@@ -640,7 +640,7 @@ export function SetupContent({ onSuccess }: ModalProps) {
             onClick={() => setStep(step + 1)}
             disabled={!connectorId || connectorId === ""}
           >
-            Continue
+            <TransText>Continue</TransText>
             <IconArrowRight size={16} />
           </Button>
         )}
@@ -685,7 +685,7 @@ export function SetupContent({ onSuccess }: ModalProps) {
         >
           <Clock4 size={12} />
           <div>
-            Estimated setup time:
+            <TransText>Estimated setup time:</TransText>
             <span className={"font-medium"}> 10-20 Minutes</span>
           </div>
         </div>

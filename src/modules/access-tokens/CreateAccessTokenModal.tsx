@@ -215,7 +215,7 @@ export function AccessTokenModalContent({
               href={"https://docs.netbird.io/how-to/access-netbird-public-api"}
               target={"_blank"}
             >
-              Access Tokens
+              <TransText>Access Tokens</TransText>
               <ExternalLinkIcon size={12} />
             </InlineLink>
           </Paragraph>

@@ -429,7 +429,7 @@ export default function ReverseProxyEventsTable({
                 href={REVERSE_PROXY_EVENTS_DOCS_LINK}
                 target={"_blank"}
               >
-                Proxy Events
+                <TransText>Proxy Events</TransText>
                 <ExternalLinkIcon size={12} />
               </InlineLink>
             </>

@@ -239,7 +239,7 @@ const CheckContent = ({ value, onChange, disabled }: Props) => {
               }
               target={"_blank"}
             >
-              Operating System Check
+              <TransText>Operating System Check</TransText>
               <ExternalLinkIcon size={12} />
             </InlineLink>
           </Paragraph>

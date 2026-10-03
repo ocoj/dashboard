@@ -211,7 +211,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
-                Click <Mark><TransText>Create Firehose stream</TransText></Mark> at the top right
+                <TransText>Click</TransText> <Mark><TransText>Create Firehose stream</TransText></Mark> at the top right
                 corner
               </p>
             </Steps.Step>
@@ -354,7 +354,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
             disabled={!regionEntered}
             onClick={() => setStep(2)}
           >
-            Continue
+            <TransText>Continue</TransText>
             <IconArrowRight size={16} />
           </Button>
         )}
@@ -374,7 +374,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
               disabled={!streamNameEntered}
               onClick={() => setStep(3)}
             >
-              Continue
+              <TransText>Continue</TransText>
               <IconArrowRight size={16} />
             </Button>
           </>

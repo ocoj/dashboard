@@ -47,7 +47,7 @@ export const SignInDomainsSettings = () => {
           <HelpText className={"!mb-0"}>
             Users from these domains can join your account.{" "}
             <InlineLink href={SIGN_IN_DOMAINS_DOCS_LINK} target={"_blank"}>
-              Learn more
+              <TransText>Learn more</TransText>
               <ExternalLinkIcon size={12} />
             </InlineLink>
           </HelpText>

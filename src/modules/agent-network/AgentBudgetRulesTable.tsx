@@ -466,7 +466,7 @@ export default function AgentBudgetRulesTable() {
                   href={"https://docs.netbird.io/agent-network"}
                   target={"_blank"}
                 >
-                  Agent Network
+                  <TransText>Agent Network</TransText>
                   <ExternalLinkIcon size={12} />
                 </InlineLink>
               </>

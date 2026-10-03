@@ -42,7 +42,7 @@ export const SessionLost = () => {
         className={"mt-5"}
         onClick={() => logout("", { client_id: config.clientId })}
       >
-        Login
+        <TransText>Login</TransText>
         <LogIn size={16} />
       </Button>
     </div>

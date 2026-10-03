@@ -246,7 +246,7 @@ export function SetupContent({
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
-                Go to <Mark>{"Sign On > Settings"}</Mark> and select{" "}
+                <TransText>Go to</TransText> <Mark>{"Sign On > Settings"}</Mark> and select{" "}
                 <Mark><TransText>Edit</TransText></Mark>
               </p>
             </Steps.Step>
@@ -294,7 +294,7 @@ export function SetupContent({
             </Steps.Step>
             <Steps.Step step={4} line={false}>
               <p className={"font-normal"}>
-                Click <Mark><TransText>Test API Credentials</TransText></Mark> to verify the SCIM
+                <TransText>Click</TransText> <Mark><TransText>Test API Credentials</TransText></Mark> to verify the SCIM
                 connection, then select <Mark><TransText>Save</TransText></Mark>
               </p>
             </Steps.Step>
@@ -317,7 +317,7 @@ export function SetupContent({
             </Steps.Step>
             <Steps.Step step={2} line={false}>
               <p className={"font-normal"}>
-                Enable <Mark><TransText>Create Users</TransText></Mark>,{" "}
+                <TransText>Enable</TransText> <Mark><TransText>Create Users</TransText></Mark>,{" "}
                 <Mark><TransText>Update User Attributes</TransText></Mark>, and{" "}
                 <Mark><TransText>Deactivate Users</TransText></Mark> and click <Mark><TransText>Save</TransText></Mark>
               </p>
@@ -349,7 +349,7 @@ export function SetupContent({
             </Steps.Step>
             <Steps.Step step={3} line={false}>
               <p className={"font-normal"}>
-                Select <Mark><TransText>Done</TransText></Mark> after you have finished assigning
+                <TransText>Select</TransText> <Mark><TransText>Done</TransText></Mark> after you have finished assigning
                 groups. At this point, all members of the groups assigned to the
                 application will be synced to NetBird.
               </p>
@@ -391,7 +391,7 @@ export function SetupContent({
             onClick={() => setStep(step + 1)}
             disabled={!connectorId || connectorId === ""}
           >
-            Continue
+            <TransText>Continue</TransText>
             <IconArrowRight size={16} />
           </Button>
         )}
@@ -435,7 +435,7 @@ export function SetupContent({
         >
           <Clock4 size={12} />
           <div>
-            Estimated setup time:
+            <TransText>Estimated setup time:</TransText>
             <span className={"font-medium"}> 5-15 Minutes</span>
           </div>
         </div>
@@ -555,7 +555,7 @@ export function SetupSSOContent() {
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
-                Click <Mark>+ Add Integration</Mark> and then <Mark><TransText>Done</TransText></Mark>
+                <TransText>Click</TransText> <Mark>+ Add Integration</Mark> and then <Mark><TransText>Done</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={3} line={false}>
@@ -675,7 +675,7 @@ export function SetupSSOContent() {
         >
           <Clock4 size={12} />
           <div>
-            Estimated setup time:
+            <TransText>Estimated setup time:</TransText>
             <span className={"font-medium"}> 5 Minutes</span>
           </div>
         </div>

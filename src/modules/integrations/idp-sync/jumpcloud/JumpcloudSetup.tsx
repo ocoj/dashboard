@@ -345,7 +345,7 @@ export function SetupContent({ onSuccess, onClose }: ModalProps) {
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
-                Go to <Mark>{"SSO Applications"}</Mark> and select your{" "}
+                <TransText>Go to</TransText> <Mark>{"SSO Applications"}</Mark> and select your{" "}
                 <Mark><TransText>NetBird</TransText></Mark> application, and then select{" "}
                 <Mark><TransText>Identity Management</TransText></Mark> tab.
               </p>
@@ -391,7 +391,7 @@ export function SetupContent({ onSuccess, onClose }: ModalProps) {
             </Steps.Step>
             <Steps.Step step={4} line={false}>
               <p className={"font-normal"}>
-                After that click <Mark><TransText>Test Connection</TransText></Mark> to verify the SCIM
+                <TransText>After that click</TransText> <Mark><TransText>Test Connection</TransText></Mark> to verify the SCIM
                 connection. If the connection is successful click{" "}
                 <Mark><TransText>Activate</TransText></Mark> to enable SCIM provisioning.
               </p>
@@ -408,7 +408,7 @@ export function SetupContent({ onSuccess, onClose }: ModalProps) {
             onClick={() => setStep(step + 1)}
             disabled={!connectorId || connectorId === ""}
           >
-            Continue
+            <TransText>Continue</TransText>
             <IconArrowRight size={16} />
           </Button>
         )}
@@ -452,7 +452,7 @@ export function SetupContent({ onSuccess, onClose }: ModalProps) {
         >
           <Clock4 size={12} />
           <div>
-            Estimated setup time:
+            <TransText>Estimated setup time:</TransText>
             <span className={"font-medium"}> 5-15 Minutes</span>
           </div>
         </div>

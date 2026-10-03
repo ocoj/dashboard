@@ -192,7 +192,7 @@ export const AgentNetworkSignupForm = ({ onSubmit }: Props) => {
 
           <div className={"flex w-full flex-col gap-2"}>
             <Label>
-              Country
+              <TransText>Country</TransText>
               <RequiredAsterisk />
             </Label>
             <SelectDropdown

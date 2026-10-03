@@ -63,7 +63,7 @@ const NotificationsOverview = ({
               href={NOTIFICATION_CHANNELS_DOCS_LINK}
               target={"_blank"}
             >
-              Learn more
+              <TransText>Learn more</TransText>
               <ExternalLinkIcon size={12} />
             </InlineLink>
           </Paragraph>

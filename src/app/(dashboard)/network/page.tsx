@@ -348,7 +348,7 @@ function NetworkInformationCard({ network }: Readonly<{ network: Network }>) {
           value={
             policyCount > 0 ? (
               <InlineLink href={"/access-control"}>
-                Go to Policies
+                <TransText>Go to Policies</TransText>
                 <ArrowUpRightIcon size={14} />
               </InlineLink>
             ) : null

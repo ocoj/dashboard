@@ -197,7 +197,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
-                Click <Mark>+ New Key</Mark>
+                <TransText>Click</TransText> <Mark>+ New Key</Mark>
                 at the top
               </p>
             </Steps.Step>
@@ -252,7 +252,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
             disabled={!apiUrlEntered}
             onClick={() => setStep(2)}
           >
-            Continue
+            <TransText>Continue</TransText>
             <IconArrowRight size={16} />
           </Button>
         )}

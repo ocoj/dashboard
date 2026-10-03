@@ -238,7 +238,7 @@ export function SetupContent({ onSuccess }: ModalProps) {
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
-                Click <Mark><TransText>App Registrations</TransText></Mark> in the left menu then click
+                <TransText>Click</TransText> <Mark><TransText>App Registrations</TransText></Mark> in the left menu then click
                 on the <Mark>+ New registration</Mark> button to create a new
                 application.
               </p>
@@ -284,12 +284,12 @@ export function SetupContent({ onSuccess }: ModalProps) {
           <Steps>
             <Steps.Step step={1}>
               <p className={"font-normal"}>
-                Click <Mark><TransText>API permissions</TransText></Mark> on the left side menu
+                <TransText>Click</TransText> <Mark><TransText>API permissions</TransText></Mark> on the left side menu
               </p>
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
-                Click <Mark><TransText>Add a permission</TransText></Mark> then{" "}
+                <TransText>Click</TransText> <Mark><TransText>Add a permission</TransText></Mark> then{" "}
                 <Mark><TransText>Microsoft Graph</TransText></Mark> and then on the{" "}
                 <Mark><TransText>Application permissions</TransText></Mark> tab.
               </p>
@@ -303,7 +303,7 @@ export function SetupContent({ onSuccess }: ModalProps) {
             </Steps.Step>
             <Steps.Step step={4} line={false}>
               <p className={"font-normal"}>
-                Click <Mark><TransText>Grant admin consent for Default Directory</TransText></Mark> and
+                <TransText>Click</TransText> <Mark><TransText>Grant admin consent for Default Directory</TransText></Mark> and
                 click <Mark><TransText>Yes</TransText></Mark>
               </p>
               <Lightbox image={azureGrantAdmin} />
@@ -321,7 +321,7 @@ export function SetupContent({ onSuccess }: ModalProps) {
           <Steps>
             <Steps.Step step={1}>
               <p className={"font-normal"}>
-                Navigate to <Mark>Certificates & secrets</Mark> on left side
+                <TransText>Navigate to</TransText> <Mark>Certificates & secrets</Mark> on left side
                 menu
               </p>
             </Steps.Step>
@@ -332,7 +332,7 @@ export function SetupContent({ onSuccess }: ModalProps) {
             </Steps.Step>
             <Steps.Step step={3}>
               <p className={"font-normal"}>
-                Add <Mark copy><TransText>NetBird</TransText></Mark> as the description and click{" "}
+                <TransText>Add</TransText><Mark copy><TransText>NetBird</TransText></Mark> as the description and click{" "}
                 <Mark><TransText>Add</TransText></Mark>
               </p>
             </Steps.Step>
@@ -382,7 +382,7 @@ export function SetupContent({ onSuccess }: ModalProps) {
             </Steps.Step>
             <Steps.Step step={2} line={false}>
               <p className={"font-normal"}>
-                Select <Mark><TransText>NetBird</TransText></Mark> application in overview page and
+                <TransText>Select</TransText> <Mark><TransText>NetBird</TransText></Mark> application in overview page and
                 enter your <Mark>Application (client) ID</Mark> and{" "}
                 <Mark>Directory (tenant) ID</Mark>
               </p>
@@ -468,7 +468,7 @@ export function SetupContent({ onSuccess }: ModalProps) {
             onClick={() => setStep(step + 1)}
             disabled={!connectorId || connectorId === ""}
           >
-            Continue
+            <TransText>Continue</TransText>
             <IconArrowRight size={16} />
           </Button>
         )}
@@ -513,7 +513,7 @@ export function SetupContent({ onSuccess }: ModalProps) {
         >
           <Clock4 size={12} />
           <div>
-            Estimated setup time:
+            <TransText>Estimated setup time:</TransText>
             <span className={"font-medium"}> 10-20 Minutes</span>
           </div>
         </div>

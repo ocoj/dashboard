@@ -59,7 +59,7 @@ export const OnboardingAgentWelcome = ({ onNext }: Props) => {
 
       <div className={"flex items-center justify-center mt-6"}>
         <Button variant={"primary"} onClick={onNext}>
-          Get Started
+          <TransText>Get Started</TransText>
           <ArrowRightIcon size={16} />
         </Button>
       </div>

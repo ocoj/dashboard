@@ -207,7 +207,7 @@ export default function ActivityTable({
                 href={"https://docs.netbird.io/how-to/getting-started"}
                 target={"_blank"}
               >
-                Getting Started Guide
+                <TransText>Getting Started Guide</TransText>
                 <ExternalLinkIcon size={12} />
               </InlineLink>
             </>

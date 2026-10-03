@@ -222,7 +222,7 @@ const PlansAndBillingTabContent = () => {
           <Paragraph>
             Find out which{" "}
             <InlineLink href={"https://netbird.io/pricing"} target={"_blank"}>
-              Pricing Plan
+              <TransText>Pricing Plan</TransText>
               <ExternalLinkIcon size={12} />
             </InlineLink>
             suits you the best by visiting our website.

@@ -90,7 +90,7 @@ const SSHDisabledText = ({
           href={"#"}
           target={"_blank"}
         >
-          Enable SSH Access <ArrowUpRightIcon size={12} />
+          <TransText>Enable SSH Access</TransText> <ArrowUpRightIcon size={12} />
         </InlineLink>
       </div>
     </div>

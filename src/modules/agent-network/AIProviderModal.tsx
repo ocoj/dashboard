@@ -1075,7 +1075,7 @@ export default function AIProviderModal({
                                 }
                                 target={"_blank"}
                               >
-                                Learn more
+                                <TransText>Learn more</TransText>
                                 <ExternalLinkIcon size={12} />
                               </InlineLink>
                             </>
@@ -1817,12 +1817,12 @@ export default function AIProviderModal({
         <ModalFooter className={"items-center"}>
           <div className={"w-full"}>
             <Paragraph className={"text-sm mt-auto"}>
-              Learn more about
+              <TransText>Learn more about</TransText>
               <InlineLink
                 href={"https://docs.netbird.io/agent-network/providers"}
                 target={"_blank"}
               >
-                Agent Network Providers
+                <TransText>Agent Network Providers</TransText>
                 <ExternalLinkIcon size={12} />
               </InlineLink>
             </Paragraph>

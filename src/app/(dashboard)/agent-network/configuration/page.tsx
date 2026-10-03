@@ -130,7 +130,7 @@ export default function AgentNetworkConfigurationPage() {
                           href={REVERSE_PROXY_CLUSTERS_DOCS_LINK}
                           target={"_blank"}
                         >
-                          Learn more
+                          <TransText>Learn more</TransText>
                           <ExternalLinkIcon size={12} />
                         </InlineLink>
                       </ConfigTabHeader>

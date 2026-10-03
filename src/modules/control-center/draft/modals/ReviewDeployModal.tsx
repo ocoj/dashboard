@@ -250,14 +250,14 @@ export const ReviewDeployModal = ({
         <ModalFooter className={"items-center"}>
           <div className={"w-full"}>
             <Paragraph className={"text-sm mt-auto"}>
-              Learn more about
+              <TransText>Learn more about</TransText>
               <InlineLink
                 // TODO: point at the Control Center / Review & Deploy docs
                 // page once it exists.
                 href={"https://docs.netbird.io/"}
                 target={"_blank"}
               >
-                Review & Deploy
+                <TransText>Review & Deploy</TransText>
                 <ExternalLinkIcon size={12} />
               </InlineLink>
             </Paragraph>

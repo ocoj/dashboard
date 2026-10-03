@@ -74,7 +74,7 @@ const ConnectButton = ({ disabled }: { disabled?: boolean }) => {
         e.preventDefault();
       }}
     >
-      Connect
+      <TransText>Connect</TransText>
       <IconChevronDown size={14} />
     </button>
   );
