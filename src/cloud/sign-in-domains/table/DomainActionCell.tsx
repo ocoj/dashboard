@@ -10,6 +10,7 @@ import { useDialog } from "@/contexts/DialogProvider";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { DomainValidationStatus, SignInDomain } from "@/interfaces/Account";
 import { DomainVerificationModal } from "@/modules/integrations/sso/DomainVerificationModal";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   domain: SignInDomain;
@@ -89,7 +90,7 @@ export default function DomainActionCell({ domain }: Readonly<Props>) {
           onClick={() => setModal(true)}
           data-testid={"verify-domain"}
         >
-          Verify
+          <TransText>Verify</TransText>
         </Button>
       )}
 

@@ -151,7 +151,7 @@ const NavigationVersionInfoContent = () => {
           className="w-full"
         >
           <div className="flex items-center justify-between w-full cursor-default gap-2">
-            <span className="shrink-0">Management</span>
+            <span className="shrink-0"><TransText>Management</TransText></span>
             <VersionValue version={versionInfo.management_current_version} />
           </div>
         </FullTooltip>
@@ -172,7 +172,7 @@ const NavigationVersionInfoContent = () => {
           className="w-full"
         >
           <div className="flex items-center justify-between w-full cursor-default gap-2">
-            <span className="shrink-0">Dashboard</span>
+            <span className="shrink-0"><TransText>Dashboard</TransText></span>
             <VersionValue version={dashboardVersion} />
           </div>
         </FullTooltip>

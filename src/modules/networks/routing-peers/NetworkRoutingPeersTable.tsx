@@ -59,7 +59,7 @@ const NetworkRouterColumns: ColumnDef<NetworkRouter>[] = [
     header: ({ column }) => {
       return (
         <DataTableHeader column={column} sorting={false}>
-          Active
+          <TransText>Active</TransText>
         </DataTableHeader>
       );
     },

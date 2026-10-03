@@ -38,6 +38,7 @@ import IOSTab from "@/modules/setup-netbird-modal/IOSTab";
 import LinuxTab from "@/modules/setup-netbird-modal/LinuxTab";
 import MacOSTab from "@/modules/setup-netbird-modal/MacOSTab";
 import WindowsTab from "@/modules/setup-netbird-modal/WindowsTab";
+import { TransText } from "@/i18n/trans-text";
 
 type OidcUserInfo = {
   given_name?: string;
@@ -452,16 +453,16 @@ export const ManagementUrlStep = ({ trayName }: ManagementUrlStepProps) => {
     <>
       <p>
         On first launch, NetBird asks where to connect. Select{" "}
-        <Mark>Self-hosted</Mark> and enter the following{" "}
-        <Mark>Management server URL</Mark>
+        <Mark><TransText>Self-hosted</TransText></Mark> and enter the following{" "}
+        <Mark><TransText>Management server URL</TransText></Mark>
       </p>
       <Code>
         <Code.Line>{GRPC_API_ORIGIN}</Code.Line>
       </Code>
       <p className={"mt-2 text-xs text-nb-gray-300 font-normal"}>
         Already past that screen? Click the NetBird icon in your {trayName},
-        open <Mark>Settings</Mark> and set <Mark>Management Server</Mark> to{" "}
-        <Mark>Self-hosted</Mark> under <Mark>General</Mark>.
+        open <Mark><TransText>Settings</TransText></Mark> and set <Mark><TransText>Management Server</TransText></Mark> to{" "}
+        <Mark><TransText>Self-hosted</TransText></Mark> under <Mark><TransText>General</TransText></Mark>.
       </p>
     </>
   );

@@ -25,6 +25,7 @@ import { EstimatedSetupTime } from "@/modules/integrations/EstimatedSetupTime";
 import { IntegrationModalHeader } from "@/modules/integrations/IntegrationModalHeader";
 import { DomainVerificationModal } from "@/modules/integrations/sso/DomainVerificationModal";
 import { useEnterpriseConnections } from "@/modules/integrations/sso/useEnterpriseConnections";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   open: boolean;
@@ -158,7 +159,7 @@ export default function OktaSSOSetup({ open, onOpenChange }: Props) {
               <p className={"mt-2 !text-nb-gray-300 !leading-[1.5]"}>
                 Ensure that you have an{" "}
                 <span className={"text-nb-gray-100 font-semibold"}>
-                  Okta user account
+                  <TransText>Okta user account</TransText>
                 </span>{" "}
                 with the following{" "}
                 <span className={"text-nb-gray-100 font-semibold"}>
@@ -209,21 +210,21 @@ export default function OktaSSOSetup({ open, onOpenChange }: Props) {
                       target={"_blank"}
                       href={"https://www.okta.com/integrations/netbird"}
                     >
-                      Okta Integration Network
+                      <TransText>Okta Integration Network</TransText>
                     </InlineLink>
                   </p>
                 </Steps.Step>
                 <Steps.Step step={2}>
                   <p className={"font-normal"}>
                     Click <Mark>+ Add Integration</Mark> and then{" "}
-                    <Mark>Done</Mark>
+                    <Mark><TransText>Done</TransText></Mark>
                   </p>
                 </Steps.Step>
                 <Steps.Step step={3} line={false}>
                   <p>
                     After installing the application go to the{" "}
-                    <Mark>Assignments</Mark> tab, select the <Mark>Assign</Mark>{" "}
-                    and click <Mark>Assign to People</Mark> and assign your user
+                    <Mark><TransText>Assignments</TransText></Mark> tab, select the <Mark><TransText>Assign</TransText></Mark>{" "}
+                    and click <Mark><TransText>Assign to People</TransText></Mark> and assign your user
                     to the application
                   </p>
                 </Steps.Step>
@@ -245,7 +246,7 @@ export default function OktaSSOSetup({ open, onOpenChange }: Props) {
                   </p>
                   <Input
                     customPrefix={
-                      <span className={"min-w-[90px]"}>Client ID</span>
+                      <span className={"min-w-[90px]"}><TransText>Client ID</TransText></span>
                     }
                     placeholder={"0obflxtwxoVQcur0z3f3"}
                     value={clientId}
@@ -253,7 +254,7 @@ export default function OktaSSOSetup({ open, onOpenChange }: Props) {
                   />
                   <Input
                     customPrefix={
-                      <span className={"min-w-[90px]"}>Client Secret</span>
+                      <span className={"min-w-[90px]"}><TransText>Client Secret</TransText></span>
                     }
                     placeholder={
                       "jfgbU1Wu3XWAKhGUF4d-PX54DSm3pAQCyNtpxp7Nu8Ij22stSz8_6KnWbO4nQBIb"
@@ -265,7 +266,7 @@ export default function OktaSSOSetup({ open, onOpenChange }: Props) {
                 <Steps.Step step={2}>
                   <p className={"font-normal"}>
                     Under your user profile, enter your{" "}
-                    <Mark>Okta account domain</Mark>
+                    <Mark><TransText>Okta account domain</TransText></Mark>
                   </p>
                   <Input
                     customPrefix={<GlobeIcon size={16} />}
@@ -277,7 +278,7 @@ export default function OktaSSOSetup({ open, onOpenChange }: Props) {
                 <Steps.Step step={3} line={false}>
                   <p className={"font-normal"}>
                     Enter your
-                    <Mark>Primary E-Mail Domain</Mark> which will later be used
+                    <Mark><TransText>Primary E-Mail Domain</TransText></Mark> which will later be used
                     to log in to NetBird.
                   </p>
                   <Input

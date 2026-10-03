@@ -219,7 +219,7 @@ export default function AgentAccessLogTable({
         accessorFn: (row) => row.timestamp,
         header: ({ column }) => (
           <DataTableHeader column={column} name="timestamp">
-            Time
+            <TransText>Time</TransText>
           </DataTableHeader>
         ),
         cell: ({ row }) => <TimeCell timestamp={row.original.timestamp} />,
@@ -232,7 +232,7 @@ export default function AgentAccessLogTable({
           `${row.user} ${principalSearchById.get(row.userId) ?? ""}`.trim(),
         header: ({ column }) => (
           <DataTableHeader column={column} name="user">
-            User / Agent
+            <TransText>User / Agent</TransText>
           </DataTableHeader>
         ),
         cell: ({ row }) => <UserCell entry={row.original} />,
@@ -242,7 +242,7 @@ export default function AgentAccessLogTable({
         accessorFn: (row) => (row.userGroups ?? []).join(" "),
         header: ({ column }) => (
           <DataTableHeader column={column} name="group">
-            Auth Group
+            <TransText>Auth Group</TransText>
           </DataTableHeader>
         ),
         cell: ({ row }) => (
@@ -260,7 +260,7 @@ export default function AgentAccessLogTable({
           }`.trim(),
         header: ({ column }) => (
           <DataTableHeader column={column} name="provider" sorting={false}>
-            Provider
+            <TransText>Provider</TransText>
           </DataTableHeader>
         ),
         cell: ({ row }) => (
@@ -275,7 +275,7 @@ export default function AgentAccessLogTable({
         accessorFn: (row) => row.inputTokens + row.outputTokens,
         header: ({ column }) => (
           <DataTableHeader column={column} sorting={false}>
-            Tokens
+            <TransText>Tokens</TransText>
           </DataTableHeader>
         ),
         cell: ({ row }) => <TokensCell entry={row.original} />,
@@ -285,7 +285,7 @@ export default function AgentAccessLogTable({
         accessorKey: "costUsd",
         header: ({ column }) => (
           <DataTableHeader column={column} name="cost">
-            Cost
+            <TransText>Cost</TransText>
           </DataTableHeader>
         ),
         cell: ({ row }) => (
@@ -304,7 +304,7 @@ export default function AgentAccessLogTable({
         accessorKey: "status",
         header: ({ column }) => (
           <DataTableHeader column={column} name="status">
-            Status
+            <TransText>Status</TransText>
           </DataTableHeader>
         ),
         cell: ({ row }) => (
@@ -323,7 +323,7 @@ export default function AgentAccessLogTable({
         accessorKey: "denyReason",
         header: ({ column }) => (
           <DataTableHeader column={column} name="reason">
-            Reason
+            <TransText>Reason</TransText>
           </DataTableHeader>
         ),
         cell: ({ row }) => <ReasonCell entry={row.original} />,
@@ -357,7 +357,7 @@ export default function AgentAccessLogTable({
         accessorFn: (row) => row.endedAt,
         header: ({ column }) => (
           <DataTableHeader column={column} name="timestamp">
-            Activity
+            <TransText>Activity</TransText>
           </DataTableHeader>
         ),
         cell: ({ row }) => <SessionActivityCell session={row.original} />,
@@ -369,7 +369,7 @@ export default function AgentAccessLogTable({
           `${row.user} ${principalSearchById.get(row.userId) ?? ""}`.trim(),
         header: ({ column }) => (
           <DataTableHeader column={column} name="user_id">
-            User / Agent
+            <TransText>User / Agent</TransText>
           </DataTableHeader>
         ),
         cell: ({ row }) => (
@@ -388,7 +388,7 @@ export default function AgentAccessLogTable({
         accessorFn: (row) => (row.userGroups ?? []).join(" "),
         header: ({ column }) => (
           <DataTableHeader column={column} name="group" sorting={false}>
-            Auth Group
+            <TransText>Auth Group</TransText>
           </DataTableHeader>
         ),
         cell: ({ row }) => (
@@ -404,7 +404,7 @@ export default function AgentAccessLogTable({
           ].join(" "),
         header: ({ column }) => (
           <DataTableHeader column={column} sorting={false}>
-            Provider
+            <TransText>Provider</TransText>
           </DataTableHeader>
         ),
         cell: ({ row }) => (
@@ -419,7 +419,7 @@ export default function AgentAccessLogTable({
         accessorFn: (row) => row.requestCount,
         header: ({ column }) => (
           <DataTableHeader column={column} name="request_count">
-            Requests
+            <TransText>Requests</TransText>
           </DataTableHeader>
         ),
         cell: ({ row }) => <SessionRequestsCell session={row.original} />,
@@ -429,7 +429,7 @@ export default function AgentAccessLogTable({
         accessorFn: (row) => row.totalTokens,
         header: ({ column }) => (
           <DataTableHeader column={column} name="total_tokens">
-            Tokens
+            <TransText>Tokens</TransText>
           </DataTableHeader>
         ),
         // Reuse the flat per-request Tokens cell (input/output arrows) so the
@@ -452,7 +452,7 @@ export default function AgentAccessLogTable({
         accessorKey: "costUsd",
         header: ({ column }) => (
           <DataTableHeader column={column} name="cost_usd">
-            Cost
+            <TransText>Cost</TransText>
           </DataTableHeader>
         ),
         cell: ({ row }) => (
@@ -471,7 +471,7 @@ export default function AgentAccessLogTable({
         accessorKey: "decision",
         header: ({ column }) => (
           <DataTableHeader column={column} name="decision">
-            Reason
+            <TransText>Reason</TransText>
           </DataTableHeader>
         ),
         // Same Reason cell as the flat view (deny reason, or the authorising
@@ -1182,12 +1182,12 @@ function TokensCell({ entry }: { entry: AIAccessLogEntry }) {
       >
         <div className={"flex gap-2 items-center whitespace-nowrap"}>
           <ArrowUpIcon size={15} className={"text-sky-400"} />
-          <span className={"sr-only"}>Input:</span>
+          <span className={"sr-only"}><TransText>Input:</TransText></span>
           {(entry.inputTokens ?? 0).toLocaleString()}
         </div>
         <div className={"flex gap-2 items-center whitespace-nowrap"}>
           <ArrowDownIcon size={15} className={"text-netbird"} />
-          <span className={"sr-only"}>Output:</span>
+          <span className={"sr-only"}><TransText>Output:</TransText></span>
           {(entry.outputTokens ?? 0).toLocaleString()}
         </div>
       </div>

@@ -30,6 +30,7 @@ import {
   NETWORK_FRAME_FALLBACK_ROW,
 } from "@/modules/control-center/utils/helpers";
 import { DROPPABLE_INTO_GROUP_NODE_TYPES as GROUPABLE_NODE_TYPES } from "@/modules/control-center/utils/node-capabilities";
+import { TransText } from "@/i18n/trans-text";
 
 const PEER_NODE_TYPES = new Set([
   "peerNode",
@@ -344,21 +345,21 @@ export const PeersToolbar = () => {
                     className="px-3"
                   >
                     <FolderPlusIcon size={14} />
-                    <span className="text-xs ml-2">Create Group</span>
+                    <span className="text-xs ml-2"><TransText>Create Group</TransText></span>
                   </ToolbarButton>
                   <ToolbarButton
                     onClick={handleRemoveGroupables}
                     className="px-3"
                   >
                     <CircleXIcon size={14} />
-                    <span className="text-xs ml-2">Remove</span>
+                    <span className="text-xs ml-2"><TransText>Remove</TransText></span>
                   </ToolbarButton>
                 </>
               ) : selectedGroupNodes.length >= 2 ? (
                 <>
                   <ToolbarButton onClick={handleRemoveGroups} className="px-3">
                     <CircleXIcon size={14} />
-                    <span className="text-xs ml-2">Remove</span>
+                    <span className="text-xs ml-2"><TransText>Remove</TransText></span>
                   </ToolbarButton>
                   {deletableSelectedGroups.length > 0 && (
                     <ToolbarButton
@@ -366,7 +367,7 @@ export const PeersToolbar = () => {
                       className="px-3 text-red-500 hover:text-red-400"
                     >
                       <TrashIcon size={14} />
-                      <span className="text-xs ml-2">Delete</span>
+                      <span className="text-xs ml-2"><TransText>Delete</TransText></span>
                     </ToolbarButton>
                   )}
                 </>
@@ -376,7 +377,7 @@ export const PeersToolbar = () => {
                   className="px-3"
                 >
                   <CircleXIcon size={14} />
-                  <span className="text-xs ml-2">Remove</span>
+                  <span className="text-xs ml-2"><TransText>Remove</TransText></span>
                 </ToolbarButton>
               )}
             </ToolbarGroup>

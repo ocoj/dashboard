@@ -23,6 +23,7 @@ import {
   NOTIFICATION_CHANNELS_DOCS_LINK,
   NotificationChannelType,
 } from "@/interfaces/NotificationChannel";
+import { TransText } from "@/i18n/trans-text";
 
 const NotificationsOverview = ({
   onSelectChannel,
@@ -54,7 +55,7 @@ const NotificationsOverview = ({
       </Breadcrumbs>
       <div className={"flex items-start justify-between -mt-1"}>
         <div>
-          <h1>Notifications</h1>
+          <h1><TransText>Notifications</TransText></h1>
           <Paragraph className={"block"}>
             Get notified when important events happen.{" "}
             <InlineLink

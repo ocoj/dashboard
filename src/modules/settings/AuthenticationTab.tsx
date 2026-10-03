@@ -200,7 +200,7 @@ export default function AuthenticationTab({ account }: Readonly<Props>) {
         </Breadcrumbs>
         <div className={"flex items-start justify-between -mt-1"}>
           <div>
-            <h1>Authentication</h1>
+            <h1><TransText>Authentication</TransText></h1>
             <Paragraph className={"block"}>
               Control how peers and users authenticate.{" "}
               <InlineLink

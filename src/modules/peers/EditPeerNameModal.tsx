@@ -14,6 +14,7 @@ import { Globe } from "lucide-react";
 import { useMemo, useState } from "react";
 import { toASCII } from "punycode";
 import { Peer } from "@/interfaces/Peer";
+import { TransText } from "@/i18n/trans-text";
 
 interface Props {
   onSuccess: (name: string) => void;
@@ -71,8 +72,7 @@ export function EditPeerNameModal({
               Domain Name Preview
             </Label>
             <HelpText className={"mt-2"}>
-              If the domain name already exists, we add an increment number
-              suffix to it.
+              <TransText>If the domain name already exists, we add an increment number suffix to it.</TransText>
             </HelpText>
             <div className={"text-netbird text-sm break-all whitespace-normal"}>
               {domainNamePreview}
@@ -84,7 +84,7 @@ export function EditPeerNameModal({
           <div className={"flex gap-3 w-full justify-end"}>
             <ModalClose asChild={true}>
               <Button variant={"secondary"} className={"w-full"}>
-                Cancel
+                <TransText>Cancel</TransText>
               </Button>
             </ModalClose>
 
@@ -95,7 +95,7 @@ export function EditPeerNameModal({
               disabled={isDisabled}
               type={"submit"}
             >
-              Save
+              <TransText>Save</TransText>
             </Button>
           </div>
         </ModalFooter>

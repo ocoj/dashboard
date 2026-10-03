@@ -152,7 +152,7 @@ export default function GroupsSettings({ account }: Props) {
           />
         </Breadcrumbs>
         <div className={"flex items-start justify-between -mt-1"}>
-          <h1>User Groups</h1>
+          <h1><TransText>User Groups</TransText></h1>
           <Button
             variant={"primary"}
             disabled={!hasChanges}

@@ -251,7 +251,7 @@ function ClientSettingsTabContent({ account }: Readonly<Props>) {
           />
         </Breadcrumbs>
         <div className={"flex items-start justify-between -mt-1"}>
-          <h1>Clients</h1>
+          <h1><TransText>Clients</TransText></h1>
           <Button
             variant={"primary"}
             disabled={isSaveButtonDisabled}

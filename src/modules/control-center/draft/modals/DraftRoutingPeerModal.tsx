@@ -15,6 +15,7 @@ import { useDraftMode } from "@/modules/control-center/draft/DraftModeContext";
 import { useDraftChangeset } from "@/modules/control-center/draft/DraftChangesetContext";
 import { useDraftNetworkActions } from "@/modules/control-center/hooks/useDraftNetworkActions";
 import { RoutingPeerModalContent } from "@/modules/networks/routing-peers/NetworkRoutingPeerModal";
+import { TransText } from "@/i18n/trans-text";
 
 // The networks page's routing-peer modal, run in pure-data mode for draft
 // targets: the result lands in the changeset instead of a live PUT.
@@ -100,7 +101,7 @@ export const DraftRoutingPeerModal = () => {
             <ModalFooter>
               <ModalClose asChild={true}>
                 <Button variant={"primary"} className={"w-full"}>
-                  Got it
+                  <TransText>Got it</TransText>
                 </Button>
               </ModalClose>
             </ModalFooter>

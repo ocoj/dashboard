@@ -223,7 +223,7 @@ function UserOverview({ user, initialGroups }: Readonly<Props>) {
                     : router.push("/team/users");
                 }}
               >
-                Cancel
+                <TransText>Cancel</TransText>
               </Button>
 
               <Button
@@ -233,7 +233,7 @@ function UserOverview({ user, initialGroups }: Readonly<Props>) {
                 onClick={save}
                 data-testid={"save-changes"}
               >
-                Save Changes
+                <TransText>Save Changes</TransText>
               </Button>
             </div>
           )}
@@ -258,7 +258,7 @@ function UserOverview({ user, initialGroups }: Readonly<Props>) {
               </div>
             )}
             <div>
-              <Label>User Role</Label>
+              <Label><TransText>User Role</TransText></Label>
               <HelpText>
                 {cannotChangeOwnerRole
                   ? "Only the account owner can change the owner's role."
@@ -322,7 +322,7 @@ function UserOverview({ user, initialGroups }: Readonly<Props>) {
                   <div>
                     <h2><TransText>Access Tokens</TransText></h2>
                     <Paragraph>
-                      Access tokens give access to NetBird API.
+                      <TransText>Access tokens give access to NetBird API.</TransText>
                     </Paragraph>
                   </div>
                   <div className={"inline-flex gap-4 justify-end"}>

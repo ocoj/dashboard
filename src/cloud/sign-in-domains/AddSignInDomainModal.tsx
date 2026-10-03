@@ -15,6 +15,7 @@ import { useMemo, useState } from "react";
 import { useSignInDomains } from "@/cloud/sign-in-domains/useSignInDomains";
 import { DomainValidationStatus, SignInDomain } from "@/interfaces/Account";
 import { DomainVerificationModal } from "@/modules/integrations/sso/DomainVerificationModal";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   open: boolean;
@@ -116,7 +117,7 @@ export const AddSignInDomainModal = ({ open, onOpenChange }: Props) => {
               <div className={"flex gap-3 w-full justify-end"}>
                 <ModalClose asChild={true}>
                   <Button variant={"secondary"} className={"w-full"}>
-                    Cancel
+                    <TransText>Cancel</TransText>
                   </Button>
                 </ModalClose>
 

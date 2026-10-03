@@ -5,6 +5,7 @@ import { cn } from "@utils/helpers";
 import { Boxes, ShieldCheckIcon } from "lucide-react";
 import * as React from "react";
 import { AgentGuardrail } from "@/modules/agent-network/data/mockData";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   guardrail: AgentGuardrail;
@@ -49,7 +50,7 @@ export default function AgentGuardrailChecksCell({
           {c.prompt_capture.enabled && (
             <FullTooltip
               content={
-                <div className={"text-xs"}>Prompt capture · PII redaction</div>
+                <div className={"text-xs"}><TransText>Prompt capture · PII redaction</TransText></div>
               }
             >
               <div

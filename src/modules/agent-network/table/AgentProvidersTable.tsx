@@ -97,7 +97,7 @@ const columns: ColumnDef<AIProvider>[] = [
     accessorKey: "name",
     sortingFn: "text",
     header: ({ column }) => (
-      <DataTableHeader column={column}>Name</DataTableHeader>
+      <DataTableHeader column={column}><TransText>Name</TransText></DataTableHeader>
     ),
     cell: ({ row }) => <NameCell provider={row.original} />,
   },
@@ -106,7 +106,7 @@ const columns: ColumnDef<AIProvider>[] = [
     accessorFn: (p) => p.models.length,
     sortingFn: "basic",
     header: ({ column }) => (
-      <DataTableHeader column={column}>Models</DataTableHeader>
+      <DataTableHeader column={column}><TransText>Models</TransText></DataTableHeader>
     ),
     cell: ({ row }) => <ModelsCell provider={row.original} />,
   },

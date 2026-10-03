@@ -25,6 +25,7 @@ import {
   NetBirdUpCommand,
   RoutingPeerSetupKeyInfo,
 } from "@/modules/setup-netbird-modal/SetupModal";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   setupKey?: string;
@@ -58,7 +59,7 @@ export default function MacOSTab({
         <Steps>
           <Steps.Step step={1}>
             <div className={"flex items-center gap-1 text-sm font-light"}>
-              Download and run macOS Installer
+              <TransText>Download and run macOS Installer</TransText>
             </div>
             <div className={"flex gap-4 mt-1 flex-wrap"}>
               <Link
@@ -106,7 +107,7 @@ export default function MacOSTab({
                 </p>
               </Steps.Step>
               <Steps.Step step={runStep + 1} line={false}>
-                <p>Sign up using your email address</p>
+                <p><TransText>Sign up using your email address</TransText></p>
               </Steps.Step>
             </>
           )}
@@ -153,7 +154,7 @@ export default function MacOSTab({
             <AccordionContent>
               <Steps>
                 <Steps.Step step={1}>
-                  <p>Download and install HomeBrew</p>
+                  <p><TransText>Download and install HomeBrew</TransText></p>
                   <div className={"flex gap-4"}>
                     <Link href={"https://brew.sh/"} passHref target={"_blank"}>
                       <Button variant={"primary"}>
@@ -164,7 +165,7 @@ export default function MacOSTab({
                   </div>
                 </Steps.Step>
                 <Steps.Step step={2}>
-                  <p>Install NetBird </p>
+                  <p><TransText>Install NetBird</TransText> </p>
                   <Code
                     codeToCopy={[
                       `brew install netbirdio/tap/netbird`,
@@ -180,7 +181,7 @@ export default function MacOSTab({
                   </Code>
                 </Steps.Step>
                 <Steps.Step step={3}>
-                  <p>Start NetBird daemon</p>
+                  <p><TransText>Start NetBird daemon</TransText></p>
                   <Code>
                     <Code.Line>sudo netbird service install</Code.Line>
                     <Code.Line>sudo netbird service start</Code.Line>

@@ -872,7 +872,7 @@ export default function AIProviderModal({
   ) : !discoveryInFlight && discovered.models.length > 0 ? (
     <>
       {discovered.models.length} models loaded. Use the{" "}
-      <strong>Add More</strong> button to search and pick models.
+      <strong><TransText>Add More</TransText></strong> button to search and pick models.
     </>
   ) : null;
 
@@ -1251,7 +1251,7 @@ export default function AIProviderModal({
                 />
 
                 <div>
-                  <Label>Identity Mappings</Label>
+                  <Label><TransText>Identity Mappings</TransText></Label>
                   <HelpText className={"mb-0"}>
                     Groups are written into{" "}
                     <code
@@ -1302,7 +1302,7 @@ export default function AIProviderModal({
             <TabsContent value={"mappings"} className={"pb-8"}>
               <div className={"px-8 flex-col flex gap-4"}>
                 <div>
-                  <Label>Identity Headers</Label>
+                  <Label><TransText>Identity Headers</TransText></Label>
                   <HelpText className={"mb-0"}>
                     Pick which wire headers carry the caller&apos;s identity on
                     every upstream request. The proxy strips any client-supplied
@@ -1375,7 +1375,7 @@ export default function AIProviderModal({
             <TabsContent value={"mappings"} className={"pb-8"}>
               <div className={"px-8 flex-col flex gap-4"}>
                 <div>
-                  <Label>Identity Metadata</Label>
+                  <Label><TransText>Identity Metadata</TransText></Label>
                   <HelpText className={"mb-0"}>
                     NetBird stamps a JSON object onto the{" "}
                     <code
@@ -1446,7 +1446,7 @@ export default function AIProviderModal({
                 />
 
                 <div>
-                  <Label>Trusted Identity Headers</Label>
+                  <Label><TransText>Trusted Identity Headers</TransText></Label>
                   <HelpText className={"mb-0"}>
                     NetBird removes caller-supplied values before adding the
                     authenticated identity shown below. The upstream listener
@@ -1502,7 +1502,7 @@ export default function AIProviderModal({
             <TabsContent value={"mappings"} className={"pb-8"}>
               <div className={"px-8 flex-col flex gap-4"}>
                 <div>
-                  <Label>Identity Metadata</Label>
+                  <Label><TransText>Identity Metadata</TransText></Label>
                   <HelpText className={"mb-0"}>
                     NetBird stamps the{" "}
                     <code
@@ -1549,7 +1549,7 @@ export default function AIProviderModal({
                 />
 
                 <div>
-                  <Label>Identity Metadata</Label>
+                  <Label><TransText>Identity Metadata</TransText></Label>
                   <HelpText className={"mb-0"}>
                     NetBird stamps the caller&apos;s identity into the{" "}
                     <InlineLink
@@ -1563,7 +1563,7 @@ export default function AIProviderModal({
                           "text-xs font-mono bg-nb-gray-900/60 rounded px-1.5 py-0.5"
                         }
                       >
-                        X-Amzn-Bedrock-Request-Metadata
+                        <TransText>X-Amzn-Bedrock-Request-Metadata</TransText>
                       </code>
                     </InlineLink>{" "}
                     header, so you can break Bedrock spend down by user and
@@ -1583,7 +1583,7 @@ export default function AIProviderModal({
             <TabsContent value={"mappings"} className={"pb-8"}>
               <div className={"px-8 flex-col flex gap-4"}>
                 <div>
-                  <Label>Identity Headers</Label>
+                  <Label><TransText>Identity Headers</TransText></Label>
                   <HelpText className={"mb-0"}>
                     NetBird stamps the user identity and group list onto{" "}
                     <code
@@ -1636,7 +1636,7 @@ export default function AIProviderModal({
                 </SettingCard>
 
                 <HelpText className={"mb-0"}>
-                  <strong>Caveats:</strong> Vercel caps tags at 10 per request
+                  <strong><TransText>Caveats:</TransText></strong> Vercel caps tags at 10 per request
                   (each 1–64 chars) and the user value at 256 chars. Members of
                   more than 10 groups will see Vercel reject the request with
                   HTTP 400 — re-scope group memberships if you hit it. Vercel
@@ -1651,7 +1651,7 @@ export default function AIProviderModal({
             <TabsContent value={"mappings"} className={"pb-8"}>
               <div className={"px-8 flex-col flex gap-4"}>
                 <div>
-                  <Label>Identity Attribution</Label>
+                  <Label><TransText>Identity Attribution</TransText></Label>
                   <HelpText className={"mb-0"}>
                     NetBird stamps the caller&apos;s user identity onto the
                     request body&apos;s{" "}
@@ -1677,7 +1677,7 @@ export default function AIProviderModal({
                 </SettingCard>
 
                 <HelpText className={"mb-0"}>
-                  <strong>No groups dimension.</strong> OpenRouter does not
+                  <strong><TransText>No groups dimension.</TransText></strong> OpenRouter does not
                   document a per-request tag, label, or team field — only
                   per-user identity. NetBird&apos;s group memberships are not
                   propagated to OpenRouter; if you need per-group attribution,
@@ -1685,7 +1685,7 @@ export default function AIProviderModal({
                   OpenRouter&apos;s analytics.
                 </HelpText>
                 <HelpText className={"mb-0"}>
-                  <strong>App branding</strong> (HTTP-Referer +
+                  <strong><TransText>App branding</TransText></strong> (HTTP-Referer +
                   X-OpenRouter-Title) is set per-provider on the Provider tab,
                   not per-request. Operators who fill those in get their app
                   surfaced on OpenRouter&apos;s public rankings and per-app
@@ -1698,7 +1698,7 @@ export default function AIProviderModal({
           <TabsContent value={"models"} className={"pb-8"}>
             <div className={"px-8 flex-col flex gap-3"}>
               <div>
-                <Label>Models</Label>
+                <Label><TransText>Models</TransText></Label>
                 <div data-testid={"agent-network-provider-models-help"}>
                   <HelpText margin={false}>
                     Models exposed through this endpoint, with the per-1k
@@ -1836,7 +1836,7 @@ export default function AIProviderModal({
                     onClick={handleClose}
                     disabled={saveInFlight}
                   >
-                    Cancel
+                    <TransText>Cancel</TransText>
                   </Button>
                 </ModalClose>
                 <Button
@@ -1845,7 +1845,7 @@ export default function AIProviderModal({
                   disabled={!canContinueFromProvider}
                   data-testid={"agent-network-provider-continue"}
                 >
-                  Continue
+                  <TransText>Continue</TransText>
                 </Button>
               </>
             )}
@@ -1856,7 +1856,7 @@ export default function AIProviderModal({
                   onClick={() => setTab("provider")}
                   disabled={saveInFlight}
                 >
-                  Back
+                  <TransText>Back</TransText>
                 </Button>
                 {showMappings ? (
                   <Button
@@ -1865,7 +1865,7 @@ export default function AIProviderModal({
                     disabled={!canContinueFromProvider}
                     data-testid={"agent-network-provider-continue"}
                   >
-                    Continue
+                    <TransText>Continue</TransText>
                   </Button>
                 ) : (
                   <Button
@@ -1886,7 +1886,7 @@ export default function AIProviderModal({
                   onClick={() => setTab("models")}
                   disabled={saveInFlight}
                 >
-                  Back
+                  <TransText>Back</TransText>
                 </Button>
                 <Button
                   variant={"primary"}
@@ -2131,7 +2131,7 @@ function ModelRowEditor({
     >
       <div className={"flex items-end gap-3"}>
         <div className={"flex-1 min-w-0"}>
-          <Label>Model</Label>
+          <Label><TransText>Model</TransText></Label>
           {hasCatalog && !customMode ? (
             <SelectDropdown
               value={row.id}

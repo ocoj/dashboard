@@ -65,7 +65,7 @@ export default function MetricsTab({ account }: Readonly<Props>) {
           />
         </Breadcrumbs>
         <div>
-          <h1>Metrics</h1>
+          <h1><TransText>Metrics</TransText></h1>
           <Paragraph className={"block"}>
             Share client performance metrics to help us improve NetBird.{" "}
             <InlineLink

@@ -21,6 +21,7 @@ import { CustomerPlanCell } from "@/cloud/distributor/table/CustomerPlanCell";
 import { CustomerTenantsCell } from "@/cloud/distributor/table/CustomerTenantsCell";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import EmptyRow from "@/modules/common-table-rows/EmptyRow";
+import { TransText } from "@/i18n/trans-text";
 
 const CustomerPlanCellWithUpgrade = ({
   customer,
@@ -41,7 +42,7 @@ const CustomersTableColumns: ColumnDef<DistributorCustomer>[] = [
     id: "name",
     accessorKey: "name",
     header: ({ column }) => (
-      <DataTableHeader column={column}>Customer</DataTableHeader>
+      <DataTableHeader column={column}><TransText>Customer</TransText></DataTableHeader>
     ),
     cell: ({ row }) => <CustomerNameCell customer={row.original} />,
   },
@@ -53,7 +54,7 @@ const CustomersTableColumns: ColumnDef<DistributorCustomer>[] = [
     id: "reseller_customer_id",
     accessorKey: "reseller_customer_id",
     header: ({ column }) => (
-      <DataTableHeader column={column}>Customer ID</DataTableHeader>
+      <DataTableHeader column={column}><TransText>Customer ID</TransText></DataTableHeader>
     ),
     cell: ({ row }) =>
       row.original.reseller_customer_id ? (
@@ -70,7 +71,7 @@ const CustomersTableColumns: ColumnDef<DistributorCustomer>[] = [
     id: "plan",
     accessorKey: "plan",
     header: ({ column }) => (
-      <DataTableHeader column={column}>Plan</DataTableHeader>
+      <DataTableHeader column={column}><TransText>Plan</TransText></DataTableHeader>
     ),
     cell: ({ row }) => <CustomerPlanCellWithUpgrade customer={row.original} />,
   },
@@ -78,7 +79,7 @@ const CustomersTableColumns: ColumnDef<DistributorCustomer>[] = [
     id: "tenants",
     accessorKey: "tenants",
     header: ({ column }) => (
-      <DataTableHeader column={column}>Tenants</DataTableHeader>
+      <DataTableHeader column={column}><TransText>Tenants</TransText></DataTableHeader>
     ),
     cell: ({ row }) => <CustomerTenantsCell customer={row.original} />,
   },

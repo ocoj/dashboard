@@ -400,7 +400,7 @@ export function ResourceModalContent({
                                 onClick={() => setTab("access-control")}
                                 variant={"dashed"}
                               >
-                                Access Control
+                                <TransText>Access Control</TransText>
                               </InlineButtonLink>{" "}
                               tab.
                             </>
@@ -454,7 +454,7 @@ export function ResourceModalContent({
           {!useSave ? (
             <>
               <ModalClose asChild={true}>
-                <Button variant={"secondary"}>Cancel</Button>
+                <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
               </ModalClose>
               <ModalClose asChild={true}>
                 <Button

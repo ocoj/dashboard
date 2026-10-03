@@ -13,6 +13,7 @@ import { IntegrationCard } from "@/modules/integrations/IntegrationCard";
 import { OktaSsoSettings } from "@/modules/integrations/sso/okta/OktaSSOSettings";
 import OktaSSOSetup from "@/modules/integrations/sso/okta/OktaSSOSetup";
 import { useEnterpriseConnections } from "@/modules/integrations/sso/useEnterpriseConnections";
+import { TransText } from "@/i18n/trans-text";
 
 export const OktaSSOIntegrationCard = () => {
   const [setupModal, setSetupModal] = useState(false);
@@ -123,7 +124,7 @@ const ConfigurationContent = ({ connection }: ConfigurationProps) => {
           }
         >
           <span className={cn("h-2 w-2 rounded-full bg-nb-gray-600")}></span>
-          Inactive
+          <TransText>Inactive</TransText>
         </div>
       )}
       <Button

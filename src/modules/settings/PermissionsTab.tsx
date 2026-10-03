@@ -66,7 +66,7 @@ export default function PermissionsTab({ account }: Props) {
           />
         </Breadcrumbs>
         <div className={"flex items-start justify-between -mt-1"}>
-          <h1>Permissions</h1>
+          <h1><TransText>Permissions</TransText></h1>
           <Button
             variant={"primary"}
             disabled={!hasChanges || !permission.settings.update}

@@ -10,6 +10,7 @@ import {
 import ModalHeader from "@components/modal/ModalHeader";
 import { trim } from "lodash";
 import { Group } from "@/interfaces/Group";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   open: boolean;
@@ -75,7 +76,7 @@ export const CreateGroupNameModal = ({
           <div className={"flex gap-3 w-full justify-end"}>
             <ModalClose asChild={true}>
               <Button variant={"secondary"} className={"w-full"}>
-                Cancel
+                <TransText>Cancel</TransText>
               </Button>
             </ModalClose>
             <Button
@@ -85,7 +86,7 @@ export const CreateGroupNameModal = ({
               disabled={isDisabled}
               type={"submit"}
             >
-              Save
+              <TransText>Save</TransText>
             </Button>
           </div>
         </ModalFooter>

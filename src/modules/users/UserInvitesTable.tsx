@@ -346,11 +346,10 @@ function InviteActionCell({ invite }: { invite: UserInvite }) {
             <div className={"flex flex-col items-center justify-center gap-3"}>
               <div>
                 <h2 className={"text-2xl text-center mb-2"}>
-                  Invite link regenerated!
+                  <TransText>Invite link regenerated!</TransText>
                 </h2>
                 <Paragraph className={"mt-0 text-sm text-center"}>
-                  Share this link with the user. They will be able to set their
-                  own password.
+                  <TransText>Share this link with the user. They will be able to set their own password.</TransText>
                 </Paragraph>
               </div>
             </div>

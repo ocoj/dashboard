@@ -49,6 +49,7 @@ import { Policy, PolicyRuleResource } from "@/interfaces/Policy";
 import { User } from "@/interfaces/User";
 import { PeerOperatingSystemIcon } from "@/modules/peers/PeerOperatingSystemIcon";
 import { HorizontalUsersStack } from "@/modules/users/HorizontalUsersStack";
+import { TransText } from "@/i18n/trans-text";
 
 export type PeerGroupSelectorTab =
   | "peers"
@@ -721,8 +722,7 @@ export function PeerGroupSelector({
                         <FullTooltip
                           content={
                             <div className={"text-xs max-w-xs"}>
-                              This group is already part of the routing peer and
-                              can not be used for the access control groups.
+                              <TransText>This group is already part of the routing peer and can not be used for the access control groups.</TransText>
                             </div>
                           }
                           disabled={!isDisabled}
@@ -1099,8 +1099,7 @@ const ResourcesList = ({
   if (search != "" && filteredItems.length == 0) {
     return (
       <DropdownInfoText className={"mt-5 max-w-sm mx-auto"}>
-        There are no resources matching your search. Please try a different
-        search term.
+        <TransText>There are no resources matching your search. Please try a different search term.</TransText>
       </DropdownInfoText>
     );
   }
@@ -1109,7 +1108,7 @@ const ResourcesList = ({
     return (
       <DropdownInfoText className={"mt-5 max-w-sm mx-auto"}>
         There are no resources available yet. <br />
-        Go to <InlineLink href={"/networks"}>Networks</InlineLink> to add some
+        Go to <InlineLink href={"/networks"}><TransText>Networks</TransText></InlineLink> to add some
         resources.
       </DropdownInfoText>
     );
@@ -1182,7 +1181,7 @@ const ClustersList = ({
       <DropdownInfoText className={"mt-5 max-w-sm mx-auto"}>
         No proxy clusters available. Go to{" "}
         <InlineLink href={"/reverse-proxy/custom-domains"}>
-          Custom Domains
+          <TransText>Custom Domains</TransText>
         </InlineLink>{" "}
         to configure one that supports private services.
       </DropdownInfoText>
@@ -1273,8 +1272,7 @@ const PeersList = ({
   if (search != "" && filteredItems.length == 0) {
     return (
       <DropdownInfoText className={"mt-5 max-w-sm mx-auto"}>
-        There are no peers matching your search. Please try a different search
-        term.
+        <TransText>There are no peers matching your search. Please try a different search term.</TransText>
       </DropdownInfoText>
     );
   }
@@ -1283,7 +1281,7 @@ const PeersList = ({
     return (
       <DropdownInfoText className={"mt-5 max-w-sm mx-auto"}>
         There are no peers available yet. <br />
-        Go to <InlineLink href={"/peers"}>Peers</InlineLink> to add some peers.
+        Go to <InlineLink href={"/peers"}><TransText>Peers</TransText></InlineLink> to add some peers.
       </DropdownInfoText>
     );
   }

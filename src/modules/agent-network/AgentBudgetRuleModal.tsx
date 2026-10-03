@@ -51,6 +51,7 @@ import {
 } from "@/modules/agent-network/data/mockData";
 import useGroupHelper from "@/modules/groups/useGroupHelper";
 import { SmallUserAvatar } from "@/modules/users/SmallUserAvatar";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   open: boolean;
@@ -181,9 +182,9 @@ function AgentBudgetRuleModalContent({
         <TabsContent value={"rule"} className={"pb-8"}>
           <div className={"px-8 flex-col flex gap-6 pt-2"}>
             <div>
-              <Label>Name of the Global Limit</Label>
+              <Label><TransText>Name of the Global Limit</TransText></Label>
               <HelpText>
-                Set an easily identifiable name for this limit.
+                <TransText>Set an easily identifiable name for this limit.</TransText>
               </HelpText>
               <Input
                 value={name}
@@ -277,21 +278,21 @@ function AgentBudgetRuleModalContent({
               {tab === "rule" && (
                 <>
                   <ModalClose asChild>
-                    <Button variant={"secondary"}>Cancel</Button>
+                    <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
                   </ModalClose>
                   <Button
                     variant={"primary"}
                     onClick={() => setTab("limits")}
                     disabled={name.trim().length === 0}
                   >
-                    Continue
+                    <TransText>Continue</TransText>
                   </Button>
                 </>
               )}
               {tab === "limits" && (
                 <>
                   <Button variant={"secondary"} onClick={() => setTab("rule")}>
-                    Back
+                    <TransText>Back</TransText>
                   </Button>
                   <Button
                     variant={"primary"}
@@ -307,14 +308,14 @@ function AgentBudgetRuleModalContent({
           ) : (
             <>
               <ModalClose asChild>
-                <Button variant={"secondary"}>Cancel</Button>
+                <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
               </ModalClose>
               <Button
                 variant={"primary"}
                 onClick={handleSubmit}
                 disabled={submitDisabled}
               >
-                Save Changes
+                <TransText>Save Changes</TransText>
               </Button>
             </>
           )}

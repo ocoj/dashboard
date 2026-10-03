@@ -366,7 +366,7 @@ spec:
               <div>
                 <Label><TransText>Domain</TransText></Label>
                 <HelpText>
-                  Enter a domain name that will be used for your cluster.
+                  <TransText>Enter a domain name that will be used for your cluster.</TransText>
                 </HelpText>
                 <Input
                   autoFocus={true}
@@ -421,16 +421,16 @@ spec:
                   <ul className={"list-disc pl-4 mt-2 flex flex-col gap-1"}>
                     <li>
                       <span className={"text-white font-medium"}>
-                        Publicly accessible IP address
+                        <TransText>Publicly accessible IP address</TransText>
                       </span>
                     </li>
                     <li>
-                      <span className={"text-white font-medium"}>Docker</span>{" "}
+                      <span className={"text-white font-medium"}><TransText>Docker</TransText></span>{" "}
                       installed and running
                     </li>
                     <li>
                       <span className={"text-white font-medium"}>
-                        Port 80 and 443
+                        <TransText>Port 80 and 443</TransText>
                       </span>{" "}
                       open and not in use
                     </li>
@@ -451,9 +451,9 @@ spec:
               </div>
               <CardTable>
                 <CardTable.Header>
-                  <CardTable.HeaderCell width={100}>Type</CardTable.HeaderCell>
-                  <CardTable.HeaderCell>Name</CardTable.HeaderCell>
-                  <CardTable.HeaderCell>Content</CardTable.HeaderCell>
+                  <CardTable.HeaderCell width={100}><TransText>Type</TransText></CardTable.HeaderCell>
+                  <CardTable.HeaderCell><TransText>Name</TransText></CardTable.HeaderCell>
+                  <CardTable.HeaderCell><TransText>Content</TransText></CardTable.HeaderCell>
                 </CardTable.Header>
                 <CardTable.Body>
                   <CardTable.Row>
@@ -466,7 +466,7 @@ spec:
                     </CardTable.Cell>
                   </CardTable.Row>
                   <CardTable.Row>
-                    <CardTable.Cell>CNAME</CardTable.Cell>
+                    <CardTable.Cell><TransText>CNAME</TransText></CardTable.Cell>
                     <CardTable.Cell copy copyText={`*.${domain}`}>
                       {`*.${domain}`}
                     </CardTable.Cell>
@@ -569,24 +569,24 @@ spec:
             {tab === "domain" && (
               <>
                 <ModalClose asChild={true}>
-                  <Button variant={"secondary"}>Cancel</Button>
+                  <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
                 </ModalClose>
                 <Button
                   variant={"primary"}
                   onClick={() => (isCloudDeploy ? goToInstall() : setTab("dns"))}
                   disabled={!domain.trim() || !!domainError}
                 >
-                  Continue
+                  <TransText>Continue</TransText>
                 </Button>
               </>
             )}
             {tab === "dns" && (
               <>
                 <Button variant={"secondary"} onClick={() => setTab("domain")}>
-                  Back
+                  <TransText>Back</TransText>
                 </Button>
                 <Button variant={"primary"} onClick={goToInstall}>
-                  Continue
+                  <TransText>Continue</TransText>
                 </Button>
               </>
             )}
@@ -596,14 +596,14 @@ spec:
                   variant={"secondary"}
                   onClick={() => setTab(isCloudDeploy ? "domain" : "dns")}
                 >
-                  Back
+                  <TransText>Back</TransText>
                 </Button>
                 <Button
                   variant={"primary"}
                   onClick={finishSetup}
                   disabled={isCloudDeploy && !proxyRegistered}
                 >
-                  Finish Setup
+                  <TransText>Finish Setup</TransText>
                 </Button>
               </>
             )}

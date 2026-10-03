@@ -357,10 +357,10 @@ export function AccessControlModalContent({
                   </div>
                 </SelectTrigger>
                 <SelectContent data-testid={"protocol-selection"}>
-                  <SelectItem value="all">ALL</SelectItem>
+                  <SelectItem value="all"><TransText>ALL</TransText></SelectItem>
                   <SelectItem value="tcp">TCP</SelectItem>
                   <SelectItem value="udp">UDP</SelectItem>
-                  <SelectItem value="icmp">ICMP</SelectItem>
+                  <SelectItem value="icmp"><TransText>ICMP</TransText></SelectItem>
                   <SelectItem
                     value="netbird-ssh"
                     extra={
@@ -378,7 +378,7 @@ export function AccessControlModalContent({
                       />
                     }
                   >
-                    NetBird SSH
+                    <TransText>NetBird SSH</TransText>
                   </SelectItem>
                 </SelectContent>
               </Select>

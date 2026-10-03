@@ -27,13 +27,14 @@ import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { LockedFeatureInfoCard } from "@/modules/billing/locked-feature/LockedFeatureInfoCard";
 import { LockedFeatureOverlay } from "@/modules/billing/locked-feature/LockedFeatureOverlay";
 import { useMSP } from "@/cloud/msp/contexts/MSPProvider";
+import { TransText } from "@/i18n/trans-text";
 
 const TenantsTableColumns: ColumnDef<Tenant>[] = [
   {
     id: "name",
     accessorKey: "name",
     header: ({ column }) => (
-      <DataTableHeader column={column}>Tenant</DataTableHeader>
+      <DataTableHeader column={column}><TransText>Tenant</TransText></DataTableHeader>
     ),
     cell: ({ row }) => <TenantNameCell tenant={row.original} />,
   },
@@ -45,7 +46,7 @@ const TenantsTableColumns: ColumnDef<Tenant>[] = [
     id: "plan",
     accessorKey: "plan",
     header: ({ column }) => (
-      <DataTableHeader column={column}>Plan</DataTableHeader>
+      <DataTableHeader column={column}><TransText>Plan</TransText></DataTableHeader>
     ),
     cell: ({ row }) => <TenantPlanCell tenant={row.original} />,
   },
@@ -53,7 +54,7 @@ const TenantsTableColumns: ColumnDef<Tenant>[] = [
     id: "users",
     accessorKey: "users",
     header: ({ column }) => (
-      <DataTableHeader column={column}>Users</DataTableHeader>
+      <DataTableHeader column={column}><TransText>Users</TransText></DataTableHeader>
     ),
     cell: ({ row }) => <TenantUsersCell tenant={row.original} />,
   },
@@ -61,7 +62,7 @@ const TenantsTableColumns: ColumnDef<Tenant>[] = [
     id: "peers",
     accessorKey: "peers",
     header: ({ column }) => (
-      <DataTableHeader column={column}>Peers</DataTableHeader>
+      <DataTableHeader column={column}><TransText>Peers</TransText></DataTableHeader>
     ),
     cell: ({ row }) => <TenantPeersCell tenant={row.original} />,
   },
@@ -74,8 +75,7 @@ const TenantsTableColumns: ColumnDef<Tenant>[] = [
         <FullTooltip
           content={
             <div className={"text-xs max-w-xs"}>
-              The estimated price is calculated based on the number of active
-              users and active peers.
+              <TransText>The estimated price is calculated based on the number of active users and active peers.</TransText>
             </div>
           }
           interactive={false}
@@ -95,7 +95,7 @@ const TenantsTableColumns: ColumnDef<Tenant>[] = [
     id: "groups",
     accessorKey: "peers",
     header: ({ column }) => (
-      <DataTableHeader column={column}>Permission Groups</DataTableHeader>
+      <DataTableHeader column={column}><TransText>Permission Groups</TransText></DataTableHeader>
     ),
     cell: ({ row }) => <TenantGroupsCell tenant={row.original} />,
   },

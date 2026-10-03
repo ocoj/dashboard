@@ -15,6 +15,7 @@ import { useDraftMode } from "@/modules/control-center/draft/DraftModeContext";
 import { DraftStartPopover } from "@/modules/control-center/draft/DraftStartPopover";
 import { ReviewDeployModal } from "@/modules/control-center/draft/modals/ReviewDeployModal";
 import { useDiscardDraft } from "@/modules/control-center/draft/useDiscardDraft";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {};
 export const DraftModeSwitcher = ({}: Props) => {
@@ -102,7 +103,7 @@ export const DraftModeSwitcher = ({}: Props) => {
               className={"h-[39px] px-4.5"}
               data-testid={"cc-draft-cancel"}
             >
-              Cancel
+              <TransText>Cancel</TransText>
             </Button>
             <Button
               variant={"primary"}

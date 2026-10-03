@@ -36,6 +36,7 @@ import { useDeployChangeset } from "@/modules/control-center/hooks/useDeployChan
 import { useRemoveChange } from "@/modules/control-center/hooks/useRemoveChange";
 import { LiveData } from "@/modules/control-center/utils/changeset-request";
 import { getPlaceholderSetupKey } from "@/modules/control-center/utils/helpers";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   open: boolean;
@@ -214,7 +215,7 @@ export const ReviewDeployModal = ({
         <div className={"px-8 pb-6 border-t border-nb-gray-910 pt-6 min-w-0"}>
           {changes.length === 0 ? (
             <div className={"text-sm text-nb-gray-400 text-center py-10"}>
-              No pending changes.
+              <TransText>No pending changes.</TransText>
             </div>
           ) : (
             <Accordion
@@ -263,7 +264,7 @@ export const ReviewDeployModal = ({
           <div className={"flex gap-3 w-full justify-end"}>
             <ModalClose asChild={true}>
               <Button variant={"secondary"} disabled={isDeploying}>
-                Cancel
+                <TransText>Cancel</TransText>
               </Button>
             </ModalClose>
             {/* A disabled button emits no hover, so the wrapper div FullTooltip

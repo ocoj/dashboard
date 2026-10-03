@@ -208,7 +208,7 @@ function ModelsCell({
       <FullTooltip
         content={
           <div className={"text-xs space-y-0.5"}>
-            <div className={"font-semibold"}>Model allowlist</div>
+            <div className={"font-semibold"}><TransText>Model allowlist</TransText></div>
             {listed.map((model) => (
               <div key={model}>· {model}</div>
             ))}
@@ -263,7 +263,7 @@ function LimitsCell({
         <FullTooltip
           content={
             <div className={"text-xs space-y-0.5"}>
-              <div className={"font-semibold"}>Token Limit</div>
+              <div className={"font-semibold"}><TransText>Token Limit</TransText></div>
               <div>· Group: {capDisplay(tl.groupCap, false)}</div>
               <div>· Individual: {capDisplay(tl.userCap, false)}</div>
               <div>· Resets every {formatLimitWindow(tl.windowSeconds)}</div>
@@ -280,7 +280,7 @@ function LimitsCell({
         <FullTooltip
           content={
             <div className={"text-xs space-y-0.5"}>
-              <div className={"font-semibold"}>Budget Limit</div>
+              <div className={"font-semibold"}><TransText>Budget Limit</TransText></div>
               <div>· Group: {capDisplay(bl.groupCapUsd, true)}</div>
               <div>· Individual: {capDisplay(bl.userCapUsd, true)}</div>
               <div>· Resets every {formatLimitWindow(bl.windowSeconds)}</div>
@@ -482,7 +482,7 @@ export default function AgentPoliciesTable({ headingTarget }: Readonly<Props>) {
       accessorKey: "name",
       sortingFn: "text",
       header: ({ column }) => (
-        <DataTableHeader column={column}>Name</DataTableHeader>
+        <DataTableHeader column={column}><TransText>Name</TransText></DataTableHeader>
       ),
       cell: ({ row }) => <NameCell policy={row.original} />,
     },
@@ -491,7 +491,7 @@ export default function AgentPoliciesTable({ headingTarget }: Readonly<Props>) {
       accessorFn: (p) => p.sourceGroups.length,
       sortingFn: "basic",
       header: ({ column }) => (
-        <DataTableHeader column={column}>Groups</DataTableHeader>
+        <DataTableHeader column={column}><TransText>Groups</TransText></DataTableHeader>
       ),
       cell: ({ row }) => <SourceCell policy={row.original} />,
     },
@@ -500,7 +500,7 @@ export default function AgentPoliciesTable({ headingTarget }: Readonly<Props>) {
       accessorFn: (p) => p.destinationProviderIds.length,
       sortingFn: "basic",
       header: ({ column }) => (
-        <DataTableHeader column={column}>Provider</DataTableHeader>
+        <DataTableHeader column={column}><TransText>Provider</TransText></DataTableHeader>
       ),
       cell: ({ row }) => <ProviderCell policy={row.original} />,
     },
@@ -509,7 +509,7 @@ export default function AgentPoliciesTable({ headingTarget }: Readonly<Props>) {
       accessorFn: (p) => allowlistModels(p, guardrails).length,
       sortingFn: "basic",
       header: ({ column }) => (
-        <DataTableHeader column={column}>Models</DataTableHeader>
+        <DataTableHeader column={column}><TransText>Models</TransText></DataTableHeader>
       ),
       cell: ({ row }) => (
         <ModelsCell
@@ -536,7 +536,7 @@ export default function AgentPoliciesTable({ headingTarget }: Readonly<Props>) {
         (p.limits.budgetLimit.enabled ? 1 : 0),
       sortingFn: "basic",
       header: ({ column }) => (
-        <DataTableHeader column={column}>Limits</DataTableHeader>
+        <DataTableHeader column={column}><TransText>Limits</TransText></DataTableHeader>
       ),
       cell: ({ row }) => (
         <LimitsCell

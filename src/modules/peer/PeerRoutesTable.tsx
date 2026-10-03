@@ -61,7 +61,7 @@ export const RouteTableColumns: ColumnDef<Route>[] = [
     meta: { className: ENABLED_COLUMN_CLASS.xl },
     header: ({ column }) => (
       <DataTableHeader column={column} sorting={false}>
-        Active
+        <TransText>Active</TransText>
       </DataTableHeader>
     ),
     cell: ({ row }) => <PeerRouteActiveCell route={row.original} />,

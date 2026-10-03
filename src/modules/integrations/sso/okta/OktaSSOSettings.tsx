@@ -22,6 +22,7 @@ import { IntegrationModalHeader } from "@/modules/integrations/IntegrationModalH
 import { DomainVerificationCard } from "@/modules/integrations/sso/DomainVerificationCard";
 import { DomainVerificationModal } from "@/modules/integrations/sso/DomainVerificationModal";
 import { useEnterpriseConnections } from "@/modules/integrations/sso/useEnterpriseConnections";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   config: EnterpriseConnection;
@@ -199,7 +200,7 @@ export const OktaSsoSettings = ({ open, onOpenChange, config }: Props) => {
                 />
               </div>
               <Button type={"submit"} variant={"secondaryLighter"}>
-                Add Domain
+                <TransText>Add Domain</TransText>
               </Button>
             </form>
             <div className={"flex flex-col gap-3"}>
@@ -233,7 +234,7 @@ export const OktaSsoSettings = ({ open, onOpenChange, config }: Props) => {
               className={"mt-3"}
               onClick={deleteIntegration}
             >
-              Delete Integration
+              <TransText>Delete Integration</TransText>
             </Button>
           </TabsContent>
         </Tabs>

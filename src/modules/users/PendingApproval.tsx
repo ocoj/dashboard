@@ -14,6 +14,7 @@ import {
   UserCircleIcon,
 } from "lucide-react";
 import * as React from "react";
+import { TransText } from "@/i18n/trans-text";
 
 const parseApproverEmail = (message?: string): string =>
   message?.match(/[^\s@]+@[a-z0-9.-]+\.[a-z]{2,}/i)?.[0] ?? "";
@@ -115,14 +116,14 @@ export const PendingApproval = ({ error, onRefresh, onLogout }: Props) => {
           href={"https://docs.netbird.io/manage/team/approve-users"}
           target={"_blank"}
         >
-          Read the Docs
+          <TransText>Read the Docs</TransText>
         </InlineLink>
         or
         <InlineLink
           href={"https://docs.netbird.io/help/netbird-support"}
           target={"_blank"}
         >
-          Contact Support
+          <TransText>Contact Support</TransText>
         </InlineLink>
       </Paragraph>
     </div>

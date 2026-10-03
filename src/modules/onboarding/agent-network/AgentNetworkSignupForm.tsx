@@ -25,6 +25,7 @@ import {
   companySizes,
   referralSourceOptions,
 } from "@/modules/onboarding/OnboardingSurvey";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   onSubmit: (fields: HubspotFormField[]) => void;
@@ -145,8 +146,7 @@ export const AgentNetworkSignupForm = ({ onSubmit }: Props) => {
             "text-sm text-nb-gray-300 font-light mt-2 block text-center max-w-md mx-auto px-6"
           }
         >
-          Share a few details about your use case to help us get you started
-          smoothly.
+          <TransText>Share a few details about your use case to help us get you started smoothly.</TransText>
         </div>
 
         <div className={"flex flex-col mt-8 z-0 gap-8"}>
@@ -227,7 +227,7 @@ export const AgentNetworkSignupForm = ({ onSubmit }: Props) => {
                 <RequiredAsterisk />
               </Label>
               <HelpText className={"mt-1.5"}>
-                You can also select multiple use cases.
+                <TransText>You can also select multiple use cases.</TransText>
               </HelpText>
             </div>
 
@@ -283,7 +283,7 @@ export const AgentNetworkSignupForm = ({ onSubmit }: Props) => {
         onClick={submitForm}
         disabled={!canSubmit}
       >
-        Continue
+        <TransText>Continue</TransText>
       </Button>
     </>
   );

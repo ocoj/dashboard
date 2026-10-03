@@ -66,7 +66,7 @@ const GroupResourcesColumns: ColumnDef<NetworkResourceWithNetwork>[] = [
     header: ({ column }) => {
       return (
         <DataTableHeader column={column} sorting={false}>
-          Active
+          <TransText>Active</TransText>
         </DataTableHeader>
       );
     },

@@ -36,6 +36,7 @@ import {
 } from "@/modules/agent-network/data/mockData";
 import { PostureCheckCard } from "@/modules/posture-checks/ui/PostureCheckCard";
 import zhMap from "@/i18n/zh-map";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   open: boolean;
@@ -151,9 +152,9 @@ export default function AgentGuardrailModal({
           <TabsContent value={"general"} className={"pb-8 px-8"}>
             <div className={"flex flex-col gap-6"}>
               <div>
-                <Label>Name of the Guardrail</Label>
+                <Label><TransText>Name of the Guardrail</TransText></Label>
                 <HelpText>
-                  Set an easily identifiable name for this guardrail set.
+                  <TransText>Set an easily identifiable name for this guardrail set.</TransText>
                 </HelpText>
                 <Input
                   autoFocus={true}
@@ -165,8 +166,7 @@ export default function AgentGuardrailModal({
               <div>
                 <Label>Description (optional)</Label>
                 <HelpText>
-                  Write a short description to add more context to this
-                  guardrail.
+                  <TransText>Write a short description to add more context to this guardrail.</TransText>
                 </HelpText>
                 <Textarea
                   value={description}
@@ -197,12 +197,12 @@ export default function AgentGuardrailModal({
           <div className={"flex gap-3 w-full justify-end"}>
             {tab === "checks" && (
               <Button variant={"secondary"} onClick={() => onOpenChange(false)}>
-                Cancel
+                <TransText>Cancel</TransText>
               </Button>
             )}
             {tab === "general" && (
               <Button variant={"secondary"} onClick={() => setTab("checks")}>
-                Back
+                <TransText>Back</TransText>
               </Button>
             )}
             {!guardrail && tab === "checks" && (
@@ -211,7 +211,7 @@ export default function AgentGuardrailModal({
                 onClick={() => setTab("general")}
                 disabled={!atLeastOneEnabled}
               >
-                Continue
+                <TransText>Continue</TransText>
               </Button>
             )}
             {((!guardrail && tab === "general") || guardrail) && (
@@ -372,14 +372,14 @@ function ModelAllowlistContent({
                       "py-2 px-4 text-left text-[11px] uppercase tracking-wider text-nb-gray-400 font-medium"
                     }
                   >
-                    Model
+                    <TransText>Model</TransText>
                   </th>
                   <th
                     className={
                       "py-2 px-4 text-left text-[11px] uppercase tracking-wider text-nb-gray-400 font-medium"
                     }
                   >
-                    Provider
+                    <TransText>Provider</TransText>
                   </th>
                 </tr>
               </thead>
@@ -434,14 +434,14 @@ function ModelAllowlistContent({
         </div>
         <div className={"flex gap-3 w-full justify-end"}>
           <ModalClose asChild={true}>
-            <Button variant={"secondary"}>Cancel</Button>
+            <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
           </ModalClose>
           <Button
             variant={"primary"}
             disabled={draft.length === 0}
             onClick={() => onChange(draft.length === 0 ? undefined : draft)}
           >
-            Save
+            <TransText>Save</TransText>
           </Button>
         </div>
       </ModalFooter>
@@ -507,10 +507,10 @@ function PromptCaptureContent({ onConfirm }: { onConfirm: () => void }) {
         </div>
         <div className={"flex gap-3 w-full justify-end"}>
           <ModalClose asChild={true}>
-            <Button variant={"secondary"}>Cancel</Button>
+            <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
           </ModalClose>
           <Button variant={"primary"} onClick={onConfirm}>
-            Save
+            <TransText>Save</TransText>
           </Button>
         </div>
       </ModalFooter>

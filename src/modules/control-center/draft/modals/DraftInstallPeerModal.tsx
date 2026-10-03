@@ -28,6 +28,7 @@ import {
   PLACEHOLDER_BASE_NAMES,
 } from "@/modules/control-center/utils/helpers";
 import SetupModal from "@/modules/setup-netbird-modal/SetupModal";
+import { TransText } from "@/i18n/trans-text";
 
 // Server/Agent installs arrive without a setup key: it is generated on demand
 // and written back onto the placeholder node so reopening Install reuses it.
@@ -304,7 +305,7 @@ export const DraftInstallPeerModal = () => {
           <ModalFooter>
             <ModalClose asChild={true}>
               <Button variant={"primary"} className={"w-full"}>
-                Continue
+                <TransText>Continue</TransText>
               </Button>
             </ModalClose>
           </ModalFooter>

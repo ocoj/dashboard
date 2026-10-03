@@ -22,6 +22,7 @@ import {
 import { useDraftNodeCreation } from "@/modules/control-center/hooks/useDraftNodeCreation";
 import { NetworkModalContent } from "@/modules/networks/NetworkModal";
 import { SmallBadge } from "@components/ui/SmallBadge";
+import { TransText } from "@/i18n/trans-text";
 
 // "No Network" picker for a standalone draft resource: assign it to an existing
 // network (a canvas frame or a real API network) or to a new draft network.
@@ -211,10 +212,10 @@ const PickerContent = ({
         <ModalFooter className={"items-center"} separator={false}>
           <div className={"flex gap-3 w-full justify-end"}>
             <ModalClose asChild={true}>
-              <Button variant={"secondary"}>Cancel</Button>
+              <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
             </ModalClose>
             <Button variant={"primary"} disabled={!selected} onClick={save}>
-              Assign Network
+              <TransText>Assign Network</TransText>
             </Button>
           </div>
         </ModalFooter>

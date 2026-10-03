@@ -14,6 +14,7 @@ import InvoicesActionCell from "@/cloud/invoices/table/InvoicesActionCell";
 import InvoicesPeriodCell from "@/cloud/invoices/table/InvoicesPeriodCell";
 import InvoicesTypeCell from "@/cloud/invoices/table/InvoicesTypeCell";
 import { Invoice } from "@/cloud/msp/interfaces/Invoice";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   invoices?: Invoice[];
@@ -24,7 +25,7 @@ type Props = {
 const InvoicesColumns: ColumnDef<Invoice>[] = [
   {
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Date</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Date</TransText></DataTableHeader>;
     },
     accessorKey: "period_start",
     cell: ({ row }) => <InvoicesPeriodCell invoice={row.original} />,
@@ -34,7 +35,7 @@ const InvoicesColumns: ColumnDef<Invoice>[] = [
   },
   {
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Type</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Type</TransText></DataTableHeader>;
     },
     accessorKey: "type",
     cell: ({ row }) => <InvoicesTypeCell invoice={row.original} />,

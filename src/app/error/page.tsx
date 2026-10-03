@@ -9,6 +9,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import NetBirdIcon from "@/assets/icons/NetBirdIcon";
 import { PendingApproval } from "@/modules/users/PendingApproval";
+import { TransText } from "@/i18n/trans-text";
 
 const config = loadConfig();
 
@@ -103,7 +104,7 @@ export default function ErrorPage() {
       )}
 
       <Paragraph className="text-center mt-2 text-sm">
-        If you believe this is an error, please contact your administrator.
+        <TransText>If you believe this is an error, please contact your administrator.</TransText>
       </Paragraph>
 
       <div className="mt-5 space-y-3">

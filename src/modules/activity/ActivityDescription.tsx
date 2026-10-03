@@ -9,6 +9,7 @@ import React, { useMemo } from "react";
 import RoundedFlag from "@/assets/countries/RoundedFlag";
 import { useCountries } from "@/contexts/CountryProvider";
 import { ActivityEvent } from "@/interfaces/ActivityEvent";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   event: ActivityEvent;
@@ -468,13 +469,13 @@ export default function ActivityDescription({ event }: Props) {
     );
 
   if (event.activity_code == "account.setting.peer.login.expiration.update")
-    return <div className={"inline"}>Global login expiration was updated</div>;
+    return <div className={"inline"}><TransText>Global login expiration was updated</TransText></div>;
 
   if (event.activity_code == "account.setting.peer.login.expiration.enable")
-    return <div className={"inline"}>Global login expiration was enabled</div>;
+    return <div className={"inline"}><TransText>Global login expiration was enabled</TransText></div>;
 
   if (event.activity_code == "account.setting.peer.login.expiration.disable")
-    return <div className={"inline"}>Global login expiration was disabled</div>;
+    return <div className={"inline"}><TransText>Global login expiration was disabled</TransText></div>;
 
   if (event.activity_code == "account.network.range.update")
     return (
@@ -610,7 +611,7 @@ export default function ActivityDescription({ event }: Props) {
     );
 
   if (event.activity_code == "transferred.owner.role")
-    return <div className={"inline"}>Owner role was transferred</div>;
+    return <div className={"inline"}><TransText>Owner role was transferred</TransText></div>;
 
   /**
    * EDR
@@ -893,7 +894,7 @@ export default function ActivityDescription({ event }: Props) {
     );
 
   if (event.activity_code == "reseller.activated")
-    return <div className={"inline"}>Distributor account was activated</div>;
+    return <div className={"inline"}><TransText>Distributor account was activated</TransText></div>;
 
   if (event.activity_code == "reseller.msp.deleted")
     return (
@@ -951,9 +952,9 @@ export default function ActivityDescription({ event }: Props) {
         <FullTooltip
           content={
             <div className={"pb-1"}>
-              <Label className={"mb-3"}>Activity Code</Label>
+              <Label className={"mb-3"}><TransText>Activity Code</TransText></Label>
               <Value>{event.activity_code}</Value>
-              <Label className={"my-3"}>Meta</Label>
+              <Label className={"my-3"}><TransText>Meta</TransText></Label>
               {meta &&
                 meta.map((item) => (
                   <React.Fragment key={item?.key}>

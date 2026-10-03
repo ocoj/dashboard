@@ -133,7 +133,7 @@ export default function OidcSetupModal({
                 </p>
                 <Input
                   customPrefix={
-                    <span className={"min-w-[90px]"}>Client ID</span>
+                    <span className={"min-w-[90px]"}><TransText>Client ID</TransText></span>
                   }
                   placeholder={"0obflxtwxoVQcur0z3f3"}
                   value={clientId}
@@ -141,7 +141,7 @@ export default function OidcSetupModal({
                 />
                 <Input
                   customPrefix={
-                    <span className={"min-w-[90px]"}>Client Secret</span>
+                    <span className={"min-w-[90px]"}><TransText>Client Secret</TransText></span>
                   }
                   placeholder={
                     "jfgbU1Wu3XWAKhGUF4d-PX54DSm3pAQCyNtpxp7Nu8Ij22stSz8_6KnWbO4nQBIb"
@@ -154,7 +154,7 @@ export default function OidcSetupModal({
               {name.toLowerCase() !== "jumpcloud" && (
                 <Steps.Step step={2}>
                   <p className={"font-normal"}>
-                    Please provide the <Mark>OpenID Connect Discovery</Mark>{" "}
+                    Please provide the <Mark><TransText>OpenID Connect Discovery</TransText></Mark>{" "}
                     endpoint. It should be publicly accessible and SSL secured.
                   </p>
                   <Input
@@ -175,7 +175,7 @@ export default function OidcSetupModal({
               >
                 <p className={"font-normal"}>
                   Enter your
-                  <Mark>Primary E-Mail Domain</Mark> which will later be used to
+                  <Mark><TransText>Primary E-Mail Domain</TransText></Mark> which will later be used to
                   log in to NetBird.
                 </p>
                 <Input
@@ -204,7 +204,7 @@ export default function OidcSetupModal({
             </div>
             <div className={"flex gap-3 w-full justify-end"}>
               <ModalClose asChild={true}>
-                <Button variant={"secondary"}>Cancel</Button>
+                <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
               </ModalClose>
 
               <Button variant={"primary"}>

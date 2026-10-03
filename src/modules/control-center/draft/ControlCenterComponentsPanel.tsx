@@ -74,6 +74,7 @@ import {
   useStructuralNodes,
 } from "@/modules/control-center/utils/helpers";
 import { NodeType } from "@/modules/control-center/utils/nodes";
+import { TransText } from "@/i18n/trans-text";
 
 type BlankKind = "group" | "network" | "resource";
 
@@ -1521,7 +1522,7 @@ const PanelContent = React.memo(
                 "hover:bg-nb-gray-910 hover:text-nb-gray-200 transition-colors",
               )}
             >
-              ESC
+              <TransText>ESC</TransText>
             </button>
           </div>
 
@@ -1608,7 +1609,7 @@ const PanelContent = React.memo(
                     </div>
                   </div>
                   <div className={"text-nb-gray-100 mb-1"}>
-                    Could not find any results
+                    <TransText>Could not find any results</TransText>
                   </div>
                   <div
                     className={
@@ -1635,7 +1636,7 @@ const DeletedBadge = () => (
       "text-[0.55rem] leading-none px-1 py-[0.3rem] rounded-[3px] bg-red-900/40 border border-red-500/20 text-red-400"
     }
   >
-    DELETED
+    <TransText>DELETED</TransText>
   </span>
 );
 
@@ -1726,7 +1727,7 @@ const PanelListItem = React.memo(
               "shrink-0 ml-auto mr-3 text-[0.50rem] leading-none px-1 py-[0.3rem] rounded-[3px] bg-nb-gray-910 border border-nb-gray-800/30 text-nb-gray-350 opacity-70"
             }
           >
-            ON CANVAS
+            <TransText>ON CANVAS</TransText>
           </span>
         ) : (
           !disabled && (

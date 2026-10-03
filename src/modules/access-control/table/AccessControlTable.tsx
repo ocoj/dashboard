@@ -95,7 +95,7 @@ export const AccessControlTableColumns: ColumnDef<Policy>[] = [
     header: ({ column }) => {
       return (
         <DataTableHeader column={column} sorting={false}>
-          Active
+          <TransText>Active</TransText>
         </DataTableHeader>
       );
     },

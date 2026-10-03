@@ -9,6 +9,7 @@ import {
 } from "@components/modal/Modal";
 import ModalHeader from "@components/modal/ModalHeader";
 import { trim } from "lodash";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   open: boolean;
@@ -83,7 +84,7 @@ export const GroupRenameModal = ({
           <div className={"flex gap-3 w-full justify-end"}>
             <ModalClose asChild={true}>
               <Button variant={"secondary"} className={"w-full"}>
-                Cancel
+                <TransText>Cancel</TransText>
               </Button>
             </ModalClose>
             <Button
@@ -93,7 +94,7 @@ export const GroupRenameModal = ({
               onClick={submit}
               data-testid="cc-rename-submit"
             >
-              Rename
+              <TransText>Rename</TransText>
             </Button>
           </div>
         </ModalFooter>

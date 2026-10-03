@@ -70,7 +70,7 @@ export const DomainVerificationModal = ({
             </Steps.Step>
             <Steps.Step step={2} line={false}>
               <p className={"font-normal"}>
-                Copy the <Mark>TXT record</Mark> below and add it to your DNS
+                Copy the <Mark><TransText>TXT record</TransText></Mark> below and add it to your DNS
                 configuration for <Mark>{domain}</Mark>
               </p>
             </Steps.Step>
@@ -127,11 +127,11 @@ export const DomainVerificationModal = ({
           </div>
           <div className={"flex gap-3 w-full justify-end"}>
             <ModalClose asChild={true}>
-              <Button variant={"secondary"}>Verify Later</Button>
+              <Button variant={"secondary"}><TransText>Verify Later</TransText></Button>
             </ModalClose>
 
             <Button variant={"primary"} onClick={startVerification}>
-              Start Verification
+              <TransText>Start Verification</TransText>
             </Button>
           </div>
         </ModalFooter>

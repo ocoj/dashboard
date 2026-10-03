@@ -7,6 +7,7 @@ import {
   AIAccessLogEntry,
   formatDenyReason,
 } from "@/modules/agent-network/data/mockData";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   entry: AIAccessLogEntry;
@@ -125,7 +126,7 @@ export default function AgentAccessLogExpandedRow({ entry }: Readonly<Props>) {
               </pre>
             </Code>
           ) : (
-            <Muted>No response captured.</Muted>
+            <Muted><TransText>No response captured.</TransText></Muted>
           )}
         </Section>
       )}

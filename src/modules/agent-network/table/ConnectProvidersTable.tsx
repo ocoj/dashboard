@@ -17,6 +17,7 @@ import { useLocalStorage } from "@/hooks/useLocalStorage";
 import AIProviderLogo from "@/modules/agent-network/AIProviderLogo";
 import { AIProviderId } from "@/modules/agent-network/data/mockData";
 import { APIMeProvider } from "@/modules/agent-network/useMyAgentNetworkSetup";
+import { TransText } from "@/i18n/trans-text";
 
 function NameCell({ provider }: { provider: APIMeProvider }) {
   return (
@@ -87,7 +88,7 @@ const columns: ColumnDef<APIMeProvider>[] = [
     accessorKey: "name",
     sortingFn: "text",
     header: ({ column }) => (
-      <DataTableHeader column={column}>Provider</DataTableHeader>
+      <DataTableHeader column={column}><TransText>Provider</TransText></DataTableHeader>
     ),
     cell: ({ row }) => <NameCell provider={row.original} />,
   },
@@ -97,7 +98,7 @@ const columns: ColumnDef<APIMeProvider>[] = [
     accessorFn: (p) => (p.all_models_allowed ? Infinity : p.models.length),
     sortingFn: "basic",
     header: ({ column }) => (
-      <DataTableHeader column={column}>Models</DataTableHeader>
+      <DataTableHeader column={column}><TransText>Models</TransText></DataTableHeader>
     ),
     cell: ({ row }) => <ModelsCell provider={row.original} />,
   },
@@ -162,7 +163,7 @@ export default function ConnectProvidersTable({ providers }: Readonly<Props>) {
               className={"mt-4"}
               onClick={() => router.push("/agent-network/policies")}
             >
-              Go to Policies
+              <TransText>Go to Policies</TransText>
             </Button>
           )}
         </NoResults>

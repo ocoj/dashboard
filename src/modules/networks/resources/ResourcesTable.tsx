@@ -94,7 +94,7 @@ const NetworkResourceColumns: ColumnDef<NetworkResource>[] = [
     header: ({ column }) => {
       return (
         <DataTableHeader column={column} sorting={false}>
-          Active
+          <TransText>Active</TransText>
         </DataTableHeader>
       );
     },

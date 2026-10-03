@@ -57,7 +57,7 @@ export const PeerExpirationToggle = ({
             <>
               <IconInfoCircle size={14} />
               <span>
-                This setting is disabled for all peers added with a setup-key.
+                <TransText>This setting is disabled for all peers added with a setup-key.</TransText>
               </span>
             </>
           ) : (

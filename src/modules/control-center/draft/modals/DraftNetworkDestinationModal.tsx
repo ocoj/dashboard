@@ -21,6 +21,7 @@ import {
 } from "@/modules/control-center/draft/DraftModeContext";
 import { useControlCenterData } from "@/modules/control-center/hooks/useControlCenterData";
 import { getDraftResource } from "@/modules/control-center/utils/helpers";
+import { TransText } from "@/i18n/trans-text";
 
 // Destination picker for a POLICY connected with a network frame: the policy
 // modal's destination selector, limited to that network's resources and groups.
@@ -152,7 +153,7 @@ const PickerContent = ({
       <div className={"p-default flex flex-col"}>
         {resources.length === 0 && groupIds.length === 0 ? (
           <div className={"text-sm text-nb-gray-400 text-center py-4"}>
-            This network has no resources yet.
+            <TransText>This network has no resources yet.</TransText>
           </div>
         ) : (
           <div className={"w-full"}>
@@ -189,7 +190,7 @@ const PickerContent = ({
         <div className={"flex gap-3 w-full justify-end"}>
           <ModalClose asChild={true}>
             <Button variant={"secondary"} className={"w-full"}>
-              Cancel
+              <TransText>Cancel</TransText>
             </Button>
           </ModalClose>
           <Button
@@ -198,7 +199,7 @@ const PickerContent = ({
             onClick={onConnect}
             disabled={!hasPick || !!blockedReason}
           >
-            Connect
+            <TransText>Connect</TransText>
           </Button>
         </div>
       </ModalFooter>

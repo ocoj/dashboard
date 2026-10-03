@@ -31,6 +31,7 @@ import Separator from "@/components/Separator";
 import { Workload } from "@/interfaces/Job";
 import { useApiCall } from "@/utils/api";
 import zhMap from "@/i18n/zh-map";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   peerID: string;
@@ -119,10 +120,9 @@ export function CreateDebugJobModalContent({ peerID, onSuccess }: Props) {
         {/* Log File Count */}
         <div className="flex justify-between gap-6">
           <div className={"max-w-[300px]"}>
-            <Label>Log File Count</Label>
+            <Label><TransText>Log File Count</TransText></Label>
             <HelpText>
-              Sets the limit for how many individual log files will be included
-              in the debug bundle.
+              <TransText>Sets the limit for how many individual log files will be included in the debug bundle.</TransText>
             </HelpText>
           </div>
 
@@ -162,10 +162,9 @@ export function CreateDebugJobModalContent({ peerID, onSuccess }: Props) {
           {bundleForTimeEnabled && (
             <div className="flex justify-between gap-6 mt-6 mb-3">
               <div className={"max-w-[300px]"}>
-                <Label>Duration</Label>
+                <Label><TransText>Duration</TransText></Label>
                 <HelpText>
-                  Time period for which logs should be collected before creating
-                  the debug bundle.
+                  <TransText>Time period for which logs should be collected before creating the debug bundle.</TransText>
                 </HelpText>
               </div>
 
@@ -203,7 +202,7 @@ export function CreateDebugJobModalContent({ peerID, onSuccess }: Props) {
         {anonymize && (
           <div className="flex justify-between gap-6">
             <div className={"max-w-[300px]"}>
-              <Label>Anonymization Level</Label>
+              <Label><TransText>Anonymization Level</TransText></Label>
               <HelpText>
                 Default keeps internal (private) IP ranges readable; Strict also
                 anonymizes private, CGNAT and link-local addresses.
@@ -221,8 +220,8 @@ export function CreateDebugJobModalContent({ peerID, onSuccess }: Props) {
                 </div>
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="default">Default</SelectItem>
-                <SelectItem value="strict">Strict</SelectItem>
+                <SelectItem value="default"><TransText>Default</TransText></SelectItem>
+                <SelectItem value="strict"><TransText>Strict</TransText></SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -233,8 +232,7 @@ export function CreateDebugJobModalContent({ peerID, onSuccess }: Props) {
           <div className={"max-w-[300px]"}>
             <Label>Upload URL (optional)</Label>
             <HelpText>
-              Service the peer requests an upload URL from. Leave empty to use
-              the default upload server. Must be an https URL.
+              <TransText>Service the peer requests an upload URL from. Leave empty to use the default upload server. Must be an https URL.</TransText>
             </HelpText>
           </div>
 
@@ -252,7 +250,7 @@ export function CreateDebugJobModalContent({ peerID, onSuccess }: Props) {
       <ModalFooter className="items-center">
         <div className="flex gap-3 w-full justify-end">
           <ModalClose asChild>
-            <Button variant="secondary">Cancel</Button>
+            <Button variant="secondary"><TransText>Cancel</TransText></Button>
           </ModalClose>
           <Button
             variant="primary"

@@ -42,6 +42,7 @@ import {
   pinByOrder,
   useStructuralNodes,
 } from "@/modules/control-center/utils/helpers";
+import { TransText } from "@/i18n/trans-text";
 
 interface PeerGroupsPanelProps {
   // Real peer id; empty means closed.
@@ -327,7 +328,7 @@ export const PeerGroupsPanel = ({ peerId, onClose }: PeerGroupsPanelProps) => {
               "shrink-0 px-1.5 py-0.5 rounded border border-nb-gray-900 bg-nb-gray-920 shadow-[0_2px_0_0_#1e2123,inset_0_1px_0_0_rgba(255,255,255,0.05)] text-[8px] font-medium tracking-wide text-nb-gray-350 hover:bg-nb-gray-910 hover:text-nb-gray-200 transition-colors"
             }
           >
-            ESC
+            <TransText>ESC</TransText>
           </button>
         </div>
 
@@ -438,7 +439,7 @@ export const PeerGroupsPanel = ({ peerId, onClose }: PeerGroupsPanelProps) => {
               className={"py-2.5"}
               onClick={onClose}
             >
-              Cancel
+              <TransText>Cancel</TransText>
             </Button>
             <Button
               variant={"primary"}

@@ -15,6 +15,7 @@ import { memo, useEffect, useState } from "react";
 import { useElementSize } from "@/hooks/useElementSize";
 import { Peer } from "@/interfaces/Peer";
 import { PeerOperatingSystemIcon } from "@/modules/peers/PeerOperatingSystemIcon";
+import { TransText } from "@/i18n/trans-text";
 
 const MapPinIcon = memo(() => <MapPin size={12} />);
 MapPinIcon.displayName = "MapPinIcon";
@@ -126,7 +127,7 @@ export function PeerSelector({
                 </div>
               </div>
             ) : (
-              <span>Select a peer...</span>
+              <span><TransText>Select a peer...</TransText></span>
             )}
           </div>
 
@@ -160,7 +161,7 @@ export function PeerSelector({
 
           {filteredItems.length == 0 && search != "" && (
             <DropdownInfoText>
-              There are no peers matching your search.
+              <TransText>There are no peers matching your search.</TransText>
             </DropdownInfoText>
           )}
 

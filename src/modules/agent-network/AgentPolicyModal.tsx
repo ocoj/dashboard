@@ -363,9 +363,9 @@ function AgentPolicyModalContent({
             </div>
 
             <div>
-              <Label>Name of the Policy</Label>
+              <Label><TransText>Name of the Policy</TransText></Label>
               <HelpText>
-                Set an easily identifiable name for your policy.
+                <TransText>Set an easily identifiable name for your policy.</TransText>
               </HelpText>
               <Input
                 value={name}
@@ -379,7 +379,7 @@ function AgentPolicyModalContent({
             <div>
               <Label>Description (optional)</Label>
               <HelpText>
-                Write a short description to add more context to this policy.
+                <TransText>Write a short description to add more context to this policy.</TransText>
               </HelpText>
               <Textarea
                 value={description}
@@ -421,7 +421,7 @@ function AgentPolicyModalContent({
               {tab === "policy" && (
                 <>
                   <ModalClose asChild>
-                    <Button variant={"secondary"}>Cancel</Button>
+                    <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
                   </ModalClose>
                   <Button
                     variant={"primary"}
@@ -430,7 +430,7 @@ function AgentPolicyModalContent({
                       !canContinueFromPolicy || name.trim().length === 0
                     }
                   >
-                    Continue
+                    <TransText>Continue</TransText>
                   </Button>
                 </>
               )}
@@ -440,13 +440,13 @@ function AgentPolicyModalContent({
                     variant={"secondary"}
                     onClick={() => setTab("policy")}
                   >
-                    Back
+                    <TransText>Back</TransText>
                   </Button>
                   <Button
                     variant={"primary"}
                     onClick={() => setTab("guardrails")}
                   >
-                    Continue
+                    <TransText>Continue</TransText>
                   </Button>
                 </>
               )}
@@ -456,7 +456,7 @@ function AgentPolicyModalContent({
                     variant={"secondary"}
                     onClick={() => setTab("limits")}
                   >
-                    Back
+                    <TransText>Back</TransText>
                   </Button>
                   <Button
                     variant={"primary"}
@@ -472,14 +472,14 @@ function AgentPolicyModalContent({
           ) : (
             <>
               <ModalClose asChild>
-                <Button variant={"secondary"}>Cancel</Button>
+                <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
               </ModalClose>
               <Button
                 variant={"primary"}
                 onClick={handleSubmit}
                 disabled={submitDisabled}
               >
-                Save Changes
+                <TransText>Save Changes</TransText>
               </Button>
             </>
           )}

@@ -10,6 +10,7 @@ import { useGroups } from "@/contexts/GroupsProvider";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { Group } from "@/interfaces/Group";
 import { GroupUsage } from "@/modules/groups/useGroupsUsage";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   selectedGroups?: GroupUsage[];
@@ -96,7 +97,7 @@ export const GroupsMultiSelect = ({
       onCanceled={onCanceled}
       icon={<FolderGit2 size={16} />}
       rightSide={
-        <FullTooltip content={<span className={"text-xs"}>Delete All</span>}>
+        <FullTooltip content={<span className={"text-xs"}><TransText>Delete All</TransText></span>}>
           <Button
             variant={"danger-outline"}
             size={"xs"}

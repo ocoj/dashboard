@@ -10,6 +10,7 @@ import { AgentConnectTabs } from "@/modules/agent-network/AgentConnectTabs";
 import EndpointBadge from "@/modules/agent-network/EndpointBadge";
 import ConnectProvidersTable from "@/modules/agent-network/table/ConnectProvidersTable";
 import { useMyAgentNetworkSetup } from "@/modules/agent-network/useMyAgentNetworkSetup";
+import { TransText } from "@/i18n/trans-text";
 
 // ConnectAgentPage is the caller-scoped self-service view: the endpoint to
 // configure tools with and the per-tool config that goes with it — the one
@@ -41,7 +42,7 @@ export default function ConnectAgentPage() {
             active
           />
         </Breadcrumbs>
-        <h1>Connect Your Agent</h1>
+        <h1><TransText>Connect Your Agent</TransText></h1>
         {/* block, so the <br /> lands: Paragraph is a flex container by
             default and a break element does nothing between flex items. */}
         <Paragraph className={"block"}>

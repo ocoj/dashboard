@@ -10,6 +10,7 @@ import { DomainValidationStatus } from "@/interfaces/Account";
 import { EnterpriseConnectionDomain } from "@/interfaces/IdentityProvider";
 import { DomainVerificationModal } from "@/modules/integrations/sso/DomainVerificationModal";
 import { useEnterpriseConnections } from "@/modules/integrations/sso/useEnterpriseConnections";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   domain: EnterpriseConnectionDomain;
@@ -64,7 +65,7 @@ export const DomainVerificationCard = ({ domain, connectionId }: Props) => {
             size={"xs"}
             onClick={() => setModal(true)}
           >
-            Verify
+            <TransText>Verify</TransText>
           </Button>
         )}
 

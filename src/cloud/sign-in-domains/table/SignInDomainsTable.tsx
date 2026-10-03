@@ -9,6 +9,7 @@ import Skeleton from "react-loading-skeleton";
 import DomainActionCell from "@/cloud/sign-in-domains/table/DomainActionCell";
 import DomainStatusCell from "@/cloud/sign-in-domains/table/DomainStatusCell";
 import { DomainValidationStatus, SignInDomain } from "@/interfaces/Account";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   domains?: SignInDomain[];
@@ -31,7 +32,7 @@ const isPlaceholder = (domain: SignInDomain) => domain.id === PLACEHOLDER_ID;
 const SignInDomainsColumns: ColumnDef<SignInDomain>[] = [
   {
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Domain</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Domain</TransText></DataTableHeader>;
     },
     accessorKey: "name",
     sortingFn: "text",
@@ -44,7 +45,7 @@ const SignInDomainsColumns: ColumnDef<SignInDomain>[] = [
   },
   {
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Status</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Status</TransText></DataTableHeader>;
     },
     accessorKey: "validation_status",
     sortingFn: "text",

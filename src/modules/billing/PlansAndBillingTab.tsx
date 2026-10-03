@@ -19,6 +19,7 @@ import { PlanCard, PlanLoadingSkeleton } from "@/modules/billing/PlanCard";
 import { PlanCurrentPlan } from "@/modules/billing/PlanCurrentPlan";
 import { PlanSuccessModal } from "@/modules/billing/PlanSuccessModal";
 import { TrialGradientCard } from "@/modules/billing/trial/TrialGradientCard";
+import { TransText } from "@/i18n/trans-text";
 
 export const PlansAndBillingTab = () => {
   const { permission } = usePermissions();
@@ -212,11 +213,10 @@ const PlansAndBillingTabContent = () => {
           </h2>
 
           <Paragraph>
-            Increase your user and peer limit by upgrading your plan.
+            <TransText>Increase your user and peer limit by upgrading your plan.</TransText>
           </Paragraph>
           <Paragraph>
-            With our flexible pricing, you are only billed for active users and
-            active peers.
+            <TransText>With our flexible pricing, you are only billed for active users and active peers.</TransText>
           </Paragraph>
           <Paragraph>
             Find out which{" "}

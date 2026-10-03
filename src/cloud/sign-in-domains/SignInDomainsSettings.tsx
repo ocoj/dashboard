@@ -12,6 +12,7 @@ import { AddSignInDomainModal } from "@/cloud/sign-in-domains/AddSignInDomainMod
 import SignInDomainsTable from "@/cloud/sign-in-domains/table/SignInDomainsTable";
 import { useSignInDomains } from "@/cloud/sign-in-domains/useSignInDomains";
 import { usePermissions } from "@/contexts/PermissionsProvider";
+import { TransText } from "@/i18n/trans-text";
 
 const POLL_INTERVAL_MS = 15_000;
 
@@ -42,7 +43,7 @@ export const SignInDomainsSettings = () => {
     >
       <div className={"flex items-end justify-between gap-4 mb-4"}>
         <div className={"min-w-0"}>
-          <Label>Sign-in Domains</Label>
+          <Label><TransText>Sign-in Domains</TransText></Label>
           <HelpText className={"!mb-0"}>
             Users from these domains can join your account.{" "}
             <InlineLink href={SIGN_IN_DOMAINS_DOCS_LINK} target={"_blank"}>

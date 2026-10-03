@@ -21,6 +21,7 @@ import { useDraftMode } from "@/modules/control-center/draft/DraftModeContext";
 import { usePlaceholderUpgrade } from "@/modules/control-center/hooks/useDraftPeerUpgrade";
 import { useStructuralNodes } from "@/modules/control-center/utils/helpers";
 import { PeerOperatingSystemIcon } from "@/modules/peers/PeerOperatingSystemIcon";
+import { TransText } from "@/i18n/trans-text";
 
 export const DraftUserDeviceModal = () => {
   const { userDeviceModal, setUserDeviceModal } = useDraftMode();
@@ -94,7 +95,7 @@ const StepperContent = ({
         <Steps>
           <Steps.Step step={1}>
             <p className={"text-sm font-normal"}>
-              Install NetBird on the device. Skip if it is already installed.
+              <TransText>Install NetBird on the device. Skip if it is already installed.</TransText>
             </p>
             <div className={"flex gap-4"}>
               <Button
@@ -115,7 +116,7 @@ const StepperContent = ({
           </Steps.Step>
           <Steps.Step step={2} line={false}>
             <p className={"text-sm font-normal"}>
-              Assign the peer this device registered as
+              <TransText>Assign the peer this device registered as</TransText>
             </p>
             <SelectDropdown
               variant={"secondary"}
@@ -135,7 +136,7 @@ const StepperContent = ({
       <ModalFooter className={"items-center"} separator={false}>
         <div className={"flex gap-3 w-full justify-end"}>
           <ModalClose asChild={true}>
-            <Button variant={"secondary"}>Cancel</Button>
+            <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
           </ModalClose>
           <Button
             variant={"primary"}
@@ -143,7 +144,7 @@ const StepperContent = ({
             onClick={apply}
             data-testid={"cc-user-device-select"}
           >
-            Assign
+            <TransText>Assign</TransText>
           </Button>
         </div>
       </ModalFooter>

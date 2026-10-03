@@ -46,6 +46,7 @@ import {
   PolicyLimits,
   PolicyTokenLimit,
 } from "@/modules/agent-network/data/mockData";
+import { TransText } from "@/i18n/trans-text";
 
 type LimitKind = "token" | "budget";
 
@@ -97,7 +98,7 @@ export default function AgentPolicyLimitsTab({
                 {attachedCount} {attachedCount === 1 ? "Limit" : "Limits"}
               </Label>
               <HelpText className={"mb-0"}>
-                Token and budget caps applied directly to this policy.
+                <TransText>Token and budget caps applied directly to this policy.</TransText>
               </HelpText>
             </div>
             <div className={"flex items-center justify-center gap-4"}>
@@ -252,7 +253,7 @@ function NoLimitsInfo({
           {"You haven't added any limits yet"}
         </h2>
         <Paragraph className={cn("text-sm text-center max-w-md mt-1")}>
-          Add token or budget caps that apply directly to this policy.
+          <TransText>Add token or budget caps that apply directly to this policy.</TransText>
         </Paragraph>
       </div>
       <div className={"flex items-center justify-center gap-4 mt-5"}>
@@ -408,7 +409,7 @@ function LimitEditModal({
                   }
                 />
               </Label>
-              <HelpText>Group total within the window.</HelpText>
+              <HelpText><TransText>Group total within the window.</TransText></HelpText>
               <Input
                 type={"number"}
                 min={0}
@@ -431,7 +432,7 @@ function LimitEditModal({
                   }
                 />
               </Label>
-              <HelpText>Per-user limit within the window.</HelpText>
+              <HelpText><TransText>Per-user limit within the window.</TransText></HelpText>
               <Input
                 type={"number"}
                 min={0}
@@ -443,9 +444,9 @@ function LimitEditModal({
             </div>
           </div>
           <div>
-            <Label>Reset Window</Label>
+            <Label><TransText>Reset Window</TransText></Label>
             <HelpText>
-              How often the cap counters reset. Minimum 1 minute.
+              <TransText>How often the cap counters reset. Minimum 1 minute.</TransText>
             </HelpText>
             <div className={"flex gap-3"}>
               <Input
@@ -466,9 +467,9 @@ function LimitEditModal({
                   </div>
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value={"m"}>Minutes</SelectItem>
-                  <SelectItem value={"h"}>Hours</SelectItem>
-                  <SelectItem value={"d"}>Days</SelectItem>
+                  <SelectItem value={"m"}><TransText>Minutes</TransText></SelectItem>
+                  <SelectItem value={"h"}><TransText>Hours</TransText></SelectItem>
+                  <SelectItem value={"d"}><TransText>Days</TransText></SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -477,14 +478,14 @@ function LimitEditModal({
         <ModalFooter className={"items-center"}>
           <div className={"flex gap-3 w-full justify-end"}>
             <ModalClose asChild={true}>
-              <Button variant={"secondary"}>Cancel</Button>
+              <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
             </ModalClose>
             <Button
               variant={"primary"}
               disabled={!canSave}
               onClick={handleSave}
             >
-              Save
+              <TransText>Save</TransText>
             </Button>
           </div>
         </ModalFooter>

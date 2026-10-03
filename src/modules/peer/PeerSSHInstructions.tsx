@@ -103,8 +103,8 @@ export const PeerSSHInstructions = ({
               <Steps.Step step={1}>
                 <p className={"font-normal"}>
                   If you are using NetBird via the Desktop Client, click on the
-                  NetBird tray icon, go to <Mark>Settings</Mark> and click{" "}
-                  <Mark>Allow SSH</Mark>. If you want to enable Root Login go to{" "}
+                  NetBird tray icon, go to <Mark><TransText>Settings</TransText></Mark> and click{" "}
+                  <Mark><TransText>Allow SSH</TransText></Mark>. If you want to enable Root Login go to{" "}
                   <Mark>Settings &gt; Advanced Settings</Mark> and enable SSH
                   Root Login under the SSH tab.
                 </p>
@@ -114,8 +114,7 @@ export const PeerSSHInstructions = ({
 
             <Steps.Step step={2}>
               <p className={"font-normal"}>
-                Starting from NetBird v0.61.0, SSH requires an explicit access
-                control policy to allow SSH connections to this machine.
+                <TransText>Starting from NetBird v0.61.0, SSH requires an explicit access control policy to allow SSH connections to this machine.</TransText>
               </p>
               <div className={"mt-2"}>
                 <Button
@@ -151,11 +150,11 @@ export const PeerSSHInstructions = ({
           </div>
           <div className={"flex gap-3 w-full justify-end"}>
             <ModalClose asChild={true}>
-              <Button variant={"secondary"}>Cancel</Button>
+              <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
             </ModalClose>
 
             <Button variant={"primary"} onClick={onSuccess}>
-              Finish Setup
+              <TransText>Finish Setup</TransText>
             </Button>
           </div>
         </ModalFooter>

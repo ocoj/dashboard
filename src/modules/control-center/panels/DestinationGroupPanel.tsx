@@ -55,6 +55,7 @@ import {
   pinByOrder,
   useStructuralNodes,
 } from "@/modules/control-center/utils/helpers";
+import { TransText } from "@/i18n/trans-text";
 
 interface DestinationGroupPanelProps {
   // Real group id, or the canvas node id for draft groups without an API id.
@@ -1234,7 +1235,7 @@ export const DestinationGroupPanel = ({
               "hover:bg-nb-gray-910 hover:text-nb-gray-200 transition-colors",
             )}
           >
-            ESC
+            <TransText>ESC</TransText>
           </button>
         </div>
 
@@ -1454,7 +1455,7 @@ export const DestinationGroupPanel = ({
               className={"py-2.5"}
               onClick={onClose}
             >
-              Cancel
+              <TransText>Cancel</TransText>
             </Button>
             <Button
               variant={"primary"}

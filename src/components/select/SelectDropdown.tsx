@@ -15,6 +15,7 @@ import { useEffect, useRef, useState } from "react";
 import Skeleton from "react-loading-skeleton";
 import { useElementSize } from "@/hooks/useElementSize";
 import { DropdownInfoText } from "@components/DropdownInfoText";
+import { TransText } from "@/i18n/trans-text";
 
 export interface SelectOption {
   label: string | React.ReactNode;
@@ -264,8 +265,7 @@ export function SelectDropdown({
 
             {filteredItems.length == 0 && (
               <DropdownInfoText className={"max-w-sm mx-auto px-4"}>
-                There are no results matching your search. Please try a
-                different search term.
+                <TransText>There are no results matching your search. Please try a different search term.</TransText>
               </DropdownInfoText>
             )}
 
