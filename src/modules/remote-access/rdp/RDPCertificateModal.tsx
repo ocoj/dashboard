@@ -13,6 +13,7 @@ import {
   CertificateInfo,
   CertificatePromptInfo,
 } from "./useRDPCertificateHandler";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   open: boolean;
@@ -45,16 +46,14 @@ export const RDPCertificateModal = ({
         <div className={"px-8 py-6 flex flex-col gap-6"}>
           {isChange && (
             <Callout variant={"warning"}>
-              Warning! Certificate has changed. Only proceed if you trust this
-              connection.
+              <TransText>Warning! Certificate has changed. Only proceed if you trust this connection.</TransText>
             </Callout>
           )}
 
           <div>
-            <Label>Certificate Details</Label>
+            <Label><TransText>Certificate Details</TransText></Label>
             <HelpText>
-              Certificated could not be verified by a trusted authority. Review
-              the certificate information before proceeding with the connection.
+              <TransText>Certificated could not be verified by a trusted authority. Review the certificate information before proceeding with the connection.</TransText>
             </HelpText>
             <CertificateDetailsList certificate={certificate} />
           </div>
@@ -84,7 +83,7 @@ export const RDPCertificateModal = ({
         <ModalFooter className={"items-center"}>
           <div className={"flex gap-3 w-full justify-end"}>
             <Button variant={"secondary"} onClick={onReject}>
-              Cancel
+              <TransText>Cancel</TransText>
             </Button>
             <Button
               variant={"primary"}

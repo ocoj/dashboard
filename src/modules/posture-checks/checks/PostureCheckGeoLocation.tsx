@@ -206,7 +206,7 @@ const CheckContent = ({ value, onChange, disabled }: Props) => {
             }}
             disabled={disabled}
           >
-            Save
+            <TransText>Save</TransText>
           </Button>
         </div>
       </ModalFooter>

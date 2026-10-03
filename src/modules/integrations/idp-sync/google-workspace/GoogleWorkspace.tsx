@@ -20,6 +20,7 @@ import GoogleWorkspaceConfiguration from "@/modules/integrations/idp-sync/google
 import GoogleWorkspaceSetup from "@/modules/integrations/idp-sync/google-workspace/GoogleWorkspaceSetup";
 import { useIntegrations } from "@/modules/integrations/idp-sync/useIntegrations";
 import { IntegrationCard } from "@/modules/integrations/IntegrationCard";
+import { TransText } from "@/i18n/trans-text";
 
 export const GoogleWorkspace = () => {
   const { mutate } = useSWRConfig();
@@ -131,7 +132,7 @@ const ConfigurationButton = ({ config }: ConfigurationProps) => {
         <FullTooltip
           content={
             <div className={"text-xs"}>
-              Force synchronization of users and groups
+              <TransText>Force synchronization of users and groups</TransText>
             </div>
           }
           disabled={!config.enabled}

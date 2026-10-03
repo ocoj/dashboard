@@ -2,6 +2,7 @@ import Button from "@components/Button";
 import * as React from "react";
 import { Policy } from "@/interfaces/Policy";
 import { OnboardingPolicy } from "@/modules/onboarding/OnboardingPolicy";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   policy?: Policy;
@@ -35,7 +36,7 @@ export const OnboardingExplainDefaultPolicy = ({
               "text-sm text-nb-gray-300 font-light mt-2 block text-center sm:px-4"
             }
           >
-              Flip the switch, then try pinging your other device again to see how it affects the connection.
+              <TransText>Flip the switch, then try pinging your other device again to see how it affects the connection.</TransText>
           </div>
         )}
       </div>
@@ -45,7 +46,7 @@ export const OnboardingExplainDefaultPolicy = ({
       </div>
 
       <Button variant={"primary"} onClick={onNext}>
-        Continue
+        <TransText>Continue</TransText>
       </Button>
     </div>
   );

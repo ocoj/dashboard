@@ -17,6 +17,7 @@ import {
 import { HelpTooltip } from "@components/HelpTooltip";
 import InlineLink, { InlineButtonLink } from "@components/InlineLink";
 import SetupModal from "@/modules/setup-netbird-modal/SetupModal";
+import { TransText } from "@/i18n/trans-text";
 
 export type Target = {
   type: ReverseProxyTargetType;
@@ -97,7 +98,7 @@ export default function ReverseProxyTargetSelector({
                   <span className={"mt-1 block"}>
                     If you don&apos;t have a peer yet, you can{" "}
                     <InlineButtonLink onClick={() => setInstallModal(true)}>
-                      Install NetBird
+                      <TransText>Install NetBird</TransText>
                     </InlineButtonLink>
                     .
                   </span>
@@ -105,7 +106,7 @@ export default function ReverseProxyTargetSelector({
               }
               interactive={true}
             >
-              Peer
+              <TransText>Peer</TransText>
             </HelpTooltip>
             ,{" "}
             <HelpTooltip
@@ -118,14 +119,14 @@ export default function ReverseProxyTargetSelector({
                   reached through a routing peer that forwards traffic to them.
                   <span className={"mt-1 block"}>
                     If you don&apos;t have resources yet, go to{" "}
-                    <InlineLink href={"/networks"}>Networks</InlineLink> to
+                    <InlineLink href={"/networks"}><TransText>Networks</TransText></InlineLink> to
                     create some.
                   </span>
                 </>
               }
               interactive={true}
             >
-              Resource
+              <TransText>Resource</TransText>
             </HelpTooltip>
             {showClusters && (
               <>
@@ -144,7 +145,7 @@ export default function ReverseProxyTargetSelector({
                   }
                   interactive={true}
                 >
-                  Proxy Cluster
+                  <TransText>Proxy Cluster</TransText>
                 </HelpTooltip>
               </>
             )}

@@ -7,6 +7,7 @@ import * as React from "react";
 import ACLImage from "@/assets/onboarding/acl.png";
 import ActivityImage from "@/assets/onboarding/activity.png";
 import PostureCheckImage from "@/assets/onboarding/posture.png";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   onFinish?: () => void;
@@ -30,9 +31,7 @@ export const OnboardingEnd = ({ onFinish }: Props) => {
             "text-sm text-nb-gray-300 font-light mt-2 block text-center sm:px-4"
           }
         >
-          What’s next? Check out these guides to get the most out of NetBird. To
-          learn more, explore the dashboard, visit our documentation, or browse
-          our YouTube channel.
+          <TransText>What’s next? Check out these guides to get the most out of NetBird. To learn more, explore the dashboard, visit our documentation, or browse our YouTube channel.</TransText>
         </div>
 
         <div className={"mt-8 flex flex-col gap-8"}>

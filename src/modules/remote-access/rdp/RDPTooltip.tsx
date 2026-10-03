@@ -1,5 +1,6 @@
 import FullTooltip from "@components/FullTooltip";
 import * as React from "react";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   disabled?: boolean;
@@ -20,11 +21,10 @@ export const RDPTooltip = ({
       content={
         <div className={"max-w-xs text-xs flex flex-col gap-2"}>
           {hasPermission ? (
-            <div>This peer is offline and cannot be accessed via RDP.</div>
+            <div><TransText>This peer is offline and cannot be accessed via RDP.</TransText></div>
           ) : (
             <div>
-              You do not have permission to launch an RDP session. Please
-              contact your administrator.
+              <TransText>You do not have permission to launch an RDP session. Please contact your administrator.</TransText>
             </div>
           )}
         </div>

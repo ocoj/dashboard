@@ -12,6 +12,7 @@ import { Group } from "@/interfaces/Group";
 import { Network, NetworkResource } from "@/interfaces/Network";
 import { Policy } from "@/interfaces/Policy";
 import { ResourceSingleAddressInput } from "@/modules/networks/resources/ResourceSingleAddressInput";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   onNetworkCreation?: (network: Network) => void;
@@ -196,14 +197,13 @@ export const OnboardingAddResource = ({
     <div className={"relative flex flex-col h-full gap-4"}>
       <div className={"flex flex-col gap-8"}>
         <div>
-          <h1 className={"text-xl text-center"}>Add your first resource</h1>
+          <h1 className={"text-xl text-center"}><TransText>Add your first resource</TransText></h1>
           <div
             className={
               "text-sm text-nb-gray-300 font-light mt-2 block text-center sm:px-4"
             }
           >
-            Resources are your subnets, services, or machines inside your network.
-            Pick the type you want to connect to.
+            <TransText>Resources are your subnets, services, or machines inside your network. Pick the type you want to connect to.</TransText>
           </div>
         </div>
 
@@ -243,7 +243,7 @@ export const OnboardingAddResource = ({
 
         <div className={"flex gap-4"}>
           <Button variant={"secondary"} className={"w-full"} onClick={onBack}>
-            Go Back
+            <TransText>Go Back</TransText>
           </Button>
           <Button
             variant={"primary"}
@@ -251,7 +251,7 @@ export const OnboardingAddResource = ({
             onClick={createResource}
             disabled={resourceAddress === "" || error !== ""}
           >
-            Create Resource
+            <TransText>Create Resource</TransText>
           </Button>
         </div>
       </div>

@@ -109,7 +109,7 @@ export const CustomDomainModal = ({
                   href={"https://status.netbird.io/"}
                   target={"_blank"}
                 >
-                  NetBird Status
+                  <TransText>NetBird Status</TransText>
                 </InlineLink>{" "}
                 or reach out to{"  "}
                 <InlineLink href={"mailto:support@netbird.io"}>
@@ -133,7 +133,7 @@ export const CustomDomainModal = ({
           ) : (
             <>
               <div>
-                <Label>Domain</Label>
+                <Label><TransText>Domain</TransText></Label>
                 <Input
                   autoFocus
                   value={domain}
@@ -150,9 +150,9 @@ export const CustomDomainModal = ({
               </div>
 
               <div data-testid={"custom-domain-cluster-selector"}>
-                <Label>Target Proxy Cluster</Label>
+                <Label><TransText>Target Proxy Cluster</TransText></Label>
                 <HelpText>
-                  Select the cluster your CNAME record should point to
+                  <TransText>Select the cluster your CNAME record should point to</TransText>
                 </HelpText>
                 <SelectDropdown
                   showSearch={false}
@@ -189,7 +189,7 @@ export const CustomDomainModal = ({
               disabled={!canSubmit}
               data-testid={"submit-custom-domain"}
             >
-              Add Domain
+              <TransText>Add Domain</TransText>
             </Button>
           </div>
         </ModalFooter>

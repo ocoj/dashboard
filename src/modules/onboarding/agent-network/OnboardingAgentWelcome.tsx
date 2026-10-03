@@ -7,6 +7,7 @@ import {
   ShieldCheckIcon,
 } from "lucide-react";
 import * as React from "react";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   onNext: () => void;
@@ -19,7 +20,7 @@ export const OnboardingAgentWelcome = ({ onNext }: Props) => {
   return (
     <div className={"relative flex flex-col h-full gap-4"}>
       <div>
-        <h1 className={"text-xl text-center"}>Welcome to Agent Network</h1>
+        <h1 className={"text-xl text-center"}><TransText>Welcome to Agent Network</TransText></h1>
         <div
           className={
             "text-sm text-nb-gray-300 font-light mt-2 block text-center sm:px-4"

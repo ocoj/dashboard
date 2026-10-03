@@ -8,6 +8,7 @@ import Link from "next/link";
 import React from "react";
 import GooglePlayButton from "@/assets/google-play-badge.png";
 import { OperatingSystem } from "@/interfaces/OperatingSystem";
+import { TransText } from "@/i18n/trans-text";
 
 export default function AndroidTab() {
   return (
@@ -19,7 +20,7 @@ export default function AndroidTab() {
         </p>
         <Steps>
           <Steps.Step step={1}>
-            <p>Download and install the application from Google Play Store:</p>
+            <p><TransText>Download and install the application from Google Play Store:</TransText></p>
             <div className={"flex gap-4 mt-1"}>
               <Link
                 href={
@@ -53,7 +54,7 @@ export default function AndroidTab() {
             </p>
           </Steps.Step>
           <Steps.Step step={GRPC_API_ORIGIN ? 4 : 3} line={false}>
-            <p>Sign up using your email address</p>
+            <p><TransText>Sign up using your email address</TransText></p>
           </Steps.Step>
         </Steps>
       </TabsContentPadding>

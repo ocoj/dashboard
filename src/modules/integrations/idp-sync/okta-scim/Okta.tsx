@@ -24,6 +24,7 @@ import { useIntegrations } from "@/modules/integrations/idp-sync/useIntegrations
 import { IntegrationCard } from "@/modules/integrations/IntegrationCard";
 import { useEnterpriseConnections } from "@/modules/integrations/sso/useEnterpriseConnections";
 import zhMap from "@/i18n/zh-map";
+import { TransText } from "@/i18n/trans-text";
 
 export const Okta = () => {
   const { mutate } = useSWRConfig();
@@ -108,8 +109,7 @@ export const Okta = () => {
             <FullTooltip
               content={
                 <div className={"text-xs max-w-xs"}>
-                  Please setup Okta SSO from the Single-Sign-On tab to enable
-                  user and group sync.
+                  <TransText>Please setup Okta SSO from the Single-Sign-On tab to enable user and group sync.</TransText>
                 </div>
               }
             >

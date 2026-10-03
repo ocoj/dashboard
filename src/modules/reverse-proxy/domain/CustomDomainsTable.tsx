@@ -295,7 +295,7 @@ function CustomDomainStatusCell({ domain }: Readonly<CellProps>) {
     return (
       <div className={cn("flex gap-2.5 items-center text-nb-gray-300 text-sm")}>
         <span className="h-2 w-2 rounded-full bg-green-500"></span>
-        Active
+        <TransText>Active</TransText>
       </div>
     );
   }
@@ -309,9 +309,7 @@ function CustomDomainStatusCell({ domain }: Readonly<CellProps>) {
         <FullTooltip
           content={
             <div className={"text-xs max-w-xs"}>
-              DNS changes may take some time to propagate. If NetBird does not
-              find the record immediately, please wait up to 24 hours and try
-              again.
+              <TransText>DNS changes may take some time to propagate. If NetBird does not find the record immediately, please wait up to 24 hours and try again.</TransText>
             </div>
           }
           interactive={false}

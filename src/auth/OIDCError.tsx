@@ -7,6 +7,7 @@ import { useSearchParams } from "next/navigation";
 import * as React from "react";
 import { useEffect, useState } from "react";
 import NetBirdIcon from "@/assets/icons/NetBirdIcon";
+import { TransText } from "@/i18n/trans-text";
 
 const config = loadConfig();
 
@@ -50,7 +51,7 @@ export const OIDCError = () => {
       {accessDenied ? (
         <>
           <Paragraph className={"text-center mt-2"}>
-            Already verified your email address?
+            <TransText>Already verified your email address?</TransText>
           </Paragraph>
 
           <Button
@@ -69,7 +70,7 @@ export const OIDCError = () => {
             className={"mt-5"}
             onClick={() => logout("/", { client_id: config.clientId })}
           >
-            Trouble logging in? Try again.
+            <TransText>Trouble logging in? Try again.</TransText>
           </Button>
         </>
       ) : (
@@ -89,7 +90,7 @@ export const OIDCError = () => {
             className={"mt-5"}
             onClick={() => logout("/", { client_id: config.clientId })}
           >
-            Logout
+            <TransText>Logout</TransText>
           </Button>
         </>
       )}

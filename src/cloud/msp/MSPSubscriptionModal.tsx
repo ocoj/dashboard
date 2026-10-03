@@ -7,6 +7,7 @@ import * as React from "react";
 import { useTenantPlan } from "@/cloud/msp/hooks/useTenantPlan";
 import { Tenant } from "@/cloud/msp/interfaces/Tenant";
 import { PlanCard, PlanLoadingSkeleton } from "@/modules/billing/PlanCard";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   open: boolean;
@@ -87,7 +88,7 @@ const MSPSubscriptionModalContent = ({
             Haven’t decided for a plan yet?{" "}
             <ModalClose asChild={true}>
               <InlineButtonLink variant={"white"}>
-                Continue with Trial
+                <TransText>Continue with Trial</TransText>
               </InlineButtonLink>
             </ModalClose>
           </Paragraph>

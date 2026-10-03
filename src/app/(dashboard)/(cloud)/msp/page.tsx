@@ -15,6 +15,7 @@ import { useSWRConfig } from "swr";
 import NetBirdIcon from "@/assets/icons/NetBirdIcon";
 import { useMSP } from "@/cloud/msp/contexts/MSPProvider";
 import { useLoggedInUser } from "@/contexts/UsersProvider";
+import { TransText } from "@/i18n/trans-text";
 
 export default function JoinMspPage() {
   const searchParams = useSearchParams();
@@ -99,8 +100,7 @@ export default function JoinMspPage() {
             NetBird invites you to join as an Managed Service Provider (MSP)
           </div>
           <div className={"text-sm text-nb-gray-300 text-center"}>
-            You will get access to the NetBird MSP portal where you can manage
-            multiple customers and their networks from a single place.
+            <TransText>You will get access to the NetBird MSP portal where you can manage multiple customers and their networks from a single place.</TransText>
           </div>
           {!isOwner && !isMSPAccount && (
             <Callout
@@ -109,13 +109,12 @@ export default function JoinMspPage() {
               }
               className={"text-xs mt-3"}
             >
-              Only the owner of the account can accept this invitation. Please
-              contact the owner of the account to accept the invitation.
+              <TransText>Only the owner of the account can accept this invitation. Please contact the owner of the account to accept the invitation.</TransText>
             </Callout>
           )}
           {isMSPAccount && !calledOnce && (
             <Callout className={"text-xs mt-3 w-full"}>
-              The invitation has already been accepted
+              <TransText>The invitation has already been accepted</TransText>
             </Callout>
           )}
         </div>
@@ -136,7 +135,7 @@ export default function JoinMspPage() {
             disabled={isDisabled}
             onClick={acceptInvitation}
           >
-            Accept
+            <TransText>Accept</TransText>
           </Button>
         </ModalFooter>
       </ModalContent>

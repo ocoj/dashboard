@@ -49,9 +49,7 @@ export const PostureCheckActionCell = ({ check }: Props) => {
         disabled={!hasPolicies}
         content={
           <div className={"text-xs max-w-xs"}>
-            This posture check is assigned to a policy and cannot be deleted.
-            Please remove the posture check from all policies before deleting
-            it.
+            <TransText>This posture check is assigned to a policy and cannot be deleted. Please remove the posture check from all policies before deleting it.</TransText>
           </div>
         }
         interactive={false}

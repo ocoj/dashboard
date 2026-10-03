@@ -10,6 +10,7 @@ import { useAccount } from "@/modules/account/useAccount";
 import { LockedFeatureInfoCard } from "@/modules/billing/locked-feature/LockedFeatureInfoCard";
 import { LockedFeatureOverlay } from "@/modules/billing/locked-feature/LockedFeatureOverlay";
 import { OktaSSOIntegrationCard } from "@/modules/integrations/sso/okta/OktaSSOIntegrationCard";
+import { TransText } from "@/i18n/trans-text";
 
 export default function SSOTab() {
   const account = useAccount();
@@ -30,7 +31,7 @@ export default function SSOTab() {
             active
           />
         </Breadcrumbs>
-        <h1>Single Sign-On</h1>
+        <h1><TransText>Single Sign-On</TransText></h1>
         <Paragraph>
           Configure your preferred Identity Provider (IdP) to enable Single
           Sign-On (SSO) for your team.

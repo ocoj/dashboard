@@ -39,6 +39,7 @@ import { IntuneIntegration } from "@/interfaces/EDR";
 import useGroupHelper from "@/modules/groups/useGroupHelper";
 import azureGrantAdmin from "@/modules/integrations/edr/intune/images/azure-grant-admin-conset.png";
 import { IntegrationModalHeader } from "@/modules/integrations/IntegrationModalHeader";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   open: boolean;
@@ -189,7 +190,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
           <p className={"mt-2 !text-nb-gray-300 !leading-[1.5]"}>
             Ensure that you have an{" "}
             <span className={"text-nb-gray-100 font-semibold"}>
-              Azure AD user account
+              <TransText>Azure AD user account</TransText>
             </span>{" "}
             with the following{" "}
             <span className={"text-nb-gray-100 font-semibold"}>
@@ -242,13 +243,13 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
                     "https://portal.azure.com/#view/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/~/Overview"
                   }
                 >
-                  Azure Active Directory
+                  <TransText>Azure Active Directory</TransText>
                 </InlineLink>
               </p>
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
-                Click <Mark>App Registrations</Mark> in the left menu then click
+                Click <Mark><TransText>App Registrations</TransText></Mark> in the left menu then click
                 on the <Mark>+ New registration</Mark> button to create a new
                 application.
               </p>
@@ -256,7 +257,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
             <Steps.Step step={3} line={false}>
               <p className={"font-normal"}>
                 Fill in the form with the following values and click{" "}
-                <Mark>Register</Mark>
+                <Mark><TransText>Register</TransText></Mark>
               </p>
             </Steps.Step>
           </Steps>
@@ -286,27 +287,27 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
           <Steps>
             <Steps.Step step={1}>
               <p className={"font-normal"}>
-                Click <Mark>API permissions</Mark> on the left side menu
+                Click <Mark><TransText>API permissions</TransText></Mark> on the left side menu
               </p>
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
-                Click <Mark>Add a permission</Mark> then{" "}
-                <Mark>Microsoft Graph</Mark> and then on the{" "}
-                <Mark>Application permissions</Mark> tab.
+                Click <Mark><TransText>Add a permission</TransText></Mark> then{" "}
+                <Mark><TransText>Microsoft Graph</TransText></Mark> and then on the{" "}
+                <Mark><TransText>Application permissions</TransText></Mark> tab.
               </p>
             </Steps.Step>
             <Steps.Step step={3}>
               <p className={"font-normal"}>
-                In <Mark>Select permissions</Mark> select{" "}
+                In <Mark><TransText>Select permissions</TransText></Mark> select{" "}
                 <Mark>DeviceManagementManagedDevices.Read.All</Mark> and click{" "}
-                <Mark>Add permissions</Mark>
+                <Mark><TransText>Add permissions</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={4} line={false}>
               <p className={"font-normal"}>
-                Click <Mark>Grant admin consent for Default Directory</Mark> and
-                click <Mark>Yes</Mark>
+                Click <Mark><TransText>Grant admin consent for Default Directory</TransText></Mark> and
+                click <Mark><TransText>Yes</TransText></Mark>
               </p>
               <Lightbox image={azureGrantAdmin} />
             </Steps.Step>
@@ -334,13 +335,13 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
             </Steps.Step>
             <Steps.Step step={3}>
               <p className={"font-normal"}>
-                Add <Mark copy>NetBird</Mark> as the description and click{" "}
-                <Mark>Add</Mark>
+                Add <Mark copy><TransText>NetBird</TransText></Mark> as the description and click{" "}
+                <Mark><TransText>Add</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={4} line={false}>
               <p className={"font-normal"}>
-                Copy the <Mark>Value</Mark> and paste it here
+                Copy the <Mark><TransText>Value</TransText></Mark> and paste it here
               </p>
             </Steps.Step>
           </Steps>
@@ -378,13 +379,13 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
                     "https://portal.azure.com/#view/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/~/RegisteredApps"
                   }
                 >
-                  All applications
+                  <TransText>All applications</TransText>
                 </InlineLink>
               </p>
             </Steps.Step>
             <Steps.Step step={2} line={false}>
               <p className={"font-normal"}>
-                Select <Mark>NetBird</Mark> application in overview page and
+                Select <Mark><TransText>NetBird</TransText></Mark> application in overview page and
                 enter your <Mark>Application (client) ID</Mark> and{" "}
                 <Mark>Directory (tenant) ID</Mark>
               </p>
@@ -429,7 +430,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
           </p>
 
           <HelpText className={"max-w-lg mt-2"}>
-            Select groups you want to apply the Intune integration to
+            <TransText>Select groups you want to apply the Intune integration to</TransText>
           </HelpText>
 
           <PeerGroupSelector values={groups} onChange={setGroups} />

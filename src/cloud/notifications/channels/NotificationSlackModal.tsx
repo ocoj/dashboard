@@ -23,6 +23,7 @@ import React, { useMemo, useState } from "react";
 import slackImage from "@/assets/integrations/slack.png";
 import { NotificationWebhookChannel as SlackTarget } from "@/interfaces/NotificationChannel";
 import { IntegrationModalHeader } from "@/modules/integrations/IntegrationModalHeader";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   open: boolean;
@@ -121,15 +122,15 @@ function SlackModalContent({ onSave }: Readonly<ModalContentProps>) {
                   Slack App Management
                   <ExternalLinkIcon size={12} />
                 </InlineLink>{" "}
-                click <Mark>Create an app</Mark> <br />
-                and choose <Mark>From scratch</Mark>
+                click <Mark><TransText>Create an app</TransText></Mark> <br />
+                and choose <Mark><TransText>From scratch</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={2} line={false}>
               <p className={"font-normal"}>
                 Set the app name to{" "}
-                <Mark copy={true}>NetBird Notifications</Mark> and select your
-                workspace. After that click <Mark>Create App</Mark>
+                <Mark copy={true}><TransText>NetBird Notifications</TransText></Mark> and select your
+                workspace. After that click <Mark><TransText>Create App</TransText></Mark>
               </p>
             </Steps.Step>
           </Steps>
@@ -146,20 +147,20 @@ function SlackModalContent({ onSave }: Readonly<ModalContentProps>) {
           <Steps>
             <Steps.Step step={1}>
               <p className={"font-normal"}>
-                In the app settings, go to <Mark>Incoming Webhooks</Mark> and
-                toggle <Mark>Activate Incoming Webhooks</Mark> to <Mark>On</Mark>
+                In the app settings, go to <Mark><TransText>Incoming Webhooks</TransText></Mark> and
+                toggle <Mark><TransText>Activate Incoming Webhooks</TransText></Mark> to <Mark><TransText>On</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
-                Click <Mark>Add New Webhook</Mark> and select the channel where
+                Click <Mark><TransText>Add New Webhook</TransText></Mark> and select the channel where
                 you want to receive notifications and confirm with{" "}
-                <Mark>Allow</Mark>
+                <Mark><TransText>Allow</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={3} line={false}>
               <p className={"font-normal"}>
-                Copy the generated <Mark>Webhook URL</Mark> and paste it below.
+                Copy the generated <Mark><TransText>Webhook URL</TransText></Mark> and paste it below.
               </p>
             </Steps.Step>
           </Steps>
@@ -188,7 +189,7 @@ function SlackModalContent({ onSave }: Readonly<ModalContentProps>) {
         {step === 0 && (
           <ModalClose asChild={true}>
             <Button variant={"secondary"} className={"w-full"}>
-              Cancel
+              <TransText>Cancel</TransText>
             </Button>
           </ModalClose>
         )}

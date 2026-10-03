@@ -22,6 +22,7 @@ import * as React from "react";
 import { useState } from "react";
 import PeerIcon from "@/assets/icons/PeerIcon";
 import { SmallUserAvatar } from "@/modules/users/SmallUserAvatar";
+import { TransText } from "@/i18n/trans-text";
 
 // PeerResourcePicker — single-select endpoint picker with two tabs (Peers /
 // Resources), mirroring the Audit Logs user filter's search list. The value
@@ -126,7 +127,7 @@ function OptionList({
 
       {filteredItems.length === 0 && search !== "" && (
         <div className={"px-10"}>
-          <DropdownInfoText>No matching results.</DropdownInfoText>
+          <DropdownInfoText><TransText>No matching results.</TransText></DropdownInfoText>
         </div>
       )}
 

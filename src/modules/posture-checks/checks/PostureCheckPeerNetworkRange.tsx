@@ -129,10 +129,9 @@ const CheckContent = ({ value, onChange, disabled }: Props) => {
       <div className={"flex flex-col px-8 gap-2 pb-6"}>
         <div className={"flex justify-between items-start gap-10 mt-2"}>
           <div>
-            <Label>Allow or Block Ranges</Label>
+            <Label><TransText>Allow or Block Ranges</TransText></Label>
             <HelpText className={""}>
-              Choose whether you want to allow or block specific peer network
-              ranges
+              <TransText>Choose whether you want to allow or block specific peer network ranges</TransText>
             </HelpText>
           </div>
           <RadioGroup value={allowOrDeny} onChange={setAllowOrDeny}>
@@ -224,7 +223,7 @@ const CheckContent = ({ value, onChange, disabled }: Props) => {
               }
             }}
           >
-            Save
+            <TransText>Save</TransText>
           </Button>
         </div>
       </ModalFooter>

@@ -38,6 +38,7 @@ import oktaSyncGroups from "@/modules/integrations/idp-sync/okta-scim/images/okt
 import { EmbeddedIdentityProviderSelect } from "@/modules/integrations/idp-sync/EmbeddedIdentityProviderSelect";
 import { IntegrationModalHeader } from "@/modules/integrations/IntegrationModalHeader";
 import { useEnterpriseConnections } from "@/modules/integrations/sso/useEnterpriseConnections";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   open: boolean;
@@ -192,7 +193,7 @@ export function SetupContent({
           <p className={"mt-2 !text-nb-gray-300 !leading-[1.5]"}>
             Ensure that you have an{" "}
             <span className={"text-nb-gray-100 font-semibold"}>
-              Okta user account
+              <TransText>Okta user account</TransText>
             </span>{" "}
             with the following{" "}
             <span className={"text-nb-gray-100 font-semibold"}>
@@ -239,20 +240,20 @@ export function SetupContent({
               <p className={"font-normal"}>
                 Access the Okta dashboard and navigate to{" "}
                 <Mark>{"Applications > Applications"}</Mark>, selecting the
-                previously installed <Mark>NetBird</Mark> application
+                previously installed <Mark><TransText>NetBird</TransText></Mark> application
               </p>
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
                 Go to <Mark>{"Sign On > Settings"}</Mark> and select{" "}
-                <Mark>Edit</Mark>
+                <Mark><TransText>Edit</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={3} line={false}>
               <p className={"font-normal"}>
-                In the <Mark>Credentials Details</Mark> section, change the
-                <Mark>Application username format</Mark> to <Mark>Email</Mark>{" "}
-                and select <Mark>Save</Mark>
+                In the <Mark><TransText>Credentials Details</TransText></Mark> section, change the
+                <Mark><TransText>Application username format</TransText></Mark> to <Mark><TransText>Email</TransText></Mark>{" "}
+                and select <Mark><TransText>Save</TransText></Mark>
               </p>
               <Lightbox image={oktaSSO} />
             </Steps.Step>
@@ -271,20 +272,20 @@ export function SetupContent({
               <p>
                 From the Okta dashboard, navigate to{" "}
                 <Mark>{"Applications > Applications"}</Mark> and select the{" "}
-                <Mark>NetBird</Mark> application
+                <Mark><TransText>NetBird</TransText></Mark> application
               </p>
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
-                Under the <Mark>Provisioning</Mark> tab, choose{" "}
-                <Mark>Integration</Mark>, then select{" "}
-                <Mark>Configure API Integration</Mark>
+                Under the <Mark><TransText>Provisioning</TransText></Mark> tab, choose{" "}
+                <Mark><TransText>Integration</TransText></Mark>, then select{" "}
+                <Mark><TransText>Configure API Integration</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={3}>
               <p className={"font-normal"}>
-                Opt to <Mark>Enable API integration</Mark> and insert this token
-                into the <Mark>API Token</Mark> field
+                Opt to <Mark><TransText>Enable API integration</TransText></Mark> and insert this token
+                into the <Mark><TransText>API Token</TransText></Mark> field
               </p>
               <MinimalList
                 data={[{ label: "Authorization (Bearer)", value: authToken }]}
@@ -292,8 +293,8 @@ export function SetupContent({
             </Steps.Step>
             <Steps.Step step={4} line={false}>
               <p className={"font-normal"}>
-                Click <Mark>Test API Credentials</Mark> to verify the SCIM
-                connection, then select <Mark>Save</Mark>
+                Click <Mark><TransText>Test API Credentials</TransText></Mark> to verify the SCIM
+                connection, then select <Mark><TransText>Save</TransText></Mark>
               </p>
             </Steps.Step>
           </Steps>
@@ -310,14 +311,14 @@ export function SetupContent({
             <Steps.Step step={1}>
               <p>
                 Go to the <Mark>{"Provisioning > Settings > To App"}</Mark> and
-                click <Mark>Edit</Mark>
+                click <Mark><TransText>Edit</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={2} line={false}>
               <p className={"font-normal"}>
-                Enable <Mark>Create Users</Mark>,{" "}
-                <Mark>Update User Attributes</Mark>, and{" "}
-                <Mark>Deactivate Users</Mark> and click <Mark>Save</Mark>
+                Enable <Mark><TransText>Create Users</TransText></Mark>,{" "}
+                <Mark><TransText>Update User Attributes</TransText></Mark>, and{" "}
+                <Mark><TransText>Deactivate Users</TransText></Mark> and click <Mark><TransText>Save</TransText></Mark>
               </p>
               <Lightbox image={oktaSCIMToApp} />
             </Steps.Step>
@@ -334,20 +335,20 @@ export function SetupContent({
           <Steps>
             <Steps.Step step={1}>
               <p>
-                Go to the <Mark>Assignments</Mark> tab, select the{" "}
-                <Mark>Assign</Mark> and click <Mark>Assign to Groups</Mark>
+                Go to the <Mark><TransText>Assignments</TransText></Mark> tab, select the{" "}
+                <Mark><TransText>Assign</TransText></Mark> and click <Mark><TransText>Assign to Groups</TransText></Mark>
               </p>
               <Lightbox image={oktaGroupsAssignments} />
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
                 Select the groups you want to provision, and then select{" "}
-                <Mark>Assign</Mark> and click <Mark>Save and Go Back</Mark>
+                <Mark><TransText>Assign</TransText></Mark> and click <Mark><TransText>Save and Go Back</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={3} line={false}>
               <p className={"font-normal"}>
-                Select <Mark>Done</Mark> after you have finished assigning
+                Select <Mark><TransText>Done</TransText></Mark> after you have finished assigning
                 groups. At this point, all members of the groups assigned to the
                 application will be synced to NetBird.
               </p>
@@ -365,15 +366,15 @@ export function SetupContent({
           <Steps>
             <Steps.Step step={1}>
               <p>
-                Go to the <Mark>Push Groups</Mark> tab, select{" "}
-                <Mark>Push Groups</Mark> and click{" "}
-                <Mark>Find groups by name</Mark>
+                Go to the <Mark><TransText>Push Groups</TransText></Mark> tab, select{" "}
+                <Mark><TransText>Push Groups</TransText></Mark> and click{" "}
+                <Mark><TransText>Find groups by name</TransText></Mark>
               </p>
               <Lightbox image={oktaSyncGroups} />
             </Steps.Step>
             <Steps.Step step={2} line={false}>
               <p className={"font-normal"}>
-                Search groups to push and then click <Mark>Save</Mark>. The
+                Search groups to push and then click <Mark><TransText>Save</TransText></Mark>. The
                 selected groups will then be synced to NetBird.
               </p>
             </Steps.Step>
@@ -421,7 +422,7 @@ export function SetupContent({
               onSuccess();
             }}
           >
-            Finish Setup
+            <TransText>Finish Setup</TransText>
           </Button>
         )}
       </ModalFooter>
@@ -496,7 +497,7 @@ export function SetupSSOContent() {
           <p className={"mt-2 !text-nb-gray-300 !leading-[1.5]"}>
             Ensure that you have an{" "}
             <span className={"text-nb-gray-100 font-semibold"}>
-              Okta user account
+              <TransText>Okta user account</TransText>
             </span>{" "}
             with the following{" "}
             <span className={"text-nb-gray-100 font-semibold"}>
@@ -547,20 +548,20 @@ export function SetupSSOContent() {
                   target={"_blank"}
                   href={"https://www.okta.com/integrations/netbird"}
                 >
-                  Okta Integration Network
+                  <TransText>Okta Integration Network</TransText>
                 </InlineLink>
               </p>
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
-                Click <Mark>+ Add Integration</Mark> and then <Mark>Done</Mark>
+                Click <Mark>+ Add Integration</Mark> and then <Mark><TransText>Done</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={3} line={false}>
               <p>
                 After installing the application go to the{" "}
-                <Mark>Assignments</Mark> tab, select the <Mark>Assign</Mark> and
-                click <Mark>Assign to People</Mark> and assign your user to the
+                <Mark><TransText>Assignments</TransText></Mark> tab, select the <Mark><TransText>Assign</TransText></Mark> and
+                click <Mark><TransText>Assign to People</TransText></Mark> and assign your user to the
                 application
               </p>
             </Steps.Step>
@@ -578,20 +579,20 @@ export function SetupSSOContent() {
             <Steps.Step step={1}>
               <p className={"font-normal"}>
                 Click on the <Mark>{"Sign On"}</Mark> tab and take note <br />
-                of the <Mark>Client ID</Mark> and <Mark>Client secret</Mark>
+                of the <Mark><TransText>Client ID</TransText></Mark> and <Mark><TransText>Client secret</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
                 Under your user profile, take note of your{" "}
-                <Mark>Okta account domain</Mark>
+                <Mark><TransText>Okta account domain</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={3}>
               <p className={"font-normal"}>
-                Share your <Mark>Client ID</Mark> <Mark>Client secret</Mark>{" "}
-                <Mark>Okta account domain</Mark> and your {"user's"}
-                <Mark>Primary email domain</Mark> with the NetBird team
+                Share your <Mark><TransText>Client ID</TransText></Mark> <Mark><TransText>Client secret</TransText></Mark>{" "}
+                <Mark><TransText>Okta account domain</TransText></Mark> and your {"user's"}
+                <Mark><TransText>Primary email domain</TransText></Mark> with the NetBird team
               </p>
             </Steps.Step>
             <Steps.Step step={4} line={false}>
@@ -660,7 +661,7 @@ export function SetupSSOContent() {
         {step == maxSteps && (
           <ModalClose asChild={true}>
             <Button variant={"primary"} className={"w-full"}>
-              Close
+              <TransText>Close</TransText>
             </Button>
           </ModalClose>
         )}

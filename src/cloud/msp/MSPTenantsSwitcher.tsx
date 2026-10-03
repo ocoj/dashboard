@@ -18,6 +18,7 @@ import { useTenantSubscription } from "@/cloud/msp/hooks/useTenantSubscription";
 import { TenantListItem } from "@/cloud/msp/interfaces/Tenant";
 import { useApplicationContext } from "@/contexts/ApplicationProvider";
 import { useBilling } from "@/contexts/BillingProvider";
+import { TransText } from "@/i18n/trans-text";
 
 export const MSPTenantsSwitcher = () => {
   const { isTrial, isFreePlan } = useBilling();
@@ -159,8 +160,7 @@ const TenantDropdown = ({ tenants, currentAccount, mspAccount }: Props) => {
           {tenantListItems.length == 0 && search != "" && (
             <div className={"max-w-xs mx-auto px-4"}>
               <DropdownInfoText>
-                There are no customers matching your search. Try another search
-                term.
+                <TransText>There are no customers matching your search. Try another search term.</TransText>
               </DropdownInfoText>
             </div>
           )}

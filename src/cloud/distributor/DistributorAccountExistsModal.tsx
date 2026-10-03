@@ -5,6 +5,7 @@ import { GradientFadedBackground } from "@components/ui/GradientFadedBackground"
 import { GlobeIcon } from "lucide-react";
 import * as React from "react";
 import { DistributorCustomer } from "@/cloud/distributor/interfaces/Distributor";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   open: boolean;
@@ -52,8 +53,7 @@ export const DistributorAccountExistsModal = ({
           </div>
           <div className={"text-sm text-nb-gray-300 text-center"}></div>
           <Callout>
-            The account owner must log in to the dashboard to accept or decline
-            your request. Please inform them after you have requested access.
+            <TransText>The account owner must log in to the dashboard to accept or decline your request. Please inform them after you have requested access.</TransText>
           </Callout>
         </div>
 
@@ -64,7 +64,7 @@ export const DistributorAccountExistsModal = ({
             variant={"secondary"}
             onClick={() => onCancel(customer)}
           >
-            Cancel
+            <TransText>Cancel</TransText>
           </Button>
           <Button
             autoFocus={true}
@@ -72,7 +72,7 @@ export const DistributorAccountExistsModal = ({
             variant={"primary"}
             onClick={() => onAccept(customer)}
           >
-            Request Access
+            <TransText>Request Access</TransText>
           </Button>
         </ModalFooter>
       </ModalContent>

@@ -35,6 +35,7 @@ import { GroupPrefixHelpText } from "@/modules/integrations/idp-sync/GroupPrefix
 import { GroupPrefixInput } from "@/modules/integrations/idp-sync/GroupPrefixInput";
 import { useIntegrations } from "@/modules/integrations/idp-sync/useIntegrations";
 import { IntegrationModalHeader } from "@/modules/integrations/IntegrationModalHeader";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   open: boolean;
@@ -257,10 +258,9 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
 
             <div className={"flex justify-between mt-4"}>
               <div>
-                <Label>Sync Interval</Label>
+                <Label><TransText>Sync Interval</TransText></Label>
                 <HelpText className={"max-w-[300px]"}>
-                  The interval in seconds when the synchronization should
-                  happen.
+                  <TransText>The interval in seconds when the synchronization should happen.</TransText>
                 </HelpText>
               </div>
               <Input
@@ -325,10 +325,7 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
               </div>
             </Label>
             <HelpText className={"max-w-lg mt-2"}>
-              Deleting this integration will remove the ability to sync users
-              and groups from your IdP to NetBird. If you delete the integration
-              you will need to reconfigure it again to enable the
-              synchronization.
+              <TransText>Deleting this integration will remove the ability to sync users and groups from your IdP to NetBird. If you delete the integration you will need to reconfigure it again to enable the synchronization.</TransText>
             </HelpText>
           </div>
           <Button
@@ -337,7 +334,7 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
             className={"mt-3"}
             onClick={deleteIntegration}
           >
-            Delete Integration
+            <TransText>Delete Integration</TransText>
           </Button>
         </TabsContent>
       </Tabs>
@@ -346,7 +343,7 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
       <ModalFooter className={"items-center gap-4"}>
         <ModalClose asChild={true}>
           <Button variant={"secondary"} className={"w-full"}>
-            Cancel
+            <TransText>Cancel</TransText>
           </Button>
         </ModalClose>
 
@@ -356,7 +353,7 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
           disabled={!hasChanges}
           onClick={updateIntegration}
         >
-          Save
+          <TransText>Save</TransText>
         </Button>
       </ModalFooter>
     </ModalContent>

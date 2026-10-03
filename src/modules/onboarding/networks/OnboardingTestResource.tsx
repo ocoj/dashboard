@@ -10,6 +10,7 @@ import { useMemo, useState } from "react";
 import { NetworkResource } from "@/interfaces/Network";
 import { Peer } from "@/interfaces/Peer";
 import { SetupModalContent } from "@/modules/setup-netbird-modal/SetupModal";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   resource?: NetworkResource;
@@ -87,7 +88,7 @@ export const OnboardingTestResource = ({
               onClick={onNext}
               className={"w-full"}
             >
-              It works! - Continue
+              <TransText>It works! - Continue</TransText>
             </Button>
           </div>
         </Steps.Step>

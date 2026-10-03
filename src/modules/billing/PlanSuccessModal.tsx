@@ -6,6 +6,7 @@ import { cn } from "@utils/helpers";
 import { useSearchParams } from "next/navigation";
 import * as React from "react";
 import { useState } from "react";
+import { TransText } from "@/i18n/trans-text";
 
 export const PlanSuccessModal = () => {
   const params = useSearchParams();
@@ -28,12 +29,11 @@ export const PlanSuccessModal = () => {
             to NetBird! 🎉
           </h2>
           <Paragraph className={cn("text-sm text-center max-w-xs")}>
-            Your subscription has been successfully activated. You have now full
-            access to all NetBird features of your selected plan.
+            <TransText>Your subscription has been successfully activated. You have now full access to all NetBird features of your selected plan.</TransText>
           </Paragraph>
           <ModalClose asChild={true}>
             <Button variant={"primary"} className={"w-full mt-4"} size={"xs"}>
-              Close
+              <TransText>Close</TransText>
             </Button>
           </ModalClose>
         </div>

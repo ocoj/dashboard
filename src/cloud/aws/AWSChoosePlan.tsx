@@ -16,6 +16,7 @@ import { useLoggedInUser } from "@/contexts/UsersProvider";
 import { Currency, Plan } from "@/interfaces/Plan";
 import { PlanTier } from "@/interfaces/Subscription";
 import { PlanCard, PlanLoadingSkeleton } from "@/modules/billing/PlanCard";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   onSuccess?: () => void;
@@ -203,7 +204,7 @@ export const AWSChoosePlan = ({ onSuccess }: Props) => {
                         className={"w-full"}
                         onClick={onSuccess}
                       >
-                        Continue to Dashboard
+                        <TransText>Continue to Dashboard</TransText>
                       </Button>
                     </div>
                   )}

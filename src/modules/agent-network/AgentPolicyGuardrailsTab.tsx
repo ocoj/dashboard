@@ -28,6 +28,7 @@ import { useAIProviders } from "@/modules/agent-network/AIProvidersProvider";
 import AgentGuardrailModal from "@/modules/agent-network/AgentGuardrailModal";
 import AgentGuardrailBrowseModal from "@/modules/agent-network/AgentGuardrailBrowseModal";
 import AgentGuardrailChecksCell from "@/modules/agent-network/AgentGuardrailChecksCell";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   guardrailIds: string[];
@@ -99,8 +100,7 @@ export default function AgentPolicyGuardrailsTab({
                 {attached.length === 1 ? "Guardrail" : "Guardrails"}
               </Label>
               <HelpText className={"mb-0"}>
-                Guardrails enforce model allowlists and prompt capture per
-                request.
+                <TransText>Guardrails enforce model allowlists and prompt capture per request.</TransText>
               </HelpText>
             </div>
             <div className={"flex items-center justify-center gap-4"}>
@@ -236,8 +236,7 @@ function NoGuardrailsInfo({
           {"You haven't added any guardrails yet"}
         </h2>
         <Paragraph className={cn("text-sm text-center max-w-md mt-1")}>
-          Add guardrails to enforce model allowlists and prompt capture per
-          request.
+          <TransText>Add guardrails to enforce model allowlists and prompt capture per request.</TransText>
         </Paragraph>
       </div>
       <div className={"flex items-center justify-center gap-4 mt-5"}>

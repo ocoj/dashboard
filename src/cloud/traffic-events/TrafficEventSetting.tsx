@@ -278,7 +278,7 @@ export const TrafficEventGroupsSetting = ({
         onClick={saveTrafficGroups}
         data-testid="save-traffic-groups"
       >
-        Save Groups
+        <TransText>Save Groups</TransText>
       </Button>
     </div>
   );

@@ -13,6 +13,7 @@ import * as React from "react";
 import { useState } from "react";
 import { useTenants } from "@/cloud/msp/contexts/TenantsProvider";
 import { Tenant } from "@/cloud/msp/interfaces/Tenant";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   open: boolean;
@@ -70,7 +71,7 @@ export const MSPDomainVerificationModal = ({
             </Steps.Step>
             <Steps.Step step={2} line={false}>
               <p className={"font-normal"}>
-                Copy the <Mark>TXT record</Mark> below and add it to your DNS
+                Copy the <Mark><TransText>TXT record</TransText></Mark> below and add it to your DNS
                 configuration for <Mark>{domain}</Mark>
               </p>
             </Steps.Step>
@@ -127,10 +128,10 @@ export const MSPDomainVerificationModal = ({
           </div>
           <div className={"flex gap-3 w-full justify-end"}>
             <Button variant={"secondary"} onClick={onCancel}>
-              Verify Later
+              <TransText>Verify Later</TransText>
             </Button>
             <Button variant={"primary"} onClick={verify} disabled={isLoading}>
-              Start Verification
+              <TransText>Start Verification</TransText>
             </Button>
           </div>
         </ModalFooter>

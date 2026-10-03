@@ -5,6 +5,7 @@ import * as React from "react";
 import RoundedFlag from "@/assets/countries/RoundedFlag";
 import { Country } from "@/interfaces/Country";
 import { GeoLocationCheck } from "@/interfaces/PostureCheck";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   children: React.ReactNode;
@@ -28,14 +29,14 @@ export const GeoLocationTooltip = ({ children, check }: Props) => {
             {check.action == "allow" ? (
               <span>
                 <span className={"text-green-500 font-semibold"}>
-                  Allow only
+                  <TransText>Allow only</TransText>
                 </span>{" "}
                 the following <br />
                 countries & regions
               </span>
             ) : (
               <span>
-                <span className={"text-red-500 font-semibold"}>Block</span> the
+                <span className={"text-red-500 font-semibold"}><TransText>Block</TransText></span> the
                 following <br />
                 countries & regions
               </span>

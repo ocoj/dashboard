@@ -4,6 +4,7 @@ import { Label } from "@components/Label";
 import { cn } from "@utils/helpers";
 import { ArrowUpWideNarrowIcon } from "lucide-react";
 import * as React from "react";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   enabled: boolean;
@@ -25,7 +26,7 @@ export const CrowdStrikeZtaScoreInput = ({
       )}
     >
       <div>
-        <Label>Score Threshold</Label>
+        <Label><TransText>Score Threshold</TransText></Label>
         <HelpText>
           {
             "If the peer's ZTA score is below the threshold, the peer will be rejected. The score should be between 1 and 100."

@@ -12,6 +12,7 @@ import {
 import FullTooltip from "@components/FullTooltip";
 import { isNetBirdCloud } from "@/utils/netbird";
 import InlineLink from "@components/InlineLink";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   reverseProxy: ReverseProxy;
@@ -37,8 +38,8 @@ export default function ReverseProxyClusterCell({
         interactive={false}
         content={
           <span className={"text-xs"}>
-            <span className={"text-nb-gray-400"}>Cluster: </span>
-            <span className={"text-nb-gray-100"}>All</span>
+            <span className={"text-nb-gray-400"}><TransText>Cluster:</TransText> </span>
+            <span className={"text-nb-gray-100"}><TransText>All</TransText></span>
           </span>
         }
       >
@@ -65,7 +66,7 @@ export default function ReverseProxyClusterCell({
         interactive={false}
         content={
           <span className={"text-xs"}>
-            <span className={"text-nb-gray-400"}>Cluster: </span>
+            <span className={"text-nb-gray-400"}><TransText>Cluster:</TransText> </span>
             <span className={"text-nb-gray-100"}>
               {reverseProxy.proxy_cluster}
             </span>
@@ -97,7 +98,7 @@ export default function ReverseProxyClusterCell({
             Cluster {reverseProxy.proxy_cluster} is offline. Please try again in
             a few minutes. If the issue persists, check{" "}
             <InlineLink href={"https://status.netbird.io/"} target={"_blank"}>
-              NetBird Status
+              <TransText>NetBird Status</TransText>
             </InlineLink>{" "}
             or reach out to{"  "}
             <InlineLink href={"mailto:support@netbird.io"}>

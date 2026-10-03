@@ -86,7 +86,7 @@ export const SSHCredentialsModal = ({ open, onOpenChange, peer }: Props) => {
           <div className={""}>
             <Label>Username & Port</Label>
             <HelpText>
-              The username and port you will use to connect to the remote host.
+              <TransText>The username and port you will use to connect to the remote host.</TransText>
             </HelpText>
             <div className={"flex flex-col gap-2 w-full"}>
               <Input
@@ -137,7 +137,7 @@ export const SSHCredentialsModal = ({ open, onOpenChange, peer }: Props) => {
           </div>
           <div className={"flex gap-3 w-full justify-end"}>
             <ModalClose asChild={true}>
-              <Button variant={"secondary"}>Cancel</Button>
+              <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
             </ModalClose>
 
             <Button
@@ -145,7 +145,7 @@ export const SSHCredentialsModal = ({ open, onOpenChange, peer }: Props) => {
               disabled={hasAnyError}
               onClick={openSSHWindow}
             >
-              Connect
+              <TransText>Connect</TransText>
             </Button>
           </div>
         </ModalFooter>

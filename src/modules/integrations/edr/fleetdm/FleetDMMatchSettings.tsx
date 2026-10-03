@@ -7,6 +7,7 @@ import { Bug, FileWarning, HardDrive, ShieldAlert, Wifi } from "lucide-react";
 import * as React from "react";
 import { useState } from "react";
 import { FleetDMMatchAttributes } from "@/interfaces/EDR";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   value: FleetDMMatchAttributes;
@@ -29,7 +30,7 @@ export const FleetDMMatchSettings = ({
             Max Failing Policies
           </Label>
           <HelpText>
-            Maximum number of allowed failing policies on a device.
+            <TransText>Maximum number of allowed failing policies on a device.</TransText>
           </HelpText>
         </div>
         <Input
@@ -57,7 +58,7 @@ export const FleetDMMatchSettings = ({
             Max Vulnerable Software
           </Label>
           <HelpText>
-            Maximum number of allowed vulnerable software on a device.
+            <TransText>Maximum number of allowed vulnerable software on a device.</TransText>
           </HelpText>
         </div>
         <Input
@@ -85,7 +86,7 @@ export const FleetDMMatchSettings = ({
             Required FleetDM Policy IDs
           </Label>
           <HelpText>
-            Comma-separated policy IDs that must pass on the device.
+            <TransText>Comma-separated policy IDs that must pass on the device.</TransText>
           </HelpText>
         </div>
         <Input

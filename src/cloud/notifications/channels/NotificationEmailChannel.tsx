@@ -27,6 +27,7 @@ import {
 import { useNotifications } from "@/cloud/notifications/NotificationProvider";
 import { useUsers } from "@/contexts/UsersProvider";
 import { usePermissions } from "@/contexts/PermissionsProvider";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   channel: NotificationChannel;
@@ -105,7 +106,7 @@ export const NotificationEmailChannel = ({ channel }: Props) => {
       </Breadcrumbs>
       <div className={"flex items-start justify-between"}>
         <div className={"flex gap-3 items-center"}>
-          <h1>Email</h1>
+          <h1><TransText>Email</TransText></h1>
         </div>
       </div>
       <div className={"flex flex-col gap-8 mt-4"}>
@@ -130,7 +131,7 @@ export const NotificationEmailChannel = ({ channel }: Props) => {
             Email Addresses
           </Label>
           <HelpText>
-            Add one or more email addresses that should receive notifications
+            <TransText>Add one or more email addresses that should receive notifications</TransText>
           </HelpText>
           <div className={"flex gap-3"}>
             <Input

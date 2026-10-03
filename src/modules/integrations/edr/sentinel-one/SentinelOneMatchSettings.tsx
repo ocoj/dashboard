@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import * as React from "react";
 import { SentinelOneMatchAttributes } from "@/interfaces/EDR";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   value: SentinelOneMatchAttributes;
@@ -32,7 +33,7 @@ export const SentinelOneMatchSettings = ({
             Allowed Active Threats
           </Label>
           <HelpText>
-            Maximum allowed number of active threats on a device.
+            <TransText>Maximum allowed number of active threats on a device.</TransText>
           </HelpText>
         </div>
         <Input

@@ -5,6 +5,7 @@ import { GradientFadedBackground } from "@components/ui/GradientFadedBackground"
 import { GlobeIcon } from "lucide-react";
 import * as React from "react";
 import { Tenant } from "@/cloud/msp/interfaces/Tenant";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   open: boolean;
@@ -52,8 +53,7 @@ export const MSPAccountExistsModal = ({
           </div>
           <div className={"text-sm text-nb-gray-300 text-center"}></div>
           <Callout>
-            The account owner must log in to the dashboard to accept or decline
-            your request. Please inform them after you have requested access.
+            <TransText>The account owner must log in to the dashboard to accept or decline your request. Please inform them after you have requested access.</TransText>
           </Callout>
         </div>
 
@@ -64,7 +64,7 @@ export const MSPAccountExistsModal = ({
             variant={"secondary"}
             onClick={() => onCancel(tenant)}
           >
-            Cancel
+            <TransText>Cancel</TransText>
           </Button>
           <Button
             autoFocus={true}
@@ -72,7 +72,7 @@ export const MSPAccountExistsModal = ({
             variant={"primary"}
             onClick={() => onAccept(tenant)}
           >
-            Request Access
+            <TransText>Request Access</TransText>
           </Button>
         </ModalFooter>
       </ModalContent>

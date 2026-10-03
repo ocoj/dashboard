@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import { AccountMFAInfoModal } from "@/cloud/mfa/AccountMFAInfoModal";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { useLoggedInUser } from "@/contexts/UsersProvider";
+import { TransText } from "@/i18n/trans-text";
 
 const config = loadConfig();
 
@@ -192,7 +193,7 @@ export const AccountMFASettings = () => {
           />
           <div>
             <div className={"font-medium text-sm text-nb-gray-200"}>
-              Remember Browser for MFA
+              <TransText>Remember Browser for MFA</TransText>
             </div>
             <div className={"text-xs"}>
               When enabled, users will have the option to remember their browser

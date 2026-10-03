@@ -30,6 +30,7 @@ import { useNotifications } from "@/cloud/notifications/NotificationProvider";
 import { useDialog } from "@/contexts/DialogProvider";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import NotificationSlackModal from "@/cloud/notifications/channels/NotificationSlackModal";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   channel: NotificationChannel;
@@ -105,7 +106,7 @@ export const NotificationSlackChannel = ({ channel }: Props) => {
       </Breadcrumbs>
       <div className={"flex items-start justify-between"}>
         <div className={"flex gap-3 items-center"}>
-          <h1>Slack</h1>
+          <h1><TransText>Slack</TransText></h1>
         </div>
       </div>
       <div className={"flex flex-col gap-8 mt-4"}>
@@ -134,7 +135,7 @@ export const NotificationSlackChannel = ({ channel }: Props) => {
             ></div>
           </div>
           <div className={"flex items-start flex-col flex-1 min-w-0 pr-10"}>
-            <p className={"font-medium text-sm"}>Slack</p>
+            <p className={"font-medium text-sm"}><TransText>Slack</TransText></p>
             {isConnected ? (
               <TruncatedText
                 text={target?.url}
@@ -143,7 +144,7 @@ export const NotificationSlackChannel = ({ channel }: Props) => {
               />
             ) : (
               <span className={"text-xs text-nb-gray-300 mt-0.5"}>
-                Not Connected
+                <TransText>Not Connected</TransText>
               </span>
             )}
           </div>

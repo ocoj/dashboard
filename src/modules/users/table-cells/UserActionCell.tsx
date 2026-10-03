@@ -17,6 +17,7 @@ import { useDialog } from "@/contexts/DialogProvider";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { User } from "@/interfaces/User";
 import { UserResendInviteButton } from "@/modules/users/UserResendInviteButton";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   user: User;
@@ -157,7 +158,7 @@ export default function UserActionCell({
               }}
               data-cy={"approve-user"}
             >
-              Approve
+              <TransText>Approve</TransText>
             </Button>
             <Button
               variant={"danger-outline"}

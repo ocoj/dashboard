@@ -48,7 +48,7 @@ export default function PostureCheckMinimalTable({
             {data.length == 1 ? "Posture Check" : "Posture Checks"}
           </Label>
           <HelpText className={"mb-0"}>
-            Use posture checks to further restrict access in your network.
+            <TransText>Use posture checks to further restrict access in your network.</TransText>
           </HelpText>
         </div>
         <div className={"flex items-center justify-center gap-4"}>

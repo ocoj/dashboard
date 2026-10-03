@@ -23,6 +23,7 @@ import Button from "@components/Button";
 import { cn } from "@utils/helpers";
 import SlackIcon from "@/assets/icons/SlackIcon";
 import { isNetBirdCloud } from "@utils/netbird";
+import { TransText } from "@/i18n/trans-text";
 
 export default function HelpAndSupportButton() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -49,7 +50,7 @@ export default function HelpAndSupportButton() {
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col space-y-1 px-1">
             <div className="text-sm font-normal leading-none text-nb-gray-200 py-1">
-              Help and Support
+              <TransText>Help and Support</TransText>
             </div>
           </div>
         </DropdownMenuLabel>

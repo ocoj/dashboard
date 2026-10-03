@@ -19,6 +19,7 @@ import AzureADConfiguration from "@/modules/integrations/idp-sync/azure-ad/Azure
 import AzureADSetup from "@/modules/integrations/idp-sync/azure-ad/AzureADSetup";
 import { useIntegrations } from "@/modules/integrations/idp-sync/useIntegrations";
 import { IntegrationCard } from "@/modules/integrations/IntegrationCard";
+import { TransText } from "@/i18n/trans-text";
 
 export const AzureAD = () => {
   const { mutate } = useSWRConfig();
@@ -134,7 +135,7 @@ const ConfigurationButton = ({ config }: ConfigurationProps) => {
         <FullTooltip
           content={
             <div className={"text-xs"}>
-              Force synchronization of users and groups
+              <TransText>Force synchronization of users and groups</TransText>
             </div>
           }
           disabled={!config.enabled}

@@ -14,6 +14,7 @@ import Skeleton from "react-loading-skeleton";
 import { Currency, Plan } from "@/interfaces/Plan";
 import { PlanTier, Subscription } from "@/interfaces/Subscription";
 import { PlanIcon } from "@/modules/billing/PlanIcon";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   currentPlan?: Plan;
@@ -156,7 +157,7 @@ export const PlanCard = ({
         <div className={"mt-4 text-sm flex-col gap-1 flex"}>
           <div className={"flex gap-2 items-center text-netbird"}>
             <UsersIcon size={16} />
-            <span className={"text-nb-gray-200"}> Unlimited Users</span>
+            <span className={"text-nb-gray-200"}> <TransText>Unlimited Users</TransText></span>
           </div>
           <div className={"flex gap-2 items-center text-netbird"}>
             <MonitorSmartphoneIcon size={16} />
@@ -186,8 +187,7 @@ export const PlanCard = ({
       <FullTooltip
         content={
           <div className={"text-xs max-w-sm"}>
-            Your plan was recently updated. Please wait for 48 hours from the
-            last update to change your plan again.
+            <TransText>Your plan was recently updated. Please wait for 48 hours from the last update to change your plan again.</TransText>
           </div>
         }
         disabled={canUpgrade || plan.name === currentPlan?.name}

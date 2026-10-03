@@ -1,5 +1,6 @@
 import ButtonGroup from "@components/ButtonGroup";
 import * as React from "react";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   value?: string;
@@ -16,19 +17,19 @@ export const TrafficEventsConnectionTypeFilter = ({
         onClick={() => onChange?.("")}
         variant={value == undefined || value == "" ? "tertiary" : "secondary"}
       >
-        All
+        <TransText>All</TransText>
       </ButtonGroup.Button>
       <ButtonGroup.Button
         onClick={() => onChange?.("P2P")}
         variant={value === "P2P" ? "tertiary" : "secondary"}
       >
-        P2P
+        <TransText>P2P</TransText>
       </ButtonGroup.Button>
       <ButtonGroup.Button
         onClick={() => onChange?.("ROUTED")}
         variant={value === "ROUTED" ? "tertiary" : "secondary"}
       >
-        Routed
+        <TransText>Routed</TransText>
       </ButtonGroup.Button>
     </ButtonGroup>
   );

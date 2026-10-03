@@ -85,7 +85,7 @@ export function CustomDomainSelector({
       renderItem: () => (
         <div className="flex items-center justify-between gap-2 text-netbird text-sm w-full">
           <div className={"flex items-center gap-2"}>
-            <span>Add Custom Domain</span>
+            <span><TransText>Add Custom Domain</TransText></span>
           </div>
           <ArrowUpRight size={16} />
         </div>

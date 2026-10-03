@@ -1,6 +1,7 @@
 import FullTooltip from "@components/FullTooltip";
 import { IconMathEqualGreater } from "@tabler/icons-react";
 import * as React from "react";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   version?: string;
@@ -13,7 +14,7 @@ export const NetBirdVersionTooltip = ({ version, children }: Props) => {
       interactive={false}
       content={
         <div className={"text-neutral-300 flex items-center text-sm gap-1"}>
-          <span className={""}>Min. Client Version</span>
+          <span className={""}><TransText>Min. Client Version</TransText></span>
 
           <span
             className={"text-netbird font-semibold flex items-center gap-1"}

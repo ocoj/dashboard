@@ -9,6 +9,7 @@ import { useMemo } from "react";
 import PeerIcon from "@/assets/icons/PeerIcon";
 import { GroupedRoute } from "@/interfaces/Route";
 import { useAddRoutingPeer } from "@/modules/routes/RouteAddRoutingPeerProvider";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   groupedRoute: GroupedRoute;
@@ -54,8 +55,7 @@ export default function GroupedRouteHighAvailabilityCell({
             <>
               {disabledText}
               <div className={"inline-flex mt-2"}>
-                Go ahead and add more routing peers to enable high availability
-                for this network route.
+                <TransText>Go ahead and add more routing peers to enable high availability for this network route.</TransText>
               </div>
             </>
           )}
@@ -63,8 +63,7 @@ export default function GroupedRouteHighAvailabilityCell({
             <>
               {enabledText}
               <div className={"inline-flex mt-2"}>
-                You can add more peers to increase the availability of this
-                network route.
+                <TransText>You can add more peers to increase the availability of this network route.</TransText>
               </div>
             </>
           )}
@@ -72,8 +71,7 @@ export default function GroupedRouteHighAvailabilityCell({
             <>
               {disabledText}
               <div className={"inline-flex mt-2"}>
-                To configure, you must add more peers to a group in this route.
-                You can do it in the Peers menu.
+                <TransText>To configure, you must add more peers to a group in this route. You can do it in the Peers menu.</TransText>
               </div>
             </>
           )}
@@ -81,8 +79,7 @@ export default function GroupedRouteHighAvailabilityCell({
             <>
               {enabledText}
               <div className={"inline-flex mt-2"}>
-                You can add more peers to a group in this route by going to the
-                peers page.
+                <TransText>You can add more peers to a group in this route by going to the peers page.</TransText>
               </div>
             </>
           )}
@@ -106,7 +103,7 @@ export default function GroupedRouteHighAvailabilityCell({
           ) : (
             <>
               <div className={"h-2 w-2 rounded-full bg-nb-gray-700"}></div>
-              Disabled
+              <TransText>Disabled</TransText>
             </>
           )}
           <HelpCircle size={12} />

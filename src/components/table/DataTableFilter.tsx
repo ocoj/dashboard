@@ -10,6 +10,7 @@ import { concat, sortBy, uniqBy } from "lodash";
 import { FilterIcon } from "lucide-react";
 import * as React from "react";
 import { useCallback, useMemo, useState } from "react";
+import { TransText } from "@/i18n/trans-text";
 
 interface Props<TData> {
   table: Table<TData>;
@@ -216,7 +217,7 @@ export function DataTableFilter<TData>({
 
           {filteredItems.length == 0 && search != "" && (
             <DropdownInfoText className={"mb-4"}>
-              There are no filters matching your search.
+              <TransText>There are no filters matching your search.</TransText>
             </DropdownInfoText>
           )}
 

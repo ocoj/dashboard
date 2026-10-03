@@ -43,8 +43,7 @@ export default function UserStatusCell({ user }: Readonly<Props>) {
   const tooltipContent = isLocalAuthDisabled ? (
     <div className={"max-w-xs text-xs flex flex-col gap-2"}>
       <div>
-        Local authentication is disabled. This user can no longer log in. Use
-        your IdP for authentication.
+        <TransText>Local authentication is disabled. This user can no longer log in. Use your IdP for authentication.</TransText>
       </div>
       <div>
         <InlineLink
@@ -60,8 +59,7 @@ export default function UserStatusCell({ user }: Readonly<Props>) {
   ) : isInvitedOnCloud ? (
     <div className={"max-w-xs text-xs flex flex-col gap-2"}>
       <div>
-        This user was invited but has not accepted the invitation yet. Use the
-        Resend button to send another invitation email.
+        <TransText>This user was invited but has not accepted the invitation yet. Use the Resend button to send another invitation email.</TransText>
       </div>
     </div>
   ) : (

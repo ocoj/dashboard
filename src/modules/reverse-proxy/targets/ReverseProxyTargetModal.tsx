@@ -289,8 +289,7 @@ export default function ReverseProxyTargetModal({
             <div>
               <Label>Location (Optional)</Label>
               <HelpText>
-                Specify an optional path from where requests are routed to your
-                service.
+                <TransText>Specify an optional path from where requests are routed to your service.</TransText>
               </HelpText>
               <div className="flex w-full">
                 <div
@@ -497,14 +496,14 @@ export default function ReverseProxyTargetModal({
                   data-testid={"target-optional-settings"}
                 >
                   <span className={"relative top-[1px]"}>
-                    Optional Settings
+                    <TransText>Optional Settings</TransText>
                   </span>
                 </AccordionTrigger>
                 <AccordionContent>
                   <div className={"flex flex-col gap-8 pb-6 pt-2"}>
                     <div className={"flex items-center justify-between"}>
                       <div>
-                        <Label>Request Timeout</Label>
+                        <Label><TransText>Request Timeout</TransText></Label>
                         <HelpText className={"mb-0"}>
                           Max time to wait for a response as duration string
                           (e.g. 30s, 2m). <br /> Leave this field empty for no
@@ -531,7 +530,7 @@ export default function ReverseProxyTargetModal({
                     {reverseProxy.mode === ServiceMode.UDP && (
                       <div className={"flex items-center justify-between"}>
                         <div>
-                          <Label>Session Idle Timeout</Label>
+                          <Label><TransText>Session Idle Timeout</TransText></Label>
                           <HelpText className={"mb-0"}>
                             How long a UDP session stays alive without traffic
                             (e.g., 30s, 2m). <br /> Defaults to 30s when empty.
@@ -576,7 +575,7 @@ export default function ReverseProxyTargetModal({
             </div>
             <div className="flex gap-3 w-full justify-end">
               <Button variant="secondary" onClick={() => onOpenChange(false)}>
-                Cancel
+                <TransText>Cancel</TransText>
               </Button>
               <Button
                 variant="primary"

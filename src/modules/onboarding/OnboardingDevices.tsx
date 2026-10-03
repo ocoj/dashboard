@@ -5,6 +5,7 @@ import * as React from "react";
 import { NetworkResource } from "@/interfaces/Network";
 import type { Peer } from "@/interfaces/Peer";
 import { Intent } from "@/modules/onboarding/Onboarding";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   intent?: Intent;
@@ -74,7 +75,7 @@ export const OnboardingDevices = ({
       )}
     >
       {firstRoutingPeer && resource && (
-        <span className={"text-xs text-nb-gray-500"}>Network</span>
+        <span className={"text-xs text-nb-gray-500"}><TransText>Network</TransText></span>
       )}
 
       <div

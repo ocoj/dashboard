@@ -282,7 +282,7 @@ export default function AuthHeaderModal({
             {isEditing ? (
               <>
                 <Button variant="danger-text" data-testid="remove-headers" onClick={handleRemoveAll}>
-                  Remove All
+                  <TransText>Remove All</TransText>
                 </Button>
                 <div className="flex gap-3">
                   <ModalClose asChild>
@@ -293,7 +293,7 @@ export default function AuthHeaderModal({
                     onClick={handleSave}
                     disabled={!canSave || !hasChanges}
                   >
-                    Save
+                    <TransText>Save</TransText>
                   </Button>
                 </div>
               </>
@@ -310,7 +310,7 @@ export default function AuthHeaderModal({
                     disabled={!canSave}
                     data-testid="submit-headers"
                   >
-                    Add Headers
+                    <TransText>Add Headers</TransText>
                   </Button>
                 </div>
               </>
@@ -370,7 +370,7 @@ function HeaderItemRow({
         {item.existingSecret ? (
           <div>
             <Input
-              customPrefix={<span className="min-w-[38px]">Value</span>}
+              customPrefix={<span className="min-w-[38px]"><TransText>Value</TransText></span>}
               type="password"
               showPasswordToggle={!isMaskedRef.current}
               value={isMaskedRef.current ? MASKED_VALUE : item.value}
@@ -438,7 +438,7 @@ function HeaderItemRow({
             {item.type === "custom" && (
               <div className="flex flex-col gap-2">
                 <Input
-                  customPrefix={<span className="min-w-[38px]">Name</span>}
+                  customPrefix={<span className="min-w-[38px]"><TransText>Name</TransText></span>}
                   placeholder="e.g., X-API-Key"
                   maxWidthClass="w-full"
                   value={item.header}
@@ -446,7 +446,7 @@ function HeaderItemRow({
                   {...INPUT_PROPS}
                 />
                 <Input
-                  customPrefix={<span className="min-w-[38px]">Value</span>}
+                  customPrefix={<span className="min-w-[38px]"><TransText>Value</TransText></span>}
                   placeholder="e.g., AIiaSyDaGmWKa4JsXZ-HjGw7ISLn_3namBGewQe"
                   maxWidthClass="w-full"
                   value={item.value}

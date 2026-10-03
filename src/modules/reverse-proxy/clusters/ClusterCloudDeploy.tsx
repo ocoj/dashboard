@@ -281,14 +281,14 @@ const RegistrationCheck = ({
         <>
           <CheckCircle2 size={16} className={"text-green-500 shrink-0"} />
           <span className={"text-nb-gray-100"}>
-            Proxy registered with NetBird and connected.
+            <TransText>Proxy registered with NetBird and connected.</TransText>
           </span>
         </>
       ) : (
         <>
           <Loader2 size={16} className={"animate-spin shrink-0"} />
           <span className={"text-nb-gray-300"}>
-            Waiting for the proxy to register with NetBird...
+            <TransText>Waiting for the proxy to register with NetBird...</TransText>
           </span>
         </>
       )}
@@ -349,7 +349,7 @@ const DeploySuccess = ({
                 </CardTable.Cell>
               </CardTable.Row>
               <CardTable.Row>
-                <CardTable.Cell>CNAME</CardTable.Cell>
+                <CardTable.Cell><TransText>CNAME</TransText></CardTable.Cell>
                 <CardTable.Cell copy copyText={`*.${domain}`}>
                   {`*.${domain}`}
                 </CardTable.Cell>
@@ -550,7 +550,7 @@ const HetznerDeploy = ({
                   }
                   target={"_blank"}
                 >
-                  How to create a token
+                  <TransText>How to create a token</TransText>
                 </InlineLink>
               </>
             }
@@ -606,8 +606,7 @@ const HetznerDeploy = ({
               />
             ) : (
               <HelpText className={"mb-0"}>
-                No SSH keys found in this Hetzner project. Add one in the
-                Hetzner Console first if you need SSH access to the server.
+                <TransText>No SSH keys found in this Hetzner project. Add one in the Hetzner Console first if you need SSH access to the server.</TransText>
               </HelpText>
             )}
           </div>
@@ -779,8 +778,7 @@ const DigitalOceanDeploy = ({
         <div>
           <Label><TransText>Droplet Root Password</TransText></Label>
           <HelpText>
-            Use it with the Droplet Web Console. Copy it now - it is not stored
-            anywhere.
+            <TransText>Use it with the Droplet Web Console. Copy it now - it is not stored anywhere.</TransText>
           </HelpText>
           <Code codeToCopy={rootPassword}>
             <Code.Line>{rootPassword}</Code.Line>
@@ -812,14 +810,14 @@ const DigitalOceanDeploy = ({
                   }
                   target={"_blank"}
                 >
-                  How to create a token
+                  <TransText>How to create a token</TransText>
                 </InlineLink>
               </>
             }
           />
         </Label>
         <HelpText>
-          Create a token with write access. It is never stored by NetBird.
+          <TransText>Create a token with write access. It is never stored by NetBird.</TransText>
         </HelpText>
         <Input
           type={"password"}
@@ -897,8 +895,7 @@ const AWSDeploy = ({
       <div>
         <Label><TransText>Proxy Access Token</TransText></Label>
         <HelpText>
-          Copy this token for AWS stack creation. It is excluded from outputs and
-          logs.
+          <TransText>Copy this token for AWS stack creation. It is excluded from outputs and logs.</TransText>
         </HelpText>
         <Code codeToCopy={token} showCopyIcon={!isGeneratingToken}>
           <Code.Line>
@@ -927,8 +924,7 @@ const AWSDeploy = ({
         <ExternalLinkIcon size={14} />
       </Button>
       <HelpText className={"mb-0"}>
-        The AWS Console opens with a prefilled form. Paste the token, create the
-        stack, then point your DNS records to the PublicIP output.
+        <TransText>The AWS Console opens with a prefilled form. Paste the token, create the stack, then point your DNS records to the PublicIP output.</TransText>
       </HelpText>
       {launched && (
         <RegistrationCheck domain={domain} onRegistered={onRegistered} />

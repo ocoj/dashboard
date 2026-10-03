@@ -154,11 +154,9 @@ const CheckContent = ({ value, onChange, disabled }: Props) => {
       <div className={"flex flex-col px-8 gap-2 pb-6"}>
         <div className={"flex justify-between items-start gap-10 mt-2"}>
           <div>
-            <Label>Processes</Label>
+            <Label><TransText>Processes</TransText></Label>
             <HelpText className={""}>
-              Add the path of an executable file of the process. You can define
-              a path for Linux, macOS and Windows. Peers will only be allowed to
-              connect if the process is running on their system.
+              <TransText>Add the path of an executable file of the process. You can define a path for Linux, macOS and Windows. Peers will only be allowed to connect if the process is running on their system.</TransText>
             </HelpText>
           </div>
         </div>
@@ -309,7 +307,7 @@ const CheckContent = ({ value, onChange, disabled }: Props) => {
               }
             }}
           >
-            Save
+            <TransText>Save</TransText>
           </Button>
         </div>
       </ModalFooter>

@@ -292,8 +292,7 @@ export const OnboardingSurvey = ({ domainCategory, onSubmit }: Props) => {
             "text-sm text-nb-gray-300 font-light mt-2 block text-center max-w-md px-10"
           }
         >
-          Share a few details about your use case to help us get you started
-          smoothly.
+          <TransText>Share a few details about your use case to help us get you started smoothly.</TransText>
         </div>
         <div className={"flex flex-col mt-8 z-0 gap-8"}>
           <SegmentedTabs
@@ -361,7 +360,7 @@ export const OnboardingSurvey = ({ domainCategory, onSubmit }: Props) => {
                 <RequiredAsterisk />
               </Label>
               <HelpText className={"mt-1.5"}>
-                You can also select multiple use cases.
+                <TransText>You can also select multiple use cases.</TransText>
               </HelpText>
             </div>
 
@@ -479,7 +478,7 @@ export const OnboardingSurvey = ({ domainCategory, onSubmit }: Props) => {
         onClick={submitForm}
         disabled={!canSubmit}
       >
-        Continue
+        <TransText>Continue</TransText>
       </Button>
     </>
   );

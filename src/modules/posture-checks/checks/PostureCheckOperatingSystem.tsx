@@ -276,7 +276,7 @@ const CheckContent = ({ value, onChange, disabled }: Props) => {
               }
             }}
           >
-            Save
+            <TransText>Save</TransText>
           </Button>
         </div>
       </ModalFooter>
@@ -373,9 +373,9 @@ export const OperatingSystemTab = ({
     <div className={""}>
       <div className={"flex justify-between items-start gap-10 "}>
         <div>
-          <Label>Allow or Block</Label>
+          <Label><TransText>Allow or Block</TransText></Label>
           <HelpText>
-            Choose whether you want to allow or block the operating system.
+            <TransText>Choose whether you want to allow or block the operating system.</TransText>
           </HelpText>
         </div>
         <RadioGroup value={allow} onChange={changeAllow}>

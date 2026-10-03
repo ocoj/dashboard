@@ -2,6 +2,7 @@ import Button from "@components/Button";
 import { Modal, ModalContent } from "@components/modal/Modal";
 import { GradientFadedBackground } from "@components/ui/GradientFadedBackground";
 import * as React from "react";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   open: boolean;
@@ -22,7 +23,7 @@ export const AccountMFAInfoModal = ({
         <GradientFadedBackground />
         <div className={"flex items-center justify-center flex-col gap-3 px-6"}>
           <div className={"text-xl font-medium text-center"}>
-            You may not need NetBird MFA
+            <TransText>You may not need NetBird MFA</TransText>
           </div>
           <div className={"text-sm text-nb-gray-300 text-center mb-2"}>
             {`Your`}
@@ -38,14 +39,14 @@ export const AccountMFAInfoModal = ({
               variant={"secondary"}
               onClick={onCancel}
             >
-              Cancel
+              <TransText>Cancel</TransText>
             </Button>
             <Button
               className={"w-full"}
               variant={"primary"}
               onClick={onConfirm}
             >
-              Enable MFA
+              <TransText>Enable MFA</TransText>
             </Button>
           </div>
         </div>

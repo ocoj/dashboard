@@ -20,6 +20,7 @@ import { OnboardingAgentPolicy } from "@/modules/onboarding/agent-network/Onboar
 import { OnboardingAgentProvider } from "@/modules/onboarding/agent-network/OnboardingAgentProvider";
 import { OnboardingAgentWelcome } from "@/modules/onboarding/agent-network/OnboardingAgentWelcome";
 import { useAgentNetworkFirstRunSetup } from "@/modules/onboarding/agent-network/useAgentNetworkFirstRunSetup";
+import { TransText } from "@/i18n/trans-text";
 
 // Step indices for the Agent Network onboarding. Kept as a flat sequence
 // (no intent branching like the regular onboarding) since there's a single
@@ -114,7 +115,7 @@ export const AgentNetworkOnboarding = ({
         >
           <div data-testid={"agent-network-onboarding"}>
             <VisuallyHidden asChild>
-              <DialogTitle>Agent Network Onboarding</DialogTitle>
+              <DialogTitle><TransText>Agent Network Onboarding</TransText></DialogTitle>
             </VisuallyHidden>
             <div
               className={
@@ -189,7 +190,7 @@ export const AgentNetworkOnboarding = ({
                       className={"!text-nb-gray-200 ml-1"}
                       onClick={() => onSkip(step)}
                     >
-                      Skip to Dashboard
+                      <TransText>Skip to Dashboard</TransText>
                     </InlineLink>
                   </span>
                 )}

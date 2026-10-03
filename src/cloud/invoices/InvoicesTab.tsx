@@ -17,6 +17,7 @@ import InvoicesTable from "@/cloud/invoices/table/InvoicesTable";
 import { useMSP } from "@/cloud/msp/contexts/MSPProvider";
 import { Invoice } from "@/cloud/msp/interfaces/Invoice";
 import { usePermissions } from "@/contexts/PermissionsProvider";
+import { TransText } from "@/i18n/trans-text";
 
 export const InvoicesTab = () => {
   const { permission } = usePermissions();
@@ -86,8 +87,8 @@ const InvoicesTabContent = () => {
         <div className={"max-w-3xl mb-4"}>
           <div className={"flex justify-between items-center mb-5"}>
             <div>
-              <h1 ref={headingRef}>Invoices</h1>
-              <Paragraph>View and export all your available invoices</Paragraph>
+              <h1 ref={headingRef}><TransText>Invoices</TransText></h1>
+              <Paragraph><TransText>View and export all your available invoices</TransText></Paragraph>
             </div>
           </div>
           <Suspense

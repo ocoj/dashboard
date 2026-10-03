@@ -62,7 +62,7 @@ export default function AuthSSOModal({
                   <CircleUser size={12} />
                   All Users
                 </Badge>
-                Select user groups...
+                <TransText>Select user groups...</TransText>
               </div>
             }
             users={users}
@@ -72,14 +72,14 @@ export default function AuthSSOModal({
             {isEditing ? (
               <>
                 <Button variant="danger-text" data-testid="remove-sso" onClick={handleRemove}>
-                  Remove
+                  <TransText>Remove</TransText>
                 </Button>
                 <div className="flex gap-3">
                   <ModalClose asChild>
                     <Button variant="secondary"><TransText>Cancel</TransText></Button>
                   </ModalClose>
                   <Button variant="primary" onClick={handleSave}>
-                    Save
+                    <TransText>Save</TransText>
                   </Button>
                 </div>
               </>
@@ -95,7 +95,7 @@ export default function AuthSSOModal({
                     onClick={handleSave}
                     data-testid="submit-sso"
                   >
-                    Add SSO
+                    <TransText>Add SSO</TransText>
                   </Button>
                 </div>
               </>

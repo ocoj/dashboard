@@ -90,8 +90,7 @@ export const TrialOrUpgradeButton = ({
           disabled={canUpgrade}
           content={
             <div className={"text-xs max-w-sm"}>
-              Your plan was recently updated. Please wait for 48 hours from the
-              last update to change your plan again.
+              <TransText>Your plan was recently updated. Please wait for 48 hours from the last update to change your plan again.</TransText>
             </div>
           }
         >
@@ -126,7 +125,7 @@ export const TrialOrUpgradeButton = ({
             !isOwnerOrAdmin && "opacity-50",
           )}
         >
-          No credit card required
+          <TransText>No credit card required</TransText>
         </div>
       </div>
     );

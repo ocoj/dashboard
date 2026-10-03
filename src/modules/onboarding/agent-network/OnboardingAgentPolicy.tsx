@@ -4,6 +4,7 @@ import * as React from "react";
 import { useState } from "react";
 import AgentPolicyModal from "@/modules/agent-network/AgentPolicyModal";
 import { useAIProviders } from "@/modules/agent-network/AIProvidersProvider";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   onBack: () => void;
@@ -21,7 +22,7 @@ export const OnboardingAgentPolicy = ({ onBack, onNext }: Props) => {
   return (
     <div className={"relative flex flex-col h-full gap-4"}>
       <div>
-        <h1 className={"text-xl text-center"}>Create a policy</h1>
+        <h1 className={"text-xl text-center"}><TransText>Create a policy</TransText></h1>
         <div
           className={
             "text-sm text-nb-gray-300 font-light mt-2 block text-center sm:px-4"
@@ -54,7 +55,7 @@ export const OnboardingAgentPolicy = ({ onBack, onNext }: Props) => {
 
       <div className={"flex items-center justify-center mt-4 gap-3"}>
         <Button variant={"secondary"} onClick={onBack}>
-          Go Back
+          <TransText>Go Back</TransText>
         </Button>
         <Button variant={"primary"} disabled={!hasPolicy} onClick={onNext}>
           Continue

@@ -19,6 +19,7 @@ import {
 import * as React from "react";
 import { useTenants } from "@/cloud/msp/contexts/TenantsProvider";
 import { Tenant, TenantStatus } from "@/cloud/msp/interfaces/Tenant";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   tenant: Tenant;
@@ -67,8 +68,7 @@ export const TenantActionCell = ({ tenant }: Props) => {
         <FullTooltip
           content={
             <div className={"text-xs max-w-xs"}>
-              The account owner must log in to the dashboard to accept or
-              decline your request.
+              <TransText>The account owner must log in to the dashboard to accept or decline your request.</TransText>
             </div>
           }
         >

@@ -17,6 +17,7 @@ import PageContainer from "@/layouts/PageContainer";
 import { RestrictedAccess } from "@components/ui/RestrictedAccess";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import zhMap from "@/i18n/zh-map";
+import { TransText } from "@/i18n/trans-text";
 
 export default function CustomersPage() {
   const { isDistributorInfoLoading } = useDistributor();
@@ -42,9 +43,9 @@ const CustomersPageContent = () => {
             icon={<MSPIcon size={15} />}
           />
         </Breadcrumbs>
-        <h1 ref={headingRef}>Customers</h1>
+        <h1 ref={headingRef}><TransText>Customers</TransText></h1>
         <Paragraph>
-          Use this view to manage customer accounts and their plans.
+          <TransText>Use this view to manage customer accounts and their plans.</TransText>
         </Paragraph>
         <Paragraph>
           <DistributorDocsLink />

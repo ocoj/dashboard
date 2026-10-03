@@ -7,6 +7,7 @@ import * as React from "react";
 import AppleIcon from "@/assets/icons/AppleIcon";
 import WindowsIcon from "@/assets/icons/WindowsIcon";
 import { ProcessCheck } from "@/interfaces/PostureCheck";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   check?: ProcessCheck;
@@ -26,7 +27,7 @@ export const ProcessTooltip = ({ check, children }: Props) => {
         >
           <div className={"px-4 pt-3"}>
             <span>
-              <span className={"text-green-500 font-semibold"}>Allow only</span>{" "}
+              <span className={"text-green-500 font-semibold"}><TransText>Allow only</TransText></span>{" "}
               peers which are running the following processes
             </span>
           </div>

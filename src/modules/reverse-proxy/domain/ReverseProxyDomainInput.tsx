@@ -31,7 +31,7 @@ export default function ReverseProxyDomainInput({
 }: Readonly<Props>) {
   return (
     <div>
-      <Label>Domain</Label>
+      <Label><TransText>Domain</TransText></Label>
       <HelpText>
         {subdomainRequired
           ? "<TransText>Enter a subdomain and select a domain for your service.</TransText>"
@@ -73,7 +73,7 @@ export default function ReverseProxyDomainInput({
             Cluster {clusterOffline.clusterName} is offline. Please try again in
             a few minutes. If the issue persists, check{" "}
             <InlineLink href={"https://status.netbird.io/"} target={"_blank"}>
-              NetBird Status
+              <TransText>NetBird Status</TransText>
             </InlineLink>{" "}
             or reach out to{"  "}
             <InlineLink href={"mailto:support@netbird.io"}>

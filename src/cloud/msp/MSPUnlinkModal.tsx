@@ -20,6 +20,7 @@ import { useState } from "react";
 import { useTenants } from "@/cloud/msp/contexts/TenantsProvider";
 import { Tenant } from "@/cloud/msp/interfaces/Tenant";
 import { User } from "@/interfaces/User";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   open: boolean;
@@ -53,9 +54,9 @@ export const MSPUnlinkModal = ({ open, setOpen, tenant }: Props) => {
           />
           <Separator />
           <div className={"px-8 py-6"}>
-            <Label>New Owner</Label>
+            <Label><TransText>New Owner</TransText></Label>
             <HelpText>
-              In order to unlink this tenant, you need to assign a new owner.
+              <TransText>In order to unlink this tenant, you need to assign a new owner.</TransText>
             </HelpText>
             <UserSelector
               onChange={setSelectedUser}
@@ -72,9 +73,7 @@ export const MSPUnlinkModal = ({ open, setOpen, tenant }: Props) => {
             >
               <InfoIcon size={14} className={"shrink-0 relative top-[2.5px]"} />
               <div>
-                After unlinking, the existing subscription for this tenant will
-                be canceled, and the new owner will need to set up their own
-                billing information.
+                <TransText>After unlinking, the existing subscription for this tenant will be canceled, and the new owner will need to set up their own billing information.</TransText>
               </div>
             </div>
           </div>
@@ -90,7 +89,7 @@ export const MSPUnlinkModal = ({ open, setOpen, tenant }: Props) => {
             </div>
             <div className={"flex gap-3 w-full justify-end"}>
               <ModalClose asChild={true}>
-                <Button variant={"secondary"}>Cancel</Button>
+                <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
               </ModalClose>
 
               <Button
@@ -101,7 +100,7 @@ export const MSPUnlinkModal = ({ open, setOpen, tenant }: Props) => {
                   unlinkTenant(tenant, selectedUser).then();
                 }}
               >
-                Unlink
+                <TransText>Unlink</TransText>
               </Button>
             </div>
           </ModalFooter>

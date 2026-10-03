@@ -406,7 +406,7 @@ export function UserInviteModalContent({
         </div>
 
         <div className={"mb-4"}>
-          <Label>Auto-assigned groups</Label>
+          <Label><TransText>Auto-assigned groups</TransText></Label>
           <HelpText>
             <TransText>Groups will be assigned to peers added by this user.</TransText>
           </HelpText>

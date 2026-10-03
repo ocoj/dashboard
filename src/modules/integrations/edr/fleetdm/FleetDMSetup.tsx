@@ -42,6 +42,7 @@ import useGroupHelper from "@/modules/groups/useGroupHelper";
 import { matchAttributesReducer } from "@/modules/integrations/edr/fleetdm/FleetDM";
 import { FleetDMMatchSettings } from "@/modules/integrations/edr/fleetdm/FleetDMMatchSettings";
 import { IntegrationModalHeader } from "@/modules/integrations/IntegrationModalHeader";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   open: boolean;
@@ -214,7 +215,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
           <p className={"mt-2 !text-nb-gray-300 !leading-[1.5]"}>
             Ensure that you have a{" "}
             <span className={"text-nb-gray-100 font-semibold"}>
-              FleetDM account
+              <TransText>FleetDM account</TransText>
             </span>{" "}
             with the following{" "}
             <span className={"text-nb-gray-100 font-semibold"}>
@@ -259,7 +260,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
 
           <Steps>
             <Steps.Step step={1}>
-              <p>Navigate to your FleetDM Management Console.</p>
+              <p><TransText>Navigate to your FleetDM Management Console.</TransText></p>
             </Steps.Step>
 
             <Steps.Step step={2} line={false}>
@@ -324,7 +325,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
             </Steps.Step>
             <Steps.Step step={3} line={false}>
               <p className={"font-normal"}>
-                Once created, paste the received API token below.
+                <TransText>Once created, paste the received API token below.</TransText>
               </p>
             </Steps.Step>
           </Steps>
@@ -356,7 +357,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
           </p>
 
           <HelpText className={"max-w-lg mt-2"}>
-            Select groups you want to apply the FleetDM integration to
+            <TransText>Select groups you want to apply the FleetDM integration to</TransText>
           </HelpText>
 
           <PeerGroupSelector
@@ -374,8 +375,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
             Compliance Requirements
           </p>
           <p className={"mt-2 !text-nb-gray-300 !leading-[1.5]"}>
-            Set the specific requirements that devices must meet to be
-            considered compliant.
+            <TransText>Set the specific requirements that devices must meet to be considered compliant.</TransText>
           </p>
 
           <FleetDMMatchSettings

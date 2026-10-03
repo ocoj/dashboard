@@ -5,6 +5,7 @@ import { Label } from "@components/Label";
 import { MinusCircleIcon, PlusIcon } from "lucide-react";
 import { useCallback, useState } from "react";
 import zhMap from "@/i18n/zh-map";
+import { TransText } from "@/i18n/trans-text";
 
 const HEADER_NAME_RE = /^[A-Za-z0-9!#$%&'*+\-.^_`|~]+$/;
 const BLOCKED_HEADERS = new Set([
@@ -133,7 +134,7 @@ export default function ReverseProxyTargetCustomHeaders({
 }: CustomHeadersProps) {
   return (
     <div>
-      <Label>Custom Headers</Label>
+      <Label><TransText>Custom Headers</TransText></Label>
       <HelpText>
         Add additional headers to include when forwarding requests.
         <br />

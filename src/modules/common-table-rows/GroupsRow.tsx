@@ -23,6 +23,7 @@ import { usePermissions } from "@/contexts/PermissionsProvider";
 import { Group } from "@/interfaces/Group";
 import { Peer } from "@/interfaces/Peer";
 import useGroupHelper from "@/modules/groups/useGroupHelper";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   groups: string[];
@@ -160,7 +161,7 @@ export function EditGroupsModal({
       <ModalFooter className={"items-center"}>
         <div className={"flex gap-3 w-full justify-end"}>
           <ModalClose asChild={true}>
-            <Button variant={"secondary"}>Cancel</Button>
+            <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
           </ModalClose>
 
           <Button
@@ -169,7 +170,7 @@ export function EditGroupsModal({
             disabled={disabled}
             data-testid="save-groups"
           >
-            Save Groups
+            <TransText>Save Groups</TransText>
           </Button>
         </div>
       </ModalFooter>

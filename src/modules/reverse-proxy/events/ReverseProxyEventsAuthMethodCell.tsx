@@ -47,7 +47,7 @@ export const ReverseProxyEventsAuthMethodCell = ({
                 "font-mono text-[9px] font-medium tracking-wider leading-none px-1 py-0.5 rounded border border-current"
               }
             >
-              PWD
+              <TransText>PWD</TransText>
             </span>
           ),
           label: "Password",
@@ -60,7 +60,7 @@ export const ReverseProxyEventsAuthMethodCell = ({
                 "font-mono text-[9px] font-medium tracking-wider leading-none px-1 py-0.5 rounded border border-current"
               }
             >
-              PIN
+              <TransText>PIN</TransText>
             </span>
           ),
           label: "PIN Code",

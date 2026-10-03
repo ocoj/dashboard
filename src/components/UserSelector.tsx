@@ -11,6 +11,7 @@ import { memo, useState } from "react";
 import { useElementSize } from "@/hooks/useElementSize";
 import { User } from "@/interfaces/User";
 import { SmallUserAvatar } from "@/modules/users/SmallUserAvatar";
+import { TransText } from "@/i18n/trans-text";
 
 const MapPinIcon = memo(() => <MapPin size={12} />);
 MapPinIcon.displayName = "MapPinIcon";
@@ -134,7 +135,7 @@ export function UserSelector({
 
           {filteredItems.length == 0 && search != "" && (
             <DropdownInfoText>
-              There are no users matching your search.
+              <TransText>There are no users matching your search.</TransText>
             </DropdownInfoText>
           )}
 

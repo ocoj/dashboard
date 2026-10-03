@@ -14,6 +14,7 @@ import NetworkRoutesIcon from "@/assets/icons/NetworkRoutesIcon";
 import { useElementSize } from "@/hooks/useElementSize";
 import { GroupedRoute, Route } from "@/interfaces/Route";
 import useGroupedRoutes from "@/modules/route-group/useGroupedRoutes";
+import { TransText } from "@/i18n/trans-text";
 
 interface MultiSelectProps {
   value?: GroupedRoute;
@@ -127,7 +128,7 @@ export function NetworkRouteSelector({
                 <DomainList domains={value?.domains} />
               </div>
             ) : (
-              <span>Select an existing network...</span>
+              <span><TransText>Select an existing network...</TransText></span>
             )}
           </div>
 
@@ -203,7 +204,7 @@ export function NetworkRouteSelector({
               )}
               {notFound && (
                 <div className={"text-center pb-2 text-nb-gray-500"}>
-                  There are no networks matching your search.
+                  <TransText>There are no networks matching your search.</TransText>
                 </div>
               )}
               <CommandGroup>

@@ -35,6 +35,7 @@ import { GroupPrefixInput } from "@/modules/integrations/idp-sync/GroupPrefixInp
 import { IntegrationModalHeader } from "@/modules/integrations/IntegrationModalHeader";
 import { useSSOConnections } from "@/modules/integrations/sso/useSSOConnections";
 import { isAuth0 } from "@utils/netbird";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   open: boolean;
@@ -222,7 +223,7 @@ export function SetupContent({ onSuccess, onClose }: ModalProps) {
               <p className={"mt-2 !text-nb-gray-300 !leading-[1.5]"}>
                 Ensure that you have an{" "}
                 <span className={"text-nb-gray-100 font-semibold"}>
-                  Jumpcloud user account
+                  <TransText>Jumpcloud user account</TransText>
                 </span>{" "}
                 with the following{" "}
                 <span className={"text-nb-gray-100 font-semibold"}>roles</span>.{" "}
@@ -337,20 +338,20 @@ export function SetupContent({ onSuccess, onClose }: ModalProps) {
                   target={"_blank"}
                   href={"https://console.jumpcloud.com/"}
                 >
-                  Jumpcloud admin console
+                  <TransText>Jumpcloud admin console</TransText>
                 </InlineLink>
               </p>
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
                 Go to <Mark>{"SSO Applications"}</Mark> and select your{" "}
-                <Mark>NetBird</Mark> application, and then select{" "}
-                <Mark>Identity Management</Mark> tab.
+                <Mark><TransText>NetBird</TransText></Mark> application, and then select{" "}
+                <Mark><TransText>Identity Management</TransText></Mark> tab.
               </p>
             </Steps.Step>
             <Steps.Step step={3}>
               <p className={"font-normal"}>
-                In the <Mark>Credentials Details</Mark> enter the following
+                In the <Mark><TransText>Credentials Details</TransText></Mark> enter the following
                 details.
               </p>
               <MinimalList
@@ -389,9 +390,9 @@ export function SetupContent({ onSuccess, onClose }: ModalProps) {
             </Steps.Step>
             <Steps.Step step={4} line={false}>
               <p className={"font-normal"}>
-                After that click <Mark>Test Connection</Mark> to verify the SCIM
+                After that click <Mark><TransText>Test Connection</TransText></Mark> to verify the SCIM
                 connection. If the connection is successful click{" "}
-                <Mark>Activate</Mark> to enable SCIM provisioning.
+                <Mark><TransText>Activate</TransText></Mark> to enable SCIM provisioning.
               </p>
             </Steps.Step>
           </Steps>
@@ -438,7 +439,7 @@ export function SetupContent({ onSuccess, onClose }: ModalProps) {
             onClick={finishSetup}
             disabled={integrationId === "" || authToken === ""}
           >
-            Finish Setup
+            <TransText>Finish Setup</TransText>
           </Button>
         )}
       </ModalFooter>

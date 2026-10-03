@@ -5,6 +5,7 @@ import { PeerDisapprovalReason } from "@/cloud/edr/PeerDisapprovalReason";
 import { useBypassedPeers } from "@/cloud/edr/useBypass";
 import { Peer } from "@/interfaces/Peer";
 import { useIntegrations } from "@/modules/integrations/edr/useIntegrations";
+import { TransText } from "@/i18n/trans-text";
 
 // Returns a ready-to-render issue icon for the peer, or null when the
 // peer is healthy. We expose this as a hook (rather than a component
@@ -31,8 +32,7 @@ export const usePeerIssueIcon = (peer: Peer): React.ReactNode | null => {
         interactive={false}
         content={
           <div className={"text-xs max-w-xs"}>
-            This peer has compliance bypassed by an administrator. The bypass
-            will be automatically removed when the device becomes compliant.
+            <TransText>This peer has compliance bypassed by an administrator. The bypass will be automatically removed when the device becomes compliant.</TransText>
           </div>
         }
       >

@@ -3,6 +3,7 @@ import { Modal, ModalContent } from "@components/modal/Modal";
 import { GradientFadedBackground } from "@components/ui/GradientFadedBackground";
 import { Check, CircleCheckBig } from "lucide-react";
 import * as React from "react";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   open: boolean;
@@ -17,7 +18,7 @@ export const TrialSuccessModal = ({ open, setOpen }: Props) => {
         <div className={"flex items-center justify-center flex-col gap-3 px-6"}>
           <CircleCheckBig size={28} className={"text-green-500"} />
           <div className={"text-xl font-medium"}>
-            Your 14-Day Trial has started!
+            <TransText>Your 14-Day Trial has started!</TransText>
           </div>
           <div className={"text-sm text-nb-gray-300 text-center"}>
             {`Welcome aboard! You have now access to NetBird's full set of features & integrations `}
@@ -29,8 +30,7 @@ export const TrialSuccessModal = ({ open, setOpen }: Props) => {
           <div className={"bg-nb-gray-920 px-5 py-4 rounded-lg mt-4"}>
             <div className={"text-base font-medium mb-1"}>{`What's next?`}</div>
             <div className={"text-sm text-nb-gray-200 mb-2"}>
-              Explore the dashboard, our integrations and all the features. Some
-              of the key features you can try:
+              <TransText>Explore the dashboard, our integrations and all the features. Some of the key features you can try:</TransText>
             </div>
             <ul className="flex flex-col gap-1.5 mt-4 mb-6">
               <li className="flex items-center gap-2 text-sm text-nb-gray-200">
@@ -51,7 +51,7 @@ export const TrialSuccessModal = ({ open, setOpen }: Props) => {
               variant={"primary"}
               onClick={() => setOpen(false)}
             >
-              Explore NetBird
+              <TransText>Explore NetBird</TransText>
             </Button>
           </div>
         </div>

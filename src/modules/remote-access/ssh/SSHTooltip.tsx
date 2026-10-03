@@ -4,6 +4,7 @@ import { ArrowUpRightIcon } from "lucide-react";
 import * as React from "react";
 import { useState } from "react";
 import { usePeer } from "@/contexts/PeerProvider";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   children?: React.ReactNode;
@@ -52,8 +53,7 @@ const NoPermissionText = () => {
   return (
     <div className={"max-w-xs text-xs flex flex-col gap-2"}>
       <div>
-        You do not have permission to launch the SSH console. Please contact
-        your administrator.
+        <TransText>You do not have permission to launch the SSH console. Please contact your administrator.</TransText>
       </div>
     </div>
   );
@@ -62,7 +62,7 @@ const NoPermissionText = () => {
 const IsOfflineText = () => {
   return (
     <div className={"max-w-[200px] text-xs"}>
-      <div>Connecting via SSH is only available when the peer is online.</div>
+      <div><TransText>Connecting via SSH is only available when the peer is online.</TransText></div>
     </div>
   );
 };
@@ -77,9 +77,7 @@ const SSHDisabledText = ({
   return (
     <div className={"max-w-xs text-xs flex flex-col gap-2"}>
       <div>
-        SSH Access is currently disabled for this peer. Please enable SSH access
-        for this peer and make sure to add an explicit access control policy
-        allowing SSH access.
+        <TransText>SSH Access is currently disabled for this peer. Please enable SSH access for this peer and make sure to add an explicit access control policy allowing SSH access.</TransText>
       </div>
       <div>
         <InlineLink

@@ -12,6 +12,7 @@ import { useMSP } from "@/cloud/msp/contexts/MSPProvider";
 import { useDialog } from "@/contexts/DialogProvider";
 import { useLoggedInUser } from "@/contexts/UsersProvider";
 import { useAccount } from "@/modules/account/useAccount";
+import { TransText } from "@/i18n/trans-text";
 
 export const DistributorTransferAccountModal = () => {
   const { mspInfo } = useMSP();
@@ -99,24 +100,23 @@ export const DistributorTransferAccountModal = () => {
             <h2
               className={"text-lg my-0 leading-[1.5] text-center text-balance"}
             >
-              A distributor is requesting access to your account
+              <TransText>A distributor is requesting access to your account</TransText>
             </h2>
             <Paragraph
               className={cn("text-sm text-center max-w-[450px] px-4 mt-2")}
             >
-              Granting access allows the distributor to manage billing and
-              subscription for your account.
+              <TransText>Granting access allows the distributor to manage billing and subscription for your account.</TransText>
             </Paragraph>
             <div className={"flex gap-4 items-center mt-6 w-full"}>
               <Button className={"w-full"} variant={"secondary"} onClick={deny}>
-                Deny
+                <TransText>Deny</TransText>
               </Button>
               <Button
                 className={"w-full"}
                 variant={"danger"}
                 onClick={grantAccess}
               >
-                Grant Access
+                <TransText>Grant Access</TransText>
               </Button>
             </div>
           </div>

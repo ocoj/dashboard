@@ -6,6 +6,7 @@ import MSPIcon from "@/assets/icons/MSPIcon";
 import { useMSP } from "@/cloud/msp/contexts/MSPProvider";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { useLoggedInUser } from "@/contexts/UsersProvider";
+import { TransText } from "@/i18n/trans-text";
 
 export const MSPNavigationItem = () => {
   const { isActive, isMSPInMSPContext } = useMSP();
@@ -24,7 +25,7 @@ export const MSPNavigationItem = () => {
       <SidebarItem
         icon={<MSPIcon size={17} />}
         visible={permission?.tenants?.read}
-        label={<div className={"flex items-center gap-2"}>Tenants</div>}
+        label={<div className={"flex items-center gap-2"}><TransText>Tenants</TransText></div>}
         href={"/tenants"}
         exactPathMatch={true}
         labelClassName={"-left-[1.5px] relative"}

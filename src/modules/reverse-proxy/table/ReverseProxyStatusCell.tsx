@@ -11,6 +11,7 @@ import InlineLink from "@components/InlineLink";
 import { CircleAlert, Loader2 } from "lucide-react";
 import * as React from "react";
 import { useRef } from "react";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   serviceId: string;
@@ -80,7 +81,7 @@ export default function ReverseProxyStatusCell({
                   href={REVERSE_PROXY_TROUBLESHOOTING_DOCS_LINK}
                   target={"_blank"}
                 >
-                  Troubleshooting Docs
+                  <TransText>Troubleshooting Docs</TransText>
                 </InlineLink>{" "}
                 for more details.
               </div>
@@ -91,7 +92,7 @@ export default function ReverseProxyStatusCell({
             <div className={"flex"}>
               {compact ? (
                 <span className={"text-red-400 cursor-help truncate"}>
-                  Error
+                  <TransText>Error</TransText>
                 </span>
               ) : (
                 <Badge variant={"red"}>
@@ -115,7 +116,7 @@ export default function ReverseProxyStatusCell({
                   href={REVERSE_PROXY_TROUBLESHOOTING_DOCS_LINK}
                   target={"_blank"}
                 >
-                  Troubleshooting Docs
+                  <TransText>Troubleshooting Docs</TransText>
                 </InlineLink>{" "}
                 for more details.
               </div>
@@ -126,7 +127,7 @@ export default function ReverseProxyStatusCell({
             <div className={"flex"}>
               {compact ? (
                 <span className={"text-red-400 cursor-help truncate"}>
-                  Tunnel not created
+                  <TransText>Tunnel not created</TransText>
                 </span>
               ) : (
                 <Badge variant={"red"}>

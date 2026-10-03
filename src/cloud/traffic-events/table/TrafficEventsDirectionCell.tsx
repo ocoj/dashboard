@@ -4,6 +4,7 @@ import {
   TrafficEvent,
   TrafficEventDirection,
 } from "@/cloud/traffic-events/interfaces/TrafficEvent";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   event: TrafficEvent;
@@ -15,7 +16,7 @@ export const TrafficEventsDirectionCell = ({ event }: Props) => {
 
   return direction === TrafficEventDirection.UNKNOWN ? (
     <Badge variant={"gray"} className={"py-1 w-[80px]"}>
-      Unknown
+      <TransText>Unknown</TransText>
     </Badge>
   ) : (
     <Badge variant={"gray"} className={"py-1 w-[80px]"}>

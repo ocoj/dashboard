@@ -125,7 +125,7 @@ export function ServiceUserModalContent({ onSuccess }: Readonly<ModalProps>) {
         </div>
         <div className={"flex gap-3 w-full justify-end"}>
           <ModalClose asChild={true}>
-            <Button variant={"secondary"}>Cancel</Button>
+            <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
           </ModalClose>
 
           <Button

@@ -131,7 +131,7 @@ export const RDPCredentialsModal = ({
                   "flex items-center gap-2 text-red-800 font-medium mb-1"
                 }
               >
-                Error
+                <TransText>Error</TransText>
               </div>
               <p className={"text-sm text-red-700"}>{error}</p>
             </div>
@@ -175,9 +175,9 @@ export const RDPCredentialsModal = ({
             </div>
           </div>
           <div>
-            <Label>Port</Label>
+            <Label><TransText>Port</TransText></Label>
             <HelpText>
-              Specify the RDP port for your remote connection.
+              <TransText>Specify the RDP port for your remote connection.</TransText>
             </HelpText>
             <Input
               maxWidthClass={""}
