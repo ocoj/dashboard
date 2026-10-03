@@ -24,10 +24,13 @@
 ## 版本号来源
 
 ```
-package.json          →  "version": "2.90.4"      # 上游干净版本号
+package.json          →  "version": "2.94.0"        # 上游干净版本号
 next.config.js         →  pkg.version + "-zh"       # 构建时自动追加 -zh
-VersionInfo.tsx        →  formatVersion() 加 v 前缀  # 显示为 v2.90.4-zh
+VersionInfo.tsx        →  formatVersion() 加 v 前缀  # 显示为 v2.94.0-zh
 ```
+
+> CI 会用 tag 名覆盖该值（`NEXT_PUBLIC_DASHBOARD_VERSION`）；
+> 分支构建注入 `development`，因此发布必须打 tag。
 
 ## 变更规则（红线）
 

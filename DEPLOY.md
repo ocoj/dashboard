@@ -53,31 +53,33 @@ docker run -d --name netbird-dashboard --restart unless-stopped \
 
 ## 版本策略
 
-CI 通过 `git describe --tags --always` 自动派生版本号，无需手动打 tag。
+版本号来自 **tag 名**（`build_and_push.yml` 读取 `github.ref`），无需手动维护：
 
-| 场景 | 版本号示例 |
-|------|-----------|
-| 正好在 tag `v2.90.4-zh` 上 | `v2.90.4-zh` |
-| tag 之后 3 个提交 | `v2.90.4-zh-3-g4d1bb9c` |
-| 无 tag（首次） | commit 短 hash |
+| 场景 | 注入的版本号 |
+|------|------------|
+| push tag `v2.94.0-zh` | `v2.94.0-zh`（界面显示 `v2.94.0-zh`） |
+| push 分支 `i18n-clean` | `development`（界面显示 `development`） |
 
 | 镜像 tag | 含义 | 触发条件 |
 |----------|------|---------|
-| `latest` | 每次 push i18n-clean 自动更新 | 分支 push |
-| `v2.90.4-zh` | 版本快照（可选） | `git tag` + push |
-| `i18n-clean` | 分支名镜像 | Actions 自动构建 |
+| `latest` | **仅由 tag push 更新**（指向正式发布内容） | `git push origin <tag>` |
+| `v2.94.0-zh` | 版本快照 | `git tag` + push |
+| `i18n-clean` | 分支名镜像（版本显示为 development） | 分支 push |
+| `sha-xxxxxxx` | 提交快照 | 每次构建 |
+
+> ⚠️ 因为 `latest` 只在 **tag push** 时更新，发布新版本**必须打 tag**，
+> 否则 OMV `docker compose pull` 拉到的仍是上一个正式版。
 
 ### 发布新版本
 
 ```bash
-# 本地开发完成后 push 即可，版本号自动派生：
 git add -A
-git commit -m "描述修改"
+git commit -m "i18n: 描述修改"
 git push origin i18n-clean
 
-# 可选：打版本 tag 做快照
-git tag v2.90.4-zh        # 版本号跟着上游 vX.Y.Z-zh
-git push origin v2.90.4-zh
+# 关键一步：打 tag 才会更新 latest 镜像
+git tag v2.94.0-zh        # 版本号 = <上游版本>-zh
+git push origin v2.94.0-zh
 
 # 更新 CHANGELOG.md 记录变更
 ```
