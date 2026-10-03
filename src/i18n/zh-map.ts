@@ -2958,6 +2958,41 @@ const zhMap: Record<string, string> = {
   'You don\'t have any peers to assign': '您没有可分配的节点',
   'You don\'t have any users to assign': '您没有可分配的用户',
 
+
+  // --- v2.94.0 同步新增（2026-10-03）---
+  'A maximum of 32 domains can be added.': '最多可添加 32 个域名。',
+  'Add a unique network identifier that is assigned to each device.': '添加分配给每台设备的唯一网络标识符。',
+  'Add domains that dynamically resolve to one or more IPv4 addresses.': '添加动态解析到一个或多个 IPv4 地址的域名。',
+  'Add username by pressing': '按此键添加用户名',
+  'Assign a peer group with machines to be used as': '分配一个包含机器的节点组，用作',
+  'Assign a single peer as a routing peer for the network route.': '为网络路由分配单个节点作为路由节点。',
+  'Auth & Access': '认证与访问',
+  'Automatically apply this exit node to your distribution groups. This requires NetBird client v0.55.0 or higher.': '自动将此出口节点应用到您的分发组。这需要 NetBird 客户端 v0.55.0 或更高版本。',
+  'Choose your preferred language for the dashboard interface.': '选择您偏好的控制台界面语言。',
+  'Configure a new identity provider for authentication': '为认证配置新的身份提供者',
+  'Current Language': '当前语言',
+  'DNS records for load-balanced systems often change. Keeping resolved addresses ensures ongoing connections to active resources remain uninterrupted.': '负载均衡系统的 DNS 记录经常变化。保留已解析的地址可确保与活跃资源的连接不中断。',
+  'Event(s)': '事件',
+  'Exit Nodes': '出口节点',
+  'Jobs': '任务',
+  'Network name and CIDR that you are adding the route to.': '您要添加该路由的网络名称和 CIDR。',
+  'Network Resources': '网络资源',
+  'Peer(s) selected': '已选择节点',
+  'Peers that are offline for over 10 minutes will be removed automatically.': '离线超过 10 分钟的节点将被自动移除。',
+  'Retain previously resolved routes after IP address updates to maintain stable connections.': '在 IP 地址更新后保留先前解析的路由，以维持稳定连接。',
+  'Route all internet traffic through the peer(s) for the following groups': '为以下组将所有互联网流量经由该节点路由',
+  'Route all internet traffic through this peer for the following groups': '为以下组将所有互联网流量经由此节点路由',
+  'These groups allow you to limit access to this route. Simply use these groups as a destination when creating access policies.': '这些组可用于限制对此路由的访问。在创建访问策略时，只需将这些组用作目标即可。',
+  'Traffic Events help you understand the network activity in your organization.': '流量事件帮助您了解组织内的网络活动。',
+  'Update the identity provider configuration': '更新身份提供者配置',
+  'Usage limit': '使用限额',
+  'Use a nameserver to resolve domains in your network': '使用名称服务器解析您网络中的域名',
+  'Use groups to control what this peer can access.': '使用组来控制此节点可以访问的内容。',
+  'User(s)': '用户',
+  'When you add multiple routing peers, NetBird enables high availability for this network.': '当您添加多个路由节点时，NetBird 会为此网络启用高可用性。',
+  'You can see which machines are connecting to each other, and what kind of traffic is flowing between them.': '您可以查看哪些机器在相互连接，以及它们之间流动的流量类型。',
+  'You have not added any source groups yet, please add source groups in order to specify which user group has access to which system users on the destination machines.': '您尚未添加任何来源组。请添加来源组，以指定哪个用户组可以访问目标机器上的哪些系统用户。',
+
 }
 
 export default zhMap;
