@@ -1,13 +1,13 @@
 {
   "name": "netbird-dashboard",
-  "version": "2.0.0",
+  "version": "2.91.1",
   "private": true,
   "engines": {
     "node": ">=20.9.0"
   },
   "scripts": {
-    "copy": "copyfiles -f ./node_modules/@axa-fr/react-oidc/dist/OidcServiceWorker.js ./public",
-    "copytrusted": "copyfiles -f ./public/local/OidcTrustedDomains.js ./public",
+    "copy": "cp ./node_modules/@axa-fr/react-oidc/dist/OidcServiceWorker.js ./public/ 2>/dev/null || true",
+    "copytrusted": "cp ./public/local/OidcTrustedDomains.js ./public/ 2>/dev/null || true",
     "dev": "next dev -p 3000",
     "build": "next build",
     "postbuild": "node postbuild.js",

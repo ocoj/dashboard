@@ -23,6 +23,7 @@ import NetworkRoutesIcon from "@/assets/icons/NetworkRoutesIcon";
 import { useRoutes } from "@/contexts/RoutesProvider";
 import { Peer } from "@/interfaces/Peer";
 import { GroupedRoute, Route } from "@/interfaces/Route";
+import { TransText } from "@/i18n/trans-text";
 import useGroupHelper from "@/modules/groups/useGroupHelper";
 
 type Props = {
@@ -164,9 +165,9 @@ function Content({ onSuccess, groupedRoute, peer }: ModalProps) {
     <ModalContent maxWidthClass={"max-w-2xl"}>
       <ModalHeader
         icon={<NetworkRoutesIcon className={"fill-netbird"} />}
-        title={"Add New Routing Peer"}
+        title={<TransText>Add New Routing Peer</TransText>}
         description={
-          "When you add multiple routing peers, NetBird enables high availability for this network."
+          <TransText>When you add multiple routing peers, NetBird enables high availability for this network.</TransText>
         }
         color={"netbird"}
       />
@@ -175,9 +176,9 @@ function Content({ onSuccess, groupedRoute, peer }: ModalProps) {
 
       <div className={"flex flex-col gap-6 px-8 py-6"}>
         <div>
-          <Label>Network Identifier</Label>
+          <Label><TransText>Network Identifier</TransText></Label>
           <HelpText>
-            Network name and CIDR that you are adding the route to.
+            <TransText>Network name and CIDR that you are adding the route to.</TransText>
           </HelpText>
           <NetworkRouteSelector
             disabled={groupedRoute != undefined}
@@ -186,9 +187,9 @@ function Content({ onSuccess, groupedRoute, peer }: ModalProps) {
           />
         </div>
         <div>
-          <Label>Routing Peer</Label>
+          <Label><TransText>Routing Peer</TransText></Label>
           <HelpText>
-            Assign a single peer as a routing peer for the network route.
+            <TransText>Assign a single peer as a routing peer for the network route.</TransText>
           </HelpText>
           <PeerSelector
             onChange={setRoutingPeer}
@@ -198,18 +199,16 @@ function Content({ onSuccess, groupedRoute, peer }: ModalProps) {
           />
         </div>
         <div>
-          <Label>Distribution Groups</Label>
+          <Label><TransText>Distribution Groups</TransText></Label>
           <HelpText>
-            Advertise this route to peers that belong to the following groups
+            <TransText>Advertise this route to peers that belong to the following groups</TransText>
           </HelpText>
           <PeerGroupSelector onChange={setGroups} values={groups} />
         </div>
         <div>
-          <Label>Access Control Groups (optional)</Label>
+          <Label><TransText>Access Control Groups (optional)</TransText></Label>
           <HelpText>
-            These groups offer a more granular control of internal services in
-            your network. They can be used in access control policies to limit
-            and control access of this route.
+            <TransText>These groups offer a more granular control of internal services in your network. They can be used in access control policies to limit and control access of this route.</TransText>
           </HelpText>
           <PeerGroupSelector
             onChange={setAccessControlGroups}
@@ -220,21 +219,21 @@ function Content({ onSuccess, groupedRoute, peer }: ModalProps) {
       <ModalFooter className={"items-center"}>
         <div className={"w-full"}>
           <Paragraph className={"text-sm mt-auto"}>
-            Learn more about
+            <TransText>Learn more about</TransText>
             <InlineLink
               href={
                 "https://docs.netbird.io/how-to/routing-traffic-to-private-networks"
               }
               target={"_blank"}
             >
-              Network Routes
+              <TransText>Network Routes</TransText>
               <ExternalLinkIcon size={12} />
             </InlineLink>
           </Paragraph>
         </div>
         <div className={"flex gap-3 w-full justify-end"}>
           <ModalClose asChild={true}>
-            <Button variant={"secondary"}>Cancel</Button>
+            <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
           </ModalClose>
 
           <Button
@@ -243,7 +242,7 @@ function Content({ onSuccess, groupedRoute, peer }: ModalProps) {
             onClick={createRouteHandler}
           >
             <PlusCircle size={16} />
-            Add Route
+            <TransText>Add Route</TransText>
           </Button>
         </div>
       </ModalFooter>

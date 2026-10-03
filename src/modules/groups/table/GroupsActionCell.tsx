@@ -15,6 +15,7 @@ import { useGroupContext } from "@/contexts/GroupProvider";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { GROUP_TOOLTIP_TEXT } from "@/interfaces/Group";
 import { GroupUsage } from "@/modules/groups/useGroupsUsage";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   group: GroupUsage;
@@ -64,7 +65,7 @@ export default function GroupsActionCell({ group, inUse }: Readonly<Props>) {
             >
               <div className="flex gap-3 items-center">
                 <FolderIcon size={14} className="shrink-0" />
-                View Details
+                <TransText>View Details</TransText>
               </div>
             </DropdownMenuItem>
 
@@ -90,7 +91,7 @@ export default function GroupsActionCell({ group, inUse }: Readonly<Props>) {
                   >
                     <div className="flex gap-3 items-center">
                       <Pencil size={14} className="shrink-0" />
-                      Rename
+                      <TransText>Rename</TransText>
                     </div>
                   </DropdownMenuItem>
                 </FullTooltip>
@@ -117,7 +118,7 @@ export default function GroupsActionCell({ group, inUse }: Readonly<Props>) {
                 >
                   <div className="flex gap-3 items-center">
                     <Trash2 size={14} className="shrink-0" />
-                    Delete
+                    <TransText>Delete</TransText>
                   </div>
                 </DropdownMenuItem>
               </FullTooltip>

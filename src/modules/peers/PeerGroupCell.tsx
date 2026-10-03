@@ -5,6 +5,7 @@ import { usePeer } from "@/contexts/PeerProvider";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { Group } from "@/interfaces/Group";
 import GroupsRow from "@/modules/common-table-rows/GroupsRow";
+import { TransText } from "@/i18n/trans-text";
 
 export default function PeerGroupCell() {
   const { peer, peerGroups } = usePeer();
@@ -38,8 +39,6 @@ export default function PeerGroupCell() {
 
   return (
     <GroupsRow
-      label={"Assigned Groups"}
-      description={"Use groups to control what this peer can access"}
       groups={groupIDs || []}
       hideAllGroup={true}
       showAddGroupButton={true}

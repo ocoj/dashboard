@@ -40,12 +40,14 @@ import { DNSZonesSearchDomainCell } from "@/modules/dns/zones/table/DNSZonesSear
 import { Group } from "@/interfaces/Group";
 import DNSZoneIcon from "@/assets/icons/DNSZoneIcon";
 import { useGroups } from "@/contexts/GroupsProvider";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 export const DNSZonesColumns: ColumnDef<DNSZone>[] = [
   {
     accessorKey: "domain",
     header: ({ column }) => (
-      <DataTableHeader column={column}>Zone</DataTableHeader>
+      <DataTableHeader column={column}><TransText>Zone</TransText></DataTableHeader>
     ),
     sortingFn: "text",
     cell: ({ row }) => <DNSZonesNameCell zone={row.original} />,
@@ -56,7 +58,7 @@ export const DNSZonesColumns: ColumnDef<DNSZone>[] = [
   {
     accessorKey: "records",
     header: ({ column }) => (
-      <DataTableHeader column={column}>Records</DataTableHeader>
+      <DataTableHeader column={column}><TransText>Records</TransText></DataTableHeader>
     ),
     sortingFn: "text",
     cell: ({ row }) => <DNSZonesRecordsCell zone={row.original} />,
@@ -64,7 +66,7 @@ export const DNSZonesColumns: ColumnDef<DNSZone>[] = [
   {
     accessorKey: "distribution_groups",
     header: ({ column }) => (
-      <DataTableHeader column={column}>Groups</DataTableHeader>
+      <DataTableHeader column={column}><TransText>Groups</TransText></DataTableHeader>
     ),
     cell: ({ row }) => <DNSZonesGroupCell zone={row.original} />,
   },
@@ -77,7 +79,7 @@ export const DNSZonesColumns: ColumnDef<DNSZone>[] = [
   {
     accessorKey: "enable_search_domain",
     header: ({ column }) => (
-      <DataTableHeader column={column}>Search Domain</DataTableHeader>
+      <DataTableHeader column={column}><TransText>Search Domain</TransText></DataTableHeader>
     ),
     cell: ({ row }) => <DNSZonesSearchDomainCell zone={row.original} />,
   },
@@ -207,7 +209,7 @@ export default function DNSZonesTable({
     <DataTable
       headingTarget={headingTarget}
       isLoading={isLoading}
-      text={"DNS Zones"}
+      text={zhMap["DNS Zones"]}
       sorting={sorting}
       setSorting={setSorting}
       columns={DNSZonesColumns}
@@ -222,7 +224,7 @@ export default function DNSZonesTable({
       keepStateInLocalStorage={!isGroupPage}
       initialPageSize={25}
       showResetFilterButton={false}
-      searchPlaceholder={"Search by domain, ip, content or group..."}
+      searchPlaceholder={zhMap["Search by domain, ip, content or group..."] || "Search by domain, ip, content or group..."}
       aboveTable={(table) => (
         <TableFilterChips table={table} filters={filterDefs} />
       )}
@@ -265,7 +267,7 @@ export default function DNSZonesTable({
                 size={"large"}
               />
             }
-            title={"Create New Zone"}
+            title={zhMap["Create New Zone"] || "Create New Zone"}
             description={
               "It looks like you don't have any zones. Control domain name resolution for your network by adding a zone."
             }
@@ -276,7 +278,7 @@ export default function DNSZonesTable({
             }
             learnMore={
               <>
-                Learn more about
+                <TransText>Learn more about</TransText>
                 <InlineLink href={DNS_ZONE_DOCS_LINK} target={"_blank"}>
                   DNS Zones
                   <ExternalLinkIcon size={12} />
@@ -341,7 +343,7 @@ const AddZoneButton = ({ distributionGroups }: AddZoneButtonProps) => {
       data-testid="add-dns-zone"
     >
       <PlusCircle size={16} />
-      Add Zone
+      <TransText>Add Zone</TransText>
     </Button>
   );
 };

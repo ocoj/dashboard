@@ -12,6 +12,8 @@ import Steps from "@components/Steps";
 import TabsContentPadding, { TabsContent } from "@components/Tabs";
 import { PackageIcon, TerminalSquareIcon } from "lucide-react";
 import React, { useState } from "react";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 import { OperatingSystem } from "@/interfaces/OperatingSystem";
 import {
   NetBirdUpCommand,
@@ -145,7 +147,7 @@ export default function LinuxTab({
       <TabsContentPadding>
         <p className={"font-medium flex gap-3 items-center text-base"}>
           <TerminalSquareIcon size={16} />
-          Install with Command-line
+          <TransText>Install with Command-line</TransText>
         </p>
         <Steps>
           <Steps.Step step={1}>
@@ -156,7 +158,8 @@ export default function LinuxTab({
           )}
           <Steps.Step step={runStep} line={false}>
             <p>
-              Run NetBird {!usingSetupKey && "and log in the browser"}
+              <TransText>Run NetBird</TransText>{" "}
+              {!usingSetupKey && <TransText>and log in the browser</TransText>}
               {showSetupKeyInfo && <RoutingPeerSetupKeyInfo />}
             </p>
             <NetBirdUpCommand
@@ -173,7 +176,7 @@ export default function LinuxTab({
           <AccordionItem value="item-1">
             <AccordionTrigger>
               <PackageIcon size={16} />
-              Install manually with a package manager
+              <TransText>Install manually with a package manager</TransText>
             </AccordionTrigger>
             <AccordionContent>
               <div className={"mt-1"}>
@@ -181,7 +184,7 @@ export default function LinuxTab({
                   value={distroValue}
                   className={"w-[280px]"}
                   onChange={setDistroValue}
-                  placeholder={"Select distribution"}
+                  placeholder={zhMap["Select distribution"] || "Select distribution"}
                   options={DISTROS.map(({ label, value }) => ({
                     label,
                     value,
@@ -191,7 +194,7 @@ export default function LinuxTab({
               </div>
               <Steps>
                 <Steps.Step step={1}>
-                  <p>Add our repository</p>
+                  <p><TransText>Add our repository</TransText></p>
                   <Code codeToCopy={distro.repository.join("\n")}>
                     {distro.repository.map((line) => (
                       <Code.Line key={line}>{line}</Code.Line>
@@ -199,7 +202,7 @@ export default function LinuxTab({
                   </Code>
                 </Steps.Step>
                 <Steps.Step step={2}>
-                  <p>Install NetBird</p>
+                  <p><TransText>Install NetBird</TransText></p>
                   <Code codeToCopy={installLines.join("\n")}>
                     {distro.beforeInstall?.map((line) => (
                       <Code.Line key={line}>{line}</Code.Line>
@@ -218,14 +221,21 @@ export default function LinuxTab({
                     )}
                   </Code>
                   <Callout variant={"info"} className={"mt-1"}>
-                    {distro.note}
-                    {hasDesktopApp &&
-                      " Desktop app packages are available for x86_64 only."}
+                    {zhMap[distro.note] || distro.note}
+                    {hasDesktopApp && (
+                      <>
+                        {" "}
+                        {zhMap[
+                          "Desktop app packages are available for x86_64 only."
+                        ] || "Desktop app packages are available for x86_64 only."}
+                      </>
+                    )}
                   </Callout>
                 </Steps.Step>
                 <Steps.Step step={3} line={false}>
                   <p>
-                    Run NetBird {!usingSetupKey && "and log in the browser"}
+                    <TransText>Run NetBird</TransText>{" "}
+                    {!usingSetupKey && <TransText>and log in the browser</TransText>}
                     {showSetupKeyInfo && <RoutingPeerSetupKeyInfo />}
                   </p>
                   <NetBirdUpCommand

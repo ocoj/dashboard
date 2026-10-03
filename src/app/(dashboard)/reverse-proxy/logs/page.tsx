@@ -15,6 +15,7 @@ import PageContainer from "@/layouts/PageContainer";
 import ReverseProxyEventsTable from "@/modules/reverse-proxy/events/ReverseProxyEventsTable";
 import { usePortalElement } from "@hooks/usePortalElement";
 import { REVERSE_PROXY_EVENTS_DOCS_LINK } from "@/interfaces/ReverseProxy";
+import { TransText } from "@/i18n/trans-text";
 
 export default function ProxyLogsPage() {
   const { permission } = usePermissions();
@@ -47,13 +48,12 @@ export default function ProxyLogsPage() {
           />
         </Breadcrumbs>
 
-        <h1 ref={headingRef}>Access Logs</h1>
+        <h1 ref={headingRef}><TransText>Access Logs</TransText></h1>
 
         <Paragraph>
-          View access logs for your reverse proxy services, including allowed
-          and denied requests.{" "}
+          <TransText>View access logs for your reverse proxy services, including allowed and denied requests.</TransText>{" "}
           <InlineLink href={REVERSE_PROXY_EVENTS_DOCS_LINK} target="_blank">
-            Learn more <ExternalLinkIcon size={12} />
+            <TransText>Learn more</TransText> <ExternalLinkIcon size={12} />
           </InlineLink>
         </Paragraph>
       </div>

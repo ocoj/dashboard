@@ -1,4 +1,5 @@
 "use client";
+import { TransText } from "@/i18n/trans-text";
 
 import Button from "@components/Button";
 import Code from "@components/Code";
@@ -209,7 +210,7 @@ export function AccessTokenModalContent({
       <ModalFooter className={"items-center"}>
         <div className={"w-full"}>
           <Paragraph className={"text-sm mt-auto"}>
-            Learn more about
+            <TransText>Learn more about</TransText>
             <InlineLink
               href={"https://docs.netbird.io/how-to/access-netbird-public-api"}
               target={"_blank"}

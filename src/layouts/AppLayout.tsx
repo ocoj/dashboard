@@ -6,6 +6,7 @@ import { TooltipProvider } from "@components/Tooltip";
 import { cn } from "@utils/helpers";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import "dayjs/locale/zh-cn";
 import { Viewport } from "next";
 import localFont from "next/font/local";
 import React, { Suspense } from "react";
@@ -22,6 +23,7 @@ import InstanceSetupProvider from "@/contexts/InstanceSetupProvider";
 import { NavigationEvents } from "@/contexts/NavigationEvents";
 import { ThemeProvider } from "@/contexts/ThemeProvider";
 import { useSignupSource } from "@/hooks/useSignupSource";
+import LocaleProvider from "@/i18n/locale-context";
 
 const inter = localFont({
   src: "../assets/fonts/Inter.ttf",
@@ -56,7 +58,7 @@ export default function AppLayout({
                   <InstanceSetupProvider>
                     <OIDCProvider>
                       <TooltipProvider delayDuration={0}>
-                        {children}
+                        <LocaleProvider>{children}</LocaleProvider>
                       </TooltipProvider>
                     </OIDCProvider>
                   </InstanceSetupProvider>

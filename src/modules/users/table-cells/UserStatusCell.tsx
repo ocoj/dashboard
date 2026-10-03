@@ -1,3 +1,4 @@
+import { TransText } from "@/i18n/trans-text";
 import FullTooltip from "@components/FullTooltip";
 import InlineLink from "@components/InlineLink";
 import { cn } from "@utils/helpers";
@@ -72,7 +73,7 @@ export default function UserStatusCell({ user }: Readonly<Props>) {
           {"'User Approval Required'"}
         </span>{" "}
         in{" "}
-        <InlineLink href={"/settings?tab=authentication"}>Settings</InlineLink>.
+        <InlineLink href={"/settings?tab=authentication"}><TransText>Settings</TransText></InlineLink>.
       </div>
       <div>
         <InlineLink

@@ -30,6 +30,7 @@ import { ExternalLinkIcon } from "lucide-react";
 import ReverseProxyIcon from "@/assets/icons/ReverseProxyIcon";
 import dayjs from "dayjs";
 import React, { useCallback, useMemo, useState } from "react";
+import { TransText } from "@/i18n/trans-text";
 import { DateRange } from "react-day-picker";
 import { DatePickerWithRange } from "@components/DatePickerWithRange";
 import { useServerPagination } from "@/contexts/ServerPaginationProvider";
@@ -53,6 +54,7 @@ import { ReverseProxyEventsAuthMethodCell } from "@/modules/reverse-proxy/events
 import { ReverseProxyEventsDurationCell } from "@/modules/reverse-proxy/events/ReverseProxyEventsDurationCell";
 import { ReverseProxyEventsBytesCell } from "@/modules/reverse-proxy/events/ReverseProxyEventsBytesCell";
 import ReverseProxyEventExpandedRow from "@/modules/reverse-proxy/events/ReverseProxyEventExpandedRow";
+import zhMap from "@/i18n/zh-map";
 
 export const makeEventsColumns = (
   servicesMap: Map<string, ReverseProxy>,
@@ -388,7 +390,7 @@ export default function ReverseProxyEventsTable({
       isLoading={isLoading}
       inset={false}
       tableCellClassName={"py-1 px-2"}
-      text={"Proxy Events"}
+      text={zhMap["Proxy Events"]}
       sorting={sorting}
       setSorting={setSorting}
       columns={columns}
@@ -404,7 +406,7 @@ export default function ReverseProxyEventsTable({
       renderExpandedRow={(event) => (
         <ReverseProxyEventExpandedRow event={event} />
       )}
-      searchPlaceholder={"Search by IP, host, path, user..."}
+      searchPlaceholder={zhMap["Search by IP, host, path, user..."] || "Search by IP, host, path, user..."}
       getStartedCard={
         <GetStartedTest
           icon={
@@ -422,7 +424,7 @@ export default function ReverseProxyEventsTable({
           }
           learnMore={
             <>
-              Learn more about
+              <TransText>Learn more about</TransText>{" "}
               <InlineLink
                 href={REVERSE_PROXY_EVENTS_DOCS_LINK}
                 target={"_blank"}

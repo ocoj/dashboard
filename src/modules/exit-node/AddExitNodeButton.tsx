@@ -2,6 +2,7 @@ import Button from "@components/Button";
 import { Modal } from "@components/modal/Modal";
 import { IconCirclePlus, IconDirectionSign } from "@tabler/icons-react";
 import * as React from "react";
+import { TransText } from "@/i18n/trans-text";
 import { useState } from "react";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { Group } from "@/interfaces/Group";
@@ -33,12 +34,12 @@ export const AddExitNodeButton = ({
           {!firstTime ? (
             <>
               <IconCirclePlus size={16} />
-              Add Exit Node
+              <TransText>Add Exit Node</TransText>
             </>
           ) : (
             <>
               <IconDirectionSign size={16} className={"text-yellow-400"} />
-              Set Up Exit Node
+              <TransText>Set Up Exit Node</TransText>
             </>
           )}
         </Button>

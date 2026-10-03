@@ -36,7 +36,9 @@ import { usePeer } from "@/contexts/PeerProvider";
 import { Pagination } from "@/interfaces/Pagination";
 import { useAccount } from "@/modules/account/useAccount";
 import InlineLink from "@components/InlineLink";
+import { TransText } from "@/i18n/trans-text";
 import { TRAFFIC_EVENTS_DOC_LINK } from "@/cloud/traffic-events/TrafficEventSetting";
+import zhMap from "@/i18n/zh-map";
 
 export const TrafficEventsPeerTabContent = () => {
   const account = useAccount();
@@ -86,6 +88,9 @@ export const TrafficEventsPeerTabContent = () => {
     return url;
   };
 
+  // Only fetch when traffic events are enabled; otherwise the management API
+  // may not support the endpoint and would return 404, triggering an error
+  // notification.  When disabled the component shows its own "disabled" UI.
   const { data: events, isLoading } = useFetchApi<Pagination<TrafficEvent[]>>(
     buildApiUrl(
       page,
@@ -95,6 +100,9 @@ export const TrafficEventsPeerTabContent = () => {
       dateRange?.from,
       dateRange?.to,
     ),
+    true,   // ignoreError – suppress the red notification for unsupported endpoints
+    true,   // revalidate
+    isEnabled, // allowFetch – skip the request entirely when feature is off
   );
 
   const isInbound = trafficType === TrafficEventDirection.INGRESS;
@@ -205,11 +213,11 @@ export const TrafficEventsPeerTabContent = () => {
               traffic events for this peer.
             </Paragraph>
             <Paragraph>
-              Learn more about{" "}
+              <TransText>Learn more about</TransText>{" "}
               <InlineLink href={TRAFFIC_EVENTS_DOC_LINK} target="_blank">
-                Traffic Events <ExternalLinkIcon size={12} />
+                {zhMap["Traffic Events"] || "Traffic Events"} <ExternalLinkIcon size={12} />
               </InlineLink>{" "}
-              in our documentation.
+              <TransText>in our documentation.</TransText>
             </Paragraph>
           </div>
         </div>
@@ -357,7 +365,7 @@ const TrafficEventsPeerDetailTable = ({
       globalFilter={searchQuery}
       onGlobalFilterChange={onSearchChange}
       manualFiltering={true}
-      searchPlaceholder={"Search by ip, port, peer or resource..."}
+      searchPlaceholder={zhMap["Search by ip, port, peer or resource..."] || "Search by ip, port, peer or resource..."}
       columnVisibility={{
         user: false,
         source: true,
@@ -384,7 +392,7 @@ const TrafficEventsPeerDetailTable = ({
         <NoResults
           className={"py-4"}
           title={
-            isSettingEnabled ? "No Traffic Events" : "Traffic Events Disabled"
+            isSettingEnabled ? zhMap["No Traffic Events"] || "No Traffic Events" : zhMap["Traffic Events Disabled"] || "Traffic Events Disabled"
           }
           description={
             isSettingEnabled
@@ -475,7 +483,7 @@ export const TrafficEventsPeerTabTrigger = () => {
   return (
     <TabsTrigger value={"traffic-events"}>
       <ArrowLeftRightIcon size={16} />
-      Traffic Events
+      <TransText>Traffic Events</TransText>
     </TabsTrigger>
   );
 };

@@ -42,12 +42,14 @@ import ReverseProxyNameCell from "@/modules/reverse-proxy/table/ReverseProxyName
 import ReverseProxyTargetsCell from "@/modules/reverse-proxy/table/ReverseProxyTargetsCell";
 import ReverseProxyTargetsTable from "@/modules/reverse-proxy/targets/ReverseProxyTargetsTable";
 import { ReverseProxyTypeCell } from "@/modules/reverse-proxy/table/ReverseProxyTypeCell";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 const ReverseProxyColumns: ColumnDef<ReverseProxy>[] = [
   {
     accessorKey: "domain",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Domain</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Domain</TransText></DataTableHeader>;
     },
     sortingFn: "text",
     cell: ({ row }) => <ReverseProxyNameCell reverseProxy={row.original} />,
@@ -55,7 +57,7 @@ const ReverseProxyColumns: ColumnDef<ReverseProxy>[] = [
   {
     accessorKey: "mode",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Type</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Type</TransText></DataTableHeader>;
     },
     sortingFn: "text",
     cell: ({ row }) => <ReverseProxyTypeCell reverseProxy={row.original} />,
@@ -68,14 +70,14 @@ const ReverseProxyColumns: ColumnDef<ReverseProxy>[] = [
   {
     accessorKey: "targets",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Target(s)</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Target(s)</TransText></DataTableHeader>;
     },
     cell: ({ row }) => <ReverseProxyTargetsCell reverseProxy={row.original} />,
   },
   {
     id: "auth_and_access",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Auth &amp; Access</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Auth & Access</TransText></DataTableHeader>;
     },
     cell: ({ row }) => (
       <div className={"flex items-center gap-2"}>
@@ -181,7 +183,7 @@ export default function ReverseProxyTable({ headingTarget }: Readonly<Props>) {
       headingTarget={headingTarget}
       isLoading={isLoading}
       inset={false}
-      text={"Reverse Proxy"}
+      text={zhMap["Reverse Proxy"]}
       sorting={sorting}
       setSorting={setSorting}
       columns={ReverseProxyColumns}
@@ -189,7 +191,7 @@ export default function ReverseProxyTable({ headingTarget }: Readonly<Props>) {
       useRowId={true}
       initialPageSize={25}
       showResetFilterButton={false}
-      searchPlaceholder={"Search by URL, domain, or target..."}
+      searchPlaceholder={zhMap["Search by URL, domain, or target..."] || "Search by URL, domain, or target..."}
       rowClassName={(row) => (row.original.enabled ? "" : "opacity-50")}
       aboveTable={(table) => (
         <TableFilterChips table={table} filters={filterDefs} />
@@ -230,14 +232,14 @@ export default function ReverseProxyTable({ headingTarget }: Readonly<Props>) {
               data-testid={"add-service"}
             >
               <PlusCircle size={16} />
-              Add Service
+              <TransText>Add Service</TransText>
             </Button>
           }
           learnMore={
             <>
-              Learn more about
+              <TransText>Learn more about</TransText>
               <InlineLink href={REVERSE_PROXY_DOCS_LINK} target={"_blank"}>
-                Services
+                <TransText>Services</TransText>
                 <ExternalLinkIcon size={12} />
               </InlineLink>
             </>
@@ -255,7 +257,7 @@ export default function ReverseProxyTable({ headingTarget }: Readonly<Props>) {
               data-testid={"add-service"}
             >
               <PlusCircle size={16} />
-              Add Service
+              <TransText>Add Service</TransText>
             </Button>
           )}
         </>

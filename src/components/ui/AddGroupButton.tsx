@@ -11,6 +11,7 @@ import {
   ModalTrigger,
 } from "@components/modal/Modal";
 import { ExternalLinkIcon, FolderGit2Icon, PlusCircle } from "lucide-react";
+import { TransText } from "@/i18n/trans-text";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useSWRConfig } from "swr";
@@ -55,22 +56,22 @@ export const AddGroupButton = () => {
             data-testid="open-create-group"
           >
             <PlusCircle size={16} />
-            Create Group
+            <TransText>Create Group</TransText>
           </Button>
         </ModalTrigger>
         <ModalContent maxWidthClass={"max-w-xl"}>
           <ModalHeader
             icon={<FolderGit2Icon size={18} />}
-            title="Create Group"
-            description="Create a group to manage and organize access in your network"
+            title={<TransText>Create Group</TransText>}
+            description={<TransText>Create a group to manage and organize access in your network</TransText>}
             color="netbird"
           />
           <Separator />
           <div className={"px-8 flex-col flex gap-6 py-6"}>
             <div>
-              <Label>Name</Label>
+              <Label><TransText>Name</TransText></Label>
               <HelpText>
-                Set an easily identifiable name for your group
+                <TransText>Set an easily identifiable name for your group</TransText>
               </HelpText>
               <Input
                 tabIndex={0}
@@ -84,19 +85,19 @@ export const AddGroupButton = () => {
           <ModalFooter className={"items-center"}>
             <div className={"w-full"}>
               <Paragraph className={"text-sm mt-auto"}>
-                Learn more about
+                <TransText>Learn more about</TransText>
                 <InlineLink
                   href={"https://docs.netbird.io/how-to/manage-network-access"}
                   target={"_blank"}
                 >
-                  Groups
+                  <TransText>Groups</TransText>
                   <ExternalLinkIcon size={12} />
                 </InlineLink>
               </Paragraph>
             </div>
             <div className={"flex gap-3 w-full justify-end"}>
               <ModalClose asChild={true}>
-                <Button variant={"secondary"}>Cancel</Button>
+                <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
               </ModalClose>
 
               <Button
@@ -106,7 +107,7 @@ export const AddGroupButton = () => {
                 onClick={createGroup}
               >
                 <PlusCircle size={16} />
-                Create Group
+                <TransText>Create Group</TransText>
               </Button>
             </div>
           </ModalFooter>

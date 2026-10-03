@@ -31,6 +31,7 @@ import {
   TableFiltersButton,
 } from "@components/table/TableFilters";
 import AddPeerDropdown from "@components/ui/AddPeerDropdown";
+import { TransText } from "@/i18n/trans-text";
 import { NotificationCountBadge } from "@components/ui/NotificationCountBadge";
 import {
   ColumnDef,
@@ -62,6 +63,7 @@ import { PeerOSCell } from "@/modules/peers/PeerOSCell";
 import PeerStatusCell from "@/modules/peers/PeerStatusCell";
 import PeerVersionCell from "@/modules/peers/PeerVersionCell";
 import { removeAllSpaces } from "@utils/helpers";
+import zhMap from "@/i18n/zh-map";
 
 // Stable key per OS family for the filter column. Mirrors the icon
 // selection in PeerOSCell so the chip label and the displayed OS icon
@@ -90,7 +92,7 @@ const PeersTableColumns: ColumnDef<Peer>[] = [
         <Checkbox
           checked={table.getIsAllPageRowsSelected()}
           onCheckedChange={(value) => table.toggleAllRowsSelected(!!value)}
-          aria-label="Select all"
+          aria-label={zhMap["Select all"]}
         />
       </div>
     ),
@@ -100,7 +102,7 @@ const PeersTableColumns: ColumnDef<Peer>[] = [
           checked={row.getIsSelected()}
           variant={"tableCell"}
           onCheckedChange={(value) => row.toggleSelected(!!value)}
-          aria-label="Select row"
+          aria-label={zhMap["Select row"]}
         />
       </div>
     ),
@@ -111,7 +113,7 @@ const PeersTableColumns: ColumnDef<Peer>[] = [
     id: "name",
     accessorFn: (peer) => `${peer?.name}${peer?.dns_label}`,
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Name</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Name</TransText></DataTableHeader>;
     },
     sortingFn: "text",
     cell: ({ row }) => <PeerNameCell peer={row.original} />,
@@ -149,7 +151,7 @@ const PeersTableColumns: ColumnDef<Peer>[] = [
     id: "dns_label",
     accessorKey: "dns_label",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Address</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Address</TransText></DataTableHeader>;
     },
     cell: ({ row }) => <PeerAddressCell peer={row.original} />,
   },
@@ -168,7 +170,7 @@ const PeersTableColumns: ColumnDef<Peer>[] = [
     accessorFn: (peer) => peer.groups?.length,
     id: "groups",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Groups</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Groups</TransText></DataTableHeader>;
     },
     cell: ({ row }) => (
       <PeerProvider peer={row.original}>
@@ -187,7 +189,7 @@ const PeersTableColumns: ColumnDef<Peer>[] = [
             table.setSorting([{ id: "last_seen", desc: !desc }]);
           }}
         >
-          Last seen
+          <TransText>Last seen</TransText>
         </DataTableHeader>
       );
     },
@@ -198,7 +200,7 @@ const PeersTableColumns: ColumnDef<Peer>[] = [
     id: "os",
     accessorFn: (peer) => removeAllSpaces(peer?.os),
     header: ({ column }) => {
-      return <DataTableHeader column={column}>OS</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>OS</TransText></DataTableHeader>;
     },
     cell: ({ row }) => (
       <PeerOSCell os={row.original.os} serial={row.original.serial_number} />
@@ -212,7 +214,7 @@ const PeersTableColumns: ColumnDef<Peer>[] = [
   {
     id: "serial",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Serial number</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Serial number</TransText></DataTableHeader>;
     },
     accessorFn: (peer) => peer.serial_number,
     sortingFn: "text",
@@ -220,7 +222,7 @@ const PeersTableColumns: ColumnDef<Peer>[] = [
   {
     accessorKey: "version",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Version</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Version</TransText></DataTableHeader>;
     },
     cell: ({ row }) => (
       <PeerVersionCell
@@ -485,14 +487,14 @@ export default function PeersTable({
         rowSelection={selectedRows}
         setRowSelection={setSelectedRows}
         useRowId={true}
-        text={"Peers"}
+        text={zhMap["Peers"]}
         sorting={sorting}
         setSorting={setSorting}
         initialPageSize={25}
         showResetFilterButton={false}
         columns={PeersTableColumns}
         data={showBrowserPeers ? browserPeers : regularPeers}
-        searchPlaceholder={"Search by name, IP, owner or group..."}
+        searchPlaceholder={zhMap["Search by name, IP, owner or group..."] || "Search by name, IP, owner or group..."}
         columnVisibility={{
           select: permission.groups.read,
           connected: false,
@@ -549,7 +551,7 @@ export default function PeersTable({
                   onKindChange?.(kind === "users" ? undefined : "users");
                 }}
               >
-                User Devices
+                <TransText>User Devices</TransText>
               </ButtonGroup.Button>
               <ButtonGroup.Button
                 // Drop the left border so it doesn't stack with the first
@@ -561,7 +563,7 @@ export default function PeersTable({
                   onKindChange?.(kind === "servers" ? undefined : "servers");
                 }}
               >
-                Servers
+                <TransText>Servers</TransText>
               </ButtonGroup.Button>
             </ButtonGroup>
 
@@ -580,8 +582,8 @@ export default function PeersTable({
                 content={
                   <div className={"text-xs max-w-xs"}>
                     {isAnyIntegrationEnabled
-                      ? "Peers that failed compliance checks and need attention"
-                      : "Peers waiting for administrator approval"}
+                      ? <TransText>Peers that failed compliance checks and need attention</TransText>
+                      : <TransText>Peers waiting for administrator approval</TransText>}
                   </div>
                 }
               >
@@ -632,10 +634,10 @@ export default function PeersTable({
                   {isAnyIntegrationEnabled ? (
                     <>
                       <AlertTriangle size={16} />
-                      Non-Compliant
+                      <TransText>Non-Compliant</TransText>
                     </>
                   ) : (
-                    "Pending Approvals"
+                    <TransText>Pending Approvals</TransText>
                   )}
                   <NotificationCountBadge count={pendingApprovalCount} />
                 </Button>
@@ -646,7 +648,7 @@ export default function PeersTable({
               <FullTooltip
                 content={
                   <div className={"text-xs max-w-xs"}>
-                    Peers with compliance checks bypassed by an administrator
+                    <TransText>Peers with compliance checks bypassed by an administrator</TransText>
                   </div>
                 }
               >
@@ -694,7 +696,7 @@ export default function PeersTable({
                   }
                 >
                   <ShieldCheck size={16} />
-                  Bypassed
+                  <TransText>Bypassed</TransText>
                   <NotificationCountBadge count={bypassedCount} />
                 </Button>
               </FullTooltip>
@@ -704,9 +706,9 @@ export default function PeersTable({
               <FullTooltip
                 content={
                   <div className={"max-w-sm text-xs"}>
-                    Show temporary peers created by the NetBird browser client.
+                    <TransText>Show temporary peers created by the NetBird browser client.
                     These peers are ephemeral and will be deleted automatically
-                    after a short period of time.
+                    after a short period of time.</TransText>
                   </div>
                 }
               >

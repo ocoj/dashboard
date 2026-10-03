@@ -14,6 +14,8 @@ import GroupsProvider from "@/contexts/GroupsProvider";
 import PeersProvider from "@/contexts/PeersProvider";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import ServerPaginationProvider from "@/contexts/ServerPaginationProvider";
+import { TransText } from '@/i18n/trans-text';
+import zhMap from "@/i18n/zh-map";
 import PageContainer from "@/layouts/PageContainer";
 import AgentAccessLogTable from "@/modules/agent-network/AgentAccessLogTable";
 import AgentOverviewPanel from "@/modules/agent-network/AgentOverviewPanel";
@@ -76,24 +78,23 @@ export default function UsageAndLogsPage() {
         <Breadcrumbs>
           <Breadcrumbs.Item
             href={"/agent-network/providers"}
-            label={"Agent Network"}
+            label={zhMap["Agent Network"] || "Agent Network"}
             icon={<AgentNetworkIcon size={16} />}
           />
           <Breadcrumbs.Item
             href={"/agent-network/usage"}
-            label={"Usage & Logs"}
+            label={zhMap["Usage & Logs"] || "Usage & Logs"}
             active={true}
           />
         </Breadcrumbs>
-        <h1>Usage & Logs</h1>
+        <h1><TransText>Usage & Logs</TransText></h1>
         <Paragraph>
-          Per-request audit with real caller identity, cost attribution, and
-          budget controls.
+          <TransText>Per-request audit with real caller identity, cost attribution, and budget controls.</TransText>
         </Paragraph>
       </div>
 
       <RestrictedAccess
-        page={"Usage & Logs"}
+        page={zhMap["Usage & Logs"] || "Usage & Logs"}
         hasAccess={permission?.services?.read}
       >
         <GroupsProvider>
@@ -108,11 +109,11 @@ export default function UsageAndLogsPage() {
                 <TabsList justify={"start"} className={"px-8"}>
                   <TabsTrigger value={TAB_USAGE}>
                     <LayoutDashboard size={16} />
-                    Usage
+                    <TransText>Usage</TransText>
                   </TabsTrigger>
                   <TabsTrigger value={TAB_ACCESS_LOGS}>
                     <ScrollText size={16} />
-                    Access Logs
+                    <TransText>Access Logs</TransText>
                   </TabsTrigger>
                 </TabsList>
 

@@ -37,6 +37,7 @@ import { ClockFadingIcon, ExternalLinkIcon, PlusCircle } from "lucide-react";
 import { usePathname, useSearchParams } from "next/navigation";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useSWRConfig } from "swr";
+import { TransText } from "@/i18n/trans-text";
 import AccessControlIcon from "@/assets/icons/AccessControlIcon";
 import NoResults from "@/components/ui/NoResults";
 import { usePermissions } from "@/contexts/PermissionsProvider";
@@ -52,6 +53,7 @@ import AccessControlNameCell from "@/modules/access-control/table/AccessControlN
 import AccessControlProtoPortsCell from "@/modules/access-control/table/AccessControlProtoPortsCell";
 import AccessControlSourcesCell from "@/modules/access-control/table/AccessControlSourcesCell";
 import { FirewallGPTModal } from "@/modules/firewall-gpt/FirewallGPTModal";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   policies?: Policy[];
@@ -65,7 +67,7 @@ export const AccessControlTableColumns: ColumnDef<Policy>[] = [
     id: "name",
     accessorFn: (row) => removeAllSpaces(row?.name),
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Name</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Name</TransText></DataTableHeader>;
     },
     sortingFn: "text",
     filterFn: "fuzzy",
@@ -95,7 +97,7 @@ export const AccessControlTableColumns: ColumnDef<Policy>[] = [
     },
     sortingFn: "basic",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Sources</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Sources</TransText></DataTableHeader>;
     },
     cell: ({ cell }) => <AccessControlSourcesCell policy={cell.row.original} />,
   },
@@ -111,7 +113,7 @@ export const AccessControlTableColumns: ColumnDef<Policy>[] = [
     },
     sortingFn: "basic",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Direction</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Direction</TransText></DataTableHeader>;
     },
     cell: ({ cell }) => (
       <AccessControlDirectionCell policy={cell.row.original} />
@@ -129,7 +131,7 @@ export const AccessControlTableColumns: ColumnDef<Policy>[] = [
     },
     sortingFn: "basic",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Destinations</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Destinations</TransText></DataTableHeader>;
     },
     cell: ({ cell }) => (
       <AccessControlDestinationsCell policy={cell.row.original} />
@@ -141,7 +143,7 @@ export const AccessControlTableColumns: ColumnDef<Policy>[] = [
     accessorFn: (row) => row.rules?.[0]?.protocol || "",
     sortingFn: "text",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Proto & Ports</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Proto & Ports</TransText></DataTableHeader>;
     },
     cell: ({ cell }) => (
       <AccessControlProtoPortsCell policy={cell.row.original} />
@@ -481,7 +483,7 @@ export default function AccessControlTable({
               ]
             : undefined
         }
-        text={"Access Control Policies"}
+        text={zhMap["Access Control Policies"]}
         sorting={sorting}
         setSorting={setSorting}
         initialPageSize={25}
@@ -509,7 +511,7 @@ export default function AccessControlTable({
           setEditModal(true);
           setCurrentCellClicked(cell);
         }}
-        searchPlaceholder={"Search by name and description..."}
+        searchPlaceholder={zhMap["Search by name and description..."] || "Search by name and description..."}
         getStartedCard={
           isGroupPage ? (
             <NoResults
@@ -530,7 +532,7 @@ export default function AccessControlTable({
                     disabled={!permission.policies.create}
                   >
                     <PlusCircle size={16} />
-                    Add Policy
+                    <TransText>Add Policy</TransText>
                   </Button>
                 </AccessControlModal>
               </div>
@@ -561,21 +563,21 @@ export default function AccessControlTable({
                       disabled={!permission.policies.create}
                     >
                       <PlusCircle size={16} />
-                      Add Policy
+                      <TransText>Add Policy</TransText>
                     </Button>
                   </AccessControlModal>
                 </div>
               }
               learnMore={
                 <>
-                  Learn more about
+                  zhMap["Learn more about"] || "Learn more about"
                   <InlineLink
                     href={
                       "https://docs.netbird.io/how-to/manage-network-access"
                     }
                     target={"_blank"}
                   >
-                    Access Controls
+                    <TransText>Access Controls</TransText>
                     <ExternalLinkIcon size={12} />
                   </InlineLink>
                 </>
@@ -595,7 +597,7 @@ export default function AccessControlTable({
                     data-testid="open-add-policy"
                   >
                     <PlusCircle size={16} />
-                    Add Policy
+                    <TransText>Add Policy</TransText>
                   </Button>
                 </AccessControlModal>
               </div>
@@ -625,9 +627,11 @@ export default function AccessControlTable({
                 <FullTooltip
                   content={
                     <div className={"max-w-sm text-xs"}>
-                      Show temporary policies created by the NetBird browser
-                      client. These policies are ephemeral and will be deleted
-                      automatically after a short period of time.
+                      <TransText>
+                        Show temporary policies created by the NetBird browser
+                        client. These policies are ephemeral and will be deleted
+                        automatically after a short period of time.
+                      </TransText>
                     </div>
                   }
                 >

@@ -1,3 +1,4 @@
+import { TransText } from "@/i18n/trans-text";
 import FullTooltip from "@components/FullTooltip";
 import InlineLink from "@components/InlineLink";
 import { ExternalLinkIcon } from "lucide-react";
@@ -24,7 +25,7 @@ export const ExitNodeHelpTooltip = ({
             An exit node is a network route that routes all your internet
             traffic through one of your peers.
             <div className={"mt-2"}>
-              Learn more about{" "}
+              <TransText>Learn more about</TransText>{" "}
               <InlineLink
                 href={
                   "https://docs.netbird.io/how-to/configuring-default-routes-for-internet-traffic"

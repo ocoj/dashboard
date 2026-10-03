@@ -6,6 +6,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useCallback } from "react";
 import Skeleton from "react-loading-skeleton";
 import SquareIcon from "@components/SquareIcon";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   icon?: React.ReactNode;
@@ -83,9 +84,9 @@ export default function NoResults({
         </div>
 
         <div className={"text-center"}>
-          <h1 className={"text-2xl font-medium max-w-lg mx-auto"}>{title}</h1>
+          <h1 className={"text-2xl font-medium max-w-lg mx-auto"}><TransText>{title}</TransText></h1>
           <Paragraph className={"justify-center my-2 !text-nb-gray-400"}>
-            {description}
+            <TransText>{description}</TransText>
           </Paragraph>
           {hasFiltersApplied && onResetFilters && (
             <Button
@@ -94,7 +95,7 @@ export default function NoResults({
               className="mt-4"
             >
               <FilterX size={16} />
-              Reset Filters & Search
+              <TransText>Reset Filters & Search</TransText>
             </Button>
           )}
           {children}

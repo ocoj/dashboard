@@ -15,6 +15,7 @@ import { useAnnouncement } from "@/contexts/AnnouncementProvider";
 import { useApplicationContext } from "@/contexts/ApplicationProvider";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import HelpAndSupportButton from "@components/ui/HelpAndSupportButton";
+import LocaleSwitcher from "@components/ui/LocaleSwitcher";
 
 export const headerHeight = 65;
 
@@ -71,6 +72,7 @@ export default function NavbarWithDropdown() {
             <DistributorTransferAccountModal />
             <MSPTenantsSwitcher />
             <HelpAndSupportButton />
+            <LocaleSwitcher />
             <UserDropdown />
           </div>
         </div>

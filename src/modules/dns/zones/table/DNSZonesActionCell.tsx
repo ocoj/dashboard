@@ -12,6 +12,7 @@ import { useState } from "react";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { DNSZone } from "@/interfaces/DNS";
 import { useDNSZones } from "@/modules/dns/zones/DNSZonesProvider";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   zone: DNSZone;
@@ -48,7 +49,7 @@ export const DNSZonesActionCell = ({ zone }: Props) => {
           >
             <div className={"flex gap-3 items-center"}>
               <SquarePenIcon size={14} className={"shrink-0"} />
-              Edit
+              <TransText>Edit</TransText>
             </div>
           </DropdownMenuItem>
 
@@ -62,7 +63,7 @@ export const DNSZonesActionCell = ({ zone }: Props) => {
           >
             <div className={"flex gap-3 items-center"}>
               <PowerIcon size={14} className={"shrink-0"} />
-              {zone.enabled ? "Disable" : "Enable"}
+              {zone.enabled ? <TransText>Disable</TransText> : <TransText>Enable</TransText>}
             </div>
           </DropdownMenuItem>
 
@@ -76,7 +77,7 @@ export const DNSZonesActionCell = ({ zone }: Props) => {
           >
             <div className={"flex gap-3 items-center"}>
               <Trash2 size={14} className={"shrink-0"} />
-              Delete
+              <TransText>Delete</TransText>
             </div>
           </DropdownMenuItem>
         </DropdownMenuContent>

@@ -15,6 +15,8 @@ import GroupsProvider from "@/contexts/GroupsProvider";
 import PeersProvider from "@/contexts/PeersProvider";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { REVERSE_PROXY_CLUSTERS_DOCS_LINK } from "@/interfaces/ReverseProxy";
+import { TransText } from '@/i18n/trans-text';
+import zhMap from "@/i18n/zh-map";
 import PageContainer from "@/layouts/PageContainer";
 import { useAgentNetworkMode } from "@/modules/agent-network/useAgentNetworkMode";
 import AgentAccountControlsCard from "@/modules/agent-network/AgentAccountControlsCard";
@@ -50,19 +52,19 @@ export default function AgentNetworkConfigurationPage() {
         <VerticalTabs.List>
           <VerticalTabs.Trigger value={TAB_BUDGET_SETTINGS}>
             <Gauge size={14} />
-            Global Limits
+            <TransText>Global Limits</TransText>
           </VerticalTabs.Trigger>
           <VerticalTabs.Trigger value={TAB_LOG_SETTINGS}>
             <ScrollText size={14} />
-            Log Collection
+            <TransText>Log Collection</TransText>
           </VerticalTabs.Trigger>
           <VerticalTabs.Trigger value={TAB_CLUSTERS}>
             <ServerIcon size={14} />
-            Clusters
+            <TransText>Clusters</TransText>
           </VerticalTabs.Trigger>
         </VerticalTabs.List>
         <RestrictedAccess
-          page={"Configuration"}
+          page={zhMap["Configuration"] || "Configuration"}
           hasAccess={permission?.services?.read}
         >
           <GroupsProvider>
@@ -74,12 +76,12 @@ export default function AgentNetworkConfigurationPage() {
                     className={"w-full"}
                   >
                     <ConfigTabHeader
-                      label={"Global Limits"}
+                      label={zhMap["Global Limits"]}
                       href={"/agent-network/configuration?tab=budget-settings"}
                     >
-                      Account-wide caps on token usage and spend, applied across
+                      <TransText>Account-wide caps on token usage and spend, applied across
                       every policy. Scope a limit to specific groups or users,
-                      or leave it account-wide.
+                      or leave it account-wide.</TransText>
                     </ConfigTabHeader>
                     {/* DataTable applies its own p-default, so it is rendered
                         directly (no extra wrapper) to align with the header. */}
@@ -98,17 +100,17 @@ export default function AgentNetworkConfigurationPage() {
 
                   <Tabs.Content value={TAB_CLUSTERS} className={"w-full"}>
                     <ConfigTabHeader
-                      label={"Clusters"}
+                      label={zhMap["Clusters"]}
                       href={"/agent-network/configuration?tab=clusters"}
                     >
                       {agentNetworkOnly
-                        ? "Proxy clusters route your agents' traffic to AI providers and run on your own infrastructure. Add multiple clusters to scale your environment."
-                        : "Proxy clusters route inbound traffic to your services. Shared clusters are run by the platform; account clusters (self-hosted) run on your own infrastructure."}{" "}
+                        ? <TransText>Proxy clusters route your agents' traffic to AI providers and run on your own infrastructure. Add multiple clusters to scale your environment.</TransText>
+                        : <TransText>Proxy clusters route inbound traffic to your services. Shared clusters are run by the platform; account clusters (self-hosted) run on your own infrastructure.</TransText>}{" "}
                       <InlineLink
                         href={REVERSE_PROXY_CLUSTERS_DOCS_LINK}
                         target={"_blank"}
                       >
-                        Learn more
+                        <TransText>Learn more</TransText>
                         <ExternalLinkIcon size={12} />
                       </InlineLink>
                     </ConfigTabHeader>
@@ -142,12 +144,12 @@ function ConfigTabHeader({
       <Breadcrumbs>
         <Breadcrumbs.Item
           href={"/agent-network/providers"}
-          label={"Agent Network"}
+          label={zhMap["Agent Network"] || "Agent Network"}
           icon={<AgentNetworkIcon size={16} />}
         />
-        <Breadcrumbs.Item href={href} label={label} active />
+        <Breadcrumbs.Item href={href} label={zhMap[label] || label} active />
       </Breadcrumbs>
-      <h1>{label}</h1>
+      <h1>{zhMap[label] || label}</h1>
       {children && <Paragraph>{children}</Paragraph>}
     </div>
   );

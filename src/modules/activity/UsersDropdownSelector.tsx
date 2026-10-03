@@ -1,3 +1,4 @@
+import { TransText } from "@/i18n/trans-text";
 import Button from "@components/Button";
 import { DropdownInfoText } from "@components/DropdownInfoText";
 import { DropdownInput } from "@components/DropdownInput";
@@ -13,6 +14,7 @@ import * as React from "react";
 import { useMemo, useState } from "react";
 import { useElementSize } from "@/hooks/useElementSize";
 import { SmallUserAvatar } from "@/modules/users/SmallUserAvatar";
+import zhMap from "@/i18n/zh-map";
 
 interface Props {
   value?: string;
@@ -51,7 +53,7 @@ export function UsersDropdownSelector({
   const [filteredItems, search, setSearch] = useSearch(
     options.concat({
       id: "all-users",
-      name: "All Users",
+      name: "<TransText>All Users</TransText>",
       email: "Include all users",
     }),
     searchPredicate,
@@ -107,7 +109,7 @@ export function UsersDropdownSelector({
             {!selectedUser ? (
               <React.Fragment>
                 <UserCircle2 size={16} />
-                All Users
+                <TransText>All Users</TransText>
               </React.Fragment>
             ) : (
               <React.Fragment>
@@ -172,7 +174,7 @@ export function UsersDropdownSelector({
           {options.length == 0 && !search && (
             <div className={"max-w-xs mx-auto"}>
               <DropdownInfoText>
-                {"No users available to select."}
+                <TransText>No users available to select.</TransText>
               </DropdownInfoText>
             </div>
           )}
@@ -180,7 +182,7 @@ export function UsersDropdownSelector({
           {filteredItems.length == 0 && search != "" && (
             <div className={"px-10"}>
               <DropdownInfoText>
-                There are no users matching your search.
+                <TransText>There are no users matching your search.</TransText>
               </DropdownInfoText>
             </div>
           )}
@@ -246,7 +248,7 @@ export function UsersDropdownSelector({
                     {user.external && (
                       <span className={"flex items-center ml-auto relative"}>
                         <SmallBadge
-                          text={"External"}
+                          text={zhMap["External"]}
                           variant={"sky"}
                           className={
                             "text-[8.5px] py-[0.15rem] px-[.32rem] leading-none rounded-full -top-0"

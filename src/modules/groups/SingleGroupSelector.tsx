@@ -11,6 +11,7 @@ import { useState } from "react";
 import { useUsers } from "@/contexts/UsersProvider";
 import { Group } from "@/interfaces/Group";
 import { HorizontalUsersStack } from "@/modules/users/HorizontalUsersStack";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   trigger?: React.ReactNode;
@@ -80,7 +81,7 @@ export const SingleGroupSelector = ({
           {values.length == 0 && !search && (
             <div className={"max-w-xs mx-auto px-4"}>
               <DropdownInfoText>
-                {"Seems like you don't have any groups."}
+                <TransText>Seems like you don't have any groups.</TransText>
               </DropdownInfoText>
             </div>
           )}
@@ -88,8 +89,7 @@ export const SingleGroupSelector = ({
           {filteredItems.length == 0 && search != "" && (
             <div className={"max-w-xs mx-auto px-4"}>
               <DropdownInfoText>
-                There are no groups matching your search. Try another search
-                term.
+                <TransText>There are no groups matching your search. Try another search term.</TransText>
               </DropdownInfoText>
             </div>
           )}

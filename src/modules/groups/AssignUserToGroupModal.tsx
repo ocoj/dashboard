@@ -20,6 +20,8 @@ import { PeerOSCell } from "@/modules/peers/PeerOSCell";
 import UserNameCell from "@/modules/users/table-cells/UserNameCell";
 import UserRoleCell from "@/modules/users/table-cells/UserRoleCell";
 import UserStatusCell from "@/modules/users/table-cells/UserStatusCell";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   group: Group;
@@ -103,7 +105,7 @@ export const AssignUserToGroupModalContent = ({
         rowSelection={selectedRows}
         setRowSelection={setSelectedRows}
         onRowClick={(row) => row.toggleSelected()}
-        text={"Users"}
+        text={zhMap["Users"]}
         resetRowSelectionOnSearch={false}
         uniqueKey={group?.id ?? group?.name}
         sorting={sorting}
@@ -113,7 +115,7 @@ export const AssignUserToGroupModalContent = ({
         data={data}
         isLoading={isLoading}
         tableCellClassName={"!py-1 scale-[95%]"}
-        searchPlaceholder={"Search by name, email or role..."}
+        searchPlaceholder={zhMap["Search by name, email or role..."] || "Search by name, email or role..."}
         searchClassName={"w-[350px]"}
         minimal={false}
         columnVisibility={{}}
@@ -135,7 +137,7 @@ export const AssignUserToGroupModalContent = ({
                   <span className={"text-netbird font-medium"}>
                     {Object.keys(selectedRows).length}
                   </span>{" "}
-                  User(s) selected
+                  <TransText>User(s) selected</TransText>
                 </div>
               )}
             </div>
@@ -171,7 +173,7 @@ const UsersTableColumns: ColumnDef<User>[] = [
         <Checkbox
           checked={table.getIsAllPageRowsSelected()}
           onCheckedChange={(value) => table.toggleAllRowsSelected(!!value)}
-          aria-label="Select all"
+          aria-label={zhMap["Select all"]}
         />
       </div>
     ),
@@ -181,7 +183,7 @@ const UsersTableColumns: ColumnDef<User>[] = [
           checked={row.getIsSelected()}
           variant={"tableCell"}
           onCheckedChange={(value) => row.toggleSelected(!!value)}
-          aria-label="Select row"
+          aria-label={zhMap["Select row"]}
         />
       </div>
     ),
@@ -191,7 +193,7 @@ const UsersTableColumns: ColumnDef<User>[] = [
   {
     accessorKey: "name",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Name</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Name</TransText></DataTableHeader>;
     },
     accessorFn: (row) => row.name + " " + row.email,
     sortingFn: "text",
@@ -200,7 +202,7 @@ const UsersTableColumns: ColumnDef<User>[] = [
   {
     accessorKey: "role",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Role</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Role</TransText></DataTableHeader>;
     },
     sortingFn: "text",
     cell: ({ row }) => <UserRoleCell user={row.original} />,
@@ -208,7 +210,7 @@ const UsersTableColumns: ColumnDef<User>[] = [
   {
     accessorKey: "status",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Status</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Status</TransText></DataTableHeader>;
     },
     sortingFn: "text",
     cell: ({ row }) => <UserStatusCell user={row.original} />,
@@ -216,13 +218,13 @@ const UsersTableColumns: ColumnDef<User>[] = [
   {
     accessorKey: "last_login",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Last Login</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Last Login</TransText></DataTableHeader>;
     },
     sortingFn: "text",
     cell: ({ row }) => (
       <LastTimeRow
         date={dayjs(row.original.last_login).toDate()}
-        text={"Last login on"}
+        text={zhMap["Last login on"]}
       />
     ),
   },

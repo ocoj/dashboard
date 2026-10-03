@@ -10,6 +10,7 @@ import { isNetBirdCloud } from "@utils/netbird";
 import { isNewerVersion } from "@utils/version";
 import { useApplicationContext } from "@/contexts/ApplicationProvider";
 import { VersionInfo as VersionInfoType } from "@/interfaces/Instance";
+import { TransText } from "@/i18n/trans-text";
 
 function formatVersion(version: string): string {
   if (!version) return "";
@@ -92,11 +93,12 @@ const NavigationVersionInfoContent = () => {
           content={
             <div className="text-xs flex flex-col gap-1">
               <span>
-                Installed:{" "}
+                <TransText>Installed</TransText>:{" "}
                 {formatVersion(versionInfo.management_current_version)}
               </span>
               <span>
-                Latest: {formatVersion(versionInfo.management_available_version)}
+                <TransText>Latest</TransText>:{" "}
+                {formatVersion(versionInfo.management_available_version)}
               </span>
             </div>
           }
@@ -104,7 +106,7 @@ const NavigationVersionInfoContent = () => {
           className="w-full"
         >
           <div className="flex items-center justify-between w-full cursor-default">
-            <span>Management</span>
+            <span><TransText>Management</TransText></span>
             <span className="text-nb-gray-300 font-medium">
               {formatShortVersion(versionInfo.management_current_version)}
             </span>
@@ -113,9 +115,13 @@ const NavigationVersionInfoContent = () => {
         <FullTooltip
           content={
             <div className="text-xs flex flex-col gap-1">
-              <span>Installed: {formatVersion(dashboardVersion)}</span>
               <span>
-                Latest: {formatVersion(versionInfo.dashboard_available_version)}
+                <TransText>Installed</TransText>:{" "}
+                {formatVersion(dashboardVersion)}
+              </span>
+              <span>
+                <TransText>Latest</TransText>:{" "}
+                {formatVersion(versionInfo.dashboard_available_version)}
               </span>
             </div>
           }
@@ -123,7 +129,7 @@ const NavigationVersionInfoContent = () => {
           className="w-full"
         >
           <div className="flex items-center justify-between w-full cursor-default">
-            <span>Dashboard</span>
+            <span><TransText>Dashboard</TransText></span>
             <span className="text-nb-gray-300 font-medium">
               {formatShortVersion(dashboardVersion)}
             </span>
@@ -139,7 +145,7 @@ const NavigationVersionInfoContent = () => {
           className="flex items-center justify-center gap-1.5 text-white font-medium bg-netbird hover:bg-netbird-500 transition-colors rounded-md py-1.5 px-2 mt-1"
         >
           <ArrowUpCircle size={12} />
-          <span>Update available</span>
+          <span><TransText>Update available</TransText></span>
         </a>
       )}
     </div>

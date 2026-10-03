@@ -1,3 +1,4 @@
+import { TransText } from "@/i18n/trans-text";
 import HelpText from "@components/HelpText";
 import { Input } from "@components/Input";
 import { Label } from "@components/Label";
@@ -33,7 +34,7 @@ export default function ReverseProxyDomainInput({
       <Label>Domain</Label>
       <HelpText>
         {subdomainRequired
-          ? "Enter a subdomain and select a domain for your service."
+          ? "<TransText>Enter a subdomain and select a domain for your service.</TransText>"
           : "Optionally enter a subdomain, or use the domain directly."}
       </HelpText>
       <div className="flex items-start mt-2">

@@ -38,6 +38,8 @@ import {
   DropdownMenuTrigger,
 } from "@components/DropdownMenu";
 import { idpIcon } from "@/assets/icons/IdentityProviderIcons";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 export const idpTypeLabels: Record<SSOIdentityProviderType, string> = {
   oidc: "OIDC",
@@ -101,7 +103,7 @@ function ActionCell({ provider, onEdit }: ActionCellProps) {
             disabled={!permission.identity_providers.update}
           >
             <PencilIcon size={14} className="mr-2" />
-            Edit
+            <TransText>Edit</TransText>
           </DropdownMenuItem>
           <DropdownMenuItem
             onClick={handleDelete}
@@ -109,7 +111,7 @@ function ActionCell({ provider, onEdit }: ActionCellProps) {
             className="text-red-500 focus:text-red-500"
           >
             <Trash2 size={14} className="mr-2" />
-            Delete
+            <TransText>Delete</TransText>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
@@ -153,7 +155,7 @@ export default function IdentityProvidersTab() {
     {
       accessorKey: "name",
       header: ({ column }) => (
-        <DataTableHeader column={column}>Name</DataTableHeader>
+        <DataTableHeader column={column}><TransText>Name</TransText></DataTableHeader>
       ),
       sortingFn: "text",
       cell: ({ row }) => (
@@ -168,7 +170,7 @@ export default function IdentityProvidersTab() {
     {
       accessorKey: "type",
       header: ({ column }) => (
-        <DataTableHeader column={column}>Type</DataTableHeader>
+        <DataTableHeader column={column}><TransText>Type</TransText></DataTableHeader>
       ),
       cell: ({ row }) => (
         <span className="text-nb-gray-400">
@@ -192,22 +194,21 @@ export default function IdentityProvidersTab() {
         <Breadcrumbs>
           <Breadcrumbs.Item
             href={"/settings"}
-            label={"Settings"}
+            label={<TransText>Settings</TransText>}
             icon={<SettingsIcon size={13} />}
           />
           <Breadcrumbs.Item
             href={"/settings?tab=identity-providers"}
-            label={"Identity Providers"}
+            label={<TransText>Identity Providers</TransText>}
             icon={<FingerprintIcon size={14} />}
             active
           />
         </Breadcrumbs>
         <div className={"flex items-start justify-between"}>
           <div>
-            <h1>Identity Providers</h1>
+            <h1><TransText>Identity Providers</TransText></h1>
             <Paragraph>
-              Configure identity providers for user authentication in your
-              network.
+              <TransText>Configure identity providers for user authentication in your network.</TransText>
             </Paragraph>
           </div>
         </div>
@@ -222,13 +223,13 @@ export default function IdentityProvidersTab() {
 
       <DataTable
         isLoading={isLoading}
-        text={"Identity Providers"}
+        text={zhMap["Identity Providers"]}
         sorting={sorting}
         setSorting={setSorting}
         columns={columns}
         data={providers}
         onRowClick={(row) => handleEdit(row.original)}
-        searchPlaceholder={"Search by name or type..."}
+        searchPlaceholder={zhMap["Search by name or type..."] || "Search by name or type..."}
         getStartedCard={
           <GetStartedTest
             icon={
@@ -249,7 +250,7 @@ export default function IdentityProvidersTab() {
                 disabled={!permission.identity_providers.create}
               >
                 <PlusCircle size={16} />
-                Add Identity Provider
+                <TransText>Add Identity Provider</TransText>
               </Button>
             }
           />
@@ -264,7 +265,7 @@ export default function IdentityProvidersTab() {
                 disabled={!permission.identity_providers.create}
               >
                 <PlusCircle size={16} />
-                Add Identity Provider
+                <TransText>Add Identity Provider</TransText>
               </Button>
             )}
           </>

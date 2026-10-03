@@ -4,6 +4,7 @@ import { cn } from "@utils/helpers";
 import { ExternalLinkIcon, GlobeIcon } from "lucide-react";
 import Image, { StaticImageData } from "next/image";
 import React, { useState } from "react";
+import { TransText } from "@/i18n/trans-text";
 import CloudflareLogo from "@/assets/nameservers/cloudflare.svg";
 import GoogleLogo from "@/assets/nameservers/google.svg";
 import Quad9Logo from "@/assets/nameservers/quad9.svg";
@@ -150,10 +151,10 @@ function NameserverTemplate({
       </div>
       <div className={"h-full flex flex-col text-left px-4 py-3 w-3/4"}>
         <div className={"flex items-center"}>
-          <p className={"font-medium text-sm"}>{title}</p>
+          <p className={"font-medium text-sm"}><TransText>{title}</TransText></p>
         </div>
         {description && (
-          <p className={"text-xs !text-nb-gray-300 mt-1"}>{description}</p>
+          <p className={"text-xs !text-nb-gray-300 mt-1"}><TransText>{description}</TransText></p>
         )}
         {href && (
           <div className={"relative mt-auto"}>
@@ -165,7 +166,7 @@ function NameserverTemplate({
                 e.stopPropagation();
               }}
             >
-              {hrefTitle || "Learn more"}
+              {hrefTitle || <TransText>Learn more</TransText>}
               <ExternalLinkIcon size={12} />
             </InlineLink>
           </div>

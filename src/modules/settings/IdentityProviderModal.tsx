@@ -42,6 +42,7 @@ import {
   SSOIdentityProviderType,
 } from "@/interfaces/IdentityProvider";
 import { idpIcon } from "@/assets/icons/IdentityProviderIcons";
+import { TransText } from "@/i18n/trans-text";
 
 const issuerHints: Partial<Record<SSOIdentityProviderType, string>> = {
   keycloak: "https://keycloak.example.com/realms/{REALM}",
@@ -163,12 +164,12 @@ export default function IdentityProviderModal({
           <ModalHeader
             icon={<FingerprintIcon size={20} />}
             title={
-              isEditing ? "Edit Identity Provider" : "Add Identity Provider"
+              isEditing ? <TransText>Edit Identity Provider</TransText> : <TransText>Add Identity Provider</TransText>
             }
             description={
               isEditing
-                ? "Update the identity provider configuration"
-                : "Configure a new identity provider for authentication"
+                ? <TransText>Update the identity provider configuration</TransText>
+                : <TransText>Configure a new identity provider for authentication</TransText>
             }
             color={"netbird"}
           />
@@ -177,8 +178,8 @@ export default function IdentityProviderModal({
 
           <div className={"px-8 py-6 flex flex-col gap-6"}>
             <div>
-              <Label>Provider Type</Label>
-              <HelpText>Select the type of identity provider</HelpText>
+              <Label><TransText>Provider Type</TransText></Label>
+              <HelpText><TransText>Select the type of identity provider</TransText></HelpText>
               <Select
                 value={type}
                 onValueChange={(v) => {
@@ -191,7 +192,7 @@ export default function IdentityProviderModal({
                 disabled={isEditing}
               >
                 <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Select provider type..." />
+                  <SelectValue placeholder={<TransText>Select provider type...</TransText>} />
                 </SelectTrigger>
                 <SelectContent>
                   {SSOIdentityProviderOptions.map((idp) => (
@@ -207,8 +208,8 @@ export default function IdentityProviderModal({
             </div>
 
             <div>
-              <Label>Name</Label>
-              <HelpText>A friendly name to identify this provider</HelpText>
+              <Label><TransText>Name</TransText></Label>
+              <HelpText><TransText>A friendly name to identify this provider</TransText></HelpText>
               <Input
                 placeholder={"e.g., Corporate SSO"}
                 value={name}
@@ -221,8 +222,8 @@ export default function IdentityProviderModal({
 
             {requiresIssuer && (
               <div>
-                <Label>Issuer URL</Label>
-                <HelpText>The OIDC issuer URL for this provider</HelpText>
+                <Label><TransText>Issuer URL</TransText></Label>
+                <HelpText><TransText>The OIDC issuer URL for this provider</TransText></HelpText>
                 <Input
                   placeholder={issuerHints[type] ?? "https://login.example.com"}
                   value={issuer}
@@ -235,8 +236,8 @@ export default function IdentityProviderModal({
             )}
 
             <div>
-              <Label>Client ID</Label>
-              <HelpText>The OAuth2 confidential client ID</HelpText>
+              <Label><TransText>Client ID</TransText></Label>
+              <HelpText><TransText>The OAuth2 confidential client ID</TransText></HelpText>
               <Input
                 placeholder={"Enter client ID"}
                 value={clientId}
@@ -246,13 +247,13 @@ export default function IdentityProviderModal({
             </div>
 
             <div>
-              <Label>Client Secret</Label>
+              <Label><TransText>Client Secret</TransText></Label>
               <HelpText>
                 {isEditing
                   ? clientIdChanged
-                    ? "Required when client ID is changed"
-                    : "Leave empty to keep the existing secret, or enter a new one"
-                  : "The OAuth2 client secret"}
+                    ? <TransText>Required when client ID is changed</TransText>
+                    : <TransText>Leave empty to keep the existing secret, or enter a new one</TransText>
+                  : <TransText>The OAuth2 client secret</TransText>}
               </HelpText>
               <Input
                 type="password"
@@ -269,33 +270,33 @@ export default function IdentityProviderModal({
 
             <div className={"flex flex-col gap-3"}>
               <div>
-                <Label>Endpoint URLs</Label>
+                <Label><TransText>Endpoint URLs</TransText></Label>
                 <HelpText margin={false}>
-                  Add these to your identity provider configuration
+                  <TransText>Add these to your identity provider configuration</TransText>
                 </HelpText>
               </div>
 
               <div>
-                <Label className={"text-xs mb-1"}>Redirect / Callback</Label>
+                <Label className={"text-xs mb-1"}><TransText>Redirect / Callback</TransText></Label>
                 <Code codeToCopy={redirectUrl} message={copyMessage}>
                   <Code.Line>{redirectUrl}</Code.Line>
                 </Code>
               </div>
 
               <div>
-                <Label className={"text-xs mb-1"}>Logout</Label>
+                <Label className={"text-xs mb-1"}><TransText>Logout</TransText></Label>
                 <Code codeToCopy={logoutUrl} message={logoutCopyMessage}>
                   <Code.Line>{logoutUrl}</Code.Line>
                 </Code>
                 <HelpText margin={false} className={"mt-1.5"}>
-                  Not all identity providers support logout.{" "}
+                  <TransText>Not all identity providers support logout.</TransText>{" "}
                   <InlineLink
                     href={
                       "https://docs.netbird.io/selfhosted/identity-providers"
                     }
                     target={"_blank"}
                   >
-                    Learn more
+                    <TransText>Learn more</TransText>
                   </InlineLink>
                 </HelpText>
               </div>
@@ -305,7 +306,7 @@ export default function IdentityProviderModal({
           <ModalFooter className={"items-center"}>
             <div className={"flex gap-3 w-full justify-end"}>
               <ModalClose asChild={true}>
-                <Button variant={"secondary"}>Cancel</Button>
+                <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
               </ModalClose>
 
               <Button
@@ -321,12 +322,12 @@ export default function IdentityProviderModal({
                 {isEditing ? (
                   <>
                     <SaveIcon size={16} />
-                    Save Changes
+                    <TransText>Save Changes</TransText>
                   </>
                 ) : (
                   <>
                     <PlusCircle size={16} />
-                    Add Provider
+                    <TransText>Add Provider</TransText>
                   </>
                 )}
               </Button>

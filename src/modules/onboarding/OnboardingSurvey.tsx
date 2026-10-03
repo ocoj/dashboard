@@ -1,3 +1,4 @@
+import { TransText } from "@/i18n/trans-text";
 import { useOidcUser } from "@axa-fr/react-oidc";
 import Button from "@components/Button";
 import ButtonGroup from "@components/ButtonGroup";

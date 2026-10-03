@@ -45,6 +45,8 @@ import { useAIProviders } from "@/modules/agent-network/AIProvidersProvider";
 import ActiveInactiveRow from "@/modules/common-table-rows/ActiveInactiveRow";
 import EmptyRow from "@/modules/common-table-rows/EmptyRow";
 import AgentBudgetRuleModal from "@/modules/agent-network/AgentBudgetRuleModal";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 import {
   AgentBudgetRule,
   PolicyBudgetLimit,
@@ -420,12 +422,12 @@ export default function AgentBudgetRulesTable() {
 
       <DataTable
         isLoading={budgetRulesLoading}
-        text={"Global Limits"}
+        text={zhMap["Global Limits"] || "Global Limits"}
         sorting={sorting}
         setSorting={setSorting}
         columns={columns}
         data={budgetRules}
-        searchPlaceholder={"Search global limits by name..."}
+        searchPlaceholder={zhMap["Search global limits by name..."] || "Search global limits by name..."}
         onRowClick={(row) => openEdit(row.original)}
         getStartedCard={
           <GetStartedTest
@@ -441,7 +443,7 @@ export default function AgentBudgetRulesTable() {
                 size={"large"}
               />
             }
-            title={"Set a Global Limit"}
+            title={zhMap["Set a Global Limit"] || "Set a Global Limit"}
             description={
               "Global limits cap token usage and spend across every policy. Apply a limit account-wide, or scope it to specific groups or users."
             }
@@ -454,14 +456,14 @@ export default function AgentBudgetRulesTable() {
                 }}
               >
                 <PlusCircle size={16} />
-                Add Global Limit
+                <TransText>Add Global Limit</TransText>
               </Button>
             }
             learnMore={
               <>
-                Learn more about
+                <TransText>Learn more about</TransText>
                 <InlineLink href={"https://docs.netbird.io/"} target={"_blank"}>
-                  Agent Network
+                  {zhMap["Agent Network"] || "Agent Network"}
                   <ExternalLinkIcon size={12} />
                 </InlineLink>
               </>
@@ -479,7 +481,7 @@ export default function AgentBudgetRulesTable() {
                 }}
               >
                 <IconCirclePlus size={16} />
-                Add Global Limit
+                <TransText>Add Global Limit</TransText>
               </Button>
             </div>
           )

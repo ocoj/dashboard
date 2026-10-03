@@ -8,6 +8,7 @@ import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import Image from "next/image";
 import * as React from "react";
 import { useMemo } from "react";
+import zhMap from "@/i18n/zh-map";
 
 type Props<T> = {
   image: StaticImport | string;
@@ -54,7 +55,7 @@ export function IntegrationCard<T>({
             onClick={onSetup}
           >
             <Repeat size={13} />
-            Connect {name}
+            {zhMap["Connect"] || "Connect"} {name}
           </Button>
         </div>
       ),
@@ -107,7 +108,9 @@ export function IntegrationCard<T>({
           )}
         </div>
         <div>
-          <Paragraph className={"text-sm font-light"}>{description}</Paragraph>
+          <Paragraph className={"text-sm font-light"}>
+            {zhMap[description] || description}
+          </Paragraph>
         </div>
       </div>
 

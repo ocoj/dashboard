@@ -42,6 +42,8 @@ import { Policy } from "@/interfaces/Policy";
 import useGroupHelper from "@/modules/groups/useGroupHelper";
 import NetworkResourceAccessControl from "@/modules/networks/resources/NetworkResourceAccessControl";
 import { ResourceSingleAddressInput } from "@/modules/networks/resources/ResourceSingleAddressInput";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open?: boolean;
@@ -161,7 +163,7 @@ export function ResourceModalContent({
       description:
         "Without access control policies, this resource will not be accessible by any peers. You can also create policies later. Are you sure you want to continue?",
       type: "warning",
-      confirmText: resource ? "Save Changes" : "Add Resource",
+      confirmText: resource ? zhMap["Save Changes"] || "Save Changes" : zhMap["Add Resource"] || "Add Resource",
       cancelText: "Cancel",
       maxWidthClass: "max-w-lg",
     });
@@ -224,7 +226,7 @@ export function ResourceModalContent({
     >
       <ModalHeader
         icon={<WorkflowIcon size={20} />}
-        title={resource ? "Edit Resource" : "Add Resource"}
+        title={resource ? <TransText>Edit Resource</TransText> : <TransText>Add Resource</TransText>}
         description={
           resource
             ? `${resource.name}`
@@ -237,23 +239,23 @@ export function ResourceModalContent({
         <TabsList justify={"start"} className={"px-8"}>
           <TabsTrigger value={"resource"}>
             <WorkflowIcon size={16} />
-            Resource
+            <TransText>Resource</TransText>
           </TabsTrigger>
           <TabsTrigger
             value={"access-control"}
             disabled={!resource && !canCreate}
           >
             <ShieldCheck size={16} />
-            Access Control
+            <TransText>Access Control</TransText>
           </TabsTrigger>
         </TabsList>
 
         <TabsContent value={"resource"} className={"pb-4"}>
           <div className={"px-8 flex-col flex gap-6"}>
             <div>
-              <Label>Name</Label>
+              <Label><TransText>Name</TransText></Label>
               <HelpText>
-                Set an easily identifiable name for your resource
+                <TransText>Set an easily identifiable name for your resource</TransText>
               </HelpText>
               <Input
                 ref={nameRef}
@@ -272,29 +274,29 @@ export function ResourceModalContent({
               onError={setAddressError}
               description={
                 <>
-                  Enter a single{" "}
+                  <TransText>Enter a single</TransText>{" "}
                   <HelpTooltip
                     content={
-                      "A single host address, e.g., 10.0.0.1 or 192.168.1.5. Use this to give access to a specific machine or service."
+                      <TransText>A single host address, e.g., 10.0.0.1 or 192.168.1.5. Use this to give access to a specific machine or service.</TransText>
                     }
                   >
-                    IP Address
+                    <TransText>IP Address</TransText>
                   </HelpTooltip>
                   ,{" "}
                   <HelpTooltip
                     content={
-                      "To give access to an entire subnet, use a CIDR block. For example, 10.0.0.0/24 or 192.168.1.0/24."
+                      <TransText>To give access to an entire subnet, use a CIDR block. For example, 10.0.0.0/24 or 192.168.1.0/24.</TransText>
                     }
                   >
-                    CIDR Block
+                    <TransText>CIDR Block</TransText>
                   </HelpTooltip>{" "}
-                  or{" "}
+                  <TransText>or</TransText>{" "}
                   <HelpTooltip
                     content={
-                      "A DNS domain name, e.g., service.internal, example.com or *.example.com to match all subdomains."
+                      <TransText>A DNS domain name, e.g., service.internal, example.com or *.example.com to match all subdomains.</TransText>
                     }
                   >
-                    Domain Name
+                    <TransText>Domain Name</TransText>
                   </HelpTooltip>
                 </>
               }
@@ -312,16 +314,15 @@ export function ResourceModalContent({
                   data-testid="resource-optional-settings"
                 >
                   <span className={"relative top-[1px]"}>
-                    Optional Settings
+                    <TransText>Optional Settings</TransText>
                   </span>
                 </AccordionTrigger>
                 <AccordionContent className={""}>
                   <div className={"flex flex-col gap-6 pb-4 pt-2"}>
                     <div>
-                      <Label>Description</Label>
+                      <Label><TransText>Description</TransText></Label>
                       <HelpText>
-                        Write a short description to add more context to this
-                        resource.
+                        <TransText>Write a short description to add more context to this resource.</TransText>
                       </HelpText>
                       <Input
                         placeholder={"e.g., Production, Development"}
@@ -331,11 +332,9 @@ export function ResourceModalContent({
                       />
                     </div>
                     <div>
-                      <Label>Resource Groups</Label>
+                      <Label><TransText>Resource Groups</TransText></Label>
                       <HelpText className={"mt-1"}>
-                        Add this resource to a group (e.g., Databases, Web
-                        Servers) and reference the group <br /> in access
-                        policies to simplify management.
+                        <TransText>Add this resource to a group (e.g., Databases, Web Servers) and reference the group in access policies to simplify management.</TransText>
                       </HelpText>
                       <PeerGroupSelector
                         side={"top"}
@@ -398,12 +397,12 @@ export function ResourceModalContent({
       <ModalFooter className={"items-center"}>
         <div className={"w-full"}>
           <Paragraph className={"text-sm mt-auto"}>
-            Learn more about
+            <TransText>Learn more about</TransText>
             <InlineLink
               href={"https://docs.netbird.io/how-to/networks#resources"}
               target={"_blank"}
             >
-              Resources
+              <TransText>Resources</TransText>
               <ExternalLinkIcon size={12} />
             </InlineLink>
           </Paragraph>
@@ -414,7 +413,7 @@ export function ResourceModalContent({
               {tab === "resource" && (
                 <>
                   <ModalClose asChild={true}>
-                    <Button variant={"secondary"}>Cancel</Button>
+                    <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
                   </ModalClose>
                   <Button
                     variant={"primary"}
@@ -422,7 +421,7 @@ export function ResourceModalContent({
                     onClick={() => setTab("access-control")}
                     disabled={!canCreate}
                   >
-                    Continue
+                    <TransText>Continue</TransText>
                   </Button>
                 </>
               )}
@@ -433,7 +432,7 @@ export function ResourceModalContent({
                     variant={"secondary"}
                     onClick={() => setTab("resource")}
                   >
-                    Back
+                    <TransText>Back</TransText>
                   </Button>
                   <Button
                     variant={"primary"}
@@ -442,7 +441,7 @@ export function ResourceModalContent({
                     disabled={!canCreate}
                   >
                     <PlusCircle size={16} />
-                    Add Resource
+                    <TransText>Add Resource</TransText>
                   </Button>
                 </>
               )}
@@ -450,7 +449,7 @@ export function ResourceModalContent({
           ) : (
             <>
               <ModalClose asChild={true}>
-                <Button variant={"secondary"}>Cancel</Button>
+                <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
               </ModalClose>
               <Button
                 variant={"primary"}
@@ -458,7 +457,7 @@ export function ResourceModalContent({
                 onClick={updateResource}
                 disabled={!canCreate}
               >
-                Save Changes
+                <TransText>Save Changes</TransText>
               </Button>
             </>
           )}

@@ -17,6 +17,8 @@ import EmptyRow from "@/modules/common-table-rows/EmptyRow";
 import ExpirationDateRow from "@/modules/common-table-rows/ExpirationDateRow";
 import LastTimeRow from "@/modules/common-table-rows/LastTimeRow";
 import SetupKeyNameCell from "@/modules/setup-keys/SetupKeyNameCell";
+import zhMap from "@/i18n/zh-map";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   user: User;
@@ -26,7 +28,7 @@ export const AccessTokensTableColumns: ColumnDef<AccessToken>[] = [
   {
     accessorKey: "name",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Name</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Name</TransText></DataTableHeader>;
     },
     sortingFn: "text",
     cell: ({ row }) => {
@@ -37,7 +39,7 @@ export const AccessTokensTableColumns: ColumnDef<AccessToken>[] = [
   {
     accessorKey: "expiration_date",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Expires</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Expires</TransText></DataTableHeader>;
     },
     cell: ({ row }) => (
       <ExpirationDateRow date={row.original.expiration_date} />
@@ -46,14 +48,14 @@ export const AccessTokensTableColumns: ColumnDef<AccessToken>[] = [
   {
     accessorKey: "last_used",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Last used</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Last used</TransText></DataTableHeader>;
     },
     sortingFn: "datetime",
     cell: ({ row }) => {
       return typeof row.original.last_used === "undefined" ? (
         <EmptyRow />
       ) : (
-        <LastTimeRow date={row.original.last_used} text={"Last used on"} />
+        <LastTimeRow date={row.original.last_used} text={zhMap["Last used on"]} />
       );
     },
   },
@@ -88,7 +90,7 @@ export default function AccessTokensTable({ user }: Readonly<Props>) {
       <Card className={"mt-5 w-full"}>
         {tokens && tokens.length > 0 ? (
           <DataTable
-            text={"Access Tokens"}
+            text={zhMap["Access Tokens"]}
             tableClassName={"mt-0"}
             minimal={true}
             showSearchAndFilters={false}

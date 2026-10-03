@@ -1,3 +1,4 @@
+import { TransText } from "@/i18n/trans-text";
 import Button from "@components/Button";
 import { Callout } from "@components/Callout";
 import InlineLink from "@components/InlineLink";
@@ -167,7 +168,7 @@ export const CustomDomainModal = ({
         <ModalFooter className={"items-center"}>
           <div className={"w-full"}>
             <Paragraph className={"text-sm mt-auto"}>
-              Learn more about
+              <TransText>Learn more about</TransText>
               <InlineLink
                 href={REVERSE_PROXY_CUSTOM_DOMAINS_DOCS_LINK}
                 target={"_blank"}
@@ -179,7 +180,7 @@ export const CustomDomainModal = ({
           </div>
           <div className={"flex gap-3 w-full justify-end"}>
             <ModalClose asChild={true}>
-              <Button variant={"secondary"}>Cancel</Button>
+              <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
             </ModalClose>
 
             <Button

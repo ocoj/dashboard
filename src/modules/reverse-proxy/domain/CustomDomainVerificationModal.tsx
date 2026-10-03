@@ -1,3 +1,4 @@
+import { TransText } from "@/i18n/trans-text";
 import Button from "@components/Button";
 import Card from "@components/Card";
 import {
@@ -100,7 +101,7 @@ export const CustomDomainVerificationModal = ({
                   No proxy clusters are currently connected. Please ensure at
                   least one proxy is running to configure DNS verification.{" "}
                   <br />
-                  Learn more about{" "}
+                  <TransText>Learn more about</TransText>{" "}
                   <InlineLink
                     href={REVERSE_PROXY_CLUSTERS_DOCS_LINK}
                     target={"_blank"}
@@ -151,7 +152,7 @@ export const CustomDomainVerificationModal = ({
         <ModalFooter className={"items-center"}>
           <div className={"w-full"}>
             <Paragraph className={"text-sm mt-auto"}>
-              Learn more about
+              <TransText>Learn more about</TransText>
               <InlineLink
                 href={REVERSE_PROXY_DOMAIN_VERIFICATION_LINK}
                 target={"_blank"}

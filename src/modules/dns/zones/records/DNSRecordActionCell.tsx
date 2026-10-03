@@ -5,6 +5,7 @@ import { usePermissions } from "@/contexts/PermissionsProvider";
 import { DNSRecord } from "@/interfaces/DNS";
 import { useDNSZones } from "@/modules/dns/zones/DNSZonesProvider";
 import { useDNSZone } from "@/modules/dns/zones/records/DNSRecordsTable";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   record: DNSRecord;
@@ -25,7 +26,7 @@ export const DNSRecordActionCell = ({ record }: Props) => {
         data-testid="edit-dns-record"
       >
         <PenSquare size={16} />
-        Edit
+        <TransText>Edit</TransText>
       </Button>
       <Button
         variant={"danger-outline"}
@@ -35,7 +36,7 @@ export const DNSRecordActionCell = ({ record }: Props) => {
         data-testid="delete-dns-record"
       >
         <Trash2 size={16} />
-        Delete
+        <TransText>Delete</TransText>
       </Button>
     </div>
   );

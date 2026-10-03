@@ -21,6 +21,7 @@ import { useDialog } from "@/contexts/DialogProvider";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { useRoutes } from "@/contexts/RoutesProvider";
 import { Route } from "@/interfaces/Route";
+import { TransText } from "@/i18n/trans-text";
 import RouteUpdateModal from "@/modules/routes/RouteUpdateModal";
 
 type Props = {
@@ -107,7 +108,7 @@ export default function RouteActionCell({ route }: Props) {
           >
             <div className={"flex gap-3 items-center"}>
               <SquarePenIcon size={14} className={"shrink-0"} />
-              Edit
+              <TransText>Edit</TransText>
             </div>
           </DropdownMenuItem>
           <DropdownMenuItem
@@ -119,7 +120,7 @@ export default function RouteActionCell({ route }: Props) {
           >
             <div className={"flex gap-3 items-center"}>
               <PowerIcon size={14} className={"shrink-0"} />
-              {route.enabled ? "Disable" : "Enable"}
+              {route.enabled ? <TransText>Disable</TransText> : <TransText>Enable</TransText>}
             </div>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
@@ -130,7 +131,7 @@ export default function RouteActionCell({ route }: Props) {
           >
             <div className={"flex gap-3 items-center"}>
               <Trash2 size={14} className={"shrink-0"} />
-              Delete
+              <TransText>Delete</TransText>
             </div>
           </DropdownMenuItem>
         </DropdownMenuContent>

@@ -7,6 +7,7 @@ import {
 } from "@components/DropdownMenu";
 import { Modal } from "@components/modal/Modal";
 import SquareIcon from "@components/SquareIcon";
+import { TransText } from "@/i18n/trans-text";
 import { ChevronDown, PlusCircle } from "lucide-react";
 import React, { useState } from "react";
 import NetworkRoutesIcon from "@/assets/icons/NetworkRoutesIcon";
@@ -44,7 +45,7 @@ export default function AddRouteDropdownButton() {
           }}
         >
           <Button variant={"primary"}>
-            Add Route
+            <TransText>Add Route</TransText>
             <ChevronDown size={16} />
           </Button>
         </DropdownMenuTrigger>
@@ -61,9 +62,9 @@ export default function AddRouteDropdownButton() {
                 size={"small"}
               />
               <div className={"flex flex-col text-left"}>
-                <div className={"text-left text-white"}>New Network Route</div>
+                <div className={"text-left text-white"}><TransText>New Network Route</TransText></div>
                 <div className={"text-xs"}>
-                  Create a new network route with this peer
+                  <TransText>Create a new network route with this peer</TransText>
                 </div>
               </div>
             </div>
@@ -83,9 +84,9 @@ export default function AddRouteDropdownButton() {
                 size={"small"}
               />
               <div className={"flex flex-col text-left"}>
-                <div className={"text-left text-white"}>Existing Network</div>
+                <div className={"text-left text-white"}><TransText>Existing Network</TransText></div>
                 <div className={"text-xs"}>
-                  Add this peer to an existing network
+                  <TransText>Add this peer to an existing network</TransText>
                 </div>
               </div>
             </div>

@@ -9,6 +9,7 @@ import { useMemo } from "react";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { Network } from "@/interfaces/Network";
 import { useNetworksContext } from "@/modules/networks/NetworkProvider";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   network: Network;
@@ -19,9 +20,9 @@ export default function NetworkRoutingPeerCell({ network }: Props) {
   const disabledText = useMemo(
     () => (
       <>
-        High availability is currently{" "}
-        <span className={"text-yellow-400 font-medium"}>inactive</span> for this
-        network.
+        <TransText>High availability is currently</TransText>{" "}
+        <span className={"text-yellow-400 font-medium"}>inactive</span>{" "}
+        <TransText>for this network.</TransText>
       </>
     ),
     [],
@@ -30,9 +31,9 @@ export default function NetworkRoutingPeerCell({ network }: Props) {
   const enabledText = useMemo(
     () => (
       <>
-        High availability is{" "}
-        <span className={"text-green-500 font-medium"}>active</span> for this
-        network.
+        <TransText>High availability is</TransText>{" "}
+        <span className={"text-green-500 font-medium"}>active</span>{" "}
+        <TransText>for this network.</TransText>
       </>
     ),
     [],
@@ -57,13 +58,11 @@ export default function NetworkRoutingPeerCell({ network }: Props) {
               {isHighlyAvailable ? enabledText : disabledText}
               {isHighlyAvailable ? (
                 <div className={"inline-flex mt-2"}>
-                  You can add more routing peers to increase the availability of
-                  this network.
+                  <TransText>You can add more routing peers to increase the availability of this network.</TransText>
                 </div>
               ) : (
                 <div className={"inline-flex mt-2"}>
-                  Go ahead and add more routing peers or groups with routing
-                  peers to enable high availability for this network.
+                  <TransText>Go ahead and add more routing peers or groups with routing peers to enable high availability for this network.</TransText>
                 </div>
               )}
             </>
@@ -89,7 +88,7 @@ export default function NetworkRoutingPeerCell({ network }: Props) {
                 )}
               ></div>
               {network?.routing_peers_count && network.routing_peers_count}{" "}
-              Peer(s)
+              <TransText>Peer(s)</TransText>
             </>
 
             <HelpCircle size={12} />
@@ -105,7 +104,7 @@ export default function NetworkRoutingPeerCell({ network }: Props) {
         aria-label={"Add routing peer"}
       >
         <PlusCircle size={12} />
-        Add
+        <TransText>Add</TransText>
       </Button>
     </div>
   );

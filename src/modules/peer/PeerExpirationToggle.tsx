@@ -10,13 +10,14 @@ import { usePermissions } from "@/contexts/PermissionsProvider";
 import { Peer } from "@/interfaces/Peer";
 import InlineLink from "@components/InlineLink";
 import { useAccount } from "@/modules/account/useAccount";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   peer: Peer;
   value: boolean;
   onChange: (value: boolean) => void;
-  title?: string;
-  description?: string;
+  title?: React.ReactNode;
+  description?: React.ReactNode;
   icon?: React.ReactNode;
   className?: string;
   type?: "login-expiration" | "inactivity-expiration";
@@ -26,8 +27,8 @@ export const PeerExpirationToggle = ({
   peer,
   value,
   onChange,
-  title = "Session Expiration",
-  description = "Enable to require SSO login peers to re-authenticate when their session expires after a certain period of time.",
+  title = <TransText>Session Expiration</TransText>,
+  description = <TransText>Enable to require SSO login peers to re-authenticate when their session expires after a certain period of time.</TransText>,
   icon,
   className,
   variant = "default",
@@ -56,14 +57,14 @@ export const PeerExpirationToggle = ({
             <>
               <IconInfoCircle size={14} />
               <span>
-                This setting is disabled for all peers added with an setup-key.
+                <TransText>This setting is disabled for all peers added with an setup-key.</TransText>
               </span>
             </>
           ) : (
             <>
               <LockIcon size={14} />
               <span>
-                {`You don't have the required permissions to update this setting.`}
+                <TransText>You don't have the required permissions to update this setting.</TransText>
               </span>
             </>
           )}
@@ -81,7 +82,7 @@ export const PeerExpirationToggle = ({
             Global setting {text} is currently disabled. Enable the global
             setting to be able to toggle it individually per peer.{"  "}
             <InlineLink href={"/settings"}>
-              Go to Settings <ArrowUpRightIcon size={12} />
+              <TransText>Go to Settings</TransText> <ArrowUpRightIcon size={12} />
             </InlineLink>
           </div>
         </div>

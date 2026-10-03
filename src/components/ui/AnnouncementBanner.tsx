@@ -4,6 +4,8 @@ import { cva, VariantProps } from "class-variance-authority";
 import { ArrowRightIcon, XIcon } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { useAnnouncement } from "@/contexts/AnnouncementProvider";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 const variants = cva(
   {},
@@ -71,11 +73,13 @@ export const AnnouncementBanner = () => {
               variants({ tagBadge: announcement.variant }),
             )}
           >
-            {announcement.tag}
+            <TransText>{announcement.tag}</TransText>
           </div>
         )}
         <div>
-          <span className={"mr-2"}>{announcement.text}</span>
+          <span className={"mr-2"}>
+            {zhMap[announcement.text] || announcement.text}
+          </span>
           {announcement.link && (
             <InlineLink
               href={announcement.link || "#"}
@@ -85,7 +89,7 @@ export const AnnouncementBanner = () => {
                 variants({ inlineLink: announcement.variant }),
               )}
             >
-              {announcement.linkText || "Learn more"}
+              <TransText>{announcement.linkText || "Learn more"}</TransText>
               <ArrowRightIcon size={14} />
             </InlineLink>
           )}

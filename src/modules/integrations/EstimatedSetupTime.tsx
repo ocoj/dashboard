@@ -1,5 +1,6 @@
 import { Clock4 } from "lucide-react";
 import * as React from "react";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   minutes?: number;
@@ -13,8 +14,8 @@ export const EstimatedSetupTime = ({ minutes = 5 }: Props) => {
     >
       <Clock4 size={12} />
       <div>
-        Estimated setup time:
-        <span className={"font-medium"}> {minutes} Minutes</span>
+        <TransText>Estimated setup time:</TransText>
+        <span className={"font-medium"}> {minutes} <TransText>Minutes</TransText></span>
       </div>
     </div>
   );

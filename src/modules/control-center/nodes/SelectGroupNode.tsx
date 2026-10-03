@@ -10,6 +10,7 @@ import { ChevronsUpDown } from "lucide-react";
 import * as React from "react";
 import { useMemo } from "react";
 import { Group } from "@/interfaces/Group";
+import zhMap from "@/i18n/zh-map";
 
 type NodeProps = Node<
   {
@@ -64,7 +65,7 @@ export const SelectGroupNode = ({ data, id }: NodeProps) => {
         onChange={data.onChange}
         options={groupOptions}
         showSearch={true}
-        searchPlaceholder={"Search groups..."}
+        searchPlaceholder={zhMap["Search groups..."] || "Search groups..."}
         popoverWidth={280}
         className={"!bg-nb-gray-920  !hover:bg-nb-gray-925 !text-nb-gray-300"}
         size={"xs"}

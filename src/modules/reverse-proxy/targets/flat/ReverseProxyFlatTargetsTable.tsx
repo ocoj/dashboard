@@ -23,6 +23,7 @@ import ReverseProxyIcon from "@/assets/icons/ReverseProxyIcon";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { useReverseProxies } from "@/contexts/ReverseProxiesProvider";
 import { ReverseProxyFlatTarget } from "@/interfaces/ReverseProxy";
+import { TransText } from "@/i18n/trans-text";
 import ReverseProxyArrowCell from "@/modules/reverse-proxy/table/ReverseProxyArrowCell";
 import ReverseProxyAccessControlCell from "@/modules/reverse-proxy/table/ReverseProxyAccessControlCell";
 import ReverseProxyAuthCell from "@/modules/reverse-proxy/table/ReverseProxyAuthCell";
@@ -78,7 +79,7 @@ const FlatTargetsTableColumns: ColumnDef<ReverseProxyFlatTarget>[] = [
   {
     accessorKey: "host",
     header: ({ column }) => (
-      <DataTableHeader column={column}>Destination</DataTableHeader>
+      <DataTableHeader column={column}><TransText>Destination</TransText></DataTableHeader>
     ),
     cell: ({ row }) => (
       <div data-proxy-id={row.original.proxy.id}>
@@ -93,7 +94,7 @@ const FlatTargetsTableColumns: ColumnDef<ReverseProxyFlatTarget>[] = [
   {
     accessorKey: "target_type",
     header: ({ column }) => (
-      <DataTableHeader column={column}>Resource</DataTableHeader>
+      <DataTableHeader column={column}><TransText>Resource</TransText></DataTableHeader>
     ),
     cell: ({ row }) => (
       <div data-proxy-id={row.original.proxy.id}>

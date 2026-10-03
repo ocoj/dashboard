@@ -8,6 +8,7 @@ import { notify } from "@components/Notification";
 import { useSWRConfig } from "swr";
 import { cn } from "@utils/helpers";
 import { useAccount } from "@/modules/account/useAccount";
+import { TransText } from "@/i18n/trans-text";
 
 export const PeerExpirationSettings = () => {
   const { peer, update } = usePeer();
@@ -90,9 +91,9 @@ export const PeerExpirationSettings = () => {
                 inactivityExpiration: state,
               });
             }}
-            title={"Require login after disconnect"}
+            title={<TransText>Require login after disconnect</TransText>}
             description={
-              "Enable to require authentication after users disconnect from management for 10 minutes."
+              <TransText>Enable to require authentication after users disconnect from management for 10 minutes.</TransText>
             }
             className={
               !peerLoginExpiration ? "opacity-40 pointer-events-none" : ""

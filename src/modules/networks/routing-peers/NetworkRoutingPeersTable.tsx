@@ -19,6 +19,7 @@ import { PlusCircle } from "lucide-react";
 import * as React from "react";
 import { useMemo, useState } from "react";
 import PeerIcon from "@/assets/icons/PeerIcon";
+import { TransText } from "@/i18n/trans-text";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { NetworkRouter } from "@/interfaces/Network";
 import { useNetworksContext } from "@/modules/networks/NetworkProvider";
@@ -26,6 +27,7 @@ import { NetworkRoutingPeerName } from "@/modules/networks/routing-peers/Network
 import { RoutingPeersActionCell } from "@/modules/networks/routing-peers/RoutingPeersActionCell";
 import { RoutingPeersMasqueradeCell } from "@/modules/networks/routing-peers/RoutingPeersMasqueradeCell";
 import RouteMetricCell from "@/modules/routes/RouteMetricCell";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   routers?: NetworkRouter[];
@@ -38,7 +40,7 @@ const NetworkRouterColumns: ColumnDef<NetworkRouter>[] = [
     id: "name",
     accessorKey: "id",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Peer</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Peer</TransText></DataTableHeader>;
     },
     sortingFn: "text",
     cell: ({ row }) => <NetworkRoutingPeerName router={row.original} />,
@@ -51,7 +53,7 @@ const NetworkRouterColumns: ColumnDef<NetworkRouter>[] = [
     id: "metric",
     accessorKey: "metric",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Metric</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Metric</TransText></DataTableHeader>;
     },
     cell: ({ row }) => (
       <RouteMetricCell metric={row.original.metric} useHoverStyle={false} />
@@ -61,7 +63,7 @@ const NetworkRouterColumns: ColumnDef<NetworkRouter>[] = [
     id: "masquerade",
     accessorKey: "masquerade",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Masquerade</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Masquerade</TransText></DataTableHeader>;
     },
     cell: ({ row }) => <RoutingPeersMasqueradeCell router={row.original} />,
   },
@@ -136,7 +138,7 @@ export default function NetworkRoutingPeersTable({
       showSearchAndFilters={true}
       inset={false}
       tableClassName={"mt-0"}
-      text={"Routing Peers"}
+      text={zhMap["Routing Peers"]}
       columns={NetworkRouterColumns}
       keepStateInLocalStorage={false}
       initialPageSize={25}
@@ -145,7 +147,7 @@ export default function NetworkRoutingPeersTable({
         <TableFilterChips table={table} filters={filterDefs} />
       )}
       data={routers}
-      searchPlaceholder={"Search by peer name, group name..."}
+      searchPlaceholder={zhMap["Search by peer name, group name..."] || "Search by peer name, group name..."}
       isLoading={isLoading}
       getStartedCard={
         <NoResults
@@ -168,7 +170,7 @@ export default function NetworkRoutingPeersTable({
           disabled={!permission.networks.update}
         >
           <PlusCircle size={16} />
-          Add
+          <TransText>Add</TransText>
         </Button>
       )}
     >

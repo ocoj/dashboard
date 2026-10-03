@@ -45,6 +45,8 @@ import UserBlockCell from "@/modules/users/table-cells/UserBlockCell";
 import UserStatusCell from "@/modules/users/table-cells/UserStatusCell";
 import { UserPeersSection } from "@/modules/users/UserPeersSection";
 import { UserRoleSelector } from "@/modules/users/UserRoleSelector";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 export default function UserPage() {
   const queryParameter = useSearchParams();
@@ -150,7 +152,7 @@ function UserOverview({ user, initialGroups }: Readonly<Props>) {
         <Breadcrumbs>
           <Breadcrumbs.Item
             href={"/team"}
-            label={"Team"}
+            label={zhMap["Team"]}
             disabled={!permission.users.read}
             icon={<TeamIcon size={13} />}
           />
@@ -158,13 +160,13 @@ function UserOverview({ user, initialGroups }: Readonly<Props>) {
           {isServiceUser ? (
             <Breadcrumbs.Item
               href={"/team/service-users"}
-              label={"Service Users"}
+              label={zhMap["Service Users"]}
               icon={<IconSettings2 size={17} />}
             />
           ) : (
             <Breadcrumbs.Item
               href={"/team/users"}
-              label={"Users"}
+              label={zhMap["Users"]}
               disabled={!permission.users.read}
               icon={<User2 size={16} />}
             />
@@ -237,9 +239,9 @@ function UserOverview({ user, initialGroups }: Readonly<Props>) {
           <div className={"flex flex-col gap-8 w-1/2 "}>
             {!isServiceUser && isOwnerOrAdmin && (
               <div>
-                <Label>Auto-assigned groups</Label>
+                <Label><TransText>Auto-assigned groups</TransText></Label>
                 <HelpText>
-                  Groups will be assigned to peers added by this user.
+                  <TransText>Groups will be assigned to peers added by this user.</TransText>
                 </HelpText>
                 <PeerGroupSelector
                   disabled={isUser}
@@ -252,9 +254,9 @@ function UserOverview({ user, initialGroups }: Readonly<Props>) {
             )}
             <div className={"flex items-start"}>
               <div className={"w-2/3"}>
-                <Label>User Role</Label>
+                <Label><TransText>User Role</TransText></Label>
                 <HelpText>
-                  Set a role for the user to assign access permissions.
+                  <TransText>Set a role for the user to assign access permissions.</TransText>
                 </HelpText>
               </div>
               <div className={"w-1/3"}>
@@ -307,7 +309,7 @@ function UserOverview({ user, initialGroups }: Readonly<Props>) {
               <div className={"max-w-6xl"}>
                 <div className={"flex justify-between items-center"}>
                   <div>
-                    <h2>Access Tokens</h2>
+                    <h2><TransText>Access Tokens</TransText></h2>
                     <Paragraph>
                       Access tokens give access to NetBird API.
                     </Paragraph>

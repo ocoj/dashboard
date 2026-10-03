@@ -21,6 +21,7 @@ import { usePermissions } from "@/contexts/PermissionsProvider";
 import { Group } from "@/interfaces/Group";
 import { NetworkResource } from "@/interfaces/Network";
 import { useNetworksContext } from "@/modules/networks/NetworkProvider";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   resource: NetworkResource;
@@ -88,7 +89,7 @@ export const ResourceActionCell = ({ resource }: Props) => {
           >
             <div className={"flex gap-3 items-center"}>
               <SquarePenIcon size={14} className={"shrink-0"} />
-              Edit
+              <TransText>Edit</TransText>
             </div>
           </DropdownMenuItem>
           <DropdownMenuItem
@@ -100,7 +101,7 @@ export const ResourceActionCell = ({ resource }: Props) => {
           >
             <div className={"flex gap-3 items-center"}>
               <PowerIcon size={14} className={"shrink-0"} />
-              {resource.enabled ? "Disable" : "Enable"}
+              {resource.enabled ? <TransText>Disable</TransText> : <TransText>Enable</TransText>}
             </div>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
@@ -114,7 +115,7 @@ export const ResourceActionCell = ({ resource }: Props) => {
           >
             <div className={"flex gap-3 items-center"}>
               <Trash2 size={14} className={"shrink-0"} />
-              Delete
+              <TransText>Delete</TransText>
             </div>
           </DropdownMenuItem>
         </DropdownMenuContent>

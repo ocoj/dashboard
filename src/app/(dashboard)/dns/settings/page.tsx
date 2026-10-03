@@ -24,6 +24,8 @@ import { NameserverSettings } from "@/interfaces/NameserverSettings";
 import PageContainer from "@/layouts/PageContainer";
 import useGroupHelper from "@/modules/groups/useGroupHelper";
 import { useGroupIdsToGroups } from "@/modules/groups/useGroupIdsToGroups";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 export default function NameServerSettings() {
   const { permission } = usePermissions();
@@ -41,24 +43,24 @@ export default function NameServerSettings() {
         <Breadcrumbs>
           <Breadcrumbs.Item
             href={"/dns"}
-            label={"DNS"}
+            label={zhMap["DNS"]}
             icon={<DNSIcon size={13} />}
           />
           <Breadcrumbs.Item
             href={"/dns/settings"}
-            label={"DNS Settings"}
+            label={zhMap["DNS Settings"]}
             active
             icon={<IconSettings2 size={15} />}
           />
         </Breadcrumbs>
-        <h1>DNS Settings</h1>
+        <h1><TransText>DNS Settings</TransText></h1>
         <Paragraph>
-          {"Manage your account's DNS settings."}{" "}
+          <TransText>Manage your account's DNS settings.</TransText>{" "}
           <InlineLink
             href={"https://docs.netbird.io/how-to/manage-dns-in-your-network"}
             target={"_blank"}
           >
-            Learn more
+            <TransText>Learn more</TransText>
             <ExternalLinkIcon size={12} />
           </InlineLink>
         </Paragraph>
@@ -118,9 +120,9 @@ const SettingDisabledManagementGroups = ({
   return (
     <Card className={"mt-8 max-w-xl"}>
       <div className={"px-8 py-8"}>
-        <Label>Disable DNS management for these groups</Label>
+        <Label><TransText>Disable DNS management for these groups</TransText></Label>
         <HelpText>
-          Peers in these groups will require manual domain name resolution
+          <TransText>Peers in these groups will require manual domain name resolution</TransText>
         </HelpText>
         <PeerGroupSelector
           data-testid={"dns-groups-selector"}

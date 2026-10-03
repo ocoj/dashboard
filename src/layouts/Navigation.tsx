@@ -25,6 +25,7 @@ import { NavigationUsageInfo } from "@/modules/billing/NavigationUsageInfo";
 import { NetworkNavigation } from "@/modules/networks/misc/NetworkNavigation";
 import { SmallBadge } from "@components/ui/SmallBadge";
 import * as React from "react";
+import { TransText } from "@/i18n/trans-text";
 import ReverseProxyIcon from "@/assets/icons/ReverseProxyIcon";
 import ActivityIcon from "@/assets/icons/ActivityIcon";
 
@@ -83,14 +84,14 @@ export default function Navigation({
               <SidebarItemGroup>
                 <SidebarItem
                   icon={<ControlCenterIcon size={16} />}
-                  label="Control Center"
+                  label={<TransText>Control Center</TransText>}
                   href={"/control-center"}
                   visible={permission.policies.read}
                 />
 
                 <SidebarItem
                   icon={<PeerIcon />}
-                  label="Peers"
+                  label={<TransText>Peers</TransText>}
                   href={"/peers"}
                   visible={!isRestricted}
                 />
@@ -98,26 +99,26 @@ export default function Navigation({
                 <DistributorNavigation />
                 <SidebarItem
                   icon={<AccessControlIcon />}
-                  label="Access Control"
+                  label={<TransText>Access Control</TransText>}
                   href={"/access-control"}
                   collapsible
                   visible={permission.policies.read}
                 >
                   <SidebarItem
-                    label="Policies"
+                    label={<TransText>Policies</TransText>}
                     href={"/access-control"}
                     isChild
                     exactPathMatch={true}
                     visible={permission.policies.read}
                   />
                   <SidebarItem
-                    label="Groups"
+                    label={<TransText>Groups</TransText>}
                     isChild
                     href={"/groups"}
                     visible={permission.policies.read}
                   />
                   <SidebarItem
-                    label="Posture Checks"
+                    label={<TransText>Posture Checks</TransText>}
                     isChild
                     href={"/posture-checks"}
                     exactPathMatch={true}
@@ -132,7 +133,7 @@ export default function Navigation({
                   labelClassName={"pr-0"}
                   label={
                     <div className={"flex items-center gap-2"}>
-                      Reverse Proxy
+                      <TransText>Reverse Proxy</TransText>
                       <SmallBadge
                         text={"Beta"}
                         variant={"sky"}
@@ -147,28 +148,28 @@ export default function Navigation({
                   visible={permission?.services?.read && !agentNetworkOnly}
                 >
                   <SidebarItem
-                    label="Services"
+                    label={<TransText>Services</TransText>}
                     isChild
                     href={"/reverse-proxy/services"}
                     exactPathMatch={true}
                     visible={permission?.services?.read}
                   />
                   <SidebarItem
-                    label="Custom Domains"
+                    label={<TransText>Custom Domains</TransText>}
                     isChild
                     href={"/reverse-proxy/custom-domains"}
                     exactPathMatch={true}
                     visible={permission?.services?.read}
                   />
                   <SidebarItem
-                    label="Clusters"
+                    label={<TransText>Clusters</TransText>}
                     isChild
                     href={"/reverse-proxy/clusters"}
                     exactPathMatch={true}
                     visible={permission?.services?.read}
                   />
                   <SidebarItem
-                    label="Access Logs"
+                    label={<TransText>Access Logs</TransText>}
                     isChild
                     href={"/reverse-proxy/logs"}
                     exactPathMatch={true}
@@ -181,7 +182,7 @@ export default function Navigation({
                   labelClassName={"pr-0"}
                   label={
                     <div className={"flex items-center gap-2"}>
-                      Agent Network
+                      <TransText>Agent Network</TransText>
                       {!agentNetworkOnly && (
                         <SmallBadge
                           text={"Beta"}
@@ -203,28 +204,28 @@ export default function Navigation({
                   visible={agentNetworkEnabled && permission?.services?.read}
                 >
                   <SidebarItem
-                    label="Providers"
+                    label={<TransText>Providers</TransText>}
                     isChild
                     href={"/agent-network/providers"}
                     exactPathMatch={true}
                     visible={agentNetworkEnabled && permission?.services?.read}
                   />
                   <SidebarItem
-                    label="Policies"
+                    label={<TransText>Policies</TransText>}
                     isChild
                     href={"/agent-network/policies"}
                     exactPathMatch={true}
                     visible={agentNetworkEnabled && permission?.services?.read}
                   />
                   <SidebarItem
-                    label="Usage & Logs"
+                    label={<TransText>Usage & Logs</TransText>}
                     isChild
                     href={"/agent-network/usage"}
                     exactPathMatch={true}
                     visible={agentNetworkEnabled && permission?.services?.read}
                   />
                   <SidebarItem
-                    label="Configuration"
+                    label={<TransText>Configuration</TransText>}
                     isChild
                     href={"/agent-network/configuration"}
                     exactPathMatch={true}
@@ -234,7 +235,7 @@ export default function Navigation({
 
                 <SidebarItem
                   icon={<DNSIcon />}
-                  label="DNS"
+                  label={<TransText>DNS</TransText>}
                   href={"/dns"}
                   collapsible
                   exactPathMatch={true}
@@ -244,19 +245,19 @@ export default function Navigation({
                   }
                 >
                   <SidebarItem
-                    label="Nameservers"
+                    label={<TransText>Nameservers</TransText>}
                     isChild
                     href={"/dns/nameservers"}
                     visible={permission.nameservers.read}
                   />
                   <SidebarItem
-                    label="Zones"
+                    label={<TransText>Zones</TransText>}
                     isChild
                     href={"/dns/zones"}
                     visible={permission?.dns?.read}
                   />
                   <SidebarItem
-                    label="DNS Settings"
+                    label={<TransText>DNS Settings</TransText>}
                     isChild
                     href={"/dns/settings"}
                     visible={permission.dns.read}
@@ -264,19 +265,19 @@ export default function Navigation({
                 </SidebarItem>
                 <SidebarItem
                   icon={<TeamIcon />}
-                  label="Team"
+                  label={<TransText>Team</TransText>}
                   href={"/team"}
                   collapsible
                   visible={permission.users.read}
                 >
                   <SidebarItem
-                    label="Users"
+                    label={<TransText>Users</TransText>}
                     isChild
                     href={"/team/users"}
                     visible={permission.users.read}
                   />
                   <SidebarItem
-                    label="Service Users"
+                    label={<TransText>Service Users</TransText>}
                     isChild
                     href={"/team/service-users"}
                     visible={permission.users.read}
@@ -288,7 +289,7 @@ export default function Navigation({
               <SidebarItemGroup>
                 <SidebarItem
                   icon={<SettingsIcon />}
-                  label="Settings"
+                  label={<TransText>Settings</TransText>}
                   href={"/settings"}
                   exactPathMatch={true}
                   visible={permission.settings.read}
@@ -296,7 +297,7 @@ export default function Navigation({
                 <MSPNavigationItem />
                 <SidebarItem
                   icon={<IntegrationIcon />}
-                  label="Integrations"
+                  label={<TransText>Integrations</TransText>}
                   href={"/integrations"}
                   exactPathMatch={true}
                   visible={
@@ -310,7 +311,7 @@ export default function Navigation({
                   icon={<DocsIcon />}
                   href={"https://docs.netbird.io/"}
                   target={"_blank"}
-                  label="Documentation"
+                  label={<TransText>Documentation</TransText>}
                   visible={true}
                 />
               </SidebarItemGroup>
@@ -347,20 +348,20 @@ const ActivityNavigationItem = () => {
   return (
     <SidebarItem
       icon={<ActivityIcon />}
-      label="Activity"
+      label={<TransText>Activity</TransText>}
       href={"/events"}
       collapsible
       visible={permission.events.read && !agentNetworkOnly}
     >
       <SidebarItem
-        label="Audit Events"
+        label={<TransText>Audit Events</TransText>}
         href={"/events/audit"}
         isChild
         exactPathMatch={true}
         visible={permission.events.read}
       />
       <SidebarItem
-        label="Traffic Events"
+        label={<TransText>Traffic Events</TransText>}
         isChild
         href={"/events/traffic"}
         exactPathMatch={true}

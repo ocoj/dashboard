@@ -4,12 +4,14 @@ import { ColumnDef, SortingState } from "@tanstack/react-table";
 import React, { useMemo, useState } from "react";
 import { useGroups } from "@/contexts/GroupsProvider";
 import { GroupedRoute, Route } from "@/interfaces/Route";
+import { TransText } from "@/i18n/trans-text";
 import RouteAccessControlGroups from "@/modules/routes/RouteAccessControlGroups";
 import RouteActionCell from "@/modules/routes/RouteActionCell";
 import RouteAutoApplyCell from "@/modules/routes/RouteAutoApplyCell";
 import RouteDistributionGroupsCell from "@/modules/routes/RouteDistributionGroupsCell";
 import RouteMetricCell from "@/modules/routes/RouteMetricCell";
 import RoutePeerCell from "@/modules/routes/RoutePeerCell";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   row: GroupedRoute;
@@ -18,7 +20,7 @@ export const RouteTableColumns: ColumnDef<Route>[] = [
   {
     accessorKey: "network_id",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Name</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Name</TransText></DataTableHeader>;
     },
     sortingFn: "text",
     cell: ({ row }) => <RoutePeerCell route={row.original} />,
@@ -43,7 +45,7 @@ export const RouteTableColumns: ColumnDef<Route>[] = [
   {
     accessorKey: "metric",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Metric</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Metric</TransText></DataTableHeader>;
     },
     cell: ({ row }) => <RouteMetricCell metric={row.original.metric} />,
     sortingFn: "alphanumeric",
@@ -58,7 +60,7 @@ export const RouteTableColumns: ColumnDef<Route>[] = [
     accessorFn: (r) => r.groups?.length,
     header: ({ column }) => {
       return (
-        <DataTableHeader column={column}>Distribution Groups</DataTableHeader>
+        <DataTableHeader column={column}><TransText>Distribution Groups</TransText></DataTableHeader>
       );
     },
     cell: ({ row }) => <RouteDistributionGroupsCell route={row.original} />,
@@ -68,7 +70,7 @@ export const RouteTableColumns: ColumnDef<Route>[] = [
     accessorFn: (r) => r?.access_control_groups?.length,
     header: ({ column }) => {
       return (
-        <DataTableHeader column={column}>Access Control Groups</DataTableHeader>
+        <DataTableHeader column={column}><TransText>Access Control Groups</TransText></DataTableHeader>
       );
     },
     cell: ({ row }) => <RouteAccessControlGroups route={row.original} />,
@@ -77,7 +79,7 @@ export const RouteTableColumns: ColumnDef<Route>[] = [
     id: "skipAutoApply",
     accessorKey: "skip_auto_apply",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Auto Apply</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Auto Apply</TransText></DataTableHeader>;
     },
     cell: ({ row }) => <RouteAutoApplyCell route={row.original} />,
     sortingFn: "basic",
@@ -144,7 +146,7 @@ export default function RouteTable({ row }: Props) {
         showSearchAndFilters={false}
         className={"bg-nb-gray-960 py-2"}
         inset={true}
-        text={"Network Routes"}
+        text={zhMap["Network Routes"]}
         manualPagination={true}
         sorting={sorting}
         columnVisibility={{

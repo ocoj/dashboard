@@ -3,6 +3,7 @@
 import { cn } from "@utils/helpers";
 import { CheckIcon } from "lucide-react";
 import * as React from "react";
+import zhMap from "@/i18n/zh-map";
 
 // RadioPicker — single-value radio list. Generic over the value type so
 // it works for any boolean / string / numeric column filter that maps
@@ -61,7 +62,7 @@ export function RadioPicker<V>({
                 )}
               />
             )}
-            {option.label}
+            {zhMap[option.label] || option.label}
           </button>
         );
       })}
@@ -77,5 +78,5 @@ export function formatRadioChip<V>(
   // Treat undefined-valued option (i.e. "All") as no chip.
   if (value === undefined) return null;
   const opt = options.find((o) => o.value === value);
-  return opt?.label ?? null;
+  return opt?.label ? (zhMap[opt.label] || opt.label) : null;
 }

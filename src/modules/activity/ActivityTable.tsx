@@ -28,11 +28,13 @@ import { useSWRConfig } from "swr";
 import PeerIcon from "@/assets/icons/PeerIcon";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { ActivityEvent } from "@/interfaces/ActivityEvent";
+import { TransText } from "@/i18n/trans-text";
 import { ActivityEntryRow } from "@/modules/activity/ActivityEntryRow";
 import {
   ActivityTypePicker,
   formatActivityTypeChip,
 } from "@/modules/activity/ActivityTypePicker";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   events?: ActivityEvent[];
@@ -44,7 +46,7 @@ const ActivityFeedColumnsTable: ColumnDef<ActivityEvent>[] = [
   {
     accessorKey: "activity_code",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Code</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Code</TransText></DataTableHeader>;
     },
     sortingFn: "text",
     filterFn: "arrIncludesSomeExact",
@@ -163,7 +165,7 @@ export default function ActivityTable({
       headingTarget={headingTarget}
       paginationClassName={"max-w-[800px]"}
       as={"div"}
-      text={"Audit Events"}
+      text={zhMap["Audit Events"]}
       sorting={sorting}
       setSorting={setSorting}
       initialPageSize={25}
@@ -172,7 +174,7 @@ export default function ActivityTable({
       tableClassName={"px-8 pt-4"}
       columns={ActivityFeedColumnsTable}
       data={events}
-      searchPlaceholder={"Search by audit name, user, peer, meta..."}
+      searchPlaceholder={zhMap["Search by audit name, user, peer, meta..."] || "Search by audit name, user, peer, meta..."}
       isLoading={isLoading}
       aboveTable={(table) => (
         <TableFilterChips table={table} filters={filterDefs} />
@@ -200,7 +202,7 @@ export default function ActivityTable({
           button={<AddPeerButton />}
           learnMore={
             <>
-              Learn more in our{" "}
+              <TransText>Learn more in our</TransText>{" "}
               <InlineLink
                 href={"https://docs.netbird.io/how-to/getting-started"}
                 target={"_blank"}

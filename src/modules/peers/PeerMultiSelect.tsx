@@ -28,6 +28,7 @@ import { useSWRConfig } from "swr";
 import { useDialog } from "@/contexts/DialogProvider";
 import { usePeers } from "@/contexts/PeersProvider";
 import { usePermissions } from "@/contexts/PermissionsProvider";
+import { TransText } from "@/i18n/trans-text";
 import {
   useBypass,
   useBypassedPeers,
@@ -377,13 +378,13 @@ const PeerGroupMassAssignmentContent = ({
                       {isLoading && (
                         <>
                           <Loader2 size={14} className={"animate-spin"} />
-                          <span>Assigning groups...</span>
+                          <span><TransText>Assigning groups...</TransText></span>
                         </>
                       )}
                       {!isLoading && isSuccess && (
                         <>
                           <CheckCircle size={14} className={"text-green-400"} />
-                          <span>Groups successfully assigned</span>
+                          <span><TransText>Groups successfully assigned</TransText></span>
                         </>
                       )}
                     </motion.span>
@@ -391,11 +392,11 @@ const PeerGroupMassAssignmentContent = ({
                 )}
               </AnimatePresence>
               <div>
-                <Label>Assign Groups</Label>
+                <Label><TransText>Assign Groups</TransText></Label>
                 <HelpText>
-                  Assign the following groups to the selected peers. Previously
+                  <TransText>Assign the following groups to the selected peers. Previously
                   assigned groups will be kept unless you choose to overwrite
-                  them.
+                  them.</TransText>
                 </HelpText>
                 <PeerGroupSelector
                   onChange={setSelectedGroups}

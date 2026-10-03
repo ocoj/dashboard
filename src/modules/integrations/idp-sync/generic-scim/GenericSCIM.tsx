@@ -21,6 +21,7 @@ import GenericSCIMSetup from "@/modules/integrations/idp-sync/generic-scim/Gener
 import { useIntegrations } from "@/modules/integrations/idp-sync/useIntegrations";
 import { IntegrationCard } from "@/modules/integrations/IntegrationCard";
 import EntraSCIMSetup from "@/modules/integrations/idp-sync/entra-scim/EntraSCIMSetup";
+import zhMap from "@/i18n/zh-map";
 
 export interface GenericSCIMProps {
   name?: string;
@@ -111,7 +112,7 @@ export const GenericSCIM = ({
             onClick={() => setSetupModal(true)}
           >
             <Repeat size={13} />
-            Connect {name}
+            {zhMap["Connect"] || "Connect"} {name}
           </Button>
         }
       >

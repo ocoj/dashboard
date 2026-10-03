@@ -34,6 +34,7 @@ import { RDPButton } from "@/modules/remote-access/rdp/RDPButton";
 import { SSHButton } from "@/modules/remote-access/ssh/SSHButton";
 import InlineLink from "@components/InlineLink";
 import { useDialog } from "@/contexts/DialogProvider";
+import { TransText } from "@/i18n/trans-text";
 
 export default function PeerActionCell() {
   const { peer, deletePeer, update, toggleSSH, setSSHInstructionsModal } =
@@ -210,7 +211,7 @@ export default function PeerActionCell() {
           >
             <div className={"flex gap-3 items-center"}>
               <MonitorIcon size={14} className={"shrink-0"} />
-              View Details
+              <TransText>View Details</TransText>
             </div>
           </DropdownMenuItem>
 
@@ -221,7 +222,7 @@ export default function PeerActionCell() {
                 <DropdownMenuItem onClick={approvePeer}>
                   <div className={"flex gap-3 items-center"}>
                     <CheckCircle2 size={14} className={"shrink-0"} />
-                    Approve
+                    <TransText>Approve</TransText>
                   </div>
                 </DropdownMenuItem>
               )}
@@ -239,7 +240,7 @@ export default function PeerActionCell() {
                   <DropdownMenuItem onClick={handleBypassCompliance}>
                     <div className={"flex gap-3 items-center w-full"}>
                       <ShieldCheck size={14} className={"shrink-0"} />
-                      Bypass Compliance
+                      <TransText>Bypass Compliance</TransText>
                     </div>
                   </DropdownMenuItem>
                 </FullTooltip>
@@ -248,7 +249,7 @@ export default function PeerActionCell() {
                 <DropdownMenuItem onClick={handleRevokeBypass}>
                   <div className={"flex gap-3 items-center"}>
                     <ShieldOff size={14} className={"shrink-0"} />
-                    Revoke Bypass
+                    <TransText>Revoke Bypass</TransText>
                   </div>
                 </DropdownMenuItem>
               )}
@@ -271,7 +272,7 @@ export default function PeerActionCell() {
               >
                 <IconInfoCircle size={14} />
                 <span>
-                  Expiration is disabled for all peers added with an setup-key.
+                  <TransText>Expiration is disabled for all peers added with an setup-key.</TransText>
                 </span>
               </div>
             }
@@ -284,8 +285,7 @@ export default function PeerActionCell() {
             >
               <div className={"flex gap-3 items-center w-full"}>
                 <TimerResetIcon size={14} className={"shrink-0"} />
-                {peer.login_expiration_enabled ? "Disable" : "Enable"} Session
-                Expiration
+                {peer.login_expiration_enabled ? <TransText>Disable</TransText> : <TransText>Enable</TransText>} <TransText>Session Expiration</TransText>
               </div>
             </DropdownMenuItem>
           </FullTooltip>
@@ -302,7 +302,7 @@ export default function PeerActionCell() {
               <div className={"flex gap-3 items-center w-full"}>
                 <TerminalSquare size={14} className={"shrink-0"} />
                 <div className={"flex justify-between items-center w-full"}>
-                  {peer.ssh_enabled ? "Disable" : "Enable"} SSH Access
+                  {peer.ssh_enabled ? <TransText>Disable</TransText> : <TransText>Enable</TransText>} <TransText>SSH Access</TransText>
                 </div>
               </div>
             </DropdownMenuItem>
@@ -319,7 +319,7 @@ export default function PeerActionCell() {
           >
             <div className={"flex gap-3 items-center"}>
               <Trash2 size={14} className={"shrink-0"} />
-              Delete
+              <TransText>Delete</TransText>
             </div>
           </DropdownMenuItem>
         </DropdownMenuContent>

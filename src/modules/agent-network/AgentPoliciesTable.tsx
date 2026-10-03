@@ -44,6 +44,8 @@ import {
   Wallet,
 } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 import React, { useMemo, useState } from "react";
 import AccessControlIcon from "@/assets/icons/AccessControlIcon";
 import { useDialog } from "@/contexts/DialogProvider";
@@ -470,13 +472,13 @@ export default function AgentPoliciesTable({ headingTarget }: Readonly<Props>) {
         key={`policies-${initialSearch ?? ""}`}
         headingTarget={headingTarget}
         isLoading={isLoading}
-        text={"Policies"}
+        text={zhMap["Policies"]}
         sorting={sorting}
         setSorting={setSorting}
         columns={columns}
         data={policies}
         initialSearch={initialSearch}
-        searchPlaceholder={"Search by name or description..."}
+        searchPlaceholder={zhMap["Search by name or description..."] || "Search by name or description..."}
         onRowClick={(row) => openEdit(row.original)}
         getStartedCard={
           <GetStartedTest
@@ -489,7 +491,7 @@ export default function AgentPoliciesTable({ headingTarget }: Readonly<Props>) {
                 size={"large"}
               />
             }
-            title={"Create your first policy"}
+            title={zhMap["Create your first policy"] || "Create your first policy"}
             description={
               "Policies connect user and agent groups to AI providers, with optional token and budget limits and guardrails for model access and prompt capture."
             }
@@ -502,7 +504,7 @@ export default function AgentPoliciesTable({ headingTarget }: Readonly<Props>) {
                 }}
               >
                 <PlusCircle size={16} />
-                Add Policy
+                <TransText>Add Policy</TransText>
               </Button>
             }
             learnMore={
@@ -527,7 +529,7 @@ export default function AgentPoliciesTable({ headingTarget }: Readonly<Props>) {
                 }}
               >
                 <PlusCircle size={16} />
-                Add Policy
+                <TransText>Add Policy</TransText>
               </Button>
             </div>
           )

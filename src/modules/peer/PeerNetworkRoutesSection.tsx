@@ -1,3 +1,4 @@
+import { TransText } from "@/i18n/trans-text";
 import Paragraph from "@components/Paragraph";
 import SkeletonTable from "@components/skeletons/SkeletonTable";
 import * as React from "react";
@@ -26,15 +27,18 @@ export const PeerNetworkRoutesSection = ({ peer }: Props) => {
         <div className={"flex justify-between items-center mb-5"}>
           <div>
             <Paragraph>
-              Access other networks without installing NetBird on every
-              resource.{" "}
+              <TransText>
+                Access other networks without installing NetBird on every
+                resource.
+              </TransText>
+              {" "}
               <InlineLink
                 href={
                   "https://docs.netbird.io/how-to/routing-traffic-to-private-networks"
                 }
                 target={"_blank"}
               >
-                Learn more
+                <TransText>Learn more</TransText>
                 <ExternalLinkIcon size={12} />
               </InlineLink>
             </Paragraph>

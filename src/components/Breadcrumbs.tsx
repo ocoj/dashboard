@@ -12,7 +12,7 @@ function Breadcrumbs({ children }: Props) {
 
 type ItemProps = {
   href?: string;
-  label: string;
+  label: React.ReactNode;
   icon?: React.ReactNode;
   active?: boolean;
   disabled?: boolean;

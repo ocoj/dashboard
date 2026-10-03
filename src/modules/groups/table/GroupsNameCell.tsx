@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import CircleIcon from "@/assets/icons/CircleIcon";
 import { Group } from "@/interfaces/Group";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   active: boolean;
@@ -25,7 +26,7 @@ export default function GroupsNameCell({ active, group }: Readonly<Props>) {
 
         <div
           className={"flex flex-col min-w-0 cursor-pointer"}
-          aria-label={`View details of group ${group.name}`}
+          aria-label={zhMap["View details of group"] + " " + group.name}
         >
           <div className={"font-medium flex gap-2 items-center justify-center"}>
             <TextWithTooltip text={group?.name} maxChars={50} />

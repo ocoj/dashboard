@@ -15,6 +15,7 @@ import {
   UserIcon,
 } from "lucide-react";
 import { WebhookConfig } from "@/cloud/webhooks/useWebhookConfig";
+import zhMap from "@/i18n/zh-map";
 
 export enum AuthType {
   None = "none",
@@ -66,14 +67,14 @@ export const AuthenticationSettings = ({
       <div className={"flex flex-col gap-2 mt-3"}>
         <Input
           customPrefix={<UserIcon size={16} />}
-          placeholder="Username"
+          placeholder={zhMap["Username"]}
           value={value.username}
           onChange={(e) => value.setUsername(e.target.value)}
           data-testid="webhook-basic-username"
         />
         <Input
           customPrefix={<KeyRoundIcon size={16} />}
-          placeholder="Password"
+          placeholder={zhMap["Password"]}
           value={value.password}
           onChange={(e) => value.setPassword(e.target.value)}
           type={mask ? "password" : "text"}

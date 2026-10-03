@@ -36,12 +36,14 @@ import ServiceUserNameCell from "@/modules/users/table-cells/ServiceUserNameCell
 import UserActionCell from "@/modules/users/table-cells/UserActionCell";
 import UserRoleCell from "@/modules/users/table-cells/UserRoleCell";
 import UserStatusCell from "@/modules/users/table-cells/UserStatusCell";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 export const ServiceUsersTableColumns: ColumnDef<User>[] = [
   {
     accessorKey: "name",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Name</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Name</TransText></DataTableHeader>;
     },
     sortingFn: "text",
     cell: ({ row }) => <ServiceUserNameCell user={row.original} />,
@@ -53,7 +55,7 @@ export const ServiceUsersTableColumns: ColumnDef<User>[] = [
   {
     accessorKey: "role",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Role</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Role</TransText></DataTableHeader>;
     },
     sortingFn: "text",
     cell: ({ row }) => <UserRoleCell user={row.original} />,
@@ -61,7 +63,7 @@ export const ServiceUsersTableColumns: ColumnDef<User>[] = [
   {
     accessorKey: "status",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Status</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Status</TransText></DataTableHeader>;
     },
     sortingFn: "text",
     cell: ({ row }) => <UserStatusCell user={row.original} />,
@@ -171,7 +173,7 @@ export default function ServiceUsersTable({
     <DataTable
       headingTarget={headingTarget}
       isLoading={isLoading}
-      text={"Service Users"}
+      text={zhMap["Service Users"] || "Service Users"}
       sorting={sorting}
       setSorting={setSorting}
       columns={ServiceUsersTableColumns}
@@ -189,7 +191,7 @@ export default function ServiceUsersTable({
         is_current: false,
         role_filter: false,
       }}
-      searchPlaceholder={"Search by name or role..."}
+      searchPlaceholder={zhMap["Search by name or role..."] || "Search by name or role..."}
       getStartedCard={
         <GetStartedTest
           icon={
@@ -199,7 +201,7 @@ export default function ServiceUsersTable({
               size={"large"}
             />
           }
-          title={"Create Service User"}
+          title={zhMap["Create Service User"] || "Create Service User"}
           description={
             "It looks like you don't have any service users. Get started by creating a service user."
           }
@@ -214,7 +216,7 @@ export default function ServiceUsersTable({
                     disabled={!permission.users.create}
                   >
                     <PlusCircle size={16} />
-                    Create Service User
+                    <TransText>Create Service User</TransText>
                   </Button>
                 </ServiceUserModal>
               </div>
@@ -222,14 +224,14 @@ export default function ServiceUsersTable({
           }
           learnMore={
             <>
-              Learn more about
+              <TransText>Learn more about</TransText>
               <InlineLink
                 href={
                   "https://docs.netbird.io/how-to/access-netbird-public-api"
                 }
                 target={"_blank"}
               >
-                Service Users
+                <TransText>Service Users</TransText>
                 <ExternalLinkIcon size={12} />
               </InlineLink>
             </>
@@ -247,7 +249,7 @@ export default function ServiceUsersTable({
                 disabled={!permission.users.create}
               >
                 <PlusCircle size={16} />
-                Create Service User
+                <TransText>Create Service User</TransText>
               </Button>
             </ServiceUserModal>
           )}

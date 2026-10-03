@@ -50,6 +50,8 @@ import {
   useAIProviders,
 } from "@/modules/agent-network/AIProvidersProvider";
 import { useProviderCatalog } from "@/modules/agent-network/useProviderCatalog";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 // EXTRA_HEADER_UI owns the dashboard copy for catalog-declared extra
 // headers, keyed by ExtraHeader.name. Backend declares only the wire
@@ -572,11 +574,11 @@ export default function AIProviderModal({
       <ModalContent maxWidthClass={"max-w-2xl"}>
         <ModalHeader
           icon={<AgentNetworkIcon className={"fill-netbird"} size={18} />}
-          title={isEdit ? "Edit Provider" : "Connect Provider"}
+          title={isEdit ? zhMap["Edit Provider"] || "Edit Provider" : zhMap["Connect Provider"] || "Connect Provider"}
           description={
             isEdit
-              ? "Update this provider's configuration."
-              : "Connect an AI model provider or gateway to your Agent Network."
+              ? zhMap["Update this provider's configuration."] || "Update this provider's configuration."
+              : zhMap["Connect an AI model provider or gateway to your Agent Network."] || "Connect an AI model provider or gateway to your Agent Network."
           }
           color={"netbird"}
         />
@@ -585,14 +587,14 @@ export default function AIProviderModal({
           <TabsList justify={"start"} className={"px-8"}>
             <TabsTrigger value={"provider"}>
               <Sparkles size={14} />
-              Provider
+              <TransText>Provider</TransText>
             </TabsTrigger>
             <TabsTrigger
               value={"models"}
               disabled={!canContinueFromProvider}
             >
               <Boxes size={14} />
-              Models
+              <TransText>Models</TransText>
             </TabsTrigger>
             {showMappings && (
               <TabsTrigger
@@ -600,7 +602,7 @@ export default function AIProviderModal({
                 disabled={!canContinueFromProvider}
               >
                 <ArrowRightLeft size={14} />
-                Mappings
+                <TransText>Mappings</TransText>
               </TabsTrigger>
             )}
           </TabsList>
@@ -617,18 +619,18 @@ export default function AIProviderModal({
                     />
                   }
                 >
-                  No active proxy clusters are available. Connect at least one
+                  <TransText>No active proxy clusters are available. Connect at least one</TransText>
                   proxy under
                   <InlineLink href={"/reverse-proxy/services"}>
-                    {" "}Reverse Proxy
+                    {" "}{zhMap["Reverse Proxy"] || "Reverse Proxy"}
                   </InlineLink>
-                  {" "}before adding a provider.
+                  {" "}<TransText>before adding a provider.</TransText>
                 </Callout>
               )}
 
               <FormRow
-                label={"Provider"}
-                helpText={"API provider to expose through NetBird."}
+                label={<TransText>Provider</TransText>}
+                helpText={<TransText>API provider to expose through NetBird.</TransText>}
               >
                 <SelectDropdown
                   value={providerId}
@@ -679,8 +681,8 @@ export default function AIProviderModal({
                   }}
                   options={providerOptions}
                   showSearch
-                  searchPlaceholder={"Search providers..."}
-                  placeholder={"Select provider..."}
+                  searchPlaceholder={zhMap["Search providers..."] || "Search providers..."}
+                  placeholder={zhMap["Select provider..."] || "Select provider..."}
                 />
               </FormRow>
 
@@ -688,7 +690,7 @@ export default function AIProviderModal({
                 label={
                   providerId === "kimi_api" ? (
                     <>
-                      Upstream URL
+                      <TransText>Upstream URL</TransText>
                       <HelpTooltip
                         content={
                           "Moonshot AI's international platform endpoint. Keep the bare host. Moonshot serves both API shapes with the same key: the path an agent calls rides through to Moonshot, so its base URL picks the shape (Claude Code appends /anthropic; Kimi CLI and OpenAI shaped callers use the bare endpoint). Mainland China accounts use api.moonshot.cn instead."
@@ -696,7 +698,7 @@ export default function AIProviderModal({
                       />
                     </>
                   ) : (
-                    "Upstream URL"
+                    <TransText>Upstream URL</TransText>
                   )
                 }
                 helpText={upstreamUrlHelpText(providerId)}
@@ -859,13 +861,13 @@ export default function AIProviderModal({
                 );
               })}
                 <FormRow
-                    label={"Display name"}
+                    label={<TransText>Display name</TransText>}
                     helpText={"Shown in the Agent Network table."}
                 >
                     <Input
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        placeholder={"e.g. OpenAI"}
+                        placeholder={zhMap["e.g. OpenAI"] || "e.g. OpenAI"}
                     />
                 </FormRow>
             </div>
@@ -1390,7 +1392,7 @@ export default function AIProviderModal({
                     disabled={!canContinueFromProvider}
                   >
                     {isEdit ? (
-                      "Save Changes"
+                      zhMap["Save Changes"] || "Save Changes"
                     ) : (
                       <>
                         <PlusCircle size={16} />
@@ -1415,7 +1417,7 @@ export default function AIProviderModal({
                   disabled={!canContinueFromProvider}
                 >
                   {isEdit ? (
-                    "Save Changes"
+                    zhMap["Save Changes"] || "Save Changes"
                   ) : (
                     <>
                       <PlusCircle size={16} />

@@ -15,6 +15,8 @@ import { DNS_ZONE_DOCS_LINK, DNSZone } from "@/interfaces/DNS";
 import PageContainer from "@/layouts/PageContainer";
 import { DNSZonesProvider } from "@/modules/dns/zones/DNSZonesProvider";
 import DNSZoneIcon from "@/assets/icons/DNSZoneIcon";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 const DNSZonesTable = lazy(
   () => import("@/modules/dns/zones/table/DNSZonesTable"),
@@ -32,19 +34,19 @@ export default function DNSZonePage() {
     <PageContainer>
       <div className={"p-default py-6"}>
         <Breadcrumbs>
-          <Breadcrumbs.Item label={"DNS"} icon={<DNSIcon size={13} />} />
+          <Breadcrumbs.Item label={zhMap["DNS"]} icon={<DNSIcon size={13} />} />
           <Breadcrumbs.Item
             href={"/dns/zones"}
-            label={"Zones"}
+            label={zhMap["Zones"]}
             active
             icon={<DNSZoneIcon size={16} />}
           />
         </Breadcrumbs>
-        <h1 ref={headingRef}>Zones</h1>
+        <h1 ref={headingRef}><TransText>Zones</TransText></h1>
         <Paragraph>
-          Manage DNS zones to control domain name resolution for your network.{" "}
+          <TransText>Manage DNS zones to control domain name resolution for your network.</TransText>{" "}
           <InlineLink href={DNS_ZONE_DOCS_LINK} target={"_blank"}>
-            Learn more
+            <TransText>Learn more</TransText>
             <ExternalLinkIcon size={12} />
           </InlineLink>
         </Paragraph>

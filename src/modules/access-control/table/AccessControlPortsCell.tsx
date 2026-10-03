@@ -7,6 +7,7 @@ import {
 } from "@components/Tooltip";
 import React, { useMemo } from "react";
 import { Policy } from "@/interfaces/Policy";
+import { TransText } from "@/i18n/trans-text";
 import { parsePortsToStrings } from "@/modules/access-control/useAccessControl";
 
 type Props = {
@@ -48,7 +49,7 @@ export default function AccessControlPortsCell({
                   variant={"gray"}
                   className={"uppercase tracking-wider font-medium"}
                 >
-                  All
+                  <TransText>All</TransText>
                 </Badge>
               )}
 

@@ -3,6 +3,7 @@
 import { cn } from "@utils/helpers";
 import { CheckIcon } from "lucide-react";
 import * as React from "react";
+import zhMap from "@/i18n/zh-map";
 
 // StatusPicker — three-way radio that maps to the `connected` column.
 //   undefined → All
@@ -57,7 +58,7 @@ export function StatusPicker({ value, onChange, close }: Props) {
                 option.dotClass,
               )}
             />
-            {option.label}
+            {zhMap[option.label] || option.label}
           </button>
         );
       })}
@@ -67,7 +68,7 @@ export function StatusPicker({ value, onChange, close }: Props) {
 
 // formatChip helper exported for use in the filter def's formatChip().
 export function formatStatusChip(value: boolean | undefined): string | null {
-  if (value === true) return "Online";
-  if (value === false) return "Offline";
+  if (value === true) return zhMap["Online"] || "Online";
+  if (value === false) return zhMap["Offline"] || "Offline";
   return null;
 }

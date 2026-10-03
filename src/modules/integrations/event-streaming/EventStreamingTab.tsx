@@ -11,6 +11,8 @@ import Firehose from "@/modules/integrations/event-streaming/amazon/firehose/Fir
 import S3 from "@/modules/integrations/event-streaming/amazon/s3/S3";
 import Datadog from "@/modules/integrations/event-streaming/datadog/Datadog";
 import GenericHTTP from "@/modules/integrations/event-streaming/generic-http/GenericHTTP";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 export default function EventStreamingTab() {
   return (
@@ -24,12 +26,12 @@ export default function EventStreamingTab() {
           />
           <Breadcrumbs.Item
             href={"/integrations"}
-            label={"Event Streaming"}
+            label={zhMap["Event Streaming"] || "Event Streaming"}
             icon={<FileText size={14} />}
             active
           />
         </Breadcrumbs>
-        <h1>Event Streaming</h1>
+        <h1><TransText>Event Streaming</TransText></h1>
         <Paragraph>
           Event Streaming allows you to stream NetBirds audit & traffic events
           to different third-party services.
@@ -45,7 +47,7 @@ export default function EventStreamingTab() {
         </Paragraph>
 
         <LockedFeatureInfoCard
-          featureText={"Event Streaming"}
+          featureText={zhMap["Event Streaming"] || "Event Streaming"}
           feature={"EVENT_STREAMING"}
         />
         <LockedFeatureOverlay feature={"EVENT_STREAMING"} opacity={100}>

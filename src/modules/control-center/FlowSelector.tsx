@@ -1,4 +1,5 @@
 import { SegmentedTabs } from "@components/SegmentedTabs";
+import { TransText } from "@/i18n/trans-text";
 import {
   FolderGit2,
   MonitorSmartphoneIcon,
@@ -35,21 +36,21 @@ export const FlowSelector = ({ value, onChange }: Props) => {
           className={"text-xs px-3 py-1"}
         >
           <MonitorSmartphoneIcon size={12} />
-          Peer
+          <TransText>Peer</TransText>
         </SegmentedTabs.Trigger>
         <SegmentedTabs.Trigger
           value={FlowView.USERS}
           className={"text-xs px-3 py-1"}
         >
           <UsersIcon size={12} />
-          User
+          <TransText>User</TransText>
         </SegmentedTabs.Trigger>
         <SegmentedTabs.Trigger
           value={FlowView.GROUPS}
           className={"text-xs px-3 py-1"}
         >
           <FolderGit2 size={12} />
-          Group
+          <TransText>Group</TransText>
         </SegmentedTabs.Trigger>
         {/* The agent-network repackaging drops Networks as a top-level
             pivot. Keep it for everyone else so flag-off behaviour is
@@ -60,7 +61,7 @@ export const FlowSelector = ({ value, onChange }: Props) => {
             className={"text-xs px-3 py-[0.45rem]"}
           >
             <NetworkIcon size={12} />
-            Networks
+            <TransText>Networks</TransText>
           </SegmentedTabs.Trigger>
         )}
       </SegmentedTabs.List>

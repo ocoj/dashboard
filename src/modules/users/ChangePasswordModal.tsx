@@ -17,6 +17,7 @@ import HelpText from "@components/HelpText";
 import { useApiCall } from "@utils/api";
 import { KeyRound, LockIcon } from "lucide-react";
 import React, { useMemo, useState } from "react";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   children: React.ReactNode;
@@ -121,8 +122,8 @@ export function ChangePasswordModalContent({
 
       <form className={"px-8 py-6 flex flex-col gap-6"} onSubmit={changePassword}>
         <div>
-          <Label>Current Password</Label>
-          <HelpText>Enter your current password to verify your identity.</HelpText>
+          <Label><TransText>Current Password</TransText></Label>
+          <HelpText><TransText>Enter your current password to verify your identity.</TransText></HelpText>
           <Input
             type="password"
             placeholder={"Enter current password"}
@@ -138,9 +139,9 @@ export function ChangePasswordModalContent({
         </div>
 
         <div>
-          <Label>New Password</Label>
+          <Label><TransText>New Password</TransText></Label>
           <HelpText>
-            Enter your new password. Must be at least 8 characters.
+            <TransText>Enter your new password. Must be at least 8 characters.</TransText>
           </HelpText>
           <Input
             type="password"
@@ -157,8 +158,8 @@ export function ChangePasswordModalContent({
         </div>
 
         <div>
-          <Label>Confirm New Password</Label>
-          <HelpText>Re-enter your new password to confirm.</HelpText>
+          <Label><TransText>Confirm New Password</TransText></Label>
+          <HelpText><TransText>Re-enter your new password to confirm.</TransText></HelpText>
           <Input
             type="password"
             placeholder={"Confirm new password"}
@@ -177,7 +178,7 @@ export function ChangePasswordModalContent({
       <ModalFooter className={"items-center"}>
         <div className={"flex gap-3 w-full justify-end"}>
           <ModalClose asChild={true}>
-            <Button variant={"secondary"}>Cancel</Button>
+            <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
           </ModalClose>
 
           <Button
@@ -185,7 +186,7 @@ export function ChangePasswordModalContent({
             disabled={isDisabled || isLoading}
             onClick={changePassword}
           >
-            Change Password
+            <TransText>Change Password</TransText>
           </Button>
         </div>
       </ModalFooter>

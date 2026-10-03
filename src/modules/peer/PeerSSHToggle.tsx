@@ -33,6 +33,7 @@ import { Callout } from "@components/Callout";
 import { useDialog } from "@/contexts/DialogProvider";
 import InlineLink from "@components/InlineLink";
 import { isNetbirdSSHProtocolSupported } from "@utils/version";
+import { TransText } from "@/i18n/trans-text";
 
 export const PeerSSHToggle = () => {
   const { permission } = usePermissions();
@@ -130,11 +131,11 @@ export const PeerSSHToggle = () => {
           label={
             <>
               <TerminalSquare size={16} />
-              SSH Access
+              <TransText>SSH Access</TransText>
             </>
           }
           helpText={
-            "Enable the SSH server on this peer to access the machine via an secure shell."
+            <TransText>Enable the SSH server on this peer to access the machine via an secure shell.</TransText>
           }
         />
       </FullTooltip>
@@ -143,12 +144,11 @@ export const PeerSSHToggle = () => {
   ) : (
     <div>
       <div className={"flex gap-2 items-center w-full"}>
-        <Label>SSH Access</Label>
+        <Label><TransText>SSH Access</TransText></Label>
       </div>
 
       <HelpText>
-        Set up SSH and create an explicit access control policy defining which
-        users can access specific local usernames of this machine via SSH.
+        <TransText>Set up SSH and create an explicit access control policy defining which users can access specific local usernames of this machine via SSH.</TransText>
       </HelpText>
 
       {!isNetbirdSSHProtocolSupported(peer.version) &&
@@ -164,9 +164,7 @@ export const PeerSSHToggle = () => {
             }
             className="my-3"
           >
-            You have SSH access configured but your client runs on an older
-            NetBird version. Please update your NetBird client to v.0.61.0+ in
-            order to allow SSH connections.
+            <TransText>You have SSH access configured but your client runs on an older NetBird version. Please update your NetBird client to v.0.61.0+ in order to allow SSH connections.</TransText>
           </Callout>
         )}
 
@@ -181,9 +179,7 @@ export const PeerSSHToggle = () => {
           }
           className="my-3"
         >
-          You have an SSH access policy configured, but the SSH server
-          isn&apos;t enabled on this client. Enable the SSH server to allow SSH
-          connections.
+          <TransText>You have an SSH access policy configured, but the SSH server isn&apos;t enabled on this client. Enable the SSH server to allow SSH connections.</TransText>
         </Callout>
       )}
 
@@ -198,9 +194,7 @@ export const PeerSSHToggle = () => {
           }
           className="my-3"
         >
-          Your SSH server is enabled, but starting from NetBird v0.61.0, SSH
-          requires an explicit access control policy. Please create an SSH
-          access control policy in order to allow SSH connections.
+          <TransText>Your SSH server is enabled, but starting from NetBird v0.61.0, SSH requires an explicit access control policy. Please create an SSH access control policy in order to allow SSH connections.</TransText>
         </Callout>
       )}
 
@@ -212,14 +206,14 @@ export const PeerSSHToggle = () => {
             disabled={!permission?.policies.create}
           >
             <CirclePlusIcon size={14} />
-            Create SSH Policy
+            <TransText>Create SSH Policy</TransText>
           </Button>
         ) : (
           <Button
             variant={"secondary"}
             onClick={() => setSSHInstructionsModal(true)}
           >
-            Enable SSH Access <ArrowUpRightIcon size={14} />
+            <TransText>Enable SSH Access</TransText> <ArrowUpRightIcon size={14} />
           </Button>
         )}
 

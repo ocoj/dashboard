@@ -1,3 +1,4 @@
+import { TransText } from "@/i18n/trans-text";
 import Badge from "@components/Badge";
 import FullTooltip from "@components/FullTooltip";
 import {
@@ -127,7 +128,7 @@ export const ReverseProxyEventsAuthMethodCell = ({
         interactive={false}
         content={
           <span className={"text-xs"}>
-            <span className={"text-nb-gray-400"}>Auth: </span>
+            <span className={"text-nb-gray-400"}><TransText>Auth</TransText>: </span>
             <span className={"text-nb-gray-100"}>{label}</span>
           </span>
         }

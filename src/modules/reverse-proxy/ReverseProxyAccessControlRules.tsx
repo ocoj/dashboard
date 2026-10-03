@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useReducer, useRef, useState } from "react";
+import { TransText } from "@/i18n/trans-text";
 import { Label } from "@components/Label";
 import HelpText from "@components/HelpText";
 import Button from "@components/Button";
@@ -20,6 +21,7 @@ import {
 import { CountrySelector } from "@/components/ui/CountrySelector";
 import { AccessRestrictions, CrowdSecMode } from "@/interfaces/ReverseProxy";
 import { ReverseProxyCrowdSecIPReputation } from "@/modules/reverse-proxy/ReverseProxyCrowdSecIPReputation";
+import zhMap from "@/i18n/zh-map";
 
 type AccessAction = "allow" | "block";
 type AccessRuleType = "country" | "ip" | "cidr";
@@ -242,12 +244,16 @@ export const ReverseProxyAccessControlRules = ({
         />
       )}
       <div>
-        <Label>Access Control Rules</Label>
+        <Label><TransText>Access Control Rules</TransText></Label>
         <HelpText>
-          Define rules to allow or block traffic based on country, IP address,
-          or CIDR block.
+          <TransText>
+            Define rules to allow or block traffic based on country, IP address,
+            or CIDR block.
+          </TransText>
           <br />
-          Block rules always take priority over allow rules.
+          <TransText>
+            Block rules always take priority over allow rules.
+          </TransText>
         </HelpText>
       </div>
       {rules.length > 0 && (
@@ -340,7 +346,7 @@ export const ReverseProxyAccessControlRules = ({
                 variant="default-outline"
                 className="h-[42px] w-[42px] !px-0 shrink-0 ml-2"
                 onClick={() => dispatch({ type: "remove", id: rule.id })}
-                aria-label="Remove rule"
+                aria-label={zhMap["Remove rule"]}
                 data-testid="remove-access-rule"
               >
                 <MinusCircleIcon size={14} />
@@ -357,7 +363,7 @@ export const ReverseProxyAccessControlRules = ({
         data-testid="add-access-rule"
       >
         <PlusIcon size={14} />
-        Add Rule
+        <TransText>Add Rule</TransText>
       </Button>
     </div>
   );

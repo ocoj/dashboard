@@ -50,6 +50,7 @@ import ReverseProxiesProvider, {
   useReverseProxies,
 } from "@/contexts/ReverseProxiesProvider";
 import { SkeletonNetwork } from "@components/skeletons/SkeletonNetwork";
+import zhMap from "@/i18n/zh-map";
 
 export default function NetworkDetailPage() {
   const queryParameter = useSearchParams();
@@ -103,7 +104,7 @@ function NetworkOverview({ network }: Readonly<{ network: Network }>) {
             <Breadcrumbs>
               <Breadcrumbs.Item
                 href={"/networks"}
-                label={"Networks"}
+                label={zhMap["Networks"]}
                 disabled={!permission.networks.read}
                 icon={<NetworkRoutesIcon size={13} />}
               />
@@ -149,7 +150,7 @@ function NetworkOverview({ network }: Readonly<{ network: Network }>) {
             <TabsList justify={"start"} className={"px-8"}>
               <TabsTrigger value={"resources"} data-testid="network-tab-resources">
                 <Layers3Icon size={14} />
-                {singularize("Resources", network?.resources?.length)}
+                {singularize(zhMap["Resources"] || "Resources", network?.resources?.length)}
               </TabsTrigger>
               <TabsTrigger
                 value={"routing-peers"}
@@ -161,7 +162,7 @@ function NetworkOverview({ network }: Readonly<{ network: Network }>) {
                     "fill-nb-gray-500 group-data-[state=active]/trigger:fill-netbird transition-all"
                   }
                 />
-                {singularize("Routing Peers", network?.routing_peers_count)}
+                {singularize(zhMap["Routing Peers"] || "Routing Peers", network?.routing_peers_count)}
               </TabsTrigger>
               <TabsTrigger value={"services"} data-testid="network-tab-services">
                 <ReverseProxyIcon
@@ -170,7 +171,7 @@ function NetworkOverview({ network }: Readonly<{ network: Network }>) {
                     "fill-nb-gray-500 group-data-[state=active]/trigger:fill-netbird transition-all"
                   }
                 />
-                {singularize("Services", services.length)}
+                {singularize(zhMap["Services"] || "Services", services.length)}
               </TabsTrigger>
             </TabsList>
 

@@ -16,6 +16,7 @@ import { removeAllSpaces } from "@utils/helpers";
 import { Layers3Icon } from "lucide-react";
 import { usePathname } from "next/navigation";
 import React, { useMemo } from "react";
+import { TransText } from "@/i18n/trans-text";
 import AccessControlIcon from "@/assets/icons/AccessControlIcon";
 import DNSIcon from "@/assets/icons/DNSIcon";
 import NetworkRoutesIcon from "@/assets/icons/NetworkRoutesIcon";
@@ -30,12 +31,13 @@ import GroupsCountCell from "@/modules/groups/table/GroupsCountCell";
 import GroupsNameCell from "@/modules/groups/table/GroupsNameCell";
 import useGroupsUsage, { GroupUsage } from "@/modules/groups/useGroupsUsage";
 import DNSZoneIcon from "@/assets/icons/DNSZoneIcon";
+import zhMap from "@/i18n/zh-map";
 
 export const GroupsTableColumns: ColumnDef<GroupUsage>[] = [
   {
     accessorKey: "name",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Name</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Name</TransText></DataTableHeader>;
     },
     cell: ({ row }) => {
       const in_use = !!row.getValue("in_use");
@@ -58,7 +60,7 @@ export const GroupsTableColumns: ColumnDef<GroupUsage>[] = [
       return (
         <DataTableHeader
           column={column}
-          tooltip={<div className={"text-xs normal-case"}>Users</div>}
+          tooltip={<div className={"text-xs normal-case"}><TransText>Users</TransText></div>}
         >
           <TeamIcon size={12} />
         </DataTableHeader>
@@ -70,7 +72,7 @@ export const GroupsTableColumns: ColumnDef<GroupUsage>[] = [
         groupName={row.original.name}
         href={`/group?id=${row.original.id}&tab=users`}
         hidden={row.original.name === "All"}
-        text={"User(s)"}
+        text={zhMap["User(s)"]}
         count={row.original.users_count}
       />
     ),
@@ -81,7 +83,7 @@ export const GroupsTableColumns: ColumnDef<GroupUsage>[] = [
       return (
         <DataTableHeader
           column={column}
-          tooltip={<div className={"text-xs normal-case"}>Peers</div>}
+          tooltip={<div className={"text-xs normal-case"}><TransText>Peers</TransText></div>}
         >
           <PeerIcon size={12} />
         </DataTableHeader>
@@ -93,7 +95,7 @@ export const GroupsTableColumns: ColumnDef<GroupUsage>[] = [
         groupName={row.original.name}
         href={`/group?id=${row.original.id}&tab=peers`}
         hidden={row.original.name === "All"}
-        text={"Peer(s)"}
+        text={zhMap["Peer(s)"]}
         count={row.original.peers_count}
       />
     ),
@@ -104,7 +106,7 @@ export const GroupsTableColumns: ColumnDef<GroupUsage>[] = [
       return (
         <DataTableHeader
           column={column}
-          tooltip={<div className={"text-xs normal-case"}>Policies</div>}
+          tooltip={<div className={"text-xs normal-case"}><TransText>Policies</TransText></div>}
         >
           <AccessControlIcon size={12} />
         </DataTableHeader>
@@ -127,7 +129,7 @@ export const GroupsTableColumns: ColumnDef<GroupUsage>[] = [
         <DataTableHeader
           column={column}
           tooltip={
-            <div className={"text-xs normal-case"}>Network Resources</div>
+            <div className={"text-xs normal-case"}><TransText>Network Resources</TransText></div>
           }
         >
           <Layers3Icon size={12} />
@@ -139,7 +141,7 @@ export const GroupsTableColumns: ColumnDef<GroupUsage>[] = [
         icon={<Layers3Icon size={10} />}
         groupName={row.original.name}
         href={`/group?id=${row.original.id}&tab=resources`}
-        text={"Network Resource(s)"}
+        text={zhMap["Network Resource(s)"]}
         count={row.original.resources_count}
       />
     ),
@@ -150,7 +152,7 @@ export const GroupsTableColumns: ColumnDef<GroupUsage>[] = [
       return (
         <DataTableHeader
           column={column}
-          tooltip={<div className={"text-xs normal-case"}>Network Routes</div>}
+          tooltip={<div className={"text-xs normal-case"}><TransText>Network Routes</TransText></div>}
         >
           <NetworkRoutesIcon size={12} />
         </DataTableHeader>
@@ -161,7 +163,7 @@ export const GroupsTableColumns: ColumnDef<GroupUsage>[] = [
         icon={<NetworkRoutesIcon size={10} />}
         groupName={row.original.name}
         href={`/group?id=${row.original.id}&tab=network-routes`}
-        text={"Network Route(s)"}
+        text={zhMap["Network Route(s)"]}
         count={row.original.routes_count}
       />
     ),
@@ -172,7 +174,7 @@ export const GroupsTableColumns: ColumnDef<GroupUsage>[] = [
       return (
         <DataTableHeader
           column={column}
-          tooltip={<div className={"text-xs normal-case"}>Nameservers</div>}
+          tooltip={<div className={"text-xs normal-case"}><TransText>Nameservers</TransText></div>}
         >
           <DNSIcon size={12} />
         </DataTableHeader>
@@ -183,7 +185,7 @@ export const GroupsTableColumns: ColumnDef<GroupUsage>[] = [
         icon={<DNSIcon size={10} />}
         groupName={row.original.name}
         href={`/group?id=${row.original.id}&tab=nameservers`}
-        text={"Nameserver(s)"}
+        text={zhMap["Nameserver(s)"]}
         count={row.original.nameservers_count}
       />
     ),
@@ -194,7 +196,7 @@ export const GroupsTableColumns: ColumnDef<GroupUsage>[] = [
       return (
         <DataTableHeader
           column={column}
-          tooltip={<div className={"text-xs normal-case"}>Zones</div>}
+          tooltip={<div className={"text-xs normal-case"}><TransText>Zones</TransText></div>}
         >
           <DNSZoneIcon size={16} />
         </DataTableHeader>
@@ -205,7 +207,7 @@ export const GroupsTableColumns: ColumnDef<GroupUsage>[] = [
         icon={<DNSZoneIcon size={14} />}
         groupName={row.original.name}
         href={`/group?id=${row.original.id}&tab=zones`}
-        text={"Zone(s)"}
+        text={zhMap["Zone(s)"]}
         count={row.original.zones_count}
       />
     ),
@@ -217,7 +219,7 @@ export const GroupsTableColumns: ColumnDef<GroupUsage>[] = [
         <DataTableHeader
           column={column}
           center={true}
-          tooltip={<div className={"text-xs normal-case"}>Setup Keys</div>}
+          tooltip={<div className={"text-xs normal-case"}><TransText>Setup Keys</TransText></div>}
         >
           <SetupKeysIcon size={12} />
         </DataTableHeader>
@@ -229,7 +231,7 @@ export const GroupsTableColumns: ColumnDef<GroupUsage>[] = [
         groupName={row.original.name}
         href={`/group?id=${row.original.id}&tab=setup-keys`}
         hidden={row.original.name === "All"}
-        text={"Setup Key(s)"}
+        text={zhMap["Setup Key(s)"]}
         count={row.original.setup_keys_count}
       />
     ),
@@ -237,7 +239,7 @@ export const GroupsTableColumns: ColumnDef<GroupUsage>[] = [
   {
     id: "in_use",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>In Use</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>In Use</TransText></DataTableHeader>;
     },
     sortingFn: "basic",
     accessorFn: (row) => {
@@ -324,7 +326,7 @@ export default function GroupsTable({ headingTarget }: Readonly<Props>) {
   return (
     <DataTable
       headingTarget={headingTarget}
-      text={"Groups"}
+      text={zhMap["Groups"]}
       sorting={sorting}
       isLoading={isLoading}
       setSorting={setSorting}
@@ -332,7 +334,7 @@ export default function GroupsTable({ headingTarget }: Readonly<Props>) {
       data={groups}
       initialPageSize={25}
       showResetFilterButton={false}
-      searchPlaceholder={"Search group by name..."}
+      searchPlaceholder={zhMap["Search group by name..."] || "Search group by name..."}
       rightSide={() => <AddGroupButton />}
       aboveTable={(table) => (
         <TableFilterChips table={table} filters={filterDefs} />

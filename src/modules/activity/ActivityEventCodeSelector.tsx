@@ -1,3 +1,4 @@
+import { TransText } from "@/i18n/trans-text";
 import Button from "@components/Button";
 import { Checkbox } from "@components/Checkbox";
 import { CommandItem } from "@components/Command";
@@ -81,9 +82,9 @@ export function ActivityEventCodeSelector({
           <Layers size={16} className={"shrink-0"} />
           <div className={"w-full flex justify-between"}>
             {values.length > 0 ? (
-              <div>{values.length} Event(s)</div>
+              <div>{values.length} <TransText>Event(s)</TransText></div>
             ) : (
-              "All Event Types"
+              <TransText>All Event Types</TransText>
             )}
             <div className={"pl-2"}>
               <ChevronsUpDown size={18} className={"shrink-0"} />

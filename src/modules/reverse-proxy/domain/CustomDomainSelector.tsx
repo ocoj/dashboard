@@ -1,3 +1,4 @@
+import { TransText } from "@/i18n/trans-text";
 import {
   SelectDropdown,
   SelectOption,
@@ -11,6 +12,7 @@ import { useReverseProxies } from "@/contexts/ReverseProxiesProvider";
 import { ReverseProxyDomainType } from "@/interfaces/ReverseProxy";
 import { isNetBirdCloud } from "@utils/netbird";
 import TruncatedText from "@components/ui/TruncatedText";
+import zhMap from "@/i18n/zh-map";
 
 interface DomainSelectorProps {
   value: string;
@@ -110,7 +112,7 @@ export function CustomDomainSelector({
       showSearch={true}
       searchPlaceholder="Search domains..."
       disabled={disabled}
-      placeholder="Select domain..."
+      placeholder={zhMap["Select domain..."]}
       className={className}
       data-testid={dataTestId}
     />

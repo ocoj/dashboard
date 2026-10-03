@@ -5,6 +5,7 @@ import * as React from "react";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { DNSZone } from "@/interfaces/DNS";
 import { useDNSZones } from "@/modules/dns/zones/DNSZonesProvider";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   zone: DNSZone;
@@ -42,7 +43,7 @@ export const DNSZonesRecordsCell = ({ zone }: Props) => {
         data-testid="add-dns-record"
       >
         <PlusCircle size={12} />
-        Add
+        <TransText>Add</TransText>
       </Button>
     </div>
   );

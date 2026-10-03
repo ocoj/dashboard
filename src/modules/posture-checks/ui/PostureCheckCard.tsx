@@ -21,8 +21,8 @@ export const PostureCheckCard = ({
   license,
 }: {
   children?: React.ReactNode;
-  title?: string;
-  description?: string;
+  title?: React.ReactNode;
+  description?: React.ReactNode;
   iconClass?: string;
   icon?: React.ReactNode;
   modalWidthClass?: string;

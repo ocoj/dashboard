@@ -7,6 +7,7 @@ import {
   PopoverTrigger,
 } from "@components/Popover";
 import { Table } from "@tanstack/react-table";
+import { TransText } from "@/i18n/trans-text";
 import { cn } from "@utils/helpers";
 import {
   ChevronLeftIcon,
@@ -70,7 +71,7 @@ export function TableFiltersButton<TData>({
         >
           <FilterIcon size={16} className={"shrink-0"} />
           <span className={"flex items-center gap-1.5"}>
-            Filters
+            <TransText>Filters</TransText>
             {activeCount > 0 && (
               <span
                 className={
@@ -106,7 +107,7 @@ export function TableFiltersButton<TData>({
                 <ChevronLeftIcon size={16} />
               </button>
               <span className={"text-sm font-medium text-nb-gray-100"}>
-                {activeFilter.label}
+                <TransText>{activeFilter.label}</TransText>
               </span>
             </div>
             <div className={"p-2"}>
@@ -137,7 +138,9 @@ export function TableFiltersButton<TData>({
                   }
                   onClick={() => setActiveFilterId(f.id)}
                 >
-                  <span className={"flex-1"}>{f.label}</span>
+                  <span className={"flex-1"}>
+                    <TransText>{f.label}</TransText>
+                  </span>
                   {chip && (
                     <span
                       className={
@@ -222,7 +225,9 @@ function FilterChip<TData>({ def, text, table }: FilterChipProps<TData>) {
               "hover:bg-nb-gray-900 transition-colors",
             )}
           >
-            <span className={"text-nb-gray-400"}>{def.label}:</span>
+            <span className={"text-nb-gray-400"}>
+              <TransText>{def.label}</TransText>:
+            </span>
             <span className={"font-medium"}>{text}</span>
           </button>
         </PopoverTrigger>
@@ -254,7 +259,7 @@ function FilterChip<TData>({ def, text, table }: FilterChipProps<TData>) {
             }
           >
             <span className={"text-sm font-medium text-nb-gray-100"}>
-              {def.label}
+              <TransText>{def.label}</TransText>
             </span>
           </div>
           <div className={"p-2"}>

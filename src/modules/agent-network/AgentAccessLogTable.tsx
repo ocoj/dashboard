@@ -73,6 +73,8 @@ import AgentAccessLogExpandedRow from "@/modules/agent-network/AgentAccessLogExp
 import EmptyRow from "@/modules/common-table-rows/EmptyRow";
 import TextWithTooltip from "@components/ui/TextWithTooltip";
 import { generateColorFromUser } from "@utils/helpers";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   headingTarget?: HTMLHeadingElement | null;
@@ -715,8 +717,8 @@ export default function AgentAccessLogTable({
           <AgentAccessLogExpandedRow entry={row as AIAccessLogEntry} />
         )
       }
-      searchPlaceholder={"Search by user, agent, model, prompt…"}
-      text={grouped ? "Sessions" : "Requests"}
+      searchPlaceholder={zhMap["Search by user, agent, model, prompt…"] || "Search by user, agent, model, prompt…"}
+      text={grouped ? zhMap["Sessions"] || "Sessions" : zhMap["Requests"] || "Requests"}
       uniqueKey={
         grouped
           ? "agent-network-access-log-sessions"
@@ -733,15 +735,15 @@ export default function AgentAccessLogTable({
               size={"large"}
             />
           }
-          title={"No Access Log Entries Yet"}
+          title={zhMap["No Access Log Entries Yet"] || "No Access Log Entries Yet"}
           description={
-            "No agent-network requests detected yet. This may be because no AI providers are connected, policies don’t allow traffic to them, log collection is disabled, or no traffic has occurred."
+            zhMap["No agent-network requests detected yet. This may be because no AI providers are connected, policies don’t allow traffic to them, log collection is disabled, or no traffic has occurred."] || "No agent-network requests detected yet. This may be because no AI providers are connected, policies don’t allow traffic to them, log collection is disabled, or no traffic has occurred."
           }
           learnMore={
             <>
-              Learn more about
+              <TransText>Learn more about</TransText>
               <InlineLink href={"https://docs.netbird.io/"} target={"_blank"}>
-                Agent Network
+                {zhMap["Agent Network"] || "Agent Network"}
                 <ExternalLinkIcon size={12} />
               </InlineLink>
             </>
@@ -762,7 +764,7 @@ export default function AgentAccessLogTable({
               variant={grouped ? "secondary" : "tertiary"}
               onClick={() => onGroupedChange?.(false)}
             >
-              Requests
+              <TransText>Requests</TransText>
             </ButtonGroup.Button>
             <ButtonGroup.Button
               // Drop the left border so it doesn't stack with the first
@@ -771,7 +773,7 @@ export default function AgentAccessLogTable({
               variant={grouped ? "tertiary" : "secondary"}
               onClick={() => onGroupedChange?.(true)}
             >
-              Sessions
+              <TransText>Sessions</TransText>
             </ButtonGroup.Button>
           </ButtonGroup>
           <DataTableRefreshButton
@@ -1132,15 +1134,15 @@ function CostBreakdown({
           {/* All four buckets, including zeros: a zero cache-read line is
               information (the request missed the cache), and a fixed set of
               rows keeps the hover comparable between requests. */}
-          <CostRow amount={inputCostUsd ?? 0} label={"input"} />
-          <CostRow amount={outputCostUsd ?? 0} label={"output"} />
-          <CostRow amount={cacheRead} label={"cache read"} />
-          <CostRow amount={cacheWrite} label={"cache write"} />
+          <CostRow amount={inputCostUsd ?? 0} label={zhMap["input"] || "input"} />
+          <CostRow amount={outputCostUsd ?? 0} label={zhMap["output"] || "output"} />
+          <CostRow amount={cacheRead} label={zhMap["cache read"] || "cache read"} />
+          <CostRow amount={cacheWrite} label={zhMap["cache write"] || "cache write"} />
         </>
       ) : (
         <>
-          <CostRow amount={costUsd - cache} label={"input + output"} />
-          <CostRow amount={cache} label={"cache"} />
+          <CostRow amount={costUsd - cache} label={zhMap["input + output"] || "input + output"} />
+          <CostRow amount={cache} label={zhMap["cache"] || "cache"} />
         </>
       )}
       <div

@@ -81,7 +81,7 @@ FIRST_PARTY_CSP="pkgs.netbird.io"
 FIRST_PARTY_CSP_CONNECT_SRC="wss://*.netbird.io"
 THIRD_PARTY_CSP="*.licdn.com *.linkedin.com *.vector.co *.sibforms.com *.hotjar.com *.hotjar.io *.redditstatic.com pixel-config.reddit.com *.clarity.ms c.bing.com *.microsoft.com googleads.g.doubleclick.net pagead2.googlesyndication.com www.google.com www.googleadservices.com *.google-analytics.com *.googletagmanager.com analytics.google.com *.hubapi.com *.hs-banner.com *.hubspot.com *.hubspot.net js.hs-analytics.com *.hsforms.net *.hscollectedforms.net *.hs-analytics.net *.hsforms.com track.hubspot.com *.hsadspixel.net static.hsappstatic.net"
 THIRD_PARTY_CSP_CONNECT_SRC="https://api.github.com/repos/netbirdio/netbird/releases/latest https://raw.githubusercontent.com/netbirdio/dashboard/ wss://ws.hotjar.com https://api.hetzner.cloud https://api.digitalocean.com"
-THIRD_PARTY_CSP_SCRIPT_SRC="'sha256-7knV6EIjKUvCpYWE2rCYx8dYV2WCNb2bpTuitFXzBcA=' *.hs-scripts.com"
+# The sha256 hash changes with every Next.js build, so unsafe-inline is used\n# instead (see CSP_POLICY below).  Keep the hs-scripts domain for HubSpot.\nTHIRD_PARTY_CSP_SCRIPT_SRC=\"*.hs-scripts.com\"
 
 CSP_DOMAINS=""
 CSP_DOMAINS_CONNECT_SRC=""
@@ -152,7 +152,9 @@ if [[ "$NETBIRD_MGMT_API_ENDPOINT" == http://* || "$AUTH_AUTHORITY" == http://* 
 fi
 
 # Update CSP in nginx config
-CSP_POLICY="default-src 'none'; connect-src 'self' $CSP_CONNECT_SRC; frame-src 'self' $CSP_FRAME_SRC; script-src 'self' 'wasm-unsafe-eval' $CSP_SCRIPT_SRC; font-src 'self'; img-src * data:; manifest-src 'self'; style-src 'self' 'unsafe-inline'; frame-ancestors 'self'; base-uri 'self'; form-action 'self';$CSP_UPGRADE_INSECURE"
+# 'unsafe-inline' is required for Next.js inline scripts whose hashes change
+# with every build.  Without it the app fails to hydrate.
+CSP_POLICY="default-src 'none'; connect-src 'self' $CSP_CONNECT_SRC; frame-src 'self' $CSP_FRAME_SRC; script-src 'self' 'wasm-unsafe-eval' 'unsafe-inline' $CSP_SCRIPT_SRC; font-src 'self'; img-src * data:; manifest-src 'self'; style-src 'self' 'unsafe-inline'; frame-ancestors 'self'; base-uri 'self'; form-action 'self';$CSP_UPGRADE_INSECURE"
 CSP_HEADER="add_header Content-Security-Policy \"$CSP_POLICY\" always;"
 
 echo "CSP header: $CSP_HEADER"

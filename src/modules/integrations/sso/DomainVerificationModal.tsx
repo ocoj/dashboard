@@ -1,3 +1,4 @@
+import { TransText } from "@/i18n/trans-text";
 import Button from "@components/Button";
 import Card from "@components/Card";
 import InlineLink from "@components/InlineLink";
@@ -120,7 +121,7 @@ export const DomainVerificationModal = ({
         <ModalFooter className={"items-center"}>
           <div className={"w-full"}>
             <Paragraph className={"text-sm mt-auto"}>
-              Learn more about
+              <TransText>Learn more about</TransText>
               <InlineLink href={"#"} target={"_blank"}>
                 Domain Verification
                 <ExternalLinkIcon size={12} />

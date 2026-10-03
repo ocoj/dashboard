@@ -22,6 +22,7 @@ import { notify } from "@/components/Notification";
 import Separator from "@/components/Separator";
 import { Workload } from "@/interfaces/Job";
 import { useApiCall } from "@/utils/api";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   peerID: string;
@@ -83,7 +84,7 @@ export function CreateDebugJobModalContent({ peerID, onSuccess }: Props) {
     <ModalContent maxWidthClass="max-w-xl">
       <ModalHeader
         icon={<BugPlay size={20} />}
-        title="Debug Bundle"
+        title={zhMap["Debug Bundle"]}
         description="Generate a debug bundle on this peer with logs and diagnostics. Useful for troubleshooting without CLI access."
         color="netbird"
       />

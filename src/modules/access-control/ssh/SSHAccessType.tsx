@@ -8,7 +8,9 @@ import {
   SelectValue,
 } from "@components/Select";
 import { usePermissions } from "@/contexts/PermissionsProvider";
+import { TransText } from "@/i18n/trans-text";
 import { ShieldHalfIcon, ShieldUserIcon } from "lucide-react";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   value: "full" | "limited";
@@ -34,15 +36,15 @@ export const SSHAccessType = ({ value, onChange }: Props) => {
           ) : (
             <ShieldHalfIcon size={15} className={"text-nb-gray-300 shrink-0"} />
           )}
-          <SelectValue placeholder="Select ssh access type..." />
+          <SelectValue placeholder={zhMap["Select ssh access type..."]} />
         </div>
       </SelectTrigger>
       <SelectContent data-testid={"ssh-access-selection"}>
         <SelectItem value="full" className={"whitespace-nowrap"}>
-          Full Access
+          <TransText>Full Access</TransText>
         </SelectItem>
         <SelectItem value="limited" className={"whitespace-nowrap"}>
-          Limited Access
+          <TransText>Limited Access</TransText>
         </SelectItem>
       </SelectContent>
     </Select>

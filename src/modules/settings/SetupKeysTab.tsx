@@ -11,6 +11,7 @@ import SettingsIcon from "@/assets/icons/SettingsIcon";
 import { useGroups } from "@/contexts/GroupsProvider";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { Group } from "@/interfaces/Group";
+import { TransText } from "@/i18n/trans-text";
 import { SetupKey } from "@/interfaces/SetupKey";
 
 const SetupKeysTable = lazy(
@@ -42,27 +43,26 @@ export default function SetupKeysTab() {
         <Breadcrumbs>
           <Breadcrumbs.Item
             href={"/settings"}
-            label={"Settings"}
+            label={<TransText>Settings</TransText>}
             icon={<SettingsIcon size={13} />}
           />
           <Breadcrumbs.Item
             href={"/settings?tab=setup-keys"}
-            label={"Setup Keys"}
+            label={<TransText>Setup Keys</TransText>}
             icon={<KeyRound size={14} />}
             active
           />
         </Breadcrumbs>
-        <h1>Setup Keys</h1>
+        <h1><TransText>Setup Keys</TransText></h1>
         <Paragraph>
-          Setup keys are pre-authentication keys that allow to register new
-          machines in your network.{" "}
+          <TransText>Setup keys are pre-authentication keys that allow to register new machines in your network.</TransText>{" "}
           <InlineLink
             href={
               "https://docs.netbird.io/how-to/register-machines-using-setup-keys"
             }
             target={"_blank"}
           >
-            Learn more
+            <TransText>Learn more</TransText>
             <ExternalLinkIcon size={12} />
           </InlineLink>
         </Paragraph>

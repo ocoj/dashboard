@@ -18,6 +18,7 @@ import * as React from "react";
 import { useState } from "react";
 import { useElementSize } from "@/hooks/useElementSize";
 import { Group } from "@/interfaces/Group";
+import { TransText } from "@/i18n/trans-text";
 
 interface MultiSelectProps {
   values: string[];
@@ -68,7 +69,7 @@ export function GroupFilterSelector({
             {values.length > 0 ? (
               <div>{values.length} Group(s)</div>
             ) : (
-              "All Groups"
+              <TransText>All Groups</TransText>
             )}
             <div className={"pl-2"}>
               <ChevronsUpDown size={18} className={"shrink-0"} />

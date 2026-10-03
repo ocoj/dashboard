@@ -19,6 +19,7 @@ import { Callout } from "@components/Callout";
 import Paragraph from "@components/Paragraph";
 import { InlineButtonLink } from "@components/InlineLink";
 import { useRouter } from "next/navigation";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   value: string;
@@ -113,7 +114,7 @@ function ProviderSelect({
   return (
     <Select value={value} onValueChange={onChange} disabled={disabled}>
       <SelectTrigger className="w-full">
-        <SelectValue placeholder="Select your identity provider..." />
+        <SelectValue placeholder={zhMap["Select your identity provider..."]} />
       </SelectTrigger>
       <SelectContent>
         {providers?.map((provider) => (

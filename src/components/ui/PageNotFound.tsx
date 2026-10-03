@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import * as React from "react";
 import Skeleton from "react-loading-skeleton";
 import PageContainer from "@/layouts/PageContainer";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   title?: string;
@@ -66,10 +67,10 @@ export const PageNotFound = ({
                             "text-3xl font-medium mx-auto mt-3 capitalize"
                           }
                         >
-                          {title}
+                          <TransText>{title}</TransText>
                         </h1>
                         <Paragraph className={"justify-center my-3 max-w-xl"}>
-                          {description}
+                          <TransText>{description}</TransText>
                         </Paragraph>
                         <Button
                           variant={"secondary"}
@@ -77,7 +78,7 @@ export const PageNotFound = ({
                           onClick={() => router.back()}
                         >
                           <Undo2Icon size={15} className={"shrink-0"} />
-                          Go Back
+                          <TransText>Go Back</TransText>
                         </Button>
                       </div>
                     </div>

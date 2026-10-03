@@ -49,6 +49,7 @@ import { toASCII } from "punycode";
 import React, { useMemo, useState } from "react";
 import Skeleton from "react-loading-skeleton";
 import { useSWRConfig } from "swr";
+import { TransText } from "@/i18n/trans-text";
 import {
   TrafficEventsPeerTabContent,
   TrafficEventsPeerTabTrigger,
@@ -81,6 +82,7 @@ import { PeerSSHToggle } from "@/modules/peer/PeerSSHToggle";
 import { RDPButton } from "@/modules/remote-access/rdp/RDPButton";
 import { SSHButton } from "@/modules/remote-access/ssh/SSHButton";
 import { PeerExpirationSettings } from "@/modules/peer/PeerExpirationSettings";
+import zhMap from "@/i18n/zh-map";
 
 export default function PeerPage() {
   const queryParameter = useSearchParams();
@@ -143,7 +145,7 @@ function PeerOverview() {
             <Breadcrumbs>
               <Breadcrumbs.Item
                 href={peerListPath(user)}
-                label={"Peers"}
+                label={zhMap["Peers"]}
                 icon={<PeerIcon size={13} />}
               />
               <Breadcrumbs.Item label={peer.ip} active />
@@ -313,7 +315,7 @@ const PeerHeader = () => {
               className={"w-full"}
               onClick={() => router.push(peerListPath(user))}
             >
-              Cancel
+              <TransText>Cancel</TransText>
             </Button>
             <Button
               variant={"primary"}
@@ -325,7 +327,7 @@ const PeerHeader = () => {
                 !permission.groups.update
               }
             >
-              Save Changes
+              <TransText>Save Changes</TransText>
             </Button>
           </div>
         )}
@@ -355,20 +357,20 @@ const PeerOverviewTabs = () => {
       <TabsList justify={"start"} className={"px-8"}>
         <TabsTrigger value={"overview"}>
           <ListIcon size={16} />
-          Overview
+          <TransText>Overview</TransText>
         </TabsTrigger>
 
         {permission.routes.read && (
           <TabsTrigger value={"network-routes"}>
             <NetworkIcon size={16} />
-            Network Routes
+            <TransText>Network Routes</TransText>
           </TabsTrigger>
         )}
 
         {peer?.id && (
           <TabsTrigger value={"accessible-peers"}>
             <MonitorSmartphoneIcon size={16} />
-            Accessible Peers
+            <TransText>Accessible Peers</TransText>
           </TabsTrigger>
         )}
 
@@ -378,14 +380,14 @@ const PeerOverviewTabs = () => {
               size={16}
               className="fill-nb-gray-400 group-data-[state=active]/trigger:fill-netbird"
             />
-            {singularize("Services", flatTargets.length)}
+            <TransText>Services</TransText>
           </TabsTrigger>
         )}
 
         {peer?.id && permission.peers.delete && (
           <TabsTrigger value={"peer-job"}>
             <RadioTowerIcon size={16} />
-            Remote Jobs
+            <TransText>Remote Jobs</TransText>
           </TabsTrigger>
         )}
 
@@ -455,9 +457,9 @@ const PeerOverviewTabContent = () => {
           <PeerExpirationSettings />
           {permission.groups.read && (
             <div>
-              <Label>Assigned Groups</Label>
+              <Label><TransText>Assigned Groups</TransText></Label>
               <HelpText>
-                Use groups to control what this peer can access.
+                <TransText>Use groups to control what this peer can access.</TransText>
               </HelpText>
               <PeerGroupSelector
                 disabled={!permission.groups.update}
@@ -473,8 +475,8 @@ const PeerOverviewTabContent = () => {
 
           {/* Remote Access Buttons */}
           <div>
-            <Label>Remote Access</Label>
-            <HelpText>Connect directly to this peer via SSH or RDP.</HelpText>
+            <Label><TransText>Remote Access</TransText></Label>
+            <HelpText><TransText>Connect directly to this peer via SSH or RDP.</TransText></HelpText>
             <div className="flex gap-3">
               <SSHButton peer={peer} />
               <RDPButton peer={peer} />
@@ -549,7 +551,7 @@ function PeerInformationCard({ peer }: Readonly<{ peer: Peer }>) {
             label={
               <>
                 <MapPin size={16} className={"shrink-0"} />
-                NetBird IP Address
+                <TransText>NetBird IP Address</TransText>
               </>
             }
             valueToCopy={peer.ip}
@@ -570,7 +572,7 @@ function PeerInformationCard({ peer }: Readonly<{ peer: Peer }>) {
               label={
                 <>
                   <MapPin size={16} className={"shrink-0"} />
-                  NetBird IPv6 Address
+                  <TransText>NetBird IPv6 Address</TransText>
                 </>
               }
               valueToCopy={peer.ipv6}
@@ -590,7 +592,7 @@ function PeerInformationCard({ peer }: Readonly<{ peer: Peer }>) {
             label={
               <>
                 <NetworkIcon size={16} className={"shrink-0"} />
-                Public IP Address
+                <TransText>Public IP Address</TransText>
               </>
             }
             value={peer.connection_ip}
@@ -602,7 +604,7 @@ function PeerInformationCard({ peer }: Readonly<{ peer: Peer }>) {
             label={
               <>
                 <Globe size={16} className={"shrink-0"} />
-                Domain Name
+                <TransText>Domain Name</TransText>
               </>
             }
             className={
@@ -620,7 +622,7 @@ function PeerInformationCard({ peer }: Readonly<{ peer: Peer }>) {
             label={
               <>
                 <MonitorSmartphoneIcon size={16} className={"shrink-0"} />
-                Hostname
+                <TransText>Hostname</TransText>
               </>
             }
             value={peer.hostname}
@@ -630,13 +632,13 @@ function PeerInformationCard({ peer }: Readonly<{ peer: Peer }>) {
             label={
               <>
                 <FlagIcon size={16} className={"shrink-0"} />
-                Region
+                <TransText>Region</TransText>
               </>
             }
             tooltip={false}
             value={
               isEmpty(peer.country_code) ? (
-                "Unknown"
+                <TransText>Unknown</TransText>
               ) : (
                 <>
                   {isLoading ? (
@@ -660,7 +662,7 @@ function PeerInformationCard({ peer }: Readonly<{ peer: Peer }>) {
             label={
               <>
                 <Cpu size={16} className={"shrink-0"} />
-                Operating System
+                <TransText>Operating System</TransText>
               </>
             }
             value={peer.os}
@@ -671,7 +673,7 @@ function PeerInformationCard({ peer }: Readonly<{ peer: Peer }>) {
               label={
                 <>
                   <Barcode size={16} className={"shrink-0"} />
-                  Serial Number
+                  <TransText>Serial Number</TransText>
                 </>
               }
               value={peer.serial_number}
@@ -683,7 +685,7 @@ function PeerInformationCard({ peer }: Readonly<{ peer: Peer }>) {
               label={
                 <>
                   <CalendarDays size={16} className={"shrink-0"} />
-                  Registered on
+                  <TransText>Registered on</TransText>
                 </>
               }
               value={
@@ -699,12 +701,12 @@ function PeerInformationCard({ peer }: Readonly<{ peer: Peer }>) {
             label={
               <>
                 <History size={16} className={"shrink-0"} />
-                Last seen
+                <TransText>Last seen</TransText>
               </>
             }
             value={
               peer.connected
-                ? "just now"
+                ? <TransText>just now</TransText>
                 : dayjs(peer.last_seen).format("D MMMM, YYYY [at] h:mm A") +
                   " (" +
                   dayjs().to(peer.last_seen) +
@@ -716,7 +718,7 @@ function PeerInformationCard({ peer }: Readonly<{ peer: Peer }>) {
             label={
               <>
                 <NetBirdIcon size={16} className={"shrink-0"} />
-                Agent Version
+                <TransText>Agent Version</TransText>
               </>
             }
             value={peer.version}
@@ -727,7 +729,7 @@ function PeerInformationCard({ peer }: Readonly<{ peer: Peer }>) {
               label={
                 <>
                   <NetBirdIcon size={16} className={"shrink-0"} />
-                  UI Version
+                  <TransText>UI Version</TransText>
                 </>
               }
               value={peer.ui_version?.replace("netbird-desktop-ui/", "")}

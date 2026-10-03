@@ -43,12 +43,14 @@ import {
 import CustomDomainClusterCell from "@/modules/reverse-proxy/domain/CustomDomainClusterCell";
 import { CustomDomainModal } from "./CustomDomainModal";
 import { CustomDomainVerificationModal } from "./CustomDomainVerificationModal";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 const CustomDomainsColumns: ColumnDef<ReverseProxyDomain>[] = [
   {
     accessorKey: "domain",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Domain</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Domain</TransText></DataTableHeader>;
     },
     sortingFn: "text",
     cell: ({ row }) => <CustomDomainNameCell domain={row.original} />,
@@ -56,7 +58,7 @@ const CustomDomainsColumns: ColumnDef<ReverseProxyDomain>[] = [
   {
     accessorKey: "validated",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Status</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Status</TransText></DataTableHeader>;
     },
     filterFn: "exactMatch",
     cell: ({ row }) => <CustomDomainStatusCell domain={row.original} />,
@@ -64,7 +66,7 @@ const CustomDomainsColumns: ColumnDef<ReverseProxyDomain>[] = [
   {
     accessorKey: "target_cluster",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Cluster</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Cluster</TransText></DataTableHeader>;
     },
     cell: ({ row }) => <CustomDomainClusterCell domain={row.original} />,
   },
@@ -174,13 +176,13 @@ export default function CustomDomainsTable({ headingTarget }: Readonly<Props>) {
         initialPageSize={10000}
         showResetFilterButton={false}
         keepStateInLocalStorage={false}
-        text={"Domains"}
+        text={zhMap["Domains"]}
         sorting={sorting}
         setSorting={setSorting}
         columns={CustomDomainsColumns}
         data={data}
         useRowId={true}
-        searchPlaceholder={"Search by domain..."}
+        searchPlaceholder={zhMap["Search by domain..."] || "Search by domain..."}
         aboveTable={(table) => (
           <TableFilterChips table={table} filters={filterDefs} />
         )}
@@ -212,7 +214,7 @@ export default function CustomDomainsTable({ headingTarget }: Readonly<Props>) {
             }
             learnMore={
               <>
-                Learn more about
+                <TransText>Learn more about</TransText>
                 <InlineLink href={REVERSE_PROXY_DOCS_LINK} target={"_blank"}>
                   Custom Domains
                   <ExternalLinkIcon size={12} />

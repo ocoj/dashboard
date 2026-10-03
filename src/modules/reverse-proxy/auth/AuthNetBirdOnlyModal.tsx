@@ -4,6 +4,7 @@ import ModalHeader from "@components/modal/ModalHeader";
 import { PeerGroupSelector } from "@components/PeerGroupSelector";
 import { GradientFadedBackground } from "@components/ui/GradientFadedBackground";
 import React, { useState } from "react";
+import { TransText } from "@/i18n/trans-text";
 import { Group } from "@/interfaces/Group";
 import { useUsers } from "@/contexts/UsersProvider";
 import Badge from "@components/Badge";
@@ -45,8 +46,8 @@ export default function AuthNetBirdOnlyModal({
     <Modal open={open} onOpenChange={onOpenChange}>
       <ModalContent maxWidthClass="max-w-xl">
         <ModalHeader
-          title="NetBird-Only Access"
-          description="Reachable from peers in selected groups only."
+          title={<TransText>NetBird-Only Access</TransText>}
+          description={<TransText>Reachable from peers in selected groups only.</TransText>}
         />
 
         <GradientFadedBackground />
@@ -74,7 +75,7 @@ export default function AuthNetBirdOnlyModal({
                 </Button>
                 <div className="flex gap-3">
                   <ModalClose asChild>
-                    <Button variant="secondary">Cancel</Button>
+                    <Button variant="secondary"><TransText>Cancel</TransText></Button>
                   </ModalClose>
                   <Button
                     variant="primary"
@@ -90,7 +91,7 @@ export default function AuthNetBirdOnlyModal({
                 <div />
                 <div className="flex gap-3">
                   <ModalClose asChild>
-                    <Button variant="secondary">Cancel</Button>
+                    <Button variant="secondary"><TransText>Cancel</TransText></Button>
                   </ModalClose>
                   <Button
                     variant="primary"

@@ -2,6 +2,7 @@ import { DropdownMenuItem } from "@components/DropdownMenu";
 import { Modal } from "@components/modal/Modal";
 import { IconCirclePlus, IconDirectionSign } from "@tabler/icons-react";
 import * as React from "react";
+import { TransText } from "@/i18n/trans-text";
 import { useState } from "react";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import RoutesProvider from "@/contexts/RoutesProvider";
@@ -29,7 +30,7 @@ export const ExitNodeDropdownButton = ({ peer }: Props) => {
             <>
               <IconCirclePlus size={14} className={"shrink-0"} />
               <div className={"flex justify-between items-center w-full"}>
-                Add Exit Node
+                <TransText>Add Exit Node</TransText>
               </div>
             </>
           ) : (
@@ -39,7 +40,7 @@ export const ExitNodeDropdownButton = ({ peer }: Props) => {
                 className={"shrink-0 text-yellow-400"}
               />
               <div className={"flex justify-between items-center w-full"}>
-                Set Up Exit Node
+                <TransText>Set Up Exit Node</TransText>
               </div>
             </>
           )}

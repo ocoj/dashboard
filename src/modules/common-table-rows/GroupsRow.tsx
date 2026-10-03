@@ -139,7 +139,7 @@ export function EditGroupsModal({
     <ModalContent maxWidthClass={"max-w-xl"}>
       <ModalHeader
         icon={<FolderGit2 size={18} />}
-        title={label || "Assigned Groups"}
+        title={label}
         description={description}
         color={"blue"}
       />

@@ -41,6 +41,7 @@ import { useRoutes } from "@/contexts/RoutesProvider";
 import { OperatingSystem } from "@/interfaces/OperatingSystem";
 import { Peer } from "@/interfaces/Peer";
 import { Route } from "@/interfaces/Route";
+import { TransText } from "@/i18n/trans-text";
 import useGroupHelper from "@/modules/groups/useGroupHelper";
 import { RoutingPeerMasqueradeSwitch } from "@/modules/networks/routing-peers/RoutingPeerMasqueradeSwitch";
 
@@ -324,7 +325,7 @@ function RouteUpdateModalContent({ onSuccess, route, cell }: ModalProps) {
     <ModalContent maxWidthClass={"max-w-2xl"}>
       <ModalHeader
         icon={<NetworkRoutesIcon className={"fill-netbird"} />}
-        title={"Update " + route.network_id}
+        title={<><TransText>Update</TransText>{" " + route.network_id}</>}
         description={routeInfo}
         color={"netbird"}
         truncate={true}
@@ -350,7 +351,7 @@ function RouteUpdateModalContent({ onSuccess, route, cell }: ModalProps) {
                 "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
               }
             />
-            Route
+            <TransText>Route</TransText>
           </TabsTrigger>
           <TabsTrigger
             value={"general"}
@@ -362,7 +363,7 @@ function RouteUpdateModalContent({ onSuccess, route, cell }: ModalProps) {
                 "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
               }
             />
-            Description
+            <TransText>Description</TransText>
           </TabsTrigger>
           <TabsTrigger value={"settings"}>
             <Settings2
@@ -371,7 +372,7 @@ function RouteUpdateModalContent({ onSuccess, route, cell }: ModalProps) {
                 "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
               }
             />
-            Settings
+            <TransText>Settings</TransText>
           </TabsTrigger>
         </TabsList>
 
@@ -379,9 +380,9 @@ function RouteUpdateModalContent({ onSuccess, route, cell }: ModalProps) {
           <div className={"px-8 flex-col flex gap-6"}>
             {route.peer ? (
               <div>
-                <Label>Routing Peer</Label>
+                <Label><TransText>Routing Peer</TransText></Label>
                 <HelpText>
-                  Assign a single peer as a routing peer for the
+                  <TransText>Assign a single peer as a routing peer for the</TransText>
                   {isExitNode ? " exit node." : " network route."}
                 </HelpText>
                 <PeerSelector
@@ -392,9 +393,9 @@ function RouteUpdateModalContent({ onSuccess, route, cell }: ModalProps) {
               </div>
             ) : (
               <div>
-                <Label>Peer Group</Label>
+                <Label><TransText>Peer Group</TransText></Label>
                 <HelpText>
-                  Assign a peer group with machines to be used as
+                  <TransText>Assign a peer group with machines to be used as</TransText>
                   {isExitNode ? " exit nodes." : " routing peers."}
                 </HelpText>
                 <PeerGroupSelector
@@ -406,20 +407,17 @@ function RouteUpdateModalContent({ onSuccess, route, cell }: ModalProps) {
             )}
 
             <div>
-              <Label>Distribution Groups</Label>
+              <Label><TransText>Distribution Groups</TransText></Label>
               <HelpText>
-                Advertise this route to peers that belong to the following
-                groups
+                <TransText>Advertise this route to peers that belong to the following groups</TransText>
               </HelpText>
               <PeerGroupSelector onChange={setGroups} values={groups} />
             </div>
 
             <div>
-              <Label>Access Control Groups (optional)</Label>
+              <Label><TransText>Access Control Groups (optional)</TransText></Label>
               <HelpText>
-                These groups offer a more granular control of internal services
-                in your network. They can be used in access control policies to
-                limit and control access of this route.
+                <TransText>These groups offer a more granular control of internal services in your network. They can be used in access control policies to limit and control access of this route.</TransText>
               </HelpText>
               <PeerGroupSelector
                 onChange={setAccessControlGroups}
@@ -431,9 +429,9 @@ function RouteUpdateModalContent({ onSuccess, route, cell }: ModalProps) {
         <TabsContent value={"general"} className={"px-8 pb-6"}>
           <div className={"flex flex-col gap-6"}>
             <div>
-              <Label>Description (optional)</Label>
+              <Label><TransText>Description (optional)</TransText></Label>
               <HelpText>
-                Write a short description to add more context to this route.
+                <TransText>Write a short description to add more context to this route.</TransText>
               </HelpText>
               <Textarea
                 placeholder={
@@ -454,10 +452,10 @@ function RouteUpdateModalContent({ onSuccess, route, cell }: ModalProps) {
               label={
                 <>
                   <Power size={15} />
-                  Enable Route
+                  <TransText>Enable Route</TransText>
                 </>
               }
-              helpText={"Use this switch to enable or disable the route."}
+              helpText={<TransText>Use this switch to enable or disable the route.</TransText>}
             />
 
             {isExitNode && (
@@ -467,10 +465,10 @@ function RouteUpdateModalContent({ onSuccess, route, cell }: ModalProps) {
                   label={
                     <>
                       <IconDirectionSign size={15} />
-                      Auto Apply Route
+                      <TransText>Auto Apply Route</TransText>
                     </>
                   }
-                  helpText={"Automatically apply this exit node to your distribution groups. This requires NetBird client v0.55.0 or higher."}
+                  helpText={<TransText>Automatically apply this exit node to your distribution groups. This requires NetBird client v0.55.0 or higher.</TransText>}
                 />
             )}
 
@@ -484,9 +482,9 @@ function RouteUpdateModalContent({ onSuccess, route, cell }: ModalProps) {
             )}
             <div className={cn("flex justify-between")}>
               <div>
-                <Label>Metric</Label>
+                <Label><TransText>Metric</TransText></Label>
                 <HelpText className={"max-w-[200px]"}>
-                  A lower metric indicates a higher priority route.
+                  <TransText>A lower metric indicates a higher priority route.</TransText>
                 </HelpText>
               </div>
 
@@ -514,21 +512,21 @@ function RouteUpdateModalContent({ onSuccess, route, cell }: ModalProps) {
       <ModalFooter className={"items-center"}>
         <div className={"w-full"}>
           <Paragraph className={"text-sm mt-auto"}>
-            Learn more about
+            <TransText>Learn more about</TransText>
             <InlineLink
               href={
                 "https://docs.netbird.io/how-to/routing-traffic-to-private-networks"
               }
               target={"_blank"}
             >
-              Network Routes
+              <TransText>Network Routes</TransText>
               <ExternalLinkIcon size={12} />
             </InlineLink>
           </Paragraph>
         </div>
         <div className={"flex gap-3 w-full justify-end"}>
           <ModalClose asChild={true}>
-            <Button variant={"secondary"}>Cancel</Button>
+            <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
           </ModalClose>
 
           <Button
@@ -536,7 +534,7 @@ function RouteUpdateModalContent({ onSuccess, route, cell }: ModalProps) {
             disabled={isDisabled}
             onClick={updateRouteHandler}
           >
-            Save Changes
+            <TransText>Save Changes</TransText>
           </Button>
         </div>
       </ModalFooter>

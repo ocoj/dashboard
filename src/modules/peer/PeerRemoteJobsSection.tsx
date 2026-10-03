@@ -1,3 +1,4 @@
+import { TransText } from "@/i18n/trans-text";
 import { ExternalLinkIcon } from "lucide-react";
 import React, { lazy, Suspense } from "react";
 import InlineLink from "@/components/InlineLink";
@@ -24,13 +25,16 @@ export const PeerRemoteJobsSection = ({ peerID }: Props) => {
         <div className="flex justify-between items-center mb-5">
           <div>
             <Paragraph>
-              Remotely trigger actions such as debug bundles or other tasks on
-              this peer, without requiring CLI access.{" "}
+              <TransText>
+                Remotely trigger actions such as debug bundles or other tasks on
+                this peer, without requiring CLI access.
+              </TransText>
+              {" "}
               <InlineLink
                 href={"https://docs.netbird.io/manage/peers/remote-jobs"}
                 target={"_blank"}
               >
-                Learn more
+                <TransText>Learn more</TransText>
                 <ExternalLinkIcon size={12} />
               </InlineLink>
             </Paragraph>

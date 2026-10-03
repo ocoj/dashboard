@@ -24,6 +24,7 @@ import { ArrowUpRightIcon, Layers3Icon, PlusCircle } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import * as React from "react";
 import { useMemo, useState } from "react";
+import { TransText } from "@/i18n/trans-text";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import {
   isResourceTargetType,
@@ -38,6 +39,7 @@ import ResourceAddressCell from "@/modules/networks/resources/ResourceAddressCel
 import { ResourceGroupCell } from "@/modules/networks/resources/ResourceGroupCell";
 import ResourceNameCell from "@/modules/networks/resources/ResourceNameCell";
 import { ResourcePolicyCell } from "@/modules/networks/resources/ResourcePolicyCell";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   resources?: NetworkResource[];
@@ -56,7 +58,7 @@ const NetworkResourceColumns: ColumnDef<NetworkResource>[] = [
     id: "name",
     accessorKey: "name",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Resource</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Resource</TransText></DataTableHeader>;
     },
     cell: ({ row }) => {
       return <ResourceNameCell resource={row.original} />;
@@ -72,7 +74,7 @@ const NetworkResourceColumns: ColumnDef<NetworkResource>[] = [
     id: "address",
     accessorKey: "address",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Address</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Address</TransText></DataTableHeader>;
     },
     cell: ({ row }) => {
       return <ResourceAddressCell resource={row.original} />;
@@ -89,7 +91,7 @@ const NetworkResourceColumns: ColumnDef<NetworkResource>[] = [
       return groups.map((group) => group.name).join(", ");
     },
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Groups</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Groups</TransText></DataTableHeader>;
     },
     cell: ({ row }) => {
       return <ResourceGroupCell resource={row.original} />;
@@ -107,7 +109,7 @@ const NetworkResourceColumns: ColumnDef<NetworkResource>[] = [
     id: "policies",
     accessorKey: "id",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Policies</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Policies</TransText></DataTableHeader>;
     },
     cell: ({ row }) => {
       return <ResourcePolicyCell resource={row.original} />;
@@ -273,7 +275,7 @@ export default function ResourcesTable({
       showSearchAndFilters={true}
       inset={false}
       tableClassName={"mt-0"}
-      text={"Resources"}
+      text={zhMap["Resources"]}
       columns={columns}
       keepStateInLocalStorage={false}
       initialPageSize={25}
@@ -287,7 +289,7 @@ export default function ResourcesTable({
         <TableFilterChips table={table} filters={filterDefs} />
       )}
       data={resources}
-      searchPlaceholder={"Search by name, address or group..."}
+      searchPlaceholder={zhMap["Search by name, address or group..."] || "Search by name, address or group..."}
       isLoading={isLoading}
       getStartedCard={
         <NoResults
@@ -311,7 +313,7 @@ export default function ResourcesTable({
                 className={"mt-4"}
                 onClick={() => router.push("/networks")}
               >
-                Go to Networks
+                <TransText>Go to Networks</TransText>
                 <ArrowUpRightIcon size={16} />
               </Button>
             </>
@@ -338,7 +340,7 @@ export default function ResourcesTable({
                 data-testid={"add-resource"}
               >
                 <PlusCircle size={16} />
-                Add
+                <TransText>Add</TransText>
               </Button>
             )
           : undefined

@@ -1,3 +1,4 @@
+import { TransText } from "@/i18n/trans-text";
 import Button from "@components/Button";
 import { Checkbox } from "@components/Checkbox";
 import { DataTable } from "@components/table/DataTable";
@@ -14,6 +15,7 @@ import { useSWRConfig } from "swr";
 import { PostureCheck } from "@/interfaces/PostureCheck";
 import { PostureCheckChecksCell } from "@/modules/posture-checks/table/cells/PostureCheckChecksCell";
 import { PostureCheckNameCell } from "@/modules/posture-checks/table/cells/PostureCheckNameCell";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   onAdd: (checks: PostureCheck[]) => void;
@@ -42,7 +44,7 @@ export default function PostureCheckBrowseTable({ onAdd }: Readonly<Props>) {
         setRowSelection={setSelectedRows}
         isLoading={isLoading}
         keepStateInLocalStorage={false}
-        text={"Posture Check"}
+        text={zhMap["Posture Check"]}
         sorting={sorting}
         wrapperClassName={""}
         setSorting={setSorting}
@@ -54,7 +56,7 @@ export default function PostureCheckBrowseTable({ onAdd }: Readonly<Props>) {
         tableClassName={"mt-6 !border-0"}
         rowClassName={"!border-b-0 px-10"}
         data={postureChecks}
-        searchPlaceholder={"Search by name and description..."}
+        searchPlaceholder={zhMap["Search by name and description..."] || "Search by name and description..."}
         onRowClick={(row) => row.toggleSelected()}
         rightSide={(table) => (
           <>
@@ -98,7 +100,7 @@ export const PostureChecksColumns: ColumnDef<PostureCheck>[] = [
         <Checkbox
           checked={table.getIsAllPageRowsSelected()}
           onCheckedChange={(value) => table.toggleAllRowsSelected(!!value)}
-          aria-label="Select all"
+          aria-label={zhMap["Select all"]}
         />
       </div>
     ),
@@ -107,7 +109,7 @@ export const PostureChecksColumns: ColumnDef<PostureCheck>[] = [
         <Checkbox
           checked={row.getIsSelected()}
           onCheckedChange={(value) => row.toggleSelected(!!value)}
-          aria-label="Select row"
+          aria-label={zhMap["Select row"]}
           variant={"tableCell"}
         />
       </div>
@@ -118,7 +120,7 @@ export const PostureChecksColumns: ColumnDef<PostureCheck>[] = [
   {
     accessorKey: "name",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Name</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Name</TransText></DataTableHeader>;
     },
     cell: ({ row }) => (
       <PostureCheckNameCell small={true} check={row.original} />
@@ -127,7 +129,7 @@ export const PostureChecksColumns: ColumnDef<PostureCheck>[] = [
   {
     accessorKey: "id",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Checks</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Checks</TransText></DataTableHeader>;
     },
     cell: ({ row }) => <PostureCheckChecksCell check={row.original} />,
   },

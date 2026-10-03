@@ -1,3 +1,4 @@
+import { TransText } from "@/i18n/trans-text";
 import Button from "@components/Button";
 import InlineLink from "@components/InlineLink";
 import SquareIcon from "@components/SquareIcon";
@@ -36,6 +37,7 @@ import { PostureCheckChecksCell } from "@/modules/posture-checks/table/cells/Pos
 import { PostureCheckNameCell } from "@/modules/posture-checks/table/cells/PostureCheckNameCell";
 import { PostureCheckPolicyUsageCell } from "@/modules/posture-checks/table/cells/PostureCheckPolicyUsageCell";
 import PoliciesProvider from "@/contexts/PoliciesProvider";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   isLoading: boolean;
@@ -47,7 +49,7 @@ const Columns: ColumnDef<PostureCheck>[] = [
   {
     accessorKey: "name",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Name</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Name</TransText></DataTableHeader>;
     },
     cell: ({ row }) => <PostureCheckNameCell check={row.original} />,
   },
@@ -60,14 +62,14 @@ const Columns: ColumnDef<PostureCheck>[] = [
     id: "checks",
     accessorFn: (row) => Object.keys(row.checks).length,
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Checks</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Checks</TransText></DataTableHeader>;
     },
     cell: ({ row }) => <PostureCheckChecksCell check={row.original} />,
   },
   {
     id: "access_control_usage",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Policies</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Policies</TransText></DataTableHeader>;
     },
     cell: ({ row }) => <PostureCheckPolicyUsageCell check={row.original} />,
   },
@@ -178,7 +180,7 @@ export default function PostureCheckTable({
           <DataTable
             headingTarget={headingTarget}
             isLoading={isLoading}
-            text={"Posture Check"}
+            text={zhMap["Posture Check"]}
             sorting={sorting}
             wrapperClassName={""}
             setSorting={setSorting}
@@ -198,7 +200,7 @@ export default function PostureCheckTable({
               setCurrentCellClicked(cell);
             }}
             data={data}
-            searchPlaceholder={"Search by name and description..."}
+            searchPlaceholder={zhMap["Search by name and description..."] || "Search by name and description..."}
             rightSide={() => (
               <>
                 {data && data?.length > 0 && (
@@ -242,19 +244,19 @@ export default function PostureCheckTable({
                     onClick={() => setPostureCheckModal(true)}
                   >
                     <IconCirclePlus size={16} />
-                    Create Posture Check
+                    <TransText>Create Posture Check</TransText>
                   </Button>
                 }
                 learnMore={
                   <>
-                    Learn more about
+                    <TransText>Learn more about</TransText>
                     <InlineLink
                       href={
                         "https://docs.netbird.io/how-to/manage-posture-checks"
                       }
                       target={"_blank"}
                     >
-                      Posture Checks
+                      <TransText>Posture Checks</TransText>
                       <ExternalLinkIcon size={12} />
                     </InlineLink>
                   </>

@@ -11,6 +11,8 @@ import { Copy, ExternalLinkIcon, Globe, Plug } from "lucide-react";
 import React, { Suspense, useState } from "react";
 import AgentNetworkIcon from "@/assets/icons/AgentNetworkIcon";
 import { usePermissions } from "@/contexts/PermissionsProvider";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 import PageContainer from "@/layouts/PageContainer";
 import AgentConnectModal from "@/modules/agent-network/AgentConnectModal";
 import AIProviderModal from "@/modules/agent-network/AIProviderModal";
@@ -35,7 +37,7 @@ function EndpointBadge({ endpoint }: { endpoint: string }) {
             "text-[10px] text-nb-gray-400 uppercase tracking-wider font-medium inline-flex items-center gap-1.5"
           }
         >
-          API Base URL
+          <TransText>API Base URL</TransText>
           <HelpTooltip
             iconSize={11}
             content={
@@ -63,11 +65,11 @@ function EndpointBadge({ endpoint }: { endpoint: string }) {
         className={
           "inline-flex items-center gap-1.5 rounded-md border border-nb-gray-700 bg-nb-gray-800/60 px-2.5 py-1.5 text-[11px] font-medium text-nb-gray-200 hover:bg-nb-gray-800 hover:text-white transition-colors shrink-0"
         }
-        onClick={() => copy("Endpoint copied to clipboard")}
-        aria-label={"Copy endpoint"}
+        onClick={() => copy(zhMap["Endpoint copied to clipboard"] || "Endpoint copied to clipboard")}
+        aria-label={zhMap["Copy endpoint"] || "Copy endpoint"}
       >
         <Copy size={12} />
-        Copy
+        <TransText>Copy</TransText>
       </button>
       <button
         type={"button"}
@@ -75,10 +77,10 @@ function EndpointBadge({ endpoint }: { endpoint: string }) {
           "inline-flex items-center gap-1.5 rounded-md border border-nb-gray-700 bg-nb-gray-800/60 px-2.5 py-1.5 text-[11px] font-medium text-nb-gray-200 hover:bg-nb-gray-800 hover:text-white transition-colors shrink-0"
         }
         onClick={() => setConnectOpen(true)}
-        aria-label={"Agent config"}
+        aria-label={zhMap["Agent config"] || "Agent config"}
       >
         <Plug size={12} />
-        Agent Config
+        <TransText>Agent Config</TransText>
       </button>
       <AgentConnectModal
         open={connectOpen}
@@ -114,7 +116,7 @@ function EndpointHeader() {
               "text-[10px] text-nb-gray-500 uppercase tracking-wider font-medium inline-flex items-center gap-1.5"
             }
           >
-            API Base URL
+            <TransText>API Base URL</TransText>
             <span onClick={(e) => e.stopPropagation()}>
               <HelpTooltip
                 iconSize={11}
@@ -133,7 +135,7 @@ function EndpointHeader() {
             </span>
           </div>
           <span className={"text-xs text-nb-gray-400 leading-tight mt-0.5"}>
-            Connect your first provider to set up your agent network endpoint.
+            <TransText>Connect your first provider to set up your agent network endpoint.</TransText>
           </span>
         </div>
       </button>
@@ -170,7 +172,7 @@ export default function AgentNetworkProvidersPage() {
           agent-network state, so they must not mount for users without
           services.read. */}
       <RestrictedAccess
-        page={"Providers"}
+        page={zhMap["Providers"] || "Providers"}
         hasAccess={permission?.services?.read}
       >
         <AIProvidersProvider>
@@ -178,25 +180,23 @@ export default function AgentNetworkProvidersPage() {
             <Breadcrumbs>
               <Breadcrumbs.Item
                 href={"/agent-network/providers"}
-                label={"Agent Network"}
+                label={zhMap["Agent Network"] || "Agent Network"}
                 icon={<AgentNetworkIcon size={16} />}
               />
               <Breadcrumbs.Item
                 href={"/agent-network/providers"}
-                label={"Providers"}
+                label={zhMap["Providers"] || "Providers"}
                 active={true}
               />
             </Breadcrumbs>
-            <h1 ref={headingRef}>Providers</h1>
+            <h1 ref={headingRef}><TransText>Providers</TransText></h1>
             <Paragraph>
-              Connect AI providers and gateways like LiteLLM, OpenAI, and
-              Anthropic through one keyless endpoint, accessible only via
-              NetBird’s tunnel.
+              <TransText>Connect AI providers and gateways like LiteLLM, OpenAI, and Anthropic through one keyless endpoint, accessible only via NetBird’s tunnel.</TransText>{" "}
               <InlineLink
                 href={"https://docs.netbird.io/agent-network/providers"}
                 target={"_blank"}
               >
-                Learn more
+                <TransText>Learn more</TransText>
                 <ExternalLinkIcon size={12} />
               </InlineLink>
             </Paragraph>

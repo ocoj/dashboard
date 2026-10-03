@@ -5,6 +5,7 @@ import { useGroupContext } from "@/contexts/GroupProvider";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { Peer } from "@/interfaces/Peer";
 import { User } from "@/interfaces/User";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   onRemove: () => void;
@@ -19,7 +20,7 @@ export function GroupDetailsRemoveCell({ onRemove }: Props) {
         onClick={() => onRemove()}
       >
         <MinusCircle size={14} />
-        Remove
+        <TransText>Remove</TransText>
       </Button>
     </div>
   );

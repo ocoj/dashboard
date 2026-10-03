@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import React, { useEffect, useMemo, useState } from "react";
 import { useApiCall } from "@/utils/api";
+import { TransText } from "@/i18n/trans-text";
 import { ReverseProxyCluster } from "@/interfaces/ReverseProxy";
 
 // Synced from templates/reverse-proxy/netbird-proxy-cfn.yaml by the
@@ -326,16 +327,16 @@ const DeploySuccess = ({
       </Callout>
       {ip && (
         <div>
-          <Label>Create DNS Records</Label>
+          <Label><TransText>Create DNS Records</TransText></Label>
           <HelpText>
             Point these records at the new {resourceLabel.toLowerCase()}. The
             proxy gets its certificate once they resolve.
           </HelpText>
           <CardTable>
             <CardTable.Header>
-              <CardTable.HeaderCell width={100}>Type</CardTable.HeaderCell>
-              <CardTable.HeaderCell>Name</CardTable.HeaderCell>
-              <CardTable.HeaderCell>Content</CardTable.HeaderCell>
+              <CardTable.HeaderCell width={100}><TransText>Type</TransText></CardTable.HeaderCell>
+              <CardTable.HeaderCell><TransText>Name</TransText></CardTable.HeaderCell>
+              <CardTable.HeaderCell><TransText>Content</TransText></CardTable.HeaderCell>
             </CardTable.Header>
             <CardTable.Body>
               <CardTable.Row>
@@ -576,7 +577,7 @@ const HetznerDeploy = ({
         <>
           <div className={"flex gap-4"}>
             <div className={"w-1/2"}>
-              <Label>Location</Label>
+              <Label><TransText>Location</TransText></Label>
               <SelectDropdown
                 value={location}
                 onChange={(v) => setLocation(v as string)}
@@ -584,7 +585,7 @@ const HetznerDeploy = ({
               />
             </div>
             <div className={"w-1/2"}>
-              <Label>Server Type</Label>
+              <Label><TransText>Server Type</TransText></Label>
               <SelectDropdown
                 value={serverType}
                 onChange={(v) => setServerType(v as string)}
@@ -593,7 +594,7 @@ const HetznerDeploy = ({
             </div>
           </div>
           <div>
-            <Label>SSH Key</Label>
+            <Label><TransText>SSH Key</TransText></Label>
             {catalog.sshKeys.length > 0 ? (
               <SelectDropdown
                 value={sshKeyId}
@@ -776,7 +777,7 @@ const DigitalOceanDeploy = ({
         }
       >
         <div>
-          <Label>Droplet Root Password</Label>
+          <Label><TransText>Droplet Root Password</TransText></Label>
           <HelpText>
             Use it with the Droplet Web Console. Copy it now - it is not stored
             anywhere.
@@ -831,7 +832,7 @@ const DigitalOceanDeploy = ({
       </div>
       <div className={"flex gap-4"}>
         <div className={"w-1/2"}>
-          <Label>Region</Label>
+          <Label><TransText>Region</TransText></Label>
           <SelectDropdown
             value={region}
             onChange={(v) => setRegion(v as string)}
@@ -839,7 +840,7 @@ const DigitalOceanDeploy = ({
           />
         </div>
         <div className={"w-1/2"}>
-          <Label>Droplet Size</Label>
+          <Label><TransText>Droplet Size</TransText></Label>
           <SelectDropdown
             value={size}
             onChange={(v) => setSize(v as string)}
@@ -894,7 +895,7 @@ const AWSDeploy = ({
   return (
     <div className={"flex flex-col gap-4"}>
       <div>
-        <Label>Proxy Access Token</Label>
+        <Label><TransText>Proxy Access Token</TransText></Label>
         <HelpText>
           Copy this token for AWS stack creation. It is excluded from outputs and
           logs.
@@ -906,7 +907,7 @@ const AWSDeploy = ({
         </Code>
       </div>
       <div>
-        <Label>Region</Label>
+        <Label><TransText>Region</TransText></Label>
         <SelectDropdown
           value={region}
           onChange={(v) => setRegion(v as string)}

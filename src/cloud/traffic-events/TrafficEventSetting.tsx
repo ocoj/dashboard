@@ -23,6 +23,8 @@ import { usePermissions } from "@/contexts/PermissionsProvider";
 import { Account } from "@/interfaces/Account";
 import { LockedFeatureBadge } from "@/modules/billing/locked-feature/LockedFeatureBadge";
 import useGroupHelper from "@/modules/groups/useGroupHelper";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   account: Account;
@@ -52,7 +54,7 @@ export const TrafficEventSetting = ({ account }: Props) => {
       setTrafficPacketCounterEnabled(false);
     }
     notify({
-      title: "Traffic Events",
+      title: zhMap["Traffic Events"] || "Traffic Events",
       description: `Traffic events successfully ${
         toggle ? "enabled" : "disabled"
       }.`,
@@ -120,19 +122,16 @@ export const TrafficEventSetting = ({ account }: Props) => {
     <>
       <div className={"mt-4"}>
         <h2 className={"text-lg font-medium"}>
-          Experimental
+          <TransText>Experimental</TransText>
           <FlaskConicalIcon
             size={16}
             className={"inline ml-1.5 relative -top-[2px]"}
           />
         </h2>
         <div className={"text-sm text-gray-400"}>
-          Traffic events is an experimental feature. Functionality and behavior
-          may evolve, including changes to how data is collected or reported.
-          Traffic events data retention is limited to 48 hours and capped at a
-          maximum of 50,000 events.{" "}
+          <TransText>Traffic events is an experimental feature. Functionality and behavior may evolve, including changes to how data is collected or reported. Traffic events data retention is limited to 48 hours and capped at a maximum of 50,000 events.</TransText>{" "}
           <InlineLink href={TRAFFIC_EVENTS_DOC_LINK} target={"_blank"}>
-            Learn more
+            <TransText>Learn more</TransText>
             <ExternalLinkIcon size={12} />
           </InlineLink>
         </div>
@@ -140,7 +139,7 @@ export const TrafficEventSetting = ({ account }: Props) => {
       <div className={"relative"}>
         <LockedFeatureBadge
           center={true}
-          featureText={"Traffic Events"}
+          featureText={zhMap["Traffic Events"] || "Traffic Events"}
           feature={"TRAFFIC_EVENTS"}
           disabled={trafficEventsEnabled}
         >
@@ -152,13 +151,15 @@ export const TrafficEventSetting = ({ account }: Props) => {
               label={
                 <>
                   <ArrowLeftRightIcon size={15} />
-                  Enable Traffic Events
+                  <TransText>Enable Traffic Events</TransText>
                 </>
               }
               helpText={
                 <>
-                  Enable traffic events for all peers. This requires NetBird
-                  client v0.39 or higher.
+                  <TransText>
+                    Enable traffic events for all peers. This requires NetBird
+                    client v0.39 or higher.
+                  </TransText>
                 </>
               }
               disabled={!permission.settings.update}
@@ -178,22 +179,28 @@ export const TrafficEventSetting = ({ account }: Props) => {
                 value={trafficPacketCounterEnabled}
                 onChange={toggleTrafficPacketCounter}
                 data-testid="traffic-reporting-kernel"
-                label={<>Enable Traffic Reporting (Kernel)</>}
+                label={<><TransText>Enable Traffic Reporting (Kernel)</TransText></>}
                 helpText={
                   <>
-                    Traffic reporting is always enabled in userspace, and this
-                    setting only applies to kernel. If enabled, network packets
-                    and their size will be counted and reported.
+                    <TransText>
+                      Traffic reporting is always enabled in userspace, and this
+                      setting only applies to kernel. If enabled, network packets
+                      and their size will be counted and reported.
+                    </TransText>
                   </>
                 }
                 disabled={!permission.settings.update}
               />
               <div className={"mt-2"}>
-                <Label>Limit To Specific Groups</Label>
+                <Label><TransText>Limit To Specific Groups</TransText></Label>
                 <HelpText className={"mb-3"}>
-                  Select peer groups for which traffic events will be logged.{" "}
+                  <TransText>
+                    Select peer groups for which traffic events will be logged.
+                  </TransText>{" "}
                   <br />
-                  If no group is selected, logging applies to all peers.
+                  <TransText>
+                    If no group is selected, logging applies to all peers.
+                  </TransText>
                 </HelpText>
                 {!groups ? (
                   <Skeleton height={46} />
@@ -231,7 +238,7 @@ export const TrafficEventGroupsSetting = ({
     const groupIds = groups.map((group) => group.id) as string[];
 
     notify({
-      title: "Traffic Events Groups",
+      title: zhMap["Traffic Events Groups"] || "Traffic Events Groups",
       description: "Traffic events groups successfully updated.",
       promise: saveRequest
         .put({

@@ -21,6 +21,8 @@ import { EditGroupNameModal } from "@/modules/groups/EditGroupNameModal";
 import PeerAddressCell from "@/modules/peers/PeerAddressCell";
 import PeerNameCell from "@/modules/peers/PeerNameCell";
 import { PeerOSCell } from "@/modules/peers/PeerOSCell";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   group: Group;
@@ -257,7 +259,7 @@ export const AssignGroupToPeerModalContent = ({
           rowSelection={selectedRows}
           setRowSelection={setSelectedRows}
           onRowClick={(row) => row.toggleSelected()}
-          text={"Peers"}
+          text={zhMap["Peers"]}
           resetRowSelectionOnSearch={false}
           uniqueKey={group?.id ?? group?.name}
           sorting={sorting}
@@ -267,7 +269,7 @@ export const AssignGroupToPeerModalContent = ({
           data={data}
           isLoading={isLoading && !initialPeersSet}
           tableCellClassName={"!py-1 scale-[95%]"}
-          searchPlaceholder={"Search by name, IP or owner..."}
+          searchPlaceholder={zhMap["Search by name, IP or owner..."] || "Search by name, IP or owner..."}
           searchClassName={"w-[350px]"}
           minimal={false}
           columnVisibility={{
@@ -298,7 +300,7 @@ export const AssignGroupToPeerModalContent = ({
                     <span className={"text-netbird font-medium"}>
                       {Object.keys(selectedRows).length}
                     </span>{" "}
-                    Peer(s) selected
+                    <TransText>Peer(s) selected</TransText>
                   </div>
                 )}
               </div>
@@ -338,7 +340,7 @@ export const PeersTableColumns: ColumnDef<Peer>[] = [
         <Checkbox
           checked={table.getIsAllPageRowsSelected()}
           onCheckedChange={(value) => table.toggleAllRowsSelected(!!value)}
-          aria-label="Select all"
+          aria-label={zhMap["Select all"]}
         />
       </div>
     ),
@@ -351,7 +353,7 @@ export const PeersTableColumns: ColumnDef<Peer>[] = [
             variant={"tableCell"}
             checked={row.getIsSelected()}
             onCheckedChange={(value) => row.toggleSelected(!!value)}
-            aria-label="Select row"
+            aria-label={zhMap["Select row"]}
           />
         </div>
       );
@@ -360,7 +362,7 @@ export const PeersTableColumns: ColumnDef<Peer>[] = [
   {
     accessorKey: "name",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Name</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Name</TransText></DataTableHeader>;
     },
     sortingFn: "text",
     cell: ({ row }) => <PeerNameCell peer={row.original} linkToPeer={false} />,
@@ -391,7 +393,7 @@ export const PeersTableColumns: ColumnDef<Peer>[] = [
   {
     accessorKey: "dns_label",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Address</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Address</TransText></DataTableHeader>;
     },
     cell: ({ row }) => <PeerAddressCell peer={row.original} />,
   },
@@ -409,7 +411,7 @@ export const PeersTableColumns: ColumnDef<Peer>[] = [
   {
     accessorKey: "os",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>OS</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>OS</TransText></DataTableHeader>;
     },
     cell: ({ row }) => (
       <PeerOSCell os={row.original.os} serial={row.original.serial_number} />

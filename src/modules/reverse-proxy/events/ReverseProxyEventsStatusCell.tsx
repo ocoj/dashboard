@@ -1,3 +1,4 @@
+import { TransText } from "@/i18n/trans-text";
 import FullTooltip from "@components/FullTooltip";
 import * as React from "react";
 import { isL4Event, ReverseProxyEvent } from "@/interfaces/ReverseProxy";
@@ -26,7 +27,7 @@ export const ReverseProxyEventsStatusCell = ({ event }: Props) => {
       interactive={false}
       content={
         <div className={"max-w-xs text-xs break-words whitespace-normal"}>
-          <span className={"text-nb-gray-400"}>Reason: </span>
+          <span className={"text-nb-gray-400"}><TransText>Reason</TransText>: </span>
           <span className={"text-nb-gray-100"}>{reason}</span>
         </div>
       }

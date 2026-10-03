@@ -14,6 +14,8 @@ import TeamIcon from "@/assets/icons/TeamIcon";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { User } from "@/interfaces/User";
 import PageContainer from "@/layouts/PageContainer";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 const ServiceUsersTable = lazy(
   () => import("@/modules/users/ServiceUsersTable"),
@@ -34,25 +36,24 @@ export default function ServiceUsers() {
         <Breadcrumbs>
           <Breadcrumbs.Item
             href={"/team"}
-            label={"Team"}
+            label={zhMap["Team"]}
             icon={<TeamIcon size={13} />}
           />
           <Breadcrumbs.Item
             href={"/team/service-users"}
-            label={"Service Users"}
+            label={zhMap["Service Users"]}
             active
             icon={<IconSettings2 size={17} />}
           />
         </Breadcrumbs>
-        <h1 ref={headingRef}>Service Users</h1>
+        <h1 ref={headingRef}><TransText>Service Users</TransText></h1>
         <Paragraph>
-          Use service users to create API tokens and avoid losing automated
-          access.{" "}
+          <TransText>Use service users to create API tokens and avoid losing automated access.</TransText>{" "}
           <InlineLink
             href={"https://docs.netbird.io/how-to/access-netbird-public-api"}
             target={"_blank"}
           >
-            Learn more
+            <TransText>Learn more</TransText>
             <ExternalLinkIcon size={12} />
           </InlineLink>
         </Paragraph>

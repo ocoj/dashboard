@@ -1,3 +1,4 @@
+import { TransText } from "@/i18n/trans-text";
 import Button from "@components/Button";
 import InlineLink from "@components/InlineLink";
 import { Input } from "@components/Input";
@@ -188,7 +189,7 @@ export default function OidcSetupModal({
           <ModalFooter className={"items-center"}>
             <div className={"w-full"}>
               <Paragraph className={"text-sm mt-auto"}>
-                Learn more about
+                <TransText>Learn more about</TransText>
                 <InlineLink
                   href={
                     "https://docs.netbird.io/how-to/register-machines-using-setup-keys"

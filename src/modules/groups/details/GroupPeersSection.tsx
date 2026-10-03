@@ -9,6 +9,7 @@ import { ColumnDef, RowSelectionState } from "@tanstack/react-table";
 import { MinusCircle, PlusCircle } from "lucide-react";
 import * as React from "react";
 import { lazy, useState } from "react";
+import { TransText } from "@/i18n/trans-text";
 import PeerIcon from "@/assets/icons/PeerIcon";
 import { useGroupContext } from "@/contexts/GroupProvider";
 import { usePermissions } from "@/contexts/PermissionsProvider";
@@ -20,6 +21,7 @@ import PeerAddressCell from "@/modules/peers/PeerAddressCell";
 import PeerLastSeenCell from "@/modules/peers/PeerLastSeenCell";
 import PeerNameCell from "@/modules/peers/PeerNameCell";
 import { PeerOSCell } from "@/modules/peers/PeerOSCell";
+import zhMap from "@/i18n/zh-map";
 
 const GroupPeersTable = lazy(() => import("@/modules/peer/MinimalPeersTable"));
 
@@ -31,7 +33,7 @@ const GroupPeersTableColumns: ColumnDef<Peer>[] = [
         <Checkbox
           checked={table.getIsAllPageRowsSelected()}
           onCheckedChange={(value) => table.toggleAllRowsSelected(!!value)}
-          aria-label="Select all"
+          aria-label={zhMap["Select all"]}
         />
       </div>
     ),
@@ -41,7 +43,7 @@ const GroupPeersTableColumns: ColumnDef<Peer>[] = [
           checked={row.getIsSelected()}
           variant={"tableCell"}
           onCheckedChange={(value) => row.toggleSelected(!!value)}
-          aria-label="Select row"
+          aria-label={zhMap["Select row"]}
         />
       </div>
     ),
@@ -51,7 +53,7 @@ const GroupPeersTableColumns: ColumnDef<Peer>[] = [
   {
     accessorKey: "name",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Name</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Name</TransText></DataTableHeader>;
     },
     sortingFn: "text",
     cell: ({ row }) => <PeerNameCell peer={row.original} />,
@@ -76,14 +78,14 @@ const GroupPeersTableColumns: ColumnDef<Peer>[] = [
   {
     accessorKey: "dns_label",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Address</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Address</TransText></DataTableHeader>;
     },
     cell: ({ row }) => <PeerAddressCell peer={row.original} />,
   },
   {
     accessorKey: "last_seen",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Last seen</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Last seen</TransText></DataTableHeader>;
     },
     sortingFn: "datetime",
     cell: ({ row }) => <PeerLastSeenCell peer={row.original} />,
@@ -91,7 +93,7 @@ const GroupPeersTableColumns: ColumnDef<Peer>[] = [
   {
     accessorKey: "os",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>OS</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>OS</TransText></DataTableHeader>;
     },
     cell: ({ row }) => <PeerOSCell os={row.original.os} />,
   },
@@ -140,7 +142,7 @@ export const GroupPeersSection = ({ peers, isLoading = true }: Props) => {
                   onClick={() => setOpen(true)}
                 >
                   <PlusCircle size={16} />
-                  Assign Peers
+                  "Assign Peers"
                 </Button>
               </div>
             )}
@@ -158,7 +160,7 @@ export const GroupPeersSection = ({ peers, isLoading = true }: Props) => {
                 <>
                   <FullTooltip
                     content={
-                      <span className={"text-xs"}>Remove Peers from Group</span>
+                      <span className={"text-xs"}>"Remove Peers from Group"</span>
                     }
                   >
                     <Button
@@ -205,7 +207,7 @@ export const GroupPeersSection = ({ peers, isLoading = true }: Props) => {
                       onClick={() => setOpen(true)}
                     >
                       <PlusCircle size={16} />
-                      Assign Peers
+                      "Assign Peers"
                     </Button>
                   )}
                 </div>

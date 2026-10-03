@@ -10,6 +10,8 @@ import { ExternalLinkIcon } from "lucide-react";
 import React, { Suspense } from "react";
 import AgentNetworkIcon from "@/assets/icons/AgentNetworkIcon";
 import { usePermissions } from "@/contexts/PermissionsProvider";
+import { TransText } from '@/i18n/trans-text';
+import zhMap from "@/i18n/zh-map";
 import PageContainer from "@/layouts/PageContainer";
 import AgentPoliciesTable from "@/modules/agent-network/AgentPoliciesTable";
 import AIProvidersProvider from "@/modules/agent-network/AIProvidersProvider";
@@ -25,24 +27,23 @@ export default function AgentNetworkPoliciesPage() {
         <Breadcrumbs>
           <Breadcrumbs.Item
             href={"/agent-network/providers"}
-            label={"Agent Network"}
+            label={zhMap["Agent Network"] || "Agent Network"}
             icon={<AgentNetworkIcon size={16} />}
           />
           <Breadcrumbs.Item
             href={"/agent-network/policies"}
-            label={"Policies"}
+            label={zhMap["Policies"] || "Policies"}
             active={true}
           />
         </Breadcrumbs>
-        <h1 ref={headingRef}>Policies</h1>
+        <h1><TransText>Policies</TransText></h1>
         <Paragraph>
-          Bind IdP groups to providers: Engineering gets Claude, Finance
-          doesn&apos;t. Enforce token limits, budgets, and guardrails.
+          <TransText>Bind IdP groups to providers: Engineering gets Claude, Finance doesn't. Enforce token limits, budgets, and guardrails.</TransText>
         </Paragraph>
       </div>
 
       <RestrictedAccess
-        page={"Policies"}
+        page={zhMap["Policies"] || "Policies"}
         hasAccess={permission?.services?.read}
       >
         <AIProvidersProvider>

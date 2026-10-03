@@ -39,6 +39,8 @@ import DNSIcon from "@/assets/icons/DNSIcon";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { Nameserver, NameserverGroup } from "@/interfaces/Nameserver";
 import useGroupHelper from "@/modules/groups/useGroupHelper";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   children?: React.ReactNode;
@@ -253,8 +255,8 @@ export function NameserverModalContent({
     <ModalContent maxWidthClass={"max-w-xl"}>
       <ModalHeader
         icon={<DNSIcon className={"fill-netbird"} />}
-        title={isUpdate ? preset?.name : "Add Nameserver"}
-        description={"Use a nameserver to resolve domains in your network"}
+        title={isUpdate ? preset?.name : <TransText>Add Nameserver</TransText>}
+        description={<TransText>Use a nameserver to resolve domains in your network</TransText>}
         color={"netbird"}
       />
 
@@ -267,7 +269,7 @@ export function NameserverModalContent({
                 "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
               }
             />
-            Nameserver
+            <TransText>Nameserver</TransText>
           </TabsTrigger>
           <TabsTrigger
             value={"domains"}
@@ -280,7 +282,7 @@ export function NameserverModalContent({
                 "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
               }
             />
-            Domains
+            <TransText>Domains</TransText>
           </TabsTrigger>
           <TabsTrigger
             value={"general"}
@@ -293,7 +295,7 @@ export function NameserverModalContent({
                 "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
               }
             />
-            Name & Description
+            <TransText>Name & Description</TransText>
           </TabsTrigger>
         </TabsList>
 
@@ -334,15 +336,14 @@ export function NameserverModalContent({
                 data-testid="add-nameserver-row"
               >
                 <PlusIcon size={14} />
-                Add Nameserver
+                <TransText>Add Nameserver</TransText>
               </Button>
             </div>
 
             <div>
-              <Label>Distribution Groups</Label>
+              <Label><TransText>Distribution Groups</TransText></Label>
               <HelpText>
-                Advertise this nameserver to peers that belong to the following
-                groups
+                <TransText>Advertise this nameserver to peers that belong to the following groups</TransText>
               </HelpText>
               <PeerGroupSelector
                 onChange={setGroups}
@@ -359,10 +360,10 @@ export function NameserverModalContent({
               label={
                 <>
                   <Power size={15} />
-                  Enable Nameserver
+                  <TransText>Enable Nameserver</TransText>
                 </>
               }
-              helpText={"Use this switch to enable or disable the nameserver."}
+              helpText={zhMap["Use this switch to enable or disable the nameserver."] || "Use this switch to enable or disable the nameserver."}
               disabled={!canAction}
             />
           </div>
@@ -370,10 +371,9 @@ export function NameserverModalContent({
         <TabsContent value={"domains"} className={"pb-8"}>
           <div className={"px-8 flex flex-col gap-6"}>
             <div>
-              <Label>Match Domains</Label>
+              <Label><TransText>Match Domains</TransText></Label>
               <HelpText>
-                Add domain if you want to have a specific one resolved by this
-                nameserver.
+                <TransText>Add domain if you want to have a specific one resolved by this nameserver.</TransText>
               </HelpText>
               <div>
                 {domains.length > 0 && (
@@ -412,7 +412,7 @@ export function NameserverModalContent({
                   data-testid="add-match-domain"
                 >
                   <PlusIcon size={14} />
-                  Add Domain
+                  <TransText>Add Domain</TransText>
                 </Button>
               </div>
             </div>
@@ -428,10 +428,11 @@ export function NameserverModalContent({
                 label={
                   <>
                     <Scan size={15} />
-                    Mark match domains as search domains
+                    <TransText>Mark match domains as search domains</TransText>
                   </>
                 }
                 helpText={
+                  zhMap["E.g., 'peer.example.com' will be accessible with 'peer'"] ||
                   "E.g., 'peer.example.com' will be accessible with 'peer'"
                 }
                 disabled={!canAction}
@@ -442,8 +443,8 @@ export function NameserverModalContent({
         <TabsContent value={"general"} className={"px-8 pb-6"}>
           <div className={"flex flex-col gap-6"}>
             <div>
-              <Label>DNS Name</Label>
-              <HelpText>Enter a name for this nameserver.</HelpText>
+              <Label><TransText>DNS Name</TransText></Label>
+              <HelpText><TransText>Enter a name for this nameserver.</TransText></HelpText>
               <Input
                 autoFocus={true}
                 tabIndex={0}
@@ -456,10 +457,9 @@ export function NameserverModalContent({
               />
             </div>
             <div>
-              <Label>Description (optional)</Label>
+              <Label><TransText>Description (optional)</TransText></Label>
               <HelpText>
-                Write a short description to add more context to this
-                nameserver.
+                <TransText>Write a short description to add more context to this nameserver.</TransText>
               </HelpText>
               <Textarea
                 placeholder={
@@ -479,12 +479,12 @@ export function NameserverModalContent({
       <ModalFooter className={"items-center"}>
         <div className={"w-full"}>
           <Paragraph className={"text-sm mt-auto"}>
-            Learn more about
+            <TransText>Learn more about</TransText>
             <InlineLink
               href={"https://docs.netbird.io/how-to/manage-dns-in-your-network"}
               target={"_blank"}
             >
-              DNS
+              <TransText>DNS</TransText>
               <ExternalLinkIcon size={12} />
             </InlineLink>
           </Paragraph>
@@ -494,7 +494,7 @@ export function NameserverModalContent({
             <>
               {tab == "nameserver" && (
                 <ModalClose asChild={true}>
-                  <Button variant={"secondary"}>Cancel</Button>
+                  <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
                 </ModalClose>
               )}
 
@@ -503,7 +503,7 @@ export function NameserverModalContent({
                   variant={"secondary"}
                   onClick={() => setTab("nameserver")}
                 >
-                  Back
+                  <TransText>Back</TransText>
                 </Button>
               )}
 
@@ -514,7 +514,7 @@ export function NameserverModalContent({
                   disabled={!canContinueToDomains}
                   data-testid="nameserver-continue"
                 >
-                  Continue
+                  <TransText>Continue</TransText>
                 </Button>
               )}
 
@@ -525,7 +525,7 @@ export function NameserverModalContent({
                   disabled={!canContinueToGeneral}
                   data-testid="nameserver-continue"
                 >
-                  Continue
+                  <TransText>Continue</TransText>
                 </Button>
               )}
 
@@ -535,7 +535,7 @@ export function NameserverModalContent({
                     variant={"secondary"}
                     onClick={() => setTab("domains")}
                   >
-                    Back
+                    <TransText>Back</TransText>
                   </Button>
 
                   <Button
@@ -545,7 +545,7 @@ export function NameserverModalContent({
                     data-testid="submit-nameserver"
                   >
                     <PlusCircle size={16} />
-                    Add Nameserver
+                    <TransText>Add Nameserver</TransText>
                   </Button>
                 </>
               )}
@@ -553,7 +553,7 @@ export function NameserverModalContent({
           ) : (
             <>
               <ModalClose asChild={true}>
-                <Button variant={"secondary"}>Cancel</Button>
+                <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
               </ModalClose>
               <Button
                 variant={"primary"}
@@ -561,7 +561,7 @@ export function NameserverModalContent({
                 onClick={submit}
                 data-testid="submit-nameserver"
               >
-                Save Changes
+                <TransText>Save Changes</TransText>
               </Button>
             </>
           )}

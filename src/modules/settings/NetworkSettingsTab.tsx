@@ -23,6 +23,8 @@ import { Account } from "@/interfaces/Account";
 import useGroupHelper from "@/modules/groups/useGroupHelper";
 import { useGroups } from "@/contexts/GroupsProvider";
 import { SkeletonSettings } from "@components/skeletons/SkeletonSettings";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   account: Account;
@@ -190,19 +192,19 @@ function NetworkSettingsTabContent({ account }: Readonly<Props>) {
         <Breadcrumbs>
           <Breadcrumbs.Item
             href={"/settings"}
-            label={"Settings"}
+            label={<TransText>Settings</TransText>}
             icon={<SettingsIcon size={13} />}
           />
           <Breadcrumbs.Item
             href={"/settings?tab=networks"}
-            label={"Networks"}
+            label={<TransText>Networks</TransText>}
             icon={<NetworkIcon size={14} />}
             active
           />
         </Breadcrumbs>
         <div className={"flex items-start justify-between"}>
           <div>
-            <h1>Networks</h1>
+            <h1><TransText>Networks</TransText></h1>
           </div>
           <Button
             variant={"primary"}
@@ -216,7 +218,7 @@ function NetworkSettingsTabContent({ account }: Readonly<Props>) {
             onClick={saveChanges}
             data-testid="save-network-settings"
           >
-            Save Changes
+            <TransText>Save Changes</TransText>
           </Button>
         </div>
 
@@ -228,10 +230,9 @@ function NetworkSettingsTabContent({ account }: Readonly<Props>) {
               }
             >
               <div className={"min-w-[330px]"}>
-                <Label>DNS Domain</Label>
+                <Label><TransText>DNS Domain</TransText></Label>
                 <HelpText>
-                  Specify a custom peer DNS domain for your network. This should
-                  not point to a valid domain to avoid overriding DNS results.
+                  <TransText>Specify a custom peer DNS domain for your network. This should not point to a valid domain to avoid overriding DNS results.</TransText>
                 </HelpText>
               </div>
               <div className={"w-full"}>
@@ -258,10 +259,9 @@ function NetworkSettingsTabContent({ account }: Readonly<Props>) {
               }
             >
               <div className={"min-w-[330px]"}>
-                <Label>Network Range</Label>
+                <Label><TransText>Network Range</TransText></Label>
                 <HelpText>
-                  Specify a custom IPv4 range for your network in CIDR format.
-                  All peer IPs will be re-allocated when changed.
+                  <TransText>Specify a custom IPv4 range for your network in CIDR format. All peer IPs will be re-allocated when changed.</TransText>
                 </HelpText>
               </div>
               <div className={"w-full"}>
@@ -286,10 +286,9 @@ function NetworkSettingsTabContent({ account }: Readonly<Props>) {
               }
             >
               <div className={"min-w-[330px]"}>
-                <Label>IPv6 Network Range</Label>
+                <Label><TransText>IPv6 Network Range</TransText></Label>
                 <HelpText>
-                  Specify a custom IPv6 range for your network in CIDR format.
-                  All peer IPv6 addresses will be re-allocated when changed.
+                  <TransText>Specify a custom IPv6 range for your network in CIDR format. All peer IPv6 addresses will be re-allocated when changed.</TransText>
                 </HelpText>
               </div>
               <div className={"w-full"}>
@@ -308,16 +307,14 @@ function NetworkSettingsTabContent({ account }: Readonly<Props>) {
           </div>
 
           <div>
-            <Label>IPv6 Enabled Groups</Label>
+            <Label><TransText>IPv6 Enabled Groups</TransText></Label>
             <HelpText>
-              Peers in the selected groups will receive IPv6 overlay addresses
-              (dual-stack). Remove all groups to disable IPv6. Changes apply on
-              save and will restart affected clients.
+              <TransText>Peers in the selected groups will receive IPv6 overlay addresses (dual-stack). Remove all groups to disable IPv6. Changes apply on save and will restart affected clients.</TransText>
             </HelpText>
             <PeerGroupSelector
               values={ipv6EnabledGroups}
               onChange={setIpv6EnabledGroups}
-              placeholder="Select groups to enable IPv6..."
+              placeholder={zhMap["Select groups to enable IPv6..."]}
               showResourceCounter={false}
               disabled={!permission.settings.update}
               data-testid="ipv6-enabled-groups-selector"
@@ -333,14 +330,12 @@ function NetworkSettingsTabContent({ account }: Readonly<Props>) {
             label={
               <>
                 <GlobeIcon size={15} />
-                Enable Routing Peer DNS Resolution
+                <TransText>Enable Routing Peer DNS Resolution</TransText>
               </>
             }
             helpText={
               <>
-                Resolves DNS for routed domains on the routing peer instead of
-                on the client. Requires NetBird client v0.35 or higher. Changes
-                will only take effect after restarting the clients.{" "}
+                <TransText>Resolves DNS for routed domains on the routing peer instead of on the client. Requires NetBird client v0.35 or higher. Changes will only take effect after restarting the clients.</TransText>{" "}
                 <InlineLink
                   href={
                     "https://docs.netbird.io/how-to/accessing-entire-domains-within-networks#enabling-dns-wildcard-routing"
@@ -348,7 +343,7 @@ function NetworkSettingsTabContent({ account }: Readonly<Props>) {
                   target={"_blank"}
                   onClick={(e) => e.stopPropagation()}
                 >
-                  Learn more
+                  <TransText>Learn more</TransText>
                   <ExternalLinkIcon size={12} />
                 </InlineLink>
               </>

@@ -7,6 +7,8 @@ import {
 import dayjs from "dayjs";
 import { History } from "lucide-react";
 import EmptyRow from "@/modules/common-table-rows/EmptyRow";
+import { TransText } from "@/i18n/trans-text";
+import { useLocale } from "@/i18n/locale-context";
 
 type Props = {
   date: Date;
@@ -18,6 +20,8 @@ export default function LastTimeRow({
   text = "Last seen on",
   prefix,
 }: Props) {
+  // 订阅 locale，locale 变化时重渲染，使 dayjs().to() 输出正确的相对时间语言
+  useLocale();
   const neverUsed = dayjs(date).isBefore(dayjs().subtract(2000, "years"));
 
   return !neverUsed ? (
@@ -38,7 +42,7 @@ export default function LastTimeRow({
         </TooltipTrigger>
         <TooltipContent>
           <div className={"text-neutral-300 flex flex-col gap-1"}>
-            <span className={"text-xs"}>{text}</span>
+            <span className={"text-xs"}><TransText>{text}</TransText></span>
             <span className={"text-neutral-200"}>
               {dayjs(date).format("D MMMM, YYYY [at] h:mm A")}
             </span>

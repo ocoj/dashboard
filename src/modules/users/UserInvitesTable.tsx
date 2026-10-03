@@ -74,6 +74,8 @@ import {
 } from "@/interfaces/User";
 import UserInviteModal from "@/modules/users/UserInviteModal";
 import { useAccount } from "@/modules/account/useAccount";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 // Name cell for invites - same styling as UserNameCell but for invites
 function InviteNameCell({ invite }: { invite: UserInvite }) {
@@ -377,7 +379,7 @@ export const InvitesTableColumns: ColumnDef<UserInvite>[] = [
   {
     accessorKey: "name",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Name</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Name</TransText></DataTableHeader>;
     },
     accessorFn: (row) => row.name + " " + row.email,
     sortingFn: "text",
@@ -386,7 +388,7 @@ export const InvitesTableColumns: ColumnDef<UserInvite>[] = [
   {
     accessorKey: "role",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Role</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Role</TransText></DataTableHeader>;
     },
     sortingFn: "text",
     cell: ({ row }) => <InviteRoleCell invite={row.original} />,
@@ -394,7 +396,7 @@ export const InvitesTableColumns: ColumnDef<UserInvite>[] = [
   {
     accessorKey: "expired",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Status</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Status</TransText></DataTableHeader>;
     },
     sortingFn: "basic",
     cell: ({ row }) => <InviteStatusCell invite={row.original} />,
@@ -402,7 +404,7 @@ export const InvitesTableColumns: ColumnDef<UserInvite>[] = [
   {
     accessorKey: "auto_groups",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Groups</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Groups</TransText></DataTableHeader>;
     },
     sortingFn: "text",
     cell: ({ row }) => <InviteGroupCell invite={row.original} />,
@@ -410,7 +412,7 @@ export const InvitesTableColumns: ColumnDef<UserInvite>[] = [
   {
     accessorKey: "expires_at",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Expires</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Expires</TransText></DataTableHeader>;
     },
     sortingFn: "datetime",
     cell: ({ row }) => (
@@ -557,14 +559,14 @@ export default function UserInvitesTable({
     <DataTable
       headingTarget={headingTarget}
       isLoading={isLoading}
-      text={"Invites"}
+      text={zhMap["Invites"]}
       sorting={sorting}
       setSorting={setSorting}
       columns={InvitesTableColumns}
       data={invitesWithGroupNames}
       initialPageSize={25}
       showResetFilterButton={false}
-      searchPlaceholder={"Search by name or email..."}
+      searchPlaceholder={zhMap["Search by name or email..."] || "Search by name or email..."}
       aboveTable={(table) => (
         <TableFilterChips table={table} filters={filterDefs} />
       )}
@@ -592,7 +594,7 @@ export default function UserInvitesTable({
           }
           learnMore={
             <>
-              Learn more about
+              <TransText>Learn more about</TransText>
               <InlineLink
                 href={
                   "https://docs.netbird.io/how-to/add-users-to-your-network"
@@ -677,7 +679,7 @@ export const InviteUserButton = ({
         disabled={!permission.users.create}
       >
         <MailPlus size={16} />
-        {isCloud ? "Invite User" : "Add User"}
+        {isCloud ? zhMap["Invite User"] || "Invite User" : zhMap["Add User"] || "Add User"}
       </Button>
     </UserInviteModal>
   );

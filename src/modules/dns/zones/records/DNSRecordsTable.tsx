@@ -8,6 +8,8 @@ import { DNSRecordContentCell } from "@/modules/dns/zones/records/DNSRecordConte
 import { DNSRecordNameCell } from "@/modules/dns/zones/records/DNSRecordNameCell";
 import { DNSRecordTimeToLiveCell } from "@/modules/dns/zones/records/DNSRecordTimeToLiveCell";
 import { DNSRecordTypeCell } from "@/modules/dns/zones/records/DNSRecordTypeCell";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   zone: DNSZone;
@@ -17,21 +19,21 @@ export const DNSRecordsTableColumns: ColumnDef<DNSRecord>[] = [
   {
     accessorKey: "type",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Type</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Type</TransText></DataTableHeader>;
     },
     cell: ({ row }) => <DNSRecordTypeCell record={row.original} />,
   },
   {
     accessorKey: "name",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Hostname</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Hostname</TransText></DataTableHeader>;
     },
     cell: ({ row }) => <DNSRecordNameCell record={row.original} />,
   },
   {
     accessorKey: "content",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Content</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Content</TransText></DataTableHeader>;
     },
     cell: ({ row }) => <DNSRecordContentCell record={row.original} />,
   },
@@ -65,7 +67,7 @@ export default function DNSRecordsTable({ zone }: Props) {
         rowClassName={"last:pb-10"}
         className={"bg-nb-gray-960 py-2"}
         inset={true}
-        text={"DNS Records"}
+        text={zhMap["DNS Records"]}
         initialPageSize={zone?.records?.length}
         manualPagination={true}
         sorting={sorting}

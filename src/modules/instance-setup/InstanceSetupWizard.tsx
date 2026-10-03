@@ -11,6 +11,7 @@ import { Label } from "@components/Label";
 import { Input } from "@components/Input";
 import HelpText from "@components/HelpText";
 import { GradientFadedBackground } from "@components/ui/GradientFadedBackground";
+import zhMap from "@/i18n/zh-map";
 
 interface FormData {
   email: string;
@@ -216,7 +217,7 @@ export default function InstanceSetupWizard() {
               id="name"
               value={formData.name}
               onChange={handleInputChange("name")}
-              placeholder="Your name"
+              placeholder={zhMap["Your name"]}
               disabled={isSubmitting}
               autoFocus
               error={errors.name}
@@ -243,7 +244,7 @@ export default function InstanceSetupWizard() {
               id="password"
               value={formData.password}
               onChange={handleInputChange("password")}
-              placeholder="Enter a strong password"
+              placeholder={zhMap["Enter a strong password"]}
               disabled={isSubmitting}
               error={errors.password}
               showPasswordToggle={true}
@@ -260,7 +261,7 @@ export default function InstanceSetupWizard() {
               id="confirmPassword"
               value={formData.confirmPassword}
               onChange={handleInputChange("confirmPassword")}
-              placeholder="Re-enter your password"
+              placeholder={zhMap["Re-enter your password"]}
               disabled={isSubmitting}
               error={confirmPasswordError}
               showPasswordToggle={true}

@@ -10,6 +10,7 @@ import { useGroups } from "@/contexts/GroupsProvider";
 import { GroupPeer } from "@/interfaces/Group";
 import { OperatingSystem } from "@/interfaces/OperatingSystem";
 import { Peer } from "@/interfaces/Peer";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   value: boolean;
@@ -36,11 +37,11 @@ export const RoutingPeerMasqueradeSwitch = ({
           label={
             <>
               <VenetianMask size={15} />
-              Masquerade
+              <TransText>Masquerade</TransText>
             </>
           }
           helpText={
-            "Allow access to your private networks without configuring routes on your local routers or other devices."
+            <TransText>Allow access to your private networks without configuring routes on your local routers or other devices.</TransText>
           }
         />
         {routingPeerGroupId && !value && (
@@ -66,7 +67,7 @@ export const RoutingPeerMasqueradeTooltip = ({
     <FullTooltip
       content={
         <div className={"text-xs"}>
-          Masquerade needs to be enabled for non-Linux routing peers.
+          <TransText>Masquerade needs to be enabled for non-Linux routing peers.</TransText>
         </div>
       }
       delayDuration={250}
@@ -112,10 +113,9 @@ const RoutingPeerGroupNonLinuxWarning = ({
           />
         }
       >
-        Group <span className={"text-netbird font-normal"}>{group?.name}</span>{" "}
-        contains at least one non-Linux peer.
-        <br /> Disabled Masquerade will have no effect on non-Linux routing
-        peers.
+        <TransText>Group</TransText> <span className={"text-netbird font-normal"}>{group?.name}</span>{" "}
+        <TransText>contains at least one non-Linux peer.</TransText>
+        <br /> <TransText>Disabled Masquerade will have no effect on non-Linux routing peers.</TransText>
       </Callout>
     )
   );

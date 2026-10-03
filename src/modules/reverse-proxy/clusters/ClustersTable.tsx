@@ -34,12 +34,14 @@ import ClustersConnectedCell from "@/modules/reverse-proxy/clusters/ClustersConn
 import ClustersFeaturesCell from "@/modules/reverse-proxy/clusters/ClustersFeaturesCell";
 import { ClustersModal } from "@/modules/reverse-proxy/clusters/ClustersModal";
 import ClustersNameCell from "@/modules/reverse-proxy/clusters/ClustersNameCell";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 const ClustersColumns: ColumnDef<ReverseProxyCluster>[] = [
   {
     accessorKey: "address",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Cluster</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Cluster</TransText></DataTableHeader>;
     },
     sortingFn: "text",
     cell: ({ row }) => <ClustersNameCell cluster={row.original} />,
@@ -48,7 +50,7 @@ const ClustersColumns: ColumnDef<ReverseProxyCluster>[] = [
     accessorKey: "connected_proxies",
     header: ({ column }) => {
       return (
-        <DataTableHeader column={column}>Connected Proxies</DataTableHeader>
+        <DataTableHeader column={column}><TransText>Connected Proxies</TransText></DataTableHeader>
       );
     },
     sortingFn: "basic",
@@ -56,7 +58,7 @@ const ClustersColumns: ColumnDef<ReverseProxyCluster>[] = [
   },
   {
     id: "features",
-    header: () => <span className={"font-medium text-xs"}>Features</span>,
+    header: () => <span className={"font-medium text-xs"}><TransText>Features</TransText></span>,
     enableSorting: false,
     cell: ({ row }) => <ClustersFeaturesCell cluster={row.original} />,
   },
@@ -175,13 +177,13 @@ export default function ClustersTable({ headingTarget }: Readonly<Props>) {
         keepStateInLocalStorage={false}
         initialPageSize={25}
         showResetFilterButton={false}
-        text={"Clusters"}
+        text={zhMap["Clusters"]}
         sorting={sorting}
         setSorting={setSorting}
         columns={ClustersColumns}
         data={rows}
         useRowId={true}
-        searchPlaceholder={"Search by cluster domain..."}
+        searchPlaceholder={zhMap["Search by cluster domain..."] || "Search by cluster domain..."}
         aboveTable={(table) => (
           <TableFilterChips table={table} filters={filterDefs} />
         )}

@@ -21,6 +21,7 @@ import { ExternalLinkIcon, PlusCircle } from "lucide-react";
 import React, { useState } from "react";
 import NetworkRoutesIcon from "@/assets/icons/NetworkRoutesIcon";
 import { Network } from "@/interfaces/Network";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   open: boolean;
@@ -93,19 +94,19 @@ const Content = ({ network, onCreated, onUpdated }: ContentProps) => {
     <ModalContent maxWidthClass={"max-w-xl"}>
       <ModalHeader
         icon={<NetworkRoutesIcon className={"fill-netbird"} />}
-        title={network ? "Update Network" : "Add Network"}
+        title={network ? <TransText>Update Network</TransText> : <TransText>Add Network</TransText>}
         description={
           network
             ? network.name
-            : "Access internal resources in LANs and VPC by adding a network."
+            : <TransText>Access internal resources in LANs and VPC by adding a network.</TransText>
         }
         color={"netbird"}
       />
       <Separator />
       <div className={"px-8 flex-col flex gap-6 py-6"}>
         <div>
-          <Label>Network Name</Label>
-          <HelpText>Provide a unique name for the network.</HelpText>
+          <Label><TransText>Network Name</TransText></Label>
+          <HelpText><TransText>Provide a unique name for the network.</TransText></HelpText>
           <Input
             tabIndex={0}
             data-testid="network-name-input"
@@ -115,9 +116,9 @@ const Content = ({ network, onCreated, onUpdated }: ContentProps) => {
           />
         </div>
         <div>
-          <Label>Description (optional)</Label>
+          <Label><TransText>Description (optional)</TransText></Label>
           <HelpText>
-            Write a short description to add more context to this network.
+            <TransText>Write a short description to add more context to this network.</TransText>
           </HelpText>
           <Textarea
             data-testid="network-description-input"
@@ -132,19 +133,19 @@ const Content = ({ network, onCreated, onUpdated }: ContentProps) => {
       <ModalFooter className={"items-center"}>
         <div className={"w-full"}>
           <Paragraph className={"text-sm mt-auto"}>
-            Learn more about
+            <TransText>Learn more about</TransText>
             <InlineLink
               href={"https://docs.netbird.io/how-to/networks"}
               target={"_blank"}
             >
-              Networks
+              <TransText>Networks</TransText>
               <ExternalLinkIcon size={12} />
             </InlineLink>
           </Paragraph>
         </div>
         <div className={"flex gap-3 w-full justify-end"}>
           <ModalClose asChild={true}>
-            <Button variant={"secondary"}>Cancel</Button>
+            <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
           </ModalClose>
 
           <Button
@@ -154,11 +155,11 @@ const Content = ({ network, onCreated, onUpdated }: ContentProps) => {
             onClick={network ? updateNetwork : createNetwork}
           >
             {network ? (
-              "Save Changes"
+              <TransText>Save Changes</TransText>
             ) : (
               <>
                 <PlusCircle size={16} />
-                Add Network
+                <TransText>Add Network</TransText>
               </>
             )}
           </Button>

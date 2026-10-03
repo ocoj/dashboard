@@ -20,6 +20,7 @@ import { PostureCheckOperatingSystem } from "@/modules/posture-checks/checks/Pos
 import { PostureCheckPeerNetworkRange } from "@/modules/posture-checks/checks/PostureCheckPeerNetworkRange";
 import { PostureCheckProcess } from "@/modules/posture-checks/checks/PostureCheckProcess";
 import { usePostureCheck } from "@/modules/posture-checks/usePostureCheck";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   open: boolean;
@@ -74,10 +75,10 @@ export default function PostureCheckModal({
           <ModalHeader
             icon={<ShieldCheck size={19} />}
             title={
-              postureCheck ? "Update Posture Check" : "Create Posture Check"
+              postureCheck ? <TransText>Update Posture Check</TransText> : <TransText>Create Posture Check</TransText>
             }
             description={
-              "Use posture checks to further restrict access in your network."
+              <TransText>Use posture checks to further restrict access in your network.</TransText>
             }
             color={"netbird"}
           />
@@ -86,7 +87,7 @@ export default function PostureCheckModal({
             <TabsList justify={"start"} className={"px-8"}>
               <TabsTrigger value={"checks"}>
                 <LayoutList size={16} />
-                Checks
+                <TransText>Checks</TransText>
               </TabsTrigger>
 
               <TabsTrigger
@@ -99,7 +100,7 @@ export default function PostureCheckModal({
                     "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
                   }
                 />
-                Name & Description
+                <TransText>Name &amp; Description</TransText>
               </TabsTrigger>
             </TabsList>
 
@@ -170,9 +171,9 @@ export default function PostureCheckModal({
             <TabsContent value={"general"} className={"pb-8 px-8"}>
               <div className={"flex flex-col gap-6"}>
                 <div>
-                  <Label>Name of the Posture Check</Label>
+                  <Label><TransText>Name of the Posture Check</TransText></Label>
                   <HelpText>
-                    Set an easily identifiable name for your posture check.
+                    <TransText>Set an easily identifiable name for your posture check.</TransText>
                   </HelpText>
                   <Input
                     autoFocus={true}
@@ -191,10 +192,9 @@ export default function PostureCheckModal({
                   />
                 </div>
                 <div>
-                  <Label>Description (optional)</Label>
+                  <Label><TransText>Description (optional)</TransText></Label>
                   <HelpText>
-                    Write a short description to add more context to this
-                    policy.
+                    <TransText>Write a short description to add more context to this policy.</TransText>
                   </HelpText>
                   <Textarea
                     value={check?.description}
@@ -220,12 +220,12 @@ export default function PostureCheckModal({
           <ModalFooter className={"items-center"}>
             <div className={"w-full"}>
               <Paragraph className={"text-sm mt-auto"}>
-                Learn more about
+                <TransText>Learn more about</TransText>
                 <InlineLink
                   href={"https://docs.netbird.io/how-to/manage-posture-checks"}
                   target={"_blank"}
                 >
-                  Posture Checks
+                  <TransText>Posture Checks</TransText>
                   <ExternalLinkIcon size={12} />
                 </InlineLink>
               </Paragraph>
@@ -237,7 +237,7 @@ export default function PostureCheckModal({
                     variant={"secondary"}
                     onClick={() => onOpenChange(false)}
                   >
-                    Cancel
+                    <TransText>Cancel</TransText>
                   </Button>
                 )}
 
@@ -246,7 +246,7 @@ export default function PostureCheckModal({
                     variant={"secondary"}
                     onClick={() => setTab("checks")}
                   >
-                    Back
+                    <TransText>Back</TransText>
                   </Button>
                 )}
 
@@ -256,7 +256,7 @@ export default function PostureCheckModal({
                     onClick={() => setTab("general")}
                     disabled={!isAtLeastOneCheckEnabled}
                   >
-                    Continue
+                    <TransText>Continue</TransText>
                   </Button>
                 )}
 
@@ -272,7 +272,7 @@ export default function PostureCheckModal({
                       }
                     }}
                   >
-                    {postureCheck ? "Save Changes" : "Create Posture Check"}
+                    {postureCheck ? <TransText>Save Changes</TransText> : <TransText>Create Posture Check</TransText>}
                   </Button>
                 )}
               </>

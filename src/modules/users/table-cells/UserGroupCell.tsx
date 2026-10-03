@@ -9,6 +9,8 @@ import { usePermissions } from "@/contexts/PermissionsProvider";
 import { Group } from "@/interfaces/Group";
 import { User } from "@/interfaces/User";
 import GroupsRow from "@/modules/common-table-rows/GroupsRow";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   user: User;
@@ -70,7 +72,7 @@ export default function UserGroupCell({ user }: Readonly<Props>) {
   return (
     <GroupsRow
       label={"Auto-assigned Groups"}
-      description={"Groups will be assigned to peers added by this user."}
+      description={zhMap["Groups will be assigned to peers added by this user."] || "Groups will be assigned to peers added by this user."}
       groups={userGroupIds}
       onSave={handleSave}
       hideAllGroup={true}

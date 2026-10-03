@@ -2,6 +2,7 @@ import { Input } from "@components/Input";
 import { Label } from "@components/Label";
 import { ArrowRight } from "lucide-react";
 import React, { useRef } from "react";
+import { TransText } from "@/i18n/trans-text";
 import { Network, NetworkResource } from "@/interfaces/Network";
 import { Peer } from "@/interfaces/Peer";
 import ReverseProxyAddressInput, {
@@ -11,6 +12,7 @@ import ReverseProxyTargetSelector, {
   type Target,
 } from "@/modules/reverse-proxy/targets/ReverseProxyTargetSelector";
 import { HelpTooltip } from "@components/HelpTooltip";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   l4Target: Target | undefined;
@@ -64,13 +66,13 @@ export default function ReverseProxyLayer4Content({
       <div className={"flex gap-4 items-center"}>
         <div className={"w-full max-w-[180px]"}>
           <Label>
-            Listen Port
+            <TransText>Listen Port</TransText>
             <HelpTooltip
               className={isListenPortSupported ? "max-w-sm" : "max-w-xs"}
               content={
                 isListenPortSupported
-                  ? "Enter the public listen port this service will be reachable on."
-                  : "The listen port will be automatically assigned after the service is created."
+                  ? <TransText>Enter the public listen port this service will be reachable on.</TransText>
+                  : <TransText>The listen port will be automatically assigned after the service is created.</TransText>
               }
             />
           </Label>
@@ -84,7 +86,7 @@ export default function ReverseProxyLayer4Content({
               value={!isListenPortSupported ? "" : listenPort || ""}
               onChange={(e) => setListenPort(parseInt(e.target.value) || 0)}
               disabled={!isListenPortSupported || !l4Target}
-              aria-label="Public listen port"
+              aria-label={zhMap["Public listen port"]}
               data-testid="listen-port-input"
             />
           </div>
@@ -93,7 +95,7 @@ export default function ReverseProxyLayer4Content({
         <div className={"w-full flex"}>
           <div className={"w-full"}>
             <Label>
-              Host / IP
+              <TransText>Host / IP</TransText>
               <CidrHelpText target={l4Target} />
             </Label>
             <div className="flex w-full mt-2 relative">
@@ -105,10 +107,10 @@ export default function ReverseProxyLayer4Content({
           </div>
           <div>
             <Label>
-              Port
+              <TransText>Port</TransText>
               <HelpTooltip
                 content={
-                  "Enter the port where your service (e.g., webserver, app, API) is currently listening."
+                  <TransText>Enter the port where your service (e.g., webserver, app, API) is currently listening.</TransText>
                 }
               />
             </Label>
@@ -122,7 +124,7 @@ export default function ReverseProxyLayer4Content({
                 value={port || ""}
                 onChange={(e) => setPort(parseInt(e.target.value) || 0)}
                 disabled={!l4Target}
-                aria-label="Destination port"
+                aria-label={zhMap["Destination port"]}
                 className={"rounded-l-none"}
                 data-testid="destination-port-input"
               />

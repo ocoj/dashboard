@@ -1,3 +1,4 @@
+import { TransText } from "@/i18n/trans-text";
 import * as React from "react";
 import { useMemo } from "react";
 import { ReverseProxy, ServiceMode } from "@/interfaces/ReverseProxy";

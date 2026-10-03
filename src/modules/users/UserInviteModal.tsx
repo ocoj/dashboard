@@ -29,7 +29,9 @@ import { Group } from "@/interfaces/Group";
 import { Role, User, UserInvite } from "@/interfaces/User";
 import useGroupHelper from "@/modules/groups/useGroupHelper";
 import { UserRoleSelector } from "@/modules/users/UserRoleSelector";
+import { TransText } from "@/i18n/trans-text";
 import { isNetBirdCloud } from "@utils/netbird";
+import zhMap from "@/i18n/zh-map";
 
 type UserCreationMode = "create" | "invite";
 
@@ -133,8 +135,8 @@ export default function UserInviteModal({ children, groups }: Readonly<Props>) {
             <div className={"flex flex-col items-center justify-center gap-3"}>
               <div>
                 <h2 className={"text-2xl text-center mb-2"}>
-                  {isPasswordSuccess && "User created successfully!"}
-                  {isInviteSuccess && "Invite link created!"}
+                  {isPasswordSuccess && <TransText>User created successfully!</TransText>}
+                  {isInviteSuccess && <TransText>Invite link created!</TransText>}
                 </h2>
                 <Paragraph className={"mt-0 text-sm text-center"}>
                   {isPasswordSuccess &&
@@ -166,7 +168,7 @@ export default function UserInviteModal({ children, groups }: Readonly<Props>) {
               <Paragraph
                 className={"mt-3 text-xs text-nb-gray-400 text-center"}
               >
-                Expires on{" "}
+                <TransText>Expires on</TransText>{" "}
                 {new Date(successData.invite.expires_at).toLocaleString()}
               </Paragraph>
             )}
@@ -280,7 +282,7 @@ export function UserInviteModalContent({
 
   const getTitle = () => {
     if (isCloud) return "Invite User";
-    return mode === "create" ? "Create User" : "Invite User";
+    return mode === "create" ? zhMap["Create User"] || "Create User" : zhMap["Invite User"] || "Invite User";
   };
 
   const getDescription = () => {
@@ -289,12 +291,12 @@ export function UserInviteModalContent({
     if (mode === "create") {
       return "Create a NetBird user account with email and password.";
     }
-    return "Generate an invite link that the user can use to set their own password.";
+    return zhMap["Generate an invite link that the user can use to set their own password."] || "Generate an invite link that the user can use to set their own password.";
   };
 
   const getButtonText = () => {
     if (isCloud) return "Send Invitation";
-    return mode === "create" ? "Create User" : "Create Invite Link";
+    return mode === "create" ? zhMap["Create User"] || "Create User" : zhMap["Create Invite Link"] || "Create Invite Link";
   };
 
   const getButtonIcon = () => {
@@ -343,11 +345,11 @@ export function UserInviteModalContent({
             <SegmentedTabs.List className="rounded-lg border">
               <SegmentedTabs.Trigger value="invite">
                 <IconLink size={16} />
-                Invite User
+                <TransText>Invite User</TransText>
               </SegmentedTabs.Trigger>
               <SegmentedTabs.Trigger value="create">
                 <IconUserPlus size={16} />
-                Create User
+                <TransText>Create User</TransText>
               </SegmentedTabs.Trigger>
             </SegmentedTabs.List>
           </SegmentedTabs>
@@ -384,8 +386,8 @@ export function UserInviteModalContent({
           {!isCloud && mode === "invite" && (
             <div className={"flex justify-between mt-3"}>
               <div>
-                <Label>Expires in</Label>
-                <HelpText>Days until the invite expires.</HelpText>
+                <Label><TransText>Expires in</TransText></Label>
+                <HelpText><TransText>Days until the invite expires.</TransText></HelpText>
               </div>
               <Input
                 maxWidthClass={"max-w-[200px]"}
@@ -397,7 +399,7 @@ export function UserInviteModalContent({
                 customPrefix={
                   <AlarmClock size={16} className={"text-nb-gray-300"} />
                 }
-                customSuffix={"Day(s)"}
+                customSuffix={zhMap["Day(s)"] || "Day(s)"}
               />
             </div>
           )}
@@ -406,7 +408,7 @@ export function UserInviteModalContent({
         <div className={"mb-4"}>
           <Label>Auto-assigned groups</Label>
           <HelpText>
-            Groups will be assigned to peers added by this user.
+            <TransText>Groups will be assigned to peers added by this user.</TransText>
           </HelpText>
           <PeerGroupSelector
             onChange={setSelectedGroups}

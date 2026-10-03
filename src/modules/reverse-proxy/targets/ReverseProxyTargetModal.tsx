@@ -53,6 +53,8 @@ import ReverseProxyAddressInput, {
   useReverseProxyAddress,
 } from "@/modules/reverse-proxy/targets/ReverseProxyAddressInput";
 import Separator from "@components/Separator";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 /** Get initial host value based on target, resource, or peer */
 function getInitialHost(
@@ -261,8 +263,8 @@ export default function ReverseProxyTargetModal({
         <ModalContent maxWidthClass="max-w-2xl">
           <ModalHeader
             icon={<Server className="text-netbird" size={16} />}
-            title={currentTarget ? "Edit Target" : "Add Target"}
-            description="Configure the target for your reverse proxy."
+            title={currentTarget ? <TransText>Edit Target</TransText> : <TransText>Add Target</TransText>}
+            description={<TransText>Configure the target for your reverse proxy.</TransText>}
             color="netbird"
           />
 
@@ -478,7 +480,7 @@ export default function ReverseProxyTargetModal({
                         Skip TLS Verification
                       </>
                     }
-                    helpText="Skip certificate verification when connecting to this target. Useful if your service already uses a self-signed certificate."
+                    helpText={<TransText>Skip certificate verification when connecting to this target. Useful if your service already uses a self-signed certificate.</TransText>}
                   />
                 )}
             </div>
@@ -562,7 +564,7 @@ export default function ReverseProxyTargetModal({
           <ModalFooter className={"items-center"}>
             <div className={"w-full"}>
               <Paragraph className={"text-sm mt-auto"}>
-                Learn more about
+                <TransText>Learn more about</TransText>
                 <InlineLink
                   href={REVERSE_PROXY_TARGETS_DOCS_LINK}
                   target={"_blank"}
@@ -583,7 +585,7 @@ export default function ReverseProxyTargetModal({
                 disabled={!canAddTarget || errors.options}
               >
                 {currentTarget ? (
-                  "Save Changes"
+                  zhMap["Save Changes"] || "Save Changes"
                 ) : (
                   <>
                     <PlusCircle size={16} />
