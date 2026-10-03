@@ -7,22 +7,23 @@ import { Input } from "@components/Input";
 import { Label } from "@components/Label";
 import { notify } from "@components/Notification";
 import { PeerGroupSelector } from "@components/PeerGroupSelector";
+import { SkeletonSettings } from "@components/skeletons/SkeletonSettings";
 import { useHasChanges } from "@hooks/useHasChanges";
 import * as Tabs from "@radix-ui/react-tabs";
 import { useApiCall } from "@utils/api";
 import { validator } from "@utils/helpers";
-import { isNetBirdCloud } from "@utils/netbird";
 import { isValidCIDR } from "@utils/ip";
+import { isNetBirdCloud } from "@utils/netbird";
 import { ExternalLinkIcon, GlobeIcon, NetworkIcon } from "lucide-react";
 import React, { useMemo, useState } from "react";
 import { useSWRConfig } from "swr";
 import SettingsIcon from "@/assets/icons/SettingsIcon";
 import { TrafficEventSetting } from "@/cloud/traffic-events/TrafficEventSetting";
+import { useGroups } from "@/contexts/GroupsProvider";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { Account } from "@/interfaces/Account";
 import useGroupHelper from "@/modules/groups/useGroupHelper";
-import { useGroups } from "@/contexts/GroupsProvider";
-import { SkeletonSettings } from "@components/skeletons/SkeletonSettings";
+
 import { TransText } from "@/i18n/trans-text";
 import zhMap from "@/i18n/zh-map";
 
@@ -202,7 +203,7 @@ function NetworkSettingsTabContent({ account }: Readonly<Props>) {
             active
           />
         </Breadcrumbs>
-        <div className={"flex items-start justify-between"}>
+        <div className={"flex items-start justify-between -mt-1"}>
           <div>
             <h1><TransText>Networks</TransText></h1>
           </div>

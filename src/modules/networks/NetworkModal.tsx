@@ -40,7 +40,7 @@ export default function NetworkModal({
 }: Readonly<Props>) {
   return (
     <Modal open={open} onOpenChange={setOpen}>
-      <Content
+      <NetworkModalContent
         network={network}
         onCreated={(network) => {
           setOpen?.(false);
@@ -60,9 +60,18 @@ type ContentProps = {
   onCreated?: (network: Network) => void;
   onUpdated?: (network: Network) => void;
   network?: Network;
+  // Pure-data mode (draft canvas): no API calls, values return via onSaved.
+  useSave?: boolean;
+  onSaved?: (values: { name: string; description: string }) => void;
 };
 
-const Content = ({ network, onCreated, onUpdated }: ContentProps) => {
+export const NetworkModalContent = ({
+  network,
+  onCreated,
+  onUpdated,
+  useSave = true,
+  onSaved,
+}: ContentProps) => {
   const [name, setName] = useState(network?.name || "");
   const [description, setDescription] = useState(network?.description || "");
   const create = useApiCall<Network>("/networks").post;
@@ -152,7 +161,13 @@ const Content = ({ network, onCreated, onUpdated }: ContentProps) => {
             variant={"primary"}
             data-testid={"submit-network"}
             disabled={!name}
-            onClick={network ? updateNetwork : createNetwork}
+            onClick={
+              !useSave
+                ? () => onSaved?.({ name, description })
+                : network
+                ? updateNetwork
+                : createNetwork
+            }
           >
             {network ? (
               <TransText>Save Changes</TransText>

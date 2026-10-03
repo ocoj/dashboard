@@ -4,6 +4,7 @@ import Button from "@components/Button";
 import { Callout } from "@components/Callout";
 import FancyToggleSwitch from "@components/FancyToggleSwitch";
 import HelpText from "@components/HelpText";
+import { HelpTooltip } from "@components/HelpTooltip";
 import InlineLink from "@components/InlineLink";
 import { Input } from "@components/Input";
 import { Label } from "@components/Label";
@@ -42,20 +43,21 @@ import {
   SquareTerminalIcon,
   Text,
 } from "lucide-react";
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import AccessControlIcon from "@/assets/icons/AccessControlIcon";
 import { usePermissions } from "@/contexts/PermissionsProvider";
+import { useUsers } from "@/contexts/UsersProvider";
 import { Group } from "@/interfaces/Group";
 import { NetworkResource } from "@/interfaces/Network";
+import { Peer } from "@/interfaces/Peer";
 import { Policy, PolicyRuleResource, Protocol } from "@/interfaces/Policy";
 import { PostureCheck } from "@/interfaces/PostureCheck";
+import { SSHAccessType } from "@/modules/access-control/ssh/SSHAccessType";
+import { SSHAuthorizedGroups } from "@/modules/access-control/ssh/SSHAuthorizedGroups";
 import { useAccessControl } from "@/modules/access-control/useAccessControl";
 import { PostureCheckTab } from "@/modules/posture-checks/ui/PostureCheckTab";
 import { PostureCheckTabTrigger } from "@/modules/posture-checks/ui/PostureCheckTabTrigger";
-import { SSHAccessType } from "@/modules/access-control/ssh/SSHAccessType";
-import { SSHAuthorizedGroups } from "@/modules/access-control/ssh/SSHAuthorizedGroups";
-import { useUsers } from "@/contexts/UsersProvider";
-import { HelpTooltip } from "@components/HelpTooltip";
+
 import { TransText } from "@/i18n/trans-text";
 import zhMap from "@/i18n/zh-map";
 
@@ -71,7 +73,10 @@ type UpdateModalProps = {
   postureCheckTemplates?: PostureCheck[];
   onSuccess?: (policy: Policy) => void;
   useSave?: boolean;
+  onBeforeSave?: () => Promise<boolean> | boolean;
   allowEditPeers?: boolean;
+  additionalPeers?: Peer[];
+  additionalResources?: NetworkResource[];
 };
 
 export default function AccessControlModal({ children }: Readonly<Props>) {
@@ -93,7 +98,10 @@ export function AccessControlUpdateModal({
   postureCheckTemplates,
   onSuccess,
   useSave = true,
+  onBeforeSave,
   allowEditPeers,
+  additionalPeers,
+  additionalResources,
 }: Readonly<UpdateModalProps>) {
   return (
     <Modal open={open} onOpenChange={onOpenChange} key={open ? 1 : 0}>
@@ -107,7 +115,10 @@ export function AccessControlUpdateModal({
           cell={cell}
           postureCheckTemplates={postureCheckTemplates}
           useSave={useSave}
+          onBeforeSave={onBeforeSave}
           allowEditPeers={allowEditPeers}
+          additionalPeers={additionalPeers}
+          additionalResources={additionalResources}
         />
       )}
     </Modal>
@@ -117,19 +128,33 @@ export function AccessControlUpdateModal({
 type ModalProps = {
   onSuccess?: (p: Policy) => void;
   policy?: Policy;
+  initialSourceGroups?: Group[] | string[];
   initialDestinationGroups?: Group[] | string[];
   initialName?: string;
   initialDescription?: string;
   cell?: string;
   postureCheckTemplates?: PostureCheck[];
   useSave?: boolean;
+  // Return false to abort the save (useSave mode only).
+  onBeforeSave?: () => Promise<boolean> | boolean;
   allowEditPeers?: boolean;
   initialProtocol?: Protocol;
   initialPorts?: number[];
+  initialSourceResource?: PolicyRuleResource;
   initialDestinationResource?: PolicyRuleResource;
   initialTab?: string;
   disableDestinationSelector?: boolean;
   additionalResources?: NetworkResource[];
+  // Draft-only placeholder peers, not installed yet.
+  additionalPeers?: Peer[];
+  // Set when the policy is drawn onto a network in the draft canvas: the
+  // destination is that network's resources only, and the policy is one-way.
+  destinationScope?: PolicyDestinationScope;
+};
+
+export type PolicyDestinationScope = {
+  resourceIds: string[];
+  groupIds: string[];
 };
 
 export function AccessControlModalContent({
@@ -138,16 +163,21 @@ export function AccessControlModalContent({
   cell,
   postureCheckTemplates,
   useSave = true,
+  onBeforeSave,
   allowEditPeers = false,
+  initialSourceGroups,
   initialDestinationGroups,
   initialName,
   initialDescription,
   initialProtocol,
   initialPorts,
+  initialSourceResource,
   initialDestinationResource,
   initialTab,
   disableDestinationSelector = false,
   additionalResources,
+  additionalPeers,
+  destinationScope,
 }: Readonly<ModalProps>) {
   const { permission } = usePermissions();
   const { users } = useUsers();
@@ -192,11 +222,13 @@ export function AccessControlModalContent({
     policy,
     postureCheckTemplates,
     onSuccess,
+    initialSourceGroups,
     initialDestinationGroups,
     initialName,
     initialDescription,
     initialPorts,
     initialProtocol,
+    initialSourceResource,
     initialDestinationResource,
   });
 
@@ -232,14 +264,36 @@ export function AccessControlModalContent({
     onSuccess && onSuccess(data);
   };
 
+  const [isSaving, setIsSaving] = useState(false);
+  const saveOrClose = async () => {
+    if (!useSave) return close();
+    if (isSaving) return;
+    setIsSaving(true);
+    try {
+      if (onBeforeSave && !(await onBeforeSave())) return;
+      submit();
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
+  // Resource access is never bidirectional.
+  useEffect(() => {
+    if (destinationScope && direction !== "in") setDirection("in");
+  }, [destinationScope, direction, setDirection]);
+
   return (
     <ModalContent maxWidthClass={"max-w-3xl"}>
       <ModalHeader
         icon={<AccessControlIcon className={"fill-netbird"} />}
         title={
-          policy
-            ? <TransText>Update Access Control Policy</TransText>
-            : <TransText>Create New Access Control Policy</TransText>
+          <span
+            data-testid={policy ? "update-policy-title" : "create-policy-title"}
+          >
+            {policy
+              ? "Update Access Control Policy"
+              : "Create New Access Control Policy"}
+          </span>
         }
         description={
           <TransText>
@@ -360,6 +414,7 @@ export function AccessControlModalContent({
                   users={protocol === "netbird-ssh" ? users : undefined}
                   resource={sourceResource}
                   onResourceChange={setSourceResource}
+                  additionalPeers={additionalPeers}
                   saveGroupAssignments={useSave}
                   disabled={
                     !permission.policies.update || !permission.policies.create
@@ -369,7 +424,7 @@ export function AccessControlModalContent({
               <PolicyDirection
                 value={direction}
                 onChange={setDirection}
-                disabled={destinationOnlyResources}
+                disabled={destinationOnlyResources || !!destinationScope}
                 protocol={protocol}
                 destinationResource={destinationResource}
               />
@@ -394,7 +449,10 @@ export function AccessControlModalContent({
                   placeholder={"Select destination(s)..."}
                   showRoutes={true}
                   showResources={protocol !== "netbird-ssh"}
-                  showPeers={true}
+                  showPeers={!destinationScope}
+                  resourceIds={destinationScope?.resourceIds}
+                  groupIds={destinationScope?.groupIds}
+                  hideAllGroup={!!destinationScope}
                   showResourceCounter={true}
                   showPeerCount={allowEditPeers}
                   disableInlineRemoveGroup={false}
@@ -402,6 +460,7 @@ export function AccessControlModalContent({
                   onChange={setDestinationGroups}
                   resource={destinationResource}
                   onResourceChange={setDestinationResource}
+                  additionalPeers={additionalPeers}
                   saveGroupAssignments={useSave}
                   additionalResources={additionalResources}
                   disabled={
@@ -641,14 +700,10 @@ export function AccessControlModalContent({
 
                   <Button
                     variant={"primary"}
-                    disabled={submitDisabled || !permission.policies.create}
-                    onClick={() => {
-                      if (useSave) {
-                        submit();
-                      } else {
-                        close();
-                      }
-                    }}
+                    disabled={
+                      submitDisabled || isSaving || !permission.policies.create
+                    }
+                    onClick={() => void saveOrClose()}
                     data-testid={"submit-policy"}
                   >
                     <PlusCircle size={16} />
@@ -664,14 +719,11 @@ export function AccessControlModalContent({
               </ModalClose>
               <Button
                 variant={"primary"}
-                disabled={submitDisabled || !permission.policies.update}
-                onClick={() => {
-                  if (useSave) {
-                    submit();
-                  } else {
-                    close();
-                  }
-                }}
+                disabled={
+                  submitDisabled || isSaving || !permission.policies.update
+                }
+                onClick={() => void saveOrClose()}
+                data-testid={"submit-policy"}
               >
                 <TransText>Save Changes</TransText>
               </Button>

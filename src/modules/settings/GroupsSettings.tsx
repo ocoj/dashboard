@@ -1,7 +1,9 @@
 import Breadcrumbs from "@components/Breadcrumbs";
 import Button from "@components/Button";
+import { Callout } from "@components/Callout";
 import FancyToggleSwitch from "@components/FancyToggleSwitch";
 import HelpText from "@components/HelpText";
+import { InlineButtonLink } from "@components/InlineLink";
 import { Input } from "@components/Input";
 import { Label } from "@components/Label";
 import { notify } from "@components/Notification";
@@ -20,6 +22,7 @@ import {
   ShieldCheck,
   X,
 } from "lucide-react";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useSWRConfig } from "swr";
 import SettingsIcon from "@/assets/icons/SettingsIcon";
@@ -28,10 +31,8 @@ import { useDialog } from "@/contexts/DialogProvider";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { useHasChanges } from "@/hooks/useHasChanges";
 import { Account } from "@/interfaces/Account";
+
 import { TransText } from "@/i18n/trans-text";
-import { Callout } from "@components/Callout";
-import { InlineButtonLink } from "@components/InlineLink";
-import { useRouter } from "next/navigation";
 
 type Props = {
   account: Account;
@@ -150,8 +151,8 @@ export default function GroupsSettings({ account }: Props) {
             active
           />
         </Breadcrumbs>
-        <div className={"flex items-start justify-between"}>
-          <h1><TransText>User Groups</TransText></h1>
+        <div className={"flex items-start justify-between -mt-1"}>
+          <h1>User Groups</h1>
           <Button
             variant={"primary"}
             disabled={!hasChanges}

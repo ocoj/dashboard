@@ -62,7 +62,10 @@ export default function NetBirdSettings() {
         <VerticalTabs.List>
           {permission.settings.read && (
             <>
-              <VerticalTabs.Trigger value="authentication" data-testid="settings-tab-authentication">
+              <VerticalTabs.Trigger
+                value="authentication"
+                data-testid="settings-tab-authentication"
+              >
                 <ShieldIcon size={14} />
                 <TransText>Authentication</TransText>
               </VerticalTabs.Trigger>
@@ -79,19 +82,31 @@ export default function NetBirdSettings() {
                     <TransText>Identity Providers</TransText>
                   </VerticalTabs.Trigger>
                 )}
-              <VerticalTabs.Trigger value="groups" data-testid="settings-tab-groups">
+              <VerticalTabs.Trigger
+                value="groups"
+                data-testid="settings-tab-groups"
+              >
                 <FolderGit2Icon size={14} />
                 <TransText>Groups</TransText>
               </VerticalTabs.Trigger>
-              <VerticalTabs.Trigger value="permissions" data-testid="settings-tab-permissions">
+              <VerticalTabs.Trigger
+                value="permissions"
+                data-testid="settings-tab-permissions"
+              >
                 <LockIcon size={14} />
                 <TransText>Permissions</TransText>
               </VerticalTabs.Trigger>
-              <VerticalTabs.Trigger value="networks" data-testid="settings-tab-networks">
+              <VerticalTabs.Trigger
+                value="networks"
+                data-testid="settings-tab-networks"
+              >
                 <NetworkIcon size={14} />
                 <TransText>Networks</TransText>
               </VerticalTabs.Trigger>
-              <VerticalTabs.Trigger value="clients" data-testid="settings-tab-clients">
+              <VerticalTabs.Trigger
+                value="clients"
+                data-testid="settings-tab-clients"
+              >
                 <MonitorSmartphoneIcon size={14} />
                 <TransText>Clients</TransText>
               </VerticalTabs.Trigger>

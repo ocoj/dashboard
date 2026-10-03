@@ -17,8 +17,10 @@ import {
 import ModalHeader from "@components/modal/ModalHeader";
 import Paragraph from "@components/Paragraph";
 import { SelectDropdown } from "@components/select/SelectDropdown";
+import SettingCard from "@components/SettingCard";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@components/Tabs";
 import useFetchApi from "@utils/api";
+import { cn } from "@utils/helpers";
 import {
   AlertCircleIcon,
   ArrowRightLeft,
@@ -27,28 +29,39 @@ import {
   ExternalLinkIcon,
   KeyRound,
   ListIcon,
+  Loader2,
   MinusCircleIcon,
   PlusCircle,
   PlusIcon,
+  RefreshCwIcon,
   ShieldOffIcon,
   Sparkles,
   UploadIcon,
 } from "lucide-react";
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import AgentNetworkIcon from "@/assets/icons/AgentNetworkIcon";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+import { useDialog } from "@/contexts/DialogProvider";
+import { usePermissions } from "@/contexts/PermissionsProvider";
 import {
   ReverseProxyDomain,
   ReverseProxyDomainType,
 } from "@/interfaces/ReverseProxy";
+import AIProviderLogo from "@/modules/agent-network/AIProviderLogo";
+import {
+  type ProviderConnectInput,
+  useAIProviders,
+} from "@/modules/agent-network/AIProvidersProvider";
 import {
   AIProvider,
   AIProviderId,
   ProviderModel,
 } from "@/modules/agent-network/data/mockData";
-import AIProviderLogo from "@/modules/agent-network/AIProviderLogo";
-import {
-  useAIProviders,
-} from "@/modules/agent-network/AIProvidersProvider";
+import { useDiscoveredModels } from "@/modules/agent-network/useDiscoveredModels";
 import { useProviderCatalog } from "@/modules/agent-network/useProviderCatalog";
 import { TransText } from "@/i18n/trans-text";
 import zhMap from "@/i18n/zh-map";
@@ -113,6 +126,8 @@ function upstreamUrlPlaceholder(providerId: AIProviderId): string {
       return "https://openrouter.ai/api/v1";
     case "litellm_proxy":
       return "https://your-litellm-host";
+    case "agentgateway":
+      return "https://your-agentgateway-proxy";
     case "portkey":
       return "https://api.portkey.ai";
     case "vllm":
@@ -140,6 +155,8 @@ function upstreamUrlHelpText(providerId: AIProviderId): string {
       return "Vercel AI Gateway uses a fixed endpoint; only the API key varies by operator. Apps choose the upstream provider with the model prefix, e.g. openai/gpt-5.4 or anthropic/claude-opus-4.6.";
     case "openrouter":
       return "OpenRouter uses a fixed endpoint, openrouter.ai/api/v1; apps choose the upstream provider via the model prefix, e.g. anthropic/claude-* or openai/gpt-*.";
+    case "agentgateway":
+      return "The agentgateway proxy listener URL reachable from the NetBird proxy. Keep this listener private so requests cannot bypass NetBird's identity enforcement.";
     case "vllm":
       return "Your local vLLM server's OpenAI-compatible base URL.";
     default:
@@ -151,6 +168,10 @@ type Props = {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   provider?: AIProvider;
+  onBeforeSave?: () => Promise<boolean> | boolean;
+  useSave?: boolean;
+  onDraftSubmit?: (input: ProviderConnectInput) => void;
+  takenNames?: string[];
 };
 
 // ModelRowEditor owns row-local UI state (custom/catalog mode, expanded cache
@@ -162,47 +183,111 @@ type Props = {
 type EditableModel = ProviderModel & { _key: string };
 
 let modelKeySeq = 0;
+// MASKED_API_KEY is what the edit form shows in place of a stored credential.
+// The real key never reaches the browser, so anything equal to this is a
+// placeholder rather than something that can be sent to a vendor.
+export const MASKED_API_KEY = "••••••••";
+
+const NO_PASSWORD_MANAGER = {
+  autoComplete: "off",
+  "data-1p-ignore": true,
+  "data-lpignore": "true",
+  "data-form-type": "other",
+} as const;
+
 const withModelKey = (m: ProviderModel): EditableModel => ({
   ...m,
   _key: `model-${modelKeySeq++}`,
 });
 
+// hasNoPrice reports a row that would meter every request against it as free.
+// Both rates, not either: a model priced on input alone is a deliberate
+// configuration, while zero on both is the shape an unpriced model arrives in.
+const hasNoPrice = (m: ProviderModel) => !m.inputPer1k && !m.outputPer1k;
+
 export default function AIProviderModal({
   open,
   onOpenChange,
   provider,
+  onBeforeSave,
+  useSave = true,
+  onDraftSubmit,
+  takenNames,
 }: Readonly<Props>) {
   const {
+    providers,
     addProvider,
     updateProvider,
     settings,
+    settingsLoading,
     bootstrapAgentNetworkSettings,
   } = useAIProviders();
-  const { data: domains, isLoading: domainsLoading } = useFetchApi<
-    ReverseProxyDomain[]
-  >("/reverse-proxies/domains");
-  const { catalog: catalogList, getById } = useProviderCatalog();
+  const { permission } = usePermissions();
+  const { confirm } = useDialog();
 
   const isEdit = !!provider;
+
+  const takenProviderNames = useMemo(
+    () =>
+      new Set([
+        ...providers.filter((p) => p.id !== provider?.id).map((p) => p.name),
+        ...(takenNames ?? []),
+      ]),
+    [providers, provider?.id, takenNames],
+  );
+  const uniqueName = useCallback(
+    (base: string) => {
+      let name = base;
+      let i = 1;
+      while (takenProviderNames.has(name)) name = `${base} (${i++})`;
+      return name;
+    },
+    [takenProviderNames],
+  );
+  const uniqueNameRef = useRef(uniqueName);
+  useEffect(() => {
+    uniqueNameRef.current = uniqueName;
+  }, [uniqueName]);
   // The endpoint lives on the account-level Settings row, bootstrapped once
   // via an explicit POST. We auto-pick a proxy cluster from the live /domains
   // response and, when the account isn't bootstrapped yet, POST it as the
   // settings proxy_address right before the first provider create.
   const settingsBootstrapped = !!settings;
 
+  // /reverse-proxies/domains is guarded by the Services module, which the
+  // delegated Agent Network roles don't hold — calling it for them only yields
+  // a 403. The list is needed for the one-time bootstrap cluster pick, so skip
+  // the request once the account is bootstrapped or the role can't read it.
+  const canReadDomains = !!permission.services?.read;
+  const { data: domains, isLoading: domainsLoading } = useFetchApi<
+    ReverseProxyDomain[]
+  >(
+    "/reverse-proxies/domains",
+    true,
+    true,
+    canReadDomains && !settingsBootstrapped && !settingsLoading,
+  );
+  const { catalog: catalogList, getById } = useProviderCatalog();
+
   const [tab, setTab] = useState<string>("provider");
+  // A save reaches the vendor to check the url and credential before storing
+  // anything, so it holds for as long as that round trip takes — up to a
+  // timeout. Nothing else on the footer moves while it does.
+  const [saveInFlight, setSaveInFlight] = useState(false);
   const [providerId, setProviderId] = useState<AIProviderId>(
     provider?.providerId ?? "openai_api",
   );
-  const [name, setName] = useState(provider?.name ?? "OpenAI API");
+  const [name, setName] = useState(() =>
+    provider ? provider.name : uniqueName("OpenAI API"),
+  );
   const [upstreamUrl, setUpstreamUrl] = useState<string>(
     provider?.upstreamUrl ?? "",
   );
-  const [apiKey, setApiKey] = useState(isEdit ? "••••••••" : "");
-  const [bootstrapCluster, setBootstrapCluster] = useState<string>("");
+  const [apiKey, setApiKey] = useState(isEdit ? MASKED_API_KEY : "");
   const [models, setModels] = useState<EditableModel[]>(() =>
     (provider?.models ?? []).map(withModelKey),
   );
+  const discovered = useDiscoveredModels();
 
   // Vertex AI authenticates with a service-account JSON key, not an API key.
   // We upload the file and store it base64-encoded in apiKey (the server
@@ -261,6 +346,10 @@ export default function AIProviderModal({
   // entry, so this never double-counts.
   const customizableIdentity =
     customizableHeaderPair || customizableJsonMetadata;
+  const fixedHeaderPair =
+    catalog?.identity_injection?.header_pair?.customizable === false
+      ? catalog.identity_injection.header_pair
+      : undefined;
   // Defaults shown as input placeholders. The first non-empty source
   // wins; HeaderPair vs JSONMetadata are exclusive so either branch
   // is empty when the other is set.
@@ -279,20 +368,20 @@ export default function AIProviderModal({
   const jsonMetadataHeader =
     catalog?.identity_injection?.json_metadata?.header ?? "";
 
-  // showMappings reveals the Mappings tab for provider types whose
-  // downstream gateway keys identity off NetBird-stamped headers.
-  // For non-customizable shapes (LiteLLM, Portkey) the mapping is
-  // fixed in v1 — the tab is read-only. For customizable shapes
-  // (Bifrost) the operator picks the wire header names, so the tab
-  // renders editable inputs.
+  // The management catalog owns the general identity-injection contract.
+  // Bedrock retains its separate request-metadata mapping, and fixed HeaderPair
+  // providers without tailored guidance get the generic read-only view.
   const showMappings =
-    providerId === "litellm_proxy" ||
-    providerId === "portkey" ||
-    providerId === "bifrost" ||
-    providerId === "cloudflare_ai_gateway" ||
-    providerId === "vercel_ai_gateway" ||
-    providerId === "openrouter" ||
-    providerId === "bedrock_api";
+    !!catalog?.identity_injection || providerId === "bedrock_api";
+  const hasSpecializedFixedHeaderPairView = [
+    "litellm_proxy",
+    "vercel_ai_gateway",
+    "openrouter",
+    "portkey",
+    "bedrock_api",
+  ].includes(providerId);
+  const showGenericFixedHeaderPair =
+    !!fixedHeaderPair && !hasSpecializedFixedHeaderPairView;
 
   // If the user flips provider type while viewing the Mappings tab and
   // the new type doesn't show mappings, snap back to the Provider tab
@@ -310,18 +399,44 @@ export default function AIProviderModal({
       ),
     [domains],
   );
+  // Not every live cluster can host the endpoint. The agent network gateway is
+  // a private service — reachable only from connected peers, authenticated by
+  // their tunnel identity — so it needs a cluster with private capabilities.
+  // supports_private is the flag for that, the same one the Reverse Proxy
+  // modal gates NetBird-Only Access on, and management refuses a bootstrap
+  // onto a cluster reporting it false. Picking
+  // from the filtered list keeps the wizard from proposing a cluster the API
+  // rejects — and the endpoint it assigns is immutable, so a wrong pick is not
+  // something the operator can edit away afterwards.
+  //
+  // Only an explicit false disqualifies a cluster: a management build that
+  // predates the flag reports nothing at all, and dropping every cluster there
+  // would block setup on a backend that would have accepted it — the same
+  // "nothing to judge" reading the server applies to an unreported capability.
+  const bootstrapClusters = useMemo(
+    () => validatedClusters.filter((d) => d.supports_private !== false),
+    [validatedClusters],
+  );
+  // Wait for both requests before claiming there is nothing to pick, otherwise
+  // the warning flashes while the settings row is still loading.
   const noClustersAvailable =
-    !settingsBootstrapped && !domainsLoading && validatedClusters.length === 0;
+    !settingsBootstrapped &&
+    !settingsLoading &&
+    !domainsLoading &&
+    bootstrapClusters.length === 0;
+  // Clusters exist, but none of them has private capabilities: a different
+  // problem from having no proxy at all, and a different fix, so it gets its
+  // own message rather than "connect a proxy".
+  const clustersLackPrivateCapability =
+    noClustersAvailable && validatedClusters.length > 0;
 
-  // Auto-pick the first validated cluster on first render once the
-  // /domains response lands. Only matters for the first-create flow —
-  // once settings is bootstrapped no further bootstrap happens.
-  React.useEffect(() => {
-    if (settingsBootstrapped) return;
-    if (bootstrapCluster) return;
-    if (validatedClusters.length === 0) return;
-    setBootstrapCluster(validatedClusters[0].domain);
-  }, [settingsBootstrapped, bootstrapCluster, validatedClusters]);
+  // The cluster the first create will bootstrap onto: the first usable one
+  // once the /domains response lands, empty until then. Derived rather than
+  // held in state — there is no picker, so state could only ever mirror this
+  // list, and an effect writing it back would just add a render pass. Only
+  // matters for the first-create flow; once settings is bootstrapped no
+  // further bootstrap happens (and /domains is not even fetched).
+  const bootstrapCluster = bootstrapClusters[0]?.domain ?? "";
 
   // Seed the upstream URL from the catalog entry once it lands — the
   // catalog is fetched async, so on first render `getById("openai_api")`
@@ -363,8 +478,7 @@ export default function AIProviderModal({
       setProviderId(provider.providerId);
       setName(provider.name);
       setUpstreamUrl(provider.upstreamUrl);
-      setApiKey("••••••••");
-      setBootstrapCluster("");
+      setApiKey(MASKED_API_KEY);
       setModels(provider.models.map(withModelKey));
       setExtraValues(provider.extraValues ?? {});
       setIdentityHeaderUserId(provider.identityHeaderUserId ?? "");
@@ -374,12 +488,11 @@ export default function AIProviderModal({
     } else {
       const fallback = getById("openai_api");
       setProviderId("openai_api");
-      setName(fallback ? fallback.name : "OpenAI API");
-      setUpstreamUrl(fallback?.default_host ? `https://${fallback.default_host}` : "");
-      setApiKey("");
-      setBootstrapCluster(
-        settingsBootstrapped ? "" : validatedClusters[0]?.domain ?? "",
+      setName(uniqueNameRef.current(fallback ? fallback.name : "OpenAI API"));
+      setUpstreamUrl(
+        fallback?.default_host ? `https://${fallback.default_host}` : "",
       );
+      setApiKey("");
       setModels([]);
       setExtraValues({});
       setIdentityHeaderUserId("");
@@ -389,7 +502,19 @@ export default function AIProviderModal({
     }
   };
 
+  // A save already sent cannot be called off, so dismissing the modal while one
+  // is in flight would only hide it: the write still lands, and the completion
+  // calls handleClose again — closing and resetting whatever session the
+  // operator has opened by then. The dismissal is refused instead of faked.
   const handleClose = () => {
+    if (saveInFlight) return;
+    onOpenChange(false);
+    setTimeout(reset, 200);
+  };
+
+  // closeAfterSave is the completion path: it bypasses the guard above, which
+  // exists to stop the operator racing the save, not the save from finishing.
+  const closeAfterSave = () => {
     onOpenChange(false);
     setTimeout(reset, 200);
   };
@@ -417,6 +542,7 @@ export default function AIProviderModal({
 
   const handleSubmit = async () => {
     if (!catalog) return;
+    if (onBeforeSave && !(await onBeforeSave())) return;
     // Drop rows the operator never filled in (an added-but-empty custom
     // row, or the empty fallback row when the catalog is exhausted) —
     // the API rejects models without an id, which would fail the whole
@@ -432,6 +558,27 @@ export default function AIProviderModal({
         seenModelIds.add(m.id);
         return true;
       });
+
+    // Saving an unpriced model is silent and irreversible in effect: every
+    // request against it records $0, and the usage that was already spent
+    // cannot be re-priced afterwards. The inline warning is easy to scroll
+    // past on a long vendor list, so confirm at the point of no return.
+    const unpriced = submittedModels.filter(hasNoPrice);
+    if (unpriced.length > 0) {
+      const proceed = await confirm({
+        title:
+          unpriced.length === 1
+            ? "Save with 1 unpriced model?"
+            : `Save with ${unpriced.length} unpriced models?`,
+        description:
+          "Models without rates are tracked at $0 and don’t count toward " +
+          "budget limits. Set rates now or later.",
+        confirmText: "Save anyway",
+        cancelText: "Set rates first",
+        type: "warning",
+      });
+      if (!proceed) return;
+    }
     // Identity overrides are only forwarded when the catalog entry
     // flags either shape (HeaderPair or JSONMetadata) as customizable.
     // Sending them on a non-customizable provider would be a no-op
@@ -443,33 +590,7 @@ export default function AIProviderModal({
           identityHeaderGroups: identityHeaderGroups.trim(),
         }
       : {};
-    if (isEdit && provider) {
-      await updateProvider(provider.id, {
-        providerId,
-        name,
-        upstreamUrl,
-        models: submittedModels,
-        extraValues: sanitizedExtraValues,
-        ...identityOverrides,
-        skipTlsVerification: isCustomKind ? skipTlsVerification : false,
-        metadataDisabled,
-        // Only forward the API key when the user actually rotated it
-        ...(apiKey && apiKey !== "••••••••" ? { apiKey } : {}),
-      });
-      handleClose();
-      return;
-    }
-    // First create: bootstrap the account's endpoint before the provider
-    // exists, as an explicit settings POST. A failure keeps the wizard open
-    // (the provider isn't created either) so the operator sees the error and
-    // can retry — this used to be a silent backend side effect.
-    if (!settingsBootstrapped) {
-      const bootstrapped = await bootstrapAgentNetworkSettings(
-        bootstrapCluster.trim(),
-      );
-      if (!bootstrapped) return;
-    }
-    await addProvider({
+    const input: ProviderConnectInput = {
       providerId,
       name,
       upstreamUrl,
@@ -480,8 +601,53 @@ export default function AIProviderModal({
       metadataDisabled,
       models: submittedModels,
       enabled: true,
-    });
-    handleClose();
+    };
+
+    if (!useSave) {
+      onDraftSubmit?.(input);
+      closeAfterSave();
+      return;
+    }
+
+    setSaveInFlight(true);
+    try {
+      if (isEdit && provider) {
+        const saved = await updateProvider(provider.id, {
+          providerId,
+          name,
+          upstreamUrl,
+          models: submittedModels,
+          extraValues: sanitizedExtraValues,
+          ...identityOverrides,
+          skipTlsVerification: isCustomKind ? skipTlsVerification : false,
+          metadataDisabled,
+          // Only forward the API key when the user actually rotated it
+          ...(apiKey && apiKey.trim() !== MASKED_API_KEY ? { apiKey } : {}),
+        });
+        // The url and credential are checked against the vendor before the
+        // change is stored, so a save can be refused for a reason the operator
+        // has to fix here. Closing would throw away the key they just typed —
+        // and it never comes back from the API to be typed over again.
+        if (!saved) return;
+        closeAfterSave();
+        return;
+      }
+      // First create: bootstrap the account's endpoint before the provider
+      // exists, as an explicit settings POST. A failure keeps the wizard open
+      // (the provider isn't created either) so the operator sees the error and
+      // can retry — this used to be a silent backend side effect.
+      if (!settingsBootstrapped) {
+        const bootstrapped = await bootstrapAgentNetworkSettings(
+          bootstrapCluster.trim(),
+        );
+        if (!bootstrapped) return;
+      }
+      const created = await addProvider(input);
+      if (!created) return;
+      closeAfterSave();
+    } finally {
+      setSaveInFlight(false);
+    }
   };
 
   // providerOptions are sorted into three groups, first-party AI Providers
@@ -510,6 +676,11 @@ export default function AIProviderModal({
       label: p.name,
       searchValue: `${p.name} ${p.id}`,
       group: groupLabel[p.kind] ?? "Other",
+      renderItem: () => (
+        <span data-testid={`agent-network-provider-option-${p.id}`}>
+          {p.name}
+        </span>
+      ),
       icon: ({ size }: { size?: number }) => (
         <AIProviderLogo providerId={p.id as AIProviderId} size={size ?? 16} />
       ),
@@ -527,11 +698,134 @@ export default function AIProviderModal({
   // Catalog options the user hasn't already added; falls back to a
   // generic empty row when the catalog is exhausted or there is no
   // catalog (custom providers).
-  const catalogModelOptions = useMemo(
-    () => catalog?.models ?? [],
-    [catalog],
+  // Merged: the catalog first, then anything the vendor reported that the
+  // catalog does not already carry. Both the per-row picker and "Add More"
+  // read this one list, so merging here is all the wiring either needs.
+  //
+  // A catalog entry wins on collision. Both sides price from the same table,
+  // so their rates agree; the catalog's label is the curated one.
+  const catalogModelOptions = useMemo<CatalogModelOption[]>(() => {
+    const base = catalog?.models ?? [];
+    if (discovered.models.length === 0) return base;
+
+    const known = new Set(base.map((m) => m.id));
+    const extra = discovered.models
+      .filter((m) => !known.has(m.id))
+      .map<CatalogModelOption>((m) => ({
+        id: m.id,
+        label: m.label || m.id,
+        // The rates the response carries. Bedrock is why this matters: its
+        // listing returns geography-prefixed ids, which never match a catalog
+        // entry by string, so every one of them arrives through this branch.
+        // The backend prices them off the normalized id and reports the rate
+        // for each — dropping it here registered a whole account's models at
+        // zero while the API was saying what they cost.
+        input_per_1k: m.input_per_1k,
+        output_per_1k: m.output_per_1k,
+        cached_input_per_1k: m.cached_input_per_1k,
+        cache_read_per_1k: m.cache_read_per_1k,
+        cache_creation_per_1k: m.cache_creation_per_1k,
+        pricing_known: m.pricing_known,
+      }));
+    return [...base, ...extra];
+  }, [catalog, discovered.models]);
+
+  // Editing a saved provider shows a masked api key, never the real one, so
+  // discovery reuses the stored credential by record id instead. A new
+  // provider has to supply the key the operator is typing.
+  //
+  // That reuse is only right while the form still describes the record the
+  // credential belongs to. The API takes the vendor from the stored row, so
+  // switching the vendor dropdown and then asking by record id answers with
+  // the OLD vendor's models and offers them for the new one. A replacement key
+  // typed over the mask is the same mistake in the other direction: the
+  // operator wants that key tested, not the one already saved.
+  //
+  // A retyped URL is neither. It is sent with the record id and overrides the
+  // stored upstream, so the endpoint on the form is the one listed against —
+  // asking for the key back would be asking for something the API never
+  // returned.
+  const useSavedCredential =
+    isEdit &&
+    !!provider?.id &&
+    providerId === provider.providerId &&
+    apiKey.trim() === MASKED_API_KEY;
+
+  const canDiscoverModels = useMemo(() => {
+    if (useSavedCredential) return upstreamUrl.trim() !== "";
+    return (
+      upstreamUrl.trim() !== "" &&
+      apiKey.trim() !== "" &&
+      // Compared trimmed on both sides: an untrimmed compare lets a padded
+      // mask through, and the request then sends the mask as the credential.
+      apiKey.trim() !== MASKED_API_KEY
+    );
+  }, [useSavedCredential, upstreamUrl, apiKey]);
+
+  const loadModelsFromProvider = async () => {
+    await discovered.discover(
+      useSavedCredential && provider?.id
+        ? {
+            catalog_provider_id: providerId,
+            provider_id: provider.id,
+            upstream_url: upstreamUrl.trim(),
+          }
+        : {
+            catalog_provider_id: providerId,
+            upstream_url: upstreamUrl.trim(),
+            api_key: apiKey.trim(),
+          },
+    );
+  };
+
+  // Named rather than used inline: it gates the Load button, the Save button
+  // and the result line, so one definition keeps them from drifting apart.
+  const discoveryInFlight = discovered.isLoading;
+
+  // The footer renders the same submit twice — once on the models tab and once
+  // on the mappings tab — so its state is defined once here.
+  const submitDisabled =
+    !canContinueFromProvider || discoveryInFlight || saveInFlight;
+  const submitLabel = saveInFlight ? (
+    <>
+      <Loader2 size={16} className={"animate-spin"} />
+      {isEdit ? "Saving changes…" : "Connecting provider…"}
+    </>
+  ) : isEdit ? (
+    "Save Changes"
+  ) : (
+    <>
+      <PlusCircle size={16} />
+      Connect Provider
+    </>
   );
-  const usedModelIds = useMemo(() => new Set(models.map((m) => m.id)), [models]);
+
+  // A discovery result describes one provider, endpoint and credential. Once
+  // any of those changes on screen, the previous answer is about a
+  // configuration that is no longer being edited, so it is dropped rather than
+  // left populating the model picker — whose ids are what save() registers.
+  // reset also invalidates any request still in flight.
+  const resetDiscovered = discovered.reset;
+  useEffect(() => {
+    resetDiscovered();
+  }, [resetDiscovered, providerId, upstreamUrl, apiKey, open]);
+
+  // Rows carrying no price at all. Saving one records every request against
+  // that model as free, so the row is outlined and a single line says so —
+  // derived from the rates actually on the form rather than from the discovery
+  // response, so the warning clears the moment the operator types a rate, and
+  // covers a hand-added row just as well as a discovered one.
+  const unpricedModelIds = useMemo(
+    () =>
+      new Set(
+        models.filter((m) => m.id !== "" && hasNoPrice(m)).map((m) => m.id),
+      ),
+    [models],
+  );
+  const usedModelIds = useMemo(
+    () => new Set(models.map((m) => m.id)),
+    [models],
+  );
   const addModel = () => {
     const next = catalogModelOptions.find((m) => !usedModelIds.has(m.id));
     if (next) {
@@ -561,6 +855,27 @@ export default function AIProviderModal({
   // "bedrock" bill two ADDITIVE buckets (cache read + cache write).
   // Gateways/custom entries (and older backends) declare no surfaces —
   // NetBird can't know the upstream shape, so every field is offered.
+  // Every outcome of a discovery run, resolved to the one line that reports
+  // it. Kept in one slot below the button rather than beside it: a message
+  // appearing next to the button reflowed the tab — and with it the centered
+  // modal — the moment a load came back.
+  const discoveryMessage: React.ReactNode = !canDiscoverModels ? (
+    useSavedCredential ? (
+      "Enter the endpoint URL first."
+    ) : (
+      "Enter the endpoint URL and API key first."
+    )
+  ) : discovered.error ? (
+    discovered.error
+  ) : discovered.notSupported ? (
+    "This provider has no model listing endpoint — the catalog list is used instead."
+  ) : !discoveryInFlight && discovered.models.length > 0 ? (
+    <>
+      {discovered.models.length} models loaded. Use the{" "}
+      <strong>Add More</strong> button to search and pick models.
+    </>
+  ) : null;
+
   const pricingSurfaces = catalog?.pricing_surfaces ?? [];
   const showCachedInputRate =
     pricingSurfaces.length === 0 || pricingSurfaces.includes("openai");
@@ -571,10 +886,13 @@ export default function AIProviderModal({
 
   return (
     <Modal open={open} onOpenChange={(o) => (o ? null : handleClose())}>
-      <ModalContent maxWidthClass={"max-w-2xl"}>
+      <ModalContent
+        maxWidthClass={"max-w-2xl"}
+        data-testid={"agent-network-provider-modal"}
+      >
         <ModalHeader
-          icon={<AgentNetworkIcon className={"fill-netbird"} size={18} />}
-          title={isEdit ? zhMap["Edit Provider"] || "Edit Provider" : zhMap["Connect Provider"] || "Connect Provider"}
+          icon={<Sparkles size={18} className={"text-netbird"} />}
+          title={isEdit ? "Edit Provider" : "Connect Provider"}
           description={
             isEdit
               ? zhMap["Update this provider's configuration."] || "Update this provider's configuration."
@@ -592,6 +910,7 @@ export default function AIProviderModal({
             <TabsTrigger
               value={"models"}
               disabled={!canContinueFromProvider}
+              data-testid={"agent-network-provider-models-tab"}
             >
               <Boxes size={14} />
               <TransText>Models</TransText>
@@ -600,6 +919,7 @@ export default function AIProviderModal({
               <TabsTrigger
                 value={"mappings"}
                 disabled={!canContinueFromProvider}
+                data-testid={"agent-network-provider-mappings-tab"}
               >
                 <ArrowRightLeft size={14} />
                 <TransText>Mappings</TransText>
@@ -608,9 +928,10 @@ export default function AIProviderModal({
           </TabsList>
 
           <TabsContent value={"provider"} className={"pb-8"}>
-            <div className={"px-8 pt-3 flex-col flex gap-6"}>
+            <div className={"px-8 flex-col flex gap-6"}>
               {noClustersAvailable && (
                 <Callout
+                  data-testid="agent-network-no-cluster-callout"
                   variant={"warning"}
                   icon={
                     <AlertCircleIcon
@@ -619,96 +940,116 @@ export default function AIProviderModal({
                     />
                   }
                 >
-                  <TransText>No active proxy clusters are available. Connect at least one</TransText>
-                  proxy under
-                  <InlineLink href={"/reverse-proxy/services"}>
-                    {" "}{zhMap["Reverse Proxy"] || "Reverse Proxy"}
-                  </InlineLink>
-                  {" "}<TransText>before adding a provider.</TransText>
+                  {canReadDomains && clustersLackPrivateCapability ? (
+                    <>
+                      You need a reverse proxy cluster with private capabilities
+                      in order to enable agent networks. Connect one under
+                      <InlineLink
+                        href={"/agent-network/configuration?tab=clusters"}
+                      >
+                        {" "}
+                        Configuration → Clusters
+                      </InlineLink>{" "}
+                      before adding a provider.
+                    </>
+                  ) : canReadDomains ? (
+                    <>
+                      No active proxy clusters are available. Connect at least
+                      one proxy under
+                      <InlineLink
+                        href={"/agent-network/configuration?tab=clusters"}
+                      >
+                        {" "}
+                        Configuration → Clusters
+                      </InlineLink>{" "}
+                      before adding a provider.
+                    </>
+                  ) : (
+                    // Roles scoped to Agent Network can't read or connect
+                    // proxies, so point at who can instead of at a page they
+                    // have no access to.
+                    <>
+                      Agent Network isn&apos;t set up for this account yet. Ask
+                      an account admin to connect a proxy before adding a
+                      provider.
+                    </>
+                  )}
                 </Callout>
               )}
 
-              <FormRow
-                label={<TransText>Provider</TransText>}
-                helpText={<TransText>API provider to expose through NetBird.</TransText>}
-              >
-                <SelectDropdown
-                  value={providerId}
-                  onChange={(v) => {
-                    const next = v as AIProviderId;
-                    setProviderId(next);
-                    // The credential differs per provider (API key vs Vertex
-                    // JSON upload), so clear it when switching.
-                    setApiKey("");
-                    setKeyFileName(null);
-                    const c = getById(next);
-                    if (c) {
-                      setName(c.name);
-                      // Gateways like Bifrost / LiteLLM ship with an
-                      // empty default_host (operator brings their own
-                      // endpoint). Don't pre-fill "https://" — let the
-                      // placeholder hint them what to type instead.
-                      setUpstreamUrl(
-                        next === "vertex_ai_api"
-                          ? "https://aiplatform.googleapis.com"
-                          : c.default_host
-                          ? `https://${c.default_host}`
-                          : "",
-                      );
-                      setModels([]);
-                      // Auto-seed the identity inputs from the
-                      // catalog defaults when picking a customizable
-                      // shape (HeaderPair for Bifrost, JSONMetadata
-                      // for Cloudflare) so the operator sees sensible
-                      // starting values. They can edit, clear, or
-                      // paste their own. Switching away from any
-                      // customizable shape wipes the values so they
-                      // don't leak onto a non-customizable provider's
-                      // wire.
-                      const hp = c.identity_injection?.header_pair;
-                      const jm = c.identity_injection?.json_metadata;
-                      if (hp?.customizable) {
-                        setIdentityHeaderUserId(hp.end_user_id_header);
-                        setIdentityHeaderGroups(hp.tags_header);
-                      } else if (jm?.customizable) {
-                        setIdentityHeaderUserId(jm.user_key);
-                        setIdentityHeaderGroups(jm.groups_key);
-                      } else {
-                        setIdentityHeaderUserId("");
-                        setIdentityHeaderGroups("");
-                      }
-                    }
-                  }}
-                  options={providerOptions}
-                  showSearch
-                  searchPlaceholder={zhMap["Search providers..."] || "Search providers..."}
-                  placeholder={zhMap["Select provider..."] || "Select provider..."}
-                />
-              </FormRow>
-
-              <FormRow
-                label={
-                  providerId === "kimi_api" ? (
+              <div className={"flex-col flex gap-2"}>
+                <FormRow
+                  label={"Provider"}
+                  helpText={
                     <>
-                      <TransText>Upstream URL</TransText>
-                      <HelpTooltip
-                        content={
-                          "Moonshot AI's international platform endpoint. Keep the bare host. Moonshot serves both API shapes with the same key: the path an agent calls rides through to Moonshot, so its base URL picks the shape (Claude Code appends /anthropic; Kimi CLI and OpenAI shaped callers use the bare endpoint). Mainland China accounts use api.moonshot.cn instead."
-                        }
-                      />
+                      AI provider and upstream URL to expose
+                      <br />
+                      through NetBird.
                     </>
-                  ) : (
-                    <TransText>Upstream URL</TransText>
-                  )
-                }
-                helpText={upstreamUrlHelpText(providerId)}
-              >
+                  }
+                >
+                  <SelectDropdown
+                    data-testid={"agent-network-provider-type"}
+                    value={providerId}
+                    onChange={(v) => {
+                      const next = v as AIProviderId;
+                      setProviderId(next);
+                      // The credential differs per provider (API key vs Vertex
+                      // JSON upload), so clear it when switching.
+                      setApiKey("");
+                      setKeyFileName(null);
+                      const c = getById(next);
+                      if (c) {
+                        setName(uniqueNameRef.current(c.name));
+                        // Gateways like Bifrost / LiteLLM ship with an
+                        // empty default_host (operator brings their own
+                        // endpoint). Don't pre-fill "https://" — let the
+                        // placeholder hint them what to type instead.
+                        setUpstreamUrl(
+                          next === "vertex_ai_api"
+                            ? "https://aiplatform.googleapis.com"
+                            : c.default_host
+                            ? `https://${c.default_host}`
+                            : "",
+                        );
+                        setModels([]);
+                        // Auto-seed the identity inputs from the
+                        // catalog defaults when picking a customizable
+                        // shape (HeaderPair for Bifrost, JSONMetadata
+                        // for Cloudflare) so the operator sees sensible
+                        // starting values. They can edit, clear, or
+                        // paste their own. Switching away from any
+                        // customizable shape wipes the values so they
+                        // don't leak onto a non-customizable provider's
+                        // wire.
+                        const hp = c.identity_injection?.header_pair;
+                        const jm = c.identity_injection?.json_metadata;
+                        if (hp?.customizable) {
+                          setIdentityHeaderUserId(hp.end_user_id_header);
+                          setIdentityHeaderGroups(hp.tags_header);
+                        } else if (jm?.customizable) {
+                          setIdentityHeaderUserId(jm.user_key);
+                          setIdentityHeaderGroups(jm.groups_key);
+                        } else {
+                          setIdentityHeaderUserId("");
+                          setIdentityHeaderGroups("");
+                        }
+                      }
+                    }}
+                    options={providerOptions}
+                    showSearch
+                    searchPlaceholder={"Search providers..."}
+                    placeholder={"Select provider..."}
+                  />
+                </FormRow>
                 <Input
+                  {...NO_PASSWORD_MANAGER}
+                  data-testid={"agent-network-provider-upstream-url"}
                   value={upstreamUrl}
                   onChange={(e) => setUpstreamUrl(e.target.value)}
                   placeholder={upstreamUrlPlaceholder(providerId)}
                 />
-              </FormRow>
+              </div>
 
               {isCustomKind && (
                 <FancyToggleSwitch
@@ -757,7 +1098,9 @@ export default function AIProviderModal({
                           <>
                             Upload the Vertex AI service account JSON key.
                             NetBird base64-encodes it and prefixes it with{" "}
-                            <code className={"text-nb-gray-200"}>keyfile::</code>{" "}
+                            <code className={"text-nb-gray-200"}>
+                              keyfile::
+                            </code>{" "}
                             before injecting it on every upstream request, so
                             agents never see the key.
                           </>
@@ -773,14 +1116,14 @@ export default function AIProviderModal({
                       onClick={() => keyFileInputRef.current?.click()}
                     >
                       <UploadIcon size={14} />
-                      {keyFileName || (isEdit && apiKey === "••••••••")
+                      {keyFileName || (isEdit && apiKey === MASKED_API_KEY)
                         ? "Replace JSON key"
                         : "Upload JSON key"}
                     </Button>
                     <span className={"text-xs text-nb-gray-300 truncate"}>
                       {keyFileName
                         ? keyFileName
-                        : isEdit && apiKey === "••••••••"
+                        : isEdit && apiKey === MASKED_API_KEY
                         ? "A key is already stored"
                         : "No file selected"}
                     </span>
@@ -797,7 +1140,9 @@ export default function AIProviderModal({
                 <FormRow
                   label={
                     <>
-                      Provider API key
+                      {providerId === "agentgateway"
+                        ? "Virtual API key"
+                        : "Provider API key"}
                       <HelpTooltip
                         content={
                           <>
@@ -812,9 +1157,15 @@ export default function AIProviderModal({
                       />
                     </>
                   }
-                  helpText={"The API key issued by the provider."}
+                  helpText={
+                    providerId === "agentgateway"
+                      ? "The raw virtual key configured for strict API-key authentication on agentgateway."
+                      : "The API key issued by the provider."
+                  }
                 >
                   <Input
+                    {...NO_PASSWORD_MANAGER}
+                    data-testid={"agent-network-provider-api-key"}
                     type={"password"}
                     showPasswordToggle
                     value={apiKey}
@@ -825,13 +1176,16 @@ export default function AIProviderModal({
                         ? "sk-..."
                         : providerId === "anthropic_api"
                         ? "sk-ant-..."
+                        : providerId === "agentgateway"
+                        ? "Paste the virtual API key"
                         : "Paste your API key"
                     }
                   />
                 </FormRow>
               )}
               {(catalog?.extra_headers ?? []).map((h) => {
-                const ui = EXTRA_HEADER_UI[h.name] ?? fallbackExtraHeaderUI(h.name);
+                const ui =
+                  EXTRA_HEADER_UI[h.name] ?? fallbackExtraHeaderUI(h.name);
                 return (
                   <FormRow
                     key={h.name}
@@ -848,6 +1202,7 @@ export default function AIProviderModal({
                     helpText={ui.helpText}
                   >
                     <Input
+                      {...NO_PASSWORD_MANAGER}
                       value={extraValues[h.name] ?? ""}
                       onChange={(e) =>
                         setExtraValues((prev) => ({
@@ -860,22 +1215,24 @@ export default function AIProviderModal({
                   </FormRow>
                 );
               })}
-                <FormRow
-                    label={<TransText>Display name</TransText>}
-                    helpText={"Shown in the Agent Network table."}
-                >
-                    <Input
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        placeholder={zhMap["e.g. OpenAI"] || "e.g. OpenAI"}
-                    />
-                </FormRow>
+              <FormRow
+                label={"Display name"}
+                helpText={"Shown in the Agent Network table."}
+              >
+                <Input
+                  {...NO_PASSWORD_MANAGER}
+                  data-testid={"agent-network-provider-name"}
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder={"e.g. OpenAI"}
+                />
+              </FormRow>
             </div>
           </TabsContent>
 
           {showMappings && providerId === "litellm_proxy" && (
             <TabsContent value={"mappings"} className={"pb-8"}>
-              <div className={"px-8 pt-3 flex-col flex gap-4"}>
+              <div className={"px-8 flex-col flex gap-4"}>
                 {/* The forwarding toggle sits first: it gates the identity
                     mappings described below, so turning it off makes the fixed
                     mapping that follows moot. */}
@@ -904,8 +1261,8 @@ export default function AIProviderModal({
                     >
                       metadata.tags
                     </code>{" "}
-                    in the JSON body so LiteLLM can enforce tag budgets and rate limits.
-                    The user identity is sent in the{" "}
+                    in the JSON body so LiteLLM can enforce tag budgets and rate
+                    limits. The user identity is sent in the{" "}
                     <code
                       className={
                         "text-xs font-mono text-nb-gray-100 bg-nb-gray-900/60 rounded px-1.5 py-0.5"
@@ -913,10 +1270,9 @@ export default function AIProviderModal({
                     >
                       x-litellm-end-user-id
                     </code>{" "}
-                    header. The proxy strips any client-supplied value
-                    first, so an app can&apos;t spoof identity. The
-                    configured API key must be a LiteLLM virtual key
-                    with{" "}
+                    header. The proxy strips any client-supplied value first, so
+                    an app can&apos;t spoof identity. The configured API key
+                    must be a LiteLLM virtual key with{" "}
                     <code
                       className={
                         "text-xs font-mono text-nb-gray-100 bg-nb-gray-900/60 rounded px-1.5 py-0.5"
@@ -928,11 +1284,7 @@ export default function AIProviderModal({
                   </HelpText>
                 </div>
 
-                <div
-                  className={
-                    "rounded-md overflow-hidden border border-nb-gray-900 bg-nb-gray-920/30"
-                  }
-                >
+                <SettingCard>
                   <MappingRow
                     header={"x-litellm-end-user-id (header)"}
                     sourceLabel={"User Email"}
@@ -941,22 +1293,22 @@ export default function AIProviderModal({
                     header={"metadata.tags (body)"}
                     sourceLabel={"Groups"}
                   />
-                </div>
+                </SettingCard>
               </div>
             </TabsContent>
           )}
 
           {showMappings && customizableHeaderPair && (
             <TabsContent value={"mappings"} className={"pb-8"}>
-              <div className={"px-8 pt-3 flex-col flex gap-4"}>
+              <div className={"px-8 flex-col flex gap-4"}>
                 <div>
                   <Label>Identity Headers</Label>
                   <HelpText className={"mb-0"}>
-                    Pick which wire headers carry the caller&apos;s identity
-                    on every upstream request. The proxy strips any
-                    client-supplied value first, so an app can&apos;t spoof
-                    identity. Leave a field empty to disable stamping for that
-                    dimension. The defaults shown as placeholders use the{" "}
+                    Pick which wire headers carry the caller&apos;s identity on
+                    every upstream request. The proxy strips any client-supplied
+                    value first, so an app can&apos;t spoof identity. Leave a
+                    field empty to disable stamping for that dimension. The
+                    defaults shown as placeholders use the{" "}
                     <code
                       className={
                         "text-xs font-mono text-nb-gray-100 bg-nb-gray-900/60 rounded px-1.5 py-0.5"
@@ -964,8 +1316,8 @@ export default function AIProviderModal({
                     >
                       x-bf-dim-*
                     </code>{" "}
-                    family (Prometheus / OTEL — requires a matching
-                    declaration in your gateway&apos;s{" "}
+                    family (Prometheus / OTEL — requires a matching declaration
+                    in your gateway&apos;s{" "}
                     <code
                       className={
                         "text-xs font-mono text-nb-gray-100 bg-nb-gray-900/60 rounded px-1.5 py-0.5"
@@ -981,30 +1333,38 @@ export default function AIProviderModal({
                     >
                       x-bf-lh-*
                     </code>{" "}
-                    to use Bifrost&apos;s always-on log-metadata path
-                    instead — no gateway-side config needed there.
+                    to use Bifrost&apos;s always-on log-metadata path instead —
+                    no gateway-side config needed there.
                   </HelpText>
                 </div>
 
                 <FormRow
                   label={"User identity header"}
-                  helpText={"Wire header name receiving the caller's user email (or peer name when unlinked). Leave empty to skip."}
+                  helpText={
+                    "Wire header name receiving the caller's user email (or peer name when unlinked). Leave empty to skip."
+                  }
                 >
                   <Input
                     value={identityHeaderUserId}
                     onChange={(e) => setIdentityHeaderUserId(e.target.value)}
-                    placeholder={identityDefaultUser || "x-bf-dim-netbird_user_id"}
+                    placeholder={
+                      identityDefaultUser || "x-bf-dim-netbird_user_id"
+                    }
                   />
                 </FormRow>
 
                 <FormRow
                   label={"Groups header"}
-                  helpText={"Wire header name receiving the caller's NetBird groups as a comma-separated list. Leave empty to skip."}
+                  helpText={
+                    "Wire header name receiving the caller's NetBird groups as a comma-separated list. Leave empty to skip."
+                  }
                 >
                   <Input
                     value={identityHeaderGroups}
                     onChange={(e) => setIdentityHeaderGroups(e.target.value)}
-                    placeholder={identityDefaultGroups || "x-bf-dim-netbird_groups"}
+                    placeholder={
+                      identityDefaultGroups || "x-bf-dim-netbird_groups"
+                    }
                   />
                 </FormRow>
               </div>
@@ -1013,7 +1373,7 @@ export default function AIProviderModal({
 
           {showMappings && customizableJsonMetadata && (
             <TabsContent value={"mappings"} className={"pb-8"}>
-              <div className={"px-8 pt-3 flex-col flex gap-4"}>
+              <div className={"px-8 flex-col flex gap-4"}>
                 <div>
                   <Label>Identity Metadata</Label>
                   <HelpText className={"mb-0"}>
@@ -1026,18 +1386,20 @@ export default function AIProviderModal({
                       {jsonMetadataHeader || "metadata"}
                     </code>{" "}
                     header with the caller&apos;s identity so the gateway&apos;s
-                    logs and analytics key off the real user, not whichever
-                    app process happens to hold the API token. Pick the JSON
-                    key names that match your existing log filters; leave a
-                    field empty to omit that key from the JSON. The proxy
-                    strips any client-supplied value first, so an app
-                    can&apos;t spoof identity.
+                    logs and analytics key off the real user, not whichever app
+                    process happens to hold the API token. Pick the JSON key
+                    names that match your existing log filters; leave a field
+                    empty to omit that key from the JSON. The proxy strips any
+                    client-supplied value first, so an app can&apos;t spoof
+                    identity.
                   </HelpText>
                 </div>
 
                 <FormRow
                   label={"User identity key"}
-                  helpText={"JSON key receiving the caller's user email (or peer name when unlinked). Leave empty to skip."}
+                  helpText={
+                    "JSON key receiving the caller's user email (or peer name when unlinked). Leave empty to skip."
+                  }
                 >
                   <Input
                     value={identityHeaderUserId}
@@ -1048,7 +1410,9 @@ export default function AIProviderModal({
 
                 <FormRow
                   label={"Groups key"}
-                  helpText={"JSON key receiving the caller's NetBird groups as a comma-separated string. Leave empty to skip."}
+                  helpText={
+                    "JSON key receiving the caller's NetBird groups as a comma-separated string. Leave empty to skip."
+                  }
                 >
                   <Input
                     value={identityHeaderGroups}
@@ -1060,9 +1424,83 @@ export default function AIProviderModal({
             </TabsContent>
           )}
 
+          {showMappings && showGenericFixedHeaderPair && (
+            <TabsContent
+              value={"mappings"}
+              className={"pb-8"}
+              data-testid={"agent-network-provider-identity-mappings"}
+            >
+              <div className={"px-8 flex-col flex gap-4"}>
+                <FancyToggleSwitch
+                  value={!metadataDisabled}
+                  onChange={(v) => setMetadataDisabled(!v)}
+                  label={
+                    <>
+                      <ArrowRightLeft size={15} />
+                      Forward Identity Metadata
+                    </>
+                  }
+                  helpText={
+                    "Stamp the trusted NetBird identity headers below onto upstream requests."
+                  }
+                />
+
+                <div>
+                  <Label>Trusted Identity Headers</Label>
+                  <HelpText className={"mb-0"}>
+                    NetBird removes caller-supplied values before adding the
+                    authenticated identity shown below. The upstream listener
+                    must remain reachable only through the NetBird proxy.
+                    {providerId === "agentgateway" && (
+                      <>
+                        {" "}
+                        The virtual key authenticates NetBird but does not make
+                        headers from another network path trustworthy.
+                      </>
+                    )}
+                  </HelpText>
+                </div>
+
+                <SettingCard>
+                  {fixedHeaderPair?.end_user_id_header && (
+                    <MappingRow
+                      header={fixedHeaderPair.end_user_id_header}
+                      sourceLabel={"User identity"}
+                      data-testid={"agent-network-provider-user-mapping"}
+                    />
+                  )}
+                  {fixedHeaderPair?.tags_header && (
+                    <MappingRow
+                      header={fixedHeaderPair.tags_header}
+                      sourceLabel={"Authorizing groups (CSV)"}
+                      data-testid={"agent-network-provider-groups-mapping"}
+                    />
+                  )}
+                </SettingCard>
+
+                {providerId === "agentgateway" && (
+                  <div data-testid={"agent-network-provider-groups-guidance"}>
+                    <HelpText className={"mb-0"}>
+                      <code
+                        className={
+                          "text-xs font-mono text-nb-gray-100 bg-nb-gray-900/60 rounded px-1.5 py-0.5"
+                        }
+                      >
+                        x-netbird-groups
+                      </code>{" "}
+                      contains sorted group display names for attribution. It is
+                      not a delimiter-safe set of stable group IDs and must not
+                      be used as an agentgateway authorization claim.
+                    </HelpText>
+                  </div>
+                )}
+              </div>
+            </TabsContent>
+          )}
+
           {showMappings && providerId === "portkey" && (
             <TabsContent value={"mappings"} className={"pb-8"}>
-              <div className={"px-8 pt-3 flex-col flex gap-4"}>
+              <div className={"px-8 flex-col flex gap-4"}>
                 <div>
                   <Label>Identity Metadata</Label>
                   <HelpText className={"mb-0"}>
@@ -1074,30 +1512,25 @@ export default function AIProviderModal({
                     >
                       x-portkey-metadata
                     </code>{" "}
-                    header with a JSON object so Portkey&apos;s analytics
-                    and budgets key off the real caller. The proxy strips
-                    any client-supplied value first, so an app can&apos;t
-                    spoof identity. Per Portkey&apos;s 128-character cap
-                    each value is truncated when needed. The mapping is
-                    fixed in this release.
+                    header with a JSON object so Portkey&apos;s analytics and
+                    budgets key off the real caller. The proxy strips any
+                    client-supplied value first, so an app can&apos;t spoof
+                    identity. Per Portkey&apos;s 128-character cap each value is
+                    truncated when needed. The mapping is fixed in this release.
                   </HelpText>
                 </div>
 
-                <div
-                  className={
-                    "rounded-md overflow-hidden border border-nb-gray-900 bg-nb-gray-920/30"
-                  }
-                >
+                <SettingCard>
                   <MappingRow header={"_user"} sourceLabel={"User Email"} />
                   <MappingRow header={"groups"} sourceLabel={"Groups"} />
-                </div>
+                </SettingCard>
               </div>
             </TabsContent>
           )}
 
           {showMappings && providerId === "bedrock_api" && (
             <TabsContent value={"mappings"} className={"pb-8"}>
-              <div className={"px-8 pt-3 flex-col flex gap-4"}>
+              <div className={"px-8 flex-col flex gap-4"}>
                 {/* The forwarding toggle sits first: it gates the identity
                     metadata described below, so turning it off makes the fixed
                     mapping that follows moot. */}
@@ -1138,21 +1571,17 @@ export default function AIProviderModal({
                   </HelpText>
                 </div>
 
-                <div
-                  className={
-                    "rounded-md overflow-hidden border border-nb-gray-900 bg-nb-gray-920/30"
-                  }
-                >
+                <SettingCard>
                   <MappingRow header={"user"} sourceLabel={"User Email"} />
                   <MappingRow header={"group"} sourceLabel={"Groups"} />
-                </div>
+                </SettingCard>
               </div>
             </TabsContent>
           )}
 
           {showMappings && providerId === "vercel_ai_gateway" && (
             <TabsContent value={"mappings"} className={"pb-8"}>
-              <div className={"px-8 pt-3 flex-col flex gap-4"}>
+              <div className={"px-8 flex-col flex gap-4"}>
                 <div>
                   <Label>Identity Headers</Label>
                   <HelpText className={"mb-0"}>
@@ -1189,17 +1618,13 @@ export default function AIProviderModal({
                     >
                       group_by=tag
                     </code>
-                    ). Header names are fixed by Vercel&apos;s API contract
-                    — renaming would silently disable attribution. The
-                    proxy strips any client-supplied value first.
+                    ). Header names are fixed by Vercel&apos;s API contract —
+                    renaming would silently disable attribution. The proxy
+                    strips any client-supplied value first.
                   </HelpText>
                 </div>
 
-                <div
-                  className={
-                    "rounded-md overflow-hidden border border-nb-gray-900 bg-nb-gray-920/30"
-                  }
-                >
+                <SettingCard>
                   <MappingRow
                     header={"ai-reporting-user"}
                     sourceLabel={"User Email"}
@@ -1208,15 +1633,15 @@ export default function AIProviderModal({
                     header={"ai-reporting-tags"}
                     sourceLabel={"Groups (CSV)"}
                   />
-                </div>
+                </SettingCard>
 
                 <HelpText className={"mb-0"}>
                   <strong>Caveats:</strong> Vercel caps tags at 10 per request
-                  (each 1–64 chars) and the user value at 256 chars. Members
-                  of more than 10 groups will see Vercel reject the request
-                  with HTTP 400 — re-scope group memberships if you hit it.
-                  Vercel charges $0.075 per 1,000 unique user/tag values
-                  written; budget accordingly for high-cardinality use cases.
+                  (each 1–64 chars) and the user value at 256 chars. Members of
+                  more than 10 groups will see Vercel reject the request with
+                  HTTP 400 — re-scope group memberships if you hit it. Vercel
+                  charges $0.075 per 1,000 unique user/tag values written;
+                  budget accordingly for high-cardinality use cases.
                 </HelpText>
               </div>
             </TabsContent>
@@ -1224,7 +1649,7 @@ export default function AIProviderModal({
 
           {showMappings && providerId === "openrouter" && (
             <TabsContent value={"mappings"} className={"pb-8"}>
-              <div className={"px-8 pt-3 flex-col flex gap-4"}>
+              <div className={"px-8 flex-col flex gap-4"}>
                 <div>
                   <Label>Identity Attribution</Label>
                   <HelpText className={"mb-0"}>
@@ -1237,54 +1662,103 @@ export default function AIProviderModal({
                     >
                       user
                     </code>{" "}
-                    field — that&apos;s the OpenAI-standard field
-                    OpenRouter consults for per-user analytics. The proxy
-                    overwrites any client-supplied value first, so an app
-                    can&apos;t spoof identity.
+                    field — that&apos;s the OpenAI-standard field OpenRouter
+                    consults for per-user analytics. The proxy overwrites any
+                    client-supplied value first, so an app can&apos;t spoof
+                    identity.
                   </HelpText>
                 </div>
 
-                <div
-                  className={
-                    "rounded-md overflow-hidden border border-nb-gray-900 bg-nb-gray-920/30"
-                  }
-                >
+                <SettingCard>
                   <MappingRow
                     header={"user (body)"}
                     sourceLabel={"User Email"}
                   />
-                </div>
+                </SettingCard>
 
                 <HelpText className={"mb-0"}>
                   <strong>No groups dimension.</strong> OpenRouter does not
                   document a per-request tag, label, or team field — only
-                  per-user identity. NetBird&apos;s group memberships are
-                  not propagated to OpenRouter; if you need per-group
-                  attribution, query NetBird&apos;s own access log instead
-                  of OpenRouter&apos;s analytics.
+                  per-user identity. NetBird&apos;s group memberships are not
+                  propagated to OpenRouter; if you need per-group attribution,
+                  query NetBird&apos;s own access log instead of
+                  OpenRouter&apos;s analytics.
                 </HelpText>
                 <HelpText className={"mb-0"}>
-                  <strong>App branding</strong> (HTTP-Referer + X-OpenRouter-Title)
-                  is set per-provider on the Provider tab, not per-request.
-                  Operators who fill those in get their app surfaced on
-                  OpenRouter&apos;s public rankings and per-app analytics.
+                  <strong>App branding</strong> (HTTP-Referer +
+                  X-OpenRouter-Title) is set per-provider on the Provider tab,
+                  not per-request. Operators who fill those in get their app
+                  surfaced on OpenRouter&apos;s public rankings and per-app
+                  analytics.
                 </HelpText>
               </div>
             </TabsContent>
           )}
 
           <TabsContent value={"models"} className={"pb-8"}>
-            <div className={"px-8 pt-3 flex-col flex gap-3"}>
+            <div className={"px-8 flex-col flex gap-3"}>
               <div>
                 <Label>Models</Label>
-                <HelpText>
-                  Models exposed through this endpoint, with the per-1k
-                  input/output prices used for cost tracking. Empty = all
-                  catalog models allowed at catalog prices. Cache rates
-                  left empty fall back to NetBird&apos;s defaults for the
-                  model; 0 bills cached tokens at the input rate.
+                <div data-testid={"agent-network-provider-models-help"}>
+                  <HelpText margin={false}>
+                    Models exposed through this endpoint, with the per-1k
+                    input/output prices used for cost tracking. Empty = all
+                    catalog models allowed at catalog prices. Cache rates left
+                    empty fall back to NetBird&apos;s defaults for the model; 0
+                    bills cached tokens at the input rate.
+                  </HelpText>
+                </div>
+              </div>
+
+              <div className={"flex flex-col gap-1.5"}>
+                <div className={"flex items-center gap-3"}>
+                  <Button
+                    variant={"secondary"}
+                    size={"xs"}
+                    disabled={discoveryInFlight || !canDiscoverModels}
+                    onClick={loadModelsFromProvider}
+                  >
+                    {discoveryInFlight ? (
+                      <Loader2 size={13} className={"animate-spin"} />
+                    ) : (
+                      <RefreshCwIcon size={13} />
+                    )}
+                    Load models from provider
+                  </Button>
+                </div>
+
+                {/* Always rendered, space reserved, so nothing below moves
+                    when a load reports back. */}
+                <HelpText
+                  className={cn(
+                    "!mb-0",
+                    discovered.error && "text-orange-500 dark:text-orange-400",
+                  )}
+                >
+                  {discoveryMessage ?? <>&nbsp;</>}
                 </HelpText>
               </div>
+
+              {unpricedModelIds.size > 0 && (
+                // A callout rather than a line of help text: this is the one
+                // thing on the tab that costs money to miss, and it sat in the
+                // same grey run of prose as everything else.
+                <Callout
+                  variant={"warning"}
+                  icon={
+                    <AlertCircleIcon
+                      size={14}
+                      className={"shrink-0 relative top-[3px]"}
+                    />
+                  }
+                >
+                  {unpricedModelIds.size === 1
+                    ? "The model below has"
+                    : `The ${unpricedModelIds.size} models below have`}{" "}
+                  no cost set. Usage is tracked at $0 and won&apos;t count
+                  toward budget limits.
+                </Callout>
+              )}
 
               {models.map((row, idx) => (
                 <ModelRowEditor
@@ -1292,6 +1766,7 @@ export default function AIProviderModal({
                   row={row}
                   catalogModels={catalogModelOptions}
                   usedIds={usedModelIds}
+                  needsPrice={unpricedModelIds.has(row.id)}
                   onChangeId={(id) => {
                     const fromCatalog = catalogModelOptions.find(
                       (m) => m.id === id,
@@ -1356,7 +1831,11 @@ export default function AIProviderModal({
             {tab === "provider" && (
               <>
                 <ModalClose asChild>
-                  <Button variant={"secondary"} onClick={handleClose}>
+                  <Button
+                    variant={"secondary"}
+                    onClick={handleClose}
+                    disabled={saveInFlight}
+                  >
                     Cancel
                   </Button>
                 </ModalClose>
@@ -1364,6 +1843,7 @@ export default function AIProviderModal({
                   variant={"primary"}
                   onClick={() => setTab("models")}
                   disabled={!canContinueFromProvider}
+                  data-testid={"agent-network-provider-continue"}
                 >
                   Continue
                 </Button>
@@ -1374,6 +1854,7 @@ export default function AIProviderModal({
                 <Button
                   variant={"secondary"}
                   onClick={() => setTab("provider")}
+                  disabled={saveInFlight}
                 >
                   Back
                 </Button>
@@ -1382,23 +1863,18 @@ export default function AIProviderModal({
                     variant={"primary"}
                     onClick={() => setTab("mappings")}
                     disabled={!canContinueFromProvider}
+                    data-testid={"agent-network-provider-continue"}
                   >
                     Continue
                   </Button>
                 ) : (
                   <Button
                     variant={"primary"}
+                    data-testid={"agent-network-provider-submit"}
                     onClick={handleSubmit}
-                    disabled={!canContinueFromProvider}
+                    disabled={submitDisabled}
                   >
-                    {isEdit ? (
-                      zhMap["Save Changes"] || "Save Changes"
-                    ) : (
-                      <>
-                        <PlusCircle size={16} />
-                        Connect Provider
-                      </>
-                    )}
+                    {submitLabel}
                   </Button>
                 )}
               </>
@@ -1408,22 +1884,17 @@ export default function AIProviderModal({
                 <Button
                   variant={"secondary"}
                   onClick={() => setTab("models")}
+                  disabled={saveInFlight}
                 >
                   Back
                 </Button>
                 <Button
                   variant={"primary"}
+                  data-testid={"agent-network-provider-submit"}
                   onClick={handleSubmit}
-                  disabled={!canContinueFromProvider}
+                  disabled={submitDisabled}
                 >
-                  {isEdit ? (
-                    zhMap["Save Changes"] || "Save Changes"
-                  ) : (
-                    <>
-                      <PlusCircle size={16} />
-                      Connect Provider
-                    </>
-                  )}
+                  {submitLabel}
                 </Button>
               </>
             )}
@@ -1449,7 +1920,7 @@ function FormRow({
         <Label>{label}</Label>
         <HelpText margin={false}>{helpText}</HelpText>
       </div>
-      <div className={"w-[260px] shrink-0"}>{children}</div>
+      <div className={"w-[290px] shrink-0"}>{children}</div>
     </div>
   );
 }
@@ -1468,6 +1939,11 @@ type CatalogModelOption = {
   cached_input_per_1k?: number;
   cache_read_per_1k?: number;
   cache_creation_per_1k?: number;
+  // false for a model the vendor reported but NetBird's pricing table does
+  // not know. It still lands with 0 rates, which is indistinguishable from a
+  // genuinely free model — so the Models tab names these explicitly rather
+  // than letting the operator register one that meters at zero.
+  pricing_known?: boolean;
 };
 
 // priceToInput renders a stored price as an editable string, always using "."
@@ -1541,6 +2017,7 @@ function ModelRowEditor({
   row,
   catalogModels,
   usedIds,
+  needsPrice,
   onChangeId,
   onChangeInput,
   onChangeOutput,
@@ -1554,6 +2031,10 @@ function ModelRowEditor({
   row: ProviderModel;
   catalogModels: CatalogModelOption[];
   usedIds: Set<string>;
+  // The row carries no price, so every request against it would record as
+  // free. Outlined rather than blocked: zero is a legitimate rate for a
+  // self-hosted model, and only the operator knows which case this is.
+  needsPrice: boolean;
   onChangeId: (id: string) => void;
   onChangeInput: (n: number) => void;
   onChangeOutput: (n: number) => void;
@@ -1602,7 +2083,9 @@ function ModelRowEditor({
   // single-option dropdown.
   const [customMode, setCustomMode] = useState(
     () =>
-      hasCatalog && row.id !== "" && !catalogModels.some((m) => m.id === row.id),
+      hasCatalog &&
+      row.id !== "" &&
+      !catalogModels.some((m) => m.id === row.id),
   );
   // The catalog is fetched async, so an edit-modal row can mount before it
   // arrives — the initializer then sees no catalog and leaves customMode off,
@@ -1639,11 +2122,14 @@ function ModelRowEditor({
 
   return (
     <div
-      className={
-        "flex flex-col gap-2 p-3 rounded border border-nb-gray-800 bg-nb-gray-900/20"
-      }
+      className={cn(
+        "flex flex-col gap-3 p-4 rounded-md border bg-nb-gray-900/20",
+        needsPrice
+          ? "border-yellow-500/60 bg-yellow-500/5"
+          : "border-nb-gray-800",
+      )}
     >
-      <div className={"flex items-end gap-2"}>
+      <div className={"flex items-end gap-3"}>
         <div className={"flex-1 min-w-0"}>
           <Label>Model</Label>
           {hasCatalog && !customMode ? (
@@ -1659,6 +2145,8 @@ function ModelRowEditor({
               }}
               options={dropdownOptions}
               placeholder={"Select a model..."}
+              showSearch
+              searchPlaceholder={"Search models..."}
             />
           ) : hasCatalog ? (
             <div className={"flex gap-2"}>
@@ -1745,7 +2233,7 @@ function ModelRowEditor({
           {cacheOpen && (
             <div
               className={
-                "flex items-end gap-2 pt-2 border-t border-nb-gray-900"
+                "flex items-end gap-3 pt-3 border-t border-nb-gray-920"
               }
             >
               {showCachedInputRate && (
@@ -1780,14 +2268,17 @@ function ModelRowEditor({
 function MappingRow({
   header,
   sourceLabel,
+  "data-testid": dataTestId,
 }: {
   header: string;
   sourceLabel: string;
+  "data-testid"?: string;
 }) {
   return (
     <div
+      data-testid={dataTestId}
       className={
-        "flex items-center gap-3 px-4 py-3 border-b border-nb-gray-900 last:border-b-0"
+        "flex items-center gap-3 px-4 py-3 border-b border-nb-gray-920 last:border-b-0"
       }
     >
       <div className={"flex-1 min-w-0"}>

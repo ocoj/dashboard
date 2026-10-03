@@ -435,7 +435,7 @@ export default function AgentBudgetRulesTable() {
               <SquareIcon
                 icon={
                   <SlidersHorizontal
-                    className={"fill-nb-gray-200"}
+                    className={"text-nb-gray-200"}
                     size={20}
                   />
                 }
@@ -461,9 +461,12 @@ export default function AgentBudgetRulesTable() {
             }
             learnMore={
               <>
-                <TransText>Learn more about</TransText>
-                <InlineLink href={"https://docs.netbird.io/"} target={"_blank"}>
-                  {zhMap["Agent Network"] || "Agent Network"}
+                Learn more about
+                <InlineLink
+                  href={"https://docs.netbird.io/agent-network"}
+                  target={"_blank"}
+                >
+                  Agent Network
                   <ExternalLinkIcon size={12} />
                 </InlineLink>
               </>
