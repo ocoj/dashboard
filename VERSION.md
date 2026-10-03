@@ -11,7 +11,15 @@
 
 ## 显示效果
 
-侧栏底部显示：`v2.90.4-zh`（`v` 前缀由 `formatVersion()` 自动添加）
+侧栏底部显示：`v2.94.0-zh`（`v` 前缀由 `formatVersion()` 自动添加）
+
+> ⚠️ **改动上游版本展示逻辑时必须回归这一项。**
+> 上游 v2.94.0 新增的 `formatShortVersion()`（`src/components/VersionInfo.tsx`）
+> 会裁掉非 `rc`/`alpha`/`beta` 的版本后缀，导致显示退化为 `v2.94.0`、丢掉 `-zh` 标识。
+> 其 `PRERELEASE_LABEL` 正则必须包含 `zh`：
+> ```ts
+> const PRERELEASE_LABEL = /^(rc|alpha|beta|zh)[\w.]*$/i;
+> ```
 
 ## 版本号来源
 

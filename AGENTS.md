@@ -32,8 +32,9 @@ NetBird Dashboard 是 NetBird 管理服务的 Web 界面。这是一个 Next.js 
 - **样式：** Tailwind CSS + shadcn/ui 组件
 - **状态管理：** React Context + SWR 用于服务器状态
 - **认证：** OIDC 通过 @axa-fr/react-oidc
-- **国际化：** next-intl
-- **测试：** Cypress (E2E)
+- **国际化：** 自建 TransText 方案（`src/i18n/zh-map.ts` 平面映射 + `<TransText>` 运行时查表），
+  非 next-intl；字符串属性用 `zhMap["X"] || "X"`
+- **测试：** Cypress (E2E) + Playwright；上游另有 vitest 单元测试
 - **部署：** Docker + Nginx
 
 ### 高级结构
