@@ -15,6 +15,7 @@ import { useMemo, useState } from "react";
 import { toASCII } from "punycode";
 import { Peer } from "@/interfaces/Peer";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 interface Props {
   onSuccess: (name: string) => void;
@@ -53,8 +54,8 @@ export function EditPeerNameModal({
     <ModalContent maxWidthClass={"max-w-md"}>
       <form>
         <ModalHeader
-          title={"Edit Peer Name"}
-          description={"Set an easily identifiable name for your peer."}
+          title={zhMap["Edit Peer Name"] || "Edit Peer Name"}
+          description={zhMap["Set an easily identifiable name for your peer."] || "Set an easily identifiable name for your peer."}
           color={"blue"}
         />
 

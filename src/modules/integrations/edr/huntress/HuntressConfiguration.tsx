@@ -43,6 +43,7 @@ import {
 } from "@/modules/integrations/edr/huntress/Huntress";
 import { IntegrationModalHeader } from "@/modules/integrations/IntegrationModalHeader";
 import { HuntressMatchSettings } from "@/modules/integrations/edr/huntress/HuntressMatchSettings";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -176,7 +177,7 @@ export function ConfigurationContent({
 
       <IntegrationModalHeader
         image={integrationImage}
-        title={"Huntress Configuration"}
+        title={zhMap["Huntress Configuration"] || "Huntress Configuration"}
         description={
           "Restrict network access to IT-managed devices marked Compliant in Huntress."
         }

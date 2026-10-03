@@ -6,6 +6,7 @@ import useFetchApi from "@utils/api";
 import { MapPin } from "lucide-react";
 import { createElement, useMemo } from "react";
 import { City } from "@/interfaces/City";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   value: string;
@@ -45,7 +46,7 @@ export const CitySelector = ({ value, onChange, country = "de" }: Props) => {
       <SelectDropdown
         isLoading={isLoading}
         showSearch={true}
-        placeholder={"Select city (optional)..."}
+        placeholder={zhMap["Select city (optional)..."] || "Select city (optional)..."}
         searchPlaceholder={"Search city..."}
         value={value}
         onChange={onChange}

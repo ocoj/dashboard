@@ -56,6 +56,7 @@ import {
   useStructuralNodes,
 } from "@/modules/control-center/utils/helpers";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 interface DestinationGroupPanelProps {
   // Real group id, or the canvas node id for draft groups without an API id.
@@ -1371,7 +1372,7 @@ export const DestinationGroupPanel = ({
                         !(resource as { draftNetwork?: unknown })
                           .draftNetwork && (
                           <DraftStatusChip
-                            label={"No Network"}
+                            label={zhMap["No Network"] || "No Network"}
                             onClick={() =>
                               setResourceNetworkPicker({
                                 nodeId: `resource-${resource.id}`,

@@ -12,6 +12,7 @@ import { useDraftMode } from "@/modules/control-center/draft/DraftModeContext";
 import { useControlCenterData } from "@/modules/control-center/hooks/useControlCenterData";
 import { useNetworksContext } from "@/modules/networks/NetworkProvider";
 import { useCanvasTransitionActive } from "@/modules/control-center/utils/canvas-transition";
+import zhMap from "@/i18n/zh-map";
 
 // Must stay a literal: Tailwind only emits classes it finds as static text.
 const EMPTY_STATE_REVEAL_IN =
@@ -73,7 +74,7 @@ export function ControlCenterEmptyStates() {
                   size={"large"}
                 />
               }
-              title={"Create Resources"}
+              title={zhMap["Create Resources"] || "Create Resources"}
               description={
                 "It looks like you don't have any resources. Add internal services like hosts, subnets or domains so your peers can reach them."
               }
@@ -128,7 +129,7 @@ export function ControlCenterEmptyStates() {
                   size={"large"}
                 />
               }
-              title={"Create New Network"}
+              title={zhMap["Create New Network"] || "Create New Network"}
               description={
                 "It looks like you don't have any networks. Access internal resources in your LANs and VPC by adding a network."
               }

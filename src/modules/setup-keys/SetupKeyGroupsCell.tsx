@@ -6,6 +6,7 @@ import { usePermissions } from "@/contexts/PermissionsProvider";
 import { Group } from "@/interfaces/Group";
 import { SetupKey } from "@/interfaces/SetupKey";
 import GroupsRow from "@/modules/common-table-rows/GroupsRow";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   setupKey: SetupKey;
@@ -44,7 +45,7 @@ export default function SetupKeyGroupsCell({ setupKey }: Readonly<Props>) {
   return (
     permission.groups.read && (
       <GroupsRow
-        label={"Auto-assigned Groups"}
+        label={zhMap["Auto-assigned Groups"] || "Auto-assigned Groups"}
         description={
           "These groups will be automatically assigned to peers enrolled with this key"
         }

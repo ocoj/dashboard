@@ -285,7 +285,7 @@ export const AssignGroupToPeerModalContent = ({
           getStartedCard={
             <NoResultsCard
               className={"mb-8"}
-              title={"You don't have any peers to assign"}
+              title={zhMap["You don't have any peers to assign"] || "You don't have any peers to assign"}
               description={
                 "In order to assign peers to this group you need to have at least one peer that is not already part of this group."
               }

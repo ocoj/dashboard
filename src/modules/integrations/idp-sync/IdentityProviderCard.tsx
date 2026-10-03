@@ -67,9 +67,9 @@ export const IdentityProviderCard = () => {
           <FingerprintIcon size={16} />
         )
       }
-      title={"Identity Provider Sync"}
+      title={zhMap["Identity Provider Sync"] || "Identity Provider Sync"}
       action={<FeatureCardStatus enabled={enabled} />}
-      description={"Sync users and groups from Okta, Microsoft or Google IdP"}
+      description={zhMap["Sync users and groups from Okta, Microsoft or Google IdP"] || "Sync users and groups from Okta, Microsoft or Google IdP"}
     />
   );
 };

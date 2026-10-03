@@ -8,6 +8,7 @@ import * as React from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 export interface NotifyProps<T> {
   title: string;
@@ -227,7 +228,7 @@ export default function Notification<T>({
               <button
                 type={"button"}
                 data-testid={"notification-request-id"}
-                title={"Copy request ID"}
+                title={zhMap["Copy request ID"] || "Copy request ID"}
                 onClick={copyRequestId}
                 className={
                   "group/req flex items-center gap-1.5 mt-1 text-[11px] text-gray-500 dark:text-nb-gray-400 hover:text-gray-700 dark:hover:text-nb-gray-200 cursor-pointer text-left"

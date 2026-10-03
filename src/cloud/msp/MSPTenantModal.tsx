@@ -45,6 +45,7 @@ import {
 import { Role } from "@/interfaces/User";
 import useGroupHelper from "@/modules/groups/useGroupHelper";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -221,7 +222,7 @@ const MspAccountModalContent = ({ setOpen, tenant, initialTab }: Props) => {
                 value={name}
                 data-testid={"name"}
                 onChange={(e) => setName(e.target.value)}
-                placeholder={"Acme Inc."}
+                placeholder={zhMap["Acme Inc."] || "Acme Inc."}
                 className={"min-w-[270px]"}
               />
             </div>

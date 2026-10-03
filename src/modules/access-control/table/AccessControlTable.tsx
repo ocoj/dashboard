@@ -528,7 +528,7 @@ export default function AccessControlTable({
           isGroupPage ? (
             <NoResults
               className={"py-4"}
-              title={"This group is not used within any policies yet"}
+              title={zhMap["This group is not used within any policies yet"] || "This group is not used within any policies yet"}
               description={
                 "Assign this group as either a source or destination inside a policy to see them listed here."
               }
@@ -563,7 +563,7 @@ export default function AccessControlTable({
                   size={"large"}
                 />
               }
-              title={"Create New Policy"}
+              title={zhMap["Create New Policy"] || "Create New Policy"}
               description={
                 "It looks like you don't have any policies yet. Policies can allow connections by specific protocol and ports."
               }

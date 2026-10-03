@@ -18,6 +18,7 @@ import { useApiCall } from "@utils/api";
 import { KeyRound, LockIcon } from "lucide-react";
 import React, { useMemo, useState } from "react";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   children: React.ReactNode;
@@ -113,8 +114,8 @@ export function ChangePasswordModalContent({
     <ModalContent maxWidthClass={"max-w-lg"}>
       <ModalHeader
         icon={<KeyRound size={18} />}
-        title={"Change Password"}
-        description={"Update your account password."}
+        title={zhMap["Change Password"] || "Change Password"}
+        description={zhMap["Update your account password."] || "Update your account password."}
         color={"netbird"}
       />
 
@@ -126,7 +127,7 @@ export function ChangePasswordModalContent({
           <HelpText><TransText>Enter your current password to verify your identity.</TransText></HelpText>
           <Input
             type="password"
-            placeholder={"Enter current password"}
+            placeholder={zhMap["Enter current password"] || "Enter current password"}
             value={currentPassword}
             onChange={(e) => setCurrentPassword(e.target.value)}
             onKeyDown={handleKeyDown}
@@ -145,7 +146,7 @@ export function ChangePasswordModalContent({
           </HelpText>
           <Input
             type="password"
-            placeholder={"Enter new password"}
+            placeholder={zhMap["Enter new password"] || "Enter new password"}
             value={newPassword}
             onChange={(e) => setNewPassword(e.target.value)}
             onKeyDown={handleKeyDown}
@@ -162,7 +163,7 @@ export function ChangePasswordModalContent({
           <HelpText><TransText>Re-enter your new password to confirm.</TransText></HelpText>
           <Input
             type="password"
-            placeholder={"Confirm new password"}
+            placeholder={zhMap["Confirm new password"] || "Confirm new password"}
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             onKeyDown={handleKeyDown}

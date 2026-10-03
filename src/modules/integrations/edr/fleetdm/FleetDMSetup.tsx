@@ -43,6 +43,7 @@ import { matchAttributesReducer } from "@/modules/integrations/edr/fleetdm/Fleet
 import { FleetDMMatchSettings } from "@/modules/integrations/edr/fleetdm/FleetDMMatchSettings";
 import { IntegrationModalHeader } from "@/modules/integrations/IntegrationModalHeader";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -192,7 +193,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
 
       <IntegrationModalHeader
         image={integrationImage}
-        title={"Connect NetBird with FleetDM"}
+        title={zhMap["Connect NetBird with FleetDM"] || "Connect NetBird with FleetDM"}
         description={
           "Restrict network access to devices managed by FleetDM based on their compliance policies."
         }

@@ -26,6 +26,7 @@ import { IntegrationModalHeader } from "@/modules/integrations/IntegrationModalH
 import { DomainVerificationModal } from "@/modules/integrations/sso/DomainVerificationModal";
 import { useEnterpriseConnections } from "@/modules/integrations/sso/useEnterpriseConnections";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -136,7 +137,7 @@ export default function OktaSSOSetup({ open, onOpenChange }: Props) {
 
           <IntegrationModalHeader
             image={integrationImage}
-            title={"Connect NetBird with Okta SSO"}
+            title={zhMap["Connect NetBird with Okta SSO"] || "Connect NetBird with Okta SSO"}
             description={
               "Use Okta as a Single Sign-On provider to authenticate users. Follow the steps below to get started."
             }

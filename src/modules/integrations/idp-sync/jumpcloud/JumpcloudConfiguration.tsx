@@ -37,6 +37,7 @@ import { GroupPrefixInput } from "@/modules/integrations/idp-sync/GroupPrefixInp
 import { useIntegrations } from "@/modules/integrations/idp-sync/useIntegrations";
 import { IntegrationModalHeader } from "@/modules/integrations/IntegrationModalHeader";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -184,8 +185,8 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
 
       <IntegrationModalHeader
         image={integrationImage}
-        title={"Jumpcloud Configuration"}
-        description={"Sync your users and groups from Jumpcloud to NetBird."}
+        title={zhMap["Jumpcloud Configuration"] || "Jumpcloud Configuration"}
+        description={zhMap["Sync your users and groups from Jumpcloud to NetBird."] || "Sync your users and groups from Jumpcloud to NetBird."}
       />
 
       <Tabs

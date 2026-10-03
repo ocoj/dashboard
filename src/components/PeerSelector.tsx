@@ -16,6 +16,7 @@ import { useElementSize } from "@/hooks/useElementSize";
 import { Peer } from "@/interfaces/Peer";
 import { PeerOperatingSystemIcon } from "@/modules/peers/PeerOperatingSystemIcon";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 const MapPinIcon = memo(() => <MapPin size={12} />);
 MapPinIcon.displayName = "MapPinIcon";
@@ -148,7 +149,7 @@ export function PeerSelector({
           <DropdownInput
             value={search}
             onChange={setSearch}
-            placeholder={"Search for peers by name or ip..."}
+            placeholder={zhMap["Search for peers by name or ip..."] || "Search for peers by name or ip..."}
           />
 
           {unfilteredItems.length == 0 && !search && (

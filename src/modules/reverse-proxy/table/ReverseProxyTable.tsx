@@ -220,7 +220,7 @@ export default function ReverseProxyTable({ headingTarget }: Readonly<Props>) {
               size={"large"}
             />
           }
-          title={"Create Services"}
+          title={zhMap["Create Services"] || "Create Services"}
           description={
             "Expose your internal services securely through NetBird's reverse proxy with automatic TLS and optional authentication to protect your services."
           }

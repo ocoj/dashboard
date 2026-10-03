@@ -33,6 +33,7 @@ import { useHasChanges } from "@/hooks/useHasChanges";
 import { Account } from "@/interfaces/Account";
 
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   account: Account;
@@ -274,7 +275,7 @@ export default function GroupsSettings({ account }: Props) {
                               className={"text-nb-gray-300"}
                             />
                           }
-                          placeholder={"Add a group and press Enter"}
+                          placeholder={zhMap["Add a group and press Enter"] || "Add a group and press Enter"}
                           onKeyDown={(e) => {
                             if (e.key === "Enter") {
                               e.preventDefault();

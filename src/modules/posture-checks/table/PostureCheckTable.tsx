@@ -232,7 +232,7 @@ export default function PostureCheckTable({
                     size={"large"}
                   />
                 }
-                title={"Create Posture Check"}
+                title={zhMap["Create Posture Check"] || "Create Posture Check"}
                 description={
                   "Add posture checks to further restrict access in your network. E.g., only clients with a specific NetBird client version, operating system or location are allowed to connect."
                 }

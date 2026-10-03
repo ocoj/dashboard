@@ -11,6 +11,7 @@ import Quad9Logo from "@/assets/nameservers/quad9.svg";
 import { Group } from "@/interfaces/Group";
 import { NameserverGroup, NameserverPresets } from "@/interfaces/Nameserver";
 import NameserverModal from "@/modules/dns/nameservers/NameserverModal";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   children: React.ReactNode;
@@ -71,7 +72,7 @@ export function NameserverTemplateModalContent({
           <NameserverTemplate
             onClick={() => onePresetSelection(NameserverPresets.Google)}
             src={GoogleLogo}
-            title={"Google DNS"}
+            title={zhMap["Google DNS"] || "Google DNS"}
             description={
               "A free, global DNS resolution service by Google that implements a number of security, performance, and compliance improvements."
             }
@@ -81,7 +82,7 @@ export function NameserverTemplateModalContent({
           <NameserverTemplate
             onClick={() => onePresetSelection(NameserverPresets.Cloudflare)}
             src={CloudflareLogo}
-            title={"Cloudflare DNS"}
+            title={zhMap["Cloudflare DNS"] || "Cloudflare DNS"}
             description={
               "Enterprise-grade DNS service that offers the fastest response time, unparalleled redundancy, and advanced security with built-in DDoS mitigation and DNSSEC."
             }
@@ -91,7 +92,7 @@ export function NameserverTemplateModalContent({
           <NameserverTemplate
             onClick={() => onePresetSelection(NameserverPresets.Quad9)}
             src={Quad9Logo}
-            title={"Quad9 DNS"}
+            title={zhMap["Quad9 DNS"] || "Quad9 DNS"}
             description={
               "The Quad9 DNS service is operated by the Swiss-based Quad9 Foundation, whose mission is to provide a safer and more robust Internet for everyone."
             }
@@ -101,7 +102,7 @@ export function NameserverTemplateModalContent({
           <NameserverTemplate
             onClick={() => onePresetSelection(NameserverPresets.Default)}
             icon={<GlobeIcon size={30} className={"text-netbird"} />}
-            title={"Custom DNS"}
+            title={zhMap["Custom DNS"] || "Custom DNS"}
             description={
               "Use custom nameservers to resolve domains in your network. You can either use a public DNS or your own nameservers."
             }

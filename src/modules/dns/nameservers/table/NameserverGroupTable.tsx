@@ -253,7 +253,7 @@ export default function NameserverGroupTable({
             <NoResults
               icon={<DNSIcon className={"fill-nb-gray-200"} size={20} />}
               className={"py-4"}
-              title={"This group is not used within any nameservers yet"}
+              title={zhMap["This group is not used within any nameservers yet"] || "This group is not used within any nameservers yet"}
               description={
                 "Assign this group as a distribution group in your nameservers to see them listed here."
               }
@@ -278,7 +278,7 @@ export default function NameserverGroupTable({
                   size={"large"}
                 />
               }
-              title={"Create Nameserver"}
+              title={zhMap["Create Nameserver"] || "Create Nameserver"}
               description={
                 "It looks like you don't have any nameservers. Get started by adding one to your network. Select a predefined or add your custom nameservers."
               }

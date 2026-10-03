@@ -18,6 +18,7 @@ import { usePermissions } from "@/contexts/PermissionsProvider";
 import { User } from "@/interfaces/User";
 import { UserResendInviteButton } from "@/modules/users/UserResendInviteButton";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   user: User;
@@ -195,7 +196,7 @@ export default function UserActionCell({
           <Button
             variant={"secondary"}
             className={"!px-3"}
-            aria-label={"User actions"}
+            aria-label={zhMap["User actions"] || "User actions"}
             data-testid={"user-actions"}
           >
             <MoreVertical size={16} className={"shrink-0"} />

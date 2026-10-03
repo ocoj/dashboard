@@ -31,6 +31,7 @@ import { useDialog } from "@/contexts/DialogProvider";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import NotificationSlackModal from "@/cloud/notifications/channels/NotificationSlackModal";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   channel: NotificationChannel;
@@ -89,17 +90,17 @@ export const NotificationSlackChannel = ({ channel }: Props) => {
       <Breadcrumbs>
         <Breadcrumbs.Item
           href={"/settings"}
-          label={"Settings"}
+          label={zhMap["Settings"] || "Settings"}
           icon={<SettingsIcon size={13} />}
         />
         <Breadcrumbs.Item
           href={"/settings?tab=notifications"}
-          label={"Notifications"}
+          label={zhMap["Notifications"] || "Notifications"}
           icon={<MessageSquareDot size={14} />}
         />
         <Breadcrumbs.Item
           href={"/settings?tab=notifications&channel=slack"}
-          label={"Slack"}
+          label={zhMap["Slack"] || "Slack"}
           icon={<SlackIcon size={14} />}
           active
         />

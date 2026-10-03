@@ -52,6 +52,7 @@ import {
 import useGroupHelper from "@/modules/groups/useGroupHelper";
 import { SmallUserAvatar } from "@/modules/users/SmallUserAvatar";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -451,7 +452,7 @@ function UserMultiSelect({
                 )}
                 value={search}
                 onValueChange={setSearch}
-                placeholder={"Search users by name or email..."}
+                placeholder={zhMap["Search users by name or email..."] || "Search users by name or email..."}
               />
               <div
                 className={

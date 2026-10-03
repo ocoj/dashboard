@@ -14,6 +14,7 @@ import {
   CertificatePromptInfo,
 } from "./useRDPCertificateHandler";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -37,7 +38,7 @@ export const RDPCertificateModal = ({
       <ModalContent maxWidthClass={"max-w-2xl"} showClose={false}>
         <ModalHeader
           icon={<LockIcon className={"text-netbird"} size={18} />}
-          title={"RDP Certificate"}
+          title={zhMap["RDP Certificate"] || "RDP Certificate"}
           description={hostname}
           color={"netbird"}
         />
@@ -112,15 +113,15 @@ const CertificateDetailsList = ({
       }
     >
       <CertificateDetailsListItem
-        label={"Issuer"}
+        label={zhMap["Issuer"] || "Issuer"}
         value={certificate.issuer || "N/A"}
       />
       <CertificateDetailsListItem
-        label={"Subject"}
+        label={zhMap["Subject"] || "Subject"}
         value={certificate.subject || "N/A"}
       />
       <CertificateDetailsListItem
-        label={"Valid From"}
+        label={zhMap["Valid From"] || "Valid From"}
         value={
           certificate.validFrom
             ? new Date(certificate.validFrom).toLocaleString()
@@ -128,7 +129,7 @@ const CertificateDetailsList = ({
         }
       />
       <CertificateDetailsListItem
-        label={"Valid To"}
+        label={zhMap["Valid To"] || "Valid To"}
         value={
           certificate.validTo
             ? new Date(certificate.validTo).toLocaleString()
@@ -136,15 +137,15 @@ const CertificateDetailsList = ({
         }
       />
       <CertificateDetailsListItem
-        label={"Key Size"}
+        label={zhMap["Key Size"] || "Key Size"}
         value={certificate.keySize ? `${certificate.keySize} bits` : "N/A"}
       />
       <CertificateDetailsListItem
-        label={"Serial Number"}
+        label={zhMap["Serial Number"] || "Serial Number"}
         value={certificate.serialNumber || "N/A"}
       />
       <CertificateDetailsListItem
-        label={"Fingerprint"}
+        label={zhMap["Fingerprint"] || "Fingerprint"}
         value={certificate.fingerprint || "N/A"}
       />
     </div>

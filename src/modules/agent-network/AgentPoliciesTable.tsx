@@ -94,7 +94,7 @@ function SourceCell({ policy }: { policy: AgentPolicy }) {
   return (
     <MultipleGroups
       groups={groups}
-      label={"Source Groups"}
+      label={zhMap["Source Groups"] || "Source Groups"}
       description={
         "Members of these groups are allowed to call the destination providers."
       }

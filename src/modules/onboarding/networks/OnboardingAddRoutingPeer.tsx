@@ -13,6 +13,7 @@ import { Peer } from "@/interfaces/Peer";
 import { SetupKey } from "@/interfaces/SetupKey";
 import { SetupModalContent } from "@/modules/setup-netbird-modal/SetupModal";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   network?: Network;
@@ -174,7 +175,7 @@ export const OnboardingAddRoutingPeer = ({
           <ModalContent>
             <SetupModalContent
               hostname={"routing-peer"}
-              title={"Install NetBird"}
+              title={zhMap["Install NetBird"] || "Install NetBird"}
               setupKey={setupKey.key}
             />
           </ModalContent>

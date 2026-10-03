@@ -41,6 +41,7 @@ import { GroupPrefixHelpText } from "@/modules/integrations/idp-sync/GroupPrefix
 import { IntegrationModalHeader } from "@/modules/integrations/IntegrationModalHeader";
 import { GroupPrefixInput } from "../GroupPrefixInput";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -156,7 +157,7 @@ export function SetupContent({ onSuccess }: ModalProps) {
 
       <IntegrationModalHeader
         image={integrationImage}
-        title={"Connect NetBird with Google Workspace"}
+        title={zhMap["Connect NetBird with Google Workspace"] || "Connect NetBird with Google Workspace"}
         description={
           "Start syncing your users and groups from Google Workspace to NetBird. Follow the steps below to get started."
         }
@@ -414,7 +415,7 @@ export function SetupContent({ onSuccess }: ModalProps) {
                       <KeyRound size={16} className={"text-nb-gray-300"} />
                     </div>
                   }
-                  placeholder={"YdV7Q~JJ62Xl.LvYoBanxZR2sJA2va_3UbqvncY8"}
+                  placeholder={zhMap["YdV7Q~JJ62Xl.LvYoBanxZR2sJA2va_3UbqvncY8"] || "YdV7Q~JJ62Xl.LvYoBanxZR2sJA2va_3UbqvncY8"}
                   value={btoa(serviceAccountKey)}
                   readOnly={true}
                 />
@@ -582,7 +583,7 @@ export function SetupContent({ onSuccess }: ModalProps) {
                   Customer ID
                 </div>
               }
-              placeholder={"C03f4c3po"}
+              placeholder={zhMap["C03f4c3po"] || "C03f4c3po"}
               value={customerID}
               onChange={(e) => setCustomerID(e.target.value)}
             />

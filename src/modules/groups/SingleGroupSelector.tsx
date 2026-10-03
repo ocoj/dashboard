@@ -12,6 +12,7 @@ import { useUsers } from "@/contexts/UsersProvider";
 import { Group } from "@/interfaces/Group";
 import { HorizontalUsersStack } from "@/modules/users/HorizontalUsersStack";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   trigger?: React.ReactNode;
@@ -74,7 +75,7 @@ export const SingleGroupSelector = ({
           <DropdownInput
             value={search}
             onChange={setSearch}
-            placeholder={"Search groups..."}
+            placeholder={zhMap["Search groups..."] || "Search groups..."}
             hideEnterIcon={true}
           />
 

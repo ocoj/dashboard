@@ -15,6 +15,7 @@ import { useDialog } from "@/contexts/DialogProvider";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { usePolicies } from "@/contexts/PoliciesProvider";
 import { Policy } from "@/interfaces/Policy";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   policy: Policy;
@@ -69,7 +70,7 @@ export default function AccessControlActionCell({ policy }: Readonly<Props>) {
           <Button
             variant={"secondary"}
             className={"!px-3"}
-            aria-label={"Policy actions"}
+            aria-label={zhMap["Policy actions"] || "Policy actions"}
             data-testid={"policy-actions"}
           >
             <MoreVertical size={16} className={"shrink-0"} />

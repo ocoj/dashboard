@@ -38,6 +38,7 @@ import { CrowdStrikeZtaScoreInput } from "@/modules/integrations/edr/crowdstrike
 import { CrowdStrikeZtaToggle } from "@/modules/integrations/edr/crowdstrike/CrowdStrikeZtaToggle";
 import { IntegrationModalHeader } from "@/modules/integrations/IntegrationModalHeader";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -178,7 +179,7 @@ export function SetupContent({ onSuccess, account }: ModalProps) {
 
       <IntegrationModalHeader
         image={integrationImage}
-        title={"Connect NetBird with CrowdStrike"}
+        title={zhMap["Connect NetBird with CrowdStrike"] || "Connect NetBird with CrowdStrike"}
         description={
           "Restrict network access only to devices managed by the company's IT department"
         }

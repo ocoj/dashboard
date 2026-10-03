@@ -11,6 +11,7 @@ import { usePermissions } from "@/contexts/PermissionsProvider";
 import { Group } from "@/interfaces/Group";
 import { GroupUsage } from "@/modules/groups/useGroupsUsage";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   selectedGroups?: GroupUsage[];
@@ -104,7 +105,7 @@ export const GroupsMultiSelect = ({
             className={"!h-9 !w-9"}
             onClick={deleteAllGroups}
             disabled={!permission.groups.delete}
-            aria-label={"Delete selected groups"}
+            aria-label={zhMap["Delete selected groups"] || "Delete selected groups"}
           >
             <Trash2 size={16} className={"shrink-0"} />
           </Button>

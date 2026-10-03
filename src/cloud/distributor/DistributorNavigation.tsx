@@ -10,6 +10,7 @@ import { useLoggedInUser } from "@/contexts/UsersProvider";
 import { isNetBirdCloud } from "@utils/netbird";
 import { Role } from "@/interfaces/User";
 import PeerIcon from "@/assets/icons/PeerIcon";
+import zhMap from "@/i18n/zh-map";
 
 export const DistributorNavigation = () => {
   const { isActive } = useDistributor();
@@ -54,7 +55,7 @@ export const DistributorNavigation = () => {
       <SidebarItem
         icon={<MSPIcon size={17} />}
         visible={isOwnerOrAdmin}
-        label={"Customers"}
+        label={zhMap["Customers"] || "Customers"}
         href={"/customers"}
         exactPathMatch={true}
         labelClassName={"-left-[1.5px] relative"}
@@ -63,18 +64,18 @@ export const DistributorNavigation = () => {
       <SidebarItem
         icon={<TeamIcon />}
         visible={permission.users.read}
-        label={"Team"}
+        label={zhMap["Team"] || "Team"}
         href={"/team"}
         collapsible
       >
         <SidebarItem
-          label={"Users"}
+          label={zhMap["Users"] || "Users"}
           isChild
           href={"/team/users"}
           visible={permission.users.read}
         />
         <SidebarItem
-          label={"Service Users"}
+          label={zhMap["Service Users"] || "Service Users"}
           isChild
           href={"/team/service-users"}
           visible={permission.users.read}
@@ -83,7 +84,7 @@ export const DistributorNavigation = () => {
       <SidebarItem
         icon={<ActivityIcon />}
         visible={permission.events.read}
-        label={"Audit Events"}
+        label={zhMap["Audit Events"] || "Audit Events"}
         href={"/events/audit"}
         exactPathMatch={true}
       />

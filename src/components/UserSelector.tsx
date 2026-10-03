@@ -12,6 +12,7 @@ import { useElementSize } from "@/hooks/useElementSize";
 import { User } from "@/interfaces/User";
 import { SmallUserAvatar } from "@/modules/users/SmallUserAvatar";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 const MapPinIcon = memo(() => <MapPin size={12} />);
 MapPinIcon.displayName = "MapPinIcon";
@@ -120,7 +121,7 @@ export function UserSelector({
             value={search}
             onChange={setSearch}
             hideEnterIcon={true}
-            placeholder={"Search for users by name or email..."}
+            placeholder={zhMap["Search for users by name or email..."] || "Search for users by name or email..."}
           />
 
           {options.length == 0 && !search && (

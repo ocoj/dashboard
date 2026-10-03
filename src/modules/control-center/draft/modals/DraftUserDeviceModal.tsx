@@ -22,6 +22,7 @@ import { usePlaceholderUpgrade } from "@/modules/control-center/hooks/useDraftPe
 import { useStructuralNodes } from "@/modules/control-center/utils/helpers";
 import { PeerOperatingSystemIcon } from "@/modules/peers/PeerOperatingSystemIcon";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 export const DraftUserDeviceModal = () => {
   const { userDeviceModal, setUserDeviceModal } = useDraftMode();
@@ -87,7 +88,7 @@ const StepperContent = ({
       <ModalHeader
         icon={<MonitorSmartphoneIcon size={18} className={"text-netbird"} />}
         title={`Set up “${name}”`}
-        description={"Install NetBird and assign the registered peer."}
+        description={zhMap["Install NetBird and assign the registered peer."] || "Install NetBird and assign the registered peer."}
         color={"netbird"}
       />
       <Separator />
@@ -125,7 +126,7 @@ const StepperContent = ({
               options={options}
               showSearch={true}
               searchPlaceholder={"Search peers..."}
-              placeholder={"Select a peer..."}
+              placeholder={zhMap["Select a peer..."] || "Select a peer..."}
               maxHeight={280}
             />
           </Steps.Step>

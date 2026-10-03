@@ -14,6 +14,7 @@ import { useState } from "react";
 import { useTenants } from "@/cloud/msp/contexts/TenantsProvider";
 import { Tenant } from "@/cloud/msp/interfaces/Tenant";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -57,7 +58,7 @@ export const MSPDomainVerificationModal = ({
         <GradientFadedBackground />
         <ModalHeader
           icon={<GlobeIcon size={20} />}
-          title={"Verify Domain Ownership"}
+          title={zhMap["Verify Domain Ownership"] || "Verify Domain Ownership"}
           description={domain}
           color={"netbird"}
         />
@@ -81,13 +82,13 @@ export const MSPDomainVerificationModal = ({
               <Card.ListItem
                 copy
                 copyText={"TXT Host"}
-                label={"Host"}
+                label={zhMap["Host"] || "Host"}
                 value={domain}
               />
               <Card.ListItem
                 copy
                 copyText={"TXT Value"}
-                label={"Value"}
+                label={zhMap["Value"] || "Value"}
                 value={`nb-verification=${token}`}
               />
             </Card.List>

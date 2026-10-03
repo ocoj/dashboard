@@ -23,6 +23,7 @@ import { useRoutes } from "@/contexts/RoutesProvider";
 import { Route } from "@/interfaces/Route";
 import { TransText } from "@/i18n/trans-text";
 import RouteUpdateModal from "@/modules/routes/RouteUpdateModal";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   route: Route;
@@ -96,7 +97,7 @@ export default function RouteActionCell({ route }: Props) {
             variant={"secondary"}
             className={"!px-3"}
             disabled={!permission.routes.update && !permission.routes.delete}
-            aria-label={"Route actions"}
+            aria-label={zhMap["Route actions"] || "Route actions"}
           >
             <MoreVertical size={16} className={"shrink-0"} />
           </Button>

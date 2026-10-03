@@ -33,6 +33,7 @@ import {
 } from "@/modules/integrations/event-streaming/amazon/exampleCredentials";
 import { IntegrationModalHeader } from "@/modules/integrations/IntegrationModalHeader";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -139,7 +140,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
 
       <IntegrationModalHeader
         image={s3Logo}
-        title={"Connect NetBird with Amazon S3"}
+        title={zhMap["Connect NetBird with Amazon S3"] || "Connect NetBird with Amazon S3"}
         description={
           "Start streaming your NetBird audit & traffic events to Amazon S3. Follow the steps below to get started."
         }

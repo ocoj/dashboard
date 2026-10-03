@@ -26,6 +26,7 @@ import {
   referralSourceOptions,
 } from "@/modules/onboarding/OnboardingSurvey";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   onSubmit: (fields: HubspotFormField[]) => void;
@@ -199,7 +200,7 @@ export const AgentNetworkSignupForm = ({ onSubmit }: Props) => {
               onChange={setCountry}
               options={countryOptions}
               showSearch={true}
-              placeholder={"Select your country..."}
+              placeholder={zhMap["Select your country..."] || "Select your country..."}
               searchPlaceholder={"Search country..."}
               variant={"dropdown"}
             />
@@ -215,7 +216,7 @@ export const AgentNetworkSignupForm = ({ onSubmit }: Props) => {
               onChange={setReferralSource}
               options={randomizedOptions}
               showValues={false}
-              placeholder={"Please select an option..."}
+              placeholder={zhMap["Please select an option..."] || "Please select an option..."}
               variant={"dropdown"}
             />
           </div>

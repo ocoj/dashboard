@@ -32,6 +32,7 @@ import { useDialog } from "@/contexts/DialogProvider";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import NotificationWebhookModal from "@/cloud/notifications/channels/NotificationWebhookModal";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   channel: NotificationChannel;
@@ -90,17 +91,17 @@ export const NotificationWebhookChannel = ({ channel }: Props) => {
       <Breadcrumbs>
         <Breadcrumbs.Item
           href={"/settings"}
-          label={"Settings"}
+          label={zhMap["Settings"] || "Settings"}
           icon={<SettingsIcon size={13} />}
         />
         <Breadcrumbs.Item
           href={"/settings?tab=notifications"}
-          label={"Notifications"}
+          label={zhMap["Notifications"] || "Notifications"}
           icon={<MessageSquareDot size={14} />}
         />
         <Breadcrumbs.Item
           href={"/settings?tab=notifications&channel=webhook"}
-          label={"Webhook"}
+          label={zhMap["Webhook"] || "Webhook"}
           icon={<GlobeIcon size={14} />}
           active
         />

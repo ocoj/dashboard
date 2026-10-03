@@ -104,7 +104,7 @@ export default function AccessTokensTable({ user }: Readonly<Props>) {
           <div className={"bg-nb-gray-950 overflow-hidden"}>
             <NoResults
               className={"py-3"}
-              title={"No access tokens"}
+              title={zhMap["No access tokens"] || "No access tokens"}
               description={
                 "You don't have any access tokens yet. You can add a token to access the NetBird API."
               }

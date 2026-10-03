@@ -36,6 +36,7 @@ import { IntegrationModalHeader } from "@/modules/integrations/IntegrationModalH
 import { useSSOConnections } from "@/modules/integrations/sso/useSSOConnections";
 import { isAuth0 } from "@utils/netbird";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -190,7 +191,7 @@ export function SetupContent({ onSuccess, onClose }: ModalProps) {
 
       <IntegrationModalHeader
         image={integrationImage}
-        title={"Connect NetBird with Jumpcloud"}
+        title={zhMap["Connect NetBird with Jumpcloud"] || "Connect NetBird with Jumpcloud"}
         description={
           "Start syncing your users and groups from Jumpcloud to NetBird. Follow the steps below to get started."
         }

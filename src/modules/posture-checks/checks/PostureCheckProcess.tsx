@@ -21,6 +21,7 @@ import AppleIcon from "@/assets/icons/AppleIcon";
 import WindowsIcon from "@/assets/icons/WindowsIcon";
 import { Process, ProcessCheck } from "@/interfaces/PostureCheck";
 import { PostureCheckCard } from "@/modules/posture-checks/ui/PostureCheckCard";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   value?: ProcessCheck;
@@ -37,7 +38,7 @@ export const PostureCheckProcess = ({ value, onChange, disabled }: Props) => {
       setOpen={setOpen}
       key={open ? 1 : 0}
       active={value?.processes && value?.processes?.length > 0}
-      title={"Process"}
+      title={zhMap["Process"] || "Process"}
       description={
         "Restrict access in your network based on running processes of a peer."
       }

@@ -50,6 +50,7 @@ import {
 import { IntegrationModalHeader } from "@/modules/integrations/IntegrationModalHeader";
 import { HuntressMatchSettings } from "@/modules/integrations/edr/huntress/HuntressMatchSettings";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -185,7 +186,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
 
       <IntegrationModalHeader
         image={integrationImage}
-        title={"Connect NetBird with Huntress"}
+        title={zhMap["Connect NetBird with Huntress"] || "Connect NetBird with Huntress"}
         description={
           "Restrict network access to devices managed by Huntress based on their security posture."
         }

@@ -180,7 +180,7 @@ export default function NetworksTable({
                     size={"large"}
                   />
                 }
-                title={"Create New Network"}
+                title={zhMap["Create New Network"] || "Create New Network"}
                 description={
                   "It looks like you don't have any networks. Access internal resources in your LANs and VPC by adding a network."
                 }

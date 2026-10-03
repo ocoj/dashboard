@@ -402,7 +402,7 @@ export function AccessControlModalContent({
                 <PeerGroupSelector
                   data-testid={"source-group-selector"}
                   popoverWidth={500}
-                  placeholder={"Select source(s)..."}
+                  placeholder={zhMap["Select source(s)..."] || "Select source(s)..."}
                   showRoutes={protocol !== "netbird-ssh"}
                   showResources={false}
                   showPeers={protocol !== "netbird-ssh"}
@@ -446,7 +446,7 @@ export function AccessControlModalContent({
                 <PeerGroupSelector
                   data-testid={"destination-group-selector"}
                   popoverWidth={500}
-                  placeholder={"Select destination(s)..."}
+                  placeholder={zhMap["Select destination(s)..."] || "Select destination(s)..."}
                   showRoutes={true}
                   showResources={protocol !== "netbird-ssh"}
                   showPeers={!destinationScope}

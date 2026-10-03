@@ -32,6 +32,7 @@ import { useSWRConfig } from "swr";
 import useCopyToClipboard from "@/hooks/useCopyToClipboard";
 import { AccessToken } from "@/interfaces/AccessToken";
 import { User } from "@/interfaces/User";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   children: React.ReactNode;
@@ -165,8 +166,8 @@ export function AccessTokenModalContent({
     <ModalContent maxWidthClass={"max-w-lg"}>
       <ModalHeader
         icon={<IconApi />}
-        title={"Create Access Token"}
-        description={"Use this token to access NetBird's public API"}
+        title={zhMap["Create Access Token"] || "Create Access Token"}
+        description={zhMap["Use this token to access NetBird's public API"] || "Use this token to access NetBird's public API"}
         color={"netbird"}
       />
 

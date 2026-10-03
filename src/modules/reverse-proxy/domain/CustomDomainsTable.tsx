@@ -196,7 +196,7 @@ export default function CustomDomainsTable({ headingTarget }: Readonly<Props>) {
                 size={"large"}
               />
             }
-            title={"Add Custom Domains"}
+            title={zhMap["Add Custom Domains"] || "Add Custom Domains"}
             description={
               "Use your own domains with NetBird's reverse proxy. To get started, add a CNAME record that points to a cluster and verify domain ownership."
             }

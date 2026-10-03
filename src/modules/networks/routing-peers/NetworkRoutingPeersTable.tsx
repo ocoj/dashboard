@@ -168,7 +168,7 @@ export default function NetworkRoutingPeersTable({
       getStartedCard={
         <NoResults
           className={"py-4"}
-          title={"This network has no routing peers"}
+          title={zhMap["This network has no routing peers"] || "This network has no routing peers"}
           description={
             "Add routing peers to this network to access resources inside this network."
           }

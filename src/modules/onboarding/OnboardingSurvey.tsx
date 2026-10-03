@@ -24,6 +24,7 @@ import {
 import React, { useMemo, useState } from "react";
 import { useLoggedInUser } from "@/contexts/UsersProvider";
 import { HubspotFormField } from "@/contexts/AnalyticsProvider";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   domainCategory: string;
@@ -348,7 +349,7 @@ export const OnboardingSurvey = ({ domainCategory, onSubmit }: Props) => {
               onChange={setReferralSource}
               options={randomizedOptions}
               showValues={false}
-              placeholder={"Please select an option..."}
+              placeholder={zhMap["Please select an option..."] || "Please select an option..."}
               variant={"dropdown"}
             />
           </div>

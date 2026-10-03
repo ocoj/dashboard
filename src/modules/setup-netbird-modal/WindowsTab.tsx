@@ -13,6 +13,7 @@ import {
   RoutingPeerSetupKeyInfo,
 } from "@/modules/setup-netbird-modal/SetupModal";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   setupKey?: string;
@@ -53,7 +54,7 @@ export default function WindowsTab({
                 value={windowsUrl}
                 className={"w-[170px]"}
                 onChange={setWindowsUrl}
-                placeholder={"Select architecture"}
+                placeholder={zhMap["Select architecture"] || "Select architecture"}
                 options={[
                   {
                     label: "64-Bit",

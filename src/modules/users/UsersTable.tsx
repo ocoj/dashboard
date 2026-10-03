@@ -386,7 +386,7 @@ export default function UsersTable({
                 size={"large"}
               />
             }
-            title={"Add New Users"}
+            title={zhMap["Add New Users"] || "Add New Users"}
             description={
               "It looks like you don't have any users yet. Get started by inviting users to your account."
             }

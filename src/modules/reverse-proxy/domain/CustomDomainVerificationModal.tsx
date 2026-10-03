@@ -24,6 +24,7 @@ import {
 import Paragraph from "@components/Paragraph";
 import InlineLink from "@components/InlineLink";
 import { isNetBirdCloud } from "@/utils/netbird";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -60,7 +61,7 @@ export const CustomDomainVerificationModal = ({
         <GradientFadedBackground />
         <ModalHeader
           icon={<GlobeIcon size={20} />}
-          title={"Verify Domain"}
+          title={zhMap["Verify Domain"] || "Verify Domain"}
           description={domain.domain}
           color={"netbird"}
         />
@@ -118,13 +119,13 @@ export const CustomDomainVerificationModal = ({
                     <Card.ListItem
                       copy
                       copyText={`*.${domain.domain}`}
-                      label={"CNAME Record"}
+                      label={zhMap["CNAME Record"] || "CNAME Record"}
                       value={`*.${domain.domain}`}
                     />
                     <Card.ListItem
                       copy
                       copyText={cnameTarget}
-                      label={"CNAME Content"}
+                      label={zhMap["CNAME Content"] || "CNAME Content"}
                       value={cnameTarget}
                     />
                   </Card.List>

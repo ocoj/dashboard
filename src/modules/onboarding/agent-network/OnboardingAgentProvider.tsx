@@ -6,6 +6,7 @@ import { useState } from "react";
 import AIProviderModal from "@/modules/agent-network/AIProviderModal";
 import { useAIProviders } from "@/modules/agent-network/AIProvidersProvider";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   onBack: () => void;
@@ -108,7 +109,7 @@ const EndpointPanel = ({
             "inline-flex items-center gap-1.5 rounded-md border border-nb-gray-700 bg-nb-gray-800/60 px-2.5 py-1.5 text-[11px] font-medium text-nb-gray-200 hover:bg-nb-gray-800 hover:text-white transition-colors shrink-0"
           }
           onClick={() => copy("Endpoint copied to clipboard")}
-          aria-label={"Copy endpoint"}
+          aria-label={zhMap["Copy endpoint"] || "Copy endpoint"}
         >
           <Copy size={12} />
           Copy

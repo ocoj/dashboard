@@ -43,6 +43,7 @@ import { SentinelOneMatchSettings } from "@/modules/integrations/edr/sentinel-on
 import SentinelOneUrlInput from "@/modules/integrations/edr/sentinel-one/SentinelOneUrlInput";
 import { IntegrationModalHeader } from "@/modules/integrations/IntegrationModalHeader";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -205,7 +206,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
 
       <IntegrationModalHeader
         image={integrationImage}
-        title={"Connect NetBird with SentinelOne"}
+        title={zhMap["Connect NetBird with SentinelOne"] || "Connect NetBird with SentinelOne"}
         description={
           "Restrict network access to devices managed by SentinelOne based on their security posture."
         }

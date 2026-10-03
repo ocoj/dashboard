@@ -11,6 +11,7 @@ import ModalHeader from "@components/modal/ModalHeader";
 import { trim } from "lodash";
 import { Group } from "@/interfaces/Group";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -59,8 +60,8 @@ export const CreateGroupNameModal = ({
     <Modal open={open} onOpenChange={onOpenChange}>
       <ModalContent maxWidthClass={"max-w-md"}>
         <ModalHeader
-          title={"Create Group"}
-          description={"Set an easily identifiable name for your group."}
+          title={zhMap["Create Group"] || "Create Group"}
+          description={zhMap["Set an easily identifiable name for your group."] || "Set an easily identifiable name for your group."}
           color={"blue"}
         />
         <div className={"p-default flex flex-col gap-4"}>

@@ -23,6 +23,7 @@ import { useState } from "react";
 import PeerIcon from "@/assets/icons/PeerIcon";
 import { SmallUserAvatar } from "@/modules/users/SmallUserAvatar";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 // PeerResourcePicker — single-select endpoint picker with two tabs (Peers /
 // Resources), mirroring the Audit Logs user filter's search list. The value
@@ -115,7 +116,7 @@ function OptionList({
       <DropdownInput
         value={search}
         onChange={setSearch}
-        placeholder={"Search..."}
+        placeholder={zhMap["Search..."] || "Search..."}
         hideEnterIcon={true}
       />
 
@@ -243,7 +244,7 @@ export function PeerResourcePicker({
               options={users}
               value={value}
               onSelect={handleSelect}
-              emptyText={"No users available to select."}
+              emptyText={zhMap["No users available to select."] || "No users available to select."}
             />
           </TabsContent>
         )}
@@ -252,7 +253,7 @@ export function PeerResourcePicker({
             options={peers}
             value={value}
             onSelect={handleSelect}
-            emptyText={"No peers available to select."}
+            emptyText={zhMap["No peers available to select."] || "No peers available to select."}
           />
         </TabsContent>
         <TabsContent value={"resources"} className={"mt-0 pt-3"}>
@@ -260,7 +261,7 @@ export function PeerResourcePicker({
             options={resources}
             value={value}
             onSelect={handleSelect}
-            emptyText={"No resources available to select."}
+            emptyText={zhMap["No resources available to select."] || "No resources available to select."}
           />
         </TabsContent>
       </Tabs>

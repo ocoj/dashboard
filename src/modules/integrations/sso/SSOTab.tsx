@@ -11,6 +11,7 @@ import { LockedFeatureInfoCard } from "@/modules/billing/locked-feature/LockedFe
 import { LockedFeatureOverlay } from "@/modules/billing/locked-feature/LockedFeatureOverlay";
 import { OktaSSOIntegrationCard } from "@/modules/integrations/sso/okta/OktaSSOIntegrationCard";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 export default function SSOTab() {
   const account = useAccount();
@@ -21,12 +22,12 @@ export default function SSOTab() {
         <Breadcrumbs>
           <Breadcrumbs.Item
             href={"/integrations"}
-            label={"Integrations"}
+            label={zhMap["Integrations"] || "Integrations"}
             icon={<IntegrationIcon size={13} />}
           />
           <Breadcrumbs.Item
             href={"/settings?tab=sso"}
-            label={"Single Sign-On"}
+            label={zhMap["Single Sign-On"] || "Single Sign-On"}
             icon={<KeyRoundIcon size={14} />}
             active
           />

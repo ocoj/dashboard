@@ -36,6 +36,7 @@ import { GroupPrefixInput } from "@/modules/integrations/idp-sync/GroupPrefixInp
 import { useIntegrations } from "@/modules/integrations/idp-sync/useIntegrations";
 import { IntegrationModalHeader } from "@/modules/integrations/IntegrationModalHeader";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -171,8 +172,8 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
 
       <IntegrationModalHeader
         image={integrationImage}
-        title={"Google Workspace Configuration"}
-        description={"Sync your users and groups from Google Workspace."}
+        title={zhMap["Google Workspace Configuration"] || "Google Workspace Configuration"}
+        description={zhMap["Sync your users and groups from Google Workspace."] || "Sync your users and groups from Google Workspace."}
       />
 
       <Tabs
@@ -246,7 +247,7 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
                   Service Account Key
                 </div>
               }
-              placeholder={"YdV7Q~JJ62Xl.LvYoBanxZR2sJA2va_3UbqvncY8"}
+              placeholder={zhMap["YdV7Q~JJ62Xl.LvYoBanxZR2sJA2va_3UbqvncY8"] || "YdV7Q~JJ62Xl.LvYoBanxZR2sJA2va_3UbqvncY8"}
               value={serviceAccountKey}
               readOnly={true}
             />

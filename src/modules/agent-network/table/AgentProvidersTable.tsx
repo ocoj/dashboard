@@ -176,7 +176,7 @@ export default function AgentProvidersTable({
                 size={"large"}
               />
             }
-            title={"Connect a provider"}
+            title={zhMap["Connect a provider"] || "Connect a provider"}
             description={
               "Route OpenAI, Anthropic, and other LLM APIs through NetBird to enforce access control, track token spend, and capture prompts."
             }

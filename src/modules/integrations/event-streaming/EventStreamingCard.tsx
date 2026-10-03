@@ -12,6 +12,7 @@ import { usePermissions } from "@/contexts/PermissionsProvider";
 import { useIsLicensed } from "@/hooks/useIsLicensed";
 import { EventStream } from "@/interfaces/EventStream";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Platform = "datadog" | "s3" | "firehose" | "generic_http";
 const platformImages: { [key in Platform]?: StaticImageData } = {
@@ -60,9 +61,9 @@ export const EventStreamingCard = () => {
             <FileText size={16} />
           )
         }
-        title={"Event Streaming"}
+        title={zhMap["Event Streaming"] || "Event Streaming"}
         action={<FeatureCardStatus enabled={enabled} />}
-        description={"Stream your activity events to third-party services."}
+        description={zhMap["Stream your activity events to third-party services."] || "Stream your activity events to third-party services."}
       />
     </div>
   );

@@ -24,6 +24,7 @@ import {
   NotificationChannelType,
 } from "@/interfaces/NotificationChannel";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 const NotificationsOverview = ({
   onSelectChannel,
@@ -43,12 +44,12 @@ const NotificationsOverview = ({
       <Breadcrumbs>
         <Breadcrumbs.Item
           href={"/settings"}
-          label={"Settings"}
+          label={zhMap["Settings"] || "Settings"}
           icon={<SettingsIcon size={13} />}
         />
         <Breadcrumbs.Item
           href={"/settings?tab=notifications"}
-          label={"Notifications"}
+          label={zhMap["Notifications"] || "Notifications"}
           icon={<MessageSquareDot size={14} />}
           active
         />

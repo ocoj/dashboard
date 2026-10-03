@@ -23,6 +23,7 @@ import { DomainVerificationCard } from "@/modules/integrations/sso/DomainVerific
 import { DomainVerificationModal } from "@/modules/integrations/sso/DomainVerificationModal";
 import { useEnterpriseConnections } from "@/modules/integrations/sso/useEnterpriseConnections";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   config: EnterpriseConnection;
@@ -103,7 +104,7 @@ export const OktaSsoSettings = ({ open, onOpenChange, config }: Props) => {
 
         <IntegrationModalHeader
           image={integrationImage}
-          title={"Okta SSO Configuration"}
+          title={zhMap["Okta SSO Configuration"] || "Okta SSO Configuration"}
           description={
             "Use Okta as a Single Sign-On provider to authenticate users."
           }

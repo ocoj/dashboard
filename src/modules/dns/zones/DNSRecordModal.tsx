@@ -218,7 +218,7 @@ export function DNSRecordModalContent({
           <div className={"flex w-full"}>
             <Input
               autoFocus={true}
-              placeholder={"E.g., dev, * or leave empty for primary domain"}
+              placeholder={zhMap["E.g., dev, * or leave empty for primary domain"] || "E.g., dev, * or leave empty for primary domain"}
               errorTooltip={true}
               errorTooltipPosition={"bottom"}
               error={domainError}

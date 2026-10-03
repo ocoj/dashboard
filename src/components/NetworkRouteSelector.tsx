@@ -15,6 +15,7 @@ import { useElementSize } from "@/hooks/useElementSize";
 import { GroupedRoute, Route } from "@/interfaces/Route";
 import useGroupedRoutes from "@/modules/route-group/useGroupedRoutes";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 interface MultiSelectProps {
   value?: GroupedRoute;
@@ -166,7 +167,7 @@ export function NetworkRouteSelector({
                 ref={searchRef}
                 value={search}
                 onValueChange={setSearch}
-                placeholder={"Search for network by name or cidr..."}
+                placeholder={zhMap["Search for network by name or cidr..."] || "Search for network by name or cidr..."}
               />
               <div
                 className={

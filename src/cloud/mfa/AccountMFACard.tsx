@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import * as React from "react";
 import { useMemo } from "react";
 import { AccountMFA } from "@/cloud/mfa/AccountMFASettings";
+import zhMap from "@/i18n/zh-map";
 
 const config = loadConfig();
 
@@ -31,12 +32,12 @@ export const AccountMfaCard = () => {
     isNetBirdCloud() && (
       <FeatureCard
         onClick={() => router.push("/settings?tab=authentication")}
-        aria-label={"Multi-Factor Authentication (MFA)"}
+        aria-label={zhMap["Multi-Factor Authentication (MFA)"] || "Multi-Factor Authentication (MFA)"}
         className={"min-w-[432px]"}
         icon={<ShieldCheckIcon size={16} />}
-        title={"Multi-Factor Authentication (MFA)"}
+        title={zhMap["Multi-Factor Authentication (MFA)"] || "Multi-Factor Authentication (MFA)"}
         action={<FeatureCardStatus enabled={enabled} />}
-        description={"Enable NetBird MFA if not configured in your IdP"}
+        description={zhMap["Enable NetBird MFA if not configured in your IdP"] || "Enable NetBird MFA if not configured in your IdP"}
       />
     )
   );

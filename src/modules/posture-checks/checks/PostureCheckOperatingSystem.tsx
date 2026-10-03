@@ -40,6 +40,7 @@ import {
   windowsKernelVersions,
 } from "@/interfaces/PostureCheck";
 import { PostureCheckCard } from "@/modules/posture-checks/ui/PostureCheckCard";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   value?: OperatingSystemVersionCheck;
@@ -60,7 +61,7 @@ export const PostureCheckOperatingSystem = ({
       setOpen={setOpen}
       key={open ? 1 : 0}
       icon={<Disc3Icon size={16} />}
-      title={"Operating System"}
+      title={zhMap["Operating System"] || "Operating System"}
       modalWidthClass={"max-w-xl"}
       description={
         "Restrict access in your network based on the operating system."
@@ -400,7 +401,7 @@ export const OperatingSystemTab = ({
           <SelectDropdown
             value={value || "0"}
             showSearch={true}
-            placeholder={"Select version..."}
+            placeholder={zhMap["Select version..."] || "Select version..."}
             onChange={onChange}
             options={versionList}
             disabled={allOrMin === "all" || allow === "block" || disabled}
@@ -431,7 +432,7 @@ export const OperatingSystemTab = ({
                 Use custom version number
               </>
             }
-            helpText={"Use a custom version number if you need more control."}
+            helpText={zhMap["Use a custom version number if you need more control."] || "Use a custom version number if you need more control."}
           />
         </div>
       )}

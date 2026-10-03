@@ -362,7 +362,7 @@ export function UserInviteModalContent({
                 <User2 size={16} className={"text-nb-gray-300"} />
               </div>
             }
-            placeholder={"John Doe"}
+            placeholder={zhMap["John Doe"] || "John Doe"}
             value={name}
             onChange={(e) => setName(e.target.value)}
           />

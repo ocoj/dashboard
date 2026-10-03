@@ -14,6 +14,7 @@ import { useIntegrations } from "../idp-sync/useIntegrations";
 import { Intune } from "./intune/Intune";
 import { FleetDM } from "@/modules/integrations/edr/fleetdm/FleetDM";
 import { Huntress } from "@/modules/integrations/edr/huntress/Huntress";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   account: Account;
@@ -27,12 +28,12 @@ export default function EDRTab({ account }: Props) {
         <Breadcrumbs>
           <Breadcrumbs.Item
             href={"/integrations"}
-            label={"Integrations"}
+            label={zhMap["Integrations"] || "Integrations"}
             icon={<IntegrationIcon size={13} />}
           />
           <Breadcrumbs.Item
             href={"/integrations?tab=edr"}
-            label={"MDM & EDR"}
+            label={zhMap["MDM & EDR"] || "MDM & EDR"}
             icon={<ShieldCheck size={15} />}
             active
           />

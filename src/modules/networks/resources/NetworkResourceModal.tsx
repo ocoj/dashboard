@@ -377,7 +377,7 @@ export function ResourceModalContent({
                         onChange={setGroups}
                         values={groups}
                         showPeerCounter={false}
-                        placeholder={"Add or select resource group(s)..."}
+                        placeholder={zhMap["Add or select resource group(s)..."] || "Add or select resource group(s)..."}
                         policies={allPolicies}
                       />
                       {groupPolicyCount > 0 && (

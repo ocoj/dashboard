@@ -13,6 +13,7 @@ import { useMemo, useState } from "react";
 import { useElementSize } from "@/hooks/useElementSize";
 import { ActivityEvent } from "@/interfaces/ActivityEvent";
 import ActivityTypeIcon from "@/modules/activity/ActivityTypeIcon";
+import zhMap from "@/i18n/zh-map";
 
 interface MultiSelectProps {
   values: string[];
@@ -123,7 +124,7 @@ export function ActivityEventCodeSelector({
                 ref={searchRef}
                 value={search}
                 onValueChange={setSearch}
-                placeholder={"Search event..."}
+                placeholder={zhMap["Search event..."] || "Search event..."}
               />
               <div
                 className={

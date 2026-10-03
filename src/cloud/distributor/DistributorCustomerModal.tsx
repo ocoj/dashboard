@@ -35,6 +35,7 @@ import {
 } from "@/cloud/distributor/interfaces/Distributor";
 import { PlanCard, PlanLoadingSkeleton } from "@/modules/billing/PlanCard";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -193,7 +194,7 @@ const CustomerModalContent = ({
                   tabIndex={0}
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder={"Acme Inc."}
+                  placeholder={zhMap["Acme Inc."] || "Acme Inc."}
                   className={"min-w-[270px]"}
                 />
               </div>
@@ -250,7 +251,7 @@ const CustomerModalContent = ({
                   tabIndex={0}
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder={"Acme Inc."}
+                  placeholder={zhMap["Acme Inc."] || "Acme Inc."}
                   className={"min-w-[270px]"}
                 />
               </div>

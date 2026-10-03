@@ -6,6 +6,7 @@ import { useMemo } from "react";
 import Skeleton from "react-loading-skeleton";
 import { useCountries } from "@/contexts/CountryProvider";
 import { Peer } from "@/interfaces/Peer";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   peer: Peer;
@@ -27,7 +28,7 @@ export const PeerAddressTooltipContent = ({ peer }: Props) => {
     >
       <ListItem
         icon={<MapPin size={14} />}
-        label={"NetBird IP"}
+        label={zhMap["NetBird IP"] || "NetBird IP"}
         value={
           <CopyToClipboardText
             iconAlignment={"right"}
@@ -41,7 +42,7 @@ export const PeerAddressTooltipContent = ({ peer }: Props) => {
       {peer.ipv6 && (
         <ListItem
           icon={<MapPin size={14} />}
-          label={"NetBird IPv6"}
+          label={zhMap["NetBird IPv6"] || "NetBird IPv6"}
           value={
             <CopyToClipboardText
               iconAlignment={"right"}
@@ -55,7 +56,7 @@ export const PeerAddressTooltipContent = ({ peer }: Props) => {
       )}
       <ListItem
         icon={<NetworkIcon size={14} />}
-        label={"Public IP"}
+        label={zhMap["Public IP"] || "Public IP"}
         value={
           <CopyToClipboardText
             iconAlignment={"right"}
@@ -68,7 +69,7 @@ export const PeerAddressTooltipContent = ({ peer }: Props) => {
       />
       <ListItem
         icon={<GlobeIcon size={14} />}
-        label={"Domain"}
+        label={zhMap["Domain"] || "Domain"}
         className={
           peer?.extra_dns_labels && peer.extra_dns_labels.length > 0
             ? "items-start"
@@ -101,7 +102,7 @@ export const PeerAddressTooltipContent = ({ peer }: Props) => {
       />
       <ListItem
         icon={<FlagIcon size={14} />}
-        label={"Region"}
+        label={zhMap["Region"] || "Region"}
         value={
           isLoading && !countryText ? (
             <Skeleton width={100} />

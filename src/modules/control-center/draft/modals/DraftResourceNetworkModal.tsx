@@ -23,6 +23,7 @@ import { useDraftNodeCreation } from "@/modules/control-center/hooks/useDraftNod
 import { NetworkModalContent } from "@/modules/networks/NetworkModal";
 import { SmallBadge } from "@components/ui/SmallBadge";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 // "No Network" picker for a standalone draft resource: assign it to an existing
 // network (a canvas frame or a real API network) or to a new draft network.
@@ -173,8 +174,8 @@ const PickerContent = ({
       <ModalContent maxWidthClass={"max-w-lg"}>
         <ModalHeader
           icon={<NetworkRoutesIcon className={"fill-netbird"} />}
-          title={"Assign a network"}
-          description={"Pick a network for this resource or create a new one."}
+          title={zhMap["Assign a network"] || "Assign a network"}
+          description={zhMap["Pick a network for this resource or create a new one."] || "Pick a network for this resource or create a new one."}
           color={"netbird"}
         />
         <Separator />
@@ -185,7 +186,7 @@ const PickerContent = ({
             options={options}
             showSearch={true}
             searchPlaceholder={"Search networks..."}
-            placeholder={"Select or create a network..."}
+            placeholder={zhMap["Select or create a network..."] || "Select or create a network..."}
             maxHeight={190}
             // Pinned below the options so scroll or search can't hide it.
             footer={(close) => (

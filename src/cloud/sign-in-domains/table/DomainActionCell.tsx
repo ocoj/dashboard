@@ -11,6 +11,7 @@ import { usePermissions } from "@/contexts/PermissionsProvider";
 import { DomainValidationStatus, SignInDomain } from "@/interfaces/Account";
 import { DomainVerificationModal } from "@/modules/integrations/sso/DomainVerificationModal";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   domain: SignInDomain;
@@ -111,7 +112,7 @@ export default function DomainActionCell({ domain }: Readonly<Props>) {
           )}
           disabled={!!removeBlockedReason || !permission.settings.update}
           onClick={deleteDomainHandler}
-          aria-label={"Remove domain"}
+          aria-label={zhMap["Remove domain"] || "Remove domain"}
           data-testid={"remove-domain"}
         >
           <TrashIcon size={14} />

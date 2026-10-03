@@ -24,6 +24,7 @@ import slackImage from "@/assets/integrations/slack.png";
 import { NotificationWebhookChannel as SlackTarget } from "@/interfaces/NotificationChannel";
 import { IntegrationModalHeader } from "@/modules/integrations/IntegrationModalHeader";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -98,7 +99,7 @@ function SlackModalContent({ onSave }: Readonly<ModalContentProps>) {
 
       <IntegrationModalHeader
         image={slackImage}
-        title={"Connect NetBird with Slack"}
+        title={zhMap["Connect NetBird with Slack"] || "Connect NetBird with Slack"}
         description={
           "Receive NetBird notification events directly in your Slack channel via an Incoming Webhook."
         }

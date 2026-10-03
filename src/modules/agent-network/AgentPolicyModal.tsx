@@ -636,7 +636,7 @@ function ProviderMultiSelect({
                 )}
                 value={search}
                 onValueChange={setSearch}
-                placeholder={"Search providers..."}
+                placeholder={zhMap["Search providers..."] || "Search providers..."}
               />
               <div
                 className={

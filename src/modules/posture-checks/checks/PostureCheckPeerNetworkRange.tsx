@@ -21,6 +21,7 @@ import * as React from "react";
 import { useMemo, useState } from "react";
 import { PeerNetworkRangeCheck } from "@/interfaces/PostureCheck";
 import { PostureCheckCard } from "@/modules/posture-checks/ui/PostureCheckCard";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   value?: PeerNetworkRangeCheck;
@@ -41,7 +42,7 @@ export const PostureCheckPeerNetworkRange = ({
       setOpen={setOpen}
       key={open ? 1 : 0}
       icon={<NetworkIcon size={16} />}
-      title={"Peer Network Range"}
+      title={zhMap["Peer Network Range"] || "Peer Network Range"}
       modalWidthClass={"max-w-xl"}
       description={
         "Restrict access by allowing or blocking peer network ranges."

@@ -36,6 +36,7 @@ import { GroupPrefixInput } from "@/modules/integrations/idp-sync/GroupPrefixInp
 import { useIntegrations } from "@/modules/integrations/idp-sync/useIntegrations";
 import { IntegrationModalHeader } from "@/modules/integrations/IntegrationModalHeader";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -172,8 +173,8 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
 
       <IntegrationModalHeader
         image={integrationImage}
-        title={"Entra ID (API) Configuration"}
-        description={"Sync your users and groups from Entra ID to NetBird."}
+        title={zhMap["Entra ID (API) Configuration"] || "Entra ID (API) Configuration"}
+        description={zhMap["Sync your users and groups from Entra ID to NetBird."] || "Sync your users and groups from Entra ID to NetBird."}
       />
 
       <Tabs
@@ -262,7 +263,7 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
                   Client Secret
                 </div>
               }
-              placeholder={"YdV7Q~JJ62Xl.LvYoBanxZR2sJA2va_3UbqvncY8"}
+              placeholder={zhMap["YdV7Q~JJ62Xl.LvYoBanxZR2sJA2va_3UbqvncY8"] || "YdV7Q~JJ62Xl.LvYoBanxZR2sJA2va_3UbqvncY8"}
               value={clientSecret}
               onChange={(e) => setClientSecret(e.target.value)}
             />

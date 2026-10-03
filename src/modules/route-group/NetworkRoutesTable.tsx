@@ -284,7 +284,7 @@ export default function NetworkRoutesTable({
                 <NetworkRoutesIcon className={"fill-nb-gray-200"} size={20} />
               }
               className={"py-4"}
-              title={"This group is not used within any network routes yet"}
+              title={zhMap["This group is not used within any network routes yet"] || "This group is not used within any network routes yet"}
               description={
                 "Assign this group when creating a new route to see them listed here."
               }
@@ -316,7 +316,7 @@ export default function NetworkRoutesTable({
                   size={"large"}
                 />
               }
-              title={"Create New Route"}
+              title={zhMap["Create New Route"] || "Create New Route"}
               description={
                 "It looks like you don't have any routes. Access LANs and VPC by adding a network route."
               }

@@ -37,6 +37,7 @@ import { useRemoveChange } from "@/modules/control-center/hooks/useRemoveChange"
 import { LiveData } from "@/modules/control-center/utils/changeset-request";
 import { getPlaceholderSetupKey } from "@/modules/control-center/utils/helpers";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -205,7 +206,7 @@ export const ReviewDeployModal = ({
           icon={
             <GitPullRequestArrowIcon size={18} className={"text-netbird"} />
           }
-          title={"Review & Deploy"}
+          title={zhMap["Review & Deploy"] || "Review & Deploy"}
           description={description}
           color={"netbird"}
         />

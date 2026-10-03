@@ -34,6 +34,7 @@ import { GroupPrefixInput } from "@/modules/integrations/idp-sync/GroupPrefixInp
 import { useIntegrations } from "@/modules/integrations/idp-sync/useIntegrations";
 import { IntegrationModalHeader } from "@/modules/integrations/IntegrationModalHeader";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -182,8 +183,8 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
 
       <IntegrationModalHeader
         image={integrationImage}
-        title={"Okta Configuration"}
-        description={"Sync your users and groups from Okta to NetBird."}
+        title={zhMap["Okta Configuration"] || "Okta Configuration"}
+        description={zhMap["Sync your users and groups from Okta to NetBird."] || "Sync your users and groups from Okta to NetBird."}
       />
 
       <Tabs

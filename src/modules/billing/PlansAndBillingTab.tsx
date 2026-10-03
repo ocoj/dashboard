@@ -20,6 +20,7 @@ import { PlanCurrentPlan } from "@/modules/billing/PlanCurrentPlan";
 import { PlanSuccessModal } from "@/modules/billing/PlanSuccessModal";
 import { TrialGradientCard } from "@/modules/billing/trial/TrialGradientCard";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 export const PlansAndBillingTab = () => {
   const { permission } = usePermissions();
@@ -149,12 +150,12 @@ const PlansAndBillingTabContent = () => {
         <Breadcrumbs>
           <Breadcrumbs.Item
             href={"/settings"}
-            label={"Settings"}
+            label={zhMap["Settings"] || "Settings"}
             icon={<SettingsIcon size={13} />}
           />
           <Breadcrumbs.Item
             href={"/settings?tab=plans-and-billing"}
-            label={"Plans & Billing"}
+            label={zhMap["Plans & Billing"] || "Plans & Billing"}
             icon={<CreditCardIcon size={14} />}
             active
           />

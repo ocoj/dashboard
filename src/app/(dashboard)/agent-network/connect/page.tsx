@@ -11,6 +11,7 @@ import EndpointBadge from "@/modules/agent-network/EndpointBadge";
 import ConnectProvidersTable from "@/modules/agent-network/table/ConnectProvidersTable";
 import { useMyAgentNetworkSetup } from "@/modules/agent-network/useMyAgentNetworkSetup";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 // ConnectAgentPage is the caller-scoped self-service view: the endpoint to
 // configure tools with and the per-tool config that goes with it — the one
@@ -33,12 +34,12 @@ export default function ConnectAgentPage() {
         <Breadcrumbs>
           <Breadcrumbs.Item
             href={"/agent-network/connect"}
-            label={"Agent Network"}
+            label={zhMap["Agent Network"] || "Agent Network"}
             icon={<AgentNetworkIcon size={16} />}
           />
           <Breadcrumbs.Item
             href={"/agent-network/connect"}
-            label={"Connect Agent"}
+            label={zhMap["Connect Agent"] || "Connect Agent"}
             active
           />
         </Breadcrumbs>

@@ -169,7 +169,7 @@ export function DatePickerWithRange({
             </div>
             <div className={"flex gap-2 flex-wrap"}>
               <CalendarButton
-                label={"Last Month"}
+                label={zhMap["Last Month"] || "Last Month"}
                 active={isActive.lastMonth}
                 onClick={() => updateRangeAndClose(defaultRanges.lastMonth)}
               />
@@ -179,7 +179,7 @@ export function DatePickerWithRange({
                 onClick={() => updateRangeAndClose(defaultRanges.last14Days)}
               />
               <CalendarButton
-                label={"Yesterday"}
+                label={zhMap["Yesterday"] || "Yesterday"}
                 active={isActive.yesterday}
                 onClick={() => updateRangeAndClose(defaultRanges.yesterday)}
               />

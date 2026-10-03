@@ -41,6 +41,7 @@ import {
 } from "@/modules/control-center/draft/changeset/change-presentation";
 import { ChangeCodeView } from "@/modules/control-center/draft/changeset/ChangeCodeView";
 import { DeployStatus } from "@/modules/control-center/hooks/useDeployChangeset";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   change: DraftChange;
@@ -174,7 +175,7 @@ export const ChangeAccordionItem = ({
                 doCopy(true);
               }
             }}
-            aria-label={"Copy URL"}
+            aria-label={zhMap["Copy URL"] || "Copy URL"}
             className={
               "group/copy relative top-[1px] flex items-center gap-1.5 font-mono text-[0.7rem] text-nb-gray-400 min-w-0 max-w-[18rem] cursor-pointer hover:text-nb-gray-200 transition-colors"
             }
@@ -221,14 +222,14 @@ export const ChangeAccordionItem = ({
         {status === "deploying" ? (
           <div
             className={"self-center shrink-0 p-1.5 text-white"}
-            aria-label={"Deploying"}
+            aria-label={zhMap["Deploying"] || "Deploying"}
           >
             <Loader2 size={16} className={"animate-spin"} />
           </div>
         ) : status === "done" ? (
           <div
             className={"self-center shrink-0 p-1.5 text-green-500"}
-            aria-label={"Deployed"}
+            aria-label={zhMap["Deployed"] || "Deployed"}
           >
             <CheckIcon size={16} />
           </div>
@@ -243,7 +244,7 @@ export const ChangeAccordionItem = ({
                 className={
                   "self-center shrink-0 p-1.5 rounded text-nb-gray-400 hover:text-nb-gray-100 hover:bg-nb-gray-800 data-[state=open]:bg-nb-gray-800 data-[state=open]:text-nb-gray-100 transition-colors disabled:opacity-50 outline-none"
                 }
-                aria-label={"More actions"}
+                aria-label={zhMap["More actions"] || "More actions"}
               >
                 <MoreVerticalIcon size={16} />
               </button>

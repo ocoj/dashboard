@@ -18,6 +18,7 @@ import AIProviderLogo from "@/modules/agent-network/AIProviderLogo";
 import { AIProviderId } from "@/modules/agent-network/data/mockData";
 import { APIMeProvider } from "@/modules/agent-network/useMyAgentNetworkSetup";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 function NameCell({ provider }: { provider: APIMeProvider }) {
   return (
@@ -149,7 +150,7 @@ export default function ConnectProvidersTable({ providers }: Readonly<Props>) {
         <NoResults
           className={"py-4"}
           icon={<AgentNetworkIcon className={"text-nb-gray-300"} size={20} />}
-          title={"No providers available yet"}
+          title={zhMap["No providers available yet"] || "No providers available yet"}
           description={
             canManagePolicies
               ? "No access policy covers your user yet. Add one of your groups to a policy to route your agent through NetBird."

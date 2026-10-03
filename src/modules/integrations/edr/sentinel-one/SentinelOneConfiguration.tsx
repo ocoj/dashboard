@@ -41,6 +41,7 @@ import { matchAttributesReducer } from "@/modules/integrations/edr/sentinel-one/
 import { SentinelOneMatchSettings } from "@/modules/integrations/edr/sentinel-one/SentinelOneMatchSettings";
 import SentinelOneUrlInput from "@/modules/integrations/edr/sentinel-one/SentinelOneUrlInput";
 import { IntegrationModalHeader } from "@/modules/integrations/IntegrationModalHeader";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -173,7 +174,7 @@ export function ConfigurationContent({
 
       <IntegrationModalHeader
         image={integrationImage}
-        title={"SentinelOne Configuration"}
+        title={zhMap["SentinelOne Configuration"] || "SentinelOne Configuration"}
         description={
           "Restrict network access to IT-managed devices marked Compliant in SentinelOne."
         }

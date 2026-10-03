@@ -979,7 +979,7 @@ export default function AIProviderModal({
 
               <div className={"flex-col flex gap-2"}>
                 <FormRow
-                  label={"Provider"}
+                  label={zhMap["Provider"] || "Provider"}
                   helpText={
                     <>
                       AI provider and upstream URL to expose
@@ -1039,7 +1039,7 @@ export default function AIProviderModal({
                     options={providerOptions}
                     showSearch
                     searchPlaceholder={"Search providers..."}
-                    placeholder={"Select provider..."}
+                    placeholder={zhMap["Select provider..."] || "Select provider..."}
                   />
                 </FormRow>
                 <Input
@@ -1084,7 +1084,7 @@ export default function AIProviderModal({
                       </span>
                     </>
                   }
-                  helpText={"Disable upstream TLS certificate validation."}
+                  helpText={zhMap["Disable upstream TLS certificate validation."] || "Disable upstream TLS certificate validation."}
                 />
               )}
 
@@ -1108,7 +1108,7 @@ export default function AIProviderModal({
                       />
                     </>
                   }
-                  helpText={"Upload the service account JSON key file."}
+                  helpText={zhMap["Upload the service account JSON key file."] || "Upload the service account JSON key file."}
                 >
                   <div className={"flex items-center gap-3"}>
                     <Button
@@ -1216,8 +1216,8 @@ export default function AIProviderModal({
                 );
               })}
               <FormRow
-                label={"Display name"}
-                helpText={"Shown in the Agent Network table."}
+                label={zhMap["Display name"] || "Display name"}
+                helpText={zhMap["Shown in the Agent Network table."] || "Shown in the Agent Network table."}
               >
                 <Input
                   {...NO_PASSWORD_MANAGER}
@@ -1339,7 +1339,7 @@ export default function AIProviderModal({
                 </div>
 
                 <FormRow
-                  label={"User identity header"}
+                  label={zhMap["User identity header"] || "User identity header"}
                   helpText={
                     "Wire header name receiving the caller's user email (or peer name when unlinked). Leave empty to skip."
                   }
@@ -1354,7 +1354,7 @@ export default function AIProviderModal({
                 </FormRow>
 
                 <FormRow
-                  label={"Groups header"}
+                  label={zhMap["Groups header"] || "Groups header"}
                   helpText={
                     "Wire header name receiving the caller's NetBird groups as a comma-separated list. Leave empty to skip."
                   }
@@ -1396,7 +1396,7 @@ export default function AIProviderModal({
                 </div>
 
                 <FormRow
-                  label={"User identity key"}
+                  label={zhMap["User identity key"] || "User identity key"}
                   helpText={
                     "JSON key receiving the caller's user email (or peer name when unlinked). Leave empty to skip."
                   }
@@ -1409,7 +1409,7 @@ export default function AIProviderModal({
                 </FormRow>
 
                 <FormRow
-                  label={"Groups key"}
+                  label={zhMap["Groups key"] || "Groups key"}
                   helpText={
                     "JSON key receiving the caller's NetBird groups as a comma-separated string. Leave empty to skip."
                   }
@@ -2144,7 +2144,7 @@ function ModelRowEditor({
                 onChangeId(v);
               }}
               options={dropdownOptions}
-              placeholder={"Select a model..."}
+              placeholder={zhMap["Select a model..."] || "Select a model..."}
               showSearch
               searchPlaceholder={"Search models..."}
             />
@@ -2159,7 +2159,7 @@ function ModelRowEditor({
               <Button
                 variant={"default-outline"}
                 className={"h-[42px] !px-3 shrink-0"}
-                title={"Pick from catalog instead"}
+                title={zhMap["Pick from catalog instead"] || "Pick from catalog instead"}
                 onClick={() => {
                   setCustomMode(false);
                   onChangeId("");
@@ -2238,7 +2238,7 @@ function ModelRowEditor({
             >
               {showCachedInputRate && (
                 <OptionalPriceField
-                  label={"Cached input $/1k"}
+                  label={zhMap["Cached input $/1k"] || "Cached input $/1k"}
                   value={row.cachedInputPer1k}
                   onChange={onChangeCachedInput}
                 />
@@ -2246,12 +2246,12 @@ function ModelRowEditor({
               {showCacheBucketRates && (
                 <>
                   <OptionalPriceField
-                    label={"Cache read $/1k"}
+                    label={zhMap["Cache read $/1k"] || "Cache read $/1k"}
                     value={row.cacheReadPer1k}
                     onChange={onChangeCacheRead}
                   />
                   <OptionalPriceField
-                    label={"Cache write $/1k"}
+                    label={zhMap["Cache write $/1k"] || "Cache write $/1k"}
                     value={row.cacheCreationPer1k}
                     onChange={onChangeCacheCreation}
                   />

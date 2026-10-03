@@ -37,6 +37,7 @@ import { CrowdStrikeZtaScoreInput } from "@/modules/integrations/edr/crowdstrike
 import { CrowdStrikeZtaToggle } from "@/modules/integrations/edr/crowdstrike/CrowdStrikeZtaToggle";
 import { IntegrationModalHeader } from "@/modules/integrations/IntegrationModalHeader";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -175,7 +176,7 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
 
       <IntegrationModalHeader
         image={integrationImage}
-        title={"CrowdStrike"}
+        title={zhMap["CrowdStrike"] || "CrowdStrike"}
         description={
           "Restrict network access only to devices managed by the company's IT department"
         }

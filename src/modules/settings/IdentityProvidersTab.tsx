@@ -241,7 +241,7 @@ export default function IdentityProvidersTab() {
                 size={"large"}
               />
             }
-            title={"Add Identity Provider"}
+            title={zhMap["Add Identity Provider"] || "Add Identity Provider"}
             description={
               "Configure an identity provider to enable SSO authentication for your users."
             }

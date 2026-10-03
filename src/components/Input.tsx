@@ -5,6 +5,7 @@ import { cva, VariantProps } from "class-variance-authority";
 import { AlertCircle, Eye, EyeOff } from "lucide-react";
 import * as React from "react";
 import { useState } from "react";
+import zhMap from "@/i18n/zh-map";
 
 type InputVariants = VariantProps<typeof inputVariants>;
 
@@ -78,7 +79,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           type="button"
           onClick={() => setShowPassword(!showPassword)}
           className={"hover:text-white transition-all"}
-          aria-label={"Toggle password visibility"}
+          aria-label={zhMap["Toggle password visibility"] || "Toggle password visibility"}
         >
           {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
         </button>

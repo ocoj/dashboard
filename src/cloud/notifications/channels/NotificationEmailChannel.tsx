@@ -28,6 +28,7 @@ import { useNotifications } from "@/cloud/notifications/NotificationProvider";
 import { useUsers } from "@/contexts/UsersProvider";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   channel: NotificationChannel;
@@ -89,17 +90,17 @@ export const NotificationEmailChannel = ({ channel }: Props) => {
       <Breadcrumbs>
         <Breadcrumbs.Item
           href={"/settings"}
-          label={"Settings"}
+          label={zhMap["Settings"] || "Settings"}
           icon={<SettingsIcon size={13} />}
         />
         <Breadcrumbs.Item
           href={"/settings?tab=notifications"}
-          label={"Notifications"}
+          label={zhMap["Notifications"] || "Notifications"}
           icon={<MessageSquareDot size={14} />}
         />
         <Breadcrumbs.Item
           href={"/settings?tab=notifications&channel=email"}
-          label={"Email"}
+          label={zhMap["Email"] || "Email"}
           icon={<MailIcon size={14} />}
           active
         />

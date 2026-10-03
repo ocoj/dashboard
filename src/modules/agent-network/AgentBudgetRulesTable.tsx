@@ -99,8 +99,8 @@ function TargetGroupsCell({ rule }: { rule: AgentBudgetRule }) {
   return (
     <MultipleGroups
       groups={groups}
-      label={"Target Groups"}
-      description={"This limit applies to members of these groups."}
+      label={zhMap["Target Groups"] || "Target Groups"}
+      description={zhMap["This limit applies to members of these groups."] || "This limit applies to members of these groups."}
     />
   );
 }

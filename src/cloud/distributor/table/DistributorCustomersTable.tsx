@@ -22,6 +22,7 @@ import { CustomerTenantsCell } from "@/cloud/distributor/table/CustomerTenantsCe
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import EmptyRow from "@/modules/common-table-rows/EmptyRow";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 const CustomerPlanCellWithUpgrade = ({
   customer,
@@ -150,7 +151,7 @@ export default function DistributorCustomersTable({
               size={"large"}
             />
           }
-          title={"Add New Customer"}
+          title={zhMap["Add New Customer"] || "Add New Customer"}
           description={
             "It looks like you don't have any customers yet. Add a new customer to get started."
           }

@@ -43,6 +43,7 @@ import {
   useStructuralNodes,
 } from "@/modules/control-center/utils/helpers";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 interface PeerGroupsPanelProps {
   // Real peer id; empty means closed.
@@ -315,7 +316,7 @@ export const PeerGroupsPanel = ({ peerId, onClose }: PeerGroupsPanelProps) => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             autoFocus
-            placeholder={"Search group..."}
+            placeholder={zhMap["Search group..."] || "Search group..."}
           />
           <div
             className={"absolute left-0 top-1 bottom-0 flex items-center pl-5"}

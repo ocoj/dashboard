@@ -12,6 +12,7 @@ import * as React from "react";
 import { useMemo, useState } from "react";
 import { TransText } from "@/i18n/trans-text";
 import { useGroups } from "@/contexts/GroupsProvider";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   initialName: string;
@@ -51,8 +52,8 @@ export const EditGroupNameModal = ({
     <Modal open={open} onOpenChange={onOpenChange}>
       <ModalContent maxWidthClass={"max-w-md"}>
         <ModalHeader
-          title={"Rename Group"}
-          description={"Set an easily identifiable name for your group."}
+          title={zhMap["Rename Group"] || "Rename Group"}
+          description={zhMap["Set an easily identifiable name for your group."] || "Set an easily identifiable name for your group."}
           color={"blue"}
         />
 

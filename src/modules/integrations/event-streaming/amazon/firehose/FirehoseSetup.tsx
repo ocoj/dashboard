@@ -35,6 +35,7 @@ import {
 } from "@/modules/integrations/event-streaming/amazon/exampleCredentials";
 import { IntegrationModalHeader } from "@/modules/integrations/IntegrationModalHeader";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -143,7 +144,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
 
       <IntegrationModalHeader
         image={firehoseLogo}
-        title={"Connect NetBird with Amazon Data Firehose"}
+        title={zhMap["Connect NetBird with Amazon Data Firehose"] || "Connect NetBird with Amazon Data Firehose"}
         description={
           "Start streaming your NetBird audit & traffic events to Amazon Data Firehose. Follow the steps below to get started."
         }

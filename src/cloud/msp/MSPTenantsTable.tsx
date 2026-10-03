@@ -28,6 +28,7 @@ import { LockedFeatureInfoCard } from "@/modules/billing/locked-feature/LockedFe
 import { LockedFeatureOverlay } from "@/modules/billing/locked-feature/LockedFeatureOverlay";
 import { useMSP } from "@/cloud/msp/contexts/MSPProvider";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 const TenantsTableColumns: ColumnDef<Tenant>[] = [
   {
@@ -197,7 +198,7 @@ export default function MSPTenantsTable({
                   size={"large"}
                 />
               }
-              title={"Add New Tenant"}
+              title={zhMap["Add New Tenant"] || "Add New Tenant"}
               description={
                 "It looks like you don't have any tenants yet. Add a new tenant to get started."
               }

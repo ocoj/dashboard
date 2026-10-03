@@ -8,6 +8,7 @@ import ACLImage from "@/assets/onboarding/acl.png";
 import ActivityImage from "@/assets/onboarding/activity.png";
 import PostureCheckImage from "@/assets/onboarding/posture.png";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   onFinish?: () => void;
@@ -36,7 +37,7 @@ export const OnboardingEnd = ({ onFinish }: Props) => {
 
         <div className={"mt-8 flex flex-col gap-8"}>
           <VideoGuide
-            title={"Access Control in Under 5 Minutes"}
+            title={zhMap["Access Control in Under 5 Minutes"] || "Access Control in Under 5 Minutes"}
             src={ACLImage}
             description={
               "Learn how to manage access for your network resources effectively. Whether you want to restrict access to specific machines or allow certain users to connect."
@@ -44,7 +45,7 @@ export const OnboardingEnd = ({ onFinish }: Props) => {
             href={"https://www.youtube.com/watch?v=WtZD_q-g_Jc"}
           />
           <VideoGuide
-            title={"Provision Users & Groups From Your IdP"}
+            title={zhMap["Provision Users & Groups From Your IdP"] || "Provision Users & Groups From Your IdP"}
             src={PostureCheckImage}
             description={
               "Learn how to provision users and groups from your identity provider, such as Okta, Azure AD, or Google Workspace, to manage access control in NetBird and automate onboarding and offboarding processes."
@@ -52,7 +53,7 @@ export const OnboardingEnd = ({ onFinish }: Props) => {
             href={"https://www.youtube.com/watch?v=RxYWTpf7cgY"}
           />
           <VideoGuide
-            title={"How NetBird Works"}
+            title={zhMap["How NetBird Works"] || "How NetBird Works"}
             description={
               "Learn more about how NetBird works, its architecture, and how it can help you build secure networks."
             }

@@ -21,6 +21,7 @@ import { useTenants } from "@/cloud/msp/contexts/TenantsProvider";
 import { Tenant } from "@/cloud/msp/interfaces/Tenant";
 import { User } from "@/interfaces/User";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -48,7 +49,7 @@ export const MSPUnlinkModal = ({ open, setOpen, tenant }: Props) => {
         <ModalContent maxWidthClass={"max-w-lg"}>
           <ModalHeader
             icon={<UnlinkIcon size={16} />}
-            title={"Unlink Tenant"}
+            title={zhMap["Unlink Tenant"] || "Unlink Tenant"}
             description={`${tenant.name} (${tenant.domain})`}
             color={"yellow"}
           />
@@ -62,7 +63,7 @@ export const MSPUnlinkModal = ({ open, setOpen, tenant }: Props) => {
               onChange={setSelectedUser}
               value={selectedUser}
               options={users}
-              placeholder={"Select a new owner..."}
+              placeholder={zhMap["Select a new owner..."] || "Select a new owner..."}
             />
             <div
               className={cn(

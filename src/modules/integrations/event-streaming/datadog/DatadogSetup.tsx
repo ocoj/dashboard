@@ -33,6 +33,7 @@ import {
 } from "@/modules/integrations/event-streaming/datadog/DatadogRegions";
 import { IntegrationModalHeader } from "@/modules/integrations/IntegrationModalHeader";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -129,7 +130,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
 
       <IntegrationModalHeader
         image={datadogLogo}
-        title={"Connect NetBird with Datadog"}
+        title={zhMap["Connect NetBird with Datadog"] || "Connect NetBird with Datadog"}
         description={
           "Start streaming your NetBird audit & traffic events to Datadog. Follow the steps below to get started."
         }

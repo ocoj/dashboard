@@ -54,6 +54,7 @@ import {
   isFrameNode,
   useStructuralNodes,
 } from "@/modules/control-center/utils/helpers";
+import zhMap from "@/i18n/zh-map";
 
 // Sized to the longest option label (~6.5px/char at text-xs), clamped to 256px.
 const networkSelectorWidth = (labels: unknown[]) => {
@@ -107,7 +108,7 @@ function NetworkActionsMenu({
       <DropdownMenuTrigger asChild>
         <button
           type={"button"}
-          aria-label={"Network actions"}
+          aria-label={zhMap["Network actions"] || "Network actions"}
           className={
             "flex items-center justify-center h-[40px] px-4 shrink-0 rounded-r-md border border-l-0 border-gray-700/40 bg-nb-gray-920 text-gray-400 hover:text-white hover:bg-nb-gray-910 transition-colors"
           }
@@ -458,7 +459,7 @@ function FocusModePill() {
                 className={
                   "p-1.5 rounded-full text-nb-gray-400 hover:text-nb-gray-100 hover:bg-nb-gray-800 transition-colors"
                 }
-                aria-label={"Exit Focus"}
+                aria-label={zhMap["Exit Focus"] || "Exit Focus"}
               >
                 <XIcon size={15} />
               </button>

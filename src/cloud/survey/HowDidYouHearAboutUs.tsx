@@ -16,6 +16,7 @@ import { useLoggedInUser } from "@/contexts/UsersProvider";
 import { useAccount } from "@/modules/account/useAccount";
 import { referralSourceOptions } from "@/modules/onboarding/OnboardingSurvey";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 export default function HowDidYouHearAboutUs() {
   const { isOwner, loggedInUser } = useLoggedInUser();
@@ -121,7 +122,7 @@ export default function HowDidYouHearAboutUs() {
                 onChange={setReferralSource}
                 options={randomizedOptions}
                 showValues={false}
-                placeholder={"Please select an option..."}
+                placeholder={zhMap["Please select an option..."] || "Please select an option..."}
                 variant={"dropdown"}
               />
             </div>

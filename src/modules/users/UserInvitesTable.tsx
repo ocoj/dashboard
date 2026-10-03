@@ -190,7 +190,7 @@ function InviteGroupCell({ invite }: { invite: UserInvite }) {
   return (
     <MultipleGroups
       groups={foundGroups}
-      label={"Auto-assigned Groups"}
+      label={zhMap["Auto-assigned Groups"] || "Auto-assigned Groups"}
       countOnly={true}
     />
   );
@@ -296,7 +296,7 @@ function InviteActionCell({ invite }: { invite: UserInvite }) {
             <Button
               variant={"secondary"}
               className={"!px-3"}
-              aria-label={"Invite actions"}
+              aria-label={zhMap["Invite actions"] || "Invite actions"}
             >
               <MoreVertical size={16} className={"shrink-0"} />
             </Button>
@@ -610,7 +610,7 @@ export default function UserInvitesTable({
               size={"large"}
             />
           }
-          title={"No Pending Invites"}
+          title={zhMap["No Pending Invites"] || "No Pending Invites"}
           description={
             "There are no pending invites. Create an invite to add users to your network."
           }

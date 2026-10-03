@@ -15,6 +15,7 @@ import React, { useState } from "react";
 import { AgentGuardrail } from "@/modules/agent-network/data/mockData";
 import { useAIProviders } from "@/modules/agent-network/AIProvidersProvider";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -48,8 +49,8 @@ export default function AgentGuardrailBrowseModal({
       <ModalContent maxWidthClass={"max-w-xl"}>
         <ModalHeader
           icon={<ShieldHalf size={19} />}
-          title={"Browse Guardrails"}
-          description={"Pick one or more existing guardrails to attach."}
+          title={zhMap["Browse Guardrails"] || "Browse Guardrails"}
+          description={zhMap["Pick one or more existing guardrails to attach."] || "Pick one or more existing guardrails to attach."}
           color={"netbird"}
         />
         <div className={"px-8 pb-2"}>

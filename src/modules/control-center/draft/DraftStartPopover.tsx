@@ -8,6 +8,7 @@ import {
   GroupIcon,
   LucideIcon,
 } from "lucide-react";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -52,15 +53,15 @@ export const DraftStartPopover = ({
         <div className={"p-1.5"}>
           <StartOption
             icon={CirclePlusIcon}
-            label={"New Empty Draft"}
-            description={"Start from a blank canvas"}
+            label={zhMap["New Empty Draft"] || "New Empty Draft"}
+            description={zhMap["Start from a blank canvas"] || "Start from a blank canvas"}
             onClick={() => choose(onStartBlank)}
             data-testid={"cc-draft-start-blank-option"}
           />
           <StartOption
             icon={GroupIcon}
-            label={"From Current View"}
-            description={"Start from the current canvas"}
+            label={zhMap["From Current View"] || "From Current View"}
+            description={zhMap["Start from the current canvas"] || "Start from the current canvas"}
             onClick={() => choose(onUseCurrent)}
             data-testid={"cc-draft-use-current-option"}
           />

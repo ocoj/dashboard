@@ -5,6 +5,7 @@ import { HelpTooltip } from "@components/HelpTooltip";
 import useCopyToClipboard from "@hooks/useCopyToClipboard";
 import { CheckIcon, CopyIcon, GlobeIcon } from "lucide-react";
 import React from "react";
+import zhMap from "@/i18n/zh-map";
 
 // The tooltip is shared with the providers page's empty state, which shows the
 // same card before an endpoint exists.
@@ -55,7 +56,7 @@ export default function EndpointBadge({
             "inline-flex items-center gap-1.5 rounded-md border border-nb-gray-700 bg-nb-gray-800/60 px-2.5 py-1.5 text-[11px] font-medium text-nb-gray-200 hover:bg-nb-gray-800 hover:text-white transition-colors shrink-0"
           }
           onClick={() => copy("Endpoint copied to clipboard")}
-          aria-label={"Copy endpoint"}
+          aria-label={zhMap["Copy endpoint"] || "Copy endpoint"}
         >
           {copied ? <CheckIcon size={11} /> : <CopyIcon size={11} />}
           Copy

@@ -246,8 +246,8 @@ function ModelAllowlistCheck({
       setOpen={setOpen}
       key={open ? 1 : 0}
       active={Boolean(value && value.length > 0)}
-      title={"Model Allowlist"}
-      description={"Block requests for models not on the allowlist."}
+      title={zhMap["Model Allowlist"] || "Model Allowlist"}
+      description={zhMap["Block requests for models not on the allowlist."] || "Block requests for models not on the allowlist."}
       // The tile is a cream gradient, so the mark on it has to be dark.
       icon={<Boxes size={16} className={"text-netbird-950"} />}
       iconClass={"bg-gradient-to-tr from-netbird-200 to-netbird-100"}
@@ -357,7 +357,7 @@ function ModelAllowlistContent({
                           ? "indeterminate"
                           : false
                       }
-                      aria-label={"Select all models"}
+                      aria-label={zhMap["Select all models"] || "Select all models"}
                       onCheckedChange={() =>
                         setDraft((prev) =>
                           allChecked
@@ -463,8 +463,8 @@ function PromptCaptureCheck({
       setOpen={setOpen}
       key={open ? 1 : 0}
       active={value}
-      title={"Prompt Capture"}
-      description={"Redact PII before storing the prompt body."}
+      title={zhMap["Prompt Capture"] || "Prompt Capture"}
+      description={zhMap["Redact PII before storing the prompt body."] || "Redact PII before storing the prompt body."}
       icon={<ShieldCheckIcon size={16} />}
       iconClass={"bg-gradient-to-tr from-blue-500 to-blue-400"}
       modalWidthClass={"max-w-lg"}

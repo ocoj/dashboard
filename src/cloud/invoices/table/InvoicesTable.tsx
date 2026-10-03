@@ -15,6 +15,7 @@ import InvoicesPeriodCell from "@/cloud/invoices/table/InvoicesPeriodCell";
 import InvoicesTypeCell from "@/cloud/invoices/table/InvoicesTypeCell";
 import { Invoice } from "@/cloud/msp/interfaces/Invoice";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   invoices?: Invoice[];
@@ -89,7 +90,7 @@ export default function InvoicesTable({
       getStartedCard={
         <NoResults
           className={"py-4"}
-          title={"You don't have any invoices"}
+          title={zhMap["You don't have any invoices"] || "You don't have any invoices"}
           description={
             "Invoices are created at the end of each billing period. You will see them here once they are available."
           }

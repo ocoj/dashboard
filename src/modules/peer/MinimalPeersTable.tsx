@@ -144,7 +144,7 @@ export default function MinimalPeersTable({
         !getStartedCard ? (
           <NoResults
             className={"py-4"}
-            title={"This peer has no accessible peers"}
+            title={zhMap["This peer has no accessible peers"] || "This peer has no accessible peers"}
             description={
               "Add more peers to your network or check your access control policies."
             }

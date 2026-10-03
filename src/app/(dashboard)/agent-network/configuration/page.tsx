@@ -120,7 +120,7 @@ export default function AgentNetworkConfigurationPage() {
                   {canReadClusters && (
                     <Tabs.Content value={TAB_CLUSTERS} className={"w-full"}>
                       <ConfigTabHeader
-                        label={"Clusters"}
+                        label={zhMap["Clusters"] || "Clusters"}
                         href={"/agent-network/configuration?tab=clusters"}
                       >
                         {agentNetworkOnly

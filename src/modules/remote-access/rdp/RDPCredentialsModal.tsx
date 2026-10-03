@@ -25,6 +25,7 @@ import {
   RDPCredentials,
 } from "@/modules/remote-access/rdp/useRemoteDesktop";
 import { IconLoader2 } from "@tabler/icons-react";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -159,7 +160,7 @@ export const RDPCredentialsModal = ({
               />
               <Input
                 value={password}
-                placeholder={"Enter password"}
+                placeholder={zhMap["Enter password"] || "Enter password"}
                 type={"password"}
                 onChange={(e) => setPassword(e.target.value)}
                 onKeyDown={handleKeyDown}

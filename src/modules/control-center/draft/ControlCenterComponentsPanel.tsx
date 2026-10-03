@@ -75,6 +75,7 @@ import {
 } from "@/modules/control-center/utils/helpers";
 import { NodeType } from "@/modules/control-center/utils/nodes";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type BlankKind = "group" | "network" | "resource";
 
@@ -881,8 +882,8 @@ const PanelContent = React.memo(
             <TemplateItem
               key={"policy-template"}
               icon={ShieldIcon}
-              label={"Policy"}
-              description={"Control access between sources and destinations"}
+              label={zhMap["Policy"] || "Policy"}
+              description={zhMap["Control access between sources and destinations"] || "Control access between sources and destinations"}
               onPointerDown={(e) => handlePolicyDragStart(e)}
               data-testid={"cc-template-policy"}
             />,
@@ -1191,8 +1192,8 @@ const PanelContent = React.memo(
             <TemplateItem
               key={"agent-provider-template"}
               icon={SparklesIcon}
-              label={"Provider"}
-              description={"Connect an AI provider or gateway"}
+              label={zhMap["Provider"] || "Provider"}
+              description={zhMap["Connect an AI provider or gateway"] || "Connect an AI provider or gateway"}
               onPointerDown={(e) =>
                 handleAgentDragStart(e, (position) =>
                   openProviderWizard(position),
@@ -1207,8 +1208,8 @@ const PanelContent = React.memo(
             <TemplateItem
               key={"agent-policy-template"}
               icon={ShieldIcon}
-              label={"Agent Policy"}
-              description={"Authorize groups to reach providers"}
+              label={zhMap["Agent Policy"] || "Agent Policy"}
+              description={zhMap["Authorize groups to reach providers"] || "Authorize groups to reach providers"}
               onPointerDown={(e) =>
                 handleAgentDragStart(e, (position) =>
                   addBlankAgentPolicy(position),
@@ -1508,7 +1509,7 @@ const PanelContent = React.memo(
                   typeof DropdownInput
                 >["onChange"]
               }
-              placeholder={"Search components, peers, groups, resources..."}
+              placeholder={zhMap["Search components, peers, groups, resources..."] || "Search components, peers, groups, resources..."}
               className={"py-3.5"}
               hideEnterIcon
             />

@@ -16,6 +16,7 @@ import { useNetworksContext } from "@/modules/networks/NetworkProvider";
 import { FolderGit2 } from "lucide-react";
 import Separator from "@components/Separator";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type ResourceGroupModalProps = {
   resource?: NetworkResource;
@@ -98,7 +99,7 @@ const ResourceGroupModalContent = ({
             onChange={setGroups}
             values={groups}
             showPeerCounter={false}
-            placeholder={"Add or select resource group(s)..."}
+            placeholder={zhMap["Add or select resource group(s)..."] || "Add or select resource group(s)..."}
             policies={policies}
           />
         </div>

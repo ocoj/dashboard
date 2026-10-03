@@ -10,6 +10,7 @@ import DomainActionCell from "@/cloud/sign-in-domains/table/DomainActionCell";
 import DomainStatusCell from "@/cloud/sign-in-domains/table/DomainStatusCell";
 import { DomainValidationStatus, SignInDomain } from "@/interfaces/Account";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   domains?: SignInDomain[];
@@ -99,7 +100,7 @@ export default function SignInDomainsTable({
         <NoResults
           className={"py-4"}
           hideIcon
-          title={"No sign-in domains yet"}
+          title={zhMap["No sign-in domains yet"] || "No sign-in domains yet"}
           description={
             "Add a domain, then verify ownership with a DNS record to start matching users to this account."
           }

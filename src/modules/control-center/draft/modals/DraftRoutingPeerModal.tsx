@@ -16,6 +16,7 @@ import { useDraftChangeset } from "@/modules/control-center/draft/DraftChangeset
 import { useDraftNetworkActions } from "@/modules/control-center/hooks/useDraftNetworkActions";
 import { RoutingPeerModalContent } from "@/modules/networks/routing-peers/NetworkRoutingPeerModal";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 // The networks page's routing-peer modal, run in pure-data mode for draft
 // targets: the result lands in the changeset instead of a live PUT.
@@ -91,7 +92,7 @@ export const DraftRoutingPeerModal = () => {
             <ModalHeader
               icon={<Share2Icon size={20} />}
               color={"netbird"}
-              title={"Routing peer not installed yet"}
+              title={zhMap["Routing peer not installed yet"] || "Routing peer not installed yet"}
               description={
                 "This routing peer uses a peer that hasn't been installed. " +
                 "Install it to edit these settings, or remove this change " +

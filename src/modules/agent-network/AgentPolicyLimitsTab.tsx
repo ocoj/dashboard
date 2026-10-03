@@ -47,6 +47,7 @@ import {
   PolicyTokenLimit,
 } from "@/modules/agent-network/data/mockData";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type LimitKind = "token" | "budget";
 
@@ -463,7 +464,7 @@ function LimitEditModal({
                 <SelectTrigger className={"w-[135px] shrink-0"}>
                   <div className={"flex items-center gap-3"}>
                     <CalendarClock size={15} className={"text-nb-gray-300"} />
-                    <SelectValue placeholder={"Select interval..."} />
+                    <SelectValue placeholder={zhMap["Select interval..."] || "Select interval..."} />
                   </div>
                 </SelectTrigger>
                 <SelectContent>

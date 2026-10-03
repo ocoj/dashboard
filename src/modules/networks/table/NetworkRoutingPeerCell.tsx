@@ -10,6 +10,7 @@ import { usePermissions } from "@/contexts/PermissionsProvider";
 import { Network } from "@/interfaces/Network";
 import { useNetworksContext } from "@/modules/networks/NetworkProvider";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   network: Network;
@@ -101,7 +102,7 @@ export default function NetworkRoutingPeerCell({ network }: Props) {
         className={"!px-3"}
         onClick={() => openAddRoutingPeerModal(network)}
         disabled={!permission.networks.update}
-        aria-label={"Add routing peer"}
+        aria-label={zhMap["Add routing peer"] || "Add routing peer"}
       >
         <PlusCircle size={12} />
         <TransText>Add</TransText>

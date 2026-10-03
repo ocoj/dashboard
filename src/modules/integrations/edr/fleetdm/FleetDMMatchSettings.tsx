@@ -8,6 +8,7 @@ import * as React from "react";
 import { useState } from "react";
 import { FleetDMMatchAttributes } from "@/interfaces/EDR";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   value: FleetDMMatchAttributes;
@@ -34,7 +35,7 @@ export const FleetDMMatchSettings = ({
           </HelpText>
         </div>
         <Input
-          placeholder={"Not set"}
+          placeholder={zhMap["Not set"] || "Not set"}
           min={0}
           max={999}
           className={"w-full min-w-[160px]"}
@@ -62,7 +63,7 @@ export const FleetDMMatchSettings = ({
           </HelpText>
         </div>
         <Input
-          placeholder={"Not set"}
+          placeholder={zhMap["Not set"] || "Not set"}
           min={0}
           max={999}
           className={"w-full min-w-[160px]"}
@@ -140,7 +141,7 @@ export const FleetDMMatchSettings = ({
               Online Status
             </>
           }
-          helpText={"Require the host to be online (recently seen by Fleet)."}
+          helpText={zhMap["Require the host to be online (recently seen by Fleet)."] || "Require the host to be online (recently seen by Fleet)."}
         />
       </div>
     </>

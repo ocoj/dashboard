@@ -40,6 +40,7 @@ import useGroupHelper from "@/modules/groups/useGroupHelper";
 import { matchAttributesReducer } from "@/modules/integrations/edr/fleetdm/FleetDM";
 import { FleetDMMatchSettings } from "@/modules/integrations/edr/fleetdm/FleetDMMatchSettings";
 import { IntegrationModalHeader } from "@/modules/integrations/IntegrationModalHeader";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -180,7 +181,7 @@ export function ConfigurationContent({
 
       <IntegrationModalHeader
         image={integrationImage}
-        title={"FleetDM Configuration"}
+        title={zhMap["FleetDM Configuration"] || "FleetDM Configuration"}
         description={
           "Restrict network access to IT-managed devices based on FleetDM compliance policies."
         }
@@ -336,7 +337,7 @@ export function ConfigurationContent({
                   API Token
                 </div>
               }
-              placeholder={"Enter your FleetDM API token"}
+              placeholder={zhMap["Enter your FleetDM API token"] || "Enter your FleetDM API token"}
               value={apiToken}
               onFocus={(e) => {
                 if (e.target.value == secretPlaceholder) {

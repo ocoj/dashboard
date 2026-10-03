@@ -94,7 +94,7 @@ export function ServiceUserModalContent({ onSuccess }: Readonly<ModalProps>) {
                   <User2 size={16} className={"text-nb-gray-300"} />
                 </div>
               }
-              placeholder={"John Doe"}
+              placeholder={zhMap["John Doe"] || "John Doe"}
               value={name}
               data-testid={"service-user-name"}
               onChange={(e) => setName(e.target.value)}

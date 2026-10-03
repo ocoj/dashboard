@@ -98,7 +98,7 @@ export default function PeerRoutesTable({
         getStartedCard={
           <NoResults
             className={"py-4"}
-            title={"This peer has no network routes"}
+            title={zhMap["This peer has no network routes"] || "This peer has no network routes"}
             description={
               "You don't have any assigned network routes yet. You can add this peer to an existing network or create a new network route."
             }

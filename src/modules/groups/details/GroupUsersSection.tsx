@@ -140,7 +140,7 @@ export const GroupUsersSection = ({ users, isLoading = true }: Props) => {
         getStartedCard={
           <NoResults
             className={"py-4"}
-            title={"This group has no assigned users yet"}
+            title={zhMap["This group has no assigned users yet"] || "This group has no assigned users yet"}
             description={
               "Invite new users or assign existing ones to this group to see them listed here."
             }
@@ -165,7 +165,7 @@ export const GroupUsersSection = ({ users, isLoading = true }: Props) => {
           return (
             <>
               <DataTableMultiSelectPopup
-                label={"User(s) selected"}
+                label={zhMap["User(s) selected"] || "User(s) selected"}
                 selectedItems={table
                   .getSelectedRowModel()
                   .rows.map((row) => row.original)}

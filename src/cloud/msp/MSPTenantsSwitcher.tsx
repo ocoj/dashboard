@@ -19,6 +19,7 @@ import { TenantListItem } from "@/cloud/msp/interfaces/Tenant";
 import { useApplicationContext } from "@/contexts/ApplicationProvider";
 import { useBilling } from "@/contexts/BillingProvider";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 export const MSPTenantsSwitcher = () => {
   const { isTrial, isFreePlan } = useBilling();
@@ -145,7 +146,7 @@ const TenantDropdown = ({ tenants, currentAccount, mspAccount }: Props) => {
           <DropdownInput
             value={search}
             onChange={setSearch}
-            placeholder={"Search by name or domain..."}
+            placeholder={zhMap["Search by name or domain..."] || "Search by name or domain..."}
             hideEnterIcon={true}
           />
 

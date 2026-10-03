@@ -418,7 +418,7 @@ export default function ReverseProxyEventsTable({
               size={"large"}
             />
           }
-          title={"No Proxy Events Yet"}
+          title={zhMap["No Proxy Events Yet"] || "No Proxy Events Yet"}
           description={
             "No proxy traffic yet. Events appear here once your reverse proxy services start serving requests."
           }

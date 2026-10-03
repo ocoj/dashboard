@@ -22,6 +22,7 @@ import {
 import { useControlCenterData } from "@/modules/control-center/hooks/useControlCenterData";
 import { getDraftResource } from "@/modules/control-center/utils/helpers";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 // Destination picker for a POLICY connected with a network frame: the policy
 // modal's destination selector, limited to that network's resources and groups.
@@ -144,7 +145,7 @@ const PickerContent = ({
     <ModalContent maxWidthClass={"max-w-lg"}>
       <ModalHeader
         icon={<NetworkRoutesIcon className={"fill-netbird"} />}
-        title={"Select Destination"}
+        title={zhMap["Select Destination"] || "Select Destination"}
         description={`Access ${network?.name ?? "this network"}${
           policy?.name ? ` via "${policy.name}"` : ""
         }`}
@@ -160,7 +161,7 @@ const PickerContent = ({
             <PeerGroupSelector
               data-testid={"network-destination-selector"}
               popoverWidth={480}
-              placeholder={"Select destination(s)..."}
+              placeholder={zhMap["Select destination(s)..."] || "Select destination(s)..."}
               showResources={true}
               showResourceCounter={true}
               // Land on the tab that has content.

@@ -20,6 +20,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useApiCall } from "@/utils/api";
 import { TransText } from "@/i18n/trans-text";
 import { ReverseProxyCluster } from "@/interfaces/ReverseProxy";
+import zhMap from "@/i18n/zh-map";
 
 // Synced from templates/reverse-proxy/netbird-proxy-cfn.yaml by the
 // sync-deploy-templates workflow.
@@ -561,7 +562,7 @@ const HetznerDeploy = ({
         </HelpText>
         <Input
           type={"password"}
-          placeholder={"Paste your Hetzner Cloud API token here"}
+          placeholder={zhMap["Paste your Hetzner Cloud API token here"] || "Paste your Hetzner Cloud API token here"}
           value={hetznerToken}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setHetznerToken(e.target.value)
@@ -613,7 +614,7 @@ const HetznerDeploy = ({
           <FancyToggleSwitch
             value={staticIP}
             onChange={setStaticIP}
-            label={"Static IP"}
+            label={zhMap["Static IP"] || "Static IP"}
             helpText={
               "Keep the server's IP when the server is deleted or rebuilt, so the DNS records stay valid. Hetzner bills unassigned IPs."
             }
@@ -821,7 +822,7 @@ const DigitalOceanDeploy = ({
         </HelpText>
         <Input
           type={"password"}
-          placeholder={"Paste your DigitalOcean API token here"}
+          placeholder={zhMap["Paste your DigitalOcean API token here"] || "Paste your DigitalOcean API token here"}
           value={doToken}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setDoToken(e.target.value)
@@ -849,7 +850,7 @@ const DigitalOceanDeploy = ({
       <FancyToggleSwitch
         value={staticIP}
         onChange={setStaticIP}
-        label={"Static IP"}
+        label={zhMap["Static IP"] || "Static IP"}
         helpText={
           "Reserve a static IP so DNS records remain valid after rebuilds. Free of charge while assigned to a Droplet."
         }

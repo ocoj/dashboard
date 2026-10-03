@@ -919,8 +919,8 @@ function GroupCell({ groupNames }: { groupNames: string[] }) {
     <div className={"px-2 py-1.5"}>
       <MultipleGroups
         groups={groups}
-        label={"User Groups"}
-        description={"Groups the user belonged to at the time of the request."}
+        label={zhMap["User Groups"] || "User Groups"}
+        description={zhMap["Groups the user belonged to at the time of the request."] || "Groups the user belonged to at the time of the request."}
         countOnly
       />
     </div>

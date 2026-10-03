@@ -16,6 +16,7 @@ import { useSignInDomains } from "@/cloud/sign-in-domains/useSignInDomains";
 import { DomainValidationStatus, SignInDomain } from "@/interfaces/Account";
 import { DomainVerificationModal } from "@/modules/integrations/sso/DomainVerificationModal";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -90,8 +91,8 @@ export const AddSignInDomainModal = ({ open, onOpenChange }: Props) => {
         <ModalContent maxWidthClass={"max-w-md"}>
           <ModalHeader
             className={"pb-4 px-8"}
-            title={"Add Sign-in Domain"}
-            description={"Users on this domain are matched to your account."}
+            title={zhMap["Add Sign-in Domain"] || "Add Sign-in Domain"}
+            description={zhMap["Users on this domain are matched to your account."] || "Users on this domain are matched to your account."}
           />
 
           <form

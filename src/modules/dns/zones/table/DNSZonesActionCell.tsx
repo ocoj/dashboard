@@ -13,6 +13,7 @@ import { usePermissions } from "@/contexts/PermissionsProvider";
 import { DNSZone } from "@/interfaces/DNS";
 import { useDNSZones } from "@/modules/dns/zones/DNSZonesProvider";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   zone: DNSZone;
@@ -36,7 +37,7 @@ export const DNSZonesActionCell = ({ zone }: Props) => {
           <Button
             variant={"secondary"}
             className={"!px-3"}
-            aria-label={"Zone actions"}
+            aria-label={zhMap["Zone actions"] || "Zone actions"}
             data-testid="dns-zone-actions"
           >
             <MoreVertical size={16} className={"shrink-0"} />

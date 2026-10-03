@@ -13,6 +13,7 @@ import { Network, NetworkResource } from "@/interfaces/Network";
 import { Policy } from "@/interfaces/Policy";
 import { ResourceSingleAddressInput } from "@/modules/networks/resources/ResourceSingleAddressInput";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   onNetworkCreation?: (network: Network) => void;
@@ -210,19 +211,19 @@ export const OnboardingAddResource = ({
         <RadioCardGroup value={resourceType} onValueChange={setResourceType}>
           <RadioCard
             value={"ip"}
-            title={"Single IP Address"}
+            title={zhMap["Single IP Address"] || "Single IP Address"}
             icon={<WorkflowIcon size={12} />}
-            description={"IPv4 or IPv6 address like 192.168.31.45"}
+            description={zhMap["IPv4 or IPv6 address like 192.168.31.45"] || "IPv4 or IPv6 address like 192.168.31.45"}
           />
           <RadioCard
             value={"subnet"}
-            title={"Entire Subnet"}
+            title={zhMap["Entire Subnet"] || "Entire Subnet"}
             icon={<NetworkIcon size={12} />}
-            description={"CIDR range like 192.168.0.0/24 or 2001:db8::/64"}
+            description={zhMap["CIDR range like 192.168.0.0/24 or 2001:db8::/64"] || "CIDR range like 192.168.0.0/24 or 2001:db8::/64"}
           />
           <RadioCard
             value={"domain"}
-            title={"Domain"}
+            title={zhMap["Domain"] || "Domain"}
             icon={<GlobeIcon size={12} />}
             description={
               "A domain like service.internal or a wildcard like *.services.internal"
@@ -232,7 +233,7 @@ export const OnboardingAddResource = ({
 
         {resourceType && (
           <ResourceSingleAddressInput
-            label={"What is the address of your resource?"}
+            label={zhMap["What is the address of your resource?"] || "What is the address of your resource?"}
             value={resourceAddress}
             onChange={setResourceAddress}
             onError={setError}

@@ -28,6 +28,7 @@ import { stripZeroPort } from "@/cloud/traffic-events/utils/parseAddress";
 import { useCountries } from "@/contexts/CountryProvider";
 import { OperatingSystem } from "@/interfaces/OperatingSystem";
 import { OSLogo } from "@/modules/peers/PeerOSCell";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   event: TrafficEvent;
@@ -111,7 +112,7 @@ export const TrafficEventsMachineCell = ({
           {machine.dns_label && (
             <ListItem
               icon={<GlobeIcon size={14} />}
-              label={"Domain"}
+              label={zhMap["Domain"] || "Domain"}
               value={
                 <CopyToClipboardText
                   iconAlignment={"right"}
@@ -128,7 +129,7 @@ export const TrafficEventsMachineCell = ({
             <>
               <ListItem
                 icon={<UserIcon size={14} />}
-                label={"User"}
+                label={zhMap["User"] || "User"}
                 value={
                   <CopyToClipboardText
                     iconAlignment={"right"}
@@ -142,7 +143,7 @@ export const TrafficEventsMachineCell = ({
               {event?.user.email && (
                 <ListItem
                   icon={<MailIcon size={14} />}
-                  label={"User E-Mail"}
+                  label={zhMap["User E-Mail"] || "User E-Mail"}
                   value={
                     <CopyToClipboardText
                       iconAlignment={"right"}
@@ -173,7 +174,7 @@ export const TrafficEventsMachineCell = ({
 
           <ListItem
             icon={<FlagIcon size={14} />}
-            label={"Region"}
+            label={zhMap["Region"] || "Region"}
             value={
               <>
                 {isGeoDataLoading ? (

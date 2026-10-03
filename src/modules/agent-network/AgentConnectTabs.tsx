@@ -14,6 +14,7 @@ import OpenAIIcon from "@/assets/icons/OpenAIIcon";
 import ShellIcon from "@/assets/icons/ShellIcon";
 import AIProviderLogo from "@/modules/agent-network/AIProviderLogo";
 import { AIProviderId } from "@/modules/agent-network/data/mockData";
+import zhMap from "@/i18n/zh-map";
 
 // Same gray-to-netbird treatment the install-peer modal gives its OS tabs.
 const TAB_ICON =
@@ -128,7 +129,7 @@ function Snippet({
           <button
             type={"button"}
             onClick={() => copy("Copied to clipboard")}
-            aria-label={"Copy snippet"}
+            aria-label={zhMap["Copy snippet"] || "Copy snippet"}
             className={
               "self-center text-nb-gray-400 hover:text-nb-gray-100 transition-colors cursor-pointer"
             }

@@ -19,6 +19,7 @@ import { useMemo, useState } from "react";
 import { useElementSize } from "@/hooks/useElementSize";
 import { PostureCheck } from "@/interfaces/PostureCheck";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 interface MultiSelectProps {
   values?: string[];
@@ -148,7 +149,7 @@ export function SSHUsernameSelector({
                   ref={searchRef}
                   value={search}
                   onValueChange={setSearch}
-                  placeholder={"E.g., root, ec2-user, ubuntu"}
+                  placeholder={zhMap["E.g., root, ec2-user, ubuntu"] || "E.g., root, ec2-user, ubuntu"}
                 />
                 <div
                   className={

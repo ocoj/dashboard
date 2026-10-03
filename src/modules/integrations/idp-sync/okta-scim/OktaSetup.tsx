@@ -39,6 +39,7 @@ import { EmbeddedIdentityProviderSelect } from "@/modules/integrations/idp-sync/
 import { IntegrationModalHeader } from "@/modules/integrations/IntegrationModalHeader";
 import { useEnterpriseConnections } from "@/modules/integrations/sso/useEnterpriseConnections";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -161,7 +162,7 @@ export function SetupContent({
 
       <IntegrationModalHeader
         image={integrationImage}
-        title={"Connect NetBird with Okta"}
+        title={zhMap["Connect NetBird with Okta"] || "Connect NetBird with Okta"}
         description={
           "Start syncing your users and groups from Okta to NetBird. Follow the steps below to get started."
         }
@@ -474,7 +475,7 @@ export function SetupSSOContent() {
 
       <IntegrationModalHeader
         image={integrationImage}
-        title={"Connect NetBird with Okta"}
+        title={zhMap["Connect NetBird with Okta"] || "Connect NetBird with Okta"}
         description={
           "Start syncing your users and groups from Okta to NetBird. Follow the steps below to get started."
         }

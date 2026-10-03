@@ -29,6 +29,7 @@ import {
 } from "@/modules/control-center/utils/helpers";
 import SetupModal from "@/modules/setup-netbird-modal/SetupModal";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 // Server/Agent installs arrive without a setup key: it is generated on demand
 // and written back onto the placeholder node so reopening Install reuses it.
@@ -299,7 +300,7 @@ export const DraftInstallPeerModal = () => {
           <ModalHeader
             icon={<CheckCircle2Icon size={20} />}
             color={"green"}
-            title={"Peer installed"}
+            title={zhMap["Peer installed"] || "Peer installed"}
             description={`“${installedChange.name}” registered and took the placeholder's place in your draft.`}
           />
           <ModalFooter>

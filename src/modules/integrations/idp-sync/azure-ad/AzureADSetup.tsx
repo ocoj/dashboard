@@ -35,6 +35,7 @@ import { GroupPrefixHelpText } from "@/modules/integrations/idp-sync/GroupPrefix
 import { IntegrationModalHeader } from "@/modules/integrations/IntegrationModalHeader";
 import { GroupPrefixInput } from "../GroupPrefixInput";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -146,7 +147,7 @@ export function SetupContent({ onSuccess }: ModalProps) {
 
       <IntegrationModalHeader
         image={integrationImage}
-        title={"Connect NetBird with Entra ID (API)"}
+        title={zhMap["Connect NetBird with Entra ID (API)"] || "Connect NetBird with Entra ID (API)"}
         description={
           "Start syncing your users and groups from Entra ID to NetBird. Follow the steps below to get started."
         }
@@ -350,7 +351,7 @@ export function SetupContent({ onSuccess }: ModalProps) {
                   <KeyRound size={16} className={"text-nb-gray-300"} />
                 </div>
               }
-              placeholder={"YdV7Q~JJ62Xl.LvYoBanxZR2sJA2va_3UbqvncY8"}
+              placeholder={zhMap["YdV7Q~JJ62Xl.LvYoBanxZR2sJA2va_3UbqvncY8"] || "YdV7Q~JJ62Xl.LvYoBanxZR2sJA2va_3UbqvncY8"}
               value={clientSecret}
               onChange={(e) => setClientSecret(e.target.value)}
             />
