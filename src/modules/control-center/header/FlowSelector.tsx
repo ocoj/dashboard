@@ -10,6 +10,7 @@ import {
   UsersIcon,
 } from "lucide-react";
 import * as React from "react";
+import zhMap from "@/i18n/zh-map";
 import { useAgentNetworkMode } from "@/modules/agent-network/useAgentNetworkMode";
 import { useCloseOnCanvasClick } from "@/modules/control-center/hooks/useCloseOnCanvasClick";
 
@@ -35,14 +36,14 @@ export const FlowSelector = ({ value, onChange }: Props) => {
 
   const selectOptions = React.useMemo(() => {
     const options: SelectOption[] = [
-      { value: FlowView.PEERS, label: "Peer", icon: MonitorSmartphoneIcon },
-      { value: FlowView.USERS, label: "User", icon: UsersIcon },
-      { value: FlowView.GROUPS, label: "Group", icon: FolderGit2 },
+      { value: FlowView.PEERS, label: zhMap["Peer"] || "Peer", icon: MonitorSmartphoneIcon },
+      { value: FlowView.USERS, label: zhMap["User"] || "User", icon: UsersIcon },
+      { value: FlowView.GROUPS, label: zhMap["Group"] || "Group", icon: FolderGit2 },
     ];
     if (!agentNetworkOnly) {
       options.push({
         value: FlowView.NETWORKS,
-        label: "Networks",
+        label: zhMap["Networks"] || "Networks",
         icon: NetworkIcon,
       });
     }
