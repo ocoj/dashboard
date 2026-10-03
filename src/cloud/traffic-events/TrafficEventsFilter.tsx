@@ -18,6 +18,8 @@ import {
 } from "@/cloud/traffic-events/interfaces/TrafficEvent";
 import { TrafficEventProtocol } from "@/cloud/traffic-events/interfaces/TrafficEventProtocol";
 import { getTrafficEventTypeText } from "@/cloud/traffic-events/TrafficEventsTable";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 interface Props {
   table: Table<TrafficEvent>;
@@ -273,13 +275,13 @@ export function TrafficEventsFilter({
             ref={searchRef}
             value={search}
             onChange={setSearch}
-            placeholder={"Search filters..."}
+            placeholder={zhMap["Search filters..."] || "Search filters..."}
             hideEnterIcon={true}
           />
 
           {filteredItems.length == 0 && search != "" && (
             <DropdownInfoText className={"mb-4"}>
-              There are no filters matching your search.
+              <TransText>There are no filters matching your search.</TransText>
             </DropdownInfoText>
           )}
 

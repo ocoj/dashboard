@@ -20,6 +20,7 @@ import * as React from "react";
 import { useMemo } from "react";
 import Skeleton from "react-loading-skeleton";
 import { Network, NetworkResource } from "@/interfaces/Network";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   open: boolean;
@@ -312,7 +313,7 @@ const BlankState = () => {
         </div>
 
         <div className={"text-nb-gray-100 mb-1"}>
-          Search for Networks and Resources
+          <TransText>Search for Networks and Resources</TransText>
         </div>
         <div className={"text-sm text-nb-gray-350 font-light"}>
           Quickly find networks and associated resources. <br />
@@ -338,7 +339,7 @@ const NotFoundState = () => {
         </div>
 
         <div className={"text-nb-gray-100 mb-1"}>
-          Could not find any results
+          <TransText>Could not find any results</TransText>
         </div>
         <div className={"text-sm text-nb-gray-350 font-light max-w-xs"}>
           {`We couldn't find any results. Please try a different search term.`}
@@ -372,19 +373,19 @@ const KeyboardShortcutsFooter = () => {
         <Kbd variant={"darker"}>
           <ArrowDownIcon size={12} />
         </Kbd>
-        <div className={"ml-1"}>Navigate</div>
+        <div className={"ml-1"}><TransText>Navigate</TransText></div>
       </div>
       <div className={"flex items-center gap-1.5"}>
         <Kbd variant={"darker"}>
           <CornerDownLeft size={12} />
         </Kbd>
-        <div className={"ml-1"}>Open</div>
+        <div className={"ml-1"}><TransText>Open</TransText></div>
       </div>
       <div className={"flex items-center gap-1.5"}>
         <Kbd variant={"darker"} className={"text-[0.65rem] font-medium"}>
           esc
         </Kbd>
-        <div className={"ml-1"}>Close</div>
+        <div className={"ml-1"}><TransText>Close</TransText></div>
       </div>
     </div>
   );

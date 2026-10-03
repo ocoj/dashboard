@@ -8,7 +8,6 @@ import { Input } from "@components/Input";
 import { Label } from "@components/Label";
 import { notify } from "@components/Notification";
 import Paragraph from "@components/Paragraph";
-import { SmallBadge } from "@components/ui/SmallBadge";
 import {
   Select,
   SelectContent,
@@ -17,12 +16,14 @@ import {
   SelectValue,
 } from "@components/Select";
 import Separator from "@components/Separator";
+import { SmallBadge } from "@components/ui/SmallBadge";
 import { useExpirationState } from "@hooks/useExpirationState";
 import { convertToSeconds } from "@hooks/useTimeFormatter";
 import * as Tabs from "@radix-ui/react-tabs";
 import { IconDevicesCheck } from "@tabler/icons-react";
 import { useApiCall } from "@utils/api";
 import { cn } from "@utils/helpers";
+import { isNetBirdCloud } from "@utils/netbird";
 import {
   CalendarClock,
   ExternalLinkIcon,
@@ -35,13 +36,17 @@ import React, { useState } from "react";
 import { useSWRConfig } from "swr";
 import SettingsIcon from "@/assets/icons/SettingsIcon";
 import { AccountMFASettings } from "@/cloud/mfa/AccountMFASettings";
+import {
+  SignInDomainsSettings,
+  useCanViewSignInDomains,
+} from "@/cloud/sign-in-domains/SignInDomainsSettings";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { useHasChanges } from "@/hooks/useHasChanges";
 import { Account } from "@/interfaces/Account";
 import { TransText } from "@/i18n/trans-text";
 import { LockedFeatureBadge } from "@/modules/billing/locked-feature/LockedFeatureBadge";
 import { useIntegrations } from "@/modules/integrations/edr/useIntegrations";
-import { isNetBirdCloud } from "@utils/netbird";
+
 import zhMap from "@/i18n/zh-map";
 
 type Props = {
@@ -50,6 +55,7 @@ type Props = {
 
 export default function AuthenticationTab({ account }: Readonly<Props>) {
   const { permission } = usePermissions();
+  const canViewSignInDomains = useCanViewSignInDomains();
 
   const { mutate } = useSWRConfig();
 
@@ -192,29 +198,18 @@ export default function AuthenticationTab({ account }: Readonly<Props>) {
             active
           />
         </Breadcrumbs>
-        <div className={"flex items-start justify-between"}>
+        <div className={"flex items-start justify-between -mt-1"}>
           <div>
             <h1><TransText>Authentication</TransText></h1>
-            <Paragraph>
-              <TransText>Learn more about</TransText>
-              {" "}
+            <Paragraph className={"block"}>
+              Control how peers and users authenticate.{" "}
               <InlineLink
                 href={
                   "https://docs.netbird.io/how-to/enforce-periodic-user-authentication"
                 }
                 target={"_blank"}
               >
-                <TransText>Authentication</TransText>
-                <ExternalLinkIcon size={12} />
-              </InlineLink>
-              {" "}<TransText>or</TransText>{" "}
-              <InlineLink
-                href={
-                  "https://docs.netbird.io/how-to/multi-factor-authentication"
-                }
-                target={"_blank"}
-              >
-                <TransText>MFA</TransText>
+                <TransText>Learn more</TransText>
                 <ExternalLinkIcon size={12} />
               </InlineLink>
             </Paragraph>
@@ -413,9 +408,20 @@ export default function AuthenticationTab({ account }: Readonly<Props>) {
       {isNetBirdCloud() && (
         <>
           <Separator />
-          <div className={"p-default py-8 max-w-2xl"}>
+          <div className={"p-default py-8 pb-0 max-w-2xl"}>
             <div className={"max-w-6xl"}>
               <AccountMFASettings />
+            </div>
+          </div>
+        </>
+      )}
+
+      {canViewSignInDomains && (
+        <>
+          <Separator />
+          <div className={"p-default py-8 max-w-2xl"}>
+            <div className={"max-w-6xl"}>
+              <SignInDomainsSettings />
             </div>
           </div>
         </>

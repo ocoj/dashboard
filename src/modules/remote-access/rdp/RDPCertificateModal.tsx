@@ -13,6 +13,8 @@ import {
   CertificateInfo,
   CertificatePromptInfo,
 } from "./useRDPCertificateHandler";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -36,7 +38,7 @@ export const RDPCertificateModal = ({
       <ModalContent maxWidthClass={"max-w-2xl"} showClose={false}>
         <ModalHeader
           icon={<LockIcon className={"text-netbird"} size={18} />}
-          title={"RDP Certificate"}
+          title={zhMap["RDP Certificate"] || "RDP Certificate"}
           description={hostname}
           color={"netbird"}
         />
@@ -45,16 +47,14 @@ export const RDPCertificateModal = ({
         <div className={"px-8 py-6 flex flex-col gap-6"}>
           {isChange && (
             <Callout variant={"warning"}>
-              Warning! Certificate has changed. Only proceed if you trust this
-              connection.
+              <TransText>Warning! Certificate has changed. Only proceed if you trust this connection.</TransText>
             </Callout>
           )}
 
           <div>
-            <Label>Certificate Details</Label>
+            <Label><TransText>Certificate Details</TransText></Label>
             <HelpText>
-              Certificated could not be verified by a trusted authority. Review
-              the certificate information before proceeding with the connection.
+              <TransText>Certificated could not be verified by a trusted authority. Review the certificate information before proceeding with the connection.</TransText>
             </HelpText>
             <CertificateDetailsList certificate={certificate} />
           </div>
@@ -84,7 +84,7 @@ export const RDPCertificateModal = ({
         <ModalFooter className={"items-center"}>
           <div className={"flex gap-3 w-full justify-end"}>
             <Button variant={"secondary"} onClick={onReject}>
-              Cancel
+              <TransText>Cancel</TransText>
             </Button>
             <Button
               variant={"primary"}
@@ -113,15 +113,15 @@ const CertificateDetailsList = ({
       }
     >
       <CertificateDetailsListItem
-        label={"Issuer"}
+        label={zhMap["Issuer"] || "Issuer"}
         value={certificate.issuer || "N/A"}
       />
       <CertificateDetailsListItem
-        label={"Subject"}
+        label={zhMap["Subject"] || "Subject"}
         value={certificate.subject || "N/A"}
       />
       <CertificateDetailsListItem
-        label={"Valid From"}
+        label={zhMap["Valid From"] || "Valid From"}
         value={
           certificate.validFrom
             ? new Date(certificate.validFrom).toLocaleString()
@@ -129,7 +129,7 @@ const CertificateDetailsList = ({
         }
       />
       <CertificateDetailsListItem
-        label={"Valid To"}
+        label={zhMap["Valid To"] || "Valid To"}
         value={
           certificate.validTo
             ? new Date(certificate.validTo).toLocaleString()
@@ -137,15 +137,15 @@ const CertificateDetailsList = ({
         }
       />
       <CertificateDetailsListItem
-        label={"Key Size"}
+        label={zhMap["Key Size"] || "Key Size"}
         value={certificate.keySize ? `${certificate.keySize} bits` : "N/A"}
       />
       <CertificateDetailsListItem
-        label={"Serial Number"}
+        label={zhMap["Serial Number"] || "Serial Number"}
         value={certificate.serialNumber || "N/A"}
       />
       <CertificateDetailsListItem
-        label={"Fingerprint"}
+        label={zhMap["Fingerprint"] || "Fingerprint"}
         value={certificate.fingerprint || "N/A"}
       />
     </div>

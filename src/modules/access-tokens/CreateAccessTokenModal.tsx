@@ -32,6 +32,7 @@ import { useSWRConfig } from "swr";
 import useCopyToClipboard from "@/hooks/useCopyToClipboard";
 import { AccessToken } from "@/interfaces/AccessToken";
 import { User } from "@/interfaces/User";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   children: React.ReactNode;
@@ -78,11 +79,10 @@ export default function CreateAccessTokenModal({
             <div className={"flex flex-col items-center justify-center gap-3"}>
               <div>
                 <h2 className={"text-2xl text-center mb-2"}>
-                  Access token created successfully!
+                  <TransText>Access token created successfully!</TransText>
                 </h2>
                 <Paragraph className={"mt-0 text-sm text-center"}>
-                  This token will not be shown again, so be sure to copy it and
-                  store in a secure location.
+                  <TransText>This token will not be shown again, so be sure to copy it and store in a secure location.</TransText>
                 </Paragraph>
               </div>
             </div>
@@ -104,7 +104,7 @@ export default function CreateAccessTokenModal({
                   tabIndex={-1}
                   data-testid={"access-token-copy-close"}
                 >
-                  Close
+                  <TransText>Close</TransText>
                 </Button>
               </ModalClose>
 
@@ -166,8 +166,8 @@ export function AccessTokenModalContent({
     <ModalContent maxWidthClass={"max-w-lg"}>
       <ModalHeader
         icon={<IconApi />}
-        title={"Create Access Token"}
-        description={"Use this token to access NetBird's public API"}
+        title={zhMap["Create Access Token"] || "Create Access Token"}
+        description={zhMap["Use this token to access NetBird's public API"] || "Use this token to access NetBird's public API"}
         color={"netbird"}
       />
 
@@ -175,8 +175,8 @@ export function AccessTokenModalContent({
 
       <div className={"px-8 py-6 flex flex-col gap-8"}>
         <div>
-          <Label>Name</Label>
-          <HelpText>Set an easily identifiable name for your token</HelpText>
+          <Label><TransText>Name</TransText></Label>
+          <HelpText><TransText>Set an easily identifiable name for your token</TransText></HelpText>
           <Input
             data-testid={"access-token-name"}
             placeholder={"e.g., Infra token"}
@@ -187,8 +187,8 @@ export function AccessTokenModalContent({
 
         <div className={"flex justify-between"}>
           <div>
-            <Label>Expires in</Label>
-            <HelpText>Should be between 1 and 365 days.</HelpText>
+            <Label><TransText>Expires in</TransText></Label>
+            <HelpText><TransText>Should be between 1 and 365 days.</TransText></HelpText>
           </div>
           <Input
             maxWidthClass={"max-w-[200px]"}
@@ -215,14 +215,14 @@ export function AccessTokenModalContent({
               href={"https://docs.netbird.io/how-to/access-netbird-public-api"}
               target={"_blank"}
             >
-              Access Tokens
+              <TransText>Access Tokens</TransText>
               <ExternalLinkIcon size={12} />
             </InlineLink>
           </Paragraph>
         </div>
         <div className={"flex gap-3 w-full justify-end"}>
           <ModalClose asChild={true}>
-            <Button variant={"secondary"}>Cancel</Button>
+            <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
           </ModalClose>
 
           <Button

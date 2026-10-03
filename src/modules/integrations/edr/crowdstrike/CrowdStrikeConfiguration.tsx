@@ -36,6 +36,8 @@ import { CrowdStrikeRegionsData } from "@/modules/integrations/edr/crowdstrike/C
 import { CrowdStrikeZtaScoreInput } from "@/modules/integrations/edr/crowdstrike/CrowdStrikeZtaScoreInput";
 import { CrowdStrikeZtaToggle } from "@/modules/integrations/edr/crowdstrike/CrowdStrikeZtaToggle";
 import { IntegrationModalHeader } from "@/modules/integrations/IntegrationModalHeader";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -174,7 +176,7 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
 
       <IntegrationModalHeader
         image={integrationImage}
-        title={"CrowdStrike"}
+        title={zhMap["CrowdStrike"] || "CrowdStrike"}
         description={
           "Restrict network access only to devices managed by the company's IT department"
         }
@@ -225,7 +227,7 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
                 </div>
               </Label>
               <HelpText className={"max-w-lg mt-2"}>
-                Select groups you want to apply the CrowdStrike integration to
+                <TransText>Select groups you want to apply the CrowdStrike integration to</TransText>
               </HelpText>
 
               <PeerGroupSelector values={groups} onChange={setGroups} />
@@ -311,9 +313,7 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
               </div>
             </Label>
             <HelpText className={"max-w-lg mt-2"}>
-              Deleting this integration will remove the current configuration.
-              If you delete the integration you will need to reconfigure it
-              again.
+              <TransText>Deleting this integration will remove the current configuration. If you delete the integration you will need to reconfigure it again.</TransText>
             </HelpText>
           </div>
           <Button
@@ -322,7 +322,7 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
             className={"mt-3"}
             onClick={deleteIntegration}
           >
-            Delete Integration
+            <TransText>Delete Integration</TransText>
           </Button>
         </TabsContent>
       </Tabs>
@@ -331,7 +331,7 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
       <ModalFooter className={"items-center gap-4"}>
         <ModalClose asChild={true}>
           <Button variant={"secondary"} className={"w-full"}>
-            Cancel
+            <TransText>Cancel</TransText>
           </Button>
         </ModalClose>
 
@@ -341,7 +341,7 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
           disabled={!canSave}
           onClick={updateIntegration}
         >
-          Save Changes
+          <TransText>Save Changes</TransText>
         </Button>
       </ModalFooter>
     </ModalContent>

@@ -328,9 +328,9 @@ export function SetupContent({
             <Steps.Step step={2}>
               <p className={"font-normal"}>
                 <TransText>Go to</TransText>{" "}
-                <Mark>Azure Active Directory</Mark>{" "}
+                <Mark><TransText>Azure Active Directory</TransText></Mark>{" "}
                 <TransText>then</TransText>{" "}
-                <Mark>Enterprise applications</Mark>
+                <Mark><TransText>Enterprise applications</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={3}>
@@ -346,7 +346,7 @@ export function SetupContent({
             <Steps.Step step={4}>
               <p className={"font-normal"}>
                 <TransText>Enter</TransText>{" "}
-                <Mark copy={true}>NetBird SCIM</Mark>{" "}
+                <Mark copy={true}><TransText>NetBird SCIM</TransText></Mark>{" "}
                 <TransText>as the name and select</TransText>{" "}
                 <Mark>
                   Integrate any other application you don&apos;t find in the
@@ -373,13 +373,13 @@ export function SetupContent({
             <Steps.Step step={1}>
               <p>
                 <TransText>Once the application is created, click</TransText>{" "}
-                <Mark>Manage</Mark>,{" "}
+                <Mark><TransText>Manage</TransText></Mark>,{" "}
                 <TransText>then click</TransText>{" "}
-                <Mark>Provisioning</Mark>.{" "}
+                <Mark><TransText>Provisioning</TransText></Mark>.{" "}
                 <TransText>
                   Under the Create configuration section, click
                 </TransText>{" "}
-                <Mark>Connect your application</Mark>
+                <Mark><TransText>Connect your application</TransText></Mark>
               </p>
               <Lightbox image={entraGetStarted} />
             </Steps.Step>
@@ -432,12 +432,12 @@ export function SetupContent({
             <Steps.Step step={3} line={false}>
               <p className={"font-normal"}>
                 <TransText>After that click</TransText>{" "}
-                <Mark>Test Connection</Mark>{" "}
+                <Mark><TransText>Test Connection</TransText></Mark>{" "}
                 <TransText>
                   to verify the SCIM connection. If the connection is
                   successful click
                 </TransText>{" "}
-                <Mark>Create</Mark>{" "}
+                <Mark><TransText>Create</TransText></Mark>{" "}
                 <TransText>to save the configuration.</TransText>
               </p>
             </Steps.Step>
@@ -455,9 +455,9 @@ export function SetupContent({
             <Steps.Step step={1}>
               <p>
                 <TransText>Navigate to the</TransText>{" "}
-                <Mark>Attribute mapping</Mark>{" "}
+                <Mark><TransText>Attribute mapping</TransText></Mark>{" "}
                 <TransText>section and select the</TransText>{" "}
-                <Mark>Groups</Mark> <TransText>tab</TransText>
+                <Mark><TransText>Groups</TransText></Mark> <TransText>tab</TransText>
               </p>
             </Steps.Step>
             <Steps.Step step={2}>
@@ -490,9 +490,9 @@ export function SetupContent({
             <Steps.Step step={1}>
               <p>
                 <TransText>Navigate to the</TransText>{" "}
-                <Mark>Attribute mapping</Mark>{" "}
+                <Mark><TransText>Attribute mapping</TransText></Mark>{" "}
                 <TransText>section and select the</TransText>{" "}
-                <Mark>Users</Mark> <TransText>tab</TransText>
+                <Mark><TransText>Users</TransText></Mark> <TransText>tab</TransText>
               </p>
             </Steps.Step>
             <Steps.Step step={2}>
@@ -518,10 +518,10 @@ export function SetupContent({
                 <Mark>externalId</Mark> <TransText>row</TransText> <br />
                 <TransText>and click</TransText> <Mark>Edit</Mark>.{" "}
                 <TransText>Change the</TransText>{" "}
-                <Mark>Source attribute</Mark> <TransText>from</TransText>{" "}
+                <Mark><TransText>Source attribute</TransText></Mark> <TransText>from</TransText>{" "}
                 <Mark>mailNickname</Mark> <TransText>to</TransText>{" "}
                 <Mark>objectId</Mark> <TransText>and click</TransText>{" "}
-                <Mark>Ok</Mark> <TransText>to save the change</TransText>
+                <Mark><TransText>Ok</TransText></Mark> <TransText>to save the change</TransText>
               </p>
               <Lightbox image={entraEditExternalId} />
             </Steps.Step>
@@ -549,7 +549,7 @@ export function SetupContent({
                 <TransText>
                   Navigate to your NetBird enterprise application and click on
                 </TransText>{" "}
-                <Mark>Users and groups</Mark>{" "}
+                <Mark><TransText>Users and groups</TransText></Mark>{" "}
                 <TransText>in the left menu</TransText>
               </p>
               <Lightbox image={entraAssignUsers} />
@@ -586,9 +586,9 @@ export function SetupContent({
                   After assigning users and groups, navigate back to the
                   provisioning configuration, click
                 </TransText>{" "}
-                <Mark>Overview</Mark>,{" "}
+                <Mark><TransText>Overview</TransText></Mark>,{" "}
                 <TransText>then click the</TransText>{" "}
-                <Mark>Start provisioning</Mark>{" "}
+                <Mark><TransText>Start provisioning</TransText></Mark>{" "}
                 <TransText>button to enable automatic synchronization</TransText>
               </p>
               <Lightbox image={entraStartProvisioning} />

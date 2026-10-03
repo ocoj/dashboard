@@ -300,7 +300,7 @@ export function SetupKeyModalContent({
           </div>
           <Input
             maxWidthClass={"max-w-[202px]"}
-            placeholder={"Unlimited"}
+            placeholder={zhMap["Unlimited"] || "Unlimited"}
             min={1}
             value={expiresIn}
             errorTooltip={true}

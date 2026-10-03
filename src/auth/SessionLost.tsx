@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import * as React from "react";
 import { useEffect } from "react";
 import NetBirdIcon from "@/assets/icons/NetBirdIcon";
+import { TransText } from "@/i18n/trans-text";
 
 const config = loadConfig();
 
@@ -31,10 +32,9 @@ export const SessionLost = () => {
       >
         <NetBirdIcon size={20} />
       </div>
-      <h1>Session Expired</h1>
+      <h1><TransText>Session Expired</TransText></h1>
       <Paragraph className={"text-center"}>
-        It looks like your login session is no longer active or has expired.
-        Please login again to continue using the app.
+        <TransText>It looks like your login session is no longer active or has expired. Please login again to continue using the app.</TransText>
       </Paragraph>
       <Button
         variant={"primary"}
@@ -42,7 +42,7 @@ export const SessionLost = () => {
         className={"mt-5"}
         onClick={() => logout("", { client_id: config.clientId })}
       >
-        Login
+        <TransText>Login</TransText>
         <LogIn size={16} />
       </Button>
     </div>

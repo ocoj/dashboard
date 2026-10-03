@@ -2,13 +2,15 @@ import Button from "@components/Button";
 import { Modal, ModalContent, ModalFooter } from "@components/modal/Modal";
 import { GradientFadedBackground } from "@components/ui/GradientFadedBackground";
 import { useLocalStorage } from "@hooks/useLocalStorage";
+import { useGuardedRouter } from "@utils/navigation-guard";
 import dayjs from "dayjs";
 import { MailIcon } from "lucide-react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import * as React from "react";
 import { useEffect, useMemo, useState } from "react";
 import NetBirdIcon from "@/assets/icons/NetBirdIcon";
 import { useBilling } from "@/contexts/BillingProvider";
+import { TransText } from "@/i18n/trans-text";
 
 export const LimitsReachedModal = () => {
   const { isFreePlan, usagePercentage, isTrial, isLoading, currentPlan } =
@@ -46,7 +48,7 @@ const LimitReachedContent = () => {
     undefined,
   );
 
-  const router = useRouter();
+  const router = useGuardedRouter();
   const pathname = usePathname();
   const params = useSearchParams();
   const tab = params.get("tab");
@@ -107,11 +109,10 @@ const LimitReachedContent = () => {
           </div>
 
           <div className={"text-xl font-medium text-center max-w-xs mb-1"}>
-            Subscription Limit Reached
+            <TransText>Subscription Limit Reached</TransText>
           </div>
           <div className={"text-sm text-nb-gray-300 text-center"}>
-            It looks like you’ve hit the limit of your current subscription.
-            Upgrade now to unlock additional features and increase your limits.
+            <TransText>It looks like you’ve hit the limit of your current subscription. Upgrade now to unlock additional features and increase your limits.</TransText>
           </div>
         </div>
         <ModalFooter separator={false} className={"gap-x-2 mt-1"}>

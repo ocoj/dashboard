@@ -10,6 +10,8 @@ import { useAccount } from "@/modules/account/useAccount";
 import { LockedFeatureInfoCard } from "@/modules/billing/locked-feature/LockedFeatureInfoCard";
 import { LockedFeatureOverlay } from "@/modules/billing/locked-feature/LockedFeatureOverlay";
 import { OktaSSOIntegrationCard } from "@/modules/integrations/sso/okta/OktaSSOIntegrationCard";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 export default function SSOTab() {
   const account = useAccount();
@@ -20,17 +22,17 @@ export default function SSOTab() {
         <Breadcrumbs>
           <Breadcrumbs.Item
             href={"/integrations"}
-            label={"Integrations"}
+            label={zhMap["Integrations"] || "Integrations"}
             icon={<IntegrationIcon size={13} />}
           />
           <Breadcrumbs.Item
             href={"/settings?tab=sso"}
-            label={"Single Sign-On"}
+            label={zhMap["Single Sign-On"] || "Single Sign-On"}
             icon={<KeyRoundIcon size={14} />}
             active
           />
         </Breadcrumbs>
-        <h1>Single Sign-On</h1>
+        <h1><TransText>Single Sign-On</TransText></h1>
         <Paragraph>
           Configure your preferred Identity Provider (IdP) to enable Single
           Sign-On (SSO) for your team.
@@ -42,7 +44,7 @@ export default function SSOTab() {
             }
             target={"_blank"}
           >
-            Learn more
+            <TransText>Learn more</TransText>
             <ExternalLinkIcon size={12} />
           </InlineLink>
         </Paragraph>

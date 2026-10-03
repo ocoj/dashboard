@@ -44,6 +44,8 @@ import {
 } from "@/cloud/msp/MSPTenantPlanTab";
 import { Role } from "@/interfaces/User";
 import useGroupHelper from "@/modules/groups/useGroupHelper";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -209,9 +211,9 @@ const MspAccountModalContent = ({ setOpen, tenant, initialTab }: Props) => {
         <TabsContent value={"general"} className={"px-8 pb-8"}>
           <div className={"flex flex-col gap-6"}>
             <div className={""}>
-              <Label>Name</Label>
+              <Label><TransText>Name</TransText></Label>
               <HelpText>
-                Set an easily recognizable name for the tenant.
+                <TransText>Set an easily recognizable name for the tenant.</TransText>
               </HelpText>
 
               <Input
@@ -220,16 +222,16 @@ const MspAccountModalContent = ({ setOpen, tenant, initialTab }: Props) => {
                 value={name}
                 data-testid={"name"}
                 onChange={(e) => setName(e.target.value)}
-                placeholder={"Acme Inc."}
+                placeholder={zhMap["Acme Inc."] || "Acme Inc."}
                 className={"min-w-[270px]"}
               />
             </div>
             <div className={""}>
-              <Label>Domain</Label>
+              <Label><TransText>Domain</TransText></Label>
               {!tenant ? (
-                <HelpText>Enter the primary domain of the tenant.</HelpText>
+                <HelpText><TransText>Enter the primary domain of the tenant.</TransText></HelpText>
               ) : (
-                <HelpText>Primary domain of the tenant.</HelpText>
+                <HelpText><TransText>Primary domain of the tenant.</TransText></HelpText>
               )}
 
               {tenant ? (
@@ -319,21 +321,21 @@ const MspAccountModalContent = ({ setOpen, tenant, initialTab }: Props) => {
           {tab === "general" && !tenant && (
             <>
               <ModalClose asChild={true}>
-                <Button variant={"secondary"}>Cancel</Button>
+                <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
               </ModalClose>
               <Button
                 variant={"primary"}
                 disabled={!canContinue}
                 onClick={() => setTab("permissions")}
               >
-                Continue
+                <TransText>Continue</TransText>
               </Button>
             </>
           )}
           {tab === "permissions" && !tenant && (
             <>
               <Button variant={"secondary"} onClick={() => setTab("general")}>
-                Back
+                <TransText>Back</TransText>
               </Button>
               <Button
                 variant={"primary"}
@@ -348,7 +350,7 @@ const MspAccountModalContent = ({ setOpen, tenant, initialTab }: Props) => {
           {tenant && (
             <>
               <ModalClose asChild={true}>
-                <Button variant={"secondary"}>Cancel</Button>
+                <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
               </ModalClose>
               {tab !== "plan" && (
                 <Button
@@ -356,7 +358,7 @@ const MspAccountModalContent = ({ setOpen, tenant, initialTab }: Props) => {
                   disabled={!hasChanges || !canContinue}
                   onClick={updateTenant}
                 >
-                  Save Changes
+                  <TransText>Save Changes</TransText>
                 </Button>
               )}
             </>

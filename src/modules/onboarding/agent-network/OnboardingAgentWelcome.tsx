@@ -7,6 +7,8 @@ import {
   ShieldCheckIcon,
 } from "lucide-react";
 import * as React from "react";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   onNext: () => void;
@@ -19,7 +21,7 @@ export const OnboardingAgentWelcome = ({ onNext }: Props) => {
   return (
     <div className={"relative flex flex-col h-full gap-4"}>
       <div>
-        <h1 className={"text-xl text-center"}>Welcome to Agent Network</h1>
+        <h1 className={"text-xl text-center"}><TransText>Welcome to Agent Network</TransText></h1>
         <div
           className={
             "text-sm text-nb-gray-300 font-light mt-2 block text-center sm:px-4"
@@ -34,21 +36,21 @@ export const OnboardingAgentWelcome = ({ onNext }: Props) => {
       <div className={"mt-4 flex flex-col gap-4"}>
         <Highlight
           icon={<KeyRoundIcon size={16} />}
-          title={"Keyless access over the tunnel"}
+          title={zhMap["Keyless access over the tunnel"] || "Keyless access over the tunnel"}
           description={
             "Agents access LLM providers and internal resources through encrypted WireGuard tunnel, without exposing API keys on the client."
           }
         />
         <Highlight
           icon={<ShieldCheckIcon size={16} />}
-          title={"Policy-controlled access"}
+          title={zhMap["Policy-controlled access"] || "Policy-controlled access"}
           description={
             "Every request is authorized against your policies before it reaches a provider, with optional token and budget limits and guardrails."
           }
         />
         <Highlight
           icon={<BotIcon size={16} />}
-          title={"Per-identity usage & logs"}
+          title={zhMap["Per-identity usage & logs"] || "Per-identity usage & logs"}
           description={
             "See who called which model, how many tokens it cost, and whether it was allowed. All attributed to the real caller."
           }
@@ -57,7 +59,7 @@ export const OnboardingAgentWelcome = ({ onNext }: Props) => {
 
       <div className={"flex items-center justify-center mt-6"}>
         <Button variant={"primary"} onClick={onNext}>
-          Get Started
+          <TransText>Get Started</TransText>
           <ArrowRightIcon size={16} />
         </Button>
       </div>

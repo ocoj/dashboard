@@ -25,6 +25,7 @@ import {
   RDPCredentials,
 } from "@/modules/remote-access/rdp/useRemoteDesktop";
 import { IconLoader2 } from "@tabler/icons-react";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -131,7 +132,7 @@ export const RDPCredentialsModal = ({
                   "flex items-center gap-2 text-red-800 font-medium mb-1"
                 }
               >
-                Error
+                <TransText>Error</TransText>
               </div>
               <p className={"text-sm text-red-700"}>{error}</p>
             </div>
@@ -159,7 +160,7 @@ export const RDPCredentialsModal = ({
               />
               <Input
                 value={password}
-                placeholder={"Enter password"}
+                placeholder={zhMap["Enter password"] || "Enter password"}
                 type={"password"}
                 onChange={(e) => setPassword(e.target.value)}
                 onKeyDown={handleKeyDown}
@@ -175,9 +176,9 @@ export const RDPCredentialsModal = ({
             </div>
           </div>
           <div>
-            <Label>Port</Label>
+            <Label><TransText>Port</TransText></Label>
             <HelpText>
-              Specify the RDP port for your remote connection.
+              <TransText>Specify the RDP port for your remote connection.</TransText>
             </HelpText>
             <Input
               maxWidthClass={""}

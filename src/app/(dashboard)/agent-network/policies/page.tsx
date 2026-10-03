@@ -43,8 +43,8 @@ export default function AgentNetworkPoliciesPage() {
       </div>
 
       <RestrictedAccess
-        page={zhMap["Policies"] || "Policies"}
-        hasAccess={permission?.services?.read}
+        page={"Policies"}
+        hasAccess={permission?.["agent_network.policies"]?.read}
       >
         <AIProvidersProvider>
           <Suspense fallback={<SkeletonTable />}>

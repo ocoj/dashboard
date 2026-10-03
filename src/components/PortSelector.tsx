@@ -13,6 +13,7 @@ import * as React from "react";
 import { useEffect, useMemo, useState } from "react";
 import { useElementSize } from "@/hooks/useElementSize";
 import { PortRange } from "@/interfaces/Policy";
+import { TransText } from "@/i18n/trans-text";
 
 interface MultiSelectProps {
   ports: number[];
@@ -131,7 +132,7 @@ export function PortSelector({
                   variant={"gray"}
                   className={"uppercase tracking-wider font-medium py-1"}
                 >
-                  All
+                  <TransText>All</TransText>
                 </Badge>
               )}
 
@@ -153,7 +154,7 @@ export function PortSelector({
                   />
                 </Badge>
               ))}
-              {ports.length == 0 && <span>Select ports...</span>}
+              {ports.length == 0 && <span><TransText>Select ports...</TransText></span>}
             </div>
 
             <ChevronsUpDown size={18} className={"shrink-0"} />

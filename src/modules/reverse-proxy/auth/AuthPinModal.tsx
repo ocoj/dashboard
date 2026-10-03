@@ -70,7 +70,7 @@ export default function AuthPinModal({
             {isEditing ? (
               <>
                 <Button variant="danger-text" data-testid="remove-pin" onClick={handleRemove}>
-                  Remove
+                  <TransText>Remove</TransText>
                 </Button>
                 <div className="flex gap-3">
                   <ModalClose asChild>
@@ -81,7 +81,7 @@ export default function AuthPinModal({
                     onClick={handleSave}
                     disabled={pin.length !== 6}
                   >
-                    Save
+                    <TransText>Save</TransText>
                   </Button>
                 </div>
               </>
@@ -98,7 +98,7 @@ export default function AuthPinModal({
                     disabled={pin.length !== 6}
                     data-testid="submit-pin"
                   >
-                    Add PIN
+                    <TransText>Add PIN</TransText>
                   </Button>
                 </div>
               </>

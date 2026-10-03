@@ -7,6 +7,7 @@ import { useMemo, useState } from "react";
 import { useGroups } from "@/contexts/GroupsProvider";
 import { Group } from "@/interfaces/Group";
 import { AssignPeerToGroupModal } from "@/modules/groups/AssignPeerToGroupModal";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   group: Group;
@@ -87,7 +88,7 @@ export default function GroupBadgeWithEditPeers({
                   "text-[7px] relative -top-[0px] leading-[0] bg-green-900 border border-green-500/20 py-1.5 px-1 rounded-[3px] text-green-400"
                 }
               >
-                NEW
+                <TransText>NEW</TransText>
               </span>
             )}
           </div>

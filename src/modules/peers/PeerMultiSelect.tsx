@@ -415,8 +415,7 @@ const PeerGroupMassAssignmentContent = ({
                 }
                 helpText={
                   <div>
-                    Overwrite the existing groups of the peers with the selected
-                    ones. Previously assigned groups will be removed.
+                    <TransText>Overwrite the existing groups of the peers with the selected ones. Previously assigned groups will be removed.</TransText>
                   </div>
                 }
               />
@@ -459,7 +458,7 @@ const PeerGroupMassAssignmentContent = ({
                     <>
                       <FullTooltip
                         content={
-                          <span className={"text-xs"}>Assign Groups</span>
+                          <span className={"text-xs"}><TransText>Assign Groups</TransText></span>
                         }
                       >
                         <Button
@@ -519,7 +518,7 @@ const PeerGroupMassAssignmentContent = ({
                           </FullTooltip>
                         )}
                       <FullTooltip
-                        content={<span className={"text-xs"}>Delete All</span>}
+                        content={<span className={"text-xs"}><TransText>Delete All</TransText></span>}
                       >
                         <Button
                           variant={"danger-outline"}
@@ -532,7 +531,7 @@ const PeerGroupMassAssignmentContent = ({
                         </Button>
                       </FullTooltip>
                       <FullTooltip
-                        content={<span className={"text-xs"}>Cancel</span>}
+                        content={<span className={"text-xs"}><TransText>Cancel</TransText></span>}
                       >
                         <Button
                           onClick={onCanceled}
@@ -552,7 +551,7 @@ const PeerGroupMassAssignmentContent = ({
                         className={"!h-9 !px-3.5"}
                         onClick={onCanceled}
                       >
-                        Cancel
+                        <TransText>Cancel</TransText>
                       </Button>
                       <Button
                         size={"xs"}

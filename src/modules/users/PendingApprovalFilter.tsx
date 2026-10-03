@@ -3,6 +3,7 @@ import { NotificationCountBadge } from "@components/ui/NotificationCountBadge";
 import { Table } from "@tanstack/react-table";
 import * as React from "react";
 import { useEffect } from "react";
+import { TransText } from "@/i18n/trans-text";
 
 type Props<T> = {
   table: Table<T>;
@@ -45,7 +46,7 @@ export const PendingApprovalFilter = <T,>({ table, data, count }: Props<T>) => {
           : "secondary"
       }
     >
-      Pending Approval
+      <TransText>Pending Approval</TransText>
       <NotificationCountBadge count={count} />
     </Button>
   );

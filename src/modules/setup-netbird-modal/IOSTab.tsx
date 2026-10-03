@@ -8,6 +8,7 @@ import Link from "next/link";
 import React from "react";
 import AppStoreButton from "@/assets/app-store-badge.png";
 import { OperatingSystem } from "@/interfaces/OperatingSystem";
+import { TransText } from "@/i18n/trans-text";
 
 export default function IOSTab() {
   return (
@@ -19,7 +20,7 @@ export default function IOSTab() {
         </p>
         <Steps>
           <Steps.Step step={1}>
-            <p>Download and install the application on the App Store:</p>
+            <p><TransText>Download and install the application on the App Store:</TransText></p>
             <div className={"flex gap-4 mt-1"}>
               <Link
                 href={"https://apps.apple.com/app/netbird-p2p-vpn/id6469329339"}
@@ -51,7 +52,7 @@ export default function IOSTab() {
             </p>
           </Steps.Step>
           <Steps.Step step={GRPC_API_ORIGIN ? 4 : 3} line={false}>
-            <p>Sign up using your email address</p>
+            <p><TransText>Sign up using your email address</TransText></p>
           </Steps.Step>
         </Steps>
       </TabsContentPadding>

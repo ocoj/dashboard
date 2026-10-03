@@ -13,8 +13,8 @@ import * as React from "react";
 import { useState } from "react";
 import integrationImage from "@/assets/integrations/okta.png";
 import { useDialog } from "@/contexts/DialogProvider";
+import { DomainValidationStatus } from "@/interfaces/Account";
 import {
-  DomainValidationStatus,
   EnterpriseConnection,
   EnterpriseConnectionDomain,
 } from "@/interfaces/IdentityProvider";
@@ -22,6 +22,8 @@ import { IntegrationModalHeader } from "@/modules/integrations/IntegrationModalH
 import { DomainVerificationCard } from "@/modules/integrations/sso/DomainVerificationCard";
 import { DomainVerificationModal } from "@/modules/integrations/sso/DomainVerificationModal";
 import { useEnterpriseConnections } from "@/modules/integrations/sso/useEnterpriseConnections";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   config: EnterpriseConnection;
@@ -29,7 +31,8 @@ type Props = {
   onOpenChange: (open: boolean) => void;
 };
 export const OktaSsoSettings = ({ open, onOpenChange, config }: Props) => {
-  const { deleteConnection, addDomain, mutate } = useEnterpriseConnections();
+  const { deleteConnection, addDomain, verifyDomain, mutate } =
+    useEnterpriseConnections();
   const [tab, setTab] = useState("domains");
   const [domain, setDomain] = useState("");
   const { confirm } = useDialog();
@@ -89,7 +92,7 @@ export const OktaSsoSettings = ({ open, onOpenChange, config }: Props) => {
         onOpenChange={setDomainVerificationModal}
         domain={domainVerification.name}
         token={domainVerification.token}
-        connectionId={config.id}
+        onVerify={() => verifyDomain(config.id, domainVerification.name)}
       />
       <ModalContent
         maxWidthClass={cn("relative max-w-xl")}
@@ -101,7 +104,7 @@ export const OktaSsoSettings = ({ open, onOpenChange, config }: Props) => {
 
         <IntegrationModalHeader
           image={integrationImage}
-          title={"Okta SSO Configuration"}
+          title={zhMap["Okta SSO Configuration"] || "Okta SSO Configuration"}
           description={
             "Use Okta as a Single Sign-On provider to authenticate users."
           }
@@ -198,7 +201,7 @@ export const OktaSsoSettings = ({ open, onOpenChange, config }: Props) => {
                 />
               </div>
               <Button type={"submit"} variant={"secondaryLighter"}>
-                Add Domain
+                <TransText>Add Domain</TransText>
               </Button>
             </form>
             <div className={"flex flex-col gap-3"}>
@@ -232,7 +235,7 @@ export const OktaSsoSettings = ({ open, onOpenChange, config }: Props) => {
               className={"mt-3"}
               onClick={deleteIntegration}
             >
-              Delete Integration
+              <TransText>Delete Integration</TransText>
             </Button>
           </TabsContent>
         </Tabs>

@@ -407,7 +407,7 @@ const TrafficEventsPeerDetailTable = ({
                 variant={"primary"}
                 onClick={() => router.push("/settings?tab=networks")}
               >
-                Go to Settings
+                <TransText>Go to Settings</TransText>
                 <ArrowUpRightIcon size={16} />
               </Button>
             </div>

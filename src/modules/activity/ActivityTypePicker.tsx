@@ -11,6 +11,7 @@ import * as React from "react";
 import { useMemo, useRef } from "react";
 import { ActivityEvent } from "@/interfaces/ActivityEvent";
 import ActivityTypeIcon from "@/modules/activity/ActivityTypeIcon";
+import zhMap from "@/i18n/zh-map";
 
 // ActivityTypePicker — multi-select grouped list of activity codes used by
 // the Audit Events table. Mirrors the original ActivityEventCodeSelector
@@ -80,7 +81,7 @@ export function ActivityTypePicker({
               "dark:placeholder:text-nb-gray-400 font-light placeholder:text-neutral-500 pl-9",
             )}
             ref={searchRef}
-            placeholder={"Search event..."}
+            placeholder={zhMap["Search event..."] || "Search event..."}
           />
           <div
             className={

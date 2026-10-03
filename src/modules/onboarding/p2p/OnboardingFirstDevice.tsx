@@ -5,6 +5,8 @@ import * as React from "react";
 import { useEffect, useState } from "react";
 import { Peer } from "@/interfaces/Peer";
 import { SetupModalContent } from "@/modules/setup-netbird-modal/SetupModal";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   onBack: () => void;
@@ -44,7 +46,7 @@ export const OnboardingFirstDevice = ({
 
       <div className={"flex items-center justify-center mt-4 gap-3"}>
         <Button variant={"secondary"} onClick={onBack}>
-          Go Back
+          <TransText>Go Back</TransText>
         </Button>
         <Button variant={"primary"} onClick={() => setOpen(true)}>
           <DownloadIcon size={16} />
@@ -54,7 +56,7 @@ export const OnboardingFirstDevice = ({
 
       <Modal open={open} onOpenChange={setOpen}>
         <ModalContent className={"!z-[70]"}>
-          <SetupModalContent title={"Install NetBird"} isUserDevice={true} />
+          <SetupModalContent title={zhMap["Install NetBird"] || "Install NetBird"} isUserDevice={true} />
         </ModalContent>
       </Modal>
     </div>

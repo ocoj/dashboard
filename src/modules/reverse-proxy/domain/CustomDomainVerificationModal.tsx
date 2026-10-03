@@ -24,6 +24,7 @@ import {
 import Paragraph from "@components/Paragraph";
 import InlineLink from "@components/InlineLink";
 import { isNetBirdCloud } from "@/utils/netbird";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -60,7 +61,7 @@ export const CustomDomainVerificationModal = ({
         <GradientFadedBackground />
         <ModalHeader
           icon={<GlobeIcon size={20} />}
-          title={"Verify Domain"}
+          title={zhMap["Verify Domain"] || "Verify Domain"}
           description={domain.domain}
           color={"netbird"}
         />
@@ -74,7 +75,7 @@ export const CustomDomainVerificationModal = ({
             </Steps.Step>
             <Steps.Step step={2} line={false}>
               <p className={"font-normal"}>
-                Add the <Mark>CNAME record</Mark> below to your DNS
+                Add the <Mark><TransText>CNAME record</TransText></Mark> below to your DNS
                 configuration for <Mark>{domain.domain}</Mark>
               </p>
             </Steps.Step>
@@ -89,7 +90,7 @@ export const CustomDomainVerificationModal = ({
                     href={"https://status.netbird.io/"}
                     target={"_blank"}
                   >
-                    NetBird Status
+                    <TransText>NetBird Status</TransText>
                   </InlineLink>{" "}
                   or reach out to{"  "}
                   <InlineLink href={"mailto:support@netbird.io"}>
@@ -106,7 +107,7 @@ export const CustomDomainVerificationModal = ({
                     href={REVERSE_PROXY_CLUSTERS_DOCS_LINK}
                     target={"_blank"}
                   >
-                    Proxy Clusters
+                    <TransText>Proxy Clusters</TransText>
                     <ExternalLinkIcon size={12} />
                   </InlineLink>
                 </Callout>
@@ -118,13 +119,13 @@ export const CustomDomainVerificationModal = ({
                     <Card.ListItem
                       copy
                       copyText={`*.${domain.domain}`}
-                      label={"CNAME Record"}
+                      label={zhMap["CNAME Record"] || "CNAME Record"}
                       value={`*.${domain.domain}`}
                     />
                     <Card.ListItem
                       copy
                       copyText={cnameTarget}
-                      label={"CNAME Content"}
+                      label={zhMap["CNAME Content"] || "CNAME Content"}
                       value={cnameTarget}
                     />
                   </Card.List>
@@ -133,7 +134,7 @@ export const CustomDomainVerificationModal = ({
                 {!targetCluster && freeDomains.length > 1 && (
                   <Callout variant={"info"}>
                     <span className="font-medium">
-                      Available proxy clusters:
+                      <TransText>Available proxy clusters:</TransText>
                     </span>{" "}
                     {freeDomains.map((d) => d.domain).join(", ")}. Choose the
                     cluster closest to your users for best performance.
@@ -141,9 +142,7 @@ export const CustomDomainVerificationModal = ({
                 )}
 
                 <Callout variant={"warning"}>
-                  DNS changes may take some time to propagate. If NetBird does
-                  not find the record immediately, please wait up to 24 hours
-                  and try again.
+                  <TransText>DNS changes may take some time to propagate. If NetBird does not find the record immediately, please wait up to 24 hours and try again.</TransText>
                 </Callout>
               </>
             )}
@@ -157,7 +156,7 @@ export const CustomDomainVerificationModal = ({
                 href={REVERSE_PROXY_DOMAIN_VERIFICATION_LINK}
                 target={"_blank"}
               >
-                Domain Verification
+                <TransText>Domain Verification</TransText>
                 <ExternalLinkIcon size={12} />
               </InlineLink>
             </Paragraph>
@@ -165,7 +164,7 @@ export const CustomDomainVerificationModal = ({
           <div className={"flex gap-3 w-full justify-end"}>
             <ModalClose asChild={true}>
               <Button variant={"secondary"} data-testid={"verify-domain-later"}>
-                Verify Later
+                <TransText>Verify Later</TransText>
               </Button>
             </ModalClose>
 
@@ -174,7 +173,7 @@ export const CustomDomainVerificationModal = ({
               onClick={handleStartVerification}
               disabled={!cnameTarget}
             >
-              Start Verification
+              <TransText>Start Verification</TransText>
             </Button>
           </div>
         </ModalFooter>

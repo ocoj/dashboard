@@ -29,6 +29,7 @@ import {
   SelectDropdown,
   SelectOption,
 } from "@components/select/SelectDropdown";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -92,8 +93,8 @@ export const CustomDomainModal = ({
       <ModalContent maxWidthClass={"relative max-w-lg"} showClose={true}>
         <ModalHeader
           icon={<GlobeIcon size={20} />}
-          title={"Add Custom Domain"}
-          description={"You will need to verify the domain with DNS records"}
+          title={zhMap["Add Custom Domain"] || "Add Custom Domain"}
+          description={zhMap["You will need to verify the domain with DNS records"] || "You will need to verify the domain with DNS records"}
           color={"netbird"}
         />
 
@@ -109,7 +110,7 @@ export const CustomDomainModal = ({
                   href={"https://status.netbird.io/"}
                   target={"_blank"}
                 >
-                  NetBird Status
+                  <TransText>NetBird Status</TransText>
                 </InlineLink>{" "}
                 or reach out to{"  "}
                 <InlineLink href={"mailto:support@netbird.io"}>
@@ -125,7 +126,7 @@ export const CustomDomainModal = ({
                   href={REVERSE_PROXY_CLUSTERS_DOCS_LINK}
                   target={"_blank"}
                 >
-                  Proxy Clusters
+                  <TransText>Proxy Clusters</TransText>
                   <ExternalLinkIcon size={12} />
                 </InlineLink>
               </Callout>
@@ -133,7 +134,7 @@ export const CustomDomainModal = ({
           ) : (
             <>
               <div>
-                <Label>Domain</Label>
+                <Label><TransText>Domain</TransText></Label>
                 <Input
                   autoFocus
                   value={domain}
@@ -150,16 +151,16 @@ export const CustomDomainModal = ({
               </div>
 
               <div data-testid={"custom-domain-cluster-selector"}>
-                <Label>Target Proxy Cluster</Label>
+                <Label><TransText>Target Proxy Cluster</TransText></Label>
                 <HelpText>
-                  Select the cluster your CNAME record should point to
+                  <TransText>Select the cluster your CNAME record should point to</TransText>
                 </HelpText>
                 <SelectDropdown
                   showSearch={false}
                   value={selectedCluster}
                   onChange={setSelectedCluster}
                   options={availableClusterOptions}
-                  placeholder={"Select a proxy cluster..."}
+                  placeholder={zhMap["Select a proxy cluster..."] || "Select a proxy cluster..."}
                 />
               </div>
             </>
@@ -173,7 +174,7 @@ export const CustomDomainModal = ({
                 href={REVERSE_PROXY_CUSTOM_DOMAINS_DOCS_LINK}
                 target={"_blank"}
               >
-                Custom Domains
+                <TransText>Custom Domains</TransText>
                 <ExternalLinkIcon size={12} />
               </InlineLink>
             </Paragraph>
@@ -189,7 +190,7 @@ export const CustomDomainModal = ({
               disabled={!canSubmit}
               data-testid={"submit-custom-domain"}
             >
-              Add Domain
+              <TransText>Add Domain</TransText>
             </Button>
           </div>
         </ModalFooter>

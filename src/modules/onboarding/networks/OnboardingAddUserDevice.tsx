@@ -9,6 +9,7 @@ import { Group, GroupPeer } from "@/interfaces/Group";
 import { Peer } from "@/interfaces/Peer";
 import { Policy } from "@/interfaces/Policy";
 import { SetupModalContent } from "@/modules/setup-netbird-modal/SetupModal";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   device?: Peer;
@@ -87,7 +88,7 @@ export const OnboardingAddUserDevice = ({ device, policy, onNext }: Props) => {
 
       <Modal open={open} onOpenChange={setOpen}>
         <ModalContent>
-          <SetupModalContent title={"Install NetBird"} isUserDevice={true} />
+          <SetupModalContent title={zhMap["Install NetBird"] || "Install NetBird"} isUserDevice={true} />
         </ModalContent>
       </Modal>
     </div>

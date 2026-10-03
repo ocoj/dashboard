@@ -225,12 +225,14 @@ export default function PostureCheckTable({
               <GetStartedTest
                 icon={
                   <SquareIcon
-                    icon={<ShieldCheck size={23} />}
+                    icon={
+                      <ShieldCheck size={23} className={"text-nb-gray-200"} />
+                    }
                     color={"gray"}
                     size={"large"}
                   />
                 }
-                title={"Create Posture Check"}
+                title={zhMap["Create Posture Check"] || "Create Posture Check"}
                 description={
                   "Add posture checks to further restrict access in your network. E.g., only clients with a specific NetBird client version, operating system or location are allowed to connect."
                 }

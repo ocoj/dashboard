@@ -46,7 +46,7 @@ export const DNSZonesGroupCell = ({ zone }: Props) => {
 
   return (
     <GroupsRow
-      label={"Distribution Groups"}
+      label={zhMap["Distribution Groups"] || "Distribution Groups"}
       description={
         zhMap["Advertise this zone to peers that belong to the following groups"] ||
         "Advertise this zone to peers that belong to the following groups"

@@ -5,6 +5,8 @@ import * as React from "react";
 import { useState } from "react";
 import AIProviderModal from "@/modules/agent-network/AIProviderModal";
 import { useAIProviders } from "@/modules/agent-network/AIProvidersProvider";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   onBack: () => void;
@@ -23,7 +25,7 @@ export const OnboardingAgentProvider = ({ onBack, onNext }: Props) => {
   return (
     <div className={"relative flex flex-col h-full gap-4"}>
       <div>
-        <h1 className={"text-xl text-center"}>Connect a provider</h1>
+        <h1 className={"text-xl text-center"}><TransText>Connect a provider</TransText></h1>
         <div
           className={
             "text-sm text-nb-gray-300 font-light mt-2 block text-center sm:px-4"
@@ -48,10 +50,10 @@ export const OnboardingAgentProvider = ({ onBack, onNext }: Props) => {
 
       <div className={"flex items-center justify-center mt-4 gap-3"}>
         <Button variant={"secondary"} onClick={onBack}>
-          Go Back
+          <TransText>Go Back</TransText>
         </Button>
         <Button variant={"primary"} disabled={!connected} onClick={onNext}>
-          Continue
+          <TransText>Continue</TransText>
           <ArrowRightIcon size={16} />
         </Button>
       </div>
@@ -91,7 +93,7 @@ const EndpointPanel = ({
               "text-[10px] text-nb-gray-400 uppercase tracking-wider font-medium"
             }
           >
-            API Base URL
+            <TransText>API Base URL</TransText>
           </div>
           <code
             className={
@@ -107,7 +109,7 @@ const EndpointPanel = ({
             "inline-flex items-center gap-1.5 rounded-md border border-nb-gray-700 bg-nb-gray-800/60 px-2.5 py-1.5 text-[11px] font-medium text-nb-gray-200 hover:bg-nb-gray-800 hover:text-white transition-colors shrink-0"
           }
           onClick={() => copy("Endpoint copied to clipboard")}
-          aria-label={"Copy endpoint"}
+          aria-label={zhMap["Copy endpoint"] || "Copy endpoint"}
         >
           <Copy size={12} />
           Copy

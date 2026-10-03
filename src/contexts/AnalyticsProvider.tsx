@@ -5,6 +5,7 @@ import Script from "next/script";
 import React, { useEffect, useState } from "react";
 import ReactGA from "react-ga4";
 import { hotjar } from "react-hotjar";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   children: React.ReactNode;
@@ -140,7 +141,7 @@ const GoogleTageManagerBodyScript = () => {
     isProduction() && (
       <noscript>
         <iframe
-          title={"Google Tag Manager"}
+          title={zhMap["Google Tag Manager"] || "Google Tag Manager"}
           src={`https://www.googletagmanager.com/ns.html?id=${config.googleTagManagerID}`}
           height="0"
           width="0"

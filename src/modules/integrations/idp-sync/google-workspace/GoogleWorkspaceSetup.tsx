@@ -40,6 +40,8 @@ import { EmbeddedIdentityProviderSelect } from "@/modules/integrations/idp-sync/
 import { GroupPrefixHelpText } from "@/modules/integrations/idp-sync/GroupPrefixHelpText";
 import { IntegrationModalHeader } from "@/modules/integrations/IntegrationModalHeader";
 import { GroupPrefixInput } from "../GroupPrefixInput";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -155,7 +157,7 @@ export function SetupContent({ onSuccess }: ModalProps) {
 
       <IntegrationModalHeader
         image={integrationImage}
-        title={"Connect NetBird with Google Workspace"}
+        title={zhMap["Connect NetBird with Google Workspace"] || "Connect NetBird with Google Workspace"}
         description={
           "Start syncing your users and groups from Google Workspace to NetBird. Follow the steps below to get started."
         }
@@ -187,7 +189,7 @@ export function SetupContent({ onSuccess }: ModalProps) {
           <p className={"mt-2 !text-nb-gray-300 !leading-[1.5]"}>
             Ensure that you have an{" "}
             <span className={"text-nb-gray-100 font-semibold"}>
-              Google Workspace user account
+              <TransText>Google Workspace user account</TransText>
             </span>{" "}
             with the following{" "}
             <span className={"text-nb-gray-100 font-semibold"}>
@@ -232,13 +234,13 @@ export function SetupContent({ onSuccess }: ModalProps) {
           <Steps>
             <Steps.Step step={1}>
               <p>
-                Create a new <Mark copy>NetBird</Mark> project in the{" "}
+                Create a new <Mark copy><TransText>NetBird</TransText></Mark> project in the{" "}
                 <InlineLink
                   className={"inline"}
                   target={"_blank"}
                   href={"https://console.cloud.google.com/"}
                 >
-                  Google Cloud Console
+                  <TransText>Google Cloud Console</TransText>
                 </InlineLink>
               </p>
             </Steps.Step>
@@ -252,10 +254,10 @@ export function SetupContent({ onSuccess }: ModalProps) {
                     "https://console.cloud.google.com/apis/library/admin.googleapis.com"
                   }
                 >
-                  Admin SDK API
+                  <TransText>Admin SDK API</TransText>
                 </InlineLink>{" "}
                 for the
-                <Mark>NetBird</Mark> project
+                <Mark><TransText>NetBird</TransText></Mark> project
               </p>
             </Steps.Step>
           </Steps>
@@ -277,20 +279,20 @@ export function SetupContent({ onSuccess }: ModalProps) {
                   target={"_blank"}
                   href={"https://console.cloud.google.com/apis/credentials"}
                 >
-                  API Credentials
+                  <TransText>API Credentials</TransText>
                 </InlineLink>
               </p>
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
-                Click <Mark>CREATE CREDENTIALS</Mark> at the top and select{" "}
-                <Mark>Service account</Mark>
+                <TransText>Click</TransText> <Mark><TransText>CREATE CREDENTIALS</TransText></Mark> at the top and select{" "}
+                <Mark><TransText>Service account</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={3} line={false}>
               <p className={"font-normal"}>
                 Fill in the form with the following values and click{" "}
-                <Mark>DONE</Mark>
+                <Mark><TransText>DONE</TransText></Mark>
               </p>
             </Steps.Step>
           </Steps>
@@ -327,20 +329,20 @@ export function SetupContent({ onSuccess }: ModalProps) {
                     "https://console.cloud.google.com/iam-admin/serviceaccounts"
                   }
                 >
-                  Service Accounts
+                  <TransText>Service Accounts</TransText>
                 </InlineLink>
               </p>
             </Steps.Step>
             <Steps.Step step={1}>
               <p className={"font-normal"}>
-                Click <Mark>NetBird</Mark> to edit the service account. Copy the
+                <TransText>Click</TransText> <Mark><TransText>NetBird</TransText></Mark> to edit the service account. Copy the
                 service account email address.
               </p>
               <Lightbox image={googleEditServiceAccount} />
             </Steps.Step>
             <Steps.Step step={2} line={false}>
               <p className={"font-normal"}>
-                Enter your service account email address
+                <TransText>Enter your service account email address</TransText>
               </p>
             </Steps.Step>
           </Steps>
@@ -370,15 +372,15 @@ export function SetupContent({ onSuccess }: ModalProps) {
           <Steps>
             <Steps.Step step={1}>
               <p className={"font-normal"}>
-                On the same page, now click the <Mark>Keys</Mark> tab, open the{" "}
-                <Mark>Add key</Mark> dropdown and select{" "}
-                <Mark>Create new key</Mark>
+                On the same page, now click the <Mark><TransText>Keys</TransText></Mark> tab, open the{" "}
+                <Mark><TransText>Add key</TransText></Mark> dropdown and select{" "}
+                <Mark><TransText>Create new key</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={3}>
               <p className={"font-normal"}>
-                Select <Mark>JSON</Mark> as the key type and click{" "}
-                <Mark>Create</Mark>
+                <TransText>Select</TransText> <Mark><TransText>JSON</TransText></Mark> as the key type and click{" "}
+                <Mark><TransText>Create</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={4} line={false}>
@@ -413,7 +415,7 @@ export function SetupContent({ onSuccess }: ModalProps) {
                       <KeyRound size={16} className={"text-nb-gray-300"} />
                     </div>
                   }
-                  placeholder={"YdV7Q~JJ62Xl.LvYoBanxZR2sJA2va_3UbqvncY8"}
+                  placeholder={zhMap["YdV7Q~JJ62Xl.LvYoBanxZR2sJA2va_3UbqvncY8"] || "YdV7Q~JJ62Xl.LvYoBanxZR2sJA2va_3UbqvncY8"}
                   value={btoa(serviceAccountKey)}
                   readOnly={true}
                 />
@@ -438,19 +440,19 @@ export function SetupContent({ onSuccess }: ModalProps) {
                   target={"_blank"}
                   href={"https://admin.google.com/ac/home"}
                 >
-                  Admin Console
+                  <TransText>Admin Console</TransText>
                 </InlineLink>
               </p>
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
-                Select <Mark>Account</Mark> on the left menu and then click{" "}
-                <Mark>Admin Roles</Mark>
+                <TransText>Select</TransText> <Mark><TransText>Account</TransText></Mark> on the left menu and then click{" "}
+                <Mark><TransText>Admin Roles</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={3} line={false}>
               <p className={"font-normal"}>
-                Click <Mark>Create new role</Mark> and fill in the form with the
+                <TransText>Click</TransText> <Mark><TransText>Create new role</TransText></Mark> and fill in the form with the
                 following values
               </p>
             </Steps.Step>
@@ -479,7 +481,7 @@ export function SetupContent({ onSuccess }: ModalProps) {
           <Steps>
             <Steps.Step step={1}>
               <p className={"font-normal"}>
-                Scroll down to <Mark>Admin API privileges</Mark> and add the
+                Scroll down to <Mark><TransText>Admin API privileges</TransText></Mark> and add the
                 following privileges to the role
               </p>
               <MinimalList
@@ -500,7 +502,7 @@ export function SetupContent({ onSuccess }: ModalProps) {
               <p className={"font-normal"}>
                 Verify preview of assigned Admin API privileges to ensure that
                 everything is properly configured, and then click{" "}
-                <Mark>CREATE ROLE</Mark>
+                <Mark><TransText>CREATE ROLE</TransText></Mark>
               </p>
               <Lightbox image={googlePrivilegesReview} />
             </Steps.Step>
@@ -517,12 +519,12 @@ export function SetupContent({ onSuccess }: ModalProps) {
           <Steps>
             <Steps.Step step={1}>
               <p className={"font-normal"}>
-                Click <Mark>Assign service accounts</Mark>
+                <TransText>Click</TransText> <Mark><TransText>Assign service accounts</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
-                Enter your <Mark>E-Mail</Mark> and then click <Mark>ADD</Mark>
+                Enter your <Mark><TransText>E-Mail</TransText></Mark> and then click <Mark><TransText>ADD</TransText></Mark>
               </p>
               <MinimalList
                 className={"mt-2 mb-0"}
@@ -536,7 +538,7 @@ export function SetupContent({ onSuccess }: ModalProps) {
             </Steps.Step>
             <Steps.Step step={3} line={false}>
               <p className={"font-normal"}>
-                Click <Mark>ASSIGN ROLE</Mark>
+                <TransText>Click</TransText> <Mark><TransText>ASSIGN ROLE</TransText></Mark>
               </p>
               <Lightbox image={googleAssignServiceAccount} />
             </Steps.Step>
@@ -561,13 +563,13 @@ export function SetupContent({ onSuccess }: ModalProps) {
                     "https://admin.google.com/ac/accountsettings/profile?hl=en_US"
                   }
                 >
-                  Account Settings
+                  <TransText>Account Settings</TransText>
                 </InlineLink>
               </p>
             </Steps.Step>
             <Steps.Step step={2} line={false}>
               <p className={"font-normal"}>
-                Take note of the <Mark>Customer ID</Mark> and enter it below
+                Take note of the <Mark><TransText>Customer ID</TransText></Mark> and enter it below
               </p>
             </Steps.Step>
           </Steps>
@@ -581,7 +583,7 @@ export function SetupContent({ onSuccess }: ModalProps) {
                   Customer ID
                 </div>
               }
-              placeholder={"C03f4c3po"}
+              placeholder={zhMap["C03f4c3po"] || "C03f4c3po"}
               value={customerID}
               onChange={(e) => setCustomerID(e.target.value)}
             />
@@ -638,7 +640,7 @@ export function SetupContent({ onSuccess }: ModalProps) {
             onClick={() => setStep(step + 1)}
             disabled={!connectorId || connectorId === ""}
           >
-            Continue
+            <TransText>Continue</TransText>
             <IconArrowRight size={16} />
           </Button>
         )}
@@ -683,7 +685,7 @@ export function SetupContent({ onSuccess }: ModalProps) {
         >
           <Clock4 size={12} />
           <div>
-            Estimated setup time:
+            <TransText>Estimated setup time:</TransText>
             <span className={"font-medium"}> 10-20 Minutes</span>
           </div>
         </div>

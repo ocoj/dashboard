@@ -1,6 +1,7 @@
 import Card from "@components/Card";
 import { DataTable } from "@components/table/DataTable";
 import DataTableHeader from "@components/table/DataTableHeader";
+import { ENABLED_COLUMN_CLASS } from "@components/table/enabledColumnClass";
 import NoResults from "@components/ui/NoResults";
 import { ColumnDef, SortingState } from "@tanstack/react-table";
 import { cn } from "@utils/helpers";
@@ -56,9 +57,12 @@ export const RouteTableColumns: ColumnDef<Route>[] = [
   {
     id: "enabled",
     accessorKey: "enabled",
-    sortingFn: "basic",
+    enableSorting: false,
+    meta: { className: ENABLED_COLUMN_CLASS.xl },
     header: ({ column }) => (
-      <DataTableHeader column={column}><TransText>Active</TransText></DataTableHeader>
+      <DataTableHeader column={column} sorting={false}>
+        <TransText>Active</TransText>
+      </DataTableHeader>
     ),
     cell: ({ row }) => <PeerRouteActiveCell route={row.original} />,
   },
@@ -94,7 +98,7 @@ export default function PeerRoutesTable({
         getStartedCard={
           <NoResults
             className={"py-4"}
-            title={"This peer has no network routes"}
+            title={zhMap["This peer has no network routes"] || "This peer has no network routes"}
             description={
               "You don't have any assigned network routes yet. You can add this peer to an existing network or create a new network route."
             }

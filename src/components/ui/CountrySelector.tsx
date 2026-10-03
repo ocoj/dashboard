@@ -5,6 +5,7 @@ import {
 import { createElement, useMemo } from "react";
 import RoundedFlag from "@/assets/countries/RoundedFlag";
 import { useCountries } from "@/contexts/CountryProvider";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   value: string;
@@ -41,7 +42,7 @@ export const CountrySelector = ({ value, onChange, iconSize = 20, popoverWidth, 
       <SelectDropdown
         isLoading={isLoading}
         showSearch={true}
-        placeholder={"Select country..."}
+        placeholder={zhMap["Select country..."] || "Select country..."}
         searchPlaceholder={"Search country..."}
         value={value}
         onChange={onChange}

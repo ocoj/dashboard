@@ -249,7 +249,7 @@ export default function DNSZonesTable({
             icon={<DNSZoneIcon className={"fill-nb-gray-200"} size={24} />}
             className={"py-4"}
             contentClassName={"max-w-lg"}
-            title={"This group is not used within any zones yet"}
+            title={zhMap["This group is not used within any zones yet"] || "This group is not used within any zones yet"}
             description={
               "Assign this group as a distribution group in your zones to see them listed here."
             }
@@ -280,7 +280,7 @@ export default function DNSZonesTable({
               <>
                 <TransText>Learn more about</TransText>
                 <InlineLink href={DNS_ZONE_DOCS_LINK} target={"_blank"}>
-                  DNS Zones
+                  <TransText>DNS Zones</TransText>
                   <ExternalLinkIcon size={12} />
                 </InlineLink>
               </>

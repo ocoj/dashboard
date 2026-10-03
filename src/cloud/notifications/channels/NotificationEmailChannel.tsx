@@ -27,6 +27,8 @@ import {
 import { useNotifications } from "@/cloud/notifications/NotificationProvider";
 import { useUsers } from "@/contexts/UsersProvider";
 import { usePermissions } from "@/contexts/PermissionsProvider";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   channel: NotificationChannel;
@@ -88,24 +90,24 @@ export const NotificationEmailChannel = ({ channel }: Props) => {
       <Breadcrumbs>
         <Breadcrumbs.Item
           href={"/settings"}
-          label={"Settings"}
+          label={zhMap["Settings"] || "Settings"}
           icon={<SettingsIcon size={13} />}
         />
         <Breadcrumbs.Item
           href={"/settings?tab=notifications"}
-          label={"Notifications"}
+          label={zhMap["Notifications"] || "Notifications"}
           icon={<MessageSquareDot size={14} />}
         />
         <Breadcrumbs.Item
           href={"/settings?tab=notifications&channel=email"}
-          label={"Email"}
+          label={zhMap["Email"] || "Email"}
           icon={<MailIcon size={14} />}
           active
         />
       </Breadcrumbs>
       <div className={"flex items-start justify-between"}>
         <div className={"flex gap-3 items-center"}>
-          <h1>Email</h1>
+          <h1><TransText>Email</TransText></h1>
         </div>
       </div>
       <div className={"flex flex-col gap-8 mt-4"}>
@@ -130,7 +132,7 @@ export const NotificationEmailChannel = ({ channel }: Props) => {
             Email Addresses
           </Label>
           <HelpText>
-            Add one or more email addresses that should receive notifications
+            <TransText>Add one or more email addresses that should receive notifications</TransText>
           </HelpText>
           <div className={"flex gap-3"}>
             <Input

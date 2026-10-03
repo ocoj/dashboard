@@ -43,6 +43,7 @@ import {
 } from "@/interfaces/IdentityProvider";
 import { idpIcon } from "@/assets/icons/IdentityProviderIcons";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 const issuerHints: Partial<Record<SSOIdentityProviderType, string>> = {
   keycloak: "https://keycloak.example.com/realms/{REALM}",
@@ -239,7 +240,7 @@ export default function IdentityProviderModal({
               <Label><TransText>Client ID</TransText></Label>
               <HelpText><TransText>The OAuth2 confidential client ID</TransText></HelpText>
               <Input
-                placeholder={"Enter client ID"}
+                placeholder={zhMap["Enter client ID"] || "Enter client ID"}
                 value={clientId}
                 onChange={(e) => setClientId(e.target.value)}
                 customPrefix={<IdCard size={16} className="text-nb-gray-300" />}

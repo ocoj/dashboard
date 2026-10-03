@@ -20,6 +20,7 @@ import Paragraph from "@components/Paragraph";
 import { InlineButtonLink } from "@components/InlineLink";
 import { useRouter } from "next/navigation";
 import zhMap from "@/i18n/zh-map";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   value: string;
@@ -45,9 +46,9 @@ export function EmbeddedIdentityProviderSelect({
   if (location === "settings") {
     return (
       <div className="mt-3 w-full">
-        <Label>Identity Provider</Label>
+        <Label><TransText>Identity Provider</TransText></Label>
         <HelpText>
-          Select your identity provider connector for this integration.
+          <TransText>Select your identity provider connector for this integration.</TransText>
         </HelpText>
         <ProviderSelect
           providers={filteredProviders}
@@ -73,7 +74,7 @@ export function EmbeddedIdentityProviderSelect({
     >
       <div className="w-full">
         <Paragraph className="text-sm text-center px-4 inline-block mb-3">
-          Select your identity provider connector for this integration.
+          <TransText>Select your identity provider connector for this integration.</TransText>
         </Paragraph>
         <div className="max-w-sm w-full mx-auto mb-2">
           <ProviderSelect

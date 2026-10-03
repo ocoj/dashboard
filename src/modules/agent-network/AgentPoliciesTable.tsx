@@ -2,7 +2,6 @@
 
 import Badge from "@components/Badge";
 import Button from "@components/Button";
-import FullTooltip from "@components/FullTooltip";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,6 +9,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@components/DropdownMenu";
+import FullTooltip from "@components/FullTooltip";
 import InlineLink from "@components/InlineLink";
 import SquareIcon from "@components/SquareIcon";
 import { DataTable } from "@components/table/DataTable";
@@ -52,17 +52,18 @@ import { useDialog } from "@/contexts/DialogProvider";
 import { useGroups } from "@/contexts/GroupsProvider";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { Group } from "@/interfaces/Group";
-import EmptyRow from "@/modules/common-table-rows/EmptyRow";
-import ActiveInactiveRow from "@/modules/common-table-rows/ActiveInactiveRow";
+import AgentPolicyModal from "@/modules/agent-network/AgentPolicyModal";
+import AIProviderLogo from "@/modules/agent-network/AIProviderLogo";
+import { useAIProviders } from "@/modules/agent-network/AIProvidersProvider";
 import {
+  AgentGuardrail,
   AgentPolicy,
   MOCK_GROUPS,
   PolicyBudgetLimit,
   PolicyTokenLimit,
 } from "@/modules/agent-network/data/mockData";
-import { useAIProviders } from "@/modules/agent-network/AIProvidersProvider";
-import AIProviderLogo from "@/modules/agent-network/AIProviderLogo";
-import AgentPolicyModal from "@/modules/agent-network/AgentPolicyModal";
+import ActiveInactiveRow from "@/modules/common-table-rows/ActiveInactiveRow";
+import EmptyRow from "@/modules/common-table-rows/EmptyRow";
 
 function NameCell({ policy }: { policy: AgentPolicy }) {
   return (
@@ -93,7 +94,7 @@ function SourceCell({ policy }: { policy: AgentPolicy }) {
   return (
     <MultipleGroups
       groups={groups}
-      label={"Source Groups"}
+      label={zhMap["Source Groups"] || "Source Groups"}
       description={
         "Members of these groups are allowed to call the destination providers."
       }
@@ -135,6 +136,98 @@ function ProviderCell({ policy }: { policy: AgentPolicy }) {
   );
 }
 
+// A policy restricts models only through the guardrails attached to it: each
+// guardrail with an enabled model_allowlist narrows the policy to the models
+// it names, and a policy whose guardrails carry none can call every model the
+// destination providers offer.
+function allowlistModels(
+  policy: AgentPolicy,
+  guardrails: AgentGuardrail[],
+): string[] {
+  const models = policy.guardrailIds
+    .map((id) => guardrails.find((g) => g.id === id))
+    .filter((g): g is AgentGuardrail => Boolean(g))
+    .filter((g) => g.checks.model_allowlist.enabled)
+    .flatMap((g) => g.checks.model_allowlist.models);
+  return Array.from(new Set(models));
+}
+
+// How many models the tooltip spells out before it just counts the rest.
+const TOOLTIP_MODELS = 10;
+
+function ModelsCell({
+  policy,
+  onClickAdd,
+}: {
+  policy: AgentPolicy;
+  onClickAdd: () => void;
+}) {
+  const { guardrails } = useAIProviders();
+  const models = allowlistModels(policy, guardrails);
+
+  // No enabled allowlist means every model the providers offer is callable;
+  // the way to narrow it is a guardrail, so the badge opens that tab.
+  if (models.length === 0) {
+    return (
+      <div className={"flex"}>
+        <Badge
+          variant={"gray"}
+          useHover={true}
+          onClick={(e) => {
+            e.stopPropagation();
+            onClickAdd();
+          }}
+        >
+          <IconCirclePlus size={14} />
+          Restrict
+        </Badge>
+      </div>
+    );
+  }
+
+  // A single model fits in the cell; past that only the count does, with the
+  // names on hover.
+  if (models.length === 1) {
+    return (
+      <div className={"flex"}>
+        <Badge
+          variant={"gray-ghost"}
+          className={"transition-all whitespace-nowrap"}
+        >
+          {models[0]}
+        </Badge>
+      </div>
+    );
+  }
+
+  const listed = models.slice(0, TOOLTIP_MODELS);
+  const rest = models.length - listed.length;
+
+  return (
+    <div className={"flex"}>
+      <FullTooltip
+        content={
+          <div className={"text-xs space-y-0.5"}>
+            <div className={"font-semibold"}><TransText>Model allowlist</TransText></div>
+            {listed.map((model) => (
+              <div key={model}>· {model}</div>
+            ))}
+            {rest > 0 && <div>· and {rest} more</div>}
+          </div>
+        }
+      >
+        <Badge
+          variant={"gray-ghost"}
+          useHover={true}
+          className={"px-3 gap-2 whitespace-nowrap"}
+        >
+          {models.length} Models
+        </Badge>
+      </FullTooltip>
+    </div>
+  );
+}
+
 function LimitsCell({
   policy,
   onClickAdd,
@@ -170,7 +263,7 @@ function LimitsCell({
         <FullTooltip
           content={
             <div className={"text-xs space-y-0.5"}>
-              <div className={"font-semibold"}>Token Limit</div>
+              <div className={"font-semibold"}><TransText>Token Limit</TransText></div>
               <div>· Group: {capDisplay(tl.groupCap, false)}</div>
               <div>· Individual: {capDisplay(tl.userCap, false)}</div>
               <div>· Resets every {formatLimitWindow(tl.windowSeconds)}</div>
@@ -187,7 +280,7 @@ function LimitsCell({
         <FullTooltip
           content={
             <div className={"text-xs space-y-0.5"}>
-              <div className={"font-semibold"}>Budget Limit</div>
+              <div className={"font-semibold"}><TransText>Budget Limit</TransText></div>
               <div>· Group: {capDisplay(bl.groupCapUsd, true)}</div>
               <div>· Individual: {capDisplay(bl.userCapUsd, true)}</div>
               <div>· Resets every {formatLimitWindow(bl.windowSeconds)}</div>
@@ -314,7 +407,7 @@ export default function AgentPoliciesTable({ headingTarget }: Readonly<Props>) {
   // Deep-link: the access log links here with ?search=<policy name> so the
   // table opens pre-filtered to that policy.
   const initialSearch = searchParams.get("search") ?? undefined;
-  const { policies, isLoading, providers } = useAIProviders();
+  const { policies, isLoading, providers, guardrails } = useAIProviders();
   const { groups: realGroups } = useGroups();
 
   const [sorting, setSorting] = useLocalStorage<SortingState>(
@@ -389,7 +482,7 @@ export default function AgentPoliciesTable({ headingTarget }: Readonly<Props>) {
       accessorKey: "name",
       sortingFn: "text",
       header: ({ column }) => (
-        <DataTableHeader column={column}>Name</DataTableHeader>
+        <DataTableHeader column={column}><TransText>Name</TransText></DataTableHeader>
       ),
       cell: ({ row }) => <NameCell policy={row.original} />,
     },
@@ -398,7 +491,7 @@ export default function AgentPoliciesTable({ headingTarget }: Readonly<Props>) {
       accessorFn: (p) => p.sourceGroups.length,
       sortingFn: "basic",
       header: ({ column }) => (
-        <DataTableHeader column={column}>Groups</DataTableHeader>
+        <DataTableHeader column={column}><TransText>Groups</TransText></DataTableHeader>
       ),
       cell: ({ row }) => <SourceCell policy={row.original} />,
     },
@@ -407,9 +500,23 @@ export default function AgentPoliciesTable({ headingTarget }: Readonly<Props>) {
       accessorFn: (p) => p.destinationProviderIds.length,
       sortingFn: "basic",
       header: ({ column }) => (
-        <DataTableHeader column={column}>Provider</DataTableHeader>
+        <DataTableHeader column={column}><TransText>Provider</TransText></DataTableHeader>
       ),
       cell: ({ row }) => <ProviderCell policy={row.original} />,
+    },
+    {
+      id: "models",
+      accessorFn: (p) => allowlistModels(p, guardrails).length,
+      sortingFn: "basic",
+      header: ({ column }) => (
+        <DataTableHeader column={column}><TransText>Models</TransText></DataTableHeader>
+      ),
+      cell: ({ row }) => (
+        <ModelsCell
+          policy={row.original}
+          onClickAdd={() => openEdit(row.original, "guardrails")}
+        />
+      ),
     },
     // Hidden filter-only columns powering the consolidated Filters UI.
     {
@@ -429,7 +536,7 @@ export default function AgentPoliciesTable({ headingTarget }: Readonly<Props>) {
         (p.limits.budgetLimit.enabled ? 1 : 0),
       sortingFn: "basic",
       header: ({ column }) => (
-        <DataTableHeader column={column}>Limits</DataTableHeader>
+        <DataTableHeader column={column}><TransText>Limits</TransText></DataTableHeader>
       ),
       cell: ({ row }) => (
         <LimitsCell
@@ -478,8 +585,12 @@ export default function AgentPoliciesTable({ headingTarget }: Readonly<Props>) {
         columns={columns}
         data={policies}
         initialSearch={initialSearch}
-        searchPlaceholder={zhMap["Search by name or description..."] || "Search by name or description..."}
-        onRowClick={(row) => openEdit(row.original)}
+        searchPlaceholder={"Search by name or description..."}
+        // Clicking the Models cell lands on the tab that actually owns the
+        // model allowlist — the guardrails attached to the policy.
+        onRowClick={(row, cell) =>
+          openEdit(row.original, cell === "models" ? "guardrails" : undefined)
+        }
         getStartedCard={
           <GetStartedTest
             icon={
@@ -510,8 +621,11 @@ export default function AgentPoliciesTable({ headingTarget }: Readonly<Props>) {
             learnMore={
               <>
                 Learn more about
-                <InlineLink href={"https://docs.netbird.io/"} target={"_blank"}>
-                  Agent Network
+                <InlineLink
+                  href={"https://docs.netbird.io/agent-network"}
+                  target={"_blank"}
+                >
+                  <TransText>Agent Network</TransText>
                   <ExternalLinkIcon size={12} />
                 </InlineLink>
               </>

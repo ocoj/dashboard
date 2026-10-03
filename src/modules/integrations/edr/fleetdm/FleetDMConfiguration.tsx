@@ -40,6 +40,7 @@ import useGroupHelper from "@/modules/groups/useGroupHelper";
 import { matchAttributesReducer } from "@/modules/integrations/edr/fleetdm/FleetDM";
 import { FleetDMMatchSettings } from "@/modules/integrations/edr/fleetdm/FleetDMMatchSettings";
 import { IntegrationModalHeader } from "@/modules/integrations/IntegrationModalHeader";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -180,7 +181,7 @@ export function ConfigurationContent({
 
       <IntegrationModalHeader
         image={integrationImage}
-        title={"FleetDM Configuration"}
+        title={zhMap["FleetDM Configuration"] || "FleetDM Configuration"}
         description={
           "Restrict network access to IT-managed devices based on FleetDM compliance policies."
         }
@@ -239,7 +240,7 @@ export function ConfigurationContent({
               </div>
             </Label>
             <HelpText className={"mt-2"}>
-              Select groups you want to apply the FleetDM integration to
+              <TransText>Select groups you want to apply the FleetDM integration to</TransText>
             </HelpText>
 
             <PeerGroupSelector
@@ -253,11 +254,10 @@ export function ConfigurationContent({
         <TabsContent value={"compliance"} className={"px-8"}>
           <div className={""}>
             <Label>
-              <div className={"flex gap-2 items-center"}>Requirements</div>
+              <div className={"flex gap-2 items-center"}><TransText>Requirements</TransText></div>
             </Label>
             <HelpText className={"mt-2"}>
-              Set the specific requirements that devices must meet to be
-              considered compliant.
+              <TransText>Set the specific requirements that devices must meet to be considered compliant.</TransText>
             </HelpText>
 
             <FleetDMMatchSettings
@@ -337,7 +337,7 @@ export function ConfigurationContent({
                   API Token
                 </div>
               }
-              placeholder={"Enter your FleetDM API token"}
+              placeholder={zhMap["Enter your FleetDM API token"] || "Enter your FleetDM API token"}
               value={apiToken}
               onFocus={(e) => {
                 if (e.target.value == secretPlaceholder) {
@@ -363,9 +363,7 @@ export function ConfigurationContent({
               </div>
             </Label>
             <HelpText className={"max-w-lg mt-2"}>
-              Deleting this integration will remove the ability to enforce
-              compliance policies from FleetDM. If you delete the integration
-              you will need to reconfigure it again.
+              <TransText>Deleting this integration will remove the ability to enforce compliance policies from FleetDM. If you delete the integration you will need to reconfigure it again.</TransText>
             </HelpText>
           </div>
           <Button
@@ -374,7 +372,7 @@ export function ConfigurationContent({
             className={"mt-3"}
             onClick={deleteIntegration}
           >
-            Delete Integration
+            <TransText>Delete Integration</TransText>
           </Button>
         </TabsContent>
       </Tabs>
@@ -396,7 +394,7 @@ export function ConfigurationContent({
         <div className={"flex gap-4"}>
           <ModalClose asChild={true}>
             <Button variant={"secondary"} className={"w-full"}>
-              Cancel
+              <TransText>Cancel</TransText>
             </Button>
           </ModalClose>
 
@@ -406,7 +404,7 @@ export function ConfigurationContent({
             disabled={!canSave}
             onClick={updateIntegration}
           >
-            Save Changes
+            <TransText>Save Changes</TransText>
           </Button>
         </div>
       </ModalFooter>

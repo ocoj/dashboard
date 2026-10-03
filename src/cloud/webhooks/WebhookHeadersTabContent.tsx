@@ -13,6 +13,7 @@ import {
   HeadersInput,
 } from "@/cloud/webhooks/WebhookHeadersInput";
 import { WebhookConfig } from "@/cloud/webhooks/useWebhookConfig";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   value: WebhookConfig;
@@ -23,7 +24,7 @@ export function WebhookHeadersTabContent({ value }: Readonly<Props>) {
     <TabsContent value={"headers"} className={"px-8"}>
       <Label>HTTP Headers (optional)</Label>
       <HelpText>
-        If your endpoint requires additional headers, you can add them here.
+        <TransText>If your endpoint requires additional headers, you can add them here.</TransText>
       </HelpText>
       {value.httpHeaders.length > 0 && (
         <div className={"flex gap-3 w-full mb-3"}>

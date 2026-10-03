@@ -25,6 +25,7 @@ import InlineLink from "@components/InlineLink";
 import { useWebhookConfig } from "@/cloud/webhooks/useWebhookConfig";
 import { WebhookGeneralTabContent } from "@/cloud/webhooks/WebhookGeneralTabContent";
 import { WebhookHeadersTabContent } from "@/cloud/webhooks/WebhookHeadersTabContent";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   open: boolean;
@@ -133,12 +134,12 @@ function NotificationWebhookModalContent({
       <ModalFooter className={"items-center"}>
         <div className={"w-full"}>
           <Paragraph className={"text-sm mt-auto"}>
-            Learn more about
+            <TransText>Learn more about</TransText>
             <InlineLink
               href={NOTIFICATION_CHANNELS_WEBHOOK_DOCS_LINK}
               target={"_blank"}
             >
-              Webhook Notifications
+              <TransText>Webhook Notifications</TransText>
               <ExternalLinkIcon size={12} />
             </InlineLink>
           </Paragraph>
@@ -147,7 +148,7 @@ function NotificationWebhookModalContent({
           {config.isEditing ? (
             <>
               <ModalClose asChild={true}>
-                <Button variant={"secondary"}>Cancel</Button>
+                <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
               </ModalClose>
               <Button
                 variant={"primary"}
@@ -155,7 +156,7 @@ function NotificationWebhookModalContent({
                 disabled={!config.canSave}
                 data-testid="webhook-save"
               >
-                Save Changes
+                <TransText>Save Changes</TransText>
               </Button>
             </>
           ) : (
@@ -163,7 +164,7 @@ function NotificationWebhookModalContent({
               {tab === "general" && (
                 <>
                   <ModalClose asChild={true}>
-                    <Button variant={"secondary"}>Cancel</Button>
+                    <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
                   </ModalClose>
                   <Button
                     variant={"primary"}
@@ -171,7 +172,7 @@ function NotificationWebhookModalContent({
                     onClick={() => setTab("headers")}
                     data-testid="webhook-continue"
                   >
-                    Continue
+                    <TransText>Continue</TransText>
                   </Button>
                 </>
               )}
@@ -181,7 +182,7 @@ function NotificationWebhookModalContent({
                     variant={"secondary"}
                     onClick={() => setTab("general")}
                   >
-                    Back
+                    <TransText>Back</TransText>
                   </Button>
                   <Button
                     variant={"primary"}

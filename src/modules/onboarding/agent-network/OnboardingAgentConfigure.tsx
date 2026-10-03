@@ -1,8 +1,9 @@
 import Button from "@components/Button";
 import { ArrowRightIcon } from "lucide-react";
 import * as React from "react";
-import { AgentConnectTabs } from "@/modules/agent-network/AgentConnectModal";
+import { AgentConnectTabs } from "@/modules/agent-network/AgentConnectTabs";
 import { useAIProviders } from "@/modules/agent-network/AIProvidersProvider";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   onBack: () => void;
@@ -27,7 +28,7 @@ export const OnboardingAgentConfigure = ({ onBack, onNext }: Props) => {
   return (
     <div className={"relative flex flex-col h-full gap-4"}>
       <div>
-        <h1 className={"text-xl text-center"}>Configure your agent</h1>
+        <h1 className={"text-xl text-center"}><TransText>Configure your agent</TransText></h1>
         <div
           className={
             "text-sm text-nb-gray-300 font-light mt-2 block text-center sm:px-4"
@@ -53,17 +54,16 @@ export const OnboardingAgentConfigure = ({ onBack, onNext }: Props) => {
             "mt-2 text-center text-sm text-nb-gray-400 font-light sm:px-4"
           }
         >
-          Connect a provider to generate your endpoint, then your agent config
-          appears here.
+          <TransText>Connect a provider to generate your endpoint, then your agent config appears here.</TransText>
         </div>
       )}
 
       <div className={"flex items-center justify-center mt-4 gap-3"}>
         <Button variant={"secondary"} onClick={onBack}>
-          Go Back
+          <TransText>Go Back</TransText>
         </Button>
         <Button variant={"primary"} onClick={onNext}>
-          Continue
+          <TransText>Continue</TransText>
           <ArrowRightIcon size={16} />
         </Button>
       </div>

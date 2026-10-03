@@ -12,6 +12,8 @@ import { Network, NetworkRouter } from "@/interfaces/Network";
 import { Peer } from "@/interfaces/Peer";
 import { SetupKey } from "@/interfaces/SetupKey";
 import { SetupModalContent } from "@/modules/setup-netbird-modal/SetupModal";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   network?: Network;
@@ -111,22 +113,21 @@ export const OnboardingAddRoutingPeer = ({
     <div className={"relative flex flex-col h-full gap-4"}>
         <div>
             <h1 className={"text-xl text-center"}>
-                Add a routing peer and get the traffic flowing
+                <TransText>Add a routing peer and get the traffic flowing</TransText>
             </h1>
             <div
                 className={
                     "text-sm text-nb-gray-300 font-light mt-2 block text-center sm:px-4"
                 }
             >
-                Think of a routing peer as a connector to your internal network.
-                It runs NetBird and lets your remote devices access internal resources, while enforcing access control policies.
+                <TransText>Think of a routing peer as a connector to your internal network. It runs NetBird and lets your remote devices access internal resources, while enforcing access control policies.</TransText>
             </div>
             <div
                 className={
                     "text-sm text-nb-gray-300 font-light mt-2 block text-center sm:px-4"
                 }
             >
-                Generate a setup key and install NetBird on that machine.
+                <TransText>Generate a setup key and install NetBird on that machine.</TransText>
             </div>
         </div>
 
@@ -154,7 +155,7 @@ export const OnboardingAddRoutingPeer = ({
           </Button>
         ) : (
           <Button variant={"primary"} onClick={generateSetupKey} size={"xs"}>
-            Generate Setup Key
+            <TransText>Generate Setup Key</TransText>
           </Button>
         )}
       </div>
@@ -174,7 +175,7 @@ export const OnboardingAddRoutingPeer = ({
           <ModalContent>
             <SetupModalContent
               hostname={"routing-peer"}
-              title={"Install NetBird"}
+              title={zhMap["Install NetBird"] || "Install NetBird"}
               setupKey={setupKey.key}
             />
           </ModalContent>

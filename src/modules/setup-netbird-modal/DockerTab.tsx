@@ -10,6 +10,7 @@ import Link from "next/link";
 import React from "react";
 import { OperatingSystem } from "@/interfaces/OperatingSystem";
 import { RoutingPeerSetupKeyInfo } from "@/modules/setup-netbird-modal/SetupModal";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   setupKey?: string;
@@ -36,7 +37,7 @@ export default function DockerTab({
         </p>
         <Steps>
           <Steps.Step step={1}>
-            <p>Install Docker</p>
+            <p><TransText>Install Docker</TransText></p>
             <div className={"flex gap-4 mt-1"}>
               <Link
                 href={"https://docs.docker.com/engine/install/"}
@@ -59,7 +60,7 @@ export default function DockerTab({
               {showSetupKeyInfo && <RoutingPeerSetupKeyInfo />}
             </p>
             <Code>
-              <Code.Line>docker run --rm -d \</Code.Line>
+              <Code.Line>docker run -d --restart=unless-stopped \</Code.Line>
               <Code.Line> --cap-add=NET_ADMIN \</Code.Line>
               <Code.Line>
                 {" "}
@@ -90,13 +91,13 @@ export default function DockerTab({
             </Code>
           </Steps.Step>
           <Steps.Step step={3 + offset} line={false}>
-            <p>Read our documentation</p>
+            <p><TransText>Read our documentation</TransText></p>
             <InlineLink
               href={"https://docs.netbird.io/how-to/installation/docker"}
               passHref={true}
               target={"_blank"}
             >
-              Running NetBird in Docker
+              <TransText>Running NetBird in Docker</TransText>
             </InlineLink>
           </Steps.Step>
         </Steps>

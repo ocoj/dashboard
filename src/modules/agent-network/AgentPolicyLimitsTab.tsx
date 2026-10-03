@@ -19,10 +19,19 @@ import {
 } from "@components/modal/Modal";
 import ModalHeader from "@components/modal/ModalHeader";
 import Paragraph from "@components/Paragraph";
-import { TabsContent } from "@components/Tabs";
-import { cn } from "@utils/helpers";
-import { IconCirclePlus } from "@tabler/icons-react";
 import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@components/Select";
+import Separator from "@components/Separator";
+import { TabsContent } from "@components/Tabs";
+import { IconCirclePlus } from "@tabler/icons-react";
+import { cn } from "@utils/helpers";
+import {
+  CalendarClock,
   Edit,
   Gauge,
   MinusCircleIcon,
@@ -37,6 +46,8 @@ import {
   PolicyLimits,
   PolicyTokenLimit,
 } from "@/modules/agent-network/data/mockData";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type LimitKind = "token" | "budget";
 
@@ -53,8 +64,7 @@ export default function AgentPolicyLimitsTab({
 
   const tokenAttached = limits.tokenLimit.enabled;
   const budgetAttached = limits.budgetLimit.enabled;
-  const attachedCount =
-    (tokenAttached ? 1 : 0) + (budgetAttached ? 1 : 0);
+  const attachedCount = (tokenAttached ? 1 : 0) + (budgetAttached ? 1 : 0);
 
   const detachToken = () =>
     setLimits((l) => ({
@@ -89,7 +99,7 @@ export default function AgentPolicyLimitsTab({
                 {attachedCount} {attachedCount === 1 ? "Limit" : "Limits"}
               </Label>
               <HelpText className={"mb-0"}>
-                Token and budget caps applied directly to this policy.
+                <TransText>Token and budget caps applied directly to this policy.</TransText>
               </HelpText>
             </div>
             <div className={"flex items-center justify-center gap-4"}>
@@ -207,10 +217,7 @@ function LimitRow({
             <MoreVertical size={16} className={"shrink-0"} />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent
-          className={"w-auto min-w-[200px]"}
-          align={"end"}
-        >
+        <DropdownMenuContent className={"w-auto min-w-[200px]"} align={"end"}>
           <DropdownMenuItem onClick={onEdit}>
             <div className={"flex gap-3 items-center"}>
               <Edit size={14} className={"shrink-0"} />
@@ -247,7 +254,7 @@ function NoLimitsInfo({
           {"You haven't added any limits yet"}
         </h2>
         <Paragraph className={cn("text-sm text-center max-w-md mt-1")}>
-          Add token or budget caps that apply directly to this policy.
+          <TransText>Add token or budget caps that apply directly to this policy.</TransText>
         </Paragraph>
       </div>
       <div className={"flex items-center justify-center gap-4 mt-5"}>
@@ -330,8 +337,10 @@ function LimitEditModal({
   })();
   const [windowUnit, setWindowUnit] = useState<"m" | "h" | "d">(initialUnit);
   const [windowAmountStr, setWindowAmountStr] = useState<string>(() => {
-    if (initialUnit === "d") return String(Math.max(1, Math.floor(initialWindowSeconds / 86_400)));
-    if (initialUnit === "h") return String(Math.max(1, Math.floor(initialWindowSeconds / 3600)));
+    if (initialUnit === "d")
+      return String(Math.max(1, Math.floor(initialWindowSeconds / 86_400)));
+    if (initialUnit === "h")
+      return String(Math.max(1, Math.floor(initialWindowSeconds / 3600)));
     return String(Math.max(1, Math.floor(initialWindowSeconds / 60)));
   });
 
@@ -374,18 +383,19 @@ function LimitEditModal({
 
   return (
     <Modal open={true} onOpenChange={(o) => (!o ? onClose() : undefined)}>
-      <ModalContent maxWidthClass={"max-w-lg"} showClose={true}>
+      <ModalContent maxWidthClass={"max-w-xl"} showClose={true}>
         <ModalHeader
           icon={isToken ? <Gauge size={19} /> : <Wallet size={19} />}
           title={isToken ? "Token Limit" : "Budget Limit"}
           description={
             isToken
-              ? "Cap total tokens per group and per individual user over a rolling window."
-              : "Cap USD spend per group and per individual user over a rolling window."
+              ? "Cap tokens per group and per user over a rolling window."
+              : "Cap USD spend per group and per user over a rolling window."
           }
           color={"netbird"}
         />
-        <div className={"flex flex-col px-8 gap-4 pt-2 pb-6"}>
+        <Separator />
+        <div className={"flex flex-col px-8 gap-7 py-6"}>
           <div className={"grid grid-cols-2 gap-4"}>
             <div>
               <Label>
@@ -393,14 +403,14 @@ function LimitEditModal({
                 <HelpTooltip
                   content={
                     <>
-                      Caps the group&apos;s total consumption within the
-                      window. Once reached, every member is blocked until the
-                      window resets, regardless of individual usage.
+                      Caps the group&apos;s total consumption within the window.
+                      Once reached, every member is blocked until the window
+                      resets, regardless of individual usage.
                     </>
                   }
                 />
               </Label>
-              <HelpText>Group total within the window.</HelpText>
+              <HelpText><TransText>Group total within the window.</TransText></HelpText>
               <Input
                 type={"number"}
                 min={0}
@@ -416,14 +426,14 @@ function LimitEditModal({
                 <HelpTooltip
                   content={
                     <>
-                      Caps each member&apos;s own consumption within the
-                      window. A user that hits this cap is blocked even when
-                      the group still has headroom.
+                      Caps each member&apos;s own consumption within the window.
+                      A user that hits this cap is blocked even when the group
+                      still has headroom.
                     </>
                   }
                 />
               </Label>
-              <HelpText>Per-user limit within the window.</HelpText>
+              <HelpText><TransText>Per-user limit within the window.</TransText></HelpText>
               <Input
                 type={"number"}
                 min={0}
@@ -435,45 +445,48 @@ function LimitEditModal({
             </div>
           </div>
           <div>
-            <Label>Reset Window</Label>
+            <Label><TransText>Reset Window</TransText></Label>
             <HelpText>
-              How often the cap counters reset. Minimum 1 minute.
+              <TransText>How often the cap counters reset. Minimum 1 minute.</TransText>
             </HelpText>
-            <div className={"flex gap-2"}>
+            <div className={"flex gap-3"}>
               <Input
                 type={"number"}
                 min={1}
-                className={"flex-1"}
+                maxWidthClass={"max-w-[100px]"}
                 value={windowAmountStr}
                 onChange={(e) => setWindowAmountStr(e.target.value)}
               />
-              <select
-                className={
-                  "h-10 rounded-md border border-nb-gray-800 bg-nb-gray-940 px-3 text-sm text-nb-gray-100"
-                }
+              <Select
                 value={windowUnit}
-                onChange={(e) =>
-                  setWindowUnit(e.target.value as "m" | "h" | "d")
-                }
+                onValueChange={(v) => setWindowUnit(v as "m" | "h" | "d")}
               >
-                <option value={"m"}>Minutes</option>
-                <option value={"h"}>Hours</option>
-                <option value={"d"}>Days</option>
-              </select>
+                <SelectTrigger className={"w-[135px] shrink-0"}>
+                  <div className={"flex items-center gap-3"}>
+                    <CalendarClock size={15} className={"text-nb-gray-300"} />
+                    <SelectValue placeholder={zhMap["Select interval..."] || "Select interval..."} />
+                  </div>
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value={"m"}><TransText>Minutes</TransText></SelectItem>
+                  <SelectItem value={"h"}><TransText>Hours</TransText></SelectItem>
+                  <SelectItem value={"d"}><TransText>Days</TransText></SelectItem>
+                </SelectContent>
+              </Select>
             </div>
           </div>
         </div>
         <ModalFooter className={"items-center"}>
           <div className={"flex gap-3 w-full justify-end"}>
             <ModalClose asChild={true}>
-              <Button variant={"secondary"}>Cancel</Button>
+              <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
             </ModalClose>
             <Button
               variant={"primary"}
               disabled={!canSave}
               onClick={handleSave}
             >
-              Save
+              <TransText>Save</TransText>
             </Button>
           </div>
         </ModalFooter>

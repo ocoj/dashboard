@@ -21,6 +21,7 @@ import * as React from "react";
 import { useMemo, useState } from "react";
 import { PeerNetworkRangeCheck } from "@/interfaces/PostureCheck";
 import { PostureCheckCard } from "@/modules/posture-checks/ui/PostureCheckCard";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   value?: PeerNetworkRangeCheck;
@@ -41,7 +42,7 @@ export const PostureCheckPeerNetworkRange = ({
       setOpen={setOpen}
       key={open ? 1 : 0}
       icon={<NetworkIcon size={16} />}
-      title={"Peer Network Range"}
+      title={zhMap["Peer Network Range"] || "Peer Network Range"}
       modalWidthClass={"max-w-xl"}
       description={
         "Restrict access by allowing or blocking peer network ranges."
@@ -129,10 +130,9 @@ const CheckContent = ({ value, onChange, disabled }: Props) => {
       <div className={"flex flex-col px-8 gap-2 pb-6"}>
         <div className={"flex justify-between items-start gap-10 mt-2"}>
           <div>
-            <Label>Allow or Block Ranges</Label>
+            <Label><TransText>Allow or Block Ranges</TransText></Label>
             <HelpText className={""}>
-              Choose whether you want to allow or block specific peer network
-              ranges
+              <TransText>Choose whether you want to allow or block specific peer network ranges</TransText>
             </HelpText>
           </div>
           <RadioGroup value={allowOrDeny} onChange={setAllowOrDeny}>
@@ -199,7 +199,7 @@ const CheckContent = ({ value, onChange, disabled }: Props) => {
               }
               target={"_blank"}
             >
-              Peer Network Range Check
+              <TransText>Peer Network Range Check</TransText>
               <ExternalLinkIcon size={12} />
             </InlineLink>
           </Paragraph>
@@ -224,7 +224,7 @@ const CheckContent = ({ value, onChange, disabled }: Props) => {
               }
             }}
           >
-            Save
+            <TransText>Save</TransText>
           </Button>
         </div>
       </ModalFooter>

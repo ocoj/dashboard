@@ -12,6 +12,8 @@ import { useDialog } from "@/contexts/DialogProvider";
 import { Peer } from "@/interfaces/Peer";
 import { SetupKey } from "@/interfaces/SetupKey";
 import { SetupModalContent } from "@/modules/setup-netbird-modal/SetupModal";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   secondDevice?: Peer;
@@ -81,8 +83,7 @@ export const OnboardingSecondDevice = ({ secondDevice, onFinish }: Props) => {
             Each device (a.k.a. peer) in your NetBird network gets its own private IP and name to communicate securely in the network.
         </div>
         <div className="text-sm text-nb-gray-300 font-light mt-2 block text-center">
-            To complete the setup, just share this link or email it to yourself to set up your next device
-            with ease.
+            <TransText>To complete the setup, just share this link or email it to yourself to set up your next device with ease.</TransText>
         </div>
       </div>
 
@@ -106,7 +107,7 @@ export const OnboardingSecondDevice = ({ secondDevice, onFinish }: Props) => {
             className={"h-[42px]"}
           >
             <ShareIcon size={16} />
-            <span className={"lg:hidden"}>Share Link</span>
+            <span className={"lg:hidden"}><TransText>Share Link</TransText></span>
           </Button>
         )}
       </div>
@@ -122,7 +123,7 @@ export const OnboardingSecondDevice = ({ secondDevice, onFinish }: Props) => {
         <Modal open={open} onOpenChange={setOpen}>
           <ModalContent>
             <SetupModalContent
-              title={"Install NetBird"}
+              title={zhMap["Install NetBird"] || "Install NetBird"}
               setupKey={setupKey.key}
             />
           </ModalContent>

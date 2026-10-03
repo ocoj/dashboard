@@ -10,6 +10,7 @@ import { useCountries } from "@/contexts/CountryProvider";
 import { ReverseProxyEvent } from "@/interfaces/ReverseProxy";
 import Skeleton from "react-loading-skeleton";
 import { ListItem } from "@components/ListItem";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   event: ReverseProxyEvent;
@@ -49,7 +50,7 @@ export const ReverseProxyEventsLocationIpCell = ({ event }: Props) => {
         >
           <ListItem
             icon={<FlagIcon size={14} />}
-            label={"Region"}
+            label={zhMap["Region"] || "Region"}
             value={
               isLoading && !region ? (
                 <Skeleton width={100} />

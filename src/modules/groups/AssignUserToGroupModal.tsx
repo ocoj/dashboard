@@ -122,7 +122,7 @@ export const AssignUserToGroupModalContent = ({
         getStartedCard={
           <NoResultsCard
             className={"mb-8"}
-            title={"You don't have any users to assign"}
+            title={zhMap["You don't have any users to assign"] || "You don't have any users to assign"}
             description={
               "In order to assign users to this group you need to have at least one user that is not already part of this group."
             }

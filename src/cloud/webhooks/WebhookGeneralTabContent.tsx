@@ -6,6 +6,7 @@ import { TabsContent } from "@components/Tabs";
 import { GlobeIcon } from "lucide-react";
 import { AuthenticationSettings } from "@/cloud/webhooks/WebhookAuthenticationSettings";
 import { WebhookConfig } from "@/cloud/webhooks/useWebhookConfig";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   value: WebhookConfig;
@@ -36,9 +37,9 @@ export function WebhookGeneralTabContent({
         />
       </div>
 
-      <Label>Authentication</Label>
+      <Label><TransText>Authentication</TransText></Label>
       <HelpText>
-        Select your preferred authentication method for the endpoint.
+        <TransText>Select your preferred authentication method for the endpoint.</TransText>
       </HelpText>
       <AuthenticationSettings value={value} mask={mask} />
     </TabsContent>

@@ -34,6 +34,8 @@ import {
   exampleAwsSecretAccessKey,
 } from "@/modules/integrations/event-streaming/amazon/exampleCredentials";
 import { IntegrationModalHeader } from "@/modules/integrations/IntegrationModalHeader";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -142,7 +144,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
 
       <IntegrationModalHeader
         image={firehoseLogo}
-        title={"Connect NetBird with Amazon Data Firehose"}
+        title={zhMap["Connect NetBird with Amazon Data Firehose"] || "Connect NetBird with Amazon Data Firehose"}
         description={
           "Start streaming your NetBird audit & traffic events to Amazon Data Firehose. Follow the steps below to get started."
         }
@@ -162,7 +164,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
               variant={"default"}
               className={"inline"}
             >
-              Amazon Data Firehose Dashboard.
+              <TransText>Amazon Data Firehose Dashboard.</TransText>
             </InlineLink>
           </p>
           <SelectDropdown
@@ -197,7 +199,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
           </p>
           <Steps>
             <Steps.Step step={1}>
-              <p>Navigate to the Amazon Data Firehose Stream Dashboard</p>
+              <p><TransText>Navigate to the Amazon Data Firehose Stream Dashboard</TransText></p>
               <div className={"flex gap-4"}>
                 <Link href={firehoseDashboardURL} passHref target={"_blank"}>
                   <Button variant={"primary"} size={"xs"}>
@@ -209,19 +211,19 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
-                Click <Mark>Create Firehose stream</Mark> at the top right
+                <TransText>Click</TransText> <Mark><TransText>Create Firehose stream</TransText></Mark> at the top right
                 corner
               </p>
             </Steps.Step>
             <Steps.Step step={3}>
               <p className={"font-normal"}>
-                As <Mark>Source</Mark>
-                select <Mark>Direct PUT</Mark>
+                As <Mark><TransText>Source</TransText></Mark>
+                select <Mark><TransText>Direct PUT</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={4}>
               <p className={"font-normal"}>
-                As <Mark>Destination</Mark>
+                As <Mark><TransText>Destination</TransText></Mark>
                 select the AWS service you want to push the events to
               </p>
             </Steps.Step>
@@ -229,7 +231,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
               <p className={"font-normal"}>
                 Give it a descriptive name like{" "}
                 <Mark copy>netbird-activity-events</Mark>
-                and click <Mark>Create Firehose stream</Mark>
+                and click <Mark><TransText>Create Firehose stream</TransText></Mark>
                 <Tooltip>
                   <TooltipTrigger>
                     <InfoIcon
@@ -246,7 +248,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
               </p>
             </Steps.Step>
             <Steps.Step step={6} line={false}>
-              <p className={"font-normal"}>Enter your Firehose stream name</p>
+              <p className={"font-normal"}><TransText>Enter your Firehose stream name</TransText></p>
               <div className={"mb-4"}>
                 <Input
                   type={"text"}
@@ -273,7 +275,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
           </p>
           <Steps>
             <Steps.Step step={1}>
-              <p>Navigate to the Amazon IAM Dashboard</p>
+              <p><TransText>Navigate to the Amazon IAM Dashboard</TransText></p>
               <div className={"flex gap-4"}>
                 <Link href={iamDashboardURL} passHref target={"_blank"}>
                   <Button variant={"primary"} size={"xs"}>
@@ -302,12 +304,12 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
             </Steps.Step>
             <Steps.Step step={4}>
               <p className={"font-normal"}>
-                Select the user and go to the <Mark>Security Credentials</Mark>
-                tab and select <Mark>Create access key</Mark>
+                Select the user and go to the <Mark><TransText>Security Credentials</TransText></Mark>
+                tab and select <Mark><TransText>Create access key</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={5}>
-              <p className={"font-normal"}>Enter your Access-Key</p>
+              <p className={"font-normal"}><TransText>Enter your Access-Key</TransText></p>
               <div className={"mb-4"}>
                 <Input
                   type={"text"}
@@ -324,7 +326,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
               </div>
             </Steps.Step>
             <Steps.Step step={6} line={false}>
-              <p className={"font-normal"}>Enter your Secret-Key</p>
+              <p className={"font-normal"}><TransText>Enter your Secret-Key</TransText></p>
               <div className={"mb-4"}>
                 <Input
                   type={"text"}
@@ -352,7 +354,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
             disabled={!regionEntered}
             onClick={() => setStep(2)}
           >
-            Continue
+            <TransText>Continue</TransText>
             <IconArrowRight size={16} />
           </Button>
         )}
@@ -372,7 +374,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
               disabled={!streamNameEntered}
               onClick={() => setStep(3)}
             >
-              Continue
+              <TransText>Continue</TransText>
               <IconArrowRight size={16} />
             </Button>
           </>

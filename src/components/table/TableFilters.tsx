@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import * as React from "react";
 import { useState } from "react";
+import zhMap from "@/i18n/zh-map";
 
 // A TableFilterDef wires one TanStack column to the consolidated filter UI.
 // Each filter renders its own picker — the framework just provides the
@@ -98,7 +99,7 @@ export function TableFiltersButton<TData>({
               }
             >
               <button
-                aria-label={"Back"}
+                aria-label={zhMap["Back"] || "Back"}
                 className={
                   "flex items-center justify-center w-7 h-7 -ml-1 shrink-0 text-nb-gray-400 hover:text-white hover:bg-nb-gray-900 rounded transition-colors"
                 }

@@ -34,6 +34,8 @@ import {
   DistributorCustomerStatus,
 } from "@/cloud/distributor/interfaces/Distributor";
 import { PlanCard, PlanLoadingSkeleton } from "@/modules/billing/PlanCard";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -183,23 +185,23 @@ const CustomerModalContent = ({
           <TabsContent value={"general"} className={"px-8 pb-10"}>
             <div className={"flex flex-col gap-6"}>
               <div>
-                <Label>Company</Label>
+                <Label><TransText>Company</TransText></Label>
                 <HelpText>
-                  Enter the name of your customers company.
+                  <TransText>Enter the name of your customers company.</TransText>
                 </HelpText>
                 <Input
                   autoFocus={true}
                   tabIndex={0}
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder={"Acme Inc."}
+                  placeholder={zhMap["Acme Inc."] || "Acme Inc."}
                   className={"min-w-[270px]"}
                 />
               </div>
               <div>
-                <Label>Domain</Label>
+                <Label><TransText>Domain</TransText></Label>
                 <HelpText>
-                  The domain associated with this customer account.
+                  <TransText>The domain associated with this customer account.</TransText>
                 </HelpText>
                 <Input
                   customPrefix={<GlobeIcon size={16} />}
@@ -240,23 +242,23 @@ const CustomerModalContent = ({
           <div className={"px-8 py-6 pb-8"}>
             <div className={"flex flex-col gap-6"}>
               <div>
-                <Label>Company</Label>
+                <Label><TransText>Company</TransText></Label>
                 <HelpText>
-                  Enter the name of your customers company.
+                  <TransText>Enter the name of your customers company.</TransText>
                 </HelpText>
                 <Input
                   autoFocus={true}
                   tabIndex={0}
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder={"Acme Inc."}
+                  placeholder={zhMap["Acme Inc."] || "Acme Inc."}
                   className={"min-w-[270px]"}
                 />
               </div>
               <div>
-                <Label>Domain</Label>
+                <Label><TransText>Domain</TransText></Label>
                 <HelpText>
-                  The domain associated with this customer account.
+                  <TransText>The domain associated with this customer account.</TransText>
                 </HelpText>
                 <Input
                   customPrefix={<GlobeIcon size={16} />}
@@ -309,7 +311,7 @@ const CustomerModalContent = ({
           {!customer && (
             <>
               <ModalClose asChild={true}>
-                <Button variant={"secondary"}>Cancel</Button>
+                <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
               </ModalClose>
               <Button
                 variant={"primary"}
@@ -324,14 +326,14 @@ const CustomerModalContent = ({
           {customer && (
             <>
               <ModalClose asChild={true}>
-                <Button variant={"secondary"}>Cancel</Button>
+                <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
               </ModalClose>
               <Button
                 variant={"primary"}
                 onClick={saveCustomer}
                 disabled={!hasChanges || name === ""}
               >
-                Save
+                <TransText>Save</TransText>
               </Button>
             </>
           )}

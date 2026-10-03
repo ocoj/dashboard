@@ -7,6 +7,8 @@ import { CheckIcon, CopyIcon, Loader2, XIcon } from "lucide-react";
 import * as React from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 export interface NotifyProps<T> {
   title: string;
@@ -180,6 +182,22 @@ export default function Notification<T>({
       >
         <div className={"flex items-center gap-4"}>
           <div
+            data-testid={"notification-icon"}
+            // Whether a toast reads as a success or a failure is carried by
+            // the tile's colour alone, which a test can only assert as a
+            // tailwind class. Naming the state says the same thing without
+            // pinning the palette. "success" is the default green tick
+            // specifically, so a caller that supplied its own colour is
+            // "custom" rather than folded in with it.
+            data-variant={
+              loading
+                ? "loading"
+                : error
+                ? "error"
+                : backgroundColor || icon
+                ? "custom"
+                : "success"
+            }
             className={classNames(
               "h-8 w-8  shadow-sm text-white flex items-center justify-center rounded-md shrink-0",
               loading
@@ -210,13 +228,13 @@ export default function Notification<T>({
               <button
                 type={"button"}
                 data-testid={"notification-request-id"}
-                title={"Copy request ID"}
+                title={zhMap["Copy request ID"] || "Copy request ID"}
                 onClick={copyRequestId}
                 className={
                   "group/req flex items-center gap-1.5 mt-1 text-[11px] text-gray-500 dark:text-nb-gray-400 hover:text-gray-700 dark:hover:text-nb-gray-200 cursor-pointer text-left"
                 }
               >
-                <span>Request ID:</span>
+                <span><TransText>Request ID:</TransText></span>
                 <span className={"font-mono select-all"}>{requestId}</span>
                 {copied ? (
                   <CheckIcon size={12} className={"text-green-500 shrink-0"} />

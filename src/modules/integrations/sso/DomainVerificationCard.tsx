@@ -6,12 +6,11 @@ import { TrashIcon } from "lucide-react";
 import * as React from "react";
 import { useState } from "react";
 import { useDialog } from "@/contexts/DialogProvider";
-import {
-  DomainValidationStatus,
-  EnterpriseConnectionDomain,
-} from "@/interfaces/IdentityProvider";
+import { DomainValidationStatus } from "@/interfaces/Account";
+import { EnterpriseConnectionDomain } from "@/interfaces/IdentityProvider";
 import { DomainVerificationModal } from "@/modules/integrations/sso/DomainVerificationModal";
 import { useEnterpriseConnections } from "@/modules/integrations/sso/useEnterpriseConnections";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   domain: EnterpriseConnectionDomain;
@@ -19,7 +18,7 @@ type Props = {
 };
 export const DomainVerificationCard = ({ domain, connectionId }: Props) => {
   const [modal, setModal] = useState(false);
-  const { deleteDomain, mutate } = useEnterpriseConnections();
+  const { deleteDomain, verifyDomain, mutate } = useEnterpriseConnections();
   const { confirm } = useDialog();
 
   const deleteDomainHandler = async () => {
@@ -49,7 +48,7 @@ export const DomainVerificationCard = ({ domain, connectionId }: Props) => {
         onOpenChange={setModal}
         domain={domain.name}
         token={domain.validation_token}
-        connectionId={connectionId}
+        onVerify={() => verifyDomain(connectionId, domain.name)}
       />
       <div className={"flex flex-col"}>
         <span
@@ -66,7 +65,7 @@ export const DomainVerificationCard = ({ domain, connectionId }: Props) => {
             size={"xs"}
             onClick={() => setModal(true)}
           >
-            Verify
+            <TransText>Verify</TransText>
           </Button>
         )}
 

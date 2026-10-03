@@ -143,7 +143,7 @@ const SettingDisabledManagementGroups = ({
           disabled={!hasChanges || !permission.dns.update}
           data-testid={"save-changes"}
         >
-          Save Changes
+          <TransText>Save Changes</TransText>
         </Button>
       </div>
     </Card>

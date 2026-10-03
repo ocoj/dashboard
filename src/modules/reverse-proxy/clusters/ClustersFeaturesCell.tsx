@@ -3,6 +3,7 @@ import FullTooltip from "@components/FullTooltip";
 import { Lock, ShieldAlert, SlidersHorizontal, Globe } from "lucide-react";
 import { ReverseProxyCluster } from "@/interfaces/ReverseProxy";
 import EmptyRow from "@/modules/common-table-rows/EmptyRow";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   cluster: ReverseProxyCluster;
@@ -55,9 +56,9 @@ export default function ClustersFeaturesCell({ cluster }: Readonly<Props>) {
         <>
           Lets you publish services that are only reachable from peers in your
           NetBird network. Required for{" "}
-          <span className={"font-medium text-white"}>NetBird-Only Access</span>{" "}
+          <span className={"font-medium text-white"}><TransText>NetBird-Only Access</TransText></span>{" "}
           and{" "}
-          <span className={"font-medium text-white"}>Proxy Cluster</span>{" "}
+          <span className={"font-medium text-white"}><TransText>Proxy Cluster</TransText></span>{" "}
           target types.
         </>
       ),

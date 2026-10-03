@@ -32,6 +32,8 @@ import {
   exampleAwsSecretAccessKey,
 } from "@/modules/integrations/event-streaming/amazon/exampleCredentials";
 import { IntegrationModalHeader } from "@/modules/integrations/IntegrationModalHeader";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -138,7 +140,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
 
       <IntegrationModalHeader
         image={s3Logo}
-        title={"Connect NetBird with Amazon S3"}
+        title={zhMap["Connect NetBird with Amazon S3"] || "Connect NetBird with Amazon S3"}
         description={
           "Start streaming your NetBird audit & traffic events to Amazon S3. Follow the steps below to get started."
         }
@@ -158,7 +160,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
               variant={"default"}
               className={"inline"}
             >
-              Amazon S3 Dashboard.
+              <TransText>Amazon S3 Dashboard.</TransText>
             </InlineLink>
           </p>
           <SelectDropdown
@@ -193,7 +195,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
           </p>
           <Steps>
             <Steps.Step step={1}>
-              <p>Navigate to the Amazon S3 Dashboard</p>
+              <p><TransText>Navigate to the Amazon S3 Dashboard</TransText></p>
               <div className={"flex gap-4"}>
                 <Link href={s3DashboardURL} passHref target={"_blank"}>
                   <Button variant={"primary"} size={"xs"}>
@@ -205,18 +207,18 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
-                Click <Mark>Create bucket</Mark> at the top right corner
+                <TransText>Click</TransText> <Mark><TransText>Create bucket</TransText></Mark> at the top right corner
               </p>
             </Steps.Step>
             <Steps.Step step={3}>
               <p className={"font-normal"}>
                 Give it a descriptive name like{" "}
                 <Mark copy>netbird-activity-events</Mark>
-                and click <Mark>Create bucket</Mark>
+                and click <Mark><TransText>Create bucket</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={4} line={false}>
-              <p className={"font-normal"}>Enter your S3 Bucket name</p>
+              <p className={"font-normal"}><TransText>Enter your S3 Bucket name</TransText></p>
               <div className={"mb-4"}>
                 <Input
                   type={"text"}
@@ -243,7 +245,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
           </p>
           <Steps>
             <Steps.Step step={1}>
-              <p>Navigate to the Amazon IAM Dashboard</p>
+              <p><TransText>Navigate to the Amazon IAM Dashboard</TransText></p>
               <div className={"flex gap-4"}>
                 <Link href={iamDashboardURL} passHref target={"_blank"}>
                   <Button variant={"primary"} size={"xs"}>
@@ -272,12 +274,12 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
             </Steps.Step>
             <Steps.Step step={4}>
               <p className={"font-normal"}>
-                Select the user and go to the <Mark>Security Credentials</Mark>
-                tab and select <Mark>Create access key</Mark>
+                Select the user and go to the <Mark><TransText>Security Credentials</TransText></Mark>
+                tab and select <Mark><TransText>Create access key</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={5}>
-              <p className={"font-normal"}>Enter your Access-Key</p>
+              <p className={"font-normal"}><TransText>Enter your Access-Key</TransText></p>
               <div className={"mb-4"}>
                 <Input
                   type={"text"}
@@ -294,7 +296,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
               </div>
             </Steps.Step>
             <Steps.Step step={6} line={false}>
-              <p className={"font-normal"}>Enter your Secret-Key</p>
+              <p className={"font-normal"}><TransText>Enter your Secret-Key</TransText></p>
               <div className={"mb-4"}>
                 <Input
                   type={"text"}
@@ -322,7 +324,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
             disabled={!regionEntered}
             onClick={() => setStep(2)}
           >
-            Continue
+            <TransText>Continue</TransText>
             <IconArrowRight size={16} />
           </Button>
         )}
@@ -342,7 +344,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
               disabled={!bucketNameEntered}
               onClick={() => setStep(3)}
             >
-              Continue
+              <TransText>Continue</TransText>
               <IconArrowRight size={16} />
             </Button>
           </>

@@ -20,6 +20,7 @@ import { useMSP } from "@/cloud/msp/contexts/MSPProvider";
 import { TenantDNSResponse, TenantStatus } from "@/cloud/msp/interfaces/Tenant";
 import { useDialog } from "@/contexts/DialogProvider";
 import { useLoggedInUser } from "@/contexts/UsersProvider";
+import { TransText } from "@/i18n/trans-text";
 
 export const MSPTransferAccountModal = () => {
   const { mspInfo } = useMSP();
@@ -155,8 +156,7 @@ export const MSPTransferAccountModal = () => {
               className={"bg-nb-gray-920 px-5 py-4 rounded-lg mt-4 text-left"}
             >
               <div className={"text-sm text-nb-gray-200 mb-2 text-left"}>
-                Please review the request carefully before proceeding. Granting
-                them access will allow them to:
+                <TransText>Please review the request carefully before proceeding. Granting them access will allow them to:</TransText>
               </div>
               <ul className="flex flex-col gap-1.5 mt-4 mb-1">
                 <li className="flex items-center gap-2 text-sm text-nb-gray-200">
@@ -175,14 +175,14 @@ export const MSPTransferAccountModal = () => {
             </div>
             <div className={"flex gap-4 items-center mt-6 w-full"}>
               <Button className={"w-full"} variant={"secondary"} onClick={deny}>
-                Deny
+                <TransText>Deny</TransText>
               </Button>
               <Button
                 className={"w-full"}
                 variant={"danger"}
                 onClick={grantAccess}
               >
-                Grant Access
+                <TransText>Grant Access</TransText>
               </Button>
             </div>
           </div>

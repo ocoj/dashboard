@@ -14,6 +14,7 @@ import { useSWRConfig } from "swr";
 import { useDialog } from "@/contexts/DialogProvider";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { SetupKey } from "@/interfaces/SetupKey";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   setupKey: SetupKey;
@@ -96,7 +97,7 @@ export default function SetupKeyActionCell({ setupKey }: Readonly<Props>) {
           <Button
             variant={"secondary"}
             className={"!px-3"}
-            aria-label={"Open actions menu"}
+            aria-label={zhMap["Open actions menu"] || "Open actions menu"}
             data-testid={"setup-key-actions"}
           >
             <MoreVertical size={16} className={"shrink-0"} />

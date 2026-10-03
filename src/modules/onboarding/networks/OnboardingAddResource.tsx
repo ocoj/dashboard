@@ -12,6 +12,8 @@ import { Group } from "@/interfaces/Group";
 import { Network, NetworkResource } from "@/interfaces/Network";
 import { Policy } from "@/interfaces/Policy";
 import { ResourceSingleAddressInput } from "@/modules/networks/resources/ResourceSingleAddressInput";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   onNetworkCreation?: (network: Network) => void;
@@ -196,33 +198,32 @@ export const OnboardingAddResource = ({
     <div className={"relative flex flex-col h-full gap-4"}>
       <div className={"flex flex-col gap-8"}>
         <div>
-          <h1 className={"text-xl text-center"}>Add your first resource</h1>
+          <h1 className={"text-xl text-center"}><TransText>Add your first resource</TransText></h1>
           <div
             className={
               "text-sm text-nb-gray-300 font-light mt-2 block text-center sm:px-4"
             }
           >
-            Resources are your subnets, services, or machines inside your network.
-            Pick the type you want to connect to.
+            <TransText>Resources are your subnets, services, or machines inside your network. Pick the type you want to connect to.</TransText>
           </div>
         </div>
 
         <RadioCardGroup value={resourceType} onValueChange={setResourceType}>
           <RadioCard
             value={"ip"}
-            title={"Single IP Address"}
+            title={zhMap["Single IP Address"] || "Single IP Address"}
             icon={<WorkflowIcon size={12} />}
-            description={"IPv4 or IPv6 address like 192.168.31.45"}
+            description={zhMap["IPv4 or IPv6 address like 192.168.31.45"] || "IPv4 or IPv6 address like 192.168.31.45"}
           />
           <RadioCard
             value={"subnet"}
-            title={"Entire Subnet"}
+            title={zhMap["Entire Subnet"] || "Entire Subnet"}
             icon={<NetworkIcon size={12} />}
-            description={"CIDR range like 192.168.0.0/24 or 2001:db8::/64"}
+            description={zhMap["CIDR range like 192.168.0.0/24 or 2001:db8::/64"] || "CIDR range like 192.168.0.0/24 or 2001:db8::/64"}
           />
           <RadioCard
             value={"domain"}
-            title={"Domain"}
+            title={zhMap["Domain"] || "Domain"}
             icon={<GlobeIcon size={12} />}
             description={
               "A domain like service.internal or a wildcard like *.services.internal"
@@ -232,7 +233,7 @@ export const OnboardingAddResource = ({
 
         {resourceType && (
           <ResourceSingleAddressInput
-            label={"What is the address of your resource?"}
+            label={zhMap["What is the address of your resource?"] || "What is the address of your resource?"}
             value={resourceAddress}
             onChange={setResourceAddress}
             onError={setError}
@@ -243,7 +244,7 @@ export const OnboardingAddResource = ({
 
         <div className={"flex gap-4"}>
           <Button variant={"secondary"} className={"w-full"} onClick={onBack}>
-            Go Back
+            <TransText>Go Back</TransText>
           </Button>
           <Button
             variant={"primary"}
@@ -251,7 +252,7 @@ export const OnboardingAddResource = ({
             onClick={createResource}
             disabled={resourceAddress === "" || error !== ""}
           >
-            Create Resource
+            <TransText>Create Resource</TransText>
           </Button>
         </div>
       </div>

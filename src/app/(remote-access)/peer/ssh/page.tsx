@@ -16,6 +16,7 @@ import {
   isNativeSSHSupported,
   isNetbirdSSHProtocolSupported,
 } from "@utils/version";
+import { TransText } from "@/i18n/trans-text";
 
 export default function SSHPage() {
   const { peerId, username, port, ipVersion } = useSSHQueryParams();
@@ -245,7 +246,7 @@ const DisconnectedMessage = ({
           }
           onClick={onReconnect}
         >
-          Reconnect
+          <TransText>Reconnect</TransText>
         </button>
       </div>
     </div>

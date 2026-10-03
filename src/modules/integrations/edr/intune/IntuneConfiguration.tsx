@@ -21,6 +21,8 @@ import { useGroups } from "@/contexts/GroupsProvider";
 import { IntuneIntegration } from "@/interfaces/EDR";
 import useGroupHelper from "@/modules/groups/useGroupHelper";
 import { IntegrationModalHeader } from "@/modules/integrations/IntegrationModalHeader";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -153,7 +155,7 @@ export function ConfigurationContent({
 
       <IntegrationModalHeader
         image={integrationImage}
-        title={"Intune Configuration"}
+        title={zhMap["Intune Configuration"] || "Intune Configuration"}
         description={
           "Restrict network access to IT-managed devices marked Compliant in Intune."
         }
@@ -245,7 +247,7 @@ export function ConfigurationContent({
                   Client Secret
                 </div>
               }
-              placeholder={"YdV7Q~JJ62Xl.LvYoBanxZR2sJA2va_3UbqvncY8"}
+              placeholder={zhMap["YdV7Q~JJ62Xl.LvYoBanxZR2sJA2va_3UbqvncY8"] || "YdV7Q~JJ62Xl.LvYoBanxZR2sJA2va_3UbqvncY8"}
               value={clientSecret}
               onFocus={(e) => {
                 if (e.target.value == clientSecretPlaceholder) {
@@ -271,7 +273,7 @@ export function ConfigurationContent({
               </div>
             </Label>
             <HelpText className={"max-w-lg mt-2"}>
-              Select groups you want to apply the Intune integration to
+              <TransText>Select groups you want to apply the Intune integration to</TransText>
             </HelpText>
 
             <PeerGroupSelector values={groups} onChange={setGroups} />
@@ -322,10 +324,7 @@ export function ConfigurationContent({
               </div>
             </Label>
             <HelpText className={"max-w-lg mt-2"}>
-              Deleting this integration will remove the ability to sync users
-              and groups from your IdP to NetBird. If you delete the integration
-              you will need to reconfigure it again to enable the
-              synchronization.
+              <TransText>Deleting this integration will remove the ability to sync users and groups from your IdP to NetBird. If you delete the integration you will need to reconfigure it again to enable the synchronization.</TransText>
             </HelpText>
           </div>
           <Button
@@ -334,7 +333,7 @@ export function ConfigurationContent({
             className={"mt-3"}
             onClick={deleteIntegration}
           >
-            Delete Integration
+            <TransText>Delete Integration</TransText>
           </Button>
         </TabsContent>
       </Tabs>
@@ -343,7 +342,7 @@ export function ConfigurationContent({
       <ModalFooter className={"items-center gap-4"}>
         <ModalClose asChild={true}>
           <Button variant={"secondary"} className={"w-full"}>
-            Cancel
+            <TransText>Cancel</TransText>
           </Button>
         </ModalClose>
 
@@ -353,7 +352,7 @@ export function ConfigurationContent({
           disabled={!canSave}
           onClick={updateIntegration}
         >
-          Save
+          <TransText>Save</TransText>
         </Button>
       </ModalFooter>
     </ModalContent>

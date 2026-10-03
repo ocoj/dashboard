@@ -23,6 +23,7 @@ import {
 } from "@/interfaces/Subscription";
 import { LimitsReachedModal } from "@/modules/billing/LimitsReachedModal";
 import { TrialSuccessModal } from "@/modules/billing/trial/TrialSuccessModal";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   children: React.ReactNode;
@@ -284,8 +285,7 @@ function BillingContextProvider({ children }: Readonly<Props>) {
       description: (
         <div className={"flex flex-col gap-2 text-sm text-nb-gray-300 mt-1"}>
           <div>
-            The transition to your new plan will take effect immediately.
-            Charges for the new plan will be incurred from this point forward.
+            <TransText>The transition to your new plan will take effect immediately. Charges for the new plan will be incurred from this point forward.</TransText>
           </div>
         </div>
       ),

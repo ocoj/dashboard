@@ -4,6 +4,7 @@ import { ScrollArea } from "@components/ScrollArea";
 import { NetworkIcon } from "lucide-react";
 import * as React from "react";
 import { PeerNetworkRangeCheck } from "@/interfaces/PostureCheck";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   check?: PeerNetworkRangeCheck;
@@ -23,13 +24,13 @@ export const PeerNetworkRangeTooltip = ({ check, children }: Props) => {
             {check.action == "allow" ? (
               <span>
                 <span className={"text-green-500 font-semibold"}>
-                  Allow only
+                  <TransText>Allow only</TransText>
                 </span>{" "}
                 the following peer network ranges
               </span>
             ) : (
               <span>
-                <span className={"text-red-500 font-semibold"}>Block</span> the
+                <span className={"text-red-500 font-semibold"}><TransText>Block</TransText></span> the
                 following peer network ranges
               </span>
             )}

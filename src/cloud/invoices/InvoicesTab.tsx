@@ -17,6 +17,8 @@ import InvoicesTable from "@/cloud/invoices/table/InvoicesTable";
 import { useMSP } from "@/cloud/msp/contexts/MSPProvider";
 import { Invoice } from "@/cloud/msp/interfaces/Invoice";
 import { usePermissions } from "@/contexts/PermissionsProvider";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 export const InvoicesTab = () => {
   const { permission } = usePermissions();
@@ -72,12 +74,12 @@ const InvoicesTabContent = () => {
         <Breadcrumbs>
           <Breadcrumbs.Item
             href={"/settings"}
-            label={"Settings"}
+            label={zhMap["Settings"] || "Settings"}
             icon={<SettingsIcon size={13} />}
           />
           <Breadcrumbs.Item
             href={"/settings?tab=invoices"}
-            label={"Invoices"}
+            label={zhMap["Invoices"] || "Invoices"}
             icon={<ReceiptTextIcon size={14} />}
             active
           />
@@ -86,8 +88,8 @@ const InvoicesTabContent = () => {
         <div className={"max-w-3xl mb-4"}>
           <div className={"flex justify-between items-center mb-5"}>
             <div>
-              <h1 ref={headingRef}>Invoices</h1>
-              <Paragraph>View and export all your available invoices</Paragraph>
+              <h1 ref={headingRef}><TransText>Invoices</TransText></h1>
+              <Paragraph><TransText>View and export all your available invoices</TransText></Paragraph>
             </div>
           </div>
           <Suspense

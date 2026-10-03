@@ -6,6 +6,7 @@ import { CreditCardIcon } from "lucide-react";
 import * as React from "react";
 import { useCustomerPlan } from "@/cloud/distributor/hooks/useCustomerPlan";
 import { PlanCard, PlanLoadingSkeleton } from "@/modules/billing/PlanCard";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   open: boolean;
@@ -98,7 +99,7 @@ const DistributorSubscriptionModalContent = ({
             Haven&apos;t decided for a plan yet?{" "}
             <ModalClose asChild={true}>
               <InlineButtonLink variant={"white"}>
-                Continue with Trial
+                <TransText>Continue with Trial</TransText>
               </InlineButtonLink>
             </ModalClose>
           </Paragraph>

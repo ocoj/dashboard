@@ -14,6 +14,8 @@ import InvoicesActionCell from "@/cloud/invoices/table/InvoicesActionCell";
 import InvoicesPeriodCell from "@/cloud/invoices/table/InvoicesPeriodCell";
 import InvoicesTypeCell from "@/cloud/invoices/table/InvoicesTypeCell";
 import { Invoice } from "@/cloud/msp/interfaces/Invoice";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   invoices?: Invoice[];
@@ -24,7 +26,7 @@ type Props = {
 const InvoicesColumns: ColumnDef<Invoice>[] = [
   {
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Date</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Date</TransText></DataTableHeader>;
     },
     accessorKey: "period_start",
     cell: ({ row }) => <InvoicesPeriodCell invoice={row.original} />,
@@ -34,7 +36,7 @@ const InvoicesColumns: ColumnDef<Invoice>[] = [
   },
   {
     header: ({ column }) => {
-      return <DataTableHeader column={column}>Type</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>Type</TransText></DataTableHeader>;
     },
     accessorKey: "type",
     cell: ({ row }) => <InvoicesTypeCell invoice={row.original} />,
@@ -88,11 +90,11 @@ export default function InvoicesTable({
       getStartedCard={
         <NoResults
           className={"py-4"}
-          title={"You don't have any invoices"}
+          title={zhMap["You don't have any invoices"] || "You don't have any invoices"}
           description={
             "Invoices are created at the end of each billing period. You will see them here once they are available."
           }
-          icon={<ReceiptTextIcon size={20} />}
+          icon={<ReceiptTextIcon size={20} className={"text-nb-gray-300"} />}
         />
       }
       columnVisibility={{

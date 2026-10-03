@@ -26,14 +26,17 @@ import {
   Text,
 } from "lucide-react";
 import { useMemo, useState } from "react";
+import AIProviderLogo from "@/modules/agent-network/AIProviderLogo";
+import { useAIProviders } from "@/modules/agent-network/AIProvidersProvider";
 import {
   AgentGuardrail,
   AgentGuardrailChecks,
+  AIProviderId,
   EMPTY_GUARDRAIL_CHECKS,
 } from "@/modules/agent-network/data/mockData";
-import { useAIProviders } from "@/modules/agent-network/AIProvidersProvider";
 import { PostureCheckCard } from "@/modules/posture-checks/ui/PostureCheckCard";
 import zhMap from "@/i18n/zh-map";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   open: boolean;
@@ -149,9 +152,9 @@ export default function AgentGuardrailModal({
           <TabsContent value={"general"} className={"pb-8 px-8"}>
             <div className={"flex flex-col gap-6"}>
               <div>
-                <Label>Name of the Guardrail</Label>
+                <Label><TransText>Name of the Guardrail</TransText></Label>
                 <HelpText>
-                  Set an easily identifiable name for this guardrail set.
+                  <TransText>Set an easily identifiable name for this guardrail set.</TransText>
                 </HelpText>
                 <Input
                   autoFocus={true}
@@ -163,8 +166,7 @@ export default function AgentGuardrailModal({
               <div>
                 <Label>Description (optional)</Label>
                 <HelpText>
-                  Write a short description to add more context to this
-                  guardrail.
+                  <TransText>Write a short description to add more context to this guardrail.</TransText>
                 </HelpText>
                 <Textarea
                   value={description}
@@ -182,25 +184,25 @@ export default function AgentGuardrailModal({
         <ModalFooter className={"items-center"}>
           <div className={"w-full"}>
             <Paragraph className={"text-sm mt-auto"}>
-              Learn more about
-              <InlineLink href={"https://docs.netbird.io/"} target={"_blank"}>
-                Agent Network
+              <TransText>Learn more about</TransText>
+              <InlineLink
+                href={"https://docs.netbird.io/agent-network"}
+                target={"_blank"}
+              >
+                <TransText>Agent Network</TransText>
                 <ExternalLinkIcon size={12} />
               </InlineLink>
             </Paragraph>
           </div>
           <div className={"flex gap-3 w-full justify-end"}>
             {tab === "checks" && (
-              <Button
-                variant={"secondary"}
-                onClick={() => onOpenChange(false)}
-              >
-                Cancel
+              <Button variant={"secondary"} onClick={() => onOpenChange(false)}>
+                <TransText>Cancel</TransText>
               </Button>
             )}
             {tab === "general" && (
               <Button variant={"secondary"} onClick={() => setTab("checks")}>
-                Back
+                <TransText>Back</TransText>
               </Button>
             )}
             {!guardrail && tab === "checks" && (
@@ -209,7 +211,7 @@ export default function AgentGuardrailModal({
                 onClick={() => setTab("general")}
                 disabled={!atLeastOneEnabled}
               >
-                Continue
+                <TransText>Continue</TransText>
               </Button>
             )}
             {((!guardrail && tab === "general") || guardrail) && (
@@ -244,9 +246,10 @@ function ModelAllowlistCheck({
       setOpen={setOpen}
       key={open ? 1 : 0}
       active={Boolean(value && value.length > 0)}
-      title={"Model Allowlist"}
-      description={"Block requests for models not on the allowlist."}
-      icon={<Boxes size={16} />}
+      title={zhMap["Model Allowlist"] || "Model Allowlist"}
+      description={zhMap["Block requests for models not on the allowlist."] || "Block requests for models not on the allowlist."}
+      // The tile is a cream gradient, so the mark on it has to be dark.
+      icon={<Boxes size={16} className={"text-netbird-950"} />}
       iconClass={"bg-gradient-to-tr from-netbird-200 to-netbird-100"}
       modalWidthClass={"max-w-2xl"}
       onReset={() => onChange(undefined)}
@@ -286,7 +289,10 @@ function ModelAllowlistContent({
   // Same model id across providers is collapsed into one row, with all
   // referencing provider names listed underneath.
   const providerModels = useMemo(() => {
-    const byId = new Map<string, { id: string; providerNames: string[] }>();
+    const byId = new Map<
+      string,
+      { id: string; providerNames: string[]; catalogId: AIProviderId }
+    >();
     for (const p of scopedProviders) {
       for (const m of p.models) {
         if (!m.id) continue;
@@ -296,7 +302,13 @@ function ModelAllowlistContent({
             entry.providerNames.push(p.name);
           }
         } else {
-          byId.set(m.id, { id: m.id, providerNames: [p.name] });
+          // The mark is the first provider's; a model served by several is
+          // one row, and its names are listed under it either way.
+          byId.set(m.id, {
+            id: m.id,
+            providerNames: [p.name],
+            catalogId: p.providerId,
+          });
         }
       }
     }
@@ -308,9 +320,18 @@ function ModelAllowlistContent({
       prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id],
     );
 
+  const visibleIds = useMemo(
+    () => providerModels.map((m) => m.id),
+    [providerModels],
+  );
+  const checkedVisible = visibleIds.filter((id) => draft.includes(id)).length;
+  const allChecked =
+    visibleIds.length > 0 && checkedVisible === visibleIds.length;
+  const someChecked = checkedVisible > 0 && !allChecked;
+
   return (
     <>
-      <div className={"flex flex-col px-8 gap-2 pb-6"}>
+      <div className={"flex flex-col px-8 gap-2 pt-2 pb-6"}>
         {providerModels.length === 0 ? (
           <Paragraph className={"!text-xs"}>
             {providerIds && providerIds.length > 0
@@ -318,64 +339,115 @@ function ModelAllowlistContent({
               : "No models configured on any provider yet. Add models to a provider first — the allowlist is restricted to what the providers actually expose."}
           </Paragraph>
         ) : (
-          <div className={"space-y-1.5 max-h-[360px] overflow-y-auto"}>
-            {providerModels.map((m) => {
-              const checked = draft.includes(m.id);
-              return (
-                <label
-                  key={m.id}
-                  className={cn(
-                    "flex items-center gap-3 p-2 rounded border cursor-pointer transition-colors",
-                    checked
-                      ? "border-netbird/40 bg-netbird/5"
-                      : "border-nb-gray-800 bg-nb-gray-900/20 hover:border-nb-gray-700",
-                  )}
-                >
-                  <Checkbox
-                    checked={checked}
-                    onCheckedChange={() => toggle(m.id)}
-                  />
-                  <div className={"flex-1"}>
-                    <div className={"text-sm text-white"}>
-                      <code>{m.id}</code>
-                    </div>
-                    <div className={"text-[11px] text-nb-gray-400"}>
-                      {m.providerNames.join(" · ")}
-                    </div>
-                  </div>
-                </label>
-              );
-            })}
+          // Same table the network resource modal gives its policies.
+          <div
+            className={
+              "border border-nb-gray-900 bg-nb-gray-920/30 py-1 px-1 rounded-md max-h-[360px] overflow-y-auto"
+            }
+          >
+            <table className={"w-full"}>
+              <thead>
+                <tr>
+                  <th className={"py-2 pl-4 pr-2 w-[20px]"}>
+                    <Checkbox
+                      checked={
+                        allChecked
+                          ? true
+                          : someChecked
+                          ? "indeterminate"
+                          : false
+                      }
+                      aria-label={zhMap["Select all models"] || "Select all models"}
+                      onCheckedChange={() =>
+                        setDraft((prev) =>
+                          allChecked
+                            ? prev.filter((id) => !visibleIds.includes(id))
+                            : Array.from(new Set([...prev, ...visibleIds])),
+                        )
+                      }
+                    />
+                  </th>
+                  <th
+                    className={
+                      "py-2 px-4 text-left text-[11px] uppercase tracking-wider text-nb-gray-400 font-medium"
+                    }
+                  >
+                    <TransText>Model</TransText>
+                  </th>
+                  <th
+                    className={
+                      "py-2 px-4 text-left text-[11px] uppercase tracking-wider text-nb-gray-400 font-medium"
+                    }
+                  >
+                    <TransText>Provider</TransText>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {providerModels.map((m) => (
+                  <tr
+                    key={m.id}
+                    onClick={() => toggle(m.id)}
+                    className={
+                      "rounded-md hover:bg-nb-gray-900/30 cursor-pointer transition-all"
+                    }
+                  >
+                    <td className={"py-2.5 pl-4 pr-2 align-middle w-[20px]"}>
+                      <Checkbox checked={draft.includes(m.id)} />
+                    </td>
+                    <td className={"py-2.5 px-4 align-middle"}>
+                      <code className={"text-[13px] text-nb-gray-100"}>
+                        {m.id}
+                      </code>
+                    </td>
+                    <td
+                      className={
+                        "py-2.5 px-4 align-middle whitespace-nowrap text-[13px] text-nb-gray-300"
+                      }
+                    >
+                      <div className={"flex items-center gap-2.5"}>
+                        <AIProviderLogo providerId={m.catalogId} size={14} />
+                        {m.providerNames.join(" · ")}
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         )}
       </div>
       <ModalFooter className={"items-center"}>
         <div className={"w-full"}>
           <Paragraph className={"text-sm mt-auto"}>
-            Learn more about
-            <InlineLink href={"https://docs.netbird.io/"} target={"_blank"}>
-              Model Allowlist
+            <TransText>Learn more about</TransText>
+            <InlineLink
+              href={
+                "https://docs.netbird.io/agent-network/policies/guardrails#model-allowlist"
+              }
+              target={"_blank"}
+            >
+              <TransText>Model Allowlist</TransText>
               <ExternalLinkIcon size={12} />
             </InlineLink>
           </Paragraph>
         </div>
         <div className={"flex gap-3 w-full justify-end"}>
           <ModalClose asChild={true}>
-            <Button variant={"secondary"}>Cancel</Button>
+            <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
           </ModalClose>
           <Button
             variant={"primary"}
             disabled={draft.length === 0}
             onClick={() => onChange(draft.length === 0 ? undefined : draft)}
           >
-            Save
+            <TransText>Save</TransText>
           </Button>
         </div>
       </ModalFooter>
     </>
   );
 }
-
 
 function PromptCaptureCheck({
   value,
@@ -391,8 +463,8 @@ function PromptCaptureCheck({
       setOpen={setOpen}
       key={open ? 1 : 0}
       active={value}
-      title={"Prompt Capture"}
-      description={"Redact PII before storing the prompt body."}
+      title={zhMap["Prompt Capture"] || "Prompt Capture"}
+      description={zhMap["Redact PII before storing the prompt body."] || "Redact PII before storing the prompt body."}
       icon={<ShieldCheckIcon size={16} />}
       iconClass={"bg-gradient-to-tr from-blue-500 to-blue-400"}
       modalWidthClass={"max-w-lg"}
@@ -414,31 +486,34 @@ function PromptCaptureContent({ onConfirm }: { onConfirm: () => void }) {
       <div className={"flex flex-col px-8 gap-3 pb-6"}>
         <div className={"text-sm text-nb-gray-300"}>
           NetBird redacts emails, SSN-shaped, phone-shaped, and credit-card
-          patterns before storing the prompt body. Enabling this guardrail
-          adds strict redaction on top of the proxy&apos;s built-in token
-          redaction.
+          patterns before storing the prompt body. Enabling this guardrail adds
+          strict redaction on top of the proxy&apos;s built-in token redaction.
         </div>
       </div>
       <ModalFooter className={"items-center"}>
         <div className={"w-full"}>
           <Paragraph className={"text-sm mt-auto"}>
-            Learn more about
-            <InlineLink href={"https://docs.netbird.io/"} target={"_blank"}>
-              Prompt Capture
+            <TransText>Learn more about</TransText>
+            <InlineLink
+              href={
+                "https://docs.netbird.io/agent-network/policies/guardrails#prompt-capture"
+              }
+              target={"_blank"}
+            >
+              <TransText>Prompt Capture</TransText>
               <ExternalLinkIcon size={12} />
             </InlineLink>
           </Paragraph>
         </div>
         <div className={"flex gap-3 w-full justify-end"}>
           <ModalClose asChild={true}>
-            <Button variant={"secondary"}>Cancel</Button>
+            <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
           </ModalClose>
           <Button variant={"primary"} onClick={onConfirm}>
-            Save
+            <TransText>Save</TransText>
           </Button>
         </div>
       </ModalFooter>
     </>
   );
 }
-

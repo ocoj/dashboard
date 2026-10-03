@@ -64,7 +64,7 @@ export const makeEventsColumns = (
     id: "timestamp",
     header: ({ column }) => (
       <DataTableHeader column={column} name="timestamp">
-        Time
+        <TransText>Time</TransText>
       </DataTableHeader>
     ),
     cell: ({ row }) => (
@@ -80,7 +80,7 @@ export const makeEventsColumns = (
       `${row.source_ip} ${row.city_name || ""} ${row.country_code || ""}`,
     header: ({ column }) => (
       <DataTableHeader column={column} name="source_ip">
-        Location / IP
+        <TransText>Location / IP</TransText>
       </DataTableHeader>
     ),
     cell: ({ row }) => (
@@ -93,7 +93,7 @@ export const makeEventsColumns = (
     accessorKey: "method",
     header: ({ column }) => (
       <DataTableHeader column={column} name="method">
-        Request
+        <TransText>Request</TransText>
       </DataTableHeader>
     ),
     cell: ({ row }) => (
@@ -114,7 +114,7 @@ export const makeEventsColumns = (
     accessorKey: "status_code",
     header: ({ column }) => (
       <DataTableHeader column={column} name="status_code">
-        Status
+        <TransText>Status</TransText>
       </DataTableHeader>
     ),
     cell: ({ row }) => (
@@ -140,7 +140,7 @@ export const makeEventsColumns = (
     accessorFn: (row) => (row.bytes_download ?? 0) + (row.bytes_upload ?? 0),
     header: ({ column }) => (
       <DataTableHeader column={column} sorting={false}>
-        Bytes
+        <TransText>Bytes</TransText>
       </DataTableHeader>
     ),
     cell: ({ row }) => <ReverseProxyEventsBytesCell event={row.original} />,
@@ -153,7 +153,7 @@ export const makeEventsColumns = (
     },
     header: ({ column }) => (
       <DataTableHeader column={column} name="user_id">
-        User
+        <TransText>User</TransText>
       </DataTableHeader>
     ),
     cell: ({ row }) => (
@@ -412,13 +412,13 @@ export default function ReverseProxyEventsTable({
           icon={
             <SquareIcon
               icon={
-                <ReverseProxyIcon className={"fill-nb-gray-200"} size={20} />
+                <ReverseProxyIcon className={"text-nb-gray-200"} size={20} />
               }
               color={"gray"}
               size={"large"}
             />
           }
-          title={"No Proxy Events Yet"}
+          title={zhMap["No Proxy Events Yet"] || "No Proxy Events Yet"}
           description={
             "No proxy traffic yet. Events appear here once your reverse proxy services start serving requests."
           }
@@ -429,7 +429,7 @@ export default function ReverseProxyEventsTable({
                 href={REVERSE_PROXY_EVENTS_DOCS_LINK}
                 target={"_blank"}
               >
-                Proxy Events
+                <TransText>Proxy Events</TransText>
                 <ExternalLinkIcon size={12} />
               </InlineLink>
             </>

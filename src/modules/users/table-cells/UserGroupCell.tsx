@@ -71,7 +71,7 @@ export default function UserGroupCell({ user }: Readonly<Props>) {
 
   return (
     <GroupsRow
-      label={"Auto-assigned Groups"}
+      label={zhMap["Auto-assigned Groups"] || "Auto-assigned Groups"}
       description={zhMap["Groups will be assigned to peers added by this user."] || "Groups will be assigned to peers added by this user."}
       groups={userGroupIds}
       onSave={handleSave}

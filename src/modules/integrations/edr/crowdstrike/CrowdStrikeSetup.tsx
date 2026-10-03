@@ -37,6 +37,8 @@ import {
 import { CrowdStrikeZtaScoreInput } from "@/modules/integrations/edr/crowdstrike/CrowdStrikeZtaScoreInput";
 import { CrowdStrikeZtaToggle } from "@/modules/integrations/edr/crowdstrike/CrowdStrikeZtaToggle";
 import { IntegrationModalHeader } from "@/modules/integrations/IntegrationModalHeader";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -177,7 +179,7 @@ export function SetupContent({ onSuccess, account }: ModalProps) {
 
       <IntegrationModalHeader
         image={integrationImage}
-        title={"Connect NetBird with CrowdStrike"}
+        title={zhMap["Connect NetBird with CrowdStrike"] || "Connect NetBird with CrowdStrike"}
         description={
           "Restrict network access only to devices managed by the company's IT department"
         }
@@ -190,8 +192,7 @@ export function SetupContent({ onSuccess, account }: ModalProps) {
             Select your CrowdStrike region
           </p>
           <p className={"mb-3 mt-2"}>
-            To identify which region you are on check your CrowdStrike dashboard
-            url.
+            <TransText>To identify which region you are on check your CrowdStrike dashboard url.</TransText>
           </p>
           <SelectDropdown
             value={selectedRegion}
@@ -223,15 +224,15 @@ export function SetupContent({ onSuccess, account }: ModalProps) {
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
-                Click <Mark>Create API client</Mark> and enter
-                <Mark copy>NetBird</Mark>
+                <TransText>Click</TransText> <Mark><TransText>Create API client</TransText></Mark> and enter
+                <Mark copy><TransText>NetBird</TransText></Mark>
                 as the client name and select <Mark>Hosts (Read)</Mark> and{" "}
                 <Mark>Zero Trust Assessment (Read)</Mark> as the scope
               </p>
             </Steps.Step>
             <Steps.Step step={3} line={false}>
               <p className={"font-normal"}>
-                Click <Mark>Create</Mark> and enter your credentials
+                <TransText>Click</TransText> <Mark><TransText>Create</TransText></Mark> and enter your credentials
               </p>
             </Steps.Step>
           </Steps>
@@ -239,7 +240,7 @@ export function SetupContent({ onSuccess, account }: ModalProps) {
             <Input
               type={"text"}
               className={"w-full"}
-              customPrefix={<div className={"min-w-[60px]"}>Client ID</div>}
+              customPrefix={<div className={"min-w-[60px]"}><TransText>Client ID</TransText></div>}
               placeholder={"9f6c80ac8a384e1d88a1fd1f279541d0"}
               value={clientId}
               onChange={(e) => setClientId(e.target.value)}
@@ -247,7 +248,7 @@ export function SetupContent({ onSuccess, account }: ModalProps) {
             <Input
               type={"text"}
               className={"w-full"}
-              customPrefix={<div className={"min-w-[60px]"}>Secret</div>}
+              customPrefix={<div className={"min-w-[60px]"}><TransText>Secret</TransText></div>}
               placeholder={"qF41DKYkQJBS53w0XPVyO6v9AtZ8WMbHp72eIdml"}
               value={secret}
               onChange={(e) => setSecret(e.target.value)}
@@ -266,7 +267,7 @@ export function SetupContent({ onSuccess, account }: ModalProps) {
           <div className={"flex flex-col gap-6"}>
             <div>
               <HelpText className={"max-w-lg mt-2"}>
-                Select groups you want to apply the CrowdStrike integration to
+                <TransText>Select groups you want to apply the CrowdStrike integration to</TransText>
               </HelpText>
 
               <PeerGroupSelector values={groups} onChange={setGroups} />
@@ -329,7 +330,7 @@ export function SetupContent({ onSuccess, account }: ModalProps) {
         >
           <Clock4 size={12} />
           <div>
-            Estimated setup time:
+            <TransText>Estimated setup time:</TransText>
             <span className={"font-medium"}> 5-10 Minutes</span>
           </div>
         </div>

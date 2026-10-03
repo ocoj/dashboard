@@ -14,6 +14,8 @@ import { ShieldHalf } from "lucide-react";
 import React, { useState } from "react";
 import { AgentGuardrail } from "@/modules/agent-network/data/mockData";
 import { useAIProviders } from "@/modules/agent-network/AIProvidersProvider";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -47,15 +49,14 @@ export default function AgentGuardrailBrowseModal({
       <ModalContent maxWidthClass={"max-w-xl"}>
         <ModalHeader
           icon={<ShieldHalf size={19} />}
-          title={"Browse Guardrails"}
-          description={"Pick one or more existing guardrails to attach."}
+          title={zhMap["Browse Guardrails"] || "Browse Guardrails"}
+          description={zhMap["Pick one or more existing guardrails to attach."] || "Pick one or more existing guardrails to attach."}
           color={"netbird"}
         />
         <div className={"px-8 pb-2"}>
           {available.length === 0 ? (
             <div className={"text-sm text-nb-gray-300 py-6 text-center"}>
-              No more guardrails available — all defined guardrails are already
-              attached.
+              <TransText>No more guardrails available — all defined guardrails are already attached.</TransText>
             </div>
           ) : (
             <div className={"space-y-1.5 max-h-[420px] overflow-y-auto"}>
@@ -73,7 +74,7 @@ export default function AgentGuardrailBrowseModal({
         <ModalFooter className={"items-center"}>
           <div className={"flex gap-3 w-full justify-end"}>
             <ModalClose asChild>
-              <Button variant={"secondary"}>Cancel</Button>
+              <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
             </ModalClose>
             <Button
               variant={"primary"}

@@ -14,6 +14,7 @@ import {
 import { getTrafficEventTypeText } from "@/cloud/traffic-events/TrafficEventsTable";
 import { stripZeroPort } from "@/cloud/traffic-events/utils/parseAddress";
 import { usePeers } from "@/contexts/PeersProvider";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   event: TrafficEvent;
@@ -47,7 +48,7 @@ export const TrafficEventDescription = ({
 
   const routerName = useMemo(() => {
     const reporter = peers?.find((peer) => peer.id === event.reporter_id);
-    return reporter ? <Mark>{reporter.name}</Mark> : <Mark>Unknown</Mark>;
+    return reporter ? <Mark>{reporter.name}</Mark> : <Mark><TransText>Unknown</TransText></Mark>;
   }, [event.reporter_id, peers]);
 
   const timestamp = event.events?.find((e) => e.type === type)?.timestamp;

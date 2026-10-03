@@ -51,6 +51,7 @@ import ReverseProxiesProvider, {
 } from "@/contexts/ReverseProxiesProvider";
 import { SkeletonNetwork } from "@components/skeletons/SkeletonNetwork";
 import zhMap from "@/i18n/zh-map";
+import { TransText } from "@/i18n/trans-text";
 
 export default function NetworkDetailPage() {
   const queryParameter = useSearchParams();
@@ -301,13 +302,11 @@ function NetworkInformationCard({ network }: Readonly<{ network: Network }>) {
                   {isHighlyAvailable ? enabledText : disabledText}
                   {isHighlyAvailable ? (
                     <div className={"inline-flex mt-2"}>
-                      You can add more routing peers to increase the
-                      availability of this network.
+                      <TransText>You can add more routing peers to increase the availability of this network.</TransText>
                     </div>
                   ) : (
                     <div className={"inline-flex mt-2"}>
-                      Go ahead and add more routing peers or groups with routing
-                      peers to enable high availability for this network.
+                      <TransText>Go ahead and add more routing peers or groups with routing peers to enable high availability for this network.</TransText>
                     </div>
                   )}
                 </div>
@@ -349,7 +348,7 @@ function NetworkInformationCard({ network }: Readonly<{ network: Network }>) {
           value={
             policyCount > 0 ? (
               <InlineLink href={"/access-control"}>
-                Go to Policies
+                <TransText>Go to Policies</TransText>
                 <ArrowUpRightIcon size={14} />
               </InlineLink>
             ) : null

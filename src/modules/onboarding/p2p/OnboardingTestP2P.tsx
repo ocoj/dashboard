@@ -6,6 +6,7 @@ import { ExternalLinkIcon } from "lucide-react";
 import * as React from "react";
 import { Peer } from "@/interfaces/Peer";
 import { Policy } from "@/interfaces/Policy";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   firstDevice?: Peer;
@@ -69,7 +70,7 @@ export const OnboardingTestP2P = ({
               className={"w-full"}
               onClick={onNext}
             >
-              It works! - Continue
+              <TransText>It works! - Continue</TransText>
             </Button>
           </div>
         </Steps.Step>

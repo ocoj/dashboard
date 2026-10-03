@@ -17,29 +17,27 @@ import { Mark } from "@components/ui/Mark";
 import { cn } from "@utils/helpers";
 import { ExternalLinkIcon, GlobeIcon } from "lucide-react";
 import * as React from "react";
-import { useEnterpriseConnections } from "@/modules/integrations/sso/useEnterpriseConnections";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   domain: string;
   token: string;
-  connectionId: string;
+  onVerify: () => Promise<unknown>;
 };
 export const DomainVerificationModal = ({
   open,
   onOpenChange,
   domain,
   token,
-  connectionId,
+  onVerify,
 }: Props) => {
-  const { verifyDomain } = useEnterpriseConnections();
-
   const startVerification = async () => {
     notify({
       title: "Domain Verification",
       description: `Verification for ${domain} has started`,
-      promise: verifyDomain(connectionId, domain).then(() => {
+      promise: onVerify().then(() => {
         onOpenChange(false);
       }),
       loadingMessage: "Starting domain verification...",
@@ -59,7 +57,7 @@ export const DomainVerificationModal = ({
         <GradientFadedBackground />
         <ModalHeader
           icon={<GlobeIcon size={20} />}
-          title={"Verify Domain Ownership"}
+          title={zhMap["Verify Domain Ownership"] || "Verify Domain Ownership"}
           description={domain}
           color={"netbird"}
         />
@@ -73,7 +71,7 @@ export const DomainVerificationModal = ({
             </Steps.Step>
             <Steps.Step step={2} line={false}>
               <p className={"font-normal"}>
-                Copy the <Mark>TXT record</Mark> below and add it to your DNS
+                Copy the <Mark><TransText>TXT record</TransText></Mark> below and add it to your DNS
                 configuration for <Mark>{domain}</Mark>
               </p>
             </Steps.Step>
@@ -83,13 +81,13 @@ export const DomainVerificationModal = ({
               <Card.ListItem
                 copy
                 copyText={"TXT Host"}
-                label={"Host"}
+                label={zhMap["Host"] || "Host"}
                 value={domain}
               />
               <Card.ListItem
                 copy
                 copyText={"TXT Value"}
-                label={"Value"}
+                label={zhMap["Value"] || "Value"}
                 value={`nb-verification=${token}`}
               />
             </Card.List>
@@ -123,18 +121,18 @@ export const DomainVerificationModal = ({
             <Paragraph className={"text-sm mt-auto"}>
               <TransText>Learn more about</TransText>
               <InlineLink href={"#"} target={"_blank"}>
-                Domain Verification
+                <TransText>Domain Verification</TransText>
                 <ExternalLinkIcon size={12} />
               </InlineLink>
             </Paragraph>
           </div>
           <div className={"flex gap-3 w-full justify-end"}>
             <ModalClose asChild={true}>
-              <Button variant={"secondary"}>Verify Later</Button>
+              <Button variant={"secondary"}><TransText>Verify Later</TransText></Button>
             </ModalClose>
 
             <Button variant={"primary"} onClick={startVerification}>
-              Start Verification
+              <TransText>Start Verification</TransText>
             </Button>
           </div>
         </ModalFooter>

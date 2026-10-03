@@ -5,12 +5,14 @@ import { cn } from "@utils/helpers";
 import { AnimatePresence, motion } from "framer-motion";
 import { MonitorSmartphoneIcon } from "lucide-react";
 import * as React from "react";
+import { TransText } from "@/i18n/trans-text";
 
 type Props<T> = {
   selectedItems?: T[];
   label?: string;
   onCanceled?: () => void;
   rightSide?: React.ReactNode;
+  icon?: React.ReactNode;
 };
 
 export function DataTableMultiSelectPopup<T>({
@@ -18,6 +20,7 @@ export function DataTableMultiSelectPopup<T>({
   label = "Peer(s) selected",
   selectedItems,
   rightSide,
+  icon,
 }: Props<T>) {
   const count = selectedItems?.length || 0;
   return (
@@ -54,7 +57,9 @@ export function DataTableMultiSelectPopup<T>({
                     }
                   >
                     <div className={"flex gap-2 items-center"}>
-                      <MonitorSmartphoneIcon size={16} className={""} />
+                      {icon ?? (
+                        <MonitorSmartphoneIcon size={16} className={""} />
+                      )}
                       <span>
                         <span className={"font-medium text-white"}>
                           {count}
@@ -65,7 +70,7 @@ export function DataTableMultiSelectPopup<T>({
                     <div className={"flex gap-2 items-center"}>
                       {rightSide}
                       <FullTooltip
-                        content={<span className={"text-xs"}>Cancel</span>}
+                        content={<span className={"text-xs"}><TransText>Cancel</TransText></span>}
                       >
                         <Button
                           onClick={onCanceled}

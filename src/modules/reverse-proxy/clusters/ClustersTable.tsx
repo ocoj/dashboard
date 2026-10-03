@@ -201,7 +201,7 @@ export default function ClustersTable({ headingTarget }: Readonly<Props>) {
                 size={"large"}
               />
             }
-            title={"No clusters available"}
+            title={zhMap["No clusters available"] || "No clusters available"}
             description={
               "Set up a cluster to route traffic through your own infrastructure."
             }

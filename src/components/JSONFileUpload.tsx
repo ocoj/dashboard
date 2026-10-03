@@ -3,6 +3,7 @@ import { cn } from "@utils/helpers";
 import { FileJson2 } from "lucide-react";
 import * as React from "react";
 import { useState } from "react";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   value: string;
@@ -110,7 +111,7 @@ export const JSONFileUpload = ({ onChange }: Props) => {
               "underline underline-offset-4 group-hover/upload:text-nb-gray-200 transition-all"
             }
           >
-            Click to upload
+            <TransText>Click to upload</TransText>
           </span>{" "}
           or drag and drop your file here
         </p>

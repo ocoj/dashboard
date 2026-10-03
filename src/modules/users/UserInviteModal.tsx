@@ -362,7 +362,7 @@ export function UserInviteModalContent({
                 <User2 size={16} className={"text-nb-gray-300"} />
               </div>
             }
-            placeholder={"John Doe"}
+            placeholder={zhMap["John Doe"] || "John Doe"}
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
@@ -406,7 +406,7 @@ export function UserInviteModalContent({
         </div>
 
         <div className={"mb-4"}>
-          <Label>Auto-assigned groups</Label>
+          <Label><TransText>Auto-assigned groups</TransText></Label>
           <HelpText>
             <TransText>Groups will be assigned to peers added by this user.</TransText>
           </HelpText>

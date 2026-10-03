@@ -183,7 +183,7 @@ const CheckContent = ({ value, onChange, disabled }: Props) => {
               }
               target={"_blank"}
             >
-              Country & Region Check
+              <TransText>Country & Region Check</TransText>
               <ExternalLinkIcon size={12} />
             </InlineLink>
           </Paragraph>
@@ -206,7 +206,7 @@ const CheckContent = ({ value, onChange, disabled }: Props) => {
             }}
             disabled={disabled}
           >
-            Save
+            <TransText>Save</TransText>
           </Button>
         </div>
       </ModalFooter>

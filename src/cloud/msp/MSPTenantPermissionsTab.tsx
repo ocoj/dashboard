@@ -17,6 +17,7 @@ import { Group } from "@/interfaces/Group";
 import { Role } from "@/interfaces/User";
 import { HorizontalUsersStack } from "@/modules/users/HorizontalUsersStack";
 import { UserRoles, UserRoleSelector } from "@/modules/users/UserRoleSelector";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   groups: Group[];
@@ -58,7 +59,7 @@ export const MSPTenantPermissionsTab = ({
         <div>
           <Label>Permissions (required)</Label>
           <HelpText>
-            Add user groups to grant them access to this tenant.
+            <TransText>Add user groups to grant them access to this tenant.</TransText>
           </HelpText>
         </div>
         <div>

@@ -74,9 +74,9 @@ export const RemoteJobDropdownButton = () => {
                 size={"small"}
               />
               <div className={"flex flex-col text-left"}>
-                <div className={"text-left text-white"}>Debug Bundle</div>
+                <div className={"text-left text-white"}><TransText>Debug Bundle</TransText></div>
                 <div className={"text-xs"}>
-                  Collect debug information for troubleshooting
+                  <TransText>Collect debug information for troubleshooting</TransText>
                 </div>
               </div>
             </div>

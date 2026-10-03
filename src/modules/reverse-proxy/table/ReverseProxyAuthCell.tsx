@@ -81,8 +81,7 @@ export default function ReverseProxyAuthCell({
         <FullTooltip
           content={
             <div className={"flex text-xs max-w-[340px]"}>
-              Auth methods are not supported for TCP/UDP and TLS passthrough
-              services as they operate at the network layer.
+              <TransText>Auth methods are not supported for TCP/UDP and TLS passthrough services as they operate at the network layer.</TransText>
             </div>
           }
         >

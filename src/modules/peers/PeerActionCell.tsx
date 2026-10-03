@@ -176,7 +176,7 @@ export default function PeerActionCell() {
             target={"_blank"}
             onClick={(e) => e.stopPropagation()}
           >
-            Learn more
+            <TransText>Learn more</TransText>
             <ExternalLinkIcon size={12} />
           </InlineLink>
         </div>
@@ -272,7 +272,7 @@ export default function PeerActionCell() {
               >
                 <IconInfoCircle size={14} />
                 <span>
-                  <TransText>Expiration is disabled for all peers added with an setup-key.</TransText>
+                  <TransText>Expiration is disabled for all peers added with a setup-key.</TransText>
                 </span>
               </div>
             }

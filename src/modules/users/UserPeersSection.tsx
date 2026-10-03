@@ -60,7 +60,7 @@ export const UserPeersSection = ({ user }: Props) => {
             getStartedCard={
               <NoResults
                 className={"py-4"}
-                title={"This user has no registered peers"}
+                title={zhMap["This user has no registered peers"] || "This user has no registered peers"}
                 description={
                   "Install NetBird and sign in as this user to register peers."
                 }

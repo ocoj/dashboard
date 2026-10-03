@@ -14,6 +14,8 @@ import {
 } from "lucide-react";
 import * as React from "react";
 import { SentinelOneMatchAttributes } from "@/interfaces/EDR";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   value: SentinelOneMatchAttributes;
@@ -32,7 +34,7 @@ export const SentinelOneMatchSettings = ({
             Allowed Active Threats
           </Label>
           <HelpText>
-            Maximum allowed number of active threats on a device.
+            <TransText>Maximum allowed number of active threats on a device.</TransText>
           </HelpText>
         </div>
         <Input
@@ -67,7 +69,7 @@ export const SentinelOneMatchSettings = ({
               Disk Encryption
             </>
           }
-          helpText={"Devices must have disk encryption enabled."}
+          helpText={zhMap["Devices must have disk encryption enabled."] || "Devices must have disk encryption enabled."}
         />
         <FancyToggleSwitch
           value={matchAttributes.firewall_enabled ?? false}
@@ -84,7 +86,7 @@ export const SentinelOneMatchSettings = ({
               Firewall
             </>
           }
-          helpText={"Devices must have their firewall enabled."}
+          helpText={zhMap["Devices must have their firewall enabled."] || "Devices must have their firewall enabled."}
         />
         <FancyToggleSwitch
           value={matchAttributes.infected === false}
@@ -101,7 +103,7 @@ export const SentinelOneMatchSettings = ({
               Block Infected Devices
             </>
           }
-          helpText={"Prevent access for devices with active infections."}
+          helpText={zhMap["Prevent access for devices with active infections."] || "Prevent access for devices with active infections."}
         />
         <FancyToggleSwitch
           value={matchAttributes.network_status === "connected"}
@@ -118,7 +120,7 @@ export const SentinelOneMatchSettings = ({
               Network Connectivity
             </>
           }
-          helpText={"Require active network connection to SentinelOne."}
+          helpText={zhMap["Require active network connection to SentinelOne."] || "Require active network connection to SentinelOne."}
         />
         <FancyToggleSwitch
           value={matchAttributes.is_active ?? false}
@@ -135,7 +137,7 @@ export const SentinelOneMatchSettings = ({
               Active Status
             </>
           }
-          helpText={"SentinelOne agent must be active and reporting."}
+          helpText={zhMap["SentinelOne agent must be active and reporting."] || "SentinelOne agent must be active and reporting."}
         />
         <FancyToggleSwitch
           value={matchAttributes.is_up_to_date ?? false}

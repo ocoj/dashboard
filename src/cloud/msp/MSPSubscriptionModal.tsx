@@ -7,6 +7,8 @@ import * as React from "react";
 import { useTenantPlan } from "@/cloud/msp/hooks/useTenantPlan";
 import { Tenant } from "@/cloud/msp/interfaces/Tenant";
 import { PlanCard, PlanLoadingSkeleton } from "@/modules/billing/PlanCard";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -52,7 +54,7 @@ const MSPSubscriptionModalContent = ({
       <ModalHeader
         icon={<CreditCardIcon size={18} />}
         title={`NetBird Plan for ${tenant.name}`}
-        description={"Select the plan that best fits your tenant's needs."}
+        description={zhMap["Select the plan that best fits your tenant's needs."] || "Select the plan that best fits your tenant's needs."}
         color={"netbird"}
       />
       <div className={"px-8 pb-1"}>
@@ -87,7 +89,7 @@ const MSPSubscriptionModalContent = ({
             Haven’t decided for a plan yet?{" "}
             <ModalClose asChild={true}>
               <InlineButtonLink variant={"white"}>
-                Continue with Trial
+                <TransText>Continue with Trial</TransText>
               </InlineButtonLink>
             </ModalClose>
           </Paragraph>

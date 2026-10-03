@@ -20,10 +20,13 @@ import {
 import React, { useMemo, useState } from "react";
 import { HubspotFormField } from "@/contexts/AnalyticsProvider";
 import { useLoggedInUser } from "@/contexts/UsersProvider";
+import { countryOptions } from "@/modules/onboarding/countryOptions";
 import {
   companySizes,
   referralSourceOptions,
 } from "@/modules/onboarding/OnboardingSurvey";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   onSubmit: (fields: HubspotFormField[]) => void;
@@ -57,6 +60,7 @@ export const AgentNetworkSignupForm = ({ onSubmit }: Props) => {
   const [personalOrBusiness, setPersonalOrBusiness] = useState("business");
   const isBusiness = personalOrBusiness === "business";
   const [companySize, setCompanySize] = useState<string>("");
+  const [country, setCountry] = useState("");
   const [referralSource, setReferralSource] = useState("");
   const [selected, setSelected] = useState<Record<string, boolean>>({});
   const [other, setOther] = useState(false);
@@ -106,14 +110,23 @@ export const AgentNetworkSignupForm = ({ onSubmit }: Props) => {
 
   const canSubmit = useMemo(() => {
     if (!hasIdentity) return false;
-    const base = hasSelectedUseCase && referralSource !== "";
+    const base = hasSelectedUseCase && referralSource !== "" && country !== "";
     return isBusiness ? base && companySize !== "" : base;
-  }, [hasIdentity, hasSelectedUseCase, referralSource, isBusiness, companySize]);
+  }, [
+    hasIdentity,
+    hasSelectedUseCase,
+    referralSource,
+    country,
+    isBusiness,
+    companySize,
+  ]);
 
   const submitForm = () => {
     if (!hasIdentity) return;
     const fields: HubspotFormField[] = [
       { name: "email", value: email },
+      // Company-scoped (0-2) Country/Region, required by the HubSpot form.
+      { objectTypeId: "0-2", name: "country", value: country },
       { name: "is_company", value: isBusiness ? "Business" : "Personal" },
       { name: "use_case", value: getUseCases() },
       { name: "how_did_you_hear_about_us", value: referralSource || "Other" },
@@ -134,8 +147,7 @@ export const AgentNetworkSignupForm = ({ onSubmit }: Props) => {
             "text-sm text-nb-gray-300 font-light mt-2 block text-center max-w-md mx-auto px-6"
           }
         >
-          Share a few details about your use case to help us get you started
-          smoothly.
+          <TransText>Share a few details about your use case to help us get you started smoothly.</TransText>
         </div>
 
         <div className={"flex flex-col mt-8 z-0 gap-8"}>
@@ -180,6 +192,22 @@ export const AgentNetworkSignupForm = ({ onSubmit }: Props) => {
 
           <div className={"flex w-full flex-col gap-2"}>
             <Label>
+              <TransText>Country</TransText>
+              <RequiredAsterisk />
+            </Label>
+            <SelectDropdown
+              value={country}
+              onChange={setCountry}
+              options={countryOptions}
+              showSearch={true}
+              placeholder={zhMap["Select your country..."] || "Select your country..."}
+              searchPlaceholder={"Search country..."}
+              variant={"dropdown"}
+            />
+          </div>
+
+          <div className={"flex w-full flex-col gap-2"}>
+            <Label>
               How did you hear about Agent Network?
               <RequiredAsterisk />
             </Label>
@@ -188,7 +216,7 @@ export const AgentNetworkSignupForm = ({ onSubmit }: Props) => {
               onChange={setReferralSource}
               options={randomizedOptions}
               showValues={false}
-              placeholder={"Please select an option..."}
+              placeholder={zhMap["Please select an option..."] || "Please select an option..."}
               variant={"dropdown"}
             />
           </div>
@@ -200,7 +228,7 @@ export const AgentNetworkSignupForm = ({ onSubmit }: Props) => {
                 <RequiredAsterisk />
               </Label>
               <HelpText className={"mt-1.5"}>
-                You can also select multiple use cases.
+                <TransText>You can also select multiple use cases.</TransText>
               </HelpText>
             </div>
 
@@ -256,7 +284,7 @@ export const AgentNetworkSignupForm = ({ onSubmit }: Props) => {
         onClick={submitForm}
         disabled={!canSubmit}
       >
-        Continue
+        <TransText>Continue</TransText>
       </Button>
     </>
   );

@@ -15,13 +15,15 @@ import { memo, useEffect, useState } from "react";
 import { useElementSize } from "@/hooks/useElementSize";
 import { Peer } from "@/interfaces/Peer";
 import { PeerOperatingSystemIcon } from "@/modules/peers/PeerOperatingSystemIcon";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 const MapPinIcon = memo(() => <MapPin size={12} />);
 MapPinIcon.displayName = "MapPinIcon";
 
 interface MultiSelectProps {
   value?: Peer;
-  onChange: React.Dispatch<React.SetStateAction<Peer | undefined>>;
+  onChange: (peer: Peer | undefined) => void;
   excludedPeers?: string[];
   disabled?: boolean;
 }
@@ -50,14 +52,11 @@ export function PeerSelector({
     { filter: true, debounce: 150 },
   );
 
-  // Update unfiltered items when peers change
   useEffect(() => {
     if (!peers) return;
 
-    // Sort
     let options = sortBy([...peers], "name") as Peer[];
 
-    // Filter out excluded peers
     if (excludedPeers) {
       options = options.filter((peer) => {
         if (!peer.id) return false;
@@ -129,7 +128,7 @@ export function PeerSelector({
                 </div>
               </div>
             ) : (
-              <span>Select a peer...</span>
+              <span><TransText>Select a peer...</TransText></span>
             )}
           </div>
 
@@ -150,7 +149,7 @@ export function PeerSelector({
           <DropdownInput
             value={search}
             onChange={setSearch}
-            placeholder={"Search for peers by name or ip..."}
+            placeholder={zhMap["Search for peers by name or ip..."] || "Search for peers by name or ip..."}
           />
 
           {unfilteredItems.length == 0 && !search && (
@@ -163,7 +162,7 @@ export function PeerSelector({
 
           {filteredItems.length == 0 && search != "" && (
             <DropdownInfoText>
-              There are no peers matching your search.
+              <TransText>There are no peers matching your search.</TransText>
             </DropdownInfoText>
           )}
 

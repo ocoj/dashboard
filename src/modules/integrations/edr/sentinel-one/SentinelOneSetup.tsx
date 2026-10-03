@@ -42,6 +42,8 @@ import { isValidSentinelOneApiUrl, matchAttributesReducer } from "@/modules/inte
 import { SentinelOneMatchSettings } from "@/modules/integrations/edr/sentinel-one/SentinelOneMatchSettings";
 import SentinelOneUrlInput from "@/modules/integrations/edr/sentinel-one/SentinelOneUrlInput";
 import { IntegrationModalHeader } from "@/modules/integrations/IntegrationModalHeader";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -204,7 +206,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
 
       <IntegrationModalHeader
         image={integrationImage}
-        title={"Connect NetBird with SentinelOne"}
+        title={zhMap["Connect NetBird with SentinelOne"] || "Connect NetBird with SentinelOne"}
         description={
           "Restrict network access to devices managed by SentinelOne based on their security posture."
         }
@@ -227,7 +229,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
           <p className={"mt-2 !text-nb-gray-300 !leading-[1.5]"}>
             Ensure that you have an{" "}
             <span className={"text-nb-gray-100 font-semibold"}>
-              SentinelOne account
+              <TransText>SentinelOne account</TransText>
             </span>{" "}
             with the following{" "}
             <span className={"text-nb-gray-100 font-semibold"}>
@@ -272,7 +274,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
 
           <Steps>
             <Steps.Step step={1}>
-              <p>Navigate to your SentinelOne Management Console.</p>
+              <p><TransText>Navigate to your SentinelOne Management Console.</TransText></p>
             </Steps.Step>
 
             <Steps.Step step={2} line={false}>
@@ -308,26 +310,26 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
                     <ExternalLinkIcon size={14} className={"ml-1"} />
                   </InlineLink>
                 ) : (
-                  <Mark>Settings » Users » Service Users</Mark>
+                  <Mark><TransText>Settings » Users » Service Users</TransText></Mark>
                 )}
               </p>
             </Steps.Step>
             <Steps.Step step={1}>
               <p className={"font-normal"}>
-                Click <Mark>Create Service User</Mark>
+                <TransText>Click</TransText> <Mark><TransText>Create Service User</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={3}>
               <p className={"font-normal"}>
-                Enter <Mark copy>NetBird Integration</Mark> as the name, a
+                <TransText>Enter</TransText> <Mark copy><TransText>NetBird Integration</TransText></Mark> as the name, a
                 optional description and select your preferred expiration date.
-                Click <Mark>Next</Mark>
+                Click <Mark><TransText>Next</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={4} line={false}>
               <p className={"font-normal"}>
-                Select your Site and set the Scope to <Mark>Viewer</Mark>
-                <br /> Click <Mark>Create User</Mark>, copy your API Token and
+                Select your Site and set the Scope to <Mark><TransText>Viewer</TransText></Mark>
+                <br /> Click <Mark><TransText>Create User</TransText></Mark>, copy your API Token and
                 enter it below.
               </p>
             </Steps.Step>
@@ -360,7 +362,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
           </p>
 
           <HelpText className={"max-w-lg mt-2"}>
-            Select groups you want to apply the SentinelOne integration to
+            <TransText>Select groups you want to apply the SentinelOne integration to</TransText>
           </HelpText>
 
           <PeerGroupSelector values={groups} onChange={setGroups} />
@@ -374,8 +376,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
             Compliance Requirements
           </p>
           <p className={"mt-2 !text-nb-gray-300 !leading-[1.5]"}>
-            Set the specific requirements that devices must meet to be
-            considered compliant.
+            <TransText>Set the specific requirements that devices must meet to be considered compliant.</TransText>
           </p>
 
           <SentinelOneMatchSettings
@@ -468,7 +469,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
         >
           <Clock4 size={12} />
           <div>
-            Estimated setup time:
+            <TransText>Estimated setup time:</TransText>
             <span className={"font-medium"}> 10-20 Minutes</span>
           </div>
         </div>

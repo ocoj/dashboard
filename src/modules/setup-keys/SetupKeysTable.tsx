@@ -293,7 +293,7 @@ export default function SetupKeysTable({
             <NoResults
               icon={<SetupKeysIcon className={"fill-nb-gray-200"} size={20} />}
               className={"py-4"}
-              title={"This group is not used within any setup keys yet"}
+              title={zhMap["This group is not used within any setup keys yet"] || "This group is not used within any setup keys yet"}
               description={
                 "Assign this group when creating a new setup key to see them listed here."
               }
@@ -319,7 +319,7 @@ export default function SetupKeysTable({
                   size={"large"}
                 />
               }
-              title={"Create Setup Key"}
+              title={zhMap["Create Setup Key"] || "Create Setup Key"}
               description={
                 "Add a setup key to register new machines in your network. The key links machines to your account during initial setup."
               }

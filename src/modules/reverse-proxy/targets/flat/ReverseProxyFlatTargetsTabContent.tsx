@@ -11,6 +11,7 @@ import {
   ReverseProxyFlatTarget,
 } from "@/interfaces/ReverseProxy";
 import { ReverseProxyFlatTargetsTable } from "@/modules/reverse-proxy/targets/flat/ReverseProxyFlatTargetsTable";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   targets: ReverseProxyFlatTarget[];
@@ -34,7 +35,7 @@ export const ReverseProxyFlatTargetsTabContent = ({
           <Paragraph>
             Expose services securely through NetBird&apos;s reverse proxy.{" "}
             <InlineLink href={REVERSE_PROXY_DOCS_LINK} target={"_blank"}>
-              Learn more
+              <TransText>Learn more</TransText>
               <ExternalLinkIcon size={12} />
             </InlineLink>
           </Paragraph>

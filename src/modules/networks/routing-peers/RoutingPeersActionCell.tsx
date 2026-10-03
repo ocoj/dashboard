@@ -21,6 +21,7 @@ import { usePermissions } from "@/contexts/PermissionsProvider";
 import { NetworkRouter } from "@/interfaces/Network";
 import { useNetworksContext } from "@/modules/networks/NetworkProvider";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   router: NetworkRouter;
@@ -69,7 +70,7 @@ export const RoutingPeersActionCell = ({ router }: Props) => {
             disabled={
               !permission.networks.update && !permission.networks.delete
             }
-            aria-label={"Routing peer actions"}
+            aria-label={zhMap["Routing peer actions"] || "Routing peer actions"}
           >
             <MoreVertical size={16} className={"shrink-0"} />
           </Button>

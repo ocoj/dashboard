@@ -99,8 +99,8 @@ function TargetGroupsCell({ rule }: { rule: AgentBudgetRule }) {
   return (
     <MultipleGroups
       groups={groups}
-      label={"Target Groups"}
-      description={"This limit applies to members of these groups."}
+      label={zhMap["Target Groups"] || "Target Groups"}
+      description={zhMap["This limit applies to members of these groups."] || "This limit applies to members of these groups."}
     />
   );
 }
@@ -165,7 +165,7 @@ function TokenCapCell({ rule }: { rule: AgentBudgetRule }) {
     <FullTooltip
       content={
         <div className={"text-xs space-y-0.5"}>
-          <div className={"font-semibold"}>Token Limit</div>
+          <div className={"font-semibold"}><TransText>Token Limit</TransText></div>
           <div>· Group: {capDisplay(tl.groupCap, false)}</div>
           <div>· Individual: {capDisplay(tl.userCap, false)}</div>
           <div>· Resets every {formatLimitWindow(tl.windowSeconds)}</div>
@@ -187,7 +187,7 @@ function BudgetCapCell({ rule }: { rule: AgentBudgetRule }) {
     <FullTooltip
       content={
         <div className={"text-xs space-y-0.5"}>
-          <div className={"font-semibold"}>Budget Limit</div>
+          <div className={"font-semibold"}><TransText>Budget Limit</TransText></div>
           <div>· Group: {capDisplay(bl.groupCapUsd, true)}</div>
           <div>· Individual: {capDisplay(bl.userCapUsd, true)}</div>
           <div>· Resets every {formatLimitWindow(bl.windowSeconds)}</div>
@@ -333,7 +333,7 @@ export default function AgentBudgetRulesTable() {
         accessorKey: "name",
         sortingFn: "text",
         header: ({ column }) => (
-          <DataTableHeader column={column}>Name</DataTableHeader>
+          <DataTableHeader column={column}><TransText>Name</TransText></DataTableHeader>
         ),
         cell: ({ row }) => <NameCell rule={row.original} />,
       },
@@ -342,7 +342,7 @@ export default function AgentBudgetRulesTable() {
         accessorFn: (r) => (r.enabled ? 1 : 0),
         sortingFn: "basic",
         header: ({ column }) => (
-          <DataTableHeader column={column}>Enabled</DataTableHeader>
+          <DataTableHeader column={column}><TransText>Enabled</TransText></DataTableHeader>
         ),
         cell: ({ row }) => <EnabledCell rule={row.original} />,
       },
@@ -351,7 +351,7 @@ export default function AgentBudgetRulesTable() {
         accessorFn: (r) => r.targetGroups.length,
         sortingFn: "basic",
         header: ({ column }) => (
-          <DataTableHeader column={column}>Target Groups</DataTableHeader>
+          <DataTableHeader column={column}><TransText>Target Groups</TransText></DataTableHeader>
         ),
         cell: ({ row }) => <TargetGroupsCell rule={row.original} />,
       },
@@ -360,7 +360,7 @@ export default function AgentBudgetRulesTable() {
         accessorFn: (r) => r.targetUsers.length,
         sortingFn: "basic",
         header: ({ column }) => (
-          <DataTableHeader column={column}>Target Users</DataTableHeader>
+          <DataTableHeader column={column}><TransText>Target Users</TransText></DataTableHeader>
         ),
         cell: ({ row }) => <TargetUsersCell rule={row.original} />,
       },
@@ -370,7 +370,7 @@ export default function AgentBudgetRulesTable() {
           r.limits.tokenLimit.enabled ? r.limits.tokenLimit.groupCap : 0,
         sortingFn: "basic",
         header: ({ column }) => (
-          <DataTableHeader column={column}>Token Cap</DataTableHeader>
+          <DataTableHeader column={column}><TransText>Token Cap</TransText></DataTableHeader>
         ),
         cell: ({ row }) => <TokenCapCell rule={row.original} />,
       },
@@ -380,7 +380,7 @@ export default function AgentBudgetRulesTable() {
           r.limits.budgetLimit.enabled ? r.limits.budgetLimit.groupCapUsd : 0,
         sortingFn: "basic",
         header: ({ column }) => (
-          <DataTableHeader column={column}>Budget Cap</DataTableHeader>
+          <DataTableHeader column={column}><TransText>Budget Cap</TransText></DataTableHeader>
         ),
         cell: ({ row }) => <BudgetCapCell rule={row.original} />,
       },
@@ -389,7 +389,7 @@ export default function AgentBudgetRulesTable() {
         accessorKey: "updatedAt",
         sortingFn: "datetime",
         header: ({ column }) => (
-          <DataTableHeader column={column}>Updated</DataTableHeader>
+          <DataTableHeader column={column}><TransText>Updated</TransText></DataTableHeader>
         ),
         cell: ({ row }) => <UpdatedCell rule={row.original} />,
       },
@@ -435,7 +435,7 @@ export default function AgentBudgetRulesTable() {
               <SquareIcon
                 icon={
                   <SlidersHorizontal
-                    className={"fill-nb-gray-200"}
+                    className={"text-nb-gray-200"}
                     size={20}
                   />
                 }
@@ -461,9 +461,12 @@ export default function AgentBudgetRulesTable() {
             }
             learnMore={
               <>
-                <TransText>Learn more about</TransText>
-                <InlineLink href={"https://docs.netbird.io/"} target={"_blank"}>
-                  {zhMap["Agent Network"] || "Agent Network"}
+                Learn more about
+                <InlineLink
+                  href={"https://docs.netbird.io/agent-network"}
+                  target={"_blank"}
+                >
+                  <TransText>Agent Network</TransText>
                   <ExternalLinkIcon size={12} />
                 </InlineLink>
               </>

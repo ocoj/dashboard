@@ -127,7 +127,7 @@ export const GroupPeersSection = ({ peers, isLoading = true }: Props) => {
         getStartedCard={
           <NoResults
             className={"py-4"}
-            title={"This group has no assigned peers yet"}
+            title={zhMap["This group has no assigned peers yet"] || "This group has no assigned peers yet"}
             description={
               "Install NetBird and assign existing peers to this group to see them listed here."
             }

@@ -10,6 +10,8 @@ import { UserCircle2 } from "lucide-react";
 import * as React from "react";
 import { useMemo } from "react";
 import { SmallUserAvatar } from "@/modules/users/SmallUserAvatar";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 // UsersPicker — single-select search list mirroring the Activity ›
 // Audit Logs user filter. The value stored on the column filter is the
@@ -68,7 +70,7 @@ export function UsersPicker({ value, onChange, close, options }: Props) {
       <DropdownInput
         value={search}
         onChange={setSearch}
-        placeholder={"Search user..."}
+        placeholder={zhMap["Search user..."] || "Search user..."}
         hideEnterIcon={true}
       />
 
@@ -83,7 +85,7 @@ export function UsersPicker({ value, onChange, close, options }: Props) {
       {filteredItems.length === 0 && search !== "" && (
         <div className={"px-10"}>
           <DropdownInfoText>
-            There are no users matching your search.
+            <TransText>There are no users matching your search.</TransText>
           </DropdownInfoText>
         </div>
       )}

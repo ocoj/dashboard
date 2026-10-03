@@ -15,6 +15,7 @@ import { useBilling } from "@/contexts/BillingProvider";
 import { AccountUsageStats } from "@/interfaces/AccountUsageStats";
 import { Currency, Plan, Price } from "@/interfaces/Plan";
 import { PlanIcon } from "@/modules/billing/PlanIcon";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   currentPlan: Plan;
@@ -180,8 +181,7 @@ export const PlanCurrentPlan = ({
               <FullTooltip
                 content={
                   <div className={"text-xs max-w-sm"}>
-                    The estimated price is calculated based on the number of
-                    active users and active peers.
+                    <TransText>The estimated price is calculated based on the number of active users and active peers.</TransText>
                   </div>
                 }
                 interactive={false}

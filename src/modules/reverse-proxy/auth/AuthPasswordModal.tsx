@@ -81,7 +81,7 @@ export default function AuthPasswordModal({
             {isEditing ? (
               <>
                 <Button variant="danger-text" data-testid="remove-password" onClick={handleRemove}>
-                  Remove
+                  <TransText>Remove</TransText>
                 </Button>
                 <div className="flex gap-3">
                   <ModalClose asChild>
@@ -92,7 +92,7 @@ export default function AuthPasswordModal({
                     onClick={handleSave}
                     disabled={!password.trim()}
                   >
-                    Save
+                    <TransText>Save</TransText>
                   </Button>
                 </div>
               </>
@@ -109,7 +109,7 @@ export default function AuthPasswordModal({
                     disabled={!password.trim()}
                     data-testid="submit-password"
                   >
-                    Add Password
+                    <TransText>Add Password</TransText>
                   </Button>
                 </div>
               </>

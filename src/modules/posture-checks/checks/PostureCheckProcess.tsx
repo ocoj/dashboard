@@ -21,6 +21,7 @@ import AppleIcon from "@/assets/icons/AppleIcon";
 import WindowsIcon from "@/assets/icons/WindowsIcon";
 import { Process, ProcessCheck } from "@/interfaces/PostureCheck";
 import { PostureCheckCard } from "@/modules/posture-checks/ui/PostureCheckCard";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   value?: ProcessCheck;
@@ -37,7 +38,7 @@ export const PostureCheckProcess = ({ value, onChange, disabled }: Props) => {
       setOpen={setOpen}
       key={open ? 1 : 0}
       active={value?.processes && value?.processes?.length > 0}
-      title={"Process"}
+      title={zhMap["Process"] || "Process"}
       description={
         "Restrict access in your network based on running processes of a peer."
       }
@@ -154,11 +155,9 @@ const CheckContent = ({ value, onChange, disabled }: Props) => {
       <div className={"flex flex-col px-8 gap-2 pb-6"}>
         <div className={"flex justify-between items-start gap-10 mt-2"}>
           <div>
-            <Label>Processes</Label>
+            <Label><TransText>Processes</TransText></Label>
             <HelpText className={""}>
-              Add the path of an executable file of the process. You can define
-              a path for Linux, macOS and Windows. Peers will only be allowed to
-              connect if the process is running on their system.
+              <TransText>Add the path of an executable file of the process. You can define a path for Linux, macOS and Windows. Peers will only be allowed to connect if the process is running on their system.</TransText>
             </HelpText>
           </div>
         </div>
@@ -282,7 +281,7 @@ const CheckContent = ({ value, onChange, disabled }: Props) => {
               }
               target={"_blank"}
             >
-              Process Check
+              <TransText>Process Check</TransText>
               <ExternalLinkIcon size={12} />
             </InlineLink>
           </Paragraph>
@@ -309,7 +308,7 @@ const CheckContent = ({ value, onChange, disabled }: Props) => {
               }
             }}
           >
-            Save
+            <TransText>Save</TransText>
           </Button>
         </div>
       </ModalFooter>

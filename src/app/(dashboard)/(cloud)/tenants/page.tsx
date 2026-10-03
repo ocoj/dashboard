@@ -20,6 +20,7 @@ import { useLoggedInUser } from "@/contexts/UsersProvider";
 import { User } from "@/interfaces/User";
 import PageContainer from "@/layouts/PageContainer";
 import zhMap from "@/i18n/zh-map";
+import { TransText } from "@/i18n/trans-text";
 
 export default function TenantsPage() {
   const { isActive, isMSPInMSPContext, isMspInfoLoading } = useMSP();
@@ -60,10 +61,9 @@ const TenantsPageContent = () => {
             icon={<MSPIcon size={15} />}
           />
         </Breadcrumbs>
-        <h1 ref={headingRef}>Tenants</h1>
+        <h1 ref={headingRef}><TransText>Tenants</TransText></h1>
         <Paragraph>
-          A list of all tenants and their subscription details. Use this view to
-          manage accounts, plans and permissions.
+          <TransText>A list of all tenants and their subscription details. Use this view to manage accounts, plans and permissions.</TransText>
         </Paragraph>
         <Paragraph>
           <MSPTenantDocsLink />

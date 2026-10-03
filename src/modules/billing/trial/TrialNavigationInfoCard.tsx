@@ -1,13 +1,14 @@
 import Button from "@components/Button";
 import { cn } from "@utils/helpers";
-import { useRouter } from "next/navigation";
+import { useGuardedRouter } from "@utils/navigation-guard";
 import * as React from "react";
 import { useTrial } from "@/cloud/cloud-hooks/useTrial";
 import { useLoggedInUser } from "@/contexts/UsersProvider";
 import { PlanIcon } from "@/modules/billing/PlanIcon";
+import { TransText } from "@/i18n/trans-text";
 
 export const TrialNavigationInfoCard = () => {
-  const router = useRouter();
+  const router = useGuardedRouter();
   const { isOwnerOrAdmin } = useLoggedInUser();
   const { trialDaysRemaining } = useTrial();
 
@@ -21,7 +22,7 @@ export const TrialNavigationInfoCard = () => {
       <div className={"flex items-center text-sm gap-3"}>
         <PlanIcon name={"trial"} size={33} />
         <div className={"min-w-0"}>
-          <div className={"font-semibold"}>Free Trial</div>
+          <div className={"font-semibold"}><TransText>Free Trial</TransText></div>
           <div className={"truncate text-xs text-nb-gray-300 transition-all"}>
             Trial ends in {trialDaysRemaining} days
           </div>
@@ -38,7 +39,7 @@ export const TrialNavigationInfoCard = () => {
               router.push("/settings?tab=plans-and-billing");
             }}
           >
-            Upgrade Plan
+            <TransText>Upgrade Plan</TransText>
           </Button>
         </div>
       )}

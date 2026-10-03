@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { WebhookConfig } from "@/cloud/webhooks/useWebhookConfig";
 import zhMap from "@/i18n/zh-map";
+import { TransText } from "@/i18n/trans-text";
 
 export enum AuthType {
   None = "none",
@@ -102,7 +103,7 @@ export const AuthenticationSettings = ({
           <div>
             <Label>HTTP Header Name & Value</Label>
             <HelpText>
-              Specify the header name and value for your custom authentication
+              <TransText>Specify the header name and value for your custom authentication</TransText>
             </HelpText>
           </div>
           <div className={"flex flex-col gap-2"}>

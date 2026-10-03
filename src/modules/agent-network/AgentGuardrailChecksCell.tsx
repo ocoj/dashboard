@@ -5,6 +5,7 @@ import { cn } from "@utils/helpers";
 import { Boxes, ShieldCheckIcon } from "lucide-react";
 import * as React from "react";
 import { AgentGuardrail } from "@/modules/agent-network/data/mockData";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   guardrail: AgentGuardrail;
@@ -41,7 +42,7 @@ export default function AgentGuardrailChecksCell({
                   "bg-gradient-to-tr from-netbird-200 to-netbird-100 h-8 w-8 rounded-full flex items-center justify-center relative z-[10] hover:scale-[1.1] transition-all"
                 }
               >
-                <Boxes size={14} />
+                <Boxes size={14} className={"text-netbird-950"} />
               </div>
             </FullTooltip>
           )}
@@ -49,9 +50,7 @@ export default function AgentGuardrailChecksCell({
           {c.prompt_capture.enabled && (
             <FullTooltip
               content={
-                <div className={"text-xs"}>
-                  Prompt capture · PII redaction
-                </div>
+                <div className={"text-xs"}><TransText>Prompt capture · PII redaction</TransText></div>
               }
             >
               <div
@@ -63,7 +62,6 @@ export default function AgentGuardrailChecksCell({
               </div>
             </FullTooltip>
           )}
-
         </div>
       </div>
     </div>

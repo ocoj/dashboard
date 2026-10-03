@@ -6,14 +6,13 @@ import { Settings } from "lucide-react";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import * as React from "react";
 import { useMemo, useState } from "react";
-import {
-  DomainValidationStatus,
-  EnterpriseConnection,
-} from "@/interfaces/IdentityProvider";
+import { DomainValidationStatus } from "@/interfaces/Account";
+import { EnterpriseConnection } from "@/interfaces/IdentityProvider";
 import { IntegrationCard } from "@/modules/integrations/IntegrationCard";
 import OidcSetupModal from "@/modules/integrations/sso/oidc/OidcSetupModal";
 import { OktaSsoSettings } from "@/modules/integrations/sso/okta/OktaSSOSettings";
 import { useEnterpriseConnections } from "@/modules/integrations/sso/useEnterpriseConnections";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   name: string;
@@ -146,7 +145,7 @@ const ConfigurationContent = ({ connection }: ConfigurationProps) => {
           }
         >
           <span className={cn("h-2 w-2 rounded-full bg-nb-gray-600")}></span>
-          Inactive
+          <TransText>Inactive</TransText>
         </div>
       )}
       <Button

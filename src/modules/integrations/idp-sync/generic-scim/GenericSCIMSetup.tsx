@@ -31,6 +31,7 @@ import { GroupPrefixHelpText } from "@/modules/integrations/idp-sync/GroupPrefix
 import { GroupPrefixInput } from "@/modules/integrations/idp-sync/GroupPrefixInput";
 import { IntegrationModalHeader } from "@/modules/integrations/IntegrationModalHeader";
 import { useSSOConnections } from "@/modules/integrations/sso/useSSOConnections";
+import { TransText } from "@/i18n/trans-text";
 
 interface Props extends GenericSCIMProps {
   open: boolean;
@@ -348,7 +349,7 @@ export function SetupContent({
             onClick={() => setStep(step + 1)}
             disabled={!connectorId || connectorId === ""}
           >
-            Continue
+            <TransText>Continue</TransText>
             <IconArrowRight size={16} />
           </Button>
         )}
@@ -380,7 +381,7 @@ export function SetupContent({
             onClick={finishSetup}
             disabled={integrationId === "" || authToken === ""}
           >
-            Finish Setup
+            <TransText>Finish Setup</TransText>
           </Button>
         )}
       </ModalFooter>

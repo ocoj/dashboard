@@ -20,6 +20,8 @@ import { useState } from "react";
 import { useTenants } from "@/cloud/msp/contexts/TenantsProvider";
 import { Tenant } from "@/cloud/msp/interfaces/Tenant";
 import { User } from "@/interfaces/User";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -47,21 +49,21 @@ export const MSPUnlinkModal = ({ open, setOpen, tenant }: Props) => {
         <ModalContent maxWidthClass={"max-w-lg"}>
           <ModalHeader
             icon={<UnlinkIcon size={16} />}
-            title={"Unlink Tenant"}
+            title={zhMap["Unlink Tenant"] || "Unlink Tenant"}
             description={`${tenant.name} (${tenant.domain})`}
             color={"yellow"}
           />
           <Separator />
           <div className={"px-8 py-6"}>
-            <Label>New Owner</Label>
+            <Label><TransText>New Owner</TransText></Label>
             <HelpText>
-              In order to unlink this tenant, you need to assign a new owner.
+              <TransText>In order to unlink this tenant, you need to assign a new owner.</TransText>
             </HelpText>
             <UserSelector
               onChange={setSelectedUser}
               value={selectedUser}
               options={users}
-              placeholder={"Select a new owner..."}
+              placeholder={zhMap["Select a new owner..."] || "Select a new owner..."}
             />
             <div
               className={cn(
@@ -72,16 +74,14 @@ export const MSPUnlinkModal = ({ open, setOpen, tenant }: Props) => {
             >
               <InfoIcon size={14} className={"shrink-0 relative top-[2.5px]"} />
               <div>
-                After unlinking, the existing subscription for this tenant will
-                be canceled, and the new owner will need to set up their own
-                billing information.
+                <TransText>After unlinking, the existing subscription for this tenant will be canceled, and the new owner will need to set up their own billing information.</TransText>
               </div>
             </div>
           </div>
           <ModalFooter className={"items-center"}>
             <div className={"w-full"}>
               <Paragraph className={"text-sm mt-auto"}>
-                Learn more about
+                <TransText>Learn more about</TransText>
                 <InlineLink href={"https://docs.netbird.io/"} target={"_blank"}>
                   Unlinking Tenants
                   <ExternalLinkIcon size={12} />
@@ -90,7 +90,7 @@ export const MSPUnlinkModal = ({ open, setOpen, tenant }: Props) => {
             </div>
             <div className={"flex gap-3 w-full justify-end"}>
               <ModalClose asChild={true}>
-                <Button variant={"secondary"}>Cancel</Button>
+                <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
               </ModalClose>
 
               <Button
@@ -101,7 +101,7 @@ export const MSPUnlinkModal = ({ open, setOpen, tenant }: Props) => {
                   unlinkTenant(tenant, selectedUser).then();
                 }}
               >
-                Unlink
+                <TransText>Unlink</TransText>
               </Button>
             </div>
           </ModalFooter>

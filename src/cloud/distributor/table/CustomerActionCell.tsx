@@ -19,6 +19,7 @@ import {
   DistributorCustomer,
   DistributorCustomerStatus,
 } from "@/cloud/distributor/interfaces/Distributor";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   customer: DistributorCustomer;
@@ -35,8 +36,7 @@ export const CustomerActionCell = ({ customer }: Props) => {
         <FullTooltip
           content={
             <div className={"text-xs max-w-xs"}>
-              The customer account owner must log in to the dashboard to accept
-              or decline your invitation.
+              <TransText>The customer account owner must log in to the dashboard to accept or decline your invitation.</TransText>
             </div>
           }
         >

@@ -49,6 +49,8 @@ import {
 } from "@/modules/integrations/edr/huntress/Huntress";
 import { IntegrationModalHeader } from "@/modules/integrations/IntegrationModalHeader";
 import { HuntressMatchSettings } from "@/modules/integrations/edr/huntress/HuntressMatchSettings";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -184,7 +186,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
 
       <IntegrationModalHeader
         image={integrationImage}
-        title={"Connect NetBird with Huntress"}
+        title={zhMap["Connect NetBird with Huntress"] || "Connect NetBird with Huntress"}
         description={
           "Restrict network access to devices managed by Huntress based on their security posture."
         }
@@ -207,7 +209,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
           <p className={"mt-2 !text-nb-gray-300 !leading-[1.5]"}>
             Ensure that you have an{" "}
             <span className={"text-nb-gray-100 font-semibold"}>
-              Huntress account
+              <TransText>Huntress account</TransText>
             </span>{" "}
             with the following{" "}
             <span className={"text-nb-gray-100 font-semibold"}>
@@ -259,10 +261,10 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
                   target={"_blank"}
                   href={"https://huntress.io/login"}
                 >
-                  Huntress Management Console
+                  <TransText>Huntress Management Console</TransText>
                 </InlineLink>{" "}
                 then open the menu at the top right and click{" "}
-                <Mark>API Credentials</Mark>
+                <Mark><TransText>API Credentials</TransText></Mark>
               </p>
             </Steps.Step>
 
@@ -270,18 +272,18 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
               <p>
                 Under User API Credentials click <Mark>+ Add</Mark> then select
                 your user and add
-                <Mark copy={true}>NetBird</Mark> as the description
+                <Mark copy={true}><TransText>NetBird</TransText></Mark> as the description
               </p>
             </Steps.Step>
             <Steps.Step step={3} line={false}>
-              <p>Enter your API Credentials</p>
+              <p><TransText>Enter your API Credentials</TransText></p>
             </Steps.Step>
           </Steps>
           <div className={"mb-4 flex-col gap-4 flex"}>
             <Input
               type={"text"}
               className={"w-full"}
-              customPrefix={<div className={"min-w-[80px]"}>API Key</div>}
+              customPrefix={<div className={"min-w-[80px]"}><TransText>API Key</TransText></div>}
               placeholder={"hk_30813a372c41f72f1892"}
               value={apiKey}
               onChange={(e) => setApiKey(e.target.value)}
@@ -289,7 +291,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
             <Input
               type={"text"}
               className={"w-full"}
-              customPrefix={<div className={"min-w-[80px]"}>API Secret</div>}
+              customPrefix={<div className={"min-w-[80px]"}><TransText>API Secret</TransText></div>}
               placeholder={"hs_3b80d8e463aeb037ac211fafb7fc59c1"}
               value={apiSecret}
               onChange={(e) => setApiSecret(e.target.value)}
@@ -306,7 +308,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
           </p>
 
           <HelpText className={"max-w-lg mt-2"}>
-            Select groups you want to apply the Huntress integration to
+            <TransText>Select groups you want to apply the Huntress integration to</TransText>
           </HelpText>
 
           <PeerGroupSelector values={groups} onChange={setGroups} />
@@ -419,7 +421,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
         >
           <Clock4 size={12} />
           <div>
-            Estimated setup time:
+            <TransText>Estimated setup time:</TransText>
             <span className={"font-medium"}> 10-20 Minutes</span>
           </div>
         </div>

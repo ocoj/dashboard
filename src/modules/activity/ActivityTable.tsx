@@ -194,7 +194,7 @@ export default function ActivityTable({
               size={"large"}
             />
           }
-          title={"Get Started with NetBird"}
+          title={zhMap["Get Started with NetBird"] || "Get Started with NetBird"}
           description={
             "It looks like you don't have any connected machines.\n" +
             "Get started by adding one to your network."
@@ -207,7 +207,7 @@ export default function ActivityTable({
                 href={"https://docs.netbird.io/how-to/getting-started"}
                 target={"_blank"}
               >
-                Getting Started Guide
+                <TransText>Getting Started Guide</TransText>
                 <ExternalLinkIcon size={12} />
               </InlineLink>
             </>

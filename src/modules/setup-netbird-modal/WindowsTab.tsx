@@ -1,5 +1,4 @@
 import Button from "@components/Button";
-import Code from "@components/Code";
 import { SelectDropdown } from "@components/select/SelectDropdown";
 import Steps from "@components/Steps";
 import TabsContentPadding, { TabsContent } from "@components/Tabs";
@@ -9,9 +8,12 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { OperatingSystem } from "@/interfaces/OperatingSystem";
 import {
+  ManagementUrlStep,
   NetBirdUpCommand,
   RoutingPeerSetupKeyInfo,
 } from "@/modules/setup-netbird-modal/SetupModal";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   setupKey?: string;
@@ -46,13 +48,13 @@ export default function WindowsTab({
         </p>
         <Steps>
           <Steps.Step step={1}>
-            <p>Download and run Windows Installer</p>
+            <p><TransText>Download and run Windows Installer</TransText></p>
             <div className={"flex gap-4 mt-1"}>
               <SelectDropdown
                 value={windowsUrl}
                 className={"w-[170px]"}
                 onChange={setWindowsUrl}
-                placeholder={"Select architecture"}
+                placeholder={zhMap["Select architecture"] || "Select architecture"}
                 options={[
                   {
                     label: "64-Bit",
@@ -88,12 +90,7 @@ export default function WindowsTab({
 
           {GRPC_API_ORIGIN && (
             <Steps.Step step={baseMgmtStep}>
-              <p>
-                {`Click on "Settings" then "Advanced Settings" from the NetBird icon in your system tray and enter the following "Management URL"`}
-              </p>
-              <Code>
-                <Code.Line>{GRPC_API_ORIGIN}</Code.Line>
-              </Code>
+              <ManagementUrlStep trayName={"system tray"} />
             </Steps.Step>
           )}
 
@@ -124,7 +121,7 @@ export default function WindowsTab({
                 </p>
               </Steps.Step>
               <Steps.Step step={runStep + 1} line={false}>
-                <p>Sign up using your email address</p>
+                <p><TransText>Sign up using your email address</TransText></p>
               </Steps.Step>
             </>
           )}

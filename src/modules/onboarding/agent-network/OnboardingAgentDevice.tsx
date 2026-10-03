@@ -4,6 +4,8 @@ import { ArrowRightIcon, CheckCircle2Icon, DownloadIcon, Loader2Icon } from "luc
 import * as React from "react";
 import { useEffect, useState } from "react";
 import { SetupModalContent } from "@/modules/setup-netbird-modal/SetupModal";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   onBack: () => void;
@@ -34,7 +36,7 @@ export const OnboardingAgentDevice = ({
   return (
     <div className={"relative flex flex-col h-full gap-4"}>
       <div>
-        <h1 className={"text-xl text-center"}>Connect your device</h1>
+        <h1 className={"text-xl text-center"}><TransText>Connect your device</TransText></h1>
         <div
           className={
             "text-sm text-nb-gray-300 font-light mt-2 block text-center sm:px-4"
@@ -54,13 +56,13 @@ export const OnboardingAgentDevice = ({
         {deviceConnected ? (
           <>
             <CheckCircle2Icon size={16} className={"text-green-500"} />
-            <span>Your device is connected to the network.</span>
+            <span><TransText>Your device is connected to the network.</TransText></span>
           </>
         ) : (
           <>
             <Loader2Icon size={16} className={"animate-spin text-nb-gray-300"} />
             <span className={"text-nb-gray-300"}>
-              Waiting for your device to connect…
+              <TransText>Waiting for your device to connect…</TransText>
             </span>
           </>
         )}
@@ -68,11 +70,11 @@ export const OnboardingAgentDevice = ({
 
       <div className={"flex items-center justify-center mt-4 gap-3"}>
         <Button variant={"secondary"} onClick={onBack}>
-          Go Back
+          <TransText>Go Back</TransText>
         </Button>
         {deviceConnected ? (
           <Button variant={"primary"} onClick={onNext}>
-            Continue
+            <TransText>Continue</TransText>
             <ArrowRightIcon size={16} />
           </Button>
         ) : (
@@ -85,7 +87,7 @@ export const OnboardingAgentDevice = ({
 
       <Modal open={open} onOpenChange={setOpen}>
         <ModalContent className={"!z-[70]"}>
-          <SetupModalContent title={"Install NetBird"} isUserDevice={true} />
+          <SetupModalContent title={zhMap["Install NetBird"] || "Install NetBird"} isUserDevice={true} />
         </ModalContent>
       </Modal>
     </div>

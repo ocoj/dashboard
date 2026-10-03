@@ -101,8 +101,7 @@ export const PostureCheckPolicyUsageCell = ({ check }: Props) => {
       <FullTooltip
         content={
           <div className={"text-xs max-w-[260px]"}>
-            To assign this posture check to your policies, visit the Policies
-            page.
+            <TransText>To assign this posture check to your policies, visit the Policies page.</TransText>
           </div>
         }
         interactive={false}

@@ -32,6 +32,8 @@ import {
   DatadogRegions,
 } from "@/modules/integrations/event-streaming/datadog/DatadogRegions";
 import { IntegrationModalHeader } from "@/modules/integrations/IntegrationModalHeader";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -128,7 +130,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
 
       <IntegrationModalHeader
         image={datadogLogo}
-        title={"Connect NetBird with Datadog"}
+        title={zhMap["Connect NetBird with Datadog"] || "Connect NetBird with Datadog"}
         description={
           "Start streaming your NetBird audit & traffic events to Datadog. Follow the steps below to get started."
         }
@@ -148,7 +150,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
               variant={"default"}
               className={"inline"}
             >
-              Datadog Documentation.
+              <TransText>Datadog Documentation.</TransText>
             </InlineLink>
           </p>
           <SelectDropdown
@@ -183,7 +185,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
           </p>
           <Steps>
             <Steps.Step step={1}>
-              <p>Navigate to Datadogs API Keys page</p>
+              <p><TransText>Navigate to Datadogs API Keys page</TransText></p>
               <div className={"flex gap-4"}>
                 <Link href={apiPageUrl} passHref target={"_blank"}>
                   <Button variant={"primary"} size={"xs"}>
@@ -195,15 +197,15 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
-                Click <Mark>+ New Key</Mark>
+                <TransText>Click</TransText> <Mark>+ New Key</Mark>
                 at the top
               </p>
             </Steps.Step>
             <Steps.Step step={3}>
               <p className={"font-normal"}>
                 Give it a descriptive name like{" "}
-                <Mark copy>NetBird Activity Events</Mark>
-                and click <Mark>Create Key</Mark>
+                <Mark copy><TransText>NetBird Activity Events</TransText></Mark>
+                and click <Mark><TransText>Create Key</TransText></Mark>
                 <Tooltip>
                   <TooltipTrigger>
                     <InfoIcon
@@ -222,7 +224,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
               </p>
             </Steps.Step>
             <Steps.Step step={4} line={false}>
-              <p className={"font-normal"}>Enter your API-Key</p>
+              <p className={"font-normal"}><TransText>Enter your API-Key</TransText></p>
             </Steps.Step>
           </Steps>
           <div className={"mb-4"}>
@@ -250,7 +252,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
             disabled={!apiUrlEntered}
             onClick={() => setStep(2)}
           >
-            Continue
+            <TransText>Continue</TransText>
             <IconArrowRight size={16} />
           </Button>
         )}

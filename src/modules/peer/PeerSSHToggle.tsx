@@ -93,7 +93,7 @@ export const PeerSSHToggle = () => {
             target={"_blank"}
             onClick={(e) => e.stopPropagation()}
           >
-            Learn more
+            <TransText>Learn more</TransText>
             <ExternalLinkIcon size={12} />
           </InlineLink>
         </div>

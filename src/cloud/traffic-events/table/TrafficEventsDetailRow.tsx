@@ -7,6 +7,7 @@ import {
   TrafficEventType,
 } from "@/cloud/traffic-events/interfaces/TrafficEvent";
 import { TrafficEventDescription } from "@/cloud/traffic-events/table/TrafficEventDescription";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   event: TrafficEvent;
@@ -139,7 +140,7 @@ const PolicyListItem = ({
       <span
         className={"whitespace-nowrap leading-none flex items-center gap-2"}
       >
-        Policy
+        <TransText>Policy</TransText>
         <Link href={`/access-control?id=${policy?.id}`}>
           <span
             className={

@@ -16,6 +16,7 @@ import { useDialog } from "@/contexts/DialogProvider";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { NameserverGroup } from "@/interfaces/Nameserver";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   ns: NameserverGroup;
@@ -96,7 +97,7 @@ export default function NameserverActionCell({ ns }: Readonly<Props>) {
           <Button
             variant={"secondary"}
             className={"!px-3"}
-            aria-label={"Nameserver actions"}
+            aria-label={zhMap["Nameserver actions"] || "Nameserver actions"}
             data-testid={"nameserver-actions"}
           >
             <MoreVertical size={16} className={"shrink-0"} />

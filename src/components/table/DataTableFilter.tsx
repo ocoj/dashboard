@@ -10,6 +10,8 @@ import { concat, sortBy, uniqBy } from "lodash";
 import { FilterIcon } from "lucide-react";
 import * as React from "react";
 import { useCallback, useMemo, useState } from "react";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 interface Props<TData> {
   table: Table<TData>;
@@ -210,13 +212,13 @@ export function DataTableFilter<TData>({
             ref={searchRef}
             value={search}
             onChange={setSearch}
-            placeholder={"Search filters..."}
+            placeholder={zhMap["Search filters..."] || "Search filters..."}
             hideEnterIcon={true}
           />
 
           {filteredItems.length == 0 && search != "" && (
             <DropdownInfoText className={"mb-4"}>
-              There are no filters matching your search.
+              <TransText>There are no filters matching your search.</TransText>
             </DropdownInfoText>
           )}
 

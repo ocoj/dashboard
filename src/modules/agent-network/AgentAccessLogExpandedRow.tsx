@@ -7,6 +7,7 @@ import {
   AIAccessLogEntry,
   formatDenyReason,
 } from "@/modules/agent-network/data/mockData";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   entry: AIAccessLogEntry;
@@ -29,7 +30,10 @@ export default function AgentAccessLogExpandedRow({ entry }: Readonly<Props>) {
   const cacheRead = entry.cachedInputTokens ?? 0;
   const cacheWrite = entry.cacheCreationTokens ?? 0;
   const metadata: Record<string, string> = {
-    "plg.llm.provider": entry.providerId,
+    // The vendor label the proxy actually stamped, not the dashboard's
+    // normalised catalog id — this block mirrors the wire metadata, and a
+    // request rejected before it was parsed as an LLM call carries no vendor.
+    "plg.llm.provider": entry.providerVendor ?? entry.providerId,
     "plg.llm.model": entry.model,
     "plg.llm.input_tokens": String(entry.inputTokens),
     "plg.llm.output_tokens": String(entry.outputTokens),
@@ -122,7 +126,7 @@ export default function AgentAccessLogExpandedRow({ entry }: Readonly<Props>) {
               </pre>
             </Code>
           ) : (
-            <Muted>No response captured.</Muted>
+            <Muted><TransText>No response captured.</TransText></Muted>
           )}
         </Section>
       )}

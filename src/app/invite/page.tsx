@@ -19,6 +19,7 @@ import { Suspense, useEffect, useMemo, useState } from "react";
 import NetBirdIcon from "@/assets/icons/NetBirdIcon";
 import { UserInviteInfo } from "@/interfaces/User";
 import zhMap from "@/i18n/zh-map";
+import { TransText } from "@/i18n/trans-text";
 
 export default function InviteAcceptPage() {
   return (
@@ -113,7 +114,7 @@ function InviteAcceptContent() {
               </div>
             </div>
             <h1 className="text-2xl font-semibold text-white mb-2">
-              Too Many Requests
+              <TransText>Too Many Requests</TransText>
             </h1>
             <Paragraph className="text-nb-gray-400 text-base">
               You&apos;ve made too many requests. Please wait a moment and try
@@ -124,7 +125,7 @@ function InviteAcceptContent() {
               className="mt-6"
               onClick={() => window.location.reload()}
             >
-              Try Again
+              <TransText>Try Again</TransText>
             </Button>
           </div>
         </div>
@@ -140,18 +141,17 @@ function InviteAcceptContent() {
             </div>
           </div>
           <h1 className="text-2xl font-semibold text-white mb-2">
-            Invalid Invite
+            <TransText>Invalid Invite</TransText>
           </h1>
           <Paragraph className="text-nb-gray-400 text-base">
-            This invite link is invalid or has expired. Please contact your
-            administrator to receive a new invitation.
+            <TransText>This invite link is invalid or has expired. Please contact your administrator to receive a new invitation.</TransText>
           </Paragraph>
           <Button
             variant="secondary"
             className="mt-6"
             onClick={() => router.push("/")}
           >
-            Go to Login
+            <TransText>Go to Login</TransText>
           </Button>
         </div>
       </div>
@@ -168,18 +168,17 @@ function InviteAcceptContent() {
             </div>
           </div>
           <h1 className="text-2xl font-semibold text-white mb-2">
-            Account Created!
+            <TransText>Account Created!</TransText>
           </h1>
           <Paragraph className="text-nb-gray-400">
-            Your account has been created successfully. You can now log in with
-            your email and password.
+            <TransText>Your account has been created successfully. You can now log in with your email and password.</TransText>
           </Paragraph>
           <Button
             variant="primary"
             className="mt-6"
             onClick={() => router.push("/")}
           >
-            Go to Login
+            <TransText>Go to Login</TransText>
           </Button>
         </div>
       </div>
@@ -196,18 +195,17 @@ function InviteAcceptContent() {
             </div>
           </div>
           <h1 className="text-2xl font-semibold text-white mb-2">
-            Invite Expired
+            <TransText>Invite Expired</TransText>
           </h1>
           <Paragraph className="text-nb-gray-400">
-            This invite link has expired. Please contact your administrator to
-            receive a new invitation.
+            <TransText>This invite link has expired. Please contact your administrator to receive a new invitation.</TransText>
           </Paragraph>
           <Button
             variant="secondary"
             className="mt-6"
             onClick={() => router.push("/")}
           >
-            Go to Login
+            <TransText>Go to Login</TransText>
           </Button>
         </div>
       </div>
@@ -223,7 +221,7 @@ function InviteAcceptContent() {
 
         <div className="text-center mb-8">
           <h1 className="text-2xl font-semibold text-white mb-2">
-            Welcome to NetBird
+            <TransText>Welcome to NetBird</TransText>
           </h1>
           <p className="dark:text-nb-gray-400 text-nb-gray-500 text-base">
             You&apos;ve been invited by <span className="dark:text-white text-nb-gray-900 font-medium">{inviteInfo.invited_by}</span> to join the network. Set your password to complete your account setup.
@@ -278,7 +276,7 @@ function InviteAcceptContent() {
               />
               {confirmPassword && !passwordsMatch && (
                 <p className="text-xs text-red-500 mt-1">
-                  Passwords do not match
+                  <TransText>Passwords do not match</TransText>
                 </p>
               )}
             </div>

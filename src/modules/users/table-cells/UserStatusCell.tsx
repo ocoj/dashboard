@@ -43,8 +43,7 @@ export default function UserStatusCell({ user }: Readonly<Props>) {
   const tooltipContent = isLocalAuthDisabled ? (
     <div className={"max-w-xs text-xs flex flex-col gap-2"}>
       <div>
-        Local authentication is disabled. This user can no longer log in. Use
-        your IdP for authentication.
+        <TransText>Local authentication is disabled. This user can no longer log in. Use your IdP for authentication.</TransText>
       </div>
       <div>
         <InlineLink
@@ -53,15 +52,14 @@ export default function UserStatusCell({ user }: Readonly<Props>) {
           }
           target={"_blank"}
         >
-          Learn more <ExternalLinkIcon size={12} />
+          <TransText>Learn more</TransText> <ExternalLinkIcon size={12} />
         </InlineLink>
       </div>
     </div>
   ) : isInvitedOnCloud ? (
     <div className={"max-w-xs text-xs flex flex-col gap-2"}>
       <div>
-        This user was invited but has not accepted the invitation yet. Use the
-        Resend button to send another invitation email.
+        <TransText>This user was invited but has not accepted the invitation yet. Use the Resend button to send another invitation email.</TransText>
       </div>
     </div>
   ) : (
@@ -80,7 +78,7 @@ export default function UserStatusCell({ user }: Readonly<Props>) {
           href={"https://docs.netbird.io/how-to/approve-users"}
           target={"_blank"}
         >
-          Learn more <ExternalLinkIcon size={12} />
+          <TransText>Learn more</TransText> <ExternalLinkIcon size={12} />
         </InlineLink>
       </div>
     </div>

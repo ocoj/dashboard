@@ -40,7 +40,7 @@ export const DNSRecordsTableColumns: ColumnDef<DNSRecord>[] = [
   {
     accessorKey: "ttl",
     header: ({ column }) => {
-      return <DataTableHeader column={column}>TTL</DataTableHeader>;
+      return <DataTableHeader column={column}><TransText>TTL</TransText></DataTableHeader>;
     },
     cell: ({ row }) => <DNSRecordTimeToLiveCell record={row.original} />,
   },

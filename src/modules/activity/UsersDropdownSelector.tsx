@@ -167,7 +167,7 @@ export function UsersDropdownSelector({
           <DropdownInput
             value={search}
             onChange={setSearch}
-            placeholder={"Search user..."}
+            placeholder={zhMap["Search user..."] || "Search user..."}
             hideEnterIcon={true}
           />
 

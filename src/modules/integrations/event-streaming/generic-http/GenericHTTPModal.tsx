@@ -339,9 +339,7 @@ export function GenericHTTPModalContent({
               </div>
             </Label>
             <HelpText className={"max-w-lg mt-2"}>
-              Deleting this integration will remove the ability to stream
-              events. If you delete the integration you will need to reconfigure
-              it again to enable event streaming.
+              <TransText>Deleting this integration will remove the ability to stream events. If you delete the integration you will need to reconfigure it again to enable event streaming.</TransText>
             </HelpText>
           </div>
           <Button
@@ -350,7 +348,7 @@ export function GenericHTTPModalContent({
             className={"mt-3"}
             onClick={deleteIntegration}
           >
-            Delete Integration
+            <TransText>Delete Integration</TransText>
           </Button>
         </TabsContent>
       </Tabs>
@@ -374,12 +372,12 @@ export function GenericHTTPModalContent({
         <div className={"flex gap-3 w-full justify-end"}>
           {tab === "general" && !stream && (
             <ModalClose asChild={true}>
-              <Button variant={"secondary"}>Cancel</Button>
+              <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
             </ModalClose>
           )}
           {tab !== "general" && !stream && (
             <Button variant={"secondary"} onClick={goBack}>
-              Back
+              <TransText>Back</TransText>
             </Button>
           )}
           {tab === "general" && !stream && (
@@ -388,7 +386,7 @@ export function GenericHTTPModalContent({
               disabled={!config.canContinueToHeaders}
               onClick={() => setTab("headers")}
             >
-              Continue
+              <TransText>Continue</TransText>
               <IconArrowRight size={16} />
             </Button>
           )}
@@ -398,7 +396,7 @@ export function GenericHTTPModalContent({
               disabled={!config.canContinueToHeaders || !canContinueToBodyTemplate}
               onClick={() => setTab("template")}
             >
-              Continue
+              <TransText>Continue</TransText>
               <IconArrowRight size={16} />
             </Button>
           )}
@@ -417,14 +415,14 @@ export function GenericHTTPModalContent({
           {stream && (
             <>
               <ModalClose asChild={true}>
-                <Button variant={"secondary"}>Cancel</Button>
+                <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
               </ModalClose>
               <Button
                 variant={"primary"}
                 onClick={update}
                 disabled={!canCreateOrUpdate}
               >
-                Save Changes
+                <TransText>Save Changes</TransText>
               </Button>
             </>
           )}

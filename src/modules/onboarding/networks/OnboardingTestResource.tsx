@@ -10,6 +10,8 @@ import { useMemo, useState } from "react";
 import { NetworkResource } from "@/interfaces/Network";
 import { Peer } from "@/interfaces/Peer";
 import { SetupModalContent } from "@/modules/setup-netbird-modal/SetupModal";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   resource?: NetworkResource;
@@ -87,7 +89,7 @@ export const OnboardingTestResource = ({
               onClick={onNext}
               className={"w-full"}
             >
-              It works! - Continue
+              <TransText>It works! - Continue</TransText>
             </Button>
           </div>
         </Steps.Step>
@@ -95,7 +97,7 @@ export const OnboardingTestResource = ({
 
       <Modal open={open} onOpenChange={setOpen}>
         <ModalContent>
-          <SetupModalContent title={"Install NetBird"} />
+          <SetupModalContent title={zhMap["Install NetBird"] || "Install NetBird"} />
         </ModalContent>
       </Modal>
     </div>

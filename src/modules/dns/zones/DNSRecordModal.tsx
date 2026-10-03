@@ -204,8 +204,8 @@ export function DNSRecordModalContent({
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="A">A</SelectItem>
-                <SelectItem value="AAAA">AAAA</SelectItem>
-                <SelectItem value="CNAME">CNAME</SelectItem>
+                <SelectItem value="AAAA"><TransText>AAAA</TransText></SelectItem>
+                <SelectItem value="CNAME"><TransText>CNAME</TransText></SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -218,7 +218,7 @@ export function DNSRecordModalContent({
           <div className={"flex w-full"}>
             <Input
               autoFocus={true}
-              placeholder={"E.g., dev, * or leave empty for primary domain"}
+              placeholder={zhMap["E.g., dev, * or leave empty for primary domain"] || "E.g., dev, * or leave empty for primary domain"}
               errorTooltip={true}
               errorTooltipPosition={"bottom"}
               error={domainError}

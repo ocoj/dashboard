@@ -15,6 +15,7 @@ import { useApplicationContext } from "@/contexts/ApplicationProvider";
 import { OperatingSystem } from "@/interfaces/OperatingSystem";
 import { PeerOperatingSystemIcon } from "@/modules/peers/PeerOperatingSystemIcon";
 import FullTooltip from "@components/FullTooltip";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   version: string;
@@ -73,15 +74,14 @@ export default function PeerVersionCell({
                 <ArrowRightIcon size={16} className={"text-netbird"} />
                 <span className={"text-netbird"}>{latestVersion}</span>
               </div>
-              <p className={"font-medium"}>Update available </p>
+              <p className={"font-medium"}><TransText>Update available</TransText> </p>
 
               <div
                 className={
                   "text-neutral-300 flex flex-col gap-1 max-w-[300px] text-xs mt-1"
                 }
               >
-                A new version of Netbird is available. Please update your client
-                to get the latest features and bug fixes.
+                <TransText>A new version of Netbird is available. Please update your client to get the latest features and bug fixes.</TransText>
               </div>
               <InlineLink
                 onClick={(e) => e.stopPropagation()}
@@ -107,7 +107,7 @@ export default function PeerVersionCell({
           disabled={!serial || serial === ""}
           content={
             <div className={"text-xs"}>
-              <span className={"text-nb-gray-100 font-medium"}>Serial: </span>
+              <span className={"text-nb-gray-100 font-medium"}><TransText>Serial:</TransText> </span>
               {serial}
             </div>
           }

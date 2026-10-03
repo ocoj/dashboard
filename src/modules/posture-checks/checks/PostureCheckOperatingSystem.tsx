@@ -40,6 +40,7 @@ import {
   windowsKernelVersions,
 } from "@/interfaces/PostureCheck";
 import { PostureCheckCard } from "@/modules/posture-checks/ui/PostureCheckCard";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   value?: OperatingSystemVersionCheck;
@@ -60,7 +61,7 @@ export const PostureCheckOperatingSystem = ({
       setOpen={setOpen}
       key={open ? 1 : 0}
       icon={<Disc3Icon size={16} />}
-      title={"Operating System"}
+      title={zhMap["Operating System"] || "Operating System"}
       modalWidthClass={"max-w-xl"}
       description={
         "Restrict access in your network based on the operating system."
@@ -238,7 +239,7 @@ const CheckContent = ({ value, onChange, disabled }: Props) => {
               }
               target={"_blank"}
             >
-              Operating System Check
+              <TransText>Operating System Check</TransText>
               <ExternalLinkIcon size={12} />
             </InlineLink>
           </Paragraph>
@@ -276,7 +277,7 @@ const CheckContent = ({ value, onChange, disabled }: Props) => {
               }
             }}
           >
-            Save
+            <TransText>Save</TransText>
           </Button>
         </div>
       </ModalFooter>
@@ -373,9 +374,9 @@ export const OperatingSystemTab = ({
     <div className={""}>
       <div className={"flex justify-between items-start gap-10 "}>
         <div>
-          <Label>Allow or Block</Label>
+          <Label><TransText>Allow or Block</TransText></Label>
           <HelpText>
-            Choose whether you want to allow or block the operating system.
+            <TransText>Choose whether you want to allow or block the operating system.</TransText>
           </HelpText>
         </div>
         <RadioGroup value={allow} onChange={changeAllow}>
@@ -400,7 +401,7 @@ export const OperatingSystemTab = ({
           <SelectDropdown
             value={value || "0"}
             showSearch={true}
-            placeholder={"Select version..."}
+            placeholder={zhMap["Select version..."] || "Select version..."}
             onChange={onChange}
             options={versionList}
             disabled={allOrMin === "all" || allow === "block" || disabled}
@@ -431,7 +432,7 @@ export const OperatingSystemTab = ({
                 Use custom version number
               </>
             }
-            helpText={"Use a custom version number if you need more control."}
+            helpText={zhMap["Use a custom version number if you need more control."] || "Use a custom version number if you need more control."}
           />
         </div>
       )}

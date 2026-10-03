@@ -214,13 +214,13 @@ export default function ReverseProxyTable({ headingTarget }: Readonly<Props>) {
           icon={
             <SquareIcon
               icon={
-                <ReverseProxyIcon className={"fill-nb-gray-200"} size={20} />
+                <ReverseProxyIcon className={"text-nb-gray-200"} size={20} />
               }
               color={"gray"}
               size={"large"}
             />
           }
-          title={"Create Services"}
+          title={zhMap["Create Services"] || "Create Services"}
           description={
             "Expose your internal services securely through NetBird's reverse proxy with automatic TLS and optional authentication to protect your services."
           }

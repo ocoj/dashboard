@@ -12,6 +12,7 @@ import { MonitorSmartphoneIcon, SearchIcon } from "lucide-react";
 import * as React from "react";
 import { useRef } from "react";
 import { Group } from "@/interfaces/Group";
+import zhMap from "@/i18n/zh-map";
 
 // GroupsPicker — multi-select search list of group names. The value
 // stored on the column filter is an array of group *names* (matching
@@ -54,7 +55,7 @@ export function GroupsPicker({ value, onChange, groups }: Props) {
               "dark:placeholder:text-nb-gray-400 font-light placeholder:text-neutral-500 pl-9",
             )}
             ref={searchRef}
-            placeholder={"Search group..."}
+            placeholder={zhMap["Search group..."] || "Search group..."}
           />
           <div
             className={

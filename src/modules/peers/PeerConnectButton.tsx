@@ -12,6 +12,7 @@ import { OperatingSystem } from "@/interfaces/OperatingSystem";
 import { RDPButton } from "@/modules/remote-access/rdp/RDPButton";
 import { SSHButton } from "@/modules/remote-access/ssh/SSHButton";
 import { cn } from "@utils/helpers";
+import { TransText } from "@/i18n/trans-text";
 
 export const PeerConnectButton = () => {
   const { peer } = usePeer();
@@ -50,7 +51,7 @@ export const PeerConnectButton = () => {
     <FullTooltip
       content={
         <div className={"max-w-[200px] text-xs"}>
-          Connecting via SSH or RDP is only available when the peer is online.
+          <TransText>Connecting via SSH or RDP is only available when the peer is online.</TransText>
         </div>
       }
     >
@@ -73,7 +74,7 @@ const ConnectButton = ({ disabled }: { disabled?: boolean }) => {
         e.preventDefault();
       }}
     >
-      Connect
+      <TransText>Connect</TransText>
       <IconChevronDown size={14} />
     </button>
   );

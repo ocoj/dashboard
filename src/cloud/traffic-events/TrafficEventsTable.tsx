@@ -70,7 +70,7 @@ export const TrafficEventsTableColumns: ColumnDef<TrafficEvent>[] = [
   {
     id: "timestamp",
     header: ({ column }) => (
-      <DataTableHeader column={column}>Time</DataTableHeader>
+      <DataTableHeader column={column}><TransText>Time</TransText></DataTableHeader>
     ),
     cell: ({ row }) => (
       <TrafficEventsTimeCell timestamp={row.original.events[0].timestamp} />
@@ -89,7 +89,7 @@ export const TrafficEventsTableColumns: ColumnDef<TrafficEvent>[] = [
     },
     filterFn: "arrIncludesSomeExact",
     header: ({ column }) => (
-      <DataTableHeader column={column}>Event</DataTableHeader>
+      <DataTableHeader column={column}><TransText>Event</TransText></DataTableHeader>
     ),
     cell: ({ row }) => row.getValue("type"),
   },
@@ -103,7 +103,7 @@ export const TrafficEventsTableColumns: ColumnDef<TrafficEvent>[] = [
     },
     filterFn: "arrIncludesSomeExact",
     header: ({ column }) => (
-      <DataTableHeader column={column}>Event</DataTableHeader>
+      <DataTableHeader column={column}><TransText>Event</TransText></DataTableHeader>
     ),
     cell: ({ row }) => <TrafficEventsTextCell event={row.original} />,
     enableGlobalFilter: false,
@@ -112,7 +112,7 @@ export const TrafficEventsTableColumns: ColumnDef<TrafficEvent>[] = [
     id: "source",
     accessorFn: (row) => row.source.address,
     header: ({ column }) => (
-      <DataTableHeader column={column}>Source</DataTableHeader>
+      <DataTableHeader column={column}><TransText>Source</TransText></DataTableHeader>
     ),
     cell: ({ row }) => (
       <TrafficEventsMachineCell event={row.original} isSource={true} />
@@ -146,7 +146,7 @@ export const TrafficEventsTableColumns: ColumnDef<TrafficEvent>[] = [
     accessorFn: (row) => row.destination.address,
     filterFn: "arrIncludesSomeExact",
     header: ({ column }) => (
-      <DataTableHeader column={column}>Destination</DataTableHeader>
+      <DataTableHeader column={column}><TransText>Destination</TransText></DataTableHeader>
     ),
     cell: ({ row }) => {
       return <TrafficEventsMachineCell event={row.original} isSource={false} />;
@@ -158,7 +158,7 @@ export const TrafficEventsTableColumns: ColumnDef<TrafficEvent>[] = [
     accessorKey: "tx_bytes",
     filterFn: "arrIncludesSomeExact",
     header: ({ column }) => (
-      <DataTableHeader column={column}>Traffic</DataTableHeader>
+      <DataTableHeader column={column}><TransText>Traffic</TransText></DataTableHeader>
     ),
     cell: ({ row }) => {
       return <TrafficEventsBytesCell event={row.original} />;
@@ -170,7 +170,7 @@ export const TrafficEventsTableColumns: ColumnDef<TrafficEvent>[] = [
     accessorKey: "tx_bytes",
     filterFn: "arrIncludesSomeExact",
     header: ({ column }) => (
-      <DataTableHeader column={column}>Traffic</DataTableHeader>
+      <DataTableHeader column={column}><TransText>Traffic</TransText></DataTableHeader>
     ),
     cell: ({ row }) => {
       return (
@@ -186,7 +186,7 @@ export const TrafficEventsTableColumns: ColumnDef<TrafficEvent>[] = [
     accessorKey: "tx_bytes",
     filterFn: "arrIncludesSomeExact",
     header: ({ column }) => (
-      <DataTableHeader column={column}>Traffic</DataTableHeader>
+      <DataTableHeader column={column}><TransText>Traffic</TransText></DataTableHeader>
     ),
     cell: ({ row }) => {
       return (
@@ -201,7 +201,7 @@ export const TrafficEventsTableColumns: ColumnDef<TrafficEvent>[] = [
     id: "reporter",
     accessorKey: "reporter_id",
     header: ({ column }) => (
-      <DataTableHeader column={column}>Router</DataTableHeader>
+      <DataTableHeader column={column}><TransText>Router</TransText></DataTableHeader>
     ),
     cell: ({ row }) => <TrafficEventsReporterCell event={row.original} />,
   },

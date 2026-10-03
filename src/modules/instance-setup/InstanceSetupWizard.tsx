@@ -12,6 +12,7 @@ import { Input } from "@components/Input";
 import HelpText from "@components/HelpText";
 import { GradientFadedBackground } from "@components/ui/GradientFadedBackground";
 import zhMap from "@/i18n/zh-map";
+import { TransText } from "@/i18n/trans-text";
 
 interface FormData {
   email: string;
@@ -163,7 +164,7 @@ export default function InstanceSetupWizard() {
             <CheckCircle2 className="text-green-500" size={22} />
           </div>
           <h1 className={"text-xl text-center z-10 relative"}>
-            Account Created!
+            <TransText>Account Created!</TransText>
           </h1>
           <div
             className={
@@ -180,7 +181,7 @@ export default function InstanceSetupWizard() {
               variant={"primary"}
               className={"mx-auto w-full"}
             >
-              Go to Login
+              <TransText>Go to Login</TransText>
             </Button>
           </div>
         </Card>
@@ -195,14 +196,14 @@ export default function InstanceSetupWizard() {
       </div>
       <Card className={"max-w-[420px] mt-8 mx-auto"}>
         <h1 className={"text-xl text-center z-10 relative"}>
-          Welcome to NetBird
+          <TransText>Welcome to NetBird</TransText>
         </h1>
         <div
           className={
             "text-sm text-nb-gray-300 font-light mt-2 block text-center z-10 relative"
           }
         >
-          Create the first admin account to get started
+          <TransText>Create the first admin account to get started</TransText>
         </div>
 
         <form
@@ -211,7 +212,7 @@ export default function InstanceSetupWizard() {
         >
           {errors.general && <ErrorMessage error={errors.general} />}
           <div>
-            <Label htmlFor={"name"}>Name</Label>
+            <Label htmlFor={"name"}><TransText>Name</TransText></Label>
             <Input
               type="text"
               id="name"
@@ -225,7 +226,7 @@ export default function InstanceSetupWizard() {
           </div>
 
           <div>
-            <Label htmlFor={"email"}>Email</Label>
+            <Label htmlFor={"email"}><TransText>Email</TransText></Label>
             <Input
               type="email"
               id="email"
@@ -238,7 +239,7 @@ export default function InstanceSetupWizard() {
           </div>
 
           <div>
-            <Label htmlFor={"password"}>Password</Label>
+            <Label htmlFor={"password"}><TransText>Password</TransText></Label>
             <Input
               type={"password"}
               id="password"
@@ -250,12 +251,12 @@ export default function InstanceSetupWizard() {
               showPasswordToggle={true}
             />
             <HelpText className={"mt-2"}>
-              Must be at least 8 characters
+              <TransText>Must be at least 8 characters</TransText>
             </HelpText>
           </div>
 
           <div>
-            <Label htmlFor={"confirmPassword"}>Confirm Password</Label>
+            <Label htmlFor={"confirmPassword"}><TransText>Confirm Password</TransText></Label>
             <Input
               type={"password"}
               id="confirmPassword"
@@ -290,7 +291,7 @@ export default function InstanceSetupWizard() {
         <span
           className={"text-sm text-nb-gray-400 font-light pb-10 text-center"}
         >
-          This is a one-time setup for your NetBird instance.
+          <TransText>This is a one-time setup for your NetBird instance.</TransText>
         </span>
       </div>
     </div>

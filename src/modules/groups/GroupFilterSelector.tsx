@@ -19,6 +19,7 @@ import { useState } from "react";
 import { useElementSize } from "@/hooks/useElementSize";
 import { Group } from "@/interfaces/Group";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 interface MultiSelectProps {
   values: string[];
@@ -108,7 +109,7 @@ export function GroupFilterSelector({
                 ref={searchRef}
                 value={search}
                 onValueChange={setSearch}
-                placeholder={"Search group..."}
+                placeholder={zhMap["Search group..."] || "Search group..."}
               />
               <div
                 className={

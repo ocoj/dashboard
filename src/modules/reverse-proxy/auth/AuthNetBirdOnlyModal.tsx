@@ -62,7 +62,7 @@ export default function AuthNetBirdOnlyModal({
                   <CircleUser size={12} />
                   Pick groups
                 </Badge>
-                Select access groups...
+                <TransText>Select access groups...</TransText>
               </div>
             }
             users={users}
@@ -71,7 +71,7 @@ export default function AuthNetBirdOnlyModal({
             {isEditing ? (
               <>
                 <Button variant="danger-text" onClick={handleRemove}>
-                  Remove
+                  <TransText>Remove</TransText>
                 </Button>
                 <div className="flex gap-3">
                   <ModalClose asChild>
@@ -82,7 +82,7 @@ export default function AuthNetBirdOnlyModal({
                     onClick={handleSave}
                     disabled={groups.length === 0}
                   >
-                    Save
+                    <TransText>Save</TransText>
                   </Button>
                 </div>
               </>
@@ -98,7 +98,7 @@ export default function AuthNetBirdOnlyModal({
                     onClick={handleSave}
                     disabled={groups.length === 0}
                   >
-                    Enable
+                    <TransText>Enable</TransText>
                   </Button>
                 </div>
               </>
