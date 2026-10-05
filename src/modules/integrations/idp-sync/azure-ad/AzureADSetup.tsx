@@ -177,11 +177,11 @@ export function SetupContent({ onSuccess }: ModalProps) {
             Required Permissions
           </div>
           <p className={"mt-2 !text-nb-gray-300 !leading-[1.5]"}>
-            Ensure that you have an{" "}
+            <TransText>Ensure that you have an</TransText>{" "}
             <span className={"text-nb-gray-100 font-semibold"}>
               <TransText>Azure AD user account</TransText>
             </span>{" "}
-            with the following{" "}
+            <TransText>with the following</TransText>{" "}
             <span className={"text-nb-gray-100 font-semibold"}>
               permissions
             </span>
@@ -219,12 +219,12 @@ export function SetupContent({ onSuccess }: ModalProps) {
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <Box size={20} />
-            Create and configure Azure AD application
+            <TransText>Create and configure Azure AD application</TransText>
           </p>
           <Steps>
             <Steps.Step step={1}>
               <p>
-                Navigate to{"  "}
+                <TransText>Navigate to</TransText>{"  "}
                 <InlineLink
                   className={"inline"}
                   target={"_blank"}
@@ -238,14 +238,12 @@ export function SetupContent({ onSuccess }: ModalProps) {
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
-                <TransText>Click</TransText> <Mark><TransText>App Registrations</TransText></Mark> in the left menu then click
-                on the <Mark>+ New registration</Mark> button to create a new
-                application.
+                <TransText>Click</TransText> <Mark><TransText>App Registrations</TransText></Mark> <TransText>in the left menu then click on the</TransText> <Mark>+ New registration</Mark> <TransText>button to create a new application.</TransText>
               </p>
             </Steps.Step>
             <Steps.Step step={3} line={false}>
               <p className={"font-normal"}>
-                Fill in the form with the following values and click{" "}
+                <TransText>Fill in the form with the following values and click</TransText>{" "}
                 <Mark><TransText>Register</TransText></Mark>
               </p>
             </Steps.Step>
@@ -279,32 +277,30 @@ export function SetupContent({ onSuccess }: ModalProps) {
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <Shield size={20} />
-            Add API permissions
+            <TransText>Add API permissions</TransText>
           </p>
           <Steps>
             <Steps.Step step={1}>
               <p className={"font-normal"}>
-                <TransText>Click</TransText> <Mark><TransText>API permissions</TransText></Mark> on the left side menu
+                <TransText>Click</TransText> <Mark><TransText>API permissions</TransText></Mark> <TransText>on the left side menu</TransText>
               </p>
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
-                <TransText>Click</TransText> <Mark><TransText>Add a permission</TransText></Mark> then{" "}
-                <Mark><TransText>Microsoft Graph</TransText></Mark> and then on the{" "}
-                <Mark><TransText>Application permissions</TransText></Mark> tab.
+                <TransText>Click</TransText> <Mark><TransText>Add a permission</TransText></Mark> <TransText>then</TransText>{" "}
+                <Mark><TransText>Microsoft Graph</TransText></Mark> <TransText>and then on the</TransText>{" "}
+                <Mark><TransText>Application permissions</TransText></Mark> <TransText>tab.</TransText>
               </p>
             </Steps.Step>
             <Steps.Step step={3}>
               <p className={"font-normal"}>
-                In <Mark><TransText>Select permissions</TransText></Mark> select{" "}
-                <Mark>User.Read.All</Mark> and <Mark>Group.Read.All</Mark> and
-                click <Mark><TransText>Add permissions</TransText></Mark>
+                <TransText>In</TransText> <Mark><TransText>Select permissions</TransText></Mark> <TransText>select</TransText>{" "}
+                <Mark>User.Read.All</Mark> <TransText>and</TransText> <Mark>Group.Read.All</Mark> <TransText>and click</TransText> <Mark><TransText>Add permissions</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={4} line={false}>
               <p className={"font-normal"}>
-                <TransText>Click</TransText> <Mark><TransText>Grant admin consent for Default Directory</TransText></Mark> and
-                click <Mark><TransText>Yes</TransText></Mark>
+                <TransText>Click</TransText> <Mark><TransText>Grant admin consent for Default Directory</TransText></Mark> <TransText>and click</TransText> <Mark><TransText>Yes</TransText></Mark>
               </p>
               <Lightbox image={azureGrantAdmin} />
             </Steps.Step>
@@ -316,29 +312,28 @@ export function SetupContent({ onSuccess }: ModalProps) {
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <KeyRound size={20} />
-            Generate client secret
+            <TransText>Generate client secret</TransText>
           </p>
           <Steps>
             <Steps.Step step={1}>
               <p className={"font-normal"}>
-                <TransText>Navigate to</TransText> <Mark>Certificates & secrets</Mark> on left side
-                menu
+                <TransText>Navigate to</TransText> <Mark>Certificates & secrets</Mark> <TransText>on left side menu</TransText>
               </p>
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
-                Click on <Mark>+ New client secret</Mark>
+                <TransText>Click on</TransText> <Mark>+ New client secret</Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={3}>
               <p className={"font-normal"}>
-                <TransText>Add</TransText><Mark copy><TransText>NetBird</TransText></Mark> as the description and click{" "}
+                <TransText>Add</TransText><Mark copy><TransText>NetBird</TransText></Mark> <TransText>as the description and click</TransText>{" "}
                 <Mark><TransText>Add</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={4} line={false}>
               <p className={"font-normal"}>
-                Copy the <Mark><TransText>Value</TransText></Mark> and paste it here
+                <TransText>Copy the</TransText> <Mark><TransText>Value</TransText></Mark> <TransText>and paste it here</TransText>
               </p>
             </Steps.Step>
           </Steps>
@@ -363,12 +358,12 @@ export function SetupContent({ onSuccess }: ModalProps) {
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <Box size={20} />
-            Enter Application ID and Directory ID
+            <TransText>Enter Application ID and Directory ID</TransText>
           </p>
           <Steps>
             <Steps.Step step={1}>
               <p className={"font-normal"}>
-                Navigate to{" "}
+                <TransText>Navigate to</TransText>{" "}
                 <InlineLink
                   target={"_blank"}
                   className={"inline"}
@@ -382,8 +377,7 @@ export function SetupContent({ onSuccess }: ModalProps) {
             </Steps.Step>
             <Steps.Step step={2} line={false}>
               <p className={"font-normal"}>
-                <TransText>Select</TransText> <Mark><TransText>NetBird</TransText></Mark> application in overview page and
-                enter your <Mark>Application (client) ID</Mark> and{" "}
+                <TransText>Select</TransText> <Mark><TransText>NetBird</TransText></Mark> <TransText>application in overview page and enter your</TransText> <Mark>Application (client) ID</Mark> <TransText>and</TransText>{" "}
                 <Mark>Directory (tenant) ID</Mark>
               </p>
             </Steps.Step>
@@ -423,7 +417,7 @@ export function SetupContent({ onSuccess }: ModalProps) {
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <FolderGit2 size={20} />
-            Groups to be synchronized
+            <TransText>Groups to be synchronized</TransText>
           </p>
 
           <div className={"mb-4 flex flex-col gap-1"}>
@@ -442,7 +436,7 @@ export function SetupContent({ onSuccess }: ModalProps) {
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <UserCircle size={18} />
-            Users to be synchronized
+            <TransText>Users to be synchronized</TransText>
           </p>
 
           <div className={"mb-4 flex flex-col gap-1"}>

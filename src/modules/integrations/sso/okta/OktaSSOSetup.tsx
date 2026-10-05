@@ -158,11 +158,11 @@ export default function OktaSSOSetup({ open, onOpenChange }: Props) {
                 Required Permissions
               </div>
               <p className={"mt-2 !text-nb-gray-300 !leading-[1.5]"}>
-                Ensure that you have an{" "}
+                <TransText>Ensure that you have an</TransText>{" "}
                 <span className={"text-nb-gray-100 font-semibold"}>
                   <TransText>Okta user account</TransText>
                 </span>{" "}
-                with the following{" "}
+                <TransText>with the following</TransText>{" "}
                 <span className={"text-nb-gray-100 font-semibold"}>
                   permissions
                 </span>
@@ -200,12 +200,12 @@ export default function OktaSSOSetup({ open, onOpenChange }: Props) {
             <div className={"px-8 py-3 flex flex-col gap-0 mt-4"}>
               <p className={"font-medium flex gap-3 items-center text-base"}>
                 <Box size={20} />
-                Install NetBird application for Okta
+                <TransText>Install NetBird application for Okta</TransText>
               </p>
               <Steps>
                 <Steps.Step step={1}>
                   <p>
-                    Navigate to{" "}
+                    <TransText>Navigate to</TransText>{" "}
                     <InlineLink
                       className={"inline"}
                       target={"_blank"}
@@ -217,16 +217,15 @@ export default function OktaSSOSetup({ open, onOpenChange }: Props) {
                 </Steps.Step>
                 <Steps.Step step={2}>
                   <p className={"font-normal"}>
-                    <TransText>Click</TransText> <Mark>+ Add Integration</Mark> and then{" "}
+                    <TransText>Click</TransText> <Mark>+ Add Integration</Mark> <TransText>and then</TransText>{" "}
                     <Mark><TransText>Done</TransText></Mark>
                   </p>
                 </Steps.Step>
                 <Steps.Step step={3} line={false}>
                   <p>
-                    After installing the application go to the{" "}
-                    <Mark><TransText>Assignments</TransText></Mark> tab, select the <Mark><TransText>Assign</TransText></Mark>{" "}
-                    and click <Mark><TransText>Assign to People</TransText></Mark> and assign your user
-                    to the application
+                    <TransText>After installing the application go to the</TransText>{" "}
+                    <Mark><TransText>Assignments</TransText></Mark> <TransText>tab, select the</TransText> <Mark><TransText>Assign</TransText></Mark>{" "}
+                    <TransText>and click</TransText> <Mark><TransText>Assign to People</TransText></Mark> <TransText>and assign your user to the application</TransText>
                   </p>
                 </Steps.Step>
               </Steps>
@@ -237,13 +236,12 @@ export default function OktaSSOSetup({ open, onOpenChange }: Props) {
             <div className={"px-8 py-3 flex flex-col gap-0 mt-4"}>
               <p className={"font-medium flex gap-3 items-center text-base"}>
                 <KeyRoundIcon size={20} />
-                Enter your Okta details
+                <TransText>Enter your Okta details</TransText>
               </p>
               <Steps>
                 <Steps.Step step={1}>
                   <p className={"font-normal"}>
-                    Click on the <Mark>{"Sign On"}</Mark> tab and enter your
-                    client credentials
+                    <TransText>Click on the</TransText> <Mark>{"Sign On"}</Mark> <TransText>tab and enter your client credentials</TransText>
                   </p>
                   <Input
                     customPrefix={
@@ -266,7 +264,7 @@ export default function OktaSSOSetup({ open, onOpenChange }: Props) {
                 </Steps.Step>
                 <Steps.Step step={2}>
                   <p className={"font-normal"}>
-                    Under your user profile, enter your{" "}
+                    <TransText>Under your user profile, enter your</TransText>{" "}
                     <Mark><TransText>Okta account domain</TransText></Mark>
                   </p>
                   <Input
@@ -278,9 +276,8 @@ export default function OktaSSOSetup({ open, onOpenChange }: Props) {
                 </Steps.Step>
                 <Steps.Step step={3} line={false}>
                   <p className={"font-normal"}>
-                    Enter your
-                    <Mark><TransText>Primary E-Mail Domain</TransText></Mark> which will later be used
-                    to log in to NetBird.
+                    <TransText>Enter your</TransText>
+                    <Mark><TransText>Primary E-Mail Domain</TransText></Mark> <TransText>which will later be used to log in to NetBird.</TransText>
                   </p>
                   <Input
                     customPrefix={<GlobeIcon size={16} />}

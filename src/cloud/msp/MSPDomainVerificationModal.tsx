@@ -72,8 +72,7 @@ export const MSPDomainVerificationModal = ({
             </Steps.Step>
             <Steps.Step step={2} line={false}>
               <p className={"font-normal"}>
-                Copy the <Mark><TransText>TXT record</TransText></Mark> below and add it to your DNS
-                configuration for <Mark>{domain}</Mark>
+                <TransText>Copy the</TransText> <Mark><TransText>TXT record</TransText></Mark> <TransText>below and add it to your DNS configuration for</TransText> <Mark>{domain}</Mark>
               </p>
             </Steps.Step>
           </Steps>

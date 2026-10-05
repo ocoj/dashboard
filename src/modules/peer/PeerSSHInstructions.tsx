@@ -83,14 +83,11 @@ export const PeerSSHInstructions = ({
             {client === "cli" ? (
               <Steps.Step step={1}>
                 <p className={"font-normal"}>
-                  If you are using NetBird via CLI, you can enable SSH by
-                  running{" "}
+                  <TransText>If you are using NetBird via CLI, you can enable SSH by running</TransText>{" "}
                   {isWindows
                     ? "these commands in an elevated prompt"
                     : "these commands as root"}
-                  . Run the first one only if NetBird is already running. On a
-                  machine where you do not have those rights, an administrator
-                  has to run them.
+                  <TransText>. Run the first one only if NetBird is already running. On a machine where you do not have those rights, an administrator has to run them.</TransText>
                 </p>
                 <Code codeToCopy={`${prefix}netbird down`}>
                   <Code.Line>{`${prefix}netbird down`}</Code.Line>
@@ -102,11 +99,9 @@ export const PeerSSHInstructions = ({
             ) : (
               <Steps.Step step={1}>
                 <p className={"font-normal"}>
-                  If you are using NetBird via the Desktop Client, click on the
-                  NetBird tray icon, go to <Mark><TransText>Settings</TransText></Mark> and click{" "}
-                  <Mark><TransText>Allow SSH</TransText></Mark>. If you want to enable Root Login go to{" "}
-                  <Mark>Settings &gt; Advanced Settings</Mark> and enable SSH
-                  Root Login under the SSH tab.
+                  <TransText>If you are using NetBird via the Desktop Client, click on the NetBird tray icon, go to</TransText> <Mark><TransText>Settings</TransText></Mark> <TransText>and click</TransText>{" "}
+                  <Mark><TransText>Allow SSH</TransText></Mark><TransText>. If you want to enable Root Login go to</TransText>{" "}
+                  <Mark>Settings &gt; Advanced Settings</Mark> <TransText>and enable SSH Root Login under the SSH tab.</TransText>
                 </p>
                 <Lightbox image={sshImage} />
               </Steps.Step>
@@ -128,8 +123,8 @@ export const PeerSSHInstructions = ({
             </Steps.Step>
             <Steps.Step step={3} line={false}>
               <p className={"font-normal"}>
-                Once the NetBird SSH server is allowed on the client, <br />
-                click <Mark>Confirm & Enable</Mark> below to finish the setup.
+                <TransText>Once the NetBird SSH server is allowed on the client,</TransText> <br />
+                <TransText>click</TransText> <Mark>Confirm & Enable</Mark> <TransText>below to finish the setup.</TransText>
               </p>
             </Steps.Step>
           </Steps>

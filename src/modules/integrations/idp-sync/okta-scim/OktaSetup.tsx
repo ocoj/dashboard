@@ -192,11 +192,11 @@ export function SetupContent({
             Required Permissions
           </div>
           <p className={"mt-2 !text-nb-gray-300 !leading-[1.5]"}>
-            Ensure that you have an{" "}
+            <TransText>Ensure that you have an</TransText>{" "}
             <span className={"text-nb-gray-100 font-semibold"}>
               <TransText>Okta user account</TransText>
             </span>{" "}
-            with the following{" "}
+            <TransText>with the following</TransText>{" "}
             <span className={"text-nb-gray-100 font-semibold"}>
               permissions
             </span>
@@ -234,27 +234,26 @@ export function SetupContent({
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <LogInIcon size={20} />
-            Configure SSO in Okta
+            <TransText>Configure SSO in Okta</TransText>
           </p>
           <Steps>
             <Steps.Step step={1}>
               <p className={"font-normal"}>
-                Access the Okta dashboard and navigate to{" "}
-                <Mark>{"Applications > Applications"}</Mark>, selecting the
-                previously installed <Mark><TransText>NetBird</TransText></Mark> application
+                <TransText>Access the Okta dashboard and navigate to</TransText>{" "}
+                <Mark>{"Applications > Applications"}</Mark><TransText>, selecting the previously installed</TransText> <Mark><TransText>NetBird</TransText></Mark> <TransText>application</TransText>
               </p>
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
-                <TransText>Go to</TransText> <Mark>{"Sign On > Settings"}</Mark> and select{" "}
+                <TransText>Go to</TransText> <Mark>{"Sign On > Settings"}</Mark> <TransText>and select</TransText>{" "}
                 <Mark><TransText>Edit</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={3} line={false}>
               <p className={"font-normal"}>
-                In the <Mark><TransText>Credentials Details</TransText></Mark> section, change the
-                <Mark><TransText>Application username format</TransText></Mark> to <Mark><TransText>Email</TransText></Mark>{" "}
-                and select <Mark><TransText>Save</TransText></Mark>
+                <TransText>In the</TransText> <Mark><TransText>Credentials Details</TransText></Mark> <TransText>section, change the</TransText>
+                <Mark><TransText>Application username format</TransText></Mark> <TransText>to</TransText> <Mark><TransText>Email</TransText></Mark>{" "}
+                <TransText>and select</TransText> <Mark><TransText>Save</TransText></Mark>
               </p>
               <Lightbox image={oktaSSO} />
             </Steps.Step>
@@ -266,27 +265,26 @@ export function SetupContent({
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <Share2 size={20} />
-            Enable Okta SCIM in NetBird
+            <TransText>Enable Okta SCIM in NetBird</TransText>
           </p>
           <Steps>
             <Steps.Step step={1}>
               <p>
-                From the Okta dashboard, navigate to{" "}
-                <Mark>{"Applications > Applications"}</Mark> and select the{" "}
-                <Mark><TransText>NetBird</TransText></Mark> application
+                <TransText>From the Okta dashboard, navigate to</TransText>{" "}
+                <Mark>{"Applications > Applications"}</Mark> <TransText>and select the</TransText>{" "}
+                <Mark><TransText>NetBird</TransText></Mark> <TransText>application</TransText>
               </p>
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
-                Under the <Mark><TransText>Provisioning</TransText></Mark> tab, choose{" "}
-                <Mark><TransText>Integration</TransText></Mark>, then select{" "}
+                <TransText>Under the</TransText> <Mark><TransText>Provisioning</TransText></Mark> <TransText>tab, choose</TransText>{" "}
+                <Mark><TransText>Integration</TransText></Mark><TransText>, then select</TransText>{" "}
                 <Mark><TransText>Configure API Integration</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={3}>
               <p className={"font-normal"}>
-                Opt to <Mark><TransText>Enable API integration</TransText></Mark> and insert this token
-                into the <Mark><TransText>API Token</TransText></Mark> field
+                <TransText>Opt to</TransText> <Mark><TransText>Enable API integration</TransText></Mark> <TransText>and insert this token into the</TransText> <Mark><TransText>API Token</TransText></Mark> <TransText>field</TransText>
               </p>
               <MinimalList
                 data={[{ label: "Authorization (Bearer)", value: authToken }]}
@@ -294,8 +292,7 @@ export function SetupContent({
             </Steps.Step>
             <Steps.Step step={4} line={false}>
               <p className={"font-normal"}>
-                <TransText>Click</TransText> <Mark><TransText>Test API Credentials</TransText></Mark> to verify the SCIM
-                connection, then select <Mark><TransText>Save</TransText></Mark>
+                <TransText>Click</TransText> <Mark><TransText>Test API Credentials</TransText></Mark> <TransText>to verify the SCIM connection, then select</TransText> <Mark><TransText>Save</TransText></Mark>
               </p>
             </Steps.Step>
           </Steps>
@@ -306,20 +303,19 @@ export function SetupContent({
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <Box size={20} />
-            Configure SCIM provisioning to NetBird
+            <TransText>Configure SCIM provisioning to NetBird</TransText>
           </p>
           <Steps>
             <Steps.Step step={1}>
               <p>
-                Go to the <Mark>{"Provisioning > Settings > To App"}</Mark> and
-                click <Mark><TransText>Edit</TransText></Mark>
+                <TransText>Go to the</TransText> <Mark>{"Provisioning > Settings > To App"}</Mark> <TransText>and click</TransText> <Mark><TransText>Edit</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={2} line={false}>
               <p className={"font-normal"}>
                 <TransText>Enable</TransText> <Mark><TransText>Create Users</TransText></Mark>,{" "}
-                <Mark><TransText>Update User Attributes</TransText></Mark>, and{" "}
-                <Mark><TransText>Deactivate Users</TransText></Mark> and click <Mark><TransText>Save</TransText></Mark>
+                <Mark><TransText>Update User Attributes</TransText></Mark><TransText>, and</TransText>{" "}
+                <Mark><TransText>Deactivate Users</TransText></Mark> <TransText>and click</TransText> <Mark><TransText>Save</TransText></Mark>
               </p>
               <Lightbox image={oktaSCIMToApp} />
             </Steps.Step>
@@ -331,27 +327,25 @@ export function SetupContent({
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <UserCircle size={20} />
-            Sync Users to NetBird
+            <TransText>Sync Users to NetBird</TransText>
           </p>
           <Steps>
             <Steps.Step step={1}>
               <p>
-                Go to the <Mark><TransText>Assignments</TransText></Mark> tab, select the{" "}
-                <Mark><TransText>Assign</TransText></Mark> and click <Mark><TransText>Assign to Groups</TransText></Mark>
+                <TransText>Go to the</TransText> <Mark><TransText>Assignments</TransText></Mark> <TransText>tab, select the</TransText>{" "}
+                <Mark><TransText>Assign</TransText></Mark> <TransText>and click</TransText> <Mark><TransText>Assign to Groups</TransText></Mark>
               </p>
               <Lightbox image={oktaGroupsAssignments} />
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
-                Select the groups you want to provision, and then select{" "}
-                <Mark><TransText>Assign</TransText></Mark> and click <Mark><TransText>Save and Go Back</TransText></Mark>
+                <TransText>Select the groups you want to provision, and then select</TransText>{" "}
+                <Mark><TransText>Assign</TransText></Mark> <TransText>and click</TransText> <Mark><TransText>Save and Go Back</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={3} line={false}>
               <p className={"font-normal"}>
-                <TransText>Select</TransText> <Mark><TransText>Done</TransText></Mark> after you have finished assigning
-                groups. At this point, all members of the groups assigned to the
-                application will be synced to NetBird.
+                <TransText>Select</TransText> <Mark><TransText>Done</TransText></Mark> <TransText>after you have finished assigning groups. At this point, all members of the groups assigned to the application will be synced to NetBird.</TransText>
               </p>
             </Steps.Step>
           </Steps>
@@ -362,21 +356,20 @@ export function SetupContent({
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <FolderGit2 size={20} />
-            Sync Groups to NetBird
+            <TransText>Sync Groups to NetBird</TransText>
           </p>
           <Steps>
             <Steps.Step step={1}>
               <p>
-                Go to the <Mark><TransText>Push Groups</TransText></Mark> tab, select{" "}
-                <Mark><TransText>Push Groups</TransText></Mark> and click{" "}
+                <TransText>Go to the</TransText> <Mark><TransText>Push Groups</TransText></Mark> <TransText>tab, select</TransText>{" "}
+                <Mark><TransText>Push Groups</TransText></Mark> <TransText>and click</TransText>{" "}
                 <Mark><TransText>Find groups by name</TransText></Mark>
               </p>
               <Lightbox image={oktaSyncGroups} />
             </Steps.Step>
             <Steps.Step step={2} line={false}>
               <p className={"font-normal"}>
-                Search groups to push and then click <Mark><TransText>Save</TransText></Mark>. The
-                selected groups will then be synced to NetBird.
+                <TransText>Search groups to push and then click</TransText> <Mark><TransText>Save</TransText></Mark><TransText>. The selected groups will then be synced to NetBird.</TransText>
               </p>
             </Steps.Step>
           </Steps>
@@ -496,11 +489,11 @@ export function SetupSSOContent() {
             Required Permissions
           </div>
           <p className={"mt-2 !text-nb-gray-300 !leading-[1.5]"}>
-            Ensure that you have an{" "}
+            <TransText>Ensure that you have an</TransText>{" "}
             <span className={"text-nb-gray-100 font-semibold"}>
               <TransText>Okta user account</TransText>
             </span>{" "}
-            with the following{" "}
+            <TransText>with the following</TransText>{" "}
             <span className={"text-nb-gray-100 font-semibold"}>
               permissions
             </span>
@@ -538,12 +531,12 @@ export function SetupSSOContent() {
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <Box size={20} />
-            Install NetBird application for Okta
+            <TransText>Install NetBird application for Okta</TransText>
           </p>
           <Steps>
             <Steps.Step step={1}>
               <p>
-                Navigate to{" "}
+                <TransText>Navigate to</TransText>{" "}
                 <InlineLink
                   className={"inline"}
                   target={"_blank"}
@@ -555,15 +548,13 @@ export function SetupSSOContent() {
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
-                <TransText>Click</TransText> <Mark>+ Add Integration</Mark> and then <Mark><TransText>Done</TransText></Mark>
+                <TransText>Click</TransText> <Mark>+ Add Integration</Mark> <TransText>and then</TransText> <Mark><TransText>Done</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={3} line={false}>
               <p>
-                After installing the application go to the{" "}
-                <Mark><TransText>Assignments</TransText></Mark> tab, select the <Mark><TransText>Assign</TransText></Mark> and
-                click <Mark><TransText>Assign to People</TransText></Mark> and assign your user to the
-                application
+                <TransText>After installing the application go to the</TransText>{" "}
+                <Mark><TransText>Assignments</TransText></Mark> <TransText>tab, select the</TransText> <Mark><TransText>Assign</TransText></Mark> <TransText>and click</TransText> <Mark><TransText>Assign to People</TransText></Mark> <TransText>and assign your user to the application</TransText>
               </p>
             </Steps.Step>
           </Steps>
@@ -574,36 +565,35 @@ export function SetupSSOContent() {
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <MailIcon size={20} />
-            Share your Okta details with NetBird
+            <TransText>Share your Okta details with NetBird</TransText>
           </p>
           <Steps>
             <Steps.Step step={1}>
               <p className={"font-normal"}>
-                Click on the <Mark>{"Sign On"}</Mark> tab and take note <br />
-                of the <Mark><TransText>Client ID</TransText></Mark> and <Mark><TransText>Client secret</TransText></Mark>
+                <TransText>Click on the</TransText> <Mark>{"Sign On"}</Mark> <TransText>tab and take note</TransText> <br />
+                <TransText>of the</TransText> <Mark><TransText>Client ID</TransText></Mark> <TransText>and</TransText> <Mark><TransText>Client secret</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
-                Under your user profile, take note of your{" "}
+                <TransText>Under your user profile, take note of your</TransText>{" "}
                 <Mark><TransText>Okta account domain</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={3}>
               <p className={"font-normal"}>
-                Share your <Mark><TransText>Client ID</TransText></Mark> <Mark><TransText>Client secret</TransText></Mark>{" "}
-                <Mark><TransText>Okta account domain</TransText></Mark> and your {"user's"}
-                <Mark><TransText>Primary email domain</TransText></Mark> with the NetBird team
+                <TransText>Share your</TransText> <Mark><TransText>Client ID</TransText></Mark> <Mark><TransText>Client secret</TransText></Mark>{" "}
+                <Mark><TransText>Okta account domain</TransText></Mark> <TransText>and your</TransText> {"user's"}
+                <Mark><TransText>Primary email domain</TransText></Mark> <TransText>with the NetBird team</TransText>
               </p>
             </Steps.Step>
             <Steps.Step step={4} line={false}>
               <p className={"font-normal"}>
-                Once the NetBird team has enabled the authentication for your
-                account you will receive an email. After that you can visit{" "}
+                <TransText>Once the NetBird team has enabled the authentication for your account you will receive an email. After that you can visit</TransText>{" "}
                 <InlineLink href={"https://app.netbird.io"}>
                   app.netbird.io
                 </InlineLink>{" "}
-                and authenticate using your Okta’s credentials
+                <TransText>and authenticate using your Okta’s credentials</TransText>
               </p>
             </Steps.Step>
           </Steps>
@@ -615,7 +605,7 @@ export function SetupSSOContent() {
               }
             >
               <p className={"!text-netbird-200"}>
-                You can use{" "}
+                <TransText>You can use</TransText>{" "}
                 <InlineLink
                   href={"mailto:support@netbird.io"}
                   className={"inline !text-netbird-500 font-medium"}
@@ -623,8 +613,7 @@ export function SetupSSOContent() {
                   {" "}
                   1Password
                 </InlineLink>{" "}
-                or any other secure sharing tool to share your Okta details with
-                the NetBird team. If you need help, please contact us at{" "}
+                <TransText>or any other secure sharing tool to share your Okta details with the NetBird team. If you need help, please contact us at</TransText>{" "}
                 <InlineLink
                   href={"mailto:support@netbird.io"}
                   className={"inline !text-netbird-500 font-medium"}

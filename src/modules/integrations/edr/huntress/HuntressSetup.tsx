@@ -207,11 +207,11 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
             Required Permissions
           </div>
           <p className={"mt-2 !text-nb-gray-300 !leading-[1.5]"}>
-            Ensure that you have an{" "}
+            <TransText>Ensure that you have an</TransText>{" "}
             <span className={"text-nb-gray-100 font-semibold"}>
               <TransText>Huntress account</TransText>
             </span>{" "}
-            with the following{" "}
+            <TransText>with the following</TransText>{" "}
             <span className={"text-nb-gray-100 font-semibold"}>
               permissions
             </span>
@@ -249,13 +249,13 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <KeyRound size={18} />
-            Get Huntress API Credentials
+            <TransText>Get Huntress API Credentials</TransText>
           </p>
 
           <Steps>
             <Steps.Step step={1}>
               <p>
-                Navigate to your{" "}
+                <TransText>Navigate to your</TransText>{" "}
                 <InlineLink
                   className={"inline"}
                   target={"_blank"}
@@ -263,16 +263,15 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
                 >
                   <TransText>Huntress Management Console</TransText>
                 </InlineLink>{" "}
-                then open the menu at the top right and click{" "}
+                <TransText>then open the menu at the top right and click</TransText>{" "}
                 <Mark><TransText>API Credentials</TransText></Mark>
               </p>
             </Steps.Step>
 
             <Steps.Step step={2}>
               <p>
-                Under User API Credentials click <Mark>+ Add</Mark> then select
-                your user and add
-                <Mark copy={true}><TransText>NetBird</TransText></Mark> as the description
+                <TransText>Under User API Credentials click</TransText> <Mark>+ Add</Mark> <TransText>then select your user and add</TransText>
+                <Mark copy={true}><TransText>NetBird</TransText></Mark> <TransText>as the description</TransText>
               </p>
             </Steps.Step>
             <Steps.Step step={3} line={false}>
@@ -304,7 +303,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4 mb-3"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <FolderGit2 size={16} />
-            Peer Approval
+            <TransText>Peer Approval</TransText>
           </p>
 
           <HelpText className={"max-w-lg mt-2"}>
@@ -319,16 +318,15 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4 mb-3"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <ShieldCheckIcon size={16} />
-            Compliance Requirements
+            <TransText>Compliance Requirements</TransText>
           </p>
           <p className={"mt-2 !text-nb-gray-300 !leading-[1.5]"}>
-            Set the specific requirements that devices must meet to be
-            considered compliant. Learn more in the{" "}
+            <TransText>Set the specific requirements that devices must meet to be considered compliant. Learn more in the</TransText>{" "}
             <InlineLink href={HUNTRESS_DOCUMENTATION_URL} target={"_blank"}>
               <TransText>Huntress Documentation</TransText>
               <ExternalLinkIcon size={12} />
             </InlineLink>{" "}
-            about the different statuses.
+            <TransText>about the different statuses.</TransText>
           </p>
 
           <HuntressMatchSettings
@@ -342,7 +340,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4 mb-3"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <RefreshCcw size={16} />
-            Huntress Sync Window
+            <TransText>Huntress Sync Window</TransText>
           </p>
           <div className={"mt-2 flex flex-row gap-3"}>
             <FullTooltip

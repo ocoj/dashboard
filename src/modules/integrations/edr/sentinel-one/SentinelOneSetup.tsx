@@ -227,11 +227,11 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
             Required Permissions
           </div>
           <p className={"mt-2 !text-nb-gray-300 !leading-[1.5]"}>
-            Ensure that you have an{" "}
+            <TransText>Ensure that you have an</TransText>{" "}
             <span className={"text-nb-gray-100 font-semibold"}>
               <TransText>SentinelOne account</TransText>
             </span>{" "}
-            with the following{" "}
+            <TransText>with the following</TransText>{" "}
             <span className={"text-nb-gray-100 font-semibold"}>
               permissions
             </span>
@@ -269,7 +269,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <GlobeIcon size={18} />
-            Get your SentinelOne Console URL
+            <TransText>Get your SentinelOne Console URL</TransText>
           </p>
 
           <Steps>
@@ -295,12 +295,12 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <Box size={20} />
-            Create a SentinelOne API Token
+            <TransText>Create a SentinelOne API Token</TransText>
           </p>
           <Steps>
             <Steps.Step step={1}>
               <p className={"font-normal"}>
-                Navigate to{" "}
+                <TransText>Navigate to</TransText>{" "}
                 {sentinelOneServiceUsersUrl ? (
                   <InlineLink
                     href={sentinelOneServiceUsersUrl}
@@ -321,16 +321,13 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
             </Steps.Step>
             <Steps.Step step={3}>
               <p className={"font-normal"}>
-                <TransText>Enter</TransText> <Mark copy><TransText>NetBird Integration</TransText></Mark> as the name, a
-                optional description and select your preferred expiration date.
-                Click <Mark><TransText>Next</TransText></Mark>
+                <TransText>Enter</TransText> <Mark copy><TransText>NetBird Integration</TransText></Mark> <TransText>as the name, a optional description and select your preferred expiration date. Click</TransText> <Mark><TransText>Next</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={4} line={false}>
               <p className={"font-normal"}>
-                Select your Site and set the Scope to <Mark><TransText>Viewer</TransText></Mark>
-                <br /> Click <Mark><TransText>Create User</TransText></Mark>, copy your API Token and
-                enter it below.
+                <TransText>Select your Site and set the Scope to</TransText> <Mark><TransText>Viewer</TransText></Mark>
+                <br /> <TransText>Click</TransText> <Mark><TransText>Create User</TransText></Mark><TransText>, copy your API Token and enter it below.</TransText>
               </p>
             </Steps.Step>
           </Steps>
@@ -358,7 +355,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4 mb-3"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <FolderGit2 size={16} />
-            Peer Approval
+            <TransText>Peer Approval</TransText>
           </p>
 
           <HelpText className={"max-w-lg mt-2"}>
@@ -373,7 +370,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4 mb-3"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <ShieldCheckIcon size={16} />
-            Compliance Requirements
+            <TransText>Compliance Requirements</TransText>
           </p>
           <p className={"mt-2 !text-nb-gray-300 !leading-[1.5]"}>
             <TransText>Set the specific requirements that devices must meet to be considered compliant.</TransText>
@@ -390,7 +387,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4 mb-3"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <RefreshCcw size={16} />
-            SentinelOne Sync Window
+            <TransText>SentinelOne Sync Window</TransText>
           </p>
           <div className={"mt-2 flex flex-row gap-3"}>
             <FullTooltip

@@ -222,11 +222,11 @@ export function SetupContent({ onSuccess, onClose }: ModalProps) {
                 Required Permissions
               </div>
               <p className={"mt-2 !text-nb-gray-300 !leading-[1.5]"}>
-                Ensure that you have an{" "}
+                <TransText>Ensure that you have an</TransText>{" "}
                 <span className={"text-nb-gray-100 font-semibold"}>
                   <TransText>Jumpcloud user account</TransText>
                 </span>{" "}
-                with the following{" "}
+                <TransText>with the following</TransText>{" "}
                 <span className={"text-nb-gray-100 font-semibold"}>roles</span>.{" "}
                 {
                   "These roles have the required permissions to configure SSO applications and manage SCIM provisioning."
@@ -287,7 +287,7 @@ export function SetupContent({ onSuccess, onClose }: ModalProps) {
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <FolderGit2 size={20} />
-            Groups to be synchronized
+            <TransText>Groups to be synchronized</TransText>
           </p>
 
           <div className={"mb-4 flex flex-col gap-1"}>
@@ -306,7 +306,7 @@ export function SetupContent({ onSuccess, onClose }: ModalProps) {
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <UserCircle size={18} />
-            Users to be synchronized
+            <TransText>Users to be synchronized</TransText>
           </p>
 
           <div className={"mb-4 flex flex-col gap-1"}>
@@ -328,12 +328,12 @@ export function SetupContent({ onSuccess, onClose }: ModalProps) {
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <BoxIcon size={20} />
-            Configure SCIM Application
+            <TransText>Configure SCIM Application</TransText>
           </p>
           <Steps>
             <Steps.Step step={1}>
               <p className={"font-normal"}>
-                Navigate to your{" "}
+                <TransText>Navigate to your</TransText>{" "}
                 <InlineLink
                   className={"inline"}
                   target={"_blank"}
@@ -345,15 +345,14 @@ export function SetupContent({ onSuccess, onClose }: ModalProps) {
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
-                <TransText>Go to</TransText> <Mark>{"SSO Applications"}</Mark> and select your{" "}
-                <Mark><TransText>NetBird</TransText></Mark> application, and then select{" "}
-                <Mark><TransText>Identity Management</TransText></Mark> tab.
+                <TransText>Go to</TransText> <Mark>{"SSO Applications"}</Mark> <TransText>and select your</TransText>{" "}
+                <Mark><TransText>NetBird</TransText></Mark> <TransText>application, and then select</TransText>{" "}
+                <Mark><TransText>Identity Management</TransText></Mark> <TransText>tab.</TransText>
               </p>
             </Steps.Step>
             <Steps.Step step={3}>
               <p className={"font-normal"}>
-                In the <Mark><TransText>Credentials Details</TransText></Mark> enter the following
-                details.
+                <TransText>In the</TransText> <Mark><TransText>Credentials Details</TransText></Mark> <TransText>enter the following details.</TransText>
               </p>
               <MinimalList
                 data={[
@@ -391,9 +390,8 @@ export function SetupContent({ onSuccess, onClose }: ModalProps) {
             </Steps.Step>
             <Steps.Step step={4} line={false}>
               <p className={"font-normal"}>
-                <TransText>After that click</TransText> <Mark><TransText>Test Connection</TransText></Mark> to verify the SCIM
-                connection. If the connection is successful click{" "}
-                <Mark><TransText>Activate</TransText></Mark> to enable SCIM provisioning.
+                <TransText>After that click</TransText> <Mark><TransText>Test Connection</TransText></Mark> <TransText>to verify the SCIM connection. If the connection is successful click</TransText>{" "}
+                <Mark><TransText>Activate</TransText></Mark> <TransText>to enable SCIM provisioning.</TransText>
               </p>
             </Steps.Step>
           </Steps>

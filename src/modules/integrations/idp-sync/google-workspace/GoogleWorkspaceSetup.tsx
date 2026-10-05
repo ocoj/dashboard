@@ -187,11 +187,11 @@ export function SetupContent({ onSuccess }: ModalProps) {
             Required Permissions
           </div>
           <p className={"mt-2 !text-nb-gray-300 !leading-[1.5]"}>
-            Ensure that you have an{" "}
+            <TransText>Ensure that you have an</TransText>{" "}
             <span className={"text-nb-gray-100 font-semibold"}>
               <TransText>Google Workspace user account</TransText>
             </span>{" "}
-            with the following{" "}
+            <TransText>with the following</TransText>{" "}
             <span className={"text-nb-gray-100 font-semibold"}>
               permissions
             </span>
@@ -229,12 +229,12 @@ export function SetupContent({ onSuccess }: ModalProps) {
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <Folder size={20} />
-            Create NetBird project
+            <TransText>Create NetBird project</TransText>
           </p>
           <Steps>
             <Steps.Step step={1}>
               <p>
-                Create a new <Mark copy><TransText>NetBird</TransText></Mark> project in the{" "}
+                <TransText>Create a new</TransText> <Mark copy><TransText>NetBird</TransText></Mark> <TransText>project in the</TransText>{" "}
                 <InlineLink
                   className={"inline"}
                   target={"_blank"}
@@ -246,7 +246,7 @@ export function SetupContent({ onSuccess }: ModalProps) {
             </Steps.Step>
             <Steps.Step step={2} line={false}>
               <p className={"font-normal"}>
-                Enable the{" "}
+                <TransText>Enable the</TransText>{" "}
                 <InlineLink
                   className={"inline"}
                   target={"_blank"}
@@ -256,8 +256,8 @@ export function SetupContent({ onSuccess }: ModalProps) {
                 >
                   <TransText>Admin SDK API</TransText>
                 </InlineLink>{" "}
-                for the
-                <Mark><TransText>NetBird</TransText></Mark> project
+                <TransText>for the</TransText>
+                <Mark><TransText>NetBird</TransText></Mark> <TransText>project</TransText>
               </p>
             </Steps.Step>
           </Steps>
@@ -268,12 +268,12 @@ export function SetupContent({ onSuccess }: ModalProps) {
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <UserCircle size={20} />
-            Create a service account
+            <TransText>Create a service account</TransText>
           </p>
           <Steps>
             <Steps.Step step={1}>
               <p>
-                Navigate to{"  "}
+                <TransText>Navigate to</TransText>{"  "}
                 <InlineLink
                   className={"inline"}
                   target={"_blank"}
@@ -285,13 +285,13 @@ export function SetupContent({ onSuccess }: ModalProps) {
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
-                <TransText>Click</TransText> <Mark><TransText>CREATE CREDENTIALS</TransText></Mark> at the top and select{" "}
+                <TransText>Click</TransText> <Mark><TransText>CREATE CREDENTIALS</TransText></Mark> <TransText>at the top and select</TransText>{" "}
                 <Mark><TransText>Service account</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={3} line={false}>
               <p className={"font-normal"}>
-                Fill in the form with the following values and click{" "}
+                <TransText>Fill in the form with the following values and click</TransText>{" "}
                 <Mark><TransText>DONE</TransText></Mark>
               </p>
             </Steps.Step>
@@ -316,12 +316,12 @@ export function SetupContent({ onSuccess }: ModalProps) {
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <Mail size={20} />
-            Get your service account email
+            <TransText>Get your service account email</TransText>
           </p>
           <Steps>
             <Steps.Step step={1}>
               <p>
-                Navigate to{"  "}
+                <TransText>Navigate to</TransText>{"  "}
                 <InlineLink
                   className={"inline"}
                   target={"_blank"}
@@ -335,8 +335,7 @@ export function SetupContent({ onSuccess }: ModalProps) {
             </Steps.Step>
             <Steps.Step step={1}>
               <p className={"font-normal"}>
-                <TransText>Click</TransText> <Mark><TransText>NetBird</TransText></Mark> to edit the service account. Copy the
-                service account email address.
+                <TransText>Click</TransText> <Mark><TransText>NetBird</TransText></Mark> <TransText>to edit the service account. Copy the service account email address.</TransText>
               </p>
               <Lightbox image={googleEditServiceAccount} />
             </Steps.Step>
@@ -367,27 +366,25 @@ export function SetupContent({ onSuccess }: ModalProps) {
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <KeyRound size={20} />
-            Create service account key
+            <TransText>Create service account key</TransText>
           </p>
           <Steps>
             <Steps.Step step={1}>
               <p className={"font-normal"}>
-                On the same page, now click the <Mark><TransText>Keys</TransText></Mark> tab, open the{" "}
-                <Mark><TransText>Add key</TransText></Mark> dropdown and select{" "}
+                <TransText>On the same page, now click the</TransText> <Mark><TransText>Keys</TransText></Mark> <TransText>tab, open the</TransText>{" "}
+                <Mark><TransText>Add key</TransText></Mark> <TransText>dropdown and select</TransText>{" "}
                 <Mark><TransText>Create new key</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={3}>
               <p className={"font-normal"}>
-                <TransText>Select</TransText> <Mark><TransText>JSON</TransText></Mark> as the key type and click{" "}
+                <TransText>Select</TransText> <Mark><TransText>JSON</TransText></Mark> <TransText>as the key type and click</TransText>{" "}
                 <Mark><TransText>Create</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={4} line={false}>
               <p className={"font-normal"}>
-                Most browsers immediately download the new key and save it in a
-                download folder on your computer. Read how to manage and secure
-                your service keys{" "}
+                <TransText>Most browsers immediately download the new key and save it in a download folder on your computer. Read how to manage and secure your service keys</TransText>{" "}
                 <InlineLink
                   href={
                     "https://cloud.google.com/iam/docs/best-practices-for-managing-service-account-keys#temp-locations"
@@ -429,12 +426,12 @@ export function SetupContent({ onSuccess }: ModalProps) {
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <FolderCog2 size={20} />
-            Create admin role
+            <TransText>Create admin role</TransText>
           </p>
           <Steps>
             <Steps.Step step={1}>
               <p>
-                Navigate to{"  "}
+                <TransText>Navigate to</TransText>{"  "}
                 <InlineLink
                   className={"inline"}
                   target={"_blank"}
@@ -446,14 +443,13 @@ export function SetupContent({ onSuccess }: ModalProps) {
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
-                <TransText>Select</TransText> <Mark><TransText>Account</TransText></Mark> on the left menu and then click{" "}
+                <TransText>Select</TransText> <Mark><TransText>Account</TransText></Mark> <TransText>on the left menu and then click</TransText>{" "}
                 <Mark><TransText>Admin Roles</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={3} line={false}>
               <p className={"font-normal"}>
-                <TransText>Click</TransText> <Mark><TransText>Create new role</TransText></Mark> and fill in the form with the
-                following values
+                <TransText>Click</TransText> <Mark><TransText>Create new role</TransText></Mark> <TransText>and fill in the form with the following values</TransText>
               </p>
             </Steps.Step>
           </Steps>
@@ -476,13 +472,12 @@ export function SetupContent({ onSuccess }: ModalProps) {
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <Shield size={20} />
-            Add role privileges
+            <TransText>Add role privileges</TransText>
           </p>
           <Steps>
             <Steps.Step step={1}>
               <p className={"font-normal"}>
-                Scroll down to <Mark><TransText>Admin API privileges</TransText></Mark> and add the
-                following privileges to the role
+                <TransText>Scroll down to</TransText> <Mark><TransText>Admin API privileges</TransText></Mark> <TransText>and add the following privileges to the role</TransText>
               </p>
               <MinimalList
                 className={"mt-2 mb-0"}
@@ -500,8 +495,7 @@ export function SetupContent({ onSuccess }: ModalProps) {
             </Steps.Step>
             <Steps.Step step={2} line={false}>
               <p className={"font-normal"}>
-                Verify preview of assigned Admin API privileges to ensure that
-                everything is properly configured, and then click{" "}
+                <TransText>Verify preview of assigned Admin API privileges to ensure that everything is properly configured, and then click</TransText>{" "}
                 <Mark><TransText>CREATE ROLE</TransText></Mark>
               </p>
               <Lightbox image={googlePrivilegesReview} />
@@ -514,7 +508,7 @@ export function SetupContent({ onSuccess }: ModalProps) {
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <MailPlus size={20} />
-            Assign service account
+            <TransText>Assign service account</TransText>
           </p>
           <Steps>
             <Steps.Step step={1}>
@@ -524,7 +518,7 @@ export function SetupContent({ onSuccess }: ModalProps) {
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
-                Enter your <Mark><TransText>E-Mail</TransText></Mark> and then click <Mark><TransText>ADD</TransText></Mark>
+                <TransText>Enter your</TransText> <Mark><TransText>E-Mail</TransText></Mark> <TransText>and then click</TransText> <Mark><TransText>ADD</TransText></Mark>
               </p>
               <MinimalList
                 className={"mt-2 mb-0"}
@@ -550,12 +544,12 @@ export function SetupContent({ onSuccess }: ModalProps) {
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <Box size={20} />
-            Enter Customer ID
+            <TransText>Enter Customer ID</TransText>
           </p>
           <Steps>
             <Steps.Step step={1}>
               <p className={"font-normal"}>
-                Navigate to{" "}
+                <TransText>Navigate to</TransText>{" "}
                 <InlineLink
                   target={"_blank"}
                   className={"inline"}
@@ -569,7 +563,7 @@ export function SetupContent({ onSuccess }: ModalProps) {
             </Steps.Step>
             <Steps.Step step={2} line={false}>
               <p className={"font-normal"}>
-                Take note of the <Mark><TransText>Customer ID</TransText></Mark> and enter it below
+                <TransText>Take note of the</TransText> <Mark><TransText>Customer ID</TransText></Mark> <TransText>and enter it below</TransText>
               </p>
             </Steps.Step>
           </Steps>
@@ -595,7 +589,7 @@ export function SetupContent({ onSuccess }: ModalProps) {
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <FolderGit2 size={20} />
-            Groups to be synchronized
+            <TransText>Groups to be synchronized</TransText>
           </p>
 
           <div className={"mb-4 flex flex-col gap-1"}>
@@ -614,7 +608,7 @@ export function SetupContent({ onSuccess }: ModalProps) {
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <UserCircle size={18} />
-            Users to be synchronized
+            <TransText>Users to be synchronized</TransText>
           </p>
 
           <div className={"mb-4 flex flex-col gap-1"}>

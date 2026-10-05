@@ -154,10 +154,10 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
         <div className={"px-8 py-3 flex flex-col mt-4 z-0"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <GlobeIcon size={16} />
-            Select your Amazon Data Firehose region
+            <TransText>Select your Amazon Data Firehose region</TransText>
           </p>
           <p className={"mb-3 mt-2"}>
-            To identify which region you are on please check out the{" "}
+            <TransText>To identify which region you are on please check out the</TransText>{" "}
             <InlineLink
               href={firehoseDashboardURL}
               target={"_blank"}
@@ -195,7 +195,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4 z-0"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <KeyRound size={16} />
-            Create your Firehose Stream
+            <TransText>Create your Firehose Stream</TransText>
           </p>
           <Steps>
             <Steps.Step step={1}>
@@ -211,27 +211,26 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
             </Steps.Step>
             <Steps.Step step={2}>
               <p className={"font-normal"}>
-                <TransText>Click</TransText> <Mark><TransText>Create Firehose stream</TransText></Mark> at the top right
-                corner
+                <TransText>Click</TransText> <Mark><TransText>Create Firehose stream</TransText></Mark> <TransText>at the top right corner</TransText>
               </p>
             </Steps.Step>
             <Steps.Step step={3}>
               <p className={"font-normal"}>
-                As <Mark><TransText>Source</TransText></Mark>
-                select <Mark><TransText>Direct PUT</TransText></Mark>
+                <TransText>As</TransText> <Mark><TransText>Source</TransText></Mark>
+                <TransText>select</TransText> <Mark><TransText>Direct PUT</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={4}>
               <p className={"font-normal"}>
-                As <Mark><TransText>Destination</TransText></Mark>
-                select the AWS service you want to push the events to
+                <TransText>As</TransText> <Mark><TransText>Destination</TransText></Mark>
+                <TransText>select the AWS service you want to push the events to</TransText>
               </p>
             </Steps.Step>
             <Steps.Step step={5}>
               <p className={"font-normal"}>
-                Give it a descriptive name like{" "}
+                <TransText>Give it a descriptive name like</TransText>{" "}
                 <Mark copy>netbird-activity-events</Mark>
-                and click <Mark><TransText>Create Firehose stream</TransText></Mark>
+                <TransText>and click</TransText> <Mark><TransText>Create Firehose stream</TransText></Mark>
                 <Tooltip>
                   <TooltipTrigger>
                     <InfoIcon
@@ -271,7 +270,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4 z-0"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <KeyRound size={16} />
-            Create IAM credential
+            <TransText>Create IAM credential</TransText>
           </p>
           <Steps>
             <Steps.Step step={1}>
@@ -297,15 +296,15 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
             </Steps.Step>
             <Steps.Step step={3}>
               <p className={"font-normal"}>
-                Create and assign a policy with <Mark>firehose:PutRecord</Mark>
-                and <Mark>firehose:PutRecordBatch</Mark>
-                to the user and scope it to the created stream
+                <TransText>Create and assign a policy with</TransText> <Mark>firehose:PutRecord</Mark>
+                <TransText>and</TransText> <Mark>firehose:PutRecordBatch</Mark>
+                <TransText>to the user and scope it to the created stream</TransText>
               </p>
             </Steps.Step>
             <Steps.Step step={4}>
               <p className={"font-normal"}>
-                Select the user and go to the <Mark><TransText>Security Credentials</TransText></Mark>
-                tab and select <Mark><TransText>Create access key</TransText></Mark>
+                <TransText>Select the user and go to the</TransText> <Mark><TransText>Security Credentials</TransText></Mark>
+                <TransText>tab and select</TransText> <Mark><TransText>Create access key</TransText></Mark>
               </p>
             </Steps.Step>
             <Steps.Step step={5}>

@@ -154,8 +154,8 @@ export default function OidcSetupModal({
               {name.toLowerCase() !== "jumpcloud" && (
                 <Steps.Step step={2}>
                   <p className={"font-normal"}>
-                    Please provide the <Mark><TransText>OpenID Connect Discovery</TransText></Mark>{" "}
-                    endpoint. It should be publicly accessible and SSL secured.
+                    <TransText>Please provide the</TransText> <Mark><TransText>OpenID Connect Discovery</TransText></Mark>{" "}
+                    <TransText>endpoint. It should be publicly accessible and SSL secured.</TransText>
                   </p>
                   <Input
                     customPrefix={<GlobeIcon size={16} />}
@@ -174,9 +174,8 @@ export default function OidcSetupModal({
                 line={false}
               >
                 <p className={"font-normal"}>
-                  Enter your
-                  <Mark><TransText>Primary E-Mail Domain</TransText></Mark> which will later be used to
-                  log in to NetBird.
+                  <TransText>Enter your</TransText>
+                  <Mark><TransText>Primary E-Mail Domain</TransText></Mark> <TransText>which will later be used to log in to NetBird.</TransText>
                 </p>
                 <Input
                   customPrefix={<GlobeIcon size={16} />}

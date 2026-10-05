@@ -75,8 +75,7 @@ export const CustomDomainVerificationModal = ({
             </Steps.Step>
             <Steps.Step step={2} line={false}>
               <p className={"font-normal"}>
-                Add the <Mark><TransText>CNAME record</TransText></Mark> below to your DNS
-                configuration for <Mark>{domain.domain}</Mark>
+                <TransText>Add the</TransText> <Mark><TransText>CNAME record</TransText></Mark> <TransText>below to your DNS configuration for</TransText> <Mark>{domain.domain}</Mark>
               </p>
             </Steps.Step>
           </Steps>
