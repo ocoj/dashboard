@@ -70,7 +70,7 @@ export function EditPeerNameModal({
           <Card className={"w-full px-6 pt-5 pb-4"}>
             <Label>
               <Globe size={15} />
-              Domain Name Preview
+              <TransText>Domain Name Preview</TransText>
             </Label>
             <HelpText className={"mt-2"}>
               <TransText>If the domain name already exists, we add an increment number suffix to it.</TransText>

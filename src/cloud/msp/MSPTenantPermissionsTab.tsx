@@ -72,7 +72,7 @@ export const MSPTenantPermissionsTab = ({
                 className={"pl-3"}
               >
                 <PlusIcon size={14} />
-                Add Group
+                <TransText>Add Group</TransText>
               </Button>
             }
             onChange={onGroupsChange}

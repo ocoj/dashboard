@@ -28,7 +28,7 @@ export const FleetDMMatchSettings = ({
         <div className={"w-full"}>
           <Label>
             <ShieldAlert size={14} />
-            Max Failing Policies
+            <TransText>Max Failing Policies</TransText>
           </Label>
           <HelpText>
             <TransText>Maximum number of allowed failing policies on a device.</TransText>
@@ -56,7 +56,7 @@ export const FleetDMMatchSettings = ({
         <div className={"w-full"}>
           <Label>
             <Bug size={14} />
-            Max Vulnerable Software
+            <TransText>Max Vulnerable Software</TransText>
           </Label>
           <HelpText>
             <TransText>Maximum number of allowed vulnerable software on a device.</TransText>
@@ -84,7 +84,7 @@ export const FleetDMMatchSettings = ({
         <div className={"w-full"}>
           <Label>
             <FileWarning size={14} />
-            Required FleetDM Policy IDs
+            <TransText>Required FleetDM Policy IDs</TransText>
           </Label>
           <HelpText>
             <TransText>Comma-separated policy IDs that must pass on the device.</TransText>
@@ -118,7 +118,7 @@ export const FleetDMMatchSettings = ({
           label={
             <>
               <HardDrive size={14} />
-              Disk Encryption
+              <TransText>Disk Encryption</TransText>
             </>
           }
           helpText={
@@ -138,7 +138,7 @@ export const FleetDMMatchSettings = ({
           label={
             <>
               <Wifi size={14} />
-              Online Status
+              <TransText>Online Status</TransText>
             </>
           }
           helpText={zhMap["Require the host to be online (recently seen by Fleet)."] || "Require the host to be online (recently seen by Fleet)."}

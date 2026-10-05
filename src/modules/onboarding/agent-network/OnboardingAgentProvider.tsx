@@ -43,7 +43,7 @@ export const OnboardingAgentProvider = ({ onBack, onNext }: Props) => {
         <div className={"mt-4 flex items-center justify-center"}>
           <Button variant={"primary"} onClick={openWizard}>
             <PlusIcon size={16} />
-            Connect Provider
+            <TransText>Connect Provider</TransText>
           </Button>
         </div>
       )}
@@ -112,7 +112,7 @@ const EndpointPanel = ({
           aria-label={zhMap["Copy endpoint"] || "Copy endpoint"}
         >
           <Copy size={12} />
-          Copy
+          <TransText>Copy</TransText>
         </button>
       </div>
     </div>

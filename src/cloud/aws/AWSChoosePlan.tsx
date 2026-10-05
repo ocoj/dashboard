@@ -134,7 +134,7 @@ export const AWSChoosePlan = ({ onSuccess }: Props) => {
                   >
                     Thanks for registering via{" "}
                     <br className={cn(!hasActiveStripePlan && "hidden")} />
-                    AWS Marketplace!
+                    <TransText>AWS Marketplace!</TransText>
                   </h2>
                   <Paragraph
                     className={cn(
@@ -152,7 +152,7 @@ export const AWSChoosePlan = ({ onSuccess }: Props) => {
                         With our flexible pricing, you are only billed for
                         active users and active peers through your AWS account.
                         Please choose the plan that fits your needs. <br />
-                        You can always change your plan later.
+                        <TransText>You can always change your plan later.</TransText>
                       </>
                     )}
                   </Paragraph>
@@ -196,7 +196,7 @@ export const AWSChoosePlan = ({ onSuccess }: Props) => {
                       >
                         <Button variant={"primary"} className={"w-full"}>
                           <MailIcon size={15} className={"shrink-0"} />
-                          Get Support
+                          <TransText>Get Support</TransText>
                         </Button>
                       </a>
                       <Button
@@ -220,7 +220,7 @@ export const AWSChoosePlan = ({ onSuccess }: Props) => {
                   onClick={logout}
                 >
                   <LogOutIcon size={12} />
-                  Logout
+                  <TransText>Logout</TransText>
                 </button>
               )}
             </div>

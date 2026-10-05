@@ -263,7 +263,7 @@ export function SetupContent({
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <FolderGit2 size={20} />
-            Groups to be synchronized
+            <TransText>Groups to be synchronized</TransText>
           </p>
 
           <div className={"mb-4 flex flex-col gap-1"}>
@@ -282,7 +282,7 @@ export function SetupContent({
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <UserCircle size={18} />
-            Users to be synchronized
+            <TransText>Users to be synchronized</TransText>
           </p>
 
           <div className={"mb-4 flex flex-col gap-1"}>
@@ -304,7 +304,7 @@ export function SetupContent({
         <div className={"px-8 py-3 flex flex-col gap-2 mt-4"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <BoxIcon size={20} />
-            SCIM Credentials
+            <TransText>SCIM Credentials</TransText>
           </p>
           <MinimalList
             data={[
@@ -360,7 +360,7 @@ export function SetupContent({
             onClick={() => setStep(step - 1)}
           >
             <IconArrowLeft size={16} />
-            Back
+            <TransText>Back</TransText>
           </Button>
         )}
         {step >= 0 && step < maxSteps && (

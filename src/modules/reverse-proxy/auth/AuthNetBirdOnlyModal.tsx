@@ -60,7 +60,7 @@ export default function AuthNetBirdOnlyModal({
               <div className={"flex items-center gap-2"}>
                 <Badge className={"py-[3px]"} variant={"gray-ghost"}>
                   <CircleUser size={12} />
-                  Pick groups
+                  <TransText>Pick groups</TransText>
                 </Badge>
                 <TransText>Select access groups...</TransText>
               </div>

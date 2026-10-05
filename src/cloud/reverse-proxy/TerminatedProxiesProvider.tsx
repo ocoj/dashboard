@@ -5,6 +5,7 @@ import FullTooltip from "@components/FullTooltip";
 import { AlertTriangle } from "lucide-react";
 import InlineLink from "@components/InlineLink";
 import { useReverseProxies } from "@/contexts/ReverseProxiesProvider";
+import { TransText } from "@/i18n/trans-text";
 
 export function TerminatedProxiesProvider() {
   const { reverseProxies } = useReverseProxies();
@@ -61,7 +62,7 @@ const terminatedBadge = (
   >
     <Badge variant={"red"}>
       <AlertTriangle size={12} />
-      Terminated
+      <TransText>Terminated</TransText>
     </Badge>
   </FullTooltip>
 );

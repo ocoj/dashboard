@@ -7,6 +7,7 @@ import {
 } from "@components/Tooltip";
 import { GlobeIcon } from "lucide-react";
 import * as React from "react";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   domains: string[];
@@ -19,7 +20,7 @@ export default function MultipleDomains({ domains }: Props) {
         className={"uppercase tracking-wider font-medium"}
       >
         <GlobeIcon size={10} />
-        All
+        <TransText>All</TransText>
       </Badge>
     );
   }

@@ -172,11 +172,11 @@ function AgentBudgetRuleModalContent({
         <TabsList justify={"start"} className={"px-8"}>
           <TabsTrigger value={"rule"}>
             <SlidersHorizontal size={16} />
-            Rule
+            <TransText>Rule</TransText>
           </TabsTrigger>
           <TabsTrigger value={"limits"}>
             <Gauge size={16} />
-            Limits
+            <TransText>Limits</TransText>
           </TabsTrigger>
         </TabsList>
 
@@ -215,7 +215,7 @@ function AgentBudgetRuleModalContent({
                     <div className={"flex items-center gap-2"}>
                       <Badge className={"py-[3px]"} variant={"gray-ghost"}>
                         <CircleUser size={12} />
-                        All
+                        <TransText>All</TransText>
                       </Badge>
                       Select target group(s)...
                     </div>

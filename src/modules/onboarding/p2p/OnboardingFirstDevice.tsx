@@ -50,7 +50,7 @@ export const OnboardingFirstDevice = ({
         </Button>
         <Button variant={"primary"} onClick={() => setOpen(true)}>
           <DownloadIcon size={16} />
-          Install NetBird
+          <TransText>Install NetBird</TransText>
         </Button>
       </div>
 

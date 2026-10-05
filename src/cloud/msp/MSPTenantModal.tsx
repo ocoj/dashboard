@@ -195,7 +195,7 @@ const MspAccountModalContent = ({ setOpen, tenant, initialTab }: Props) => {
                 "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
               }
             />
-            General
+            <TransText>General</TransText>
           </TabsTrigger>
           <TabsTrigger value={"permissions"} disabled={!canContinue}>
             <LockIcon
@@ -204,7 +204,7 @@ const MspAccountModalContent = ({ setOpen, tenant, initialTab }: Props) => {
                 "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
               }
             />
-            Permissions
+            <TransText>Permissions</TransText>
           </TabsTrigger>
           {tenant && <MSPTenantPlanTabTrigger tenant={tenant} />}
         </TabsList>
@@ -266,7 +266,7 @@ const MspAccountModalContent = ({ setOpen, tenant, initialTab }: Props) => {
                         onClick={() => verifyDomain(tenant, true)}
                       >
                         <ShieldCheckIcon size={14} />
-                        Verify Domain
+                        <TransText>Verify Domain</TransText>
                       </Button>
                     )}
                   </div>
@@ -343,7 +343,7 @@ const MspAccountModalContent = ({ setOpen, tenant, initialTab }: Props) => {
                 disabled={!canContinue}
               >
                 <PlusCircle size={16} />
-                Add Account
+                <TransText>Add Account</TransText>
               </Button>
             </>
           )}

@@ -42,6 +42,7 @@ import {
 import { ChangeCodeView } from "@/modules/control-center/draft/changeset/ChangeCodeView";
 import { DeployStatus } from "@/modules/control-center/hooks/useDeployChangeset";
 import zhMap from "@/i18n/zh-map";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   change: DraftChange;
@@ -258,7 +259,7 @@ export const ChangeAccordionItem = ({
                 }}
               >
                 <CopyIcon size={14} />
-                Copy cURL
+                <TransText>Copy cURL</TransText>
               </DropdownMenuItem>
               <DropdownMenuItem
                 variant={"danger"}
@@ -267,7 +268,7 @@ export const ChangeAccordionItem = ({
                 onClick={handleRemove}
               >
                 <Trash2Icon size={14} />
-                Remove
+                <TransText>Remove</TransText>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

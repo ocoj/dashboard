@@ -106,7 +106,7 @@ export const MSPTrialExpiredModal = () => {
               onClick={logout}
             >
               <LogOutIcon size={15} className={"shrink-0"} />
-              Logout
+              <TransText>Logout</TransText>
             </Button>
             <a
               href={`mailto:${mailToEmail}?subject=Request%20for%20Assistance%3A%20Trial%20Expired`}
@@ -114,7 +114,7 @@ export const MSPTrialExpiredModal = () => {
             >
               <Button className={"w-full"} variant={"primary"}>
                 <MailIcon size={15} className={"shrink-0"} />
-                Get Support
+                <TransText>Get Support</TransText>
               </Button>
             </a>
           </ModalFooter>

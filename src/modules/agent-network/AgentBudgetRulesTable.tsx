@@ -86,7 +86,7 @@ function TargetGroupsCell({ rule }: { rule: AgentBudgetRule }) {
     return (
       <Badge variant={"blue"} className={"whitespace-nowrap"}>
         <Globe2 size={12} />
-        Account-wide
+        <TransText>Account-wide</TransText>
       </Badge>
     );
   }
@@ -285,7 +285,7 @@ function ActionsCell({
           <DropdownMenuItem onClick={() => onEdit(rule)}>
             <div className={"flex gap-3 items-center"}>
               <PencilLineIcon size={14} className={"shrink-0"} />
-              Edit Rule
+              <TransText>Edit Rule</TransText>
             </div>
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => toggleBudgetRule(rule.id)}>
@@ -298,7 +298,7 @@ function ActionsCell({
           <DropdownMenuItem onClick={onDelete} variant={"danger"}>
             <div className={"flex gap-3 items-center"}>
               <Trash2 size={14} className={"shrink-0"} />
-              Delete
+              <TransText>Delete</TransText>
             </div>
           </DropdownMenuItem>
         </DropdownMenuContent>

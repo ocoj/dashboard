@@ -105,7 +105,7 @@ function NotificationWebhookModalContent({
                 "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
               }
             />
-            General
+            <TransText>General</TransText>
           </TabsTrigger>
           <TabsTrigger
             value={"headers"}
@@ -118,7 +118,7 @@ function NotificationWebhookModalContent({
                 "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
               }
             />
-            Headers
+            <TransText>Headers</TransText>
           </TabsTrigger>
         </TabsList>
 
@@ -191,7 +191,7 @@ function NotificationWebhookModalContent({
                     data-testid="webhook-save"
                   >
                     <Repeat size={16} />
-                    Connect
+                    <TransText>Connect</TransText>
                   </Button>
                 </>
               )}

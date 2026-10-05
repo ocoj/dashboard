@@ -60,7 +60,7 @@ export function WebhookHeadersTabContent({ value }: Readonly<Props>) {
         data-testid="webhook-add-header"
       >
         <PlusIcon size={14} />
-        Add Header
+        <TransText>Add Header</TransText>
       </Button>
 
       {value.authHeaderConflict && (

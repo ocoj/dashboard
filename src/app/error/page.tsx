@@ -111,7 +111,7 @@ export default function ErrorPage() {
         {!isBlockedUser && (
           <Button variant="default-outline" size="sm" onClick={handleRetry}>
             <RefreshCw size={16} className="mr-2" />
-            Try Again
+            <TransText>Try Again</TransText>
           </Button>
         )}
 

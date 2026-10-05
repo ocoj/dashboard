@@ -25,7 +25,7 @@ export const OnboardingEnd = ({ onFinish }: Props) => {
       <div>
         <h1 className={"text-xl text-center max-w-sm mx-auto"}>
           {title} <br />
-          You’ve completed the onboarding.
+          <TransText>You’ve completed the onboarding.</TransText>
         </h1>
         <div
           className={

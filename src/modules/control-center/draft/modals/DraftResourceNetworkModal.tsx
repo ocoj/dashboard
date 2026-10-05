@@ -202,7 +202,7 @@ const PickerContent = ({
                   }}
                 >
                   <PlusCircle size={14} />
-                  Create New Network
+                  <TransText>Create New Network</TransText>
                 </button>
               </div>
             )}

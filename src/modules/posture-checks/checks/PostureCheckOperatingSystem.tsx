@@ -143,7 +143,7 @@ const CheckContent = ({ value, onChange, disabled }: Props) => {
                 "fill-nb-gray-500 group-data-[state=active]/trigger:fill-netbird transition-all"
               }
             />
-            Linux
+            <TransText>Linux</TransText>
           </TabsTrigger>
           <TabsTrigger value={String(OperatingSystem.WINDOWS)}>
             <WindowsIcon
@@ -151,7 +151,7 @@ const CheckContent = ({ value, onChange, disabled }: Props) => {
                 "fill-nb-gray-500 group-data-[state=active]/trigger:fill-netbird transition-all"
               }
             />
-            Windows
+            <TransText>Windows</TransText>
           </TabsTrigger>
           <TabsTrigger value={String(OperatingSystem.APPLE)}>
             <AppleIcon
@@ -175,7 +175,7 @@ const CheckContent = ({ value, onChange, disabled }: Props) => {
                 "fill-nb-gray-500 group-data-[state=active]/trigger:fill-netbird transition-all"
               }
             />
-            Android
+            <TransText>Android</TransText>
           </TabsTrigger>
         </TabsList>
         <TabsContent value={String(OperatingSystem.LINUX)} className={"px-8"}>
@@ -382,11 +382,11 @@ export const OperatingSystemTab = ({
         <RadioGroup value={allow} onChange={changeAllow}>
           <RadioGroupItem value={"allow"} variant={"green"}>
             <ShieldCheck size={14} />
-            Allow
+            <TransText>Allow</TransText>
           </RadioGroupItem>
           <RadioGroupItem value={"block"} variant={"red"}>
             <ShieldXIcon size={14} />
-            Block
+            <TransText>Block</TransText>
           </RadioGroupItem>
         </RadioGroup>
       </div>
@@ -429,7 +429,7 @@ export const OperatingSystemTab = ({
             label={
               <>
                 <FileCog size={14} />
-                Use custom version number
+                <TransText>Use custom version number</TransText>
               </>
             }
             helpText={zhMap["Use a custom version number if you need more control."] || "Use a custom version number if you need more control."}

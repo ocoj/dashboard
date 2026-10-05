@@ -76,7 +76,7 @@ export default function GroupsRow({
         {foundGroups?.length == 0 && showAddGroupButton ? (
           <Badge variant={"gray"} useHover={true}>
             <IconCirclePlus size={14} />
-            Add Groups
+            <TransText>Add Groups</TransText>
           </Badge>
         ) : (
           <div

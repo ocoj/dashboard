@@ -55,7 +55,7 @@ export const CustomerActionCell = ({ customer }: Props) => {
         onClick={() => openEditCustomerModal(customer)}
       >
         <SquarePenIcon size={14} />
-        Edit
+        <TransText>Edit</TransText>
       </Button>
 
       <DropdownMenu modal={false}>
@@ -77,7 +77,7 @@ export const CustomerActionCell = ({ customer }: Props) => {
           >
             <div className={"flex gap-3 items-center"}>
               <UnlinkIcon size={14} className={"shrink-0"} />
-              Unlink
+              <TransText>Unlink</TransText>
             </div>
           </DropdownMenuItem>
         </DropdownMenuContent>

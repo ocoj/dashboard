@@ -48,7 +48,7 @@ export const OnboardingAgentPolicy = ({ onBack, onNext }: Props) => {
         <div className={"mt-4 flex items-center justify-center"}>
           <Button variant={"primary"} onClick={() => setOpen(true)}>
             <PlusIcon size={16} />
-            Add Policy
+            <TransText>Add Policy</TransText>
           </Button>
         </div>
       )}

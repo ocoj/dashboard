@@ -10,6 +10,7 @@ import {
   ReverseProxyCluster,
   ReverseProxyClusterType,
 } from "@/interfaces/ReverseProxy";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   cluster: ReverseProxyCluster;
@@ -61,7 +62,7 @@ export default function ClustersActionCell({ cluster }: Readonly<Props>) {
         disabled={!permission?.services?.delete}
       >
         <Trash2 size={16} />
-        Delete
+        <TransText>Delete</TransText>
       </Button>
     </div>
   );

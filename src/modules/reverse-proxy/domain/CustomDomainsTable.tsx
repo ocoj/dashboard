@@ -209,7 +209,7 @@ export default function CustomDomainsTable({ headingTarget }: Readonly<Props>) {
                 data-testid={"add-custom-domain"}
               >
                 <PlusCircle size={16} />
-                Add Domain
+                <TransText>Add Domain</TransText>
               </Button>
             }
             learnMore={
@@ -234,7 +234,7 @@ export default function CustomDomainsTable({ headingTarget }: Readonly<Props>) {
                 data-testid={"add-custom-domain"}
               >
                 <PlusCircle size={16} />
-                Add Domain
+                <TransText>Add Domain</TransText>
               </Button>
             )}
           </>
@@ -327,7 +327,7 @@ function CustomDomainStatusCell({ domain }: Readonly<CellProps>) {
           disabled={!permission?.services?.update}
         >
           <ShieldCheckIcon size={14} />
-          Verify Domain
+          <TransText>Verify Domain</TransText>
         </Button>
       </div>
 
@@ -359,7 +359,7 @@ function CustomDomainActionCell({ domain }: Readonly<CellProps>) {
         data-testid={"delete-custom-domain"}
       >
         <Trash2 size={16} />
-        Delete
+        <TransText>Delete</TransText>
       </Button>
     </div>
   );

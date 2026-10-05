@@ -161,15 +161,15 @@ export const MSPTransferAccountModal = () => {
               <ul className="flex flex-col gap-1.5 mt-4 mb-1">
                 <li className="flex items-center gap-2 text-sm text-nb-gray-200">
                   <SettingsIcon size={16} className={"text-netbird"} />
-                  Manage your account, settings and configurations
+                  <TransText>Manage your account, settings and configurations</TransText>
                 </li>
                 <li className="flex items-center gap-2 text-sm text-nb-gray-200">
                   <MonitorSmartphoneIcon size={16} className={"text-netbird"} />
-                  Manage all devices and associated resources
+                  <TransText>Manage all devices and associated resources</TransText>
                 </li>
                 <li className="flex items-center gap-2 text-sm text-nb-gray-200">
                   <UserIcon size={16} className={"text-netbird"} />
-                  Manage all users, groups and permissions
+                  <TransText>Manage all users, groups and permissions</TransText>
                 </li>
               </ul>
             </div>

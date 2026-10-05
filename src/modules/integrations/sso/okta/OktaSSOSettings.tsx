@@ -123,7 +123,7 @@ export const OktaSsoSettings = ({ open, onOpenChange, config }: Props) => {
                   "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
                 }
               />
-              Domains
+              <TransText>Domains</TransText>
             </TabsTrigger>
             <TabsTrigger value={"settings"}>
               <Settings
@@ -132,7 +132,7 @@ export const OktaSsoSettings = ({ open, onOpenChange, config }: Props) => {
                   "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
                 }
               />
-              Configuration
+              <TransText>Configuration</TransText>
             </TabsTrigger>
             <TabsTrigger value={"danger"}>
               <AlertOctagon
@@ -141,7 +141,7 @@ export const OktaSsoSettings = ({ open, onOpenChange, config }: Props) => {
                   "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
                 }
               />
-              Danger Zone
+              <TransText>Danger Zone</TransText>
             </TabsTrigger>
           </TabsList>
           <TabsContent value={"settings"} className={"px-8 text-sm"}>
@@ -154,7 +154,7 @@ export const OktaSsoSettings = ({ open, onOpenChange, config }: Props) => {
                     label={
                       <>
                         <GlobeIcon size={16} />
-                        Okta Domain
+                        <TransText>Okta Domain</TransText>
                       </>
                     }
                     value={config?.discovery_domain}
@@ -165,7 +165,7 @@ export const OktaSsoSettings = ({ open, onOpenChange, config }: Props) => {
                     label={
                       <>
                         <KeyRound size={16} />
-                        Client ID
+                        <TransText>Client ID</TransText>
                       </>
                     }
                     value={config?.client_id}
@@ -174,7 +174,7 @@ export const OktaSsoSettings = ({ open, onOpenChange, config }: Props) => {
                     label={
                       <>
                         <KeyRound size={16} />
-                        Client Secret
+                        <TransText>Client Secret</TransText>
                       </>
                     }
                     value={"********"}
@@ -220,7 +220,7 @@ export const OktaSsoSettings = ({ open, onOpenChange, config }: Props) => {
               <Label>
                 <div className={"flex gap-2 items-center"}>
                   <AlertOctagon size={16} />
-                  Delete Integration
+                  <TransText>Delete Integration</TransText>
                 </div>
               </Label>
               <HelpText className={"max-w-lg mt-2"}>

@@ -231,7 +231,7 @@ function NetworkActions() {
         >
           <div className={"flex gap-3 items-center"}>
             <PencilLineIcon size={14} className={"shrink-0"} />
-            Rename
+            <TransText>Rename</TransText>
           </div>
         </DropdownMenuItem>
 
@@ -246,7 +246,7 @@ function NetworkActions() {
         >
           <div className={"flex gap-3 items-center"}>
             <Trash2 size={14} className={"shrink-0"} />
-            Delete
+            <TransText>Delete</TransText>
           </div>
         </DropdownMenuItem>
       </DropdownMenuContent>
@@ -291,7 +291,7 @@ function NetworkInformationCard({ network }: Readonly<{ network: Network }>) {
           label={
             <>
               <ServerIcon size={16} />
-              High Availability
+              <TransText>High Availability</TransText>
             </>
           }
           value={
@@ -341,7 +341,7 @@ function NetworkInformationCard({ network }: Readonly<{ network: Network }>) {
             ) : (
               <>
                 <ShieldXIcon size={16} className={"text-red-500"} />
-                No Active Policies
+                <TransText>No Active Policies</TransText>
               </>
             )
           }

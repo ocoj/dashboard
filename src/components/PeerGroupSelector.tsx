@@ -870,7 +870,7 @@ const TabTriggers = ({
         }
         size={14}
       />
-      Groups
+      <TransText>Groups</TransText>
     </TabsTrigger>
   );
 
@@ -887,7 +887,7 @@ const TabTriggers = ({
         }
         size={14}
       />
-      Resources
+      <TransText>Resources</TransText>
     </TabsTrigger>
   );
 
@@ -904,7 +904,7 @@ const TabTriggers = ({
         }
         size={14}
       />
-      Peers
+      <TransText>Peers</TransText>
     </TabsTrigger>
   );
 
@@ -921,7 +921,7 @@ const TabTriggers = ({
         }
         size={14}
       />
-      Proxy Clusters
+      <TransText>Proxy Clusters</TransText>
     </TabsTrigger>
   );
 

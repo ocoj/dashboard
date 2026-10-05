@@ -11,6 +11,7 @@ import { DownloadIcon, MoreVertical } from "lucide-react";
 import React from "react";
 import { useDistributor } from "@/cloud/distributor/contexts/DistributorProvider";
 import { Invoice, InvoicePDF } from "@/cloud/msp/interfaces/Invoice";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   invoice: Invoice;
@@ -92,14 +93,14 @@ export default function InvoicesActionCell({ invoice }: Readonly<Props>) {
           >
             <div className={"flex gap-3 items-center justify-center pr-3"}>
               <DownloadIcon size={12} />
-              Download as PDF
+              <TransText>Download as PDF</TransText>
             </div>
           </DropdownMenuItem>
 
           <DropdownMenuItem onClick={downloadCSV}>
             <div className={"flex gap-3 items-center justify-center pr-3"}>
               <DownloadIcon size={12} />
-              Download as CSV
+              <TransText>Download as CSV</TransText>
             </div>
           </DropdownMenuItem>
         </DropdownMenuContent>

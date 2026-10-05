@@ -168,7 +168,7 @@ const CustomerModalContent = ({
                   "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
                 }
               />
-              General
+              <TransText>General</TransText>
             </TabsTrigger>
             {isActive && (
               <TabsTrigger value={"plan"}>
@@ -178,7 +178,7 @@ const CustomerModalContent = ({
                     "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
                   }
                 />
-                Plan
+                <TransText>Plan</TransText>
               </TabsTrigger>
             )}
           </TabsList>
@@ -319,7 +319,7 @@ const CustomerModalContent = ({
                 disabled={!canCreate}
               >
                 <PlusCircle size={16} />
-                Add Customer
+                <TransText>Add Customer</TransText>
               </Button>
             </>
           )}

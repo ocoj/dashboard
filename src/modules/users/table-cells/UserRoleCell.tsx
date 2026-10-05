@@ -12,6 +12,7 @@ import React from "react";
 import AgentNetworkIcon from "@/assets/icons/AgentNetworkIcon";
 import NetBirdIcon from "@/assets/icons/NetBirdIcon";
 import { Role, User } from "@/interfaces/User";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   user: User;
@@ -26,49 +27,49 @@ export default function UserRoleCell({ user }: Readonly<Props>) {
         {role === Role.User && (
           <>
             <User2 size={14} />
-            User
+            <TransText>User</TransText>
           </>
         )}
         {role === Role.Admin && (
           <>
             <Cog size={14} />
-            Admin
+            <TransText>Admin</TransText>
           </>
         )}
         {role === Role.Owner && (
           <>
             <NetBirdIcon size={14} />
-            Owner
+            <TransText>Owner</TransText>
           </>
         )}
         {role === Role.BillingAdmin && (
           <>
             <CreditCardIcon size={14} />
-            Billing Admin
+            <TransText>Billing Admin</TransText>
           </>
         )}
         {role === Role.Auditor && (
           <>
             <EyeIcon size={14} />
-            Auditor
+            <TransText>Auditor</TransText>
           </>
         )}
         {role === Role.NetworkAdmin && (
           <>
             <NetworkIcon size={14} />
-            Network Admin
+            <TransText>Network Admin</TransText>
           </>
         )}
         {role === Role.AgentNetworkAdmin && (
           <>
             <AgentNetworkIcon size={14} />
-            Agent Network Admin
+            <TransText>Agent Network Admin</TransText>
           </>
         )}
         {role === Role.UsageViewer && (
           <>
             <GaugeIcon size={14} />
-            Usage Viewer
+            <TransText>Usage Viewer</TransText>
           </>
         )}
       </Badge>

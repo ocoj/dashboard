@@ -119,7 +119,7 @@ export const NotificationEmailChannel = ({ channel }: Props) => {
           label={
             <>
               <Power size={15} />
-              Enable Email Channel
+              <TransText>Enable Email Channel</TransText>
             </>
           }
           helpText={
@@ -129,7 +129,7 @@ export const NotificationEmailChannel = ({ channel }: Props) => {
         <div className={"flex flex-col relative w-full"}>
           <Label>
             <MailIcon size={14} />
-            Email Addresses
+            <TransText>Email Addresses</TransText>
           </Label>
           <HelpText>
             <TransText>Add one or more email addresses that should receive notifications</TransText>
@@ -157,7 +157,7 @@ export const NotificationEmailChannel = ({ channel }: Props) => {
               data-testid="notification-email-add"
             >
               <PlusCircle size={14} />
-              Add
+              <TransText>Add</TransText>
             </Button>
           </div>
 

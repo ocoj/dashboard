@@ -14,6 +14,7 @@ import {
 } from "@/modules/control-center/utils/helpers";
 import { AllHandles } from "@/modules/control-center/handles/AllHandles";
 import { ConnectHandle } from "@/modules/control-center/handles/ConnectHandle";
+import { TransText } from "@/i18n/trans-text";
 
 export const RESOURCE_TYPE_ICONS = {
   domain: GlobeIcon,
@@ -86,7 +87,7 @@ export const StandaloneResourceNode = ({
             }}
           >
             <AlertTriangleIcon size={12} className={"text-yellow-400"} />
-            No Network
+            <TransText>No Network</TransText>
           </Button>
         </div>
       )}

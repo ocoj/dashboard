@@ -246,7 +246,7 @@ export function GenericHTTPModalContent({
                 "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
               }
             />
-            General
+            <TransText>General</TransText>
           </TabsTrigger>
           <TabsTrigger value={"headers"} disabled={!config.canContinueToHeaders}>
             <FileCode2Icon
@@ -255,7 +255,7 @@ export function GenericHTTPModalContent({
                 "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
               }
             />
-            Headers
+            <TransText>Headers</TransText>
           </TabsTrigger>
           <TabsTrigger
             value={"template"}
@@ -267,7 +267,7 @@ export function GenericHTTPModalContent({
                 "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
               }
             />
-            Body Template
+            <TransText>Body Template</TransText>
           </TabsTrigger>
           {stream && (
             <TabsTrigger value={"danger"}>
@@ -277,7 +277,7 @@ export function GenericHTTPModalContent({
                   "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
                 }
               />
-              Danger Zone
+              <TransText>Danger Zone</TransText>
             </TabsTrigger>
           )}
         </TabsList>
@@ -333,7 +333,7 @@ export function GenericHTTPModalContent({
             <Label>
               <div className={"flex gap-2 items-center"}>
                 <AlertOctagon size={16} />
-                Delete Integration
+                <TransText>Delete Integration</TransText>
               </div>
             </Label>
             <HelpText className={"max-w-lg mt-2"}>
@@ -406,7 +406,7 @@ export function GenericHTTPModalContent({
               onClick={connect}
             >
               <Repeat size={16} />
-              Connect
+              <TransText>Connect</TransText>
             </Button>
           )}
 

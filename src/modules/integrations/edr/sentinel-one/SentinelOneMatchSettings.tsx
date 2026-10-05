@@ -31,7 +31,7 @@ export const SentinelOneMatchSettings = ({
         <div className={"w-full"}>
           <Label>
             <TriangleAlert size={14} />
-            Allowed Active Threats
+            <TransText>Allowed Active Threats</TransText>
           </Label>
           <HelpText>
             <TransText>Maximum allowed number of active threats on a device.</TransText>
@@ -66,7 +66,7 @@ export const SentinelOneMatchSettings = ({
           label={
             <>
               <HardDrive size={14} />
-              Disk Encryption
+              <TransText>Disk Encryption</TransText>
             </>
           }
           helpText={zhMap["Devices must have disk encryption enabled."] || "Devices must have disk encryption enabled."}
@@ -83,7 +83,7 @@ export const SentinelOneMatchSettings = ({
           label={
             <>
               <BrickWallShieldIcon size={14} />
-              Firewall
+              <TransText>Firewall</TransText>
             </>
           }
           helpText={zhMap["Devices must have their firewall enabled."] || "Devices must have their firewall enabled."}
@@ -100,7 +100,7 @@ export const SentinelOneMatchSettings = ({
           label={
             <>
               <BugOffIcon size={14} />
-              Block Infected Devices
+              <TransText>Block Infected Devices</TransText>
             </>
           }
           helpText={zhMap["Prevent access for devices with active infections."] || "Prevent access for devices with active infections."}
@@ -117,7 +117,7 @@ export const SentinelOneMatchSettings = ({
           label={
             <>
               <ChevronsLeftRightEllipsis size={14} />
-              Network Connectivity
+              <TransText>Network Connectivity</TransText>
             </>
           }
           helpText={zhMap["Require active network connection to SentinelOne."] || "Require active network connection to SentinelOne."}
@@ -134,7 +134,7 @@ export const SentinelOneMatchSettings = ({
           label={
             <>
               <PowerIcon size={14} />
-              Active Status
+              <TransText>Active Status</TransText>
             </>
           }
           helpText={zhMap["SentinelOne agent must be active and reporting."] || "SentinelOne agent must be active and reporting."}
@@ -151,7 +151,7 @@ export const SentinelOneMatchSettings = ({
           label={
             <>
               <RefreshCcw size={14} />
-              Latest Agent Version
+              <TransText>Latest Agent Version</TransText>
             </>
           }
           helpText={

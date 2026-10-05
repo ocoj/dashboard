@@ -10,6 +10,7 @@ import { Peer } from "@/interfaces/Peer";
 import { Policy } from "@/interfaces/Policy";
 import { SetupModalContent } from "@/modules/setup-netbird-modal/SetupModal";
 import zhMap from "@/i18n/zh-map";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   device?: Peer;
@@ -82,7 +83,7 @@ export const OnboardingAddUserDevice = ({ device, policy, onNext }: Props) => {
       <div className={"flex items-center justify-center mt-3"}>
         <Button variant={"primary"} onClick={() => setOpen(true)}>
           <DownloadIcon size={16} />
-          Install NetBird
+          <TransText>Install NetBird</TransText>
         </Button>
       </div>
 

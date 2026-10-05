@@ -384,7 +384,7 @@ export default function ReverseProxyTargetModal({
                       <div>
                         Keep the original full request path when forwarding.{" "}
                         <br />
-                        When disabled the matched prefix path is stripped.
+                        <TransText>When disabled the matched prefix path is stripped.</TransText>
                       </div>
                     }
                   />
@@ -475,7 +475,7 @@ export default function ReverseProxyTargetModal({
                     label={
                       <>
                         <ShieldXIcon size={15} />
-                        Skip TLS Verification
+                        <TransText>Skip TLS Verification</TransText>
                       </>
                     }
                     helpText={<TransText>Skip certificate verification when connecting to this target. Useful if your service already uses a self-signed certificate.</TransText>}
@@ -587,7 +587,7 @@ export default function ReverseProxyTargetModal({
                 ) : (
                   <>
                     <PlusCircle size={16} />
-                    Add Target
+                    <TransText>Add Target</TransText>
                   </>
                 )}
               </Button>

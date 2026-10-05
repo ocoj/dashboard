@@ -155,7 +155,7 @@ export default function OktaSSOSetup({ open, onOpenChange }: Props) {
                 }
               >
                 <Shield size={16} />
-                Required Permissions
+                <TransText>Required Permissions</TransText>
               </div>
               <p className={"mt-2 !text-nb-gray-300 !leading-[1.5]"}>
                 <TransText>Ensure that you have an</TransText>{" "}
@@ -182,7 +182,7 @@ export default function OktaSSOSetup({ open, onOpenChange }: Props) {
                   }
                 >
                   <PlusCircle size={14} className={"text-sky-500"} />
-                  Add Okta applications
+                  <TransText>Add Okta applications</TransText>
                 </div>
                 <div
                   className={
@@ -190,7 +190,7 @@ export default function OktaSSOSetup({ open, onOpenChange }: Props) {
                   }
                 >
                   <Settings2 size={14} className={"text-sky-500"} />
-                  Configure Okta applications
+                  <TransText>Configure Okta applications</TransText>
                 </div>
               </div>
             </div>
@@ -298,7 +298,7 @@ export default function OktaSSOSetup({ open, onOpenChange }: Props) {
                 onClick={() => setStep(step - 1)}
               >
                 <IconArrowLeft size={16} />
-                Back
+                <TransText>Back</TransText>
               </Button>
             )}
             {step >= 0 && step < maxSteps && (

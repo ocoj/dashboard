@@ -44,7 +44,7 @@ export default function WindowsTab({
       <TabsContentPadding>
         <p className={"font-medium flex gap-3 items-center text-base"}>
           <PackageOpenIcon size={16} />
-          Install on Windows
+          <TransText>Install on Windows</TransText>
         </p>
         <Steps>
           <Steps.Step step={1}>
@@ -82,7 +82,7 @@ export default function WindowsTab({
               >
                 <Button variant={"primary"}>
                   <DownloadIcon size={14} />
-                  Download NetBird
+                  <TransText>Download NetBird</TransText>
                 </Button>
               </Link>
             </div>

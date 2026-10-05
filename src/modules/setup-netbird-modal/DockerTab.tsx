@@ -33,7 +33,7 @@ export default function DockerTab({
       <TabsContentPadding>
         <p className={"font-medium flex gap-3 items-center text-base"}>
           <IconBrandUbuntu size={16} />
-          Install on Ubuntu
+          <TransText>Install on Ubuntu</TransText>
         </p>
         <Steps>
           <Steps.Step step={1}>
@@ -46,7 +46,7 @@ export default function DockerTab({
               >
                 <Button variant={"primary"}>
                   <ExternalLinkIcon size={14} />
-                  Official Docker Installation Guide
+                  <TransText>Official Docker Installation Guide</TransText>
                 </Button>
               </Link>
             </div>

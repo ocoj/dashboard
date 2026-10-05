@@ -7,6 +7,7 @@ import { SmallBadge } from "@components/ui/SmallBadge";
 import { cn } from "@utils/helpers";
 import { PlusCircle, SquarePen } from "lucide-react";
 import React from "react";
+import { TransText } from "@/i18n/trans-text";
 
 type SettingCardItemProps = {
   label: React.ReactNode;
@@ -74,7 +75,7 @@ function SettingCardItem({
             disabled={disabled}
           >
             <SquarePen size={12} />
-            Edit
+            <TransText>Edit</TransText>
           </Button>
         ) : (
           <Button
@@ -85,7 +86,7 @@ function SettingCardItem({
             disabled={disabled}
           >
             <PlusCircle size={12} />
-            Add
+            <TransText>Add</TransText>
           </Button>
         )}
       </div>

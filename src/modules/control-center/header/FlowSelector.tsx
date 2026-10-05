@@ -13,6 +13,7 @@ import * as React from "react";
 import zhMap from "@/i18n/zh-map";
 import { useAgentNetworkMode } from "@/modules/agent-network/useAgentNetworkMode";
 import { useCloseOnCanvasClick } from "@/modules/control-center/hooks/useCloseOnCanvasClick";
+import { TransText } from "@/i18n/trans-text";
 
 export enum FlowView {
   NETWORKS = "networks",
@@ -83,7 +84,7 @@ export const FlowSelector = ({ value, onChange }: Props) => {
               data-testid={"cc-flow-peers"}
             >
               <MonitorSmartphoneIcon size={12} />
-              Peer
+              <TransText>Peer</TransText>
             </SegmentedTabs.Trigger>
             <SegmentedTabs.Trigger
               value={FlowView.USERS}
@@ -91,7 +92,7 @@ export const FlowSelector = ({ value, onChange }: Props) => {
               data-testid={"cc-flow-users"}
             >
               <UsersIcon size={12} />
-              User
+              <TransText>User</TransText>
             </SegmentedTabs.Trigger>
             <SegmentedTabs.Trigger
               value={FlowView.GROUPS}
@@ -99,7 +100,7 @@ export const FlowSelector = ({ value, onChange }: Props) => {
               data-testid={"cc-flow-groups"}
             >
               <FolderGit2 size={12} />
-              Group
+              <TransText>Group</TransText>
             </SegmentedTabs.Trigger>
             {/* The agent-network repackaging drops Networks as a top-level
                 pivot. */}
@@ -110,7 +111,7 @@ export const FlowSelector = ({ value, onChange }: Props) => {
                 data-testid={"cc-flow-networks"}
               >
                 <NetworkIcon size={12} />
-                Networks
+                <TransText>Networks</TransText>
               </SegmentedTabs.Trigger>
             )}
           </SegmentedTabs.List>

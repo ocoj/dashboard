@@ -263,7 +263,7 @@ export default function AuthHeaderModal({
             onClick={() => dispatch({ type: "add" })}
           >
             <PlusIcon size={14} />
-            Add Header
+            <TransText>Add Header</TransText>
           </Button>
 
           {items.length > 1 && (
@@ -363,7 +363,7 @@ function HeaderItemRow({
           {showRemove && (
             <Button variant="danger-text" size="xs" onClick={onRemove}>
               <MinusCircleIcon size={12} />
-              Remove
+              <TransText>Remove</TransText>
             </Button>
           )}
         </div>

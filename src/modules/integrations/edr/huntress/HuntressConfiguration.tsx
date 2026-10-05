@@ -196,7 +196,7 @@ export function ConfigurationContent({
                 "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
               }
             />
-            Peer Approval
+            <TransText>Peer Approval</TransText>
           </TabsTrigger>
           <TabsTrigger value={"compliance"}>
             <ShieldCheckIcon
@@ -205,7 +205,7 @@ export function ConfigurationContent({
                 "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
               }
             />
-            Compliance
+            <TransText>Compliance</TransText>
           </TabsTrigger>
           <TabsTrigger value={"settings"}>
             <Cog
@@ -214,7 +214,7 @@ export function ConfigurationContent({
                 "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
               }
             />
-            Settings
+            <TransText>Settings</TransText>
           </TabsTrigger>
           <TabsTrigger value={"danger"}>
             <AlertOctagon
@@ -223,7 +223,7 @@ export function ConfigurationContent({
                 "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
               }
             />
-            Danger Zone
+            <TransText>Danger Zone</TransText>
           </TabsTrigger>
         </TabsList>
 
@@ -232,7 +232,7 @@ export function ConfigurationContent({
             <Label>
               <div className={"flex gap-2 items-center"}>
                 <FolderGit2 size={14} />
-                Groups
+                <TransText>Groups</TransText>
               </div>
             </Label>
             <HelpText className={"mt-2"}>
@@ -276,7 +276,7 @@ export function ConfigurationContent({
               <Label>
                 <div className={"flex gap-2 items-center"}>
                   <RefreshCcw size={14} />
-                  Sync Window
+                  <TransText>Sync Window</TransText>
                 </div>
               </Label>
               <FullTooltip
@@ -321,7 +321,7 @@ export function ConfigurationContent({
               customPrefix={
                 <div className={"min-w-[165px] flex gap-2 items-center"}>
                   <KeyRound size={16} />
-                  API Key
+                  <TransText>API Key</TransText>
                 </div>
               }
               placeholder={"hk_30813a372c41f72f1892"}
@@ -345,7 +345,7 @@ export function ConfigurationContent({
               customPrefix={
                 <div className={"min-w-[165px] flex gap-2 items-center"}>
                   <KeyRound size={16} />
-                  API Secret
+                  <TransText>API Secret</TransText>
                 </div>
               }
               placeholder={"hs_3b80d8e463aeb037ac211fafb7fc59c1"}
@@ -370,7 +370,7 @@ export function ConfigurationContent({
             <Label>
               <div className={"flex gap-2 items-center"}>
                 <AlertOctagon size={14} />
-                Delete Integration
+                <TransText>Delete Integration</TransText>
               </div>
             </Label>
             <HelpText className={"max-w-lg mt-2"}>

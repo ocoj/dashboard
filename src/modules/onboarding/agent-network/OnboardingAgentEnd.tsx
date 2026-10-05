@@ -15,7 +15,7 @@ export const OnboardingAgentEnd = ({ onFinish }: Props) => {
       <div>
         <h1 className={"text-xl text-center max-w-sm mx-auto"}>
           You&apos;re all set! <br />
-          Your agent network is ready.
+          <TransText>Your agent network is ready.</TransText>
         </h1>
         <div
           className={

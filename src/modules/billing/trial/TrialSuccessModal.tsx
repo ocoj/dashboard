@@ -39,11 +39,11 @@ export const TrialSuccessModal = ({ open, setOpen }: Props) => {
               </li>
               <li className="flex items-center gap-2 text-sm text-nb-gray-200">
                 <Check size={16} className={"text-netbird"} />
-                Set up your first device posture checks
+                <TransText>Set up your first device posture checks</TransText>
               </li>
               <li className="flex items-center gap-2 text-sm text-nb-gray-200">
                 <Check size={16} className={"text-netbird"} />
-                Enable device approvals for added control
+                <TransText>Enable device approvals for added control</TransText>
               </li>
             </ul>
             <Button

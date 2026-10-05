@@ -13,6 +13,7 @@ import { useDialog } from "@/contexts/DialogProvider";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { useAIProviders } from "@/modules/agent-network/AIProvidersProvider";
 import { AIProvider } from "@/modules/agent-network/data/mockData";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   provider: AIProvider;
@@ -73,7 +74,7 @@ export default function AgentProviderActionCell({ provider }: Readonly<Props>) {
             >
               <div className={"flex gap-3 items-center"}>
                 <SquarePenIcon size={14} className={"shrink-0"} />
-                Edit
+                <TransText>Edit</TransText>
               </div>
             </DropdownMenuItem>
           )}
@@ -116,7 +117,7 @@ export default function AgentProviderActionCell({ provider }: Readonly<Props>) {
               >
                 <div className={"flex gap-3 items-center"}>
                   <Trash2 size={14} className={"shrink-0"} />
-                  Delete
+                  <TransText>Delete</TransText>
                 </div>
               </DropdownMenuItem>
             </FullTooltip>

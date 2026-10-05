@@ -117,49 +117,49 @@ function InviteRoleCell({ invite }: { invite: UserInvite }) {
         {role === Role.User && (
           <>
             <User2 size={14} />
-            User
+            <TransText>User</TransText>
           </>
         )}
         {role === Role.Admin && (
           <>
             <Cog size={14} />
-            Admin
+            <TransText>Admin</TransText>
           </>
         )}
         {role === Role.Owner && (
           <>
             <NetBirdIcon size={14} />
-            Owner
+            <TransText>Owner</TransText>
           </>
         )}
         {role === Role.BillingAdmin && (
           <>
             <CreditCardIcon size={14} />
-            Billing Admin
+            <TransText>Billing Admin</TransText>
           </>
         )}
         {role === Role.Auditor && (
           <>
             <EyeIcon size={14} />
-            Auditor
+            <TransText>Auditor</TransText>
           </>
         )}
         {role === Role.NetworkAdmin && (
           <>
             <NetworkIcon size={14} />
-            Network Admin
+            <TransText>Network Admin</TransText>
           </>
         )}
         {role === Role.AgentNetworkAdmin && (
           <>
             <AgentNetworkIcon size={14} />
-            Agent Network Admin
+            <TransText>Agent Network Admin</TransText>
           </>
         )}
         {role === Role.UsageViewer && (
           <>
             <GaugeIcon size={14} />
-            Usage Viewer
+            <TransText>Usage Viewer</TransText>
           </>
         )}
       </Badge>
@@ -309,7 +309,7 @@ function InviteActionCell({ invite }: { invite: UserInvite }) {
             >
               <div className={"flex gap-3 items-center"}>
                 <RefreshCw size={14} className={"shrink-0"} />
-                Regenerate
+                <TransText>Regenerate</TransText>
               </div>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
@@ -321,7 +321,7 @@ function InviteActionCell({ invite }: { invite: UserInvite }) {
             >
               <div className={"flex gap-3 items-center"}>
                 <Trash2 size={14} className={"shrink-0"} />
-                Delete
+                <TransText>Delete</TransText>
               </div>
             </DropdownMenuItem>
           </DropdownMenuContent>
@@ -666,7 +666,7 @@ export default function UserInvitesTable({
             />
             <Button variant={"secondary"} onClick={onShowUsers}>
               <User2 size={14} />
-              Show Users
+              <TransText>Show Users</TransText>
             </Button>
           </>
         );

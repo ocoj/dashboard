@@ -5,6 +5,7 @@ import { usePermissions } from "@/contexts/PermissionsProvider";
 import { useReverseProxies } from "@/contexts/ReverseProxiesProvider";
 import { ReverseProxyTarget } from "@/interfaces/ReverseProxy";
 import { useReverseProxyTarget } from "./ReverseProxyTargetContext";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   target: ReverseProxyTarget;
@@ -27,7 +28,7 @@ export const ReverseProxyTargetActionCell = ({ target }: Props) => {
         }}
       >
         <PenSquare size={16} />
-        Edit
+        <TransText>Edit</TransText>
       </Button>
       <Button
         variant={"danger-outline"}
@@ -39,7 +40,7 @@ export const ReverseProxyTargetActionCell = ({ target }: Props) => {
         }}
       >
         <Trash2 size={16} />
-        Delete
+        <TransText>Delete</TransText>
       </Button>
     </div>
   );

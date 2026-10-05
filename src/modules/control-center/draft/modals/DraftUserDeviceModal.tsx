@@ -111,7 +111,7 @@ const StepperContent = ({
                 }
               >
                 <DownloadIcon size={14} />
-                Install NetBird
+                <TransText>Install NetBird</TransText>
               </Button>
             </div>
           </Steps.Step>

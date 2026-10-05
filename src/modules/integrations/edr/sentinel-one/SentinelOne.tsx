@@ -22,6 +22,7 @@ import SentinelOneSetup from "@/modules/integrations/edr/sentinel-one/SentinelOn
 import { useIntegrations } from "@/modules/integrations/edr/useIntegrations";
 import { IntegrationCard } from "@/modules/integrations/IntegrationCard";
 import { Group } from "@/interfaces/Group";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   account: Account;
@@ -151,7 +152,7 @@ const ConfigurationButton = ({ config }: ConfigurationProps) => {
           }}
         >
           <Settings size={14} />
-          Settings
+          <TransText>Settings</TransText>
         </Button>
       </div>
       <SentinelOneConfiguration

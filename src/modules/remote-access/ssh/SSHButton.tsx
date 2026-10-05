@@ -9,6 +9,7 @@ import { SSHCredentialsModal } from "@/modules/remote-access/ssh/SSHCredentialsM
 import { SSHTooltip } from "@/modules/remote-access/ssh/SSHTooltip";
 import { getOperatingSystem } from "@hooks/useOperatingSystem";
 import { OperatingSystem } from "@/interfaces/OperatingSystem";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   peer: Peer;
@@ -53,7 +54,7 @@ export const SSHButton = ({ peer, isDropdown = false }: Props) => {
               >
                 <div className={"flex gap-3 items-center w-full"}>
                   <TerminalIcon size={14} className={"shrink-0"} />
-                  SSH
+                  <TransText>SSH</TransText>
                 </div>
               </DropdownMenuItem>
             ) : (

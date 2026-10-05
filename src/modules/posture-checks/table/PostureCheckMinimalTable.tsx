@@ -61,7 +61,7 @@ export default function PostureCheckMinimalTable({
             }
           >
             <FolderSearch size={14} />
-            Browse Checks
+            <TransText>Browse Checks</TransText>
           </Button>
           <Button
             variant={"primary"}
@@ -72,7 +72,7 @@ export default function PostureCheckMinimalTable({
             }
           >
             <PlusCircle size={14} />
-            New Posture Check
+            <TransText>New Posture Check</TransText>
           </Button>
         </div>
       </div>
@@ -120,7 +120,7 @@ export default function PostureCheckMinimalTable({
                       >
                         <div className={"flex gap-3 items-center"}>
                           <Edit size={14} className={"shrink-0"} />
-                          Edit Posture Check
+                          <TransText>Edit Posture Check</TransText>
                         </div>
                       </DropdownMenuItem>
                       <DropdownMenuItem
@@ -129,7 +129,7 @@ export default function PostureCheckMinimalTable({
                       >
                         <div className={"flex gap-3 items-center"}>
                           <MinusCircleIcon size={14} className={"shrink-0"} />
-                          Remove Posture Check
+                          <TransText>Remove Posture Check</TransText>
                         </div>
                       </DropdownMenuItem>
                     </DropdownMenuContent>

@@ -7,6 +7,7 @@ import { useSWRConfig } from "swr";
 import { useDialog } from "@/contexts/DialogProvider";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { GroupedRoute, Route } from "@/interfaces/Route";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   groupedRoute: GroupedRoute;
@@ -57,7 +58,7 @@ export default function GroupedRouteActionCell({ groupedRoute }: Props) {
         disabled={!permission.routes.delete}
       >
         <Trash2 size={16} />
-        Delete
+        <TransText>Delete</TransText>
       </Button>
     </div>
   );

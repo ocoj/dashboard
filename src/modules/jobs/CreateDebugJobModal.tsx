@@ -153,7 +153,7 @@ export function CreateDebugJobModalContent({ peerID, onSuccess }: Props) {
             label={
               <>
                 <AlarmClock size={15} />
-                Enable Bundle Duration
+                <TransText>Enable Bundle Duration</TransText>
               </>
             }
             helpText="When enabled, allows you to specify a time period for log collection before generating the debug bundle."
@@ -192,7 +192,7 @@ export function CreateDebugJobModalContent({ peerID, onSuccess }: Props) {
           label={
             <>
               <Shield size={15} />
-              Anonymize Log Data
+              <TransText>Anonymize Log Data</TransText>
             </>
           }
           helpText="Remove sensitive information (IP addresses, domains etc.) before creating the debug bundle."
@@ -258,7 +258,7 @@ export function CreateDebugJobModalContent({ peerID, onSuccess }: Props) {
             onClick={createDebugJob}
           >
             <PlusCircle size={16} />
-            Create Debug Bundle
+            <TransText>Create Debug Bundle</TransText>
           </Button>
         </div>
       </ModalFooter>

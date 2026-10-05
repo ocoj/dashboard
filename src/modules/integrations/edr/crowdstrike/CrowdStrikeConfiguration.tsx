@@ -195,7 +195,7 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
                 "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
               }
             />
-            Peer Approval
+            <TransText>Peer Approval</TransText>
           </TabsTrigger>
           <TabsTrigger value={"settings"}>
             <Cog
@@ -204,7 +204,7 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
                 "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
               }
             />
-            Settings
+            <TransText>Settings</TransText>
           </TabsTrigger>
           <TabsTrigger value={"danger"}>
             <AlertOctagon
@@ -213,7 +213,7 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
                 "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
               }
             />
-            Danger Zone
+            <TransText>Danger Zone</TransText>
           </TabsTrigger>
         </TabsList>
 
@@ -223,7 +223,7 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
               <Label>
                 <div className={"flex gap-2 items-center"}>
                   <FolderGit2 size={14} />
-                  Groups
+                  <TransText>Groups</TransText>
                 </div>
               </Label>
               <HelpText className={"max-w-lg mt-2"}>
@@ -253,7 +253,7 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
               <Label className={"mb-3"}>
                 <div className={"flex gap-2 items-center"}>
                   <GlobeIcon size={14} />
-                  Region
+                  <TransText>Region</TransText>
                 </div>
               </Label>
 
@@ -267,7 +267,7 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
               <Label className={"mb-3"}>
                 <div className={"flex gap-2 items-center"}>
                   <KeyRound size={14} />
-                  CrowdStrike Credentials
+                  <TransText>CrowdStrike Credentials</TransText>
                 </div>
               </Label>
               <div className={"flex flex-col gap-3"}>
@@ -278,7 +278,7 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
                   customPrefix={
                     <div className={"min-w-[85px] flex gap-2 items-center"}>
                       <PencilIcon size={16} />
-                      Client ID
+                      <TransText>Client ID</TransText>
                     </div>
                   }
                   placeholder={"9f6c80ac8a384e1d88a1fd1f279541d0"}
@@ -292,7 +292,7 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
                   customPrefix={
                     <div className={"min-w-[85px] flex gap-2 items-center"}>
                       <KeyRound size={16} />
-                      Secret
+                      <TransText>Secret</TransText>
                     </div>
                   }
                   placeholder={"qF41DKYkQJBS53w0XPVyO6v9AtZ8WMbHp72eIdml"}
@@ -309,7 +309,7 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
             <Label>
               <div className={"flex gap-2 items-center"}>
                 <AlertOctagon size={14} />
-                Delete Integration
+                <TransText>Delete Integration</TransText>
               </div>
             </Label>
             <HelpText className={"max-w-lg mt-2"}>

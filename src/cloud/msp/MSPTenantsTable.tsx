@@ -216,7 +216,7 @@ export default function MSPTenantsTable({
                       onClick={() => router.push("/settings?tab=invoices")}
                     >
                       <ReceiptTextIcon size={16} />
-                      Invoices
+                      <TransText>Invoices</TransText>
                     </Button>
                   )}
 
@@ -259,7 +259,7 @@ const AddTenantButton = () => {
   return (
     <Button variant={"primary"} size={"sm"} onClick={openCreateTenantModal}>
       <PlusCircle size={16} />
-      Add Tenant
+      <TransText>Add Tenant</TransText>
     </Button>
   );
 };

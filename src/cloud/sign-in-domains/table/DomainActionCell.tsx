@@ -37,7 +37,7 @@ export default function DomainActionCell({ domain }: Readonly<Props>) {
     <>
       This domain is used by an SSO integration.
       <br />
-      Remove it there before deleting it.
+      <TransText>Remove it there before deleting it.</TransText>
     </>
   ) : undefined;
 

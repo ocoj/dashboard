@@ -12,7 +12,7 @@ export default function LoginExpiredBadge({ loginExpired }: Props) {
       <TooltipTrigger>
         <Badge variant={"red"} className={"px-2"}>
           <AlertTriangle size={12} />
-          Login required
+          <TransText>Login required</TransText>
         </Badge>
       </TooltipTrigger>
       <TooltipContent>

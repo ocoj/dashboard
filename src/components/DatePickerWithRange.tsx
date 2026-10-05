@@ -11,6 +11,7 @@ import { Calendar as CalendarIcon } from "lucide-react";
 import React, { useMemo, useState } from "react";
 import { DateRange } from "react-day-picker";
 import zhMap from "@/i18n/zh-map";
+import { TransText } from "@/i18n/trans-text";
 
 interface Props {
   value?: DateRange;
@@ -160,7 +161,7 @@ export function DatePickerWithRange({
                 label={
                   <>
                     <CalendarIcon size={14} className={"shrink-0"} />
-                    All Time
+                    <TransText>All Time</TransText>
                   </>
                 }
                 active={isActive.allTime}

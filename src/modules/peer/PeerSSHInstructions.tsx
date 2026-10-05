@@ -70,11 +70,11 @@ export const PeerSSHInstructions = ({
             <SegmentedTabs.List className={"rounded-lg border"}>
               <SegmentedTabs.Trigger value={"cli"}>
                 <TerminalSquare size={16} />
-                CLI
+                <TransText>CLI</TransText>
               </SegmentedTabs.Trigger>
               <SegmentedTabs.Trigger value={"gui"}>
                 <NetBirdIcon size={16} />
-                Desktop Client
+                <TransText>Desktop Client</TransText>
               </SegmentedTabs.Trigger>
             </SegmentedTabs.List>
           </SegmentedTabs>
@@ -117,7 +117,7 @@ export const PeerSSHInstructions = ({
                   onClick={() => setPolicyModal(true)}
                 >
                   <PlusCircle size={16} />
-                  Create SSH Policy
+                  <TransText>Create SSH Policy</TransText>
                 </Button>
               </div>
             </Steps.Step>

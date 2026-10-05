@@ -63,7 +63,7 @@ export default function HelpAndSupportButton() {
         >
           <div className={"flex gap-3 items-center"}>
             <BookText size={14} />
-            Documentation
+            <TransText>Documentation</TransText>
           </div>
           <DropdownMenuShortcut>
             <ArrowUpRightIcon size={16} />
@@ -77,7 +77,7 @@ export default function HelpAndSupportButton() {
         >
           <div className={"flex gap-3 items-center"}>
             <TriangleAlert size={14} />
-            Troubleshooting
+            <TransText>Troubleshooting</TransText>
           </div>
           <DropdownMenuShortcut>
             <ArrowUpRightIcon size={16} />
@@ -103,7 +103,7 @@ export default function HelpAndSupportButton() {
         >
           <div className={"flex gap-3 items-center"}>
             <MessagesSquareIcon size={14} />
-            NetBird Forum
+            <TransText>NetBird Forum</TransText>
           </div>
           <DropdownMenuShortcut>
             <ArrowUpRightIcon size={16} />
@@ -117,7 +117,7 @@ export default function HelpAndSupportButton() {
         >
           <div className={"flex gap-3 items-center"}>
             <SlackIcon size={14} />
-            NetBird Slack
+            <TransText>NetBird Slack</TransText>
           </div>
           <DropdownMenuShortcut>
             <ArrowUpRightIcon size={16} />
@@ -134,7 +134,7 @@ export default function HelpAndSupportButton() {
         >
           <div className={"flex gap-3 items-center"}>
             <MessageSquareShare size={14} />
-            Feedback
+            <TransText>Feedback</TransText>
           </div>
           <DropdownMenuShortcut>
             <ArrowUpRightIcon size={16} />

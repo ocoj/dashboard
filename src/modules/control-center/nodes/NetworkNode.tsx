@@ -33,6 +33,7 @@ import {
   NETWORK_FRAME_HEADER,
 } from "@/modules/control-center/utils/helpers";
 import { NodeType } from "@/modules/control-center/utils/nodes";
+import { TransText } from "@/i18n/trans-text";
 
 type NetworkNodeType = {
   network: Network;
@@ -330,7 +331,7 @@ const FrameAddResourceButton = ({
         }}
       >
         <CirclePlusIcon size={12} />
-        Add Resource
+        <TransText>Add Resource</TransText>
       </Button>
     </div>
   );

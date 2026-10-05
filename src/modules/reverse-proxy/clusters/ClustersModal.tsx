@@ -341,7 +341,7 @@ spec:
           <TabsList justify={"start"} className={"px-8"}>
             <TabsTrigger value={"domain"}>
               <GlobeIcon size={14} />
-              Domain
+              <TransText>Domain</TransText>
             </TabsTrigger>
             {!isCloudDeploy && (
               <TabsTrigger
@@ -349,7 +349,7 @@ spec:
                 disabled={!domain.trim() || !!domainError}
               >
                 <ListIcon size={14} />
-                DNS Records
+                <TransText>DNS Records</TransText>
               </TabsTrigger>
             )}
             <TabsTrigger
@@ -524,7 +524,7 @@ spec:
                     {isGeneratingToken && (
                       <div className="absolute inset-0 z-10 flex items-center justify-center gap-2 text-nb-gray-100 bg-nb-gray-950/90">
                         <Loader2 size={16} className="animate-spin" />
-                        Generating proxy token...
+                        <TransText>Generating proxy token...</TransText>
                       </div>
                     )}
 

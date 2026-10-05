@@ -298,7 +298,7 @@ export default function NetworkRoutesTable({
                   disabled={!permission.routes.create}
                 >
                   <PlusCircle size={16} />
-                  Add Route
+                  <TransText>Add Route</TransText>
                 </Button>
               </div>
             </NoResults>
@@ -331,7 +331,7 @@ export default function NetworkRoutesTable({
                     data-testid="open-add-route"
                   >
                     <PlusCircle size={16} />
-                    Add Route
+                    <TransText>Add Route</TransText>
                   </Button>
                 </div>
               }
@@ -365,7 +365,7 @@ export default function NetworkRoutesTable({
                   data-testid="open-add-route"
                 >
                   <PlusCircle size={16} />
-                  Add Route
+                  <TransText>Add Route</TransText>
                 </Button>
               </div>
             )}

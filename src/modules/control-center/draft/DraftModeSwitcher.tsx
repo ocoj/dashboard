@@ -16,6 +16,7 @@ import { DraftStartPopover } from "@/modules/control-center/draft/DraftStartPopo
 import { ReviewDeployModal } from "@/modules/control-center/draft/modals/ReviewDeployModal";
 import { useDiscardDraft } from "@/modules/control-center/draft/useDiscardDraft";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {};
 export const DraftModeSwitcher = ({}: Props) => {
@@ -52,7 +53,7 @@ export const DraftModeSwitcher = ({}: Props) => {
           data-testid={"cc-mode-live"}
         >
           <CircleIcon active={true} size={8} className={"shrink-0"} />
-          Live
+          <TransText>Live</TransText>
         </SegmentedTabs.Trigger>
         <SegmentedTabs.Trigger
           value={"draft"}
@@ -64,9 +65,9 @@ export const DraftModeSwitcher = ({}: Props) => {
           data-testid={"cc-mode-draft"}
         >
           <PencilLineIcon size={12} />
-          Draft
+          <TransText>Draft</TransText>
           <SmallBadge
-            text={"Beta"}
+            text={zhMap["Beta"] || "Beta"}
             variant={"sky"}
             className={"text-[8px] leading-none py-[3px] px-[5px]"}
             textClassName={"top-0"}

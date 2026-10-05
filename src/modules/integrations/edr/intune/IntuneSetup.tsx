@@ -186,7 +186,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
             }
           >
             <Shield size={16} />
-            Required Permissions
+            <TransText>Required Permissions</TransText>
           </div>
           <p className={"mt-2 !text-nb-gray-300 !leading-[1.5]"}>
             <TransText>Ensure that you have an</TransText>{" "}
@@ -213,7 +213,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
               }
             >
               <PlusCircle size={14} className={"text-sky-500"} />
-              Create Azure AD applications
+              <TransText>Create Azure AD applications</TransText>
             </div>
             <div
               className={
@@ -221,7 +221,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
               }
             >
               <Settings2 size={14} className={"text-sky-500"} />
-              Manage Azure AD applications
+              <TransText>Manage Azure AD applications</TransText>
             </div>
           </div>
         </div>
@@ -482,7 +482,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
             onClick={() => setStep(step - 1)}
           >
             <IconArrowLeft size={16} />
-            Back
+            <TransText>Back</TransText>
           </Button>
         )}
         {step >= 0 && step < maxSteps && (
@@ -504,7 +504,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
             onClick={connect}
           >
             <Repeat size={16} />
-            Connect
+            <TransText>Connect</TransText>
           </Button>
         )}
       </ModalFooter>

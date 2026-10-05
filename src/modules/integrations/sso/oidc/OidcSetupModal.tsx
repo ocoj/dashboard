@@ -208,7 +208,7 @@ export default function OidcSetupModal({
 
               <Button variant={"primary"}>
                 <Repeat size={16} />
-                Connect
+                <TransText>Connect</TransText>
               </Button>
             </div>
           </ModalFooter>

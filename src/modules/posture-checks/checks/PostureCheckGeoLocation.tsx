@@ -169,7 +169,7 @@ const CheckContent = ({ value, onChange, disabled }: Props) => {
           onClick={addLocation}
         >
           <PlusCircle size={16} />
-          Add Location
+          <TransText>Add Location</TransText>
         </Button>
       </div>
 

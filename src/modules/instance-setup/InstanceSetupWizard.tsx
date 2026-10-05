@@ -278,7 +278,7 @@ export default function InstanceSetupWizard() {
             {isSubmitting ? (
               <>
                 <Loader2 className="animate-spin" size={16} />
-                Creating Account...
+                <TransText>Creating Account...</TransText>
               </>
             ) : (
               "Create Admin Account"

@@ -101,11 +101,11 @@ export const PendingApproval = ({ error, onRefresh, onLogout }: Props) => {
         <div className={"flex flex-col sm:flex-row gap-3 justify-center"}>
           <Button variant={"secondary"} size={"sm"} onClick={onRefresh}>
             <RefreshCwIcon size={16} />
-            Refresh
+            <TransText>Refresh</TransText>
           </Button>
           <Button variant={"default-outline"} size={"sm"} onClick={onLogout}>
             <LogOut size={16} />
-            Log Out
+            <TransText>Log Out</TransText>
           </Button>
         </div>
       </div>

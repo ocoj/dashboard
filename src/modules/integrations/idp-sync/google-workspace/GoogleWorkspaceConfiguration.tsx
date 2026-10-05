@@ -189,7 +189,7 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
                 "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
               }
             />
-            Settings
+            <TransText>Settings</TransText>
           </TabsTrigger>
           <TabsTrigger value={"group-sync"}>
             <FolderGit2
@@ -198,7 +198,7 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
                 "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
               }
             />
-            Group Sync
+            <TransText>Group Sync</TransText>
           </TabsTrigger>
           <TabsTrigger value={"user-sync"}>
             <UserCircle
@@ -207,7 +207,7 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
                 "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
               }
             />
-            User Sync
+            <TransText>User Sync</TransText>
           </TabsTrigger>
           <TabsTrigger value={"danger"}>
             <AlertOctagon
@@ -216,7 +216,7 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
                 "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
               }
             />
-            Danger Zone
+            <TransText>Danger Zone</TransText>
           </TabsTrigger>
         </TabsList>
         <TabsContent value={"settings"} className={"px-8 text-sm"}>
@@ -229,7 +229,7 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
               customPrefix={
                 <div className={"min-w-[165px] flex gap-2 items-center"}>
                   <Box size={16} />
-                  Customer ID
+                  <TransText>Customer ID</TransText>
                 </div>
               }
               placeholder={"62d3a656-c87d-4f30-a242-5b6347e29e9f"}
@@ -244,7 +244,7 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
               customPrefix={
                 <div className={"min-w-[165px] flex gap-2 items-center"}>
                   <KeyRound size={16} />
-                  Service Account Key
+                  <TransText>Service Account Key</TransText>
                 </div>
               }
               placeholder={"your-client-secret"}
@@ -291,7 +291,7 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
             <Label>
               <div className={"flex gap-2 items-center"}>
                 <FolderGit2 size={16} />
-                Synchronize Groups
+                <TransText>Synchronize Groups</TransText>
               </div>
             </Label>
             <GroupPrefixHelpText />
@@ -304,7 +304,7 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
             <Label>
               <div className={"flex gap-2 items-center"}>
                 <UserCircle size={16} />
-                Synchronize Users
+                <TransText>Synchronize Users</TransText>
               </div>
             </Label>
             <GroupPrefixHelpText type={"user-groups"} />
@@ -322,7 +322,7 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
             <Label>
               <div className={"flex gap-2 items-center"}>
                 <AlertOctagon size={16} />
-                Delete Integration
+                <TransText>Delete Integration</TransText>
               </div>
             </Label>
             <HelpText className={"max-w-lg mt-2"}>

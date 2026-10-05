@@ -109,7 +109,7 @@ function SlackModalContent({ onSave }: Readonly<ModalContentProps>) {
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4 mb-3"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <PlusCircle size={18} />
-            Create a Slack App
+            <TransText>Create a Slack App</TransText>
           </p>
 
           <Steps>
@@ -142,7 +142,7 @@ function SlackModalContent({ onSave }: Readonly<ModalContentProps>) {
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <GlobeIcon size={18} />
-            Configure Incoming Webhook
+            <TransText>Configure Incoming Webhook</TransText>
           </p>
 
           <Steps>
@@ -201,7 +201,7 @@ function SlackModalContent({ onSave }: Readonly<ModalContentProps>) {
             onClick={() => setStep(step - 1)}
           >
             <IconArrowLeft size={16} />
-            Back
+            <TransText>Back</TransText>
           </Button>
         )}
         {step < maxSteps - 1 && (
@@ -224,7 +224,7 @@ function SlackModalContent({ onSave }: Readonly<ModalContentProps>) {
             data-testid="slack-connect"
           >
             <Repeat size={16} />
-            Connect
+            <TransText>Connect</TransText>
           </Button>
         )}
       </ModalFooter>

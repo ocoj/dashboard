@@ -303,15 +303,15 @@ function AgentPolicyModalContent({
         <TabsList justify={"start"} className={"px-8"}>
           <TabsTrigger value={"policy"}>
             <ArrowRightLeft size={16} />
-            Policy
+            <TransText>Policy</TransText>
           </TabsTrigger>
           <TabsTrigger value={"limits"}>
             <Gauge size={16} />
-            Limits
+            <TransText>Limits</TransText>
           </TabsTrigger>
           <TabsTrigger value={"guardrails"}>
             <ShieldHalf size={16} />
-            Guardrails
+            <TransText>Guardrails</TransText>
           </TabsTrigger>
         </TabsList>
 
@@ -464,7 +464,7 @@ function AgentPolicyModalContent({
                     disabled={submitDisabled}
                   >
                     <PlusCircle size={16} />
-                    Add Policy
+                    <TransText>Add Policy</TransText>
                   </Button>
                 </>
               )}
@@ -504,7 +504,7 @@ function SourceGroupsSelector({
         <div className={"flex items-center gap-2"}>
           <Badge className={"py-[3px]"} variant={"gray-ghost"}>
             <CircleUser size={12} />
-            All
+            <TransText>All</TransText>
           </Badge>
           Select source group(s)...
         </div>

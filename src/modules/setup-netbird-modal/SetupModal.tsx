@@ -249,7 +249,7 @@ export function SetupModalContent({
                 "fill-nb-gray-500 group-data-[state=active]/trigger:fill-netbird transition-all"
               }
             />
-            Linux
+            <TransText>Linux</TransText>
           </TabsTrigger>
 
           <TabsTrigger value={String(OperatingSystem.WINDOWS)}>
@@ -258,7 +258,7 @@ export function SetupModalContent({
                 "fill-nb-gray-500 group-data-[state=active]/trigger:fill-netbird transition-all"
               }
             />
-            Windows
+            <TransText>Windows</TransText>
           </TabsTrigger>
           <TabsTrigger value={String(OperatingSystem.APPLE)}>
             <AppleIcon
@@ -285,7 +285,7 @@ export function SetupModalContent({
                     "fill-nb-gray-500 group-data-[state=active]/trigger:fill-netbird transition-all"
                   }
                 />
-                Android
+                <TransText>Android</TransText>
               </TabsTrigger>
             </>
           )}
@@ -297,7 +297,7 @@ export function SetupModalContent({
                   "fill-nb-gray-500 group-data-[state=active]/trigger:fill-netbird transition-all"
                 }
               />
-              Docker
+              <TransText>Docker</TransText>
             </TabsTrigger>
           )}
         </TabsList>
@@ -493,7 +493,7 @@ export const RoutingPeerSetupKeyInfo = () => {
     >
       <TransText>This setup key can be used only once within the next 24 hours.</TransText>
       <br />
-      When expired, the same key can not be used again.
+      <TransText>When expired, the same key can not be used again.</TransText>
     </div>
   );
 };
@@ -598,7 +598,7 @@ function SetupKeyGenerator({
           }
         >
           <KeyRoundIcon size={12} />
-          Setup Key
+          <TransText>Setup Key</TransText>
         </div>
         <div
           className={"text-nb-gray-300 text-[0.8rem] text-left mt-0.5 truncate"}

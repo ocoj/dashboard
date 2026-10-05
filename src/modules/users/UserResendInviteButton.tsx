@@ -7,6 +7,7 @@ import * as React from "react";
 import { useState } from "react";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { User } from "@/interfaces/User";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   user: User;
@@ -31,14 +32,14 @@ export const UserResendInviteButton = ({ user }: Props) => {
   const LoadingMessage = () => (
     <>
       <Loader2 size={14} className={"animate-spin block"} />
-      Sending...
+      <TransText>Sending...</TransText>
     </>
   );
 
   const DefaultMessage = () => (
     <>
       <MailIcon size={13} />
-      Resend
+      <TransText>Resend</TransText>
     </>
   );
 

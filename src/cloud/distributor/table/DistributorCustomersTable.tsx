@@ -168,7 +168,7 @@ export default function DistributorCustomersTable({
                 onClick={() => router.push("/settings?tab=invoices")}
               >
                 <ReceiptTextIcon size={16} />
-                Invoices
+                <TransText>Invoices</TransText>
               </Button>
               <AddCustomerButton />
             </div>
@@ -199,7 +199,7 @@ const AddCustomerButton = () => {
   return (
     <Button variant={"primary"} size={"sm"} onClick={openCreateCustomerModal}>
       <PlusCircle size={16} />
-      Add Customer
+      <TransText>Add Customer</TransText>
     </Button>
   );
 };

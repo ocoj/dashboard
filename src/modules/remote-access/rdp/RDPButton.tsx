@@ -7,6 +7,7 @@ import { usePermissions } from "@/contexts/PermissionsProvider";
 import { OperatingSystem } from "@/interfaces/OperatingSystem";
 import { Peer } from "@/interfaces/Peer";
 import { RDPTooltip } from "@/modules/remote-access/rdp/RDPTooltip";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   peer: Peer;
@@ -51,7 +52,7 @@ export const RDPButton = ({ peer, isDropdown = false }: Props) => {
           >
             <div className={"flex gap-3 items-center w-full"}>
               <MonitorIcon size={14} className={"shrink-0"} />
-              RDP
+              <TransText>RDP</TransText>
             </div>
           </DropdownMenuItem>
         ) : (

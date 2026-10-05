@@ -252,7 +252,7 @@ export const ReverseProxyFlatTargetsTable = ({
           disabled={!permission?.services?.create}
         >
           <PlusCircle size={16} />
-          Add
+          <TransText>Add</TransText>
         </Button>
       )}
     >

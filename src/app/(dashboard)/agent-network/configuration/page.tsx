@@ -78,7 +78,7 @@ export default function AgentNetworkConfigurationPage() {
           {canReadClusters && (
             <VerticalTabs.Trigger value={TAB_CLUSTERS}>
               <ServerIcon size={14} />
-              Clusters
+              <TransText>Clusters</TransText>
             </VerticalTabs.Trigger>
           )}
         </VerticalTabs.List>

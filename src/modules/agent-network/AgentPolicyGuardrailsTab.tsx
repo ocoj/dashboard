@@ -110,7 +110,7 @@ export default function AgentPolicyGuardrailsTab({
                 onClick={() => setBrowseOpen(true)}
               >
                 <FolderSearch size={14} />
-                Browse Guardrails
+                <TransText>Browse Guardrails</TransText>
               </Button>
               <Button
                 variant={"primary"}
@@ -121,7 +121,7 @@ export default function AgentPolicyGuardrailsTab({
                 }}
               >
                 <PlusCircle size={14} />
-                New Guardrail
+                <TransText>New Guardrail</TransText>
               </Button>
             </div>
           </div>
@@ -169,13 +169,13 @@ export default function AgentPolicyGuardrailsTab({
                       >
                         <div className={"flex gap-3 items-center"}>
                           <Edit size={14} className={"shrink-0"} />
-                          Edit Guardrail
+                          <TransText>Edit Guardrail</TransText>
                         </div>
                       </DropdownMenuItem>
                       <DropdownMenuItem onClick={() => removeAttached(g.id)}>
                         <div className={"flex gap-3 items-center"}>
                           <MinusCircleIcon size={14} className={"shrink-0"} />
-                          Detach
+                          <TransText>Detach</TransText>
                         </div>
                       </DropdownMenuItem>
                     </DropdownMenuContent>
@@ -247,11 +247,11 @@ function NoGuardrailsInfo({
           onClick={onBrowseClick}
         >
           <FolderSearch size={14} />
-          Browse Guardrails
+          <TransText>Browse Guardrails</TransText>
         </Button>
         <Button variant={"primary"} size={"xs"} onClick={onAddClick}>
           <IconCirclePlus size={14} />
-          New Guardrail
+          <TransText>New Guardrail</TransText>
         </Button>
       </div>
     </div>

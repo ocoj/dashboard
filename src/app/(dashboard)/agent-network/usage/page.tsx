@@ -122,13 +122,13 @@ export default function UsageAndLogsPage() {
                   {canUseUsage && (
                     <TabsTrigger value={TAB_USAGE}>
                       <LayoutDashboard size={16} />
-                      Usage
+                      <TransText>Usage</TransText>
                     </TabsTrigger>
                   )}
                   {canUseLogs && (
                     <TabsTrigger value={TAB_ACCESS_LOGS}>
                       <ScrollText size={16} />
-                      Access Logs
+                      <TransText>Access Logs</TransText>
                     </TabsTrigger>
                   )}
                 </TabsList>

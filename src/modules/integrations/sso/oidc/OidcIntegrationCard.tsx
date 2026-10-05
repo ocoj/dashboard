@@ -155,7 +155,7 @@ const ConfigurationContent = ({ connection }: ConfigurationProps) => {
         onClick={() => setOpen(true)}
       >
         <Settings size={14} />
-        Settings
+        <TransText>Settings</TransText>
       </Button>
       {open && (
         <OktaSsoSettings

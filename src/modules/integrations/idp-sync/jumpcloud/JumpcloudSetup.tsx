@@ -219,7 +219,7 @@ export function SetupContent({ onSuccess, onClose }: ModalProps) {
                 }
               >
                 <Shield size={16} />
-                Required Permissions
+                <TransText>Required Permissions</TransText>
               </div>
               <p className={"mt-2 !text-nb-gray-300 !leading-[1.5]"}>
                 <TransText>Ensure that you have an</TransText>{" "}
@@ -251,7 +251,7 @@ export function SetupContent({ onSuccess, onClose }: ModalProps) {
                   }
                 >
                   <ShieldUser size={14} className={"text-sky-500"} />
-                  Administrator with Billing
+                  <TransText>Administrator with Billing</TransText>
                 </div>
               </div>
             </>
@@ -417,7 +417,7 @@ export function SetupContent({ onSuccess, onClose }: ModalProps) {
             onClick={() => setStep(step - 1)}
           >
             <IconArrowLeft size={16} />
-            Back
+            <TransText>Back</TransText>
           </Button>
         )}
         {step >= 0 && step < maxSteps && (

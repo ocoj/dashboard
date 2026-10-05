@@ -9,6 +9,7 @@ import { usePermissions } from "@/contexts/PermissionsProvider";
 import { useUserContext } from "@/contexts/UserProvider";
 import { AccessToken } from "@/interfaces/AccessToken";
 import { SetupKey } from "@/interfaces/SetupKey";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   access_token: AccessToken;
@@ -58,7 +59,7 @@ export default function AccessTokenActionCell({
         data-testid={"access-token-delete"}
       >
         <Trash2 size={16} />
-        Delete
+        <TransText>Delete</TransText>
       </Button>
     </div>
   );

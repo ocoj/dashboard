@@ -16,7 +16,7 @@ export default function AndroidTab() {
       <TabsContentPadding>
         <p className={"font-medium flex gap-3 items-center text-base"}>
           <ShoppingBagIcon size={16} />
-          Install on Android
+          <TransText>Install on Android</TransText>
         </p>
         <Steps>
           <Steps.Step step={1}>

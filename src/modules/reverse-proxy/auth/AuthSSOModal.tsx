@@ -60,7 +60,7 @@ export default function AuthSSOModal({
               <div className={"flex items-center gap-2"}>
                 <Badge className={"py-[3px]"} variant={"gray-ghost"}>
                   <CircleUser size={12} />
-                  All Users
+                  <TransText>All Users</TransText>
                 </Badge>
                 <TransText>Select user groups...</TransText>
               </div>

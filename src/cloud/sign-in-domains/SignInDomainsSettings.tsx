@@ -61,7 +61,7 @@ export const SignInDomainsSettings = () => {
           data-testid={"add-domain"}
         >
           <PlusCircle size={16} />
-          Add
+          <TransText>Add</TransText>
         </Button>
       </div>
 

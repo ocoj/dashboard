@@ -15,6 +15,7 @@ import { useDialog } from "@/contexts/DialogProvider";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { SetupKey } from "@/interfaces/SetupKey";
 import zhMap from "@/i18n/zh-map";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   setupKey: SetupKey;
@@ -112,7 +113,7 @@ export default function SetupKeyActionCell({ setupKey }: Readonly<Props>) {
           >
             <div className={"flex gap-3 items-center"}>
               <Undo2Icon size={14} className={"shrink-0"} />
-              Revoke
+              <TransText>Revoke</TransText>
             </div>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
@@ -124,7 +125,7 @@ export default function SetupKeyActionCell({ setupKey }: Readonly<Props>) {
           >
             <div className={"flex gap-3 items-center"}>
               <Trash2 size={14} className={"shrink-0"} />
-              Delete
+              <TransText>Delete</TransText>
             </div>
           </DropdownMenuItem>
         </DropdownMenuContent>

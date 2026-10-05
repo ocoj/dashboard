@@ -91,7 +91,7 @@ export function ControlCenterEmptyStates() {
                     disabled={!permission.networks.update}
                   >
                     <PlusCircle size={16} />
-                    Add Resource
+                    <TransText>Add Resource</TransText>
                   </Button>
                 </div>
               }
@@ -144,7 +144,7 @@ export function ControlCenterEmptyStates() {
                     disabled={!permission.networks.create}
                   >
                     <PlusCircle size={16} />
-                    Add Network
+                    <TransText>Add Network</TransText>
                   </Button>
                 </div>
               }

@@ -345,7 +345,7 @@ export const PeerGroupsPanel = ({ peerId, onClose }: PeerGroupsPanelProps) => {
                   "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
                 }
               />
-              Groups
+              <TransText>Groups</TransText>
             </TabsTrigger>
           </TabsList>
         </div>

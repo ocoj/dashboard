@@ -15,6 +15,7 @@ import CrowdStrikeConfiguration from "@/modules/integrations/edr/crowdstrike/Cro
 import CrowdStrikeSetup from "@/modules/integrations/edr/crowdstrike/CrowdStrikeSetup";
 import { IntegrationCard } from "@/modules/integrations/IntegrationCard";
 import { useIntegrations } from "../useIntegrations";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   account: Account;
@@ -139,7 +140,7 @@ const ConfigurationButton = ({ config }: ConfigurationProps) => {
           }}
         >
           <Settings size={14} />
-          Settings
+          <TransText>Settings</TransText>
         </Button>
       </div>
       <CrowdStrikeConfiguration

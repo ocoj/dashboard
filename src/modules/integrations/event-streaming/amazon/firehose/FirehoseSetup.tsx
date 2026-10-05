@@ -204,7 +204,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
                 <Link href={firehoseDashboardURL} passHref target={"_blank"}>
                   <Button variant={"primary"} size={"xs"}>
                     <ExternalLinkIcon size={14} />
-                    Amazon Data Firehose Stream Dashboard
+                    <TransText>Amazon Data Firehose Stream Dashboard</TransText>
                   </Button>
                 </Link>
               </div>
@@ -279,7 +279,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
                 <Link href={iamDashboardURL} passHref target={"_blank"}>
                   <Button variant={"primary"} size={"xs"}>
                     <ExternalLinkIcon size={14} />
-                    Amazon IAM Dashboard
+                    <TransText>Amazon IAM Dashboard</TransText>
                   </Button>
                 </Link>
               </div>
@@ -365,7 +365,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
               onClick={() => setStep(1)}
             >
               <IconArrowLeft size={16} />
-              Back
+              <TransText>Back</TransText>
             </Button>
             <Button
               variant={"primary"}
@@ -386,7 +386,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
               onClick={() => setStep(2)}
             >
               <IconArrowLeft size={16} />
-              Back
+              <TransText>Back</TransText>
             </Button>
             <Button
               variant={"primary"}
@@ -395,7 +395,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
               onClick={connect}
             >
               <Repeat size={16} />
-              Connect
+              <TransText>Connect</TransText>
             </Button>
           </>
         )}

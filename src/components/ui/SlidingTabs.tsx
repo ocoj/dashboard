@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import * as React from "react";
 import { useState } from "react";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   defaultValue?: string;
@@ -148,7 +149,7 @@ export const SlidingTabsBackTrigger = ({
       className={"flex gap-2 items-center select-none cursor-pointer"}
     >
       <ChevronLeft size={18} />
-      Back
+      <TransText>Back</TransText>
     </div>
   );
 };

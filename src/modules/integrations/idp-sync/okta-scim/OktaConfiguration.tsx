@@ -200,7 +200,7 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
                 "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
               }
             />
-            Settings
+            <TransText>Settings</TransText>
           </TabsTrigger>
           <TabsTrigger value={"group-sync"}>
             <FolderGit2
@@ -209,7 +209,7 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
                 "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
               }
             />
-            Group Sync
+            <TransText>Group Sync</TransText>
           </TabsTrigger>
           <TabsTrigger value={"user-sync"}>
             <UserCircle
@@ -218,7 +218,7 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
                 "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
               }
             />
-            User Sync
+            <TransText>User Sync</TransText>
           </TabsTrigger>
           <TabsTrigger value={"danger"}>
             <AlertOctagon
@@ -227,7 +227,7 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
                 "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
               }
             />
-            Danger Zone
+            <TransText>Danger Zone</TransText>
           </TabsTrigger>
         </TabsList>
         <TabsContent value={"settings"} className={"px-8 text-sm"}>
@@ -240,7 +240,7 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
                   label={
                     <>
                       <KeyRound size={16} />
-                      Auth Token
+                      <TransText>Auth Token</TransText>
                     </>
                   }
                   value={authToken}
@@ -249,7 +249,7 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
             </Card>
             <Button variant={"secondary"} onClick={regenerateAuthToken}>
               <RefreshCcw size={16} />
-              Regenerate Auth Token
+              <TransText>Regenerate Auth Token</TransText>
             </Button>
             <EmbeddedIdentityProviderSelect
               value={connectorId}
@@ -264,7 +264,7 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
             <Label>
               <div className={"flex gap-2 items-center"}>
                 <FolderGit2 size={16} />
-                Synchronize Groups
+                <TransText>Synchronize Groups</TransText>
               </div>
             </Label>
             <GroupPrefixHelpText />
@@ -277,7 +277,7 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
             <Label>
               <div className={"flex gap-2 items-center"}>
                 <UserCircle size={16} />
-                Synchronize Users
+                <TransText>Synchronize Users</TransText>
               </div>
             </Label>
             <GroupPrefixHelpText type={"user-groups"} />
@@ -295,7 +295,7 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
             <Label>
               <div className={"flex gap-2 items-center"}>
                 <AlertOctagon size={16} />
-                Delete Integration
+                <TransText>Delete Integration</TransText>
               </div>
             </Label>
             <HelpText className={"max-w-lg mt-2"}>

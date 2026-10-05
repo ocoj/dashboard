@@ -296,7 +296,7 @@ function UserOverview({ user, initialGroups }: Readonly<Props>) {
           {showPeers && (
             <TabsTrigger value={"peers"} data-testid={"user-tab-peers"}>
               <MonitorSmartphoneIcon size={16} />
-              Peers
+              <TransText>Peers</TransText>
             </TabsTrigger>
           )}
           {showAccessTokens && (
@@ -305,7 +305,7 @@ function UserOverview({ user, initialGroups }: Readonly<Props>) {
               data-testid={"user-tab-access-tokens"}
             >
               <KeyRoundIcon size={16} />
-              Access Tokens
+              <TransText>Access Tokens</TransText>
             </TabsTrigger>
           )}
         </TabsList>
@@ -334,7 +334,7 @@ function UserOverview({ user, initialGroups }: Readonly<Props>) {
                           disabled={!permission.pats.create}
                         >
                           <IconCirclePlus size={16} />
-                          Create Access Token
+                          <TransText>Create Access Token</TransText>
                         </Button>
                       </CreateAccessTokenModal>
                     </div>
@@ -375,7 +375,7 @@ function UserInformationCard({ user }: Readonly<{ user: User }>) {
             label={
               <>
                 <Mail size={16} />
-                E-Mail
+                <TransText>E-Mail</TransText>
               </>
             }
             value={user.email || "-"}
@@ -387,7 +387,7 @@ function UserInformationCard({ user }: Readonly<{ user: User }>) {
           label={
             <>
               <GalleryHorizontalEnd size={16} />
-              Status
+              <TransText>Status</TransText>
             </>
           }
           value={<UserStatusCell user={user} />}
@@ -405,7 +405,7 @@ function UserInformationCard({ user }: Readonly<{ user: User }>) {
                   label={
                     <>
                       <Ban size={16} />
-                      Block User
+                      <TransText>Block User</TransText>
                     </>
                   }
                   value={<UserBlockCell user={user} isUserPage={true} />}
@@ -416,7 +416,7 @@ function UserInformationCard({ user }: Readonly<{ user: User }>) {
               label={
                 <>
                   <History size={16} />
-                  Last login
+                  <TransText>Last login</TransText>
                 </>
               }
               value={

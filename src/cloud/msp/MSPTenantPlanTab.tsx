@@ -4,6 +4,7 @@ import * as React from "react";
 import { useTenantPlan } from "@/cloud/msp/hooks/useTenantPlan";
 import { Tenant, TenantStatus } from "@/cloud/msp/interfaces/Tenant";
 import { PlanCard, PlanLoadingSkeleton } from "@/modules/billing/PlanCard";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   tenant: Tenant;
@@ -65,7 +66,7 @@ export const MSPTenantPlanTabTrigger = ({ tenant }: Props) => {
           "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
         }
       />
-      Plan
+      <TransText>Plan</TransText>
     </TabsTrigger>
   );
 };

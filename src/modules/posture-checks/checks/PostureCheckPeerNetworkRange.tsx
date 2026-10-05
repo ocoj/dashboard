@@ -138,11 +138,11 @@ const CheckContent = ({ value, onChange, disabled }: Props) => {
           <RadioGroup value={allowOrDeny} onChange={setAllowOrDeny}>
             <RadioGroupItem value={"allow"} variant={"green"}>
               <ShieldCheck size={16} />
-              Allow
+              <TransText>Allow</TransText>
             </RadioGroupItem>
             <RadioGroupItem value={"deny"} variant={"red"}>
               <ShieldXIcon size={16} />
-              Block
+              <TransText>Block</TransText>
             </RadioGroupItem>
           </RadioGroup>
         </div>
@@ -186,7 +186,7 @@ const CheckContent = ({ value, onChange, disabled }: Props) => {
           disabled={disabled}
         >
           <PlusCircle size={16} />
-          Add Network Range
+          <TransText>Add Network Range</TransText>
         </Button>
       </div>
       <ModalFooter className={"items-center"}>

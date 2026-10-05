@@ -220,7 +220,7 @@ export function PeerResourcePicker({
               className={"flex-1 gap-1.5 px-1.5 text-xs"}
             >
               <UsersIcon size={13} className={"shrink-0"} />
-              Users
+              <TransText>Users</TransText>
             </TabsTrigger>
           )}
           <TabsTrigger
@@ -228,14 +228,14 @@ export function PeerResourcePicker({
             className={"flex-1 gap-1.5 px-1.5 text-xs"}
           >
             <PeerIcon size={13} className={"fill-current shrink-0"} />
-            Peers
+            <TransText>Peers</TransText>
           </TabsTrigger>
           <TabsTrigger
             value={"resources"}
             className={"flex-1 gap-1.5 px-1.5 text-xs"}
           >
             <Layers3Icon size={13} className={"shrink-0"} />
-            Resources
+            <TransText>Resources</TransText>
           </TabsTrigger>
         </TabsPrimitive.List>
         {users && (

@@ -40,7 +40,7 @@ export default function Integrations() {
           {isNetBirdCloud() && (
             <VerticalTabs.Trigger value="sso">
               <KeyRoundIcon size={14} />
-              Single Sign-On
+              <TransText>Single Sign-On</TransText>
             </VerticalTabs.Trigger>
           )}
 

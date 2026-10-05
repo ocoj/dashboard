@@ -45,7 +45,7 @@ export const HuntressMatchSettings = ({
         label={
           <>
             <ShieldIcon size={14} />
-            Managed Microsoft Defender
+            <TransText>Managed Microsoft Defender</TransText>
           </>
         }
         helpText={
@@ -67,7 +67,7 @@ export const HuntressMatchSettings = ({
         label={
           <>
             <ShieldCheckIcon size={14} />
-            Defender Policy Compliance
+            <TransText>Defender Policy Compliance</TransText>
           </>
         }
         helpText={
@@ -89,7 +89,7 @@ export const HuntressMatchSettings = ({
         label={
           <>
             <BrickWallShieldIcon size={14} />
-            Firewall
+            <TransText>Firewall</TransText>
           </>
         }
         helpText={

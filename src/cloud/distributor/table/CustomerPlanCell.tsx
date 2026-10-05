@@ -11,6 +11,7 @@ import {
 } from "@/cloud/distributor/interfaces/Distributor";
 import { PlanTier } from "@/interfaces/Subscription";
 import EmptyRow from "@/modules/common-table-rows/EmptyRow";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   customer: DistributorCustomer;
@@ -32,7 +33,7 @@ export const CustomerPlanCell = ({ customer, onUpgrade }: Props) => {
       <div className={"flex gap-3 items-center"}>
         <Badge variant={"yellow"} className={"h-[32px]"}>
           <CircleAlertIcon size={12} />
-          Trial Expired
+          <TransText>Trial Expired</TransText>
         </Badge>
         {onUpgrade && (
           <Button
@@ -42,7 +43,7 @@ export const CustomerPlanCell = ({ customer, onUpgrade }: Props) => {
             onClick={onUpgrade}
           >
             <CreditCardIcon size={12} />
-            Upgrade Plan
+            <TransText>Upgrade Plan</TransText>
           </Button>
         )}
       </div>

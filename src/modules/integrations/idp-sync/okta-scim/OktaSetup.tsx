@@ -189,7 +189,7 @@ export function SetupContent({
             }
           >
             <Shield size={16} />
-            Required Permissions
+            <TransText>Required Permissions</TransText>
           </div>
           <p className={"mt-2 !text-nb-gray-300 !leading-[1.5]"}>
             <TransText>Ensure that you have an</TransText>{" "}
@@ -216,7 +216,7 @@ export function SetupContent({
               }
             >
               <PlusCircle size={14} className={"text-sky-500"} />
-              Add Okta applications
+              <TransText>Add Okta applications</TransText>
             </div>
             <div
               className={
@@ -224,7 +224,7 @@ export function SetupContent({
               }
             >
               <Settings2 size={14} className={"text-sky-500"} />
-              Configure Okta applications
+              <TransText>Configure Okta applications</TransText>
             </div>
           </div>
         </div>
@@ -395,7 +395,7 @@ export function SetupContent({
             onClick={() => setStep(step - 1)}
           >
             <IconArrowLeft size={16} />
-            Back
+            <TransText>Back</TransText>
           </Button>
         )}
         {step >= 0 && step < maxSteps && (
@@ -486,7 +486,7 @@ export function SetupSSOContent() {
             }
           >
             <Shield size={16} />
-            Required Permissions
+            <TransText>Required Permissions</TransText>
           </div>
           <p className={"mt-2 !text-nb-gray-300 !leading-[1.5]"}>
             <TransText>Ensure that you have an</TransText>{" "}
@@ -513,7 +513,7 @@ export function SetupSSOContent() {
               }
             >
               <PlusCircle size={14} className={"text-sky-500"} />
-              Add Okta applications
+              <TransText>Add Okta applications</TransText>
             </div>
             <div
               className={
@@ -521,7 +521,7 @@ export function SetupSSOContent() {
               }
             >
               <Settings2 size={14} className={"text-sky-500"} />
-              Configure Okta applications
+              <TransText>Configure Okta applications</TransText>
             </div>
           </div>
         </div>
@@ -635,7 +635,7 @@ export function SetupSSOContent() {
             onClick={() => setStep(step - 1)}
           >
             <IconArrowLeft size={16} />
-            Back
+            <TransText>Back</TransText>
           </Button>
         )}
         {step >= 0 && step < maxSteps && (

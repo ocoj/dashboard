@@ -268,7 +268,7 @@ const CheckContent = ({ value, onChange, disabled }: Props) => {
           disabled={disabled}
         >
           <PlusCircle size={16} />
-          Add Process
+          <TransText>Add Process</TransText>
         </Button>
       </div>
       <ModalFooter className={"items-center"}>

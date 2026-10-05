@@ -140,7 +140,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
         <div className={"px-8 py-3 flex flex-col mt-4 z-0"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <GlobeIcon size={16} />
-            Select your Datadog region
+            <TransText>Select your Datadog region</TransText>
           </p>
           <p className={"mb-3 mt-2"}>
             To identify which region you are on please check out the{" "}
@@ -181,7 +181,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4 z-0"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <KeyRound size={16} />
-            Get your Datadog API Key
+            <TransText>Get your Datadog API Key</TransText>
           </p>
           <Steps>
             <Steps.Step step={1}>
@@ -190,7 +190,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
                 <Link href={apiPageUrl} passHref target={"_blank"}>
                   <Button variant={"primary"} size={"xs"}>
                     <ExternalLinkIcon size={14} />
-                    API Keys
+                    <TransText>API Keys</TransText>
                   </Button>
                 </Link>
               </div>
@@ -264,7 +264,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
               onClick={() => setStep(1)}
             >
               <IconArrowLeft size={16} />
-              Back
+              <TransText>Back</TransText>
             </Button>
             <Button
               variant={"primary"}
@@ -273,7 +273,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
               onClick={connect}
             >
               <Repeat size={16} />
-              Connect
+              <TransText>Connect</TransText>
             </Button>
           </>
         )}

@@ -18,6 +18,7 @@ import { useState } from "react";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { useReverseProxies } from "@/contexts/ReverseProxiesProvider";
 import { isL4Mode, ReverseProxyFlatTarget } from "@/interfaces/ReverseProxy";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   target: ReverseProxyFlatTarget;
@@ -64,7 +65,7 @@ export default function ReverseProxyFlatTargetActionCell({
           >
             <div className={"flex gap-3 items-center pr-8"}>
               <SquarePenIcon size={14} className={"shrink-0"} />
-              Edit Target
+              <TransText>Edit Target</TransText>
             </div>
           </DropdownMenuItem>
 
@@ -92,7 +93,7 @@ export default function ReverseProxyFlatTargetActionCell({
           >
             <div className={"flex gap-3 items-center pr-6"}>
               <Settings size={14} className={"shrink-0"} />
-              Advanced Settings
+              <TransText>Advanced Settings</TransText>
             </div>
           </DropdownMenuItem>
 
@@ -108,7 +109,7 @@ export default function ReverseProxyFlatTargetActionCell({
           >
             <div className={"flex gap-3 items-center"}>
               <Trash2 size={14} className={"shrink-0"} />
-              Delete
+              <TransText>Delete</TransText>
             </div>
           </DropdownMenuItem>
         </DropdownMenuContent>

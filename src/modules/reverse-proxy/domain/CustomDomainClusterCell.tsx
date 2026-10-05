@@ -4,6 +4,7 @@ import Badge from "@components/Badge";
 import { Globe, Server } from "lucide-react";
 import React from "react";
 import { ReverseProxyDomain } from "@/interfaces/ReverseProxy";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   domain: ReverseProxyDomain;
@@ -17,7 +18,7 @@ export default function CustomDomainClusterCell({ domain }: Readonly<Props>) {
       <div className="flex items-center gap-2">
         <Badge variant="gray" className="font-normal">
           <Globe size={12} />
-          All
+          <TransText>All</TransText>
         </Badge>
       </div>
     );

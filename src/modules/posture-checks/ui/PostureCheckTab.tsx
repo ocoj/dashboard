@@ -89,7 +89,7 @@ export const PostureCheckTab = ({
                 }
               >
                 <Trash2Icon size={13} className={"mr-1"} />
-                Remove Checks
+                <TransText>Remove Checks</TransText>
               </button>
             )}
           </div>

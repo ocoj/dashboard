@@ -158,11 +158,11 @@ export const AgentNetworkSignupForm = ({ onSubmit }: Props) => {
             <SegmentedTabs.List className={"rounded-lg border"}>
               <SegmentedTabs.Trigger value={"business"}>
                 <BriefcaseIcon size={16} />
-                Business
+                <TransText>Business</TransText>
               </SegmentedTabs.Trigger>
               <SegmentedTabs.Trigger value={"personal"}>
                 <UserIcon size={16} />
-                Personal
+                <TransText>Personal</TransText>
               </SegmentedTabs.Trigger>
             </SegmentedTabs.List>
           </SegmentedTabs>

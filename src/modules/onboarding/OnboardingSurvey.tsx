@@ -303,11 +303,11 @@ export const OnboardingSurvey = ({ domainCategory, onSubmit }: Props) => {
             <SegmentedTabs.List className={"rounded-lg border"}>
               <SegmentedTabs.Trigger value={"business"}>
                 <BriefcaseIcon size={16} />
-                Business
+                <TransText>Business</TransText>
               </SegmentedTabs.Trigger>
               <SegmentedTabs.Trigger value={"personal"}>
                 <UserIcon size={16} />
-                Personal
+                <TransText>Personal</TransText>
               </SegmentedTabs.Trigger>
             </SegmentedTabs.List>
           </SegmentedTabs>
@@ -370,28 +370,28 @@ export const OnboardingSurvey = ({ domainCategory, onSubmit }: Props) => {
                 <>
                   <OnboardingCheckbox value={zeroTrust} setValue={setZeroTrust}>
                     <ShieldCheck size={16} />
-                    Zero Trust Security
+                    <TransText>Zero Trust Security</TransText>
                   </OnboardingCheckbox>
                   <OnboardingCheckbox
                     value={remoteAccess}
                     setValue={setRemoteAccess}
                   >
                     <Laptop size={16} />
-                    Employee Remote Access
+                    <TransText>Employee Remote Access</TransText>
                   </OnboardingCheckbox>
                   <OnboardingCheckbox
                     value={businessVPN}
                     setValue={setBusinessVPN}
                   >
                     <BriefcaseIcon size={16} />
-                    Business VPN
+                    <TransText>Business VPN</TransText>
                   </OnboardingCheckbox>
                   <OnboardingCheckbox
                     value={siteToSite}
                     setValue={setSiteToSite}
                   >
                     <Layers size={16} />
-                    Site-to-Site Connectivity
+                    <TransText>Site-to-Site Connectivity</TransText>
                   </OnboardingCheckbox>
                   <OnboardingCheckbox value={ioT} setValue={setIoT}>
                     <Waypoints size={16} />
@@ -406,25 +406,25 @@ export const OnboardingSurvey = ({ domainCategory, onSubmit }: Props) => {
                 <>
                   <OnboardingCheckbox value={homelab} setValue={setHomelab}>
                     <HomeIcon size={16} />
-                    Homelab Automation
+                    <TransText>Homelab Automation</TransText>
                   </OnboardingCheckbox>
                   <OnboardingCheckbox
                     value={homeRemoteAccess}
                     setValue={setHomeRemoteAccess}
                   >
                     <Laptop size={16} />
-                    Home Remote Access
+                    <TransText>Home Remote Access</TransText>
                   </OnboardingCheckbox>
                   <OnboardingCheckbox
                     value={fileAccess}
                     setValue={setFileAccess}
                   >
                     <FolderIcon size={16} />
-                    File Access
+                    <TransText>File Access</TransText>
                   </OnboardingCheckbox>
                   <OnboardingCheckbox value={gaming} setValue={setGaming}>
                     <Gamepad2 size={16} />
-                    Gaming
+                    <TransText>Gaming</TransText>
                   </OnboardingCheckbox>
                 </>
               )}

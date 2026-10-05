@@ -319,7 +319,7 @@ const TenantItem = ({
               className={"h-[25px] px-2 text-[0.7rem] !border-yellow-600"}
             >
               <CircleHelp size={12} />
-              Trial Expired
+              <TransText>Trial Expired</TransText>
             </Badge>
           </FullTooltip>
         </div>

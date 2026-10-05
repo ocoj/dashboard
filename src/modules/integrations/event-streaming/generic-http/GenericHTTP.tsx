@@ -12,6 +12,7 @@ import { useIsLicensed } from "@/hooks/useIsLicensed";
 import { EventStream } from "@/interfaces/EventStream";
 import GenericHTTPModal from "@/modules/integrations/event-streaming/generic-http/GenericHTTPModal";
 import { IntegrationCard } from "@/modules/integrations/IntegrationCard";
+import { TransText } from "@/i18n/trans-text";
 
 export default function GenericHTTP() {
   const { permission } = usePermissions();
@@ -97,7 +98,7 @@ export default function GenericHTTP() {
           onClick={() => setOpen(true)}
         >
           <Settings size={14} />
-          Configuration
+          <TransText>Configuration</TransText>
         </Button>
       </IntegrationCard>
       <GenericHTTPModal

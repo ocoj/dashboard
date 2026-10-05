@@ -138,7 +138,7 @@ export default function ReverseProxyTargetCustomHeaders({
       <HelpText>
         <TransText>Add additional headers to include when forwarding requests.</TransText>
         <br />
-        Hop-by-hop headers like Host or Connection are not allowed.
+        <TransText>Hop-by-hop headers like Host or Connection are not allowed.</TransText>
       </HelpText>
       {headerEntries.length > 0 && (
         <div className="flex flex-col gap-2 mb-3">
@@ -188,7 +188,7 @@ export default function ReverseProxyTargetCustomHeaders({
         data-testid={"add-custom-header"}
       >
         <PlusIcon size={14} />
-        Add Header
+        <TransText>Add Header</TransText>
       </Button>
     </div>
   );

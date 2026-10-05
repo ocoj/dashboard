@@ -150,7 +150,7 @@ export const AccountMFASettings = () => {
         >
           <div className={"flex gap-2 items-center justify-center"}>
             <Loader2Icon size={15} className={"animate-spin"} />
-            Updating MFA settings...
+            <TransText>Updating MFA settings...</TransText>
           </div>
         </div>
         <FancyToggleSwitch
@@ -168,7 +168,7 @@ export const AccountMFASettings = () => {
           helpText={
             <>
               Enable NetBird MFA if not configured in your IdP. <br />
-              This setting is global and applies to all users.
+              <TransText>This setting is global and applies to all users.</TransText>
             </>
           }
         />

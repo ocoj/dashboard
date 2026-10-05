@@ -211,7 +211,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
             }
           >
             <Shield size={16} />
-            Required Permissions
+            <TransText>Required Permissions</TransText>
           </div>
           <p className={"mt-2 !text-nb-gray-300 !leading-[1.5]"}>
             Ensure that you have a{" "}
@@ -238,7 +238,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
               }
             >
               <PlusCircle size={14} className={"text-sky-500"} />
-              API-only User or Admin Access
+              <TransText>API-only User or Admin Access</TransText>
             </div>
             <div
               className={
@@ -246,7 +246,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
               }
             >
               <Settings2 size={14} className={"text-sky-500"} />
-              Read Access to Hosts and Policies
+              <TransText>Read Access to Hosts and Policies</TransText>
             </div>
           </div>
         </div>
@@ -256,7 +256,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <GlobeIcon size={18} />
-            Enter your FleetDM Server URL
+            <TransText>Enter your FleetDM Server URL</TransText>
           </p>
 
           <Steps>
@@ -295,7 +295,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <Box size={20} />
-            Create a FleetDM API Token
+            <TransText>Create a FleetDM API Token</TransText>
           </p>
           <Steps>
             <Steps.Step step={1}>
@@ -354,7 +354,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4 mb-3"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <FolderGit2 size={16} />
-            Peer Approval
+            <TransText>Peer Approval</TransText>
           </p>
 
           <HelpText className={"max-w-lg mt-2"}>
@@ -373,7 +373,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4 mb-3"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <ShieldCheckIcon size={16} />
-            Compliance Requirements
+            <TransText>Compliance Requirements</TransText>
           </p>
           <p className={"mt-2 !text-nb-gray-300 !leading-[1.5]"}>
             <TransText>Set the specific requirements that devices must meet to be considered compliant.</TransText>
@@ -390,7 +390,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4 mb-3"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <RefreshCcw size={16} />
-            FleetDM Sync Window
+            <TransText>FleetDM Sync Window</TransText>
           </p>
           <div className={"mt-2 flex flex-row gap-3"}>
             <FullTooltip
@@ -435,7 +435,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
             onClick={() => setStep(step - 1)}
           >
             <IconArrowLeft size={16} />
-            Back
+            <TransText>Back</TransText>
           </Button>
         )}
         {step >= 0 && step < maxSteps && (
@@ -457,7 +457,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
             onClick={connect}
           >
             <Repeat size={16} />
-            Connect
+            <TransText>Connect</TransText>
           </Button>
         )}
       </ModalFooter>

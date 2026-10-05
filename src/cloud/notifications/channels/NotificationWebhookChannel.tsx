@@ -164,7 +164,7 @@ export const NotificationWebhookChannel = ({ channel }: Props) => {
                 <DropdownMenuItem onClick={() => setModalOpen(true)} disabled={!canUpdate} data-testid="webhook-edit">
                   <div className={"flex gap-3 items-center"}>
                     <SquarePen size={14} className={"shrink-0"} />
-                    Edit
+                    <TransText>Edit</TransText>
                   </div>
                 </DropdownMenuItem>
                 <DropdownMenuItem
@@ -175,7 +175,7 @@ export const NotificationWebhookChannel = ({ channel }: Props) => {
                 >
                   <div className={"flex gap-3 items-center"}>
                     <Trash2 size={14} className={"shrink-0"} />
-                    Delete
+                    <TransText>Delete</TransText>
                   </div>
                 </DropdownMenuItem>
               </DropdownMenuContent>
@@ -190,7 +190,7 @@ export const NotificationWebhookChannel = ({ channel }: Props) => {
               data-testid="webhook-connect"
             >
               <Repeat size={13} />
-              Connect
+              <TransText>Connect</TransText>
             </Button>
           )}
         </Card>

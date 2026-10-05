@@ -216,7 +216,7 @@ export default function PostureCheckTable({
                     }}
                   >
                     <IconCirclePlus size={16} />
-                    Add Posture Check
+                    <TransText>Add Posture Check</TransText>
                   </Button>
                 )}
               </>

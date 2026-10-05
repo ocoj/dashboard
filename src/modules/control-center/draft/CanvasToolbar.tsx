@@ -58,6 +58,7 @@ import { ToolbarButton } from "@/modules/control-center/toolbar/ToolbarButton";
 import { ToolbarContainer } from "@/modules/control-center/toolbar/ToolbarContainer";
 import { ToolbarDivider } from "@/modules/control-center/toolbar/ToolbarDivider";
 import { ToolbarGroup } from "@/modules/control-center/toolbar/ToolbarGroup";
+import { TransText } from "@/i18n/trans-text";
 
 export const CanvasToolbar = () => {
   const {
@@ -184,7 +185,7 @@ export const CanvasToolbar = () => {
               "group-hover/add:rotate-90",
             )}
           />
-          Add
+          <TransText>Add</TransText>
         </ToolbarButton>
       </ToolbarGroup>
 

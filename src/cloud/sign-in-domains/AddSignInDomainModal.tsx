@@ -130,7 +130,7 @@ export const AddSignInDomainModal = ({ open, onOpenChange }: Props) => {
                   data-testid={"add-domain-submit"}
                 >
                   <PlusCircle size={16} />
-                  Add
+                  <TransText>Add</TransText>
                 </Button>
               </div>
             </ModalFooter>

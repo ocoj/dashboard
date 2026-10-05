@@ -15,6 +15,7 @@ import { useDialog } from "@/contexts/DialogProvider";
 import { useGroups } from "@/contexts/GroupsProvider";
 import { usePeer } from "@/contexts/PeerProvider";
 import { Route } from "@/interfaces/Route";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   route: Route;
@@ -70,7 +71,7 @@ export default function PeerRouteActionCell({ route }: Props) {
               disabled={!!peerGroup}
             >
               <Trash2 size={16} />
-              Delete
+              <TransText>Delete</TransText>
             </Button>
           </TooltipTrigger>
           {peerGroup && (

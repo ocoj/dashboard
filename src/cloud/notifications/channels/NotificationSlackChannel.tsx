@@ -173,7 +173,7 @@ export const NotificationSlackChannel = ({ channel }: Props) => {
                 >
                   <div className={"flex gap-3 items-center"}>
                     <Link2Off size={14} className={"shrink-0"} />
-                    Disconnect
+                    <TransText>Disconnect</TransText>
                   </div>
                 </DropdownMenuItem>
               </DropdownMenuContent>
@@ -188,7 +188,7 @@ export const NotificationSlackChannel = ({ channel }: Props) => {
               data-testid="slack-channel-connect"
             >
               <Repeat size={13} />
-              Connect
+              <TransText>Connect</TransText>
             </Button>
           )}
         </Card>

@@ -179,7 +179,7 @@ function ModelsCell({
           }}
         >
           <IconCirclePlus size={14} />
-          Restrict
+          <TransText>Restrict</TransText>
         </Badge>
       </div>
     );
@@ -250,7 +250,7 @@ function LimitsCell({
           }}
         >
           <IconCirclePlus size={14} />
-          Add Limit
+          <TransText>Add Limit</TransText>
         </Badge>
       </div>
     );
@@ -374,7 +374,7 @@ function ActionsCell({
           <DropdownMenuItem onClick={() => onEdit(policy)}>
             <div className={"flex gap-3 items-center"}>
               <PencilLineIcon size={14} className={"shrink-0"} />
-              Edit Policy
+              <TransText>Edit Policy</TransText>
             </div>
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => togglePolicy(policy.id)}>
@@ -387,7 +387,7 @@ function ActionsCell({
           <DropdownMenuItem onClick={onDelete} variant={"danger"}>
             <div className={"flex gap-3 items-center"}>
               <Trash2 size={14} className={"shrink-0"} />
-              Delete
+              <TransText>Delete</TransText>
             </div>
           </DropdownMenuItem>
         </DropdownMenuContent>

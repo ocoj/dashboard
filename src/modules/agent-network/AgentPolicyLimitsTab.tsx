@@ -110,7 +110,7 @@ export default function AgentPolicyLimitsTab({
                 onClick={() => setEditKind("token")}
               >
                 <PlusCircle size={14} />
-                Add Token Limit
+                <TransText>Add Token Limit</TransText>
               </Button>
               <Button
                 variant={"primary"}
@@ -119,7 +119,7 @@ export default function AgentPolicyLimitsTab({
                 onClick={() => setEditKind("budget")}
               >
                 <PlusCircle size={14} />
-                Add Budget Limit
+                <TransText>Add Budget Limit</TransText>
               </Button>
             </div>
           </div>
@@ -221,13 +221,13 @@ function LimitRow({
           <DropdownMenuItem onClick={onEdit}>
             <div className={"flex gap-3 items-center"}>
               <Edit size={14} className={"shrink-0"} />
-              Edit Limit
+              <TransText>Edit Limit</TransText>
             </div>
           </DropdownMenuItem>
           <DropdownMenuItem onClick={onDetach}>
             <div className={"flex gap-3 items-center"}>
               <MinusCircleIcon size={14} className={"shrink-0"} />
-              Detach
+              <TransText>Detach</TransText>
             </div>
           </DropdownMenuItem>
         </DropdownMenuContent>
@@ -260,11 +260,11 @@ function NoLimitsInfo({
       <div className={"flex items-center justify-center gap-4 mt-5"}>
         <Button variant={"primary"} size={"xs"} onClick={onAddToken}>
           <IconCirclePlus size={14} />
-          Add Token Limit
+          <TransText>Add Token Limit</TransText>
         </Button>
         <Button variant={"primary"} size={"xs"} onClick={onAddBudget}>
           <IconCirclePlus size={14} />
-          Add Budget Limit
+          <TransText>Add Budget Limit</TransText>
         </Button>
       </div>
     </div>

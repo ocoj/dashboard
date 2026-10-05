@@ -48,7 +48,7 @@ export const TenantActionCell = ({ tenant }: Props) => {
           onClick={() => verifyDomain(tenant, true)}
         >
           <ShieldCheckIcon size={14} />
-          Verify Domain
+          <TransText>Verify Domain</TransText>
         </Button>
       )}
 
@@ -60,7 +60,7 @@ export const TenantActionCell = ({ tenant }: Props) => {
           onClick={() => openAccountExistsModal(tenant)}
         >
           <ShieldUserIcon size={16} />
-          Request Access
+          <TransText>Request Access</TransText>
         </Button>
       )}
 
@@ -87,7 +87,7 @@ export const TenantActionCell = ({ tenant }: Props) => {
         onClick={() => openEditTenantModal(tenant)}
       >
         <SquarePenIcon size={14} />
-        Edit
+        <TransText>Edit</TransText>
       </Button>
       <DropdownMenu modal={false}>
         <DropdownMenuTrigger
@@ -106,7 +106,7 @@ export const TenantActionCell = ({ tenant }: Props) => {
           <DropdownMenuItem onClick={() => openUnlinkTenantModal(tenant)}>
             <div className={"flex gap-3 items-center"}>
               <UnlinkIcon size={14} className={"shrink-0"} />
-              Unlink
+              <TransText>Unlink</TransText>
             </div>
           </DropdownMenuItem>
 
@@ -116,7 +116,7 @@ export const TenantActionCell = ({ tenant }: Props) => {
           >
             <div className={"flex gap-3 items-center"}>
               <Trash2 size={14} className={"shrink-0"} />
-              Delete
+              <TransText>Delete</TransText>
             </div>
           </DropdownMenuItem>
         </DropdownMenuContent>

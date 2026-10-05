@@ -174,7 +174,7 @@ export function ConfigurationContent({
                 "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
               }
             />
-            Peer Approval
+            <TransText>Peer Approval</TransText>
           </TabsTrigger>
           <TabsTrigger value={"sync-window"}>
             <RefreshCcw
@@ -183,7 +183,7 @@ export function ConfigurationContent({
                 "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
               }
             />
-            Intune Sync Window
+            <TransText>Intune Sync Window</TransText>
           </TabsTrigger>
           <TabsTrigger value={"settings"}>
             <Cog
@@ -192,7 +192,7 @@ export function ConfigurationContent({
                 "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
               }
             />
-            Settings
+            <TransText>Settings</TransText>
           </TabsTrigger>
           <TabsTrigger value={"danger"}>
             <AlertOctagon
@@ -201,7 +201,7 @@ export function ConfigurationContent({
                 "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
               }
             />
-            Danger Zone
+            <TransText>Danger Zone</TransText>
           </TabsTrigger>
         </TabsList>
         <TabsContent value={"settings"} className={"px-8 text-sm"}>
@@ -244,7 +244,7 @@ export function ConfigurationContent({
               customPrefix={
                 <div className={"min-w-[165px] flex gap-2 items-center"}>
                   <KeyRound size={16} />
-                  Client Secret
+                  <TransText>Client Secret</TransText>
                 </div>
               }
               placeholder={"your-client-secret"}
@@ -269,7 +269,7 @@ export function ConfigurationContent({
             <Label>
               <div className={"flex gap-2 items-center"}>
                 <FolderGit2 size={14} />
-                Groups
+                <TransText>Groups</TransText>
               </div>
             </Label>
             <HelpText className={"max-w-lg mt-2"}>
@@ -320,7 +320,7 @@ export function ConfigurationContent({
             <Label>
               <div className={"flex gap-2 items-center"}>
                 <AlertOctagon size={16} />
-                Delete Integration
+                <TransText>Delete Integration</TransText>
               </div>
             </Label>
             <HelpText className={"max-w-lg mt-2"}>

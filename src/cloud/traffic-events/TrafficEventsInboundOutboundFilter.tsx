@@ -2,6 +2,7 @@ import { cn } from "@utils/helpers";
 import { ArrowDownIcon, ArrowUpIcon } from "lucide-react";
 import * as React from "react";
 import { TrafficEventDirection } from "@/cloud/traffic-events/interfaces/TrafficEvent";
+import { TransText } from "@/i18n/trans-text";
 
 interface Props {
   value: TrafficEventDirection;
@@ -24,14 +25,14 @@ export function TrafficEventsInboundOutboundFilter({ value, onChange }: Props) {
         onClick={() => onChange(TrafficEventDirection.INGRESS)}
       >
         <ArrowDownIcon size={14} className={cn("text-sky-400")} />
-        Inbound
+        <TransText>Inbound</TransText>
       </InnerButton>
       <InnerButton
         isActive={isOutbound}
         onClick={() => onChange(TrafficEventDirection.EGRESS)}
       >
         <ArrowUpIcon size={14} className={cn("text-netbird")} />
-        Outbound
+        <TransText>Outbound</TransText>
       </InnerButton>
     </div>
   );

@@ -61,7 +61,7 @@ export const PostureCheckActionCell = ({ check }: Props) => {
           disabled={hasPolicies || !permission.policies.delete}
         >
           <Trash2 size={16} />
-          Delete
+          <TransText>Delete</TransText>
         </Button>
       </FullTooltip>
     </div>

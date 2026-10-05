@@ -14,6 +14,7 @@ import CircleIcon from "@/assets/icons/CircleIcon";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { useDraftMode } from "@/modules/control-center/draft/DraftModeContext";
 import { PeerOperatingSystemIcon } from "@/modules/peers/PeerOperatingSystemIcon";
+import { TransText } from "@/i18n/trans-text";
 
 export const RoutingPeersIndicator = ({
   count,
@@ -287,7 +288,7 @@ export const RoutingPeersBar = ({
           )}
         >
           <CirclePlusIcon size={12} className={"shrink-0"} />
-          Add
+          <TransText>Add</TransText>
         </button>
       )}
     </div>

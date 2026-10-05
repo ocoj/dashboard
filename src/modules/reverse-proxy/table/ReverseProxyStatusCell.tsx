@@ -97,7 +97,7 @@ export default function ReverseProxyStatusCell({
               ) : (
                 <Badge variant={"red"}>
                   <CircleAlert size={11} />
-                  Error
+                  <TransText>Error</TransText>
                 </Badge>
               )}
             </div>
@@ -132,7 +132,7 @@ export default function ReverseProxyStatusCell({
               ) : (
                 <Badge variant={"red"}>
                   <CircleAlert size={11} />
-                  Tunnel not created
+                  <TransText>Tunnel not created</TransText>
                 </Badge>
               )}
             </div>
@@ -156,12 +156,12 @@ export default function ReverseProxyStatusCell({
             className={"inline-flex items-center gap-1.5 text-yellow-400 truncate"}
           >
             <Loader2 size={11} className={"animate-spin shrink-0"} />
-            Issuing certificate...
+            <TransText>Issuing certificate...</TransText>
           </span>
         ) : (
           <Badge variant={"yellow"}>
             <Loader2 size={12} className={"animate-spin"} />
-            Issuing certificate...
+            <TransText>Issuing certificate...</TransText>
           </Badge>
         )}
       </div>
@@ -179,12 +179,12 @@ const SettingUpService = ({ compact }: { compact?: boolean }) => {
           className={"inline-flex items-center gap-1.5 text-yellow-400 truncate"}
         >
           <Loader2 size={11} className={"animate-spin shrink-0"} />
-          Setting up service...
+          <TransText>Setting up service...</TransText>
         </span>
       ) : (
         <Badge variant={"yellow"}>
           <Loader2 size={14} className={"animate-spin"} />
-          Setting up service...
+          <TransText>Setting up service...</TransText>
         </Badge>
       )}
     </div>

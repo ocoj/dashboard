@@ -212,7 +212,7 @@ export default function ClustersTable({ headingTarget }: Readonly<Props>) {
                 disabled={!permission?.services?.create}
               >
                 <PlusCircle size={16} />
-                Setup Self-Hosted Cluster
+                <TransText>Setup Self-Hosted Cluster</TransText>
               </Button>
             }
           />
@@ -227,7 +227,7 @@ export default function ClustersTable({ headingTarget }: Readonly<Props>) {
                 disabled={!permission?.services?.create}
               >
                 <PlusCircle size={16} />
-                Setup Self-Hosted Cluster
+                <TransText>Setup Self-Hosted Cluster</TransText>
               </Button>
             )}
           </>

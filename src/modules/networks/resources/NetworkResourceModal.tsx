@@ -281,7 +281,7 @@ export function ResourceModalContent({
               disabled={!resource && !canCreate}
             >
               <ShieldCheck size={16} />
-              Access Control
+              <TransText>Access Control</TransText>
             </TabsTrigger>
           )}
         </TabsList>

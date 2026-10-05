@@ -20,6 +20,7 @@ import { useUsers } from "@/contexts/UsersProvider";
 import { Group } from "@/interfaces/Group";
 import { HorizontalUsersStack } from "@/modules/users/HorizontalUsersStack";
 import { UserRoles } from "@/modules/users/UserRoleSelector";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   tenant: Tenant;
@@ -51,7 +52,7 @@ export const TenantGroupsCell = ({ tenant }: Props) => {
         className={"max-h-[38px]"}
       >
         <IconCirclePlus size={14} />
-        Add Groups
+        <TransText>Add Groups</TransText>
       </Button>
     );
 

@@ -14,6 +14,7 @@ import { usePermissions } from "@/contexts/PermissionsProvider";
 import { useReverseProxies } from "@/contexts/ReverseProxiesProvider";
 import { isL4Mode, ReverseProxy } from "@/interfaces/ReverseProxy";
 import { ReverseProxyTargetDevice } from "@/modules/reverse-proxy/targets/ReverseProxyTargetDevice";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   reverseProxy: ReverseProxy;
@@ -41,7 +42,7 @@ export default function ReverseProxyTargetsCell({
       disabled={isL4 || !permission?.services?.create}
     >
       <PlusCircle size={12} />
-      Add
+      <TransText>Add</TransText>
     </Button>
   );
 

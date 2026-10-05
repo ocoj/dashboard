@@ -172,7 +172,7 @@ export default function UserActionCell({
               data-cy={"reject-user"}
             >
               <XCircle size={14} />
-              Reject
+              <TransText>Reject</TransText>
             </Button>
           </>
         )}
@@ -238,7 +238,7 @@ export default function UserActionCell({
           >
             <div className={"flex gap-3 items-center"}>
               <Trash2 size={14} className={"shrink-0"} />
-              Delete
+              <TransText>Delete</TransText>
             </div>
           </DropdownMenuItem>
         </DropdownMenuContent>

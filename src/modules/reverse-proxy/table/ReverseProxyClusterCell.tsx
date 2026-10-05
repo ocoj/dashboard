@@ -47,14 +47,14 @@ export default function ReverseProxyClusterCell({
           className={"inline-flex items-center gap-1.5 truncate cursor-help"}
         >
           <Globe size={11} className={"shrink-0"} />
-          All
+          <TransText>All</TransText>
         </span>
       </FullTooltip>
     ) : (
       <div className="flex items-center gap-2" data-cluster-cell>
         <Badge variant="gray" className="font-normal">
           <Globe size={12} />
-          All
+          <TransText>All</TransText>
         </Badge>
       </div>
     );

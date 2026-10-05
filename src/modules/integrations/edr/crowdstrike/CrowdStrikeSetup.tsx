@@ -189,7 +189,7 @@ export function SetupContent({ onSuccess, account }: ModalProps) {
         <div className={"px-8 py-3 flex flex-col mt-4 z-0"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <GlobeIcon size={16} />
-            Select your CrowdStrike region
+            <TransText>Select your CrowdStrike region</TransText>
           </p>
           <p className={"mb-3 mt-2"}>
             <TransText>To identify which region you are on check your CrowdStrike dashboard url.</TransText>
@@ -208,7 +208,7 @@ export function SetupContent({ onSuccess, account }: ModalProps) {
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4 z-0"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <KeyRound size={16} />
-            Get your API Credentials
+            <TransText>Get your API Credentials</TransText>
           </p>
           <Steps>
             <Steps.Step step={1}>
@@ -261,7 +261,7 @@ export function SetupContent({ onSuccess, account }: ModalProps) {
         <div className={"px-8 py-3 flex flex-col gap-0 mt-4"}>
           <p className={"font-medium flex gap-3 items-center text-base"}>
             <IconDevicesCheck size={20} />
-            Peer Approval
+            <TransText>Peer Approval</TransText>
           </p>
 
           <div className={"flex flex-col gap-6"}>
@@ -296,7 +296,7 @@ export function SetupContent({ onSuccess, account }: ModalProps) {
             onClick={() => setStep(step - 1)}
           >
             <IconArrowLeft size={16} />
-            Back
+            <TransText>Back</TransText>
           </Button>
         )}
         {step >= 0 && step < maxSteps && (
@@ -318,7 +318,7 @@ export function SetupContent({ onSuccess, account }: ModalProps) {
             disabled={isDisabled || hasZtaError}
           >
             <Repeat size={16} />
-            Connect
+            <TransText>Connect</TransText>
           </Button>
         )}
       </ModalFooter>

@@ -140,7 +140,7 @@ export const OnboardingAddRoutingPeer = ({
             <div>
                 <div className="text-nb-gray-100 font-normal text-sm text-left gap-2 flex items-center">
             <KeyRoundIcon size={12} />
-            Setup-Key
+            <TransText>Setup-Key</TransText>
           </div>
           <div className={"text-nb-gray-300 text-[0.8rem] text-left mt-0.5"}>
             {setupKey?.key || "Not yet generated"}
@@ -167,7 +167,7 @@ export const OnboardingAddRoutingPeer = ({
         onClick={() => setOpen(true)}
       >
         <DownloadIcon size={16} />
-        Install Routing Peer
+        <TransText>Install Routing Peer</TransText>
       </Button>
 
       {setupKey && (

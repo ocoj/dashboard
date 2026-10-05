@@ -1249,7 +1249,7 @@ export const DestinationGroupPanel = ({
                   "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
                 }
               />
-              Peers
+              <TransText>Peers</TransText>
             </TabsTrigger>
             <TabsTrigger
               value={"resources"}
@@ -1261,7 +1261,7 @@ export const DestinationGroupPanel = ({
                   "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
                 }
               />
-              Resources
+              <TransText>Resources</TransText>
             </TabsTrigger>
             <TabsTrigger value={"users"} className={"text-[.8rem] font-normal"}>
               <UsersIcon
@@ -1270,7 +1270,7 @@ export const DestinationGroupPanel = ({
                   "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
                 }
               />
-              Users
+              <TransText>Users</TransText>
             </TabsTrigger>
           </TabsList>
         </div>

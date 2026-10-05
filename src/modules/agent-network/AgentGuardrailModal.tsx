@@ -106,7 +106,7 @@ export default function AgentGuardrailModal({
           <TabsList justify={"start"} className={"px-8"}>
             <TabsTrigger value={"checks"}>
               <LayoutList size={16} />
-              Checks
+              <TransText>Checks</TransText>
             </TabsTrigger>
             <TabsTrigger value={"general"} disabled={!atLeastOneEnabled}>
               <Text

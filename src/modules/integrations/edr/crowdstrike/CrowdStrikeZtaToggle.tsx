@@ -16,7 +16,7 @@ export const CrowdStrikeZtaToggle = ({ value, onChange }: Props) => {
       label={
         <>
           <GaugeIcon size={15} />
-          Use Zero Trust Assessment Score
+          <TransText>Use Zero Trust Assessment Score</TransText>
         </>
       }
       helpText={

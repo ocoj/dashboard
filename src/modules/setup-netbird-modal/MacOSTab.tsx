@@ -54,7 +54,7 @@ export default function MacOSTab({
       <TabsContentPadding>
         <p className={"font-medium flex gap-3 items-center text-base"}>
           <PackageOpenIcon size={16} />
-          Install on macOS
+          <TransText>Install on macOS</TransText>
         </p>
         <Steps>
           <Steps.Step step={1}>
@@ -69,7 +69,7 @@ export default function MacOSTab({
               >
                 <Button variant={"primary"}>
                   <DownloadIcon size={14} />
-                  Download NetBird
+                  <TransText>Download NetBird</TransText>
                 </Button>
               </Link>
             </div>
@@ -119,7 +119,7 @@ export default function MacOSTab({
           <AccordionItem value="item-1">
             <AccordionTrigger>
               <TerminalSquareIcon size={16} />
-              Install manually with Terminal
+              <TransText>Install manually with Terminal</TransText>
             </AccordionTrigger>
             <AccordionContent>
               <Steps>
@@ -159,7 +159,7 @@ export default function MacOSTab({
                     <Link href={"https://brew.sh/"} passHref target={"_blank"}>
                       <Button variant={"primary"}>
                         <ExternalLinkIcon size={14} />
-                        HomeBrew Installation Guide
+                        <TransText>HomeBrew Installation Guide</TransText>
                       </Button>
                     </Link>
                   </div>

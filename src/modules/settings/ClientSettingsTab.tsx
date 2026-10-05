@@ -341,7 +341,7 @@ function ClientSettingsTabContent({ account }: Readonly<Props>) {
             <div>
               <Label>
                 <ReverseProxyIcon size={15} className={"text-nb-gray-300"} />
-                Expose Services from CLI
+                <TransText>Expose Services from CLI</TransText>
               </Label>
               <HelpText>
                 <TransText>Allow peers to expose local services through the NetBird reverse proxy using the CLI.</TransText> <br />{" "}

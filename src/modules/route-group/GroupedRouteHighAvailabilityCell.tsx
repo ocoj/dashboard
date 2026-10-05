@@ -117,7 +117,7 @@ export default function GroupedRouteHighAvailabilityCell({
           >
             <>
               <PeerIcon size={12} />
-              Go to Peers
+              <TransText>Go to Peers</TransText>
             </>
           </Button>
         )}
@@ -129,7 +129,7 @@ export default function GroupedRouteHighAvailabilityCell({
             onClick={() => openAddRoutingPeerModal(groupedRoute)}
           >
             <PlusCircle size={12} />
-            Add Peer
+            <TransText>Add Peer</TransText>
           </Button>
         )}{" "}
       </div>

@@ -75,7 +75,7 @@ export const DomainVerificationCard = ({ domain, connectionId }: Props) => {
           onClick={deleteDomainHandler}
         >
           <TrashIcon size={14} />
-          Remove
+          <TransText>Remove</TransText>
         </Button>
       </div>
     </Card>

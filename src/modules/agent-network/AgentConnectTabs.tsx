@@ -15,6 +15,7 @@ import ShellIcon from "@/assets/icons/ShellIcon";
 import AIProviderLogo from "@/modules/agent-network/AIProviderLogo";
 import { AIProviderId } from "@/modules/agent-network/data/mockData";
 import zhMap from "@/i18n/zh-map";
+import { TransText } from "@/i18n/trans-text";
 
 // Same gray-to-netbird treatment the install-peer modal gives its OS tabs.
 const TAB_ICON =
@@ -196,21 +197,21 @@ export function AgentConnectTabs({
       <TabsList justify={"start"} className={listClassName}>
         <TabsTrigger value={"claude-code"}>
           <ClaudeIcon className={TAB_ICON} size={14} />
-          Claude Code
+          <TransText>Claude Code</TransText>
         </TabsTrigger>
         <TabsTrigger value={"codex"}>
           <OpenAIIcon className={TAB_ICON} size={14} />
-          Codex
+          <TransText>Codex</TransText>
         </TabsTrigger>
         {hasKimi && (
           <TabsTrigger value={"kimi-cli"}>
             <KimiIcon className={TAB_ICON} size={14} />
-            Kimi CLI
+            <TransText>Kimi CLI</TransText>
           </TabsTrigger>
         )}
         <TabsTrigger value={"openai-sdk"}>
           <OpenAIIcon className={TAB_ICON} size={14} />
-          OpenAI SDK
+          <TransText>OpenAI SDK</TransText>
         </TabsTrigger>
         <TabsTrigger value={"curl"}>
           <ShellIcon className={TAB_ICON} size={14} />

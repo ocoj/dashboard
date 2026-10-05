@@ -124,7 +124,7 @@ const LimitReachedContent = () => {
           >
             <Button className={"w-full"} variant={"secondary"}>
               <MailIcon size={15} className={"shrink-0"} />
-              Get Support
+              <TransText>Get Support</TransText>
             </Button>
           </a>
           <Button

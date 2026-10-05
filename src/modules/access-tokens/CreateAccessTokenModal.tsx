@@ -114,7 +114,7 @@ export default function CreateAccessTokenModal({
                 onClick={() => copy(copyMessage)}
               >
                 <CopyIcon size={14} />
-                Copy to clipboard
+                <TransText>Copy to clipboard</TransText>
               </Button>
             </div>
           </ModalFooter>
@@ -232,7 +232,7 @@ export function AccessTokenModalContent({
             data-testid={"create-access-token"}
           >
             <PlusCircle size={16} />
-            Create Token
+            <TransText>Create Token</TransText>
           </Button>
         </div>
       </ModalFooter>

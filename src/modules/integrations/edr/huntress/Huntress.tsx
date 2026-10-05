@@ -18,6 +18,7 @@ import HuntressConfiguration from "@/modules/integrations/edr/huntress/HuntressC
 import HuntressSetup from "@/modules/integrations/edr/huntress/HuntressSetup";
 import { useIntegrations } from "@/modules/integrations/edr/useIntegrations";
 import { IntegrationCard } from "@/modules/integrations/IntegrationCard";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   account: Account;
@@ -155,7 +156,7 @@ const ConfigurationButton = ({ config }: ConfigurationProps) => {
           }}
         >
           <Settings size={14} />
-          Settings
+          <TransText>Settings</TransText>
         </Button>
       </div>
       <HuntressConfiguration

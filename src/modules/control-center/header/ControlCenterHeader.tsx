@@ -55,6 +55,7 @@ import {
   useStructuralNodes,
 } from "@/modules/control-center/utils/helpers";
 import zhMap from "@/i18n/zh-map";
+import { TransText } from "@/i18n/trans-text";
 
 // Sized to the longest option label (~6.5px/char at text-xs), clamped to 256px.
 const networkSelectorWidth = (labels: unknown[]) => {
@@ -121,7 +122,7 @@ function NetworkActionsMenu({
           <DropdownMenuItem onClick={() => setNetworkEditor({ networkNodeId })}>
             <div className={"flex gap-3 items-center"}>
               <SquarePenIcon size={14} className={"shrink-0"} />
-              Edit
+              <TransText>Edit</TransText>
             </div>
           </DropdownMenuItem>
         )}
@@ -159,7 +160,7 @@ function AddResourceButton({ networkNodeId }: { networkNodeId: string }) {
       )}
     >
       <CirclePlusIcon size={14} className={"shrink-0"} />
-      Add Resource
+      <TransText>Add Resource</TransText>
     </button>
   );
 }
@@ -511,7 +512,7 @@ function FeedbackButton() {
       >
         <Button variant={"secondary"} size={"xs"} className={"h-[39px] px-4.5"}>
           <MessageSquareShare size={14} />
-          Feedback
+          <TransText>Feedback</TransText>
         </Button>
       </a>
     </div>

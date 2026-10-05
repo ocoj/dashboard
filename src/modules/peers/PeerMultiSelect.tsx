@@ -410,7 +410,7 @@ const PeerGroupMassAssignmentContent = ({
                 label={
                   <div className={"flex gap-2"}>
                     <RedoDot size={14} />
-                    Overwrite Existing Groups
+                    <TransText>Overwrite Existing Groups</TransText>
                   </div>
                 }
                 helpText={

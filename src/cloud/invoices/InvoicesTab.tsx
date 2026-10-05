@@ -43,7 +43,7 @@ export const InvoicesTabTrigger = () => {
         data-testid="settings-tab-invoices"
       >
         <ReceiptTextIcon size={14} />
-        Invoices
+        <TransText>Invoices</TransText>
       </VerticalTabs.Trigger>
     )
   );

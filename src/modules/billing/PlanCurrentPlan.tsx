@@ -112,7 +112,7 @@ export const PlanCurrentPlan = ({
                   onClick={visitCustomerPortal}
                 >
                   <EditIcon size={12} />
-                  Manage Plan
+                  <TransText>Manage Plan</TransText>
                 </Button>
               </div>
             )}

@@ -796,7 +796,7 @@ export default function AIProviderModal({
   ) : (
     <>
       <PlusCircle size={16} />
-      Connect Provider
+      <TransText>Connect Provider</TransText>
     </>
   );
 
@@ -1242,7 +1242,7 @@ export default function AIProviderModal({
                   label={
                     <>
                       <ArrowRightLeft size={15} />
-                      Forward Identity Metadata
+                      <TransText>Forward Identity Metadata</TransText>
                     </>
                   }
                   helpText={
@@ -1437,7 +1437,7 @@ export default function AIProviderModal({
                   label={
                     <>
                       <ArrowRightLeft size={15} />
-                      Forward Identity Metadata
+                      <TransText>Forward Identity Metadata</TransText>
                     </>
                   }
                   helpText={
@@ -1540,7 +1540,7 @@ export default function AIProviderModal({
                   label={
                     <>
                       <ArrowRightLeft size={15} />
-                      Forward Identity Metadata
+                      <TransText>Forward Identity Metadata</TransText>
                     </>
                   }
                   helpText={
@@ -1808,7 +1808,7 @@ export default function AIProviderModal({
                 onClick={addModel}
               >
                 <PlusIcon size={14} />
-                Add More
+                <TransText>Add More</TransText>
               </Button>
             </div>
           </TabsContent>
