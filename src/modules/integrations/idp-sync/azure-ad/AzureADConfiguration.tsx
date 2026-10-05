@@ -263,7 +263,7 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
                   Client Secret
                 </div>
               }
-              placeholder={zhMap["YdV7Q~JJ62Xl.LvYoBanxZR2sJA2va_3UbqvncY8"] || "YdV7Q~JJ62Xl.LvYoBanxZR2sJA2va_3UbqvncY8"}
+              placeholder={"your-client-secret"}
               value={clientSecret}
               onChange={(e) => setClientSecret(e.target.value)}
             />

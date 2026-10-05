@@ -247,7 +247,7 @@ export function ConfigurationContent({ onSuccess, config }: ModalProps) {
                   Service Account Key
                 </div>
               }
-              placeholder={zhMap["YdV7Q~JJ62Xl.LvYoBanxZR2sJA2va_3UbqvncY8"] || "YdV7Q~JJ62Xl.LvYoBanxZR2sJA2va_3UbqvncY8"}
+              placeholder={"your-client-secret"}
               value={serviceAccountKey}
               readOnly={true}
             />
