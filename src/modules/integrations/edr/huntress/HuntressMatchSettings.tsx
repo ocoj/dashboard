@@ -6,6 +6,7 @@ import {
   HuntressMatchAttributes,
 } from "@/interfaces/EDR";
 
+import { TransText } from "@/i18n/trans-text";
 type Props = {
   value: HuntressMatchAttributes;
   dispatch: React.Dispatch<any>;
@@ -93,8 +94,8 @@ export const HuntressMatchSettings = ({
         }
         helpText={
           <span>
-            Device has an active firewall with <br />
-            all required profiles enabled
+            <TransText>Device has an active firewall with</TransText> <br />
+            <TransText>all required profiles enabled</TransText>
           </span>
         }
       />

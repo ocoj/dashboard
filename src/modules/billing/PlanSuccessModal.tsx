@@ -25,8 +25,8 @@ export const PlanSuccessModal = () => {
           }
         >
           <h2 className={"text-xl my-0 leading-[1.5] mb-2"}>
-            Thank you for subscribing <br />
-            to NetBird! 🎉
+            <TransText>Thank you for subscribing</TransText> <br />
+            <TransText>to NetBird! 🎉</TransText>
           </h2>
           <Paragraph className={cn("text-sm text-center max-w-xs")}>
             <TransText>Your subscription has been successfully activated. You have now full access to all NetBird features of your selected plan.</TransText>

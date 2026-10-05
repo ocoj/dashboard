@@ -43,8 +43,8 @@ export const DistributorAccountExistsModal = ({
             {customer?.domain}
           </div>
           <div className={"text-xl font-medium text-center mb-1"}>
-            This NetBird account already <br />
-            exists in our system
+            <TransText>This NetBird account already</TransText> <br />
+            <TransText>exists in our system</TransText>
           </div>
           <div className={"text-sm text-nb-gray-300 text-center"}>
             To manage the account{" "}

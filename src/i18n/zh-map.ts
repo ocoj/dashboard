@@ -3284,6 +3284,16 @@ const zhMap: Record<string, string> = {
   'to verify the SCIM connection, then select': '以验证 SCIM 连接，然后选择',
   'which will later be used to log in to NetBird.': '，稍后将用于登录 NetBird。',
   'with the NetBird team': '分享给 NetBird 团队',
+
+  // --- v2.94.0 混合内容（B 类：集成向导说明句）---
+  'Device has an active firewall with': '设备已启用防火墙且',
+  'Thank you for subscribing': '感谢您订阅',
+  'This NetBird account already': '此 NetBird 账户已',
+  'This peer is offline and needs to be': '此节点已离线，需要',
+  'all required profiles enabled': '所有必需配置文件均已启用',
+  'exists in our system': '存在于我们的系统中',
+  're-authenticated because its login has expired.': '因其登录已过期而重新认证。',
+  'to NetBird! 🎉': 'NetBird！🎉',
 }
 
 export default zhMap;
