@@ -325,7 +325,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
             Set the specific requirements that devices must meet to be
             considered compliant. Learn more in the{" "}
             <InlineLink href={HUNTRESS_DOCUMENTATION_URL} target={"_blank"}>
-              Huntress Documentation
+              <TransText>Huntress Documentation</TransText>
               <ExternalLinkIcon size={12} />
             </InlineLink>{" "}
             about the different statuses.

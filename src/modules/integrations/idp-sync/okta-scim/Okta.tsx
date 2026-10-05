@@ -119,7 +119,7 @@ export const Okta = () => {
                 className={"w-full items-center"}
                 onClick={() => switchTab("sso")}
               >
-                Okta SSO Required
+                <TransText>Okta SSO Required</TransText>
                 <IconInfoCircle size={14} />
               </Button>
             </FullTooltip>

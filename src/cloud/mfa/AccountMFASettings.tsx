@@ -196,8 +196,7 @@ export const AccountMFASettings = () => {
               <TransText>Remember Browser for MFA</TransText>
             </div>
             <div className={"text-xs"}>
-              When enabled, users will have the option to remember their browser
-              for 30 days.
+              <TransText>When enabled, users will have the option to remember their browser for 30 days.</TransText>
               <br className={"hidden lg:block"} /> MFA will not be required for
               that browser during this period.
             </div>

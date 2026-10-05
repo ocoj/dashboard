@@ -224,8 +224,7 @@ export const OktaSsoSettings = ({ open, onOpenChange, config }: Props) => {
                 </div>
               </Label>
               <HelpText className={"max-w-lg mt-2"}>
-                Deleting this integration will remove the ability to use Okta as
-                an SSO provider. <br /> If you delete the integration you will
+                <TransText>Deleting this integration will remove the ability to use Okta as an SSO provider.</TransText> <br /> If you delete the integration you will
                 need to reconfigure it again to enable the Single Sign-On.
               </HelpText>
             </div>

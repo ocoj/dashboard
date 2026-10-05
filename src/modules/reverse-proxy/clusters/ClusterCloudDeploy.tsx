@@ -537,7 +537,7 @@ const HetznerDeploy = ({
     <div className={"flex flex-col gap-4"}>
       <div>
         <Label>
-          Hetzner API Token
+          <TransText>Hetzner API Token</TransText>
           <HelpTooltip
             interactive={true}
             content={
@@ -793,7 +793,7 @@ const DigitalOceanDeploy = ({
     <div className={"flex flex-col gap-4"}>
       <div>
         <Label>
-          DigitalOcean API Token
+          <TransText>DigitalOcean API Token</TransText>
           <HelpTooltip
             interactive={true}
             content={

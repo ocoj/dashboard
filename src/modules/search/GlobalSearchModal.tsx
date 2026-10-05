@@ -316,7 +316,7 @@ const BlankState = () => {
           <TransText>Search for Networks and Resources</TransText>
         </div>
         <div className={"text-sm text-nb-gray-350 font-light"}>
-          Quickly find networks and associated resources. <br />
+          <TransText>Quickly find networks and associated resources.</TransText> <br />
           Start typing to search by name, description or address.
         </div>
       </div>

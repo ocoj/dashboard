@@ -136,7 +136,7 @@ export default function ReverseProxyTargetCustomHeaders({
     <div>
       <Label><TransText>Custom Headers</TransText></Label>
       <HelpText>
-        Add additional headers to include when forwarding requests.
+        <TransText>Add additional headers to include when forwarding requests.</TransText>
         <br />
         Hop-by-hop headers like Host or Connection are not allowed.
       </HelpText>

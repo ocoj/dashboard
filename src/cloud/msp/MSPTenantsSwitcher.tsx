@@ -307,7 +307,7 @@ const TenantItem = ({
                 continue using the tenant.{" "}
                 {!isInTenantContext && (
                   <InlineLink href={"/tenants"}>
-                    Go to Tenants
+                    <TransText>Go to Tenants</TransText>
                     <ArrowUpRightIcon size={14} />
                   </InlineLink>
                 )}

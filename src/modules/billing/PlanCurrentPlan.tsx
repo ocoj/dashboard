@@ -97,7 +97,7 @@ export const PlanCurrentPlan = ({
                   target={"_blank"}
                 >
                   <Button variant={"secondary"} size={"xs"}>
-                    Visit AWS Marketplace
+                    <TransText>Visit AWS Marketplace</TransText>
                     <ExternalLinkIcon size={12} />
                   </Button>
                 </Link>

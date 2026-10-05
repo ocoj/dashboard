@@ -2,6 +2,7 @@ import FancyToggleSwitch from "@components/FancyToggleSwitch";
 import InlineLink from "@components/InlineLink";
 import { ExternalLinkIcon, GaugeIcon } from "lucide-react";
 import * as React from "react";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   value: boolean;
@@ -27,7 +28,7 @@ export const CrowdStrikeZtaToggle = ({ value, onChange }: Props) => {
             }
             target={"_blank"}
           >
-            ZTA score
+            <TransText>ZTA score</TransText>
             <ExternalLinkIcon
               size={12}
               className={"shrink-0 relative -top-[1px] mr-[1px]"}

@@ -257,7 +257,7 @@ export function ConfigurationContent({
                 }
                 target={"_blank"}
               >
-                Huntress Documentation
+                <TransText>Huntress Documentation</TransText>
                 <ExternalLinkIcon size={12} />
               </InlineLink>{" "}
               about the different statuses.
@@ -397,7 +397,7 @@ export function ConfigurationContent({
               href={HUNTRESS_NETBIRD_DOCUMENTATION_URL}
               target={"_blank"}
             >
-              Huntress Integration
+              <TransText>Huntress Integration</TransText>
               <ExternalLinkIcon size={12} />
             </InlineLink>
           </Paragraph>

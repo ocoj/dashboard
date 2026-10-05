@@ -373,7 +373,7 @@ export function ConfigurationContent({
               href={"https://docs.netbird.io/how-to/sentinelone-edr"}
               target={"_blank"}
             >
-              SentinelOne Integration
+              <TransText>SentinelOne Integration</TransText>
               <ExternalLinkIcon size={12} />
             </InlineLink>
           </Paragraph>

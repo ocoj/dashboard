@@ -1107,7 +1107,7 @@ const ResourcesList = ({
   if (search == "" && filteredItems.length == 0) {
     return (
       <DropdownInfoText className={"mt-5 max-w-sm mx-auto"}>
-        There are no resources available yet. <br />
+        <TransText>There are no resources available yet.</TransText> <br />
         Go to <InlineLink href={"/networks"}><TransText>Networks</TransText></InlineLink> to add some
         resources.
       </DropdownInfoText>
@@ -1280,7 +1280,7 @@ const PeersList = ({
   if (search == "" && filteredItems.length == 0) {
     return (
       <DropdownInfoText className={"mt-5 max-w-sm mx-auto"}>
-        There are no peers available yet. <br />
+        <TransText>There are no peers available yet.</TransText> <br />
         Go to <InlineLink href={"/peers"}><TransText>Peers</TransText></InlineLink> to add some peers.
       </DropdownInfoText>
     );

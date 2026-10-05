@@ -386,7 +386,7 @@ export function ConfigurationContent({
               href={"https://fleetdm.com/docs/rest-api/rest-api"}
               target={"_blank"}
             >
-              FleetDM Integration
+              <TransText>FleetDM Integration</TransText>
               <ExternalLinkIcon size={12} />
             </InlineLink>
           </Paragraph>

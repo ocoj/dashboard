@@ -316,7 +316,7 @@ export const OnboardingSurvey = ({ domainCategory, onSubmit }: Props) => {
             <div className={"flex w-full flex-col gap-2"}>
               <div>
                 <Label>
-                  How many people in your company will use NetBird?
+                  <TransText>How many people in your company will use NetBird?</TransText>
                   <RequiredAsterisk />
                 </Label>
               </div>
@@ -357,7 +357,7 @@ export const OnboardingSurvey = ({ domainCategory, onSubmit }: Props) => {
           <div className={"flex w-full flex-col gap-2"}>
             <div>
               <Label>
-                How do you plan to use NetBird?
+                <TransText>How do you plan to use NetBird?</TransText>
                 <RequiredAsterisk />
               </Label>
               <HelpText className={"mt-1.5"}>

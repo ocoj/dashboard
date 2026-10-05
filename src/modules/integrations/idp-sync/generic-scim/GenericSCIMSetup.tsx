@@ -222,7 +222,7 @@ export function SetupContent({
                 "https://docs.netbird.io/how-to/idp-sync#supported-identity-providers"
               }
             >
-              IdP Documentation
+              <TransText>IdP Documentation</TransText>
               <ExternalLinkIcon size={12} />
             </InlineLink>{" "}
             for provider-specific setup guides.
@@ -250,7 +250,7 @@ export function SetupContent({
                   href={"https://docs.netbird.io/how-to/single-sign-on"}
                   target={"_blank"}
                 >
-                  How to enable SSO
+                  <TransText>How to enable SSO</TransText>
                   <ExternalLinkIcon size={12} />
                 </InlineLink>
               </span>

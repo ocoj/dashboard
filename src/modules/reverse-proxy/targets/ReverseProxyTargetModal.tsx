@@ -329,8 +329,7 @@ export default function ReverseProxyTargetModal({
                     />
                   }
                 >
-                  This location is already used by another target and cannot be
-                  added. <br /> Please use a different location.
+                  <TransText>This location is already used by another target and cannot be added.</TransText> <br /> Please use a different location.
                 </Callout>
               )}
               {targetPath &&

@@ -10,6 +10,7 @@ import { TenantListItem } from "@/cloud/msp/interfaces/Tenant";
 import { useBilling } from "@/contexts/BillingProvider";
 import { useLoggedInUser } from "@/contexts/UsersProvider";
 import { PlanTier } from "@/interfaces/Subscription";
+import { TransText } from "@/i18n/trans-text";
 
 const config = loadConfig();
 
@@ -73,7 +74,7 @@ export const MSPTrialExpiredModal = () => {
             </div>
           ) : mspInfo?.reseller_status === "active" ? (
             <div className={"text-sm text-nb-gray-300 text-center"}>
-              Your account has reached the end of the free trial period. <br />{" "}
+              <TransText>Your account has reached the end of the free trial period.</TransText> <br />{" "}
               To continue using NetBird, please contact your distributor.
             </div>
           ) : (

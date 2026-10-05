@@ -111,7 +111,7 @@ export const PendingApproval = ({ error, onRefresh, onLogout }: Props) => {
       </div>
 
       <Paragraph className={"text-sm"}>
-        Need help?
+        <TransText>Need help?</TransText>
         <InlineLink
           href={"https://docs.netbird.io/manage/team/approve-users"}
           target={"_blank"}

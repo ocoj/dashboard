@@ -73,7 +73,7 @@ export const TenantActionCell = ({ tenant }: Props) => {
           }
         >
           <Badge variant={"yellow"} className={"ml-6 cursor-help"}>
-            Pending access request
+            <TransText>Pending access request</TransText>
             <HelpCircle size={12} />
           </Badge>
         </FullTooltip>

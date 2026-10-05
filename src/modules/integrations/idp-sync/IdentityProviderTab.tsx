@@ -89,7 +89,7 @@ export default function IdentityProviderTab() {
             )}
           </div>
             { isNetBirdCloud() && <Callout variant={"warning"} className={"max-w-lg mt-6"}>
-            Looking to enable a custom IdP like Keycloak? <br />
+            <TransText>Looking to enable a custom IdP like Keycloak?</TransText> <br />
             Please contact us at{" "}
             <InlineLink
               href={"mailto:support@netbird.io"}

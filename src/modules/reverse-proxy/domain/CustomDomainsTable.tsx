@@ -315,7 +315,7 @@ function CustomDomainStatusCell({ domain }: Readonly<CellProps>) {
           interactive={false}
         >
           <Badge variant={"yellow"} className={"cursor-help"}>
-            Pending Verification
+            <TransText>Pending Verification</TransText>
             <HelpCircle size={12} />
           </Badge>
         </FullTooltip>

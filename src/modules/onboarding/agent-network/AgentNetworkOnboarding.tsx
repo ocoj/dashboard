@@ -184,7 +184,7 @@ export const AgentNetworkOnboarding = ({
                       "text-sm text-nb-gray-400 font-light pt-10 text-center px-4"
                     }
                   >
-                    Already know how Agent Network works?
+                    <TransText>Already know how Agent Network works?</TransText>
                     <InlineLink
                       href={"#"}
                       className={"!text-nb-gray-200 ml-1"}

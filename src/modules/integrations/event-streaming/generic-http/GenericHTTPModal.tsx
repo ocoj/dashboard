@@ -313,16 +313,14 @@ export function GenericHTTPModalContent({
                 onChange={(e) => setBodyTemplate(e.target.value)}
               />
               <HelpText>
-                There are various variables available to structure the body
-                template. Please refer to the documentation for more details on
-                how to use them.
+                <TransText>There are various variables available to structure the body template. Please refer to the documentation for more details on how to use them.</TransText>
                 <InlineLink
                   href={
                     "https://docs.netbird.io/how-to/stream-activity-to-generic-http#custom-body-template-optional"
                   }
                   className={"relative top-[0px] ml-1"}
                 >
-                  Body Template Variables
+                  <TransText>Body Template Variables</TransText>
                   <ExternalLinkIcon size={12} />
                 </InlineLink>
               </HelpText>
@@ -364,7 +362,7 @@ export function GenericHTTPModalContent({
               }
               target={"_blank"}
             >
-              Generic HTTP Streaming
+              <TransText>Generic HTTP Streaming</TransText>
               <ExternalLinkIcon size={12} />
             </InlineLink>
           </Paragraph>

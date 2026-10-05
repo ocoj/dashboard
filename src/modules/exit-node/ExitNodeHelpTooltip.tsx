@@ -22,8 +22,7 @@ export const ExitNodeHelpTooltip = ({
         hoverButton={hoverButton}
         content={
           <div className={"text-xs max-w-xs"}>
-            An exit node is a network route that routes all your internet
-            traffic through one of your peers.
+            <TransText>An exit node is a network route that routes all your internet traffic through one of your peers.</TransText>
             <div className={"mt-2"}>
               <TransText>Learn more about</TransText>{" "}
               <InlineLink
@@ -33,7 +32,7 @@ export const ExitNodeHelpTooltip = ({
                 target={"_blank"}
                 className={"mr-1"}
               >
-                Exit Nodes
+                <TransText>Exit Nodes</TransText>
                 <ExternalLinkIcon size={10} />
               </InlineLink>
               in our documentation.

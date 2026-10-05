@@ -416,8 +416,7 @@ spec:
               </div>
               {!isCloudDeploy && (
                 <Callout variant={"info"}>
-                  In order to run the proxy, please make sure your machine meets
-                  the following requirements:
+                  <TransText>In order to run the proxy, please make sure your machine meets the following requirements:</TransText>
                   <ul className={"list-disc pl-4 mt-2 flex flex-col gap-1"}>
                     <li>
                       <span className={"text-white font-medium"}>
@@ -496,7 +495,7 @@ spec:
                     target={"_blank"}
                     className={"block mt-1"}
                   >
-                    Required routing endpoints
+                    <TransText>Required routing endpoints</TransText>
                     <ExternalLinkIcon size={12} />
                   </InlineLink>
                 </Callout>

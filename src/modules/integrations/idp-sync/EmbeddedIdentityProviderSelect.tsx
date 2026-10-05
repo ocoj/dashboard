@@ -57,7 +57,7 @@ export function EmbeddedIdentityProviderSelect({
           disabled
         />
         <Callout className={"mt-3"} variant={"info"}>
-          The identity provider connector cannot be changed afterwards.
+          <TransText>The identity provider connector cannot be changed afterwards.</TransText>
           <br />
           If you want to change the connector, please delete this integration
           and set it up again with a different connector.

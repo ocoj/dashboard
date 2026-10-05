@@ -76,7 +76,7 @@ export const OIDCError = () => {
       ) : (
         <>
           <Paragraph className={"text-center mt-2 block"}>
-            There was an error logging you in. <br />
+            <TransText>There was an error logging you in.</TransText> <br />
             Error:{" "}
             <span className={"inline capitalize"}>
               {invalidRequest && errorDescription

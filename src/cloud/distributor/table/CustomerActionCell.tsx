@@ -41,7 +41,7 @@ export const CustomerActionCell = ({ customer }: Props) => {
           }
         >
           <Badge variant={"yellow"} className={"ml-6 cursor-help"}>
-            Pending invitation
+            <TransText>Pending invitation</TransText>
             <HelpCircle size={12} />
           </Badge>
         </FullTooltip>

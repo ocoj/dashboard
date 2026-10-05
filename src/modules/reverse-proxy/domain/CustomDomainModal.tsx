@@ -119,8 +119,7 @@ export const CustomDomainModal = ({
               </Callout>
             ) : (
               <Callout variant="warning">
-                No proxy clusters are currently connected. Please ensure at
-                least one proxy is running before adding a domain. <br /> Learn
+                <TransText>No proxy clusters are currently connected. Please ensure at least one proxy is running before adding a domain.</TransText> <br /> Learn
                 more about{" "}
                 <InlineLink
                   href={REVERSE_PROXY_CLUSTERS_DOCS_LINK}

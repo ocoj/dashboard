@@ -274,7 +274,7 @@ export function SetupContent({ onSuccess, onClose }: ModalProps) {
                   }
                   target={"_blank"}
                 >
-                  How to enable Jumpcloud SSO
+                  <TransText>How to enable Jumpcloud SSO</TransText>
                   <ExternalLinkIcon size={12} />
                 </InlineLink>
               </span>

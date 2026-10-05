@@ -1,6 +1,7 @@
 import Button from "@components/Button";
 import { ArrowRightIcon } from "lucide-react";
 import * as React from "react";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   onFinish: () => void;
@@ -28,7 +29,7 @@ export const OnboardingAgentEnd = ({ onFinish }: Props) => {
 
       <div className={"mt-4 flex items-center justify-center"}>
         <Button variant={"secondaryLighter"} onClick={onFinish}>
-          Go to Access Logs
+          <TransText>Go to Access Logs</TransText>
           <ArrowRightIcon size={16} />
         </Button>
       </div>

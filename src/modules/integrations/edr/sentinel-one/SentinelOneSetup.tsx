@@ -306,7 +306,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
                     href={sentinelOneServiceUsersUrl}
                     target={"_blank"}
                   >
-                    Settings » Users » Service Users
+                    <TransText>Settings » Users » Service Users</TransText>
                     <ExternalLinkIcon size={14} className={"ml-1"} />
                   </InlineLink>
                 ) : (

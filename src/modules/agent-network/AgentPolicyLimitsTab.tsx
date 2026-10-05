@@ -399,7 +399,7 @@ function LimitEditModal({
           <div className={"grid grid-cols-2 gap-4"}>
             <div>
               <Label>
-                Group Cap
+                <TransText>Group Cap</TransText>
                 <HelpTooltip
                   content={
                     <>
@@ -422,7 +422,7 @@ function LimitEditModal({
             </div>
             <div>
               <Label>
-                Individual Cap
+                <TransText>Individual Cap</TransText>
                 <HelpTooltip
                   content={
                     <>

@@ -491,7 +491,7 @@ export const RoutingPeerSetupKeyInfo = () => {
         "flex gap-2 mt-1 items-center text-xs text-nb-gray-300 font-normal mb-1"
       }
     >
-      This setup key can be used only once within the next 24 hours.
+      <TransText>This setup key can be used only once within the next 24 hours.</TransText>
       <br />
       When expired, the same key can not be used again.
     </div>

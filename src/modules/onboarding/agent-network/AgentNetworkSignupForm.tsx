@@ -170,7 +170,7 @@ export const AgentNetworkSignupForm = ({ onSubmit }: Props) => {
           {isBusiness && (
             <div className={"flex w-full flex-col gap-2"}>
               <Label>
-                How many people will use Agent Network?
+                <TransText>How many people will use Agent Network?</TransText>
                 <RequiredAsterisk />
               </Label>
               <ButtonGroup>
@@ -208,7 +208,7 @@ export const AgentNetworkSignupForm = ({ onSubmit }: Props) => {
 
           <div className={"flex w-full flex-col gap-2"}>
             <Label>
-              How did you hear about Agent Network?
+              <TransText>How did you hear about Agent Network?</TransText>
               <RequiredAsterisk />
             </Label>
             <SelectDropdown
@@ -224,7 +224,7 @@ export const AgentNetworkSignupForm = ({ onSubmit }: Props) => {
           <div className={"flex w-full flex-col gap-2"}>
             <div>
               <Label>
-                How do you plan to use Agent Network?
+                <TransText>How do you plan to use Agent Network?</TransText>
                 <RequiredAsterisk />
               </Label>
               <HelpText className={"mt-1.5"}>

@@ -289,7 +289,7 @@ export function SetupContent({ onSuccess }: Readonly<ModalProps>) {
               <p>
                 Create an IAM User (for details see the{" "}
                 <InlineLink href={iamDocsURL} target={"_blank"}>
-                  Amazon Docs
+                  <TransText>Amazon Docs</TransText>
                   <ExternalLinkIcon size={12} />
                 </InlineLink>
                 )

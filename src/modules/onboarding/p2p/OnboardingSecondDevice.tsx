@@ -114,7 +114,7 @@ export const OnboardingSecondDevice = ({ secondDevice, onFinish }: Props) => {
       <div className="text-sm text-nb-gray-300 font-light mt-2 block text-center sm:px-4">
           Use the headless setup to register a peer without a browser or user interaction.{" "}
         <InlineLink onClick={installUsingSetupKey} href={"#"}>
-          Install with a setup key
+          <TransText>Install with a setup key</TransText>
           <ArrowUpRightIcon size={12} />
         </InlineLink>{" "}
       </div>

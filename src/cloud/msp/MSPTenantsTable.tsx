@@ -72,7 +72,7 @@ const TenantsTableColumns: ColumnDef<Tenant>[] = [
     accessorKey: "id",
     header: ({ column }) => (
       <DataTableHeader column={column}>
-        Est. Cost / Month
+        <TransText>Est. Cost / Month</TransText>
         <FullTooltip
           content={
             <div className={"text-xs max-w-xs"}>

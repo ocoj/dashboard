@@ -319,7 +319,7 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
                   }
                   target={"_blank"}
                 >
-                  API-only user
+                  <TransText>API-only user</TransText>
                   <ExternalLinkIcon size={12} />
                 </InlineLink>
               </p>
