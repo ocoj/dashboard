@@ -178,7 +178,7 @@ export const NotificationsTabTrigger = () => {
       <MessageSquareDot size={14} />
       Notifications
       <SmallBadge
-        text={"Beta"}
+        text={zhMap["Beta"] || "Beta"}
         variant={"sky"}
         className={"text-[8px] leading-none py-[3px] px-[5px]"}
         textClassName={"top-0"}

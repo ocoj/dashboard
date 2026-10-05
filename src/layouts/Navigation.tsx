@@ -29,6 +29,7 @@ import * as React from "react";
 import { TransText } from "@/i18n/trans-text";
 import ReverseProxyIcon from "@/assets/icons/ReverseProxyIcon";
 import ActivityIcon from "@/assets/icons/ActivityIcon";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   fullWidth?: boolean;
@@ -154,7 +155,7 @@ export default function Navigation({
                     <div className={"flex items-center gap-2"}>
                       <TransText>Reverse Proxy</TransText>
                       <SmallBadge
-                        text={"Beta"}
+                        text={zhMap["Beta"] || "Beta"}
                         variant={"sky"}
                         className={"text-[8px] leading-none py-[3px] px-[5px]"}
                         textClassName={"top-0"}
@@ -204,7 +205,7 @@ export default function Navigation({
                       <TransText>Agent Network</TransText>
                       {!agentNetworkOnly && (
                         <SmallBadge
-                          text={"Beta"}
+                          text={zhMap["Beta"] || "Beta"}
                           variant={"sky"}
                           className={
                             "text-[8px] leading-none py-[3px] px-[5px]"
