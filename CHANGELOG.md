@@ -25,21 +25,32 @@
 - npm 11.19.0；`npm install` 同步依赖
 
 ### i18n 汉化
-- 三批汉化：冲突文件恢复 + 新增模块 → 全站独占元素文案 → 字符串属性
-- 独占元素文案覆盖达 100%（剩余 9 处为 TCP/UDP/URL/DNS 及 MS Graph 权限名，应保留英文）
+- 分批汉化：冲突文件恢复 + 新增模块 → 全站独占元素文案 → 字符串属性
+  → 混合内容（句子与内联组件交错）→ 扫描盲区补齐
+- 独占元素文案覆盖达 100%（剩余为 TCP/UDP/URL/DNS 及 MS Graph 权限名，应保留英文）
 - 字符串属性统一为 `zhMap["X"] || "X"` 写法（322 处）
-- TransText 覆盖：238 → 428 个 tsx 文件
-- `zh-map.ts`：2557 → 2972 条（无重复）
+- **混合内容 141 处 → 10 处**（剩余为 `Ctrl`/`Alt` 键盘键名、`SSH`/`RDP`/`DNS`
+  技术标识、`N/A`，均为刻意保留）
+- **扫描盲区补齐**：修复五类此前未被覆盖的文本节点
+  （后跟闭合标签、子元素之后、小写开头、含表达式、已部分汉化的块）
+- TransText 覆盖：238 → **477 / 943** 个 tsx 文件
+- `zh-map.ts`：2557 → **3415** 条（无重复）
+
+### 安全
+- 移除上游 6 处源码中的疑似 Azure 客户端密钥示例串
+  （`AzureADSetup` / `AzureADConfiguration` / `GoogleWorkspaceSetup` /
+  `GoogleWorkspaceConfiguration` / `IntuneSetup` / `IntuneConfiguration`），
+  改为 `"your-client-secret"`。该串源自上游 commit `7653e341`，非本次引入；
+  上游侧未上报（用户决定），我方仓库处置完毕
 
 ### 验证
 - `npx tsc --noEmit` 零错误
 - `npx next build` 通过，侧栏版本显示 `v2.94.0-zh`
+- 真机遍历 16 个页面：无 `MISSING_MESSAGE`、无英文残留
 
 ### 已知遗留
-- 混合内容文本（句子与内联组件交错，约 132 处）需逐句人工处理，
-  主要分布在 integrations 与 activity 模块
-- 上游 `GoogleWorkspaceSetup` / `AzureADSetup` 等文件的示例 placeholder
-  含疑似演示用长串（上游原有，非本次引入）
+- 无。`<TransText>{表达式}</TransText>` 经复核实为正常用法（变量为字符串时可查表），
+  非缺陷
 
 ## [v2.91.1-zh] — 2026-08-16
 
