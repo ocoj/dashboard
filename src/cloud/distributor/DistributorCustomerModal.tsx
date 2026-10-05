@@ -293,7 +293,7 @@ const CustomerModalContent = ({
           <Paragraph className={"text-sm mt-auto"}>
             {tab === "plan" ? (
               <>
-                Learn more about
+                <TransText>Learn more about</TransText>
                 <InlineLink
                   href={"https://netbird.io/pricing"}
                   target={"_blank"}

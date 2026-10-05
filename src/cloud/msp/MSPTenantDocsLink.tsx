@@ -6,7 +6,7 @@ import { TransText } from "@/i18n/trans-text";
 export const MSPTenantDocsLink = () => {
   return (
     <>
-      Learn more about
+      <TransText>Learn more about</TransText>
       <InlineLink
         href={"https://docs.netbird.io/how-to/msp-portal"}
         target={"_blank"}

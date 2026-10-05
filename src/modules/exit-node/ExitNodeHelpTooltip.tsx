@@ -35,7 +35,7 @@ export const ExitNodeHelpTooltip = ({
                 <TransText>Exit Nodes</TransText>
                 <ExternalLinkIcon size={10} />
               </InlineLink>
-              in our documentation.
+              <TransText>in our documentation.</TransText>
             </div>
           </div>
         }

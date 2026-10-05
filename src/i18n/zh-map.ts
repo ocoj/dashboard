@@ -1072,7 +1072,7 @@ const zhMap: Record<string, string> = {
   'Implementation of use case, for your stack': '根据您的技术栈实现用例',
   'Import': '导入',
   'In order to run the proxy, please make sure your machine meets the following requirements:': '在运行代理之前，请确保您的机器满足以下要求：',
-  'in our documentation.': '了解更多。',
+  'in our documentation.': '，详见我们的文档。',
   'In the app settings, go to': '在应用设置中，转到',
   'In Use': '使用中',
   'Inactive': '非活跃',

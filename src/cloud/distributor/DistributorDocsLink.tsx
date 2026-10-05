@@ -6,7 +6,7 @@ import { TransText } from "@/i18n/trans-text";
 export const DistributorDocsLink = () => {
   return (
     <>
-      Learn more about
+      <TransText>Learn more about</TransText>
       <InlineLink
         href={"https://docs.netbird.io/manage/for-partners/distributor-portal"}
         target={"_blank"}

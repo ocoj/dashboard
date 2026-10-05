@@ -67,7 +67,7 @@ const TenantsPageContent = () => {
         </Paragraph>
         <Paragraph>
           <MSPTenantDocsLink />
-          in our documentation.
+          <TransText>in our documentation.</TransText>
         </Paragraph>
       </div>
       <RestrictedAccess page={"Tenants"} hasAccess={permission.tenants.read}>

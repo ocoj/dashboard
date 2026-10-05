@@ -49,7 +49,7 @@ const CustomersPageContent = () => {
         </Paragraph>
         <Paragraph>
           <DistributorDocsLink />
-          in our documentation.
+          <TransText>in our documentation.</TransText>
         </Paragraph>
       </div>
       <RestrictedAccess
