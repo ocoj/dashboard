@@ -1254,6 +1254,8 @@ const zhMap: Record<string, string> = {
   'MSP invite was requested for <Value>{msp_name}</Value> (<Value>{msp_domain}</Value>)': '已请求 <Value>{msp_name}</Value> (<Value>{msp_domain}</Value>) 的 MSP 邀请',
   'myapp': 'myapp',
   'myapp (optional)': 'myapp（可选）',
+  'range': '范围',
+  'domain(s)': '域名',
   'N {plural}': 'N {plural}',
   'N/A': 'N/A',
   'Name': '名称',

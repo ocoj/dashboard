@@ -5,6 +5,7 @@ import * as React from "react";
 import { useMemo } from "react";
 import { useGroups } from "@/contexts/GroupsProvider";
 import { GroupedRoute } from "@/interfaces/Route";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   groupedRoute: GroupedRoute;
@@ -26,7 +27,7 @@ export default function GroupedRouteTypeCell({ groupedRoute }: Props) {
         <GroupBadge group={group} />
       ) : (
         <Badge variant={"gray"} className={"min-w-[130px]"}>
-          <MonitorSmartphoneIcon size={14} /> Routing Peers
+          <MonitorSmartphoneIcon size={14} /> <TransText>Routing Peers</TransText>
         </Badge>
       )}
     </div>

@@ -128,9 +128,9 @@ export default function ActivityDescription({ event }: Props) {
     let hasDomains = m?.domains && m?.domains.length > 0;
     return (
       <div className={"inline"}>
-        <TransText>Route</TransText> <Value>{m.name}</Value> <TransText>with the</TransText> {hasDomains ? "domain(s)" : ""}{" "}
+        <TransText>Route</TransText> <Value>{m.name}</Value> <TransText>with the</TransText> {hasDomains ? <TransText>domain(s)</TransText> : ""}{" "}
         <Value>{hasDomains ? m?.domains : m.network_range}</Value>{" "}
-        {hasDomains ? "" : "range"} <TransText>was deleted</TransText>
+        {hasDomains ? "" : <TransText>range</TransText>} <TransText>was deleted</TransText>
       </div>
     );
   }
@@ -139,9 +139,9 @@ export default function ActivityDescription({ event }: Props) {
     let hasDomains = m?.domains && m?.domains.length > 0;
     return (
       <div className={"inline"}>
-        <TransText>Route</TransText> <Value>{m.name}</Value> <TransText>with the</TransText> {hasDomains ? "domain(s)" : ""}{" "}
+        <TransText>Route</TransText> <Value>{m.name}</Value> <TransText>with the</TransText> {hasDomains ? <TransText>domain(s)</TransText> : ""}{" "}
         <Value>{hasDomains ? m?.domains : m.network_range}</Value>{" "}
-        {hasDomains ? "" : "range"} <TransText>was updated</TransText>
+        {hasDomains ? "" : <TransText>range</TransText>} <TransText>was updated</TransText>
       </div>
     );
   }
@@ -150,9 +150,9 @@ export default function ActivityDescription({ event }: Props) {
     let hasDomains = m?.domains && m?.domains.length > 0;
     return (
       <div className={"inline"}>
-        <TransText>Route</TransText> <Value>{m.name}</Value> <TransText>with the</TransText> {hasDomains ? "domain(s)" : ""}{" "}
+        <TransText>Route</TransText> <Value>{m.name}</Value> <TransText>with the</TransText> {hasDomains ? <TransText>domain(s)</TransText> : ""}{" "}
         <Value>{hasDomains ? m?.domains : m.network_range}</Value>{" "}
-        {hasDomains ? "" : "range"} <TransText>was created</TransText>
+        {hasDomains ? "" : <TransText>range</TransText>} <TransText>was created</TransText>
       </div>
     );
   }
