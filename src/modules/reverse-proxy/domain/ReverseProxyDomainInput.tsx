@@ -1,4 +1,5 @@
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 import HelpText from "@components/HelpText";
 import { Input } from "@components/Input";
 import { Label } from "@components/Label";
@@ -55,7 +56,11 @@ export default function ReverseProxyDomainInput({
                 ? "This domain is already used by another service."
                 : undefined
             }
-            placeholder={subdomainRequired ? "myapp" : "myapp (optional)"}
+            placeholder={
+              subdomainRequired
+                ? "myapp"
+                : zhMap["myapp (optional)"] || "myapp (optional)"
+            }
             className="!rounded-r-none !border-r-0"
           />
         </div>
