@@ -33,9 +33,11 @@ export default function ReverseProxyDomainInput({
     <div>
       <Label><TransText>Domain</TransText></Label>
       <HelpText>
-        {subdomainRequired
-          ? "<TransText>Enter a subdomain and select a domain for your service.</TransText>"
-          : "Optionally enter a subdomain, or use the domain directly."}
+        {subdomainRequired ? (
+          <TransText>Enter a subdomain and select a domain for your service.</TransText>
+        ) : (
+          <TransText>Optionally enter a subdomain, or use the domain directly.</TransText>
+        )}
       </HelpText>
       <div className="flex items-start mt-2">
         <div className="flex-1 min-w-0">

@@ -33,27 +33,27 @@ type ServiceModeConfig = {
 
 export const SERVICE_MODES: Record<ServiceMode, ServiceModeConfig> = {
   [ServiceMode.HTTP]: {
-    label: "HTTPS Service",
+    label: zhMap["HTTPS Service"] || "HTTPS Service",
     description:
-      "Reverse proxy with path routing and built-in authentication (SSO, PIN, password). Typically used for web applications and APIs.",
+      zhMap["Reverse proxy with path routing and built-in authentication (SSO, PIN, password). Typically used for web applications and APIs."] || "Reverse proxy with path routing and built-in authentication (SSO, PIN, password). Typically used for web applications and APIs.",
     icon: <Globe size={14} />,
   },
   [ServiceMode.TLS]: {
-    label: "TLS Passthrough",
+    label: zhMap["TLS Passthrough"] || "TLS Passthrough",
     description:
-      "Passes encrypted TLS traffic straight through to the backend. Typically used for services that manage their own TLS certificates.",
+      zhMap["Passes encrypted TLS traffic straight through to the backend. Typically used for services that manage their own TLS certificates."] || "Passes encrypted TLS traffic straight through to the backend. Typically used for services that manage their own TLS certificates.",
     icon: <LockKeyhole size={14} />,
   },
   [ServiceMode.TCP]: {
-    label: "TCP Service",
+    label: zhMap["TCP Service"] || "TCP Service",
     description:
-      "Forwards raw TCP traffic to your backend on a dedicated port. Typically used for databases, custom protocols, or any TCP-based service.",
+      zhMap["Forwards raw TCP traffic to your backend on a dedicated port. Typically used for databases, custom protocols, or any TCP-based service."] || "Forwards raw TCP traffic to your backend on a dedicated port. Typically used for databases, custom protocols, or any TCP-based service.",
     icon: <ArrowRightFromLine size={14} />,
   },
   [ServiceMode.UDP]: {
-    label: "UDP Service",
+    label: zhMap["UDP Service"] || "UDP Service",
     description:
-      "Forwards raw UDP traffic to your backend on a dedicated port. Typically used for real-time services like voice, video, or streaming.",
+      zhMap["Forwards raw UDP traffic to your backend on a dedicated port. Typically used for real-time services like voice, video, or streaming."] || "Forwards raw UDP traffic to your backend on a dedicated port. Typically used for real-time services like voice, video, or streaming.",
     icon: <ArrowRightFromLine size={14} />,
   },
 };

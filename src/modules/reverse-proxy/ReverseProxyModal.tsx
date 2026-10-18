@@ -562,8 +562,12 @@ export default function ReverseProxyModal({
   };
 
   const modalTitle = useMemo(() => {
-    const prefix = reverseProxy ? "Edit" : "Add";
-    const label = serviceMode ? SERVICE_MODES[serviceMode].label : "Service";
+    const prefix = reverseProxy
+      ? zhMap["Edit"] || "Edit"
+      : zhMap["Add"] || "Add";
+    const label = serviceMode
+      ? zhMap[SERVICE_MODES[serviceMode].label] || SERVICE_MODES[serviceMode].label
+      : zhMap["Service"] || "Service";
     return `${prefix} ${label}`;
   }, [reverseProxy, serviceMode]);
 
@@ -957,15 +961,15 @@ export default function ReverseProxyModal({
               const docsLink = {
                 targets: {
                   href: REVERSE_PROXY_SERVICES_DOCS_LINK,
-                  label: "Services",
+                  label: zhMap["Services"] || "Services",
                 },
                 auth: {
                   href: REVERSE_PROXY_AUTHENTICATION_DOCS_LINK,
-                  label: "Authentication",
+                  label: zhMap["Authentication"] || "Authentication",
                 },
                 "access-control": {
                   href: REVERSE_PROXY_ACCESS_CONTROL_DOCS_LINK,
-                  label: "Access Control",
+                  label: zhMap["Access Control"] || "Access Control",
                 },
                 settings: {
                   href: REVERSE_PROXY_SETTINGS_DOCS_LINK,
