@@ -49,6 +49,7 @@ function EndpointHeader() {
           </>
         }
         description={
+          zhMap["Connect your first provider to set up your agent network endpoint."] ||
           "Connect your first provider to set up your agent network endpoint."
         }
       />
