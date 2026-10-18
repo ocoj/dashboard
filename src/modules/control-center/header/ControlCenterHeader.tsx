@@ -481,7 +481,7 @@ function FocusModePill() {
               className={
                 "p-1.5 rounded-full text-nb-gray-400 hover:text-nb-gray-100 hover:bg-nb-gray-800 transition-colors"
               }
-              aria-label={"Exit Focus"}
+              aria-label={zhMap["Exit Focus"] || "Exit Focus"}
             >
               <XIcon size={15} />
             </button>

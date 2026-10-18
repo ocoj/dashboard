@@ -138,11 +138,11 @@ export const PlanCurrentPlan = ({
                 {stats?.active_users}
               </span>
               {isFreePlan && !isTrial ? (
-                <span className={"text-nb-gray-300"}> of 5 Users</span>
+                <span className={"text-nb-gray-300"}> <TransText>of 5 Users</TransText></span>
               ) : (
                 <span className={"text-nb-gray-300"}>
                   {" "}
-                  {stats?.active_users == 1 ? "User" : "Users"}
+                  {stats?.active_users == 1 ? <TransText>User</TransText> : <TransText>Users</TransText>}
                 </span>
               )}
             </div>
@@ -176,7 +176,7 @@ export const PlanCurrentPlan = ({
                   {estimatedPrice}
                   {currentPlanPrice?.currency == Currency.EUR && "€"}
                 </span>
-                <span className={"text-nb-gray-300"}> per month</span>
+                <span className={"text-nb-gray-300"}> <TransText>per month</TransText></span>
               </div>
               <FullTooltip
                 content={

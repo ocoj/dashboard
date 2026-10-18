@@ -209,9 +209,9 @@ export function PeerSelector({
                         </div>
                       ) : (
                         <div className={"max-w-[240px] text-xs"}>
-                          Please update NetBird to at least{" "}
-                          <span className={"text-netbird"}>v0.36.6</span> or
-                          later to use this peer as a routing peer.
+                          <TransText>Please update NetBird to at least</TransText>{" "}
+                          <span className={"text-netbird"}>v0.36.6</span>{" "}
+                          <TransText>or later to use this peer as a routing peer.</TransText>
                         </div>
                       )
                     }

@@ -65,15 +65,14 @@ function AllModelsTooltip({ models }: { models: string[] }) {
   if (models.length === 0) {
     return (
       <span className={"text-xs"}>
-        No model restriction. This provider doesn&apos;t publish a model list,
-        so use any model id its upstream accepts.
+        <TransText>No model restriction. This provider doesn&apos;t publish a model list, so use any model id its upstream accepts.</TransText>
       </span>
     );
   }
   return (
     <div className={"flex flex-col gap-2 text-xs"}>
       <span className={"text-nb-gray-300"}>
-        No model restriction. Known models for this provider:
+        <TransText>No model restriction. Known models for this provider:</TransText>
       </span>
       <ModelList models={models} />
     </div>
@@ -165,7 +164,7 @@ export default function ConnectProvidersTable({ providers }: Readonly<Props>) {
       inset={false}
       tableClassName={"mt-0"}
       paginationPaddingClassName={"px-0 pt-8"}
-      text={"Providers"}
+      text={zhMap["Providers"] || "Providers"}
       sorting={sorting}
       setSorting={setSorting}
       columns={columns}

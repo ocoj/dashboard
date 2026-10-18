@@ -5,6 +5,8 @@ import { ArrowRightIcon, CheckCircle2Icon, DownloadIcon } from "lucide-react";
 import * as React from "react";
 import { useEffect, useState } from "react";
 import type { Peer } from "@/interfaces/Peer";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 import { WaitingForDevice } from "@/modules/onboarding/OnboardingDevices";
 import { SetupModalContent } from "@/modules/setup-netbird-modal/SetupModal";
 
@@ -33,15 +35,13 @@ export const OnboardingAgentDevice = ({ onBack, onNext, device }: Props) => {
   return (
     <div className={"relative flex flex-col h-full gap-4"}>
       <div>
-        <h1 className={"text-xl text-center"}>Connect your device</h1>
+        <h1 className={"text-xl text-center"}><TransText>Connect your device</TransText></h1>
         <div
           className={
             "text-sm text-nb-gray-300 font-light mt-2 block text-center sm:px-4"
           }
         >
-          {`Agent Network endpoints are private and reachable only over the
-          NetBird overlay. Install the client and sign in to join the network
-          with keyless, encrypted access.`}
+          <TransText>Agent Network endpoints are private and reachable only over the NetBird overlay. Install the client and sign in to join the network with keyless, encrypted access.</TransText>
         </div>
       </div>
 
@@ -55,36 +55,36 @@ export const OnboardingAgentDevice = ({ onBack, onNext, device }: Props) => {
             <DeviceCard device={device} className={"justify-center"} />
             <div className={"flex items-center gap-2 text-sm"}>
               <CheckCircle2Icon size={16} className={"text-green-500"} />
-              <span>Your device is connected to the network.</span>
+              <span><TransText>Your device is connected to the network.</TransText></span>
             </div>
           </div>
         ) : (
-          <WaitingForDevice text={"Waiting for your device to connect"} />
+          <WaitingForDevice text={zhMap["Waiting for your device to connect"] || "Waiting for your device to connect"} />
         )}
       </div>
 
       <div className={"flex items-center justify-center mt-4 gap-3"}>
         {onBack && (
           <Button variant={"secondary"} onClick={onBack}>
-            Go Back
+            <TransText>Go Back</TransText>
           </Button>
         )}
         {device ? (
           <Button variant={"primary"} onClick={onNext}>
-            Continue
+            <TransText>Continue</TransText>
             <ArrowRightIcon size={16} />
           </Button>
         ) : (
           <Button variant={"primary"} onClick={() => setOpen(true)}>
             <DownloadIcon size={16} />
-            Install NetBird
+            <TransText>Install NetBird</TransText>
           </Button>
         )}
       </div>
 
       <Modal open={open} onOpenChange={setOpen}>
         <ModalContent className={"!z-[70]"}>
-          <SetupModalContent title={"Install NetBird"} isUserDevice={true} />
+          <SetupModalContent title={zhMap["Install NetBird"] || "Install NetBird"} isUserDevice={true} />
         </ModalContent>
       </Modal>
     </div>

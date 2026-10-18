@@ -547,7 +547,7 @@ export default function ActivityDescription({ event }: Props) {
   }
 
   if (event.activity_code == "integration.update") {
-    if (!event.meta.platform) return "Integration updated";
+    if (!event.meta.platform) return <TransText>Integration updated</TransText>;
     return (
       <div className={"inline"}>
         <Value className={"capitalize"}>{event.meta.platform}</Value>{" "}
@@ -557,35 +557,35 @@ export default function ActivityDescription({ event }: Props) {
   }
 
   if (event.activity_code == "integration.enable") {
-    if (!event.meta.platform) return "Integration enabled";
+    if (!event.meta.platform) return <TransText>Integration enabled</TransText>;
     return (
       <div className={"inline"}>
         <Value className={"capitalize"}>{event.meta.platform}</Value>{" "}
-        integration enabled
+        <TransText>integration enabled</TransText>
       </div>
     );
   }
 
   if (event.activity_code == "integration.disable") {
-    if (!event.meta.platform) return "Integration disabled";
+    if (!event.meta.platform) return <TransText>Integration disabled</TransText>;
     return (
       <div className={"inline"}>
         <Value className={"capitalize"}>{event.meta.platform}</Value>{" "}
-        integration disabled
+        <TransText>integration disabled</TransText>
       </div>
     );
   }
 
   if (event.activity_code == "integration.disable-by-system") {
-    if (!event.meta.platform) return "Integration disabled by system";
+    if (!event.meta.platform) return <TransText>Integration disabled by system</TransText>;
     return (
       <div className={"inline"}>
         <Value className={"capitalize"}>{event.meta.platform}</Value>{" "}
-        integration disabled by system
+        <TransText>integration disabled by system</TransText>
         {event.meta.reason && (
           <>
             {" "}
-            due to <Value>{event.meta.reason}</Value>
+            <TransText>due to</TransText> <Value>{event.meta.reason}</Value>
           </>
         )}
       </div>
@@ -665,25 +665,25 @@ export default function ActivityDescription({ event }: Props) {
   if (event.activity_code == "integrated-validator.api.enabled")
     return (
       <div className={"inline"}>
-        <Value>{m?.platform}</Value> integration enabled
+        <Value>{m?.platform}</Value> <TransText>integration enabled</TransText>
       </div>
     );
 
   if (event.activity_code == "integrated-validator.api.disabled")
     return (
       <div className={"inline"}>
-        <Value>{m?.platform}</Value> integration disabled
+        <Value>{m?.platform}</Value> <TransText>integration disabled</TransText>
       </div>
     );
 
   if (event.activity_code == "integrated-validator.api.disabled-by-system")
     return (
       <div className={"inline"}>
-        <Value>{m?.platform}</Value> integration disabled by system
+        <Value>{m?.platform}</Value> <TransText>integration disabled by system</TransText>
         {m?.reason && (
           <>
             {" "}
-            due to <Value>{m.reason}</Value>
+            <TransText>due to</TransText> <Value>{m.reason}</Value>
           </>
         )}
       </div>

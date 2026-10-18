@@ -11,7 +11,7 @@
 
 ## 显示效果
 
-侧栏底部显示：`v2.94.0-zh`（`v` 前缀由 `formatVersion()` 自动添加）
+侧栏底部显示：`v2.95.0-zh`（`v` 前缀由 `formatVersion()` 自动添加）
 
 > ⚠️ **改动上游版本展示逻辑时必须回归这一项。**
 > 上游 v2.94.0 新增的 `formatShortVersion()`（`src/components/VersionInfo.tsx`）
@@ -24,9 +24,9 @@
 ## 版本号来源
 
 ```
-package.json          →  "version": "2.94.0"        # 上游干净版本号
+package.json          →  "version": "2.95.0"        # 上游干净版本号
 next.config.js         →  pkg.version + "-zh"       # 构建时自动追加 -zh
-VersionInfo.tsx        →  formatVersion() 加 v 前缀  # 显示为 v2.94.0-zh
+VersionInfo.tsx        →  formatVersion() 加 v 前缀  # 显示为 v2.95.0-zh
 ```
 
 > CI 会用 tag 名覆盖该值（`NEXT_PUBLIC_DASHBOARD_VERSION`）；

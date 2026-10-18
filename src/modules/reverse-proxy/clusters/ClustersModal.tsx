@@ -539,12 +539,12 @@ spec:
                   </Code>
 
                   <HelpText className={"mb-0"}>
-                    Need to fine-tune the proxy? See all available&nbsp;
+                    <TransText>Need to fine-tune the proxy? See all available</TransText>&nbsp;
                     <InlineLink
                       href={REVERSE_PROXY_ENV_REFERENCE_DOCS_LINK}
                       target={"_blank"}
                     >
-                      environment variables
+                      <TransText>environment variables</TransText>
                       <ExternalLinkIcon size={12} />
                     </InlineLink>
                   </HelpText>

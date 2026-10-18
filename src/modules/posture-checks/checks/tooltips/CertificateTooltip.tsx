@@ -3,6 +3,8 @@ import FullTooltip from "@components/FullTooltip";
 import { ScrollArea } from "@components/ScrollArea";
 import { FileKey2Icon } from "lucide-react";
 import * as React from "react";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 import { CertificateCheck } from "@/interfaces/PostureCheck";
 import { useCertificateFingerprints } from "@/modules/posture-checks/helper/CertificateHelper";
 
@@ -26,8 +28,8 @@ export const CertificateTooltip = ({ check, children }: Props) => {
         >
           <div className={"px-4 pt-3"}>
             <span>
-              <span className={"text-green-500 font-semibold"}>Allow only</span>{" "}
-              peers holding a certificate issued by one of the following CAs
+              <span className={"text-green-500 font-semibold"}><TransText>Allow only</TransText></span>{" "}
+              <TransText>peers holding a certificate issued by one of the following CAs</TransText>
             </span>
           </div>
 
@@ -55,7 +57,7 @@ export const CertificateTooltip = ({ check, children }: Props) => {
                     >
                       {fingerprint
                         ? `SHA-256 ${fingerprint}`
-                        : `CA certificate ${index + 1}`}
+                        : (zhMap["CA certificate {index}"] || "CA certificate {index}").split("{index}").join(String(index + 1))}
                     </span>
                   </Badge>
                 );

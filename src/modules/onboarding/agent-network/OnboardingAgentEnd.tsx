@@ -18,6 +18,8 @@ import {
 } from "lucide-react";
 import * as React from "react";
 import { useEffect, useState } from "react";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 import type {
   APIAgentNetworkAccessLog,
   APIAgentNetworkAccessLogsResponse,
@@ -34,6 +36,13 @@ import {
 import { WaitingForDevice } from "@/modules/onboarding/OnboardingDevices";
 
 const QUICKSTART_DOCS = "https://docs.netbird.io/agent-network/quickstart";
+
+// fill substitutes {name} placeholders in a zh-map template.
+const fill = (template: string, vars: Record<string, string | number>) =>
+  Object.entries(vars).reduce(
+    (acc, [key, value]) => acc.split(`{${key}}`).join(String(value)),
+    template,
+  );
 
 type Props = {
   // deviceName names the operator's device, where the test request has to
@@ -64,18 +73,18 @@ export const OnboardingAgentEnd = ({
     <div className={"relative flex flex-col h-full gap-4"}>
       <div>
         <h1 className={"text-xl text-center max-w-sm mx-auto"}>
-          Send a test request
+          <TransText>Send a test request</TransText>
         </h1>
         <div
           className={
             "text-sm text-nb-gray-300 font-light mt-2 block text-center sm:px-4"
           }
         >
-          Run your agent, or the cURL command from the previous step, on{" "}
+          <TransText>Run your agent, or the cURL command from the previous step, on</TransText>{" "}
           <span className={"text-nb-gray-100 whitespace-nowrap"}>
-            {deviceName || "your device"}
+            {deviceName || <TransText>your device</TransText>}
           </span>
-          . The request shows up here once NetBird logs it.
+          <TransText>. The request shows up here once NetBird logs it.</TransText>
         </div>
       </div>
 
@@ -83,10 +92,10 @@ export const OnboardingAgentEnd = ({
 
       <div className={"flex items-center justify-center mt-4 gap-3"}>
         <Button variant={"secondary"} onClick={onBack}>
-          Go Back
+          <TransText>Go Back</TransText>
         </Button>
         <Button variant={"secondaryLighter"} onClick={onFinish}>
-          Skip
+          <TransText>Skip</TransText>
         </Button>
       </div>
     </div>
@@ -151,7 +160,7 @@ const AllSet = ({
   <div className={"relative flex flex-col h-full gap-4"}>
     <div>
       <h1 className={"text-xl text-center max-w-sm mx-auto"}>
-        You&apos;re all set!
+        <TransText>You&apos;re all set!</TransText>
       </h1>
       <PassedRequest entry={entry} />
     </div>
@@ -164,9 +173,9 @@ const AllSet = ({
         <li key={title} className={"flex items-start gap-3"}>
           <Icon size={16} className={"text-nb-gray-400 shrink-0 mt-0.5"} />
           <div>
-            <div className={"text-nb-gray-100"}>{title}</div>
+            <div className={"text-nb-gray-100"}><TransText>{title}</TransText></div>
             <div className={"text-nb-gray-400 font-light mt-0.5"}>
-              {description}
+              <TransText>{description}</TransText>
             </div>
           </div>
         </li>
@@ -175,10 +184,10 @@ const AllSet = ({
 
     <div className={"flex items-center justify-center mt-4 gap-3"}>
       <Button variant={"secondary"} onClick={onBack}>
-        Go Back
+        <TransText>Go Back</TransText>
       </Button>
       <Button variant={"primary"} onClick={onFinish}>
-        Finish
+        <TransText>Finish</TransText>
         <CheckIcon size={16} />
       </Button>
     </div>
@@ -211,11 +220,31 @@ const passedSentence = (
 ) => {
   const target = providerName || entry.model;
   const tokens =
-    entry.total_tokens > 0
-      ? ` and used ${entry.total_tokens.toLocaleString()} tokens`
-      : "";
-  if (!target) return `Your request went through${tokens}.`;
-  return `Your request reached ${target}${tokens}.`;
+    entry.total_tokens > 0 ? entry.total_tokens.toLocaleString() : undefined;
+  const tpl = (key: string, fallback: string) => zhMap[key] || fallback;
+  if (!target) {
+    return tokens
+      ? fill(
+          tpl(
+            "Your request went through and used {tokens} tokens.",
+            "Your request went through and used {tokens} tokens.",
+          ),
+          { tokens },
+        )
+      : tpl("Your request went through.", "Your request went through.");
+  }
+  return tokens
+    ? fill(
+        tpl(
+          "Your request reached {target} and used {tokens} tokens.",
+          "Your request reached {target} and used {tokens} tokens.",
+        ),
+        { target, tokens },
+      )
+    : fill(
+        tpl("Your request reached {target}.", "Your request reached {target}."),
+        { target },
+      );
 };
 
 // TestRequestStatus shows what became of the latest request. onOpenLogs leaves
@@ -229,11 +258,52 @@ const TestRequestStatus = ({
   onOpenLogs: () => void;
 }) => {
   if (outcome.kind === "waiting") {
-    return <WaitingForDevice text={"Waiting for your first request"} />;
+    return (
+      <WaitingForDevice
+        text={zhMap["Waiting for your first request"] || "Waiting for your first request"}
+      />
+    );
   }
 
   const { entry } = outcome;
-  const forModel = entry.model ? `, for ${entry.model},` : "";
+  const tpl = (key: string, fallback: string) => zhMap[key] || fallback;
+  const denied = entry.model
+    ? fill(
+        tpl(
+          "Your last request, for {model}, was denied: {reason}.",
+          "Your last request, for {model}, was denied: {reason}.",
+        ),
+        {
+          model: entry.model,
+          reason:
+            formatDenyReason(entry.deny_reason) || tpl("no reason given", "no reason given"),
+        },
+      )
+    : fill(
+        tpl(
+          "Your last request was denied: {reason}.",
+          "Your last request was denied: {reason}.",
+        ),
+        {
+          reason:
+            formatDenyReason(entry.deny_reason) || tpl("no reason given", "no reason given"),
+        },
+      );
+  const reached = entry.model
+    ? fill(
+        tpl(
+          "Your last request, for {model}, reached the provider and came back with status {status}.",
+          "Your last request, for {model}, reached the provider and came back with status {status}.",
+        ),
+        { model: entry.model, status: entry.status_code },
+      )
+    : fill(
+        tpl(
+          "Your last request reached the provider and came back with status {status}.",
+          "Your last request reached the provider and came back with status {status}.",
+        ),
+        { status: entry.status_code },
+      );
 
   return (
     <div className={"flex flex-col"}>
@@ -242,31 +312,25 @@ const TestRequestStatus = ({
         icon={<XCircleIcon size={16} className={"shrink-0 mt-0.5"} />}
         data-testid={`agent-network-test-${outcome.kind}`}
       >
-        <p>
-          {outcome.kind === "denied"
-            ? `Your last request${forModel} was denied: ${
-                formatDenyReason(entry.deny_reason) || "no reason given"
-              }.`
-            : `Your last request${forModel} reached the provider and came back with status ${entry.status_code}.`}
-        </p>
+        <p>{outcome.kind === "denied" ? denied : reached}</p>
         <p className={"mt-1"}>
-          Learn more in the{" "}
+          <TransText>Learn more in the</TransText>{" "}
           <InlineButtonLink variant={"dashed"} onClick={onOpenLogs}>
-            Access Logs
+            <TransText>Access Logs</TransText>
           </InlineButtonLink>{" "}
-          or the{" "}
+          <TransText>or the</TransText>{" "}
           <InlineLink
             variant={"dashed"}
             href={QUICKSTART_DOCS}
             target={"_blank"}
           >
-            docs
+            <TransText>docs</TransText>
             <ExternalLinkIcon size={12} />
           </InlineLink>
           .
         </p>
       </Callout>
-      <WaitingForDevice text={"Waiting for your next request"} />
+      <WaitingForDevice text={zhMap["Waiting for your next request"] || "Waiting for your next request"} />
     </div>
   );
 };

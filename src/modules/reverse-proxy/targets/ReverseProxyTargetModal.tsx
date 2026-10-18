@@ -340,7 +340,7 @@ export default function ReverseProxyTargetModal({
                     />
                   }
                 >
-                  <TransText>This location is already used by another target and cannot be added.</TransText> <br /> Please use a different location.
+                  <TransText>This location is already used by another target and cannot be added.</TransText> <br /> <TransText>Please use a different location.</TransText>
                 </Callout>
               )}
               {targetPath &&
@@ -360,7 +360,7 @@ export default function ReverseProxyTargetModal({
                     className={"mt-3.5"}
                     label={
                       <>
-                        Preserve Full Path
+                        <TransText>Preserve Full Path</TransText>
                         <HelpTooltip
                           content={
                             <div className="text-xs max-w-xs flex flex-col gap-2">
@@ -406,7 +406,7 @@ export default function ReverseProxyTargetModal({
               <div className="flex mt-1">
                 <div className="flex-1">
                   <Label>
-                    Protocol & Host / IP
+                    <TransText>Protocol & Host / IP</TransText>
                     <CidrHelpText target={target} />
                   </Label>
                   <div className="flex items-center mt-2">
@@ -523,9 +523,7 @@ export default function ReverseProxyTargetModal({
                       <div>
                         <Label><TransText>Request Timeout</TransText></Label>
                         <HelpText className={"mb-0"}>
-                          Max time to wait for a response as duration string
-                          (e.g. 30s, 2m). <br /> Leave this field empty for no
-                          timeout.
+                          <TransText>Max time to wait for a response as duration string (e.g. 30s, 2m).</TransText> <br /> <TransText>Leave this field empty for no timeout.</TransText>
                         </HelpText>
                       </div>
                       <Input
@@ -550,8 +548,7 @@ export default function ReverseProxyTargetModal({
                         <div>
                           <Label><TransText>Session Idle Timeout</TransText></Label>
                           <HelpText className={"mb-0"}>
-                            How long a UDP session stays alive without traffic
-                            (e.g., 30s, 2m). <br /> Defaults to 30s when empty.
+                            <TransText>How long a UDP session stays alive without traffic (e.g., 30s, 2m).</TransText> <br /> <TransText>Defaults to 30s when empty.</TransText>
                           </HelpText>
                         </div>
                         <Input

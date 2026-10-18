@@ -20,6 +20,8 @@ import {
   AIProvider,
   AIProviderId,
 } from "@/modules/agent-network/data/mockData";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 // Same gray-to-netbird treatment the install-peer modal gives its OS tabs.
 const TAB_ICON =
@@ -103,7 +105,7 @@ function Snippet({
   const code = (
     <Code
       codeToCopy={copyText ?? lines.join("\n")}
-      message={"Copied to clipboard"}
+      message={zhMap["Copied to clipboard"] || "Copied to clipboard"}
       showCopyIcon={!title}
       className={title ? "rounded-none border-0" : undefined}
     >
@@ -133,8 +135,8 @@ function Snippet({
           {action}
           <button
             type={"button"}
-            onClick={() => copy("Copied to clipboard")}
-            aria-label={"Copy snippet"}
+            onClick={() => copy(zhMap["Copied to clipboard"] || "Copied to clipboard")}
+            aria-label={zhMap["Copy snippet"] || "Copy snippet"}
             className={
               "self-center text-nb-gray-400 hover:text-nb-gray-100 transition-colors cursor-pointer"
             }
@@ -386,8 +388,7 @@ export function AgentConnectTabs({
   // Vertex don't have.
   const pathNote = (
     <SmallParagraph>
-      {provider?.name} routes requests by URL path, which only Claude Code
-      supports. Pick another provider above to configure this tool.
+      {provider?.name} <TransText>routes requests by URL path, which only Claude Code supports. Pick another provider above to configure this tool.</TransText>
     </SmallParagraph>
   );
 
@@ -419,7 +420,7 @@ export function AgentConnectTabs({
             />
           ) : (
             <Input
-              aria-label={"Model"}
+              aria-label={zhMap["Model"] || "Model"}
               placeholder={DEFAULT_MODEL[api]}
               value={pick.model ?? ""}
               onChange={(e) => setPick({ ...pick, model: e.target.value })}
@@ -476,9 +477,8 @@ export function AgentConnectTabs({
           <div className={contentClassName}>
             {!claudeProvider && (
               <SmallParagraph>
-                Claude Code speaks the Anthropic Messages API, which{" "}
-                {provider?.name} doesn&apos;t. Pick an Anthropic, Vertex AI,
-                Bedrock or Kimi provider above.
+                <TransText>Claude Code speaks the Anthropic Messages API, which</TransText>{" "}
+                {provider?.name} <TransText>doesn&apos;t. Pick an Anthropic, Vertex AI, Bedrock or Kimi provider above.</TransText>
               </SmallParagraph>
             )}
 
@@ -488,10 +488,10 @@ export function AgentConnectTabs({
                   title={
                     claudeMode === "config" ? (
                       <>
-                        Add to <ConfigPath path={"~/.claude/settings.json"} />
+                        <TransText>Add to</TransText> <ConfigPath path={"~/.claude/settings.json"} />
                       </>
                     ) : (
-                      "Run in your shell"
+                      <TransText>Run in your shell</TransText>
                     )
                   }
                   action={
@@ -527,7 +527,7 @@ export function AgentConnectTabs({
               <Snippet
                 title={
                   <>
-                    Add to <ConfigPath path={"~/.claude/settings.json"} />
+                    <TransText>Add to</TransText> <ConfigPath path={"~/.claude/settings.json"} />
                   </>
                 }
                 lines={[
@@ -551,7 +551,7 @@ export function AgentConnectTabs({
               <Snippet
                 title={
                   <>
-                    Add to <ConfigPath path={"~/.claude/settings.json"} />
+                    <TransText>Add to</TransText> <ConfigPath path={"~/.claude/settings.json"} />
                   </>
                 }
                 lines={[
@@ -575,10 +575,10 @@ export function AgentConnectTabs({
                   title={
                     claudeMode === "config" ? (
                       <>
-                        Add to <ConfigPath path={"~/.claude/settings.json"} />
+                        <TransText>Add to</TransText> <ConfigPath path={"~/.claude/settings.json"} />
                       </>
                     ) : (
-                      "Run in your shell"
+                      <TransText>Run in your shell</TransText>
                     )
                   }
                   action={
@@ -624,11 +624,10 @@ export function AgentConnectTabs({
                   }
                 />
                 <SmallParagraph className={"mt-3"}>
-                  Pairs with a Kimi provider keeping the default upstream URL{" "}
-                  <code className={"font-mono"}>https://api.moonshot.ai</code>.
-                  The <code className={"font-mono"}>/anthropic</code> suffix in
-                  the base URL rides through the endpoint to Moonshot, which
-                  serves the Anthropic Messages API under that path.
+                  <TransText>Pairs with a Kimi provider keeping the default upstream URL</TransText>{" "}
+                  <code className={"font-mono"}>https://api.moonshot.ai</code>.{" "}
+                  <TransText>The</TransText> <code className={"font-mono"}>/anthropic</code>{" "}
+                  <TransText>suffix in the base URL rides through the endpoint to Moonshot, which serves the Anthropic Messages API under that path.</TransText>
                 </SmallParagraph>
               </>
             )}
@@ -644,7 +643,7 @@ export function AgentConnectTabs({
                 <Snippet
                   title={
                     <>
-                      Add to <ConfigPath path={"~/.codex/config.toml"} />
+                      <TransText>Add to</TransText> <ConfigPath path={"~/.codex/config.toml"} />
                     </>
                   }
                   lines={[
@@ -671,7 +670,7 @@ export function AgentConnectTabs({
                 <Snippet
                   title={
                     <>
-                      Add to{" "}
+                      <TransText>Add to</TransText>{" "}
                       <ConfigPath path={"~/.config/opencode/opencode.json"} />
                     </>
                   }
@@ -691,7 +690,7 @@ export function AgentConnectTabs({
                 <Snippet
                   title={
                     <>
-                      Add to <ConfigPath path={"~/.pi/agent/models.json"} />
+                      <TransText>Add to</TransText> <ConfigPath path={"~/.pi/agent/models.json"} />
                     </>
                   }
                   lines={piModelsLines(picked, baseUrl)}
@@ -699,7 +698,7 @@ export function AgentConnectTabs({
                 <Snippet
                   title={
                     <>
-                      Add to <ConfigPath path={"~/.pi/agent/settings.json"} />
+                      <TransText>Add to</TransText> <ConfigPath path={"~/.pi/agent/settings.json"} />
                     </>
                   }
                   lines={json({
@@ -721,7 +720,7 @@ export function AgentConnectTabs({
               // placeholder since NetBird injects the real key server-side.
               title={
                 <>
-                  Add to <ConfigPath path={"~/.kimi/config.toml"} />
+                  <TransText>Add to</TransText> <ConfigPath path={"~/.kimi/config.toml"} />
                 </>
               }
               lines={[
@@ -739,13 +738,13 @@ export function AgentConnectTabs({
               ]}
             />
             <SmallParagraph className={"mt-3"}>
-              Pairs with a Kimi provider keeping the default upstream URL{" "}
-              <code className={"font-mono"}>https://api.moonshot.ai</code>. For
-              the OpenAI shape instead, use{" "}
+              <TransText>Pairs with a Kimi provider keeping the default upstream URL</TransText>{" "}
+              <code className={"font-mono"}>https://api.moonshot.ai</code>.{" "}
+              <TransText>For the OpenAI shape instead, use</TransText>{" "}
               <code className={"font-mono"}>
                 type = &quot;openai_legacy&quot;
               </code>{" "}
-              with{" "}
+              <TransText>with</TransText>{" "}
               <code className={"font-mono"}>
                 base_url = &quot;{openaiBase}&quot;
               </code>

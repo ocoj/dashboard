@@ -5,6 +5,8 @@ import {
   SelectOption,
 } from "@components/select/SelectDropdown";
 import { LockKeyhole, LockOpen, ShieldX } from "lucide-react";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 import {
   TargetAccessAction,
   type TargetAccessAction as TargetAccessActionValue,
@@ -29,18 +31,18 @@ export default function ReverseProxyTargetAccessControl({
 
   const options: SelectOption[] = [
     {
-      label: "Use service authentication",
+      label: zhMap["Use service authentication"] || "Use service authentication",
       value: TargetAccessAction.INHERIT,
       icon: LockKeyhole,
     },
     {
-      label: "Bypass authentication",
+      label: zhMap["Bypass authentication"] || "Bypass authentication",
       value: TargetAccessAction.BYPASS,
       icon: LockOpen,
       disabled: privateService,
     },
     {
-      label: "Block access",
+      label: zhMap["Block access"] || "Block access",
       value: TargetAccessAction.BLOCK,
       icon: ShieldX,
     },
@@ -48,7 +50,9 @@ export default function ReverseProxyTargetAccessControl({
 
   if (hasUnsupportedValue) {
     options.push({
-      label: `Unsupported setting (${selectedValue})`,
+      label: (
+        zhMap["Unsupported setting ({value})"] || "Unsupported setting ({value})"
+      ).split("{value}").join(selectedValue),
       value: selectedValue,
       disabled: true,
     });
@@ -60,23 +64,21 @@ export default function ReverseProxyTargetAccessControl({
       data-testid={"target-access-control-setting"}
     >
       <div>
-        <Label>Access</Label>
+        <Label><TransText>Access</TransText></Label>
         <HelpText className={"mb-0 max-w-sm"}>
-          Use the service authentication settings, make this location public, or
-          deny requests before they reach the target.
+          <TransText>Use the service authentication settings, make this location public, or deny requests before they reach the target.</TransText>
         </HelpText>
         {privateService && (
           <div data-testid={"target-access-control-private-service"}>
             <HelpText className={"mb-0 mt-1 !text-yellow-400"}>
-              NetBird-only services cannot bypass authentication.
+              <TransText>NetBird-only services cannot bypass authentication.</TransText>
             </HelpText>
           </div>
         )}
         {hasUnsupportedValue && (
           <div data-testid={"target-access-action-unsupported"}>
             <HelpText className={"mb-0 mt-1 !text-yellow-400"}>
-              This value is not supported by this dashboard. It will be
-              preserved unless you select a supported option.
+              <TransText>This value is not supported by this dashboard. It will be preserved unless you select a supported option.</TransText>
             </HelpText>
           </div>
         )}

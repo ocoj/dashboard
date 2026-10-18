@@ -292,13 +292,14 @@ const DeploySuccess = ({
     <div className={"flex flex-col gap-4"}>
       <Callout variant={"info"}>
         {resourceLabel} <span className={"text-white font-medium"}>{name}</span>{" "}
-        was created
+        <TransText>was created</TransText>
         {ip ? (
           <>
             {" "}
-            with {isStaticIP ? "static IP" : "IP"}{" "}
-            <span className={"text-netbird font-medium"}>{ip}</span> and is still
-            bootstrapping. Meanwhile, add the DNS records below.
+            <TransText>with</TransText>{" "}
+            {isStaticIP ? <TransText>static IP</TransText> : <TransText>IP</TransText>}{" "}
+            <span className={"text-netbird font-medium"}>{ip}</span>{" "}
+            <TransText>and is still bootstrapping. Meanwhile, add the DNS records below.</TransText>
           </>
         ) : (
           <> {ipPendingNote}</>
@@ -899,7 +900,7 @@ const AWSDeploy = ({
         }}
       >
         <RocketIcon size={16} />
-        Launch Stack in AWS Console
+        <TransText>Launch Stack in AWS Console</TransText>
         <ExternalLinkIcon size={14} />
       </Button>
       <HelpText className={"mb-0"}>

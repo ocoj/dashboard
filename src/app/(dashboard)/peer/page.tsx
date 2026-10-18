@@ -671,11 +671,11 @@ function PeerInformationCard({ peer }: Readonly<{ peer: Peer }>) {
           {peerMacAddresses(peer).length > 0 && (
             <Card.ListItem
               copy
-              copyText={"MAC Address"}
+              copyText={zhMap["MAC Address"] || "MAC Address"}
               label={
                 <>
                   <NetworkIcon size={16} className={"shrink-0"} />
-                  MAC Address
+                  <TransText>MAC Address</TransText>
                 </>
               }
               className={

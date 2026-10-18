@@ -376,7 +376,7 @@ function ActionsCell({
           <Button
             variant={"secondary"}
             className={"!px-3"}
-            aria-label={"Policy actions"}
+            aria-label={zhMap["Policy actions"] || "Policy actions"}
             data-testid={"agent-policy-actions"}
           >
             <MoreVertical size={16} className={"shrink-0"} />
@@ -396,7 +396,7 @@ function ActionsCell({
           >
             <div className={"flex gap-3 items-center"}>
               <Copy size={14} className={"shrink-0"} />
-              Duplicate
+              <TransText>Duplicate</TransText>
             </div>
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => togglePolicy(policy.id)}>
@@ -660,7 +660,7 @@ export default function AgentPoliciesTable({ headingTarget }: Readonly<Props>) {
             }
             learnMore={
               <>
-                Learn more about
+                <TransText>Learn more about</TransText>{" "}
                 <InlineLink
                   href={"https://docs.netbird.io/agent-network"}
                   target={"_blank"}

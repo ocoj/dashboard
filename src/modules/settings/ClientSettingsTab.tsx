@@ -458,20 +458,19 @@ function ClientSettingsTabContent({ account }: Readonly<Props>) {
           <div>
             <Label>
               <TagIcon size={15} />
-              Unique Peer Hostnames
+              <TransText>Unique Peer Hostnames</TransText>
             </Label>
             <HelpText>
-              By default, a peer registering or being renamed with a hostname
-              that is already in use receives an IP-based suffix on its DNS
-              label.
+              <TransText>By default, a peer registering or being renamed with a hostname that is already in use receives an IP-based suffix on its DNS label.</TransText>
             </HelpText>
             <FancyToggleSwitch
               className={"mt-2"}
               value={hostnameCollisionRejected}
               onChange={toggleHostnameCollisionRejected}
               data-testid="peer-hostname-collision-rejected"
-              label={"Reject Hostname Collisions"}
+              label={zhMap["Reject Hostname Collisions"] || "Reject Hostname Collisions"}
               helpText={
+                zhMap["When enabled, registering or renaming a peer to a hostname that is already in use fails instead of receiving a suffix. This applies to ephemeral peers as well."] ||
                 "When enabled, registering or renaming a peer to a hostname that is already in use fails instead of receiving a suffix. This applies to ephemeral peers as well."
               }
               disabled={!permission.settings.update}

@@ -56,8 +56,7 @@ export default function ConnectAgentPage() {
             default and a break element does nothing between flex items. */}
         <Paragraph className={"block"}>
           <TransText>Point your agent at the NetBird endpoint as its base URL. No provider API key is required on the client.</TransText> <br />
-          NetBird authenticates you through your identity provider and
-          authorizes each request against your access policies.
+          <TransText>NetBird authenticates you through your identity provider and authorizes each request against your access policies.</TransText>
         </Paragraph>
 
         {/* The server hands the endpoint to every member of an account that

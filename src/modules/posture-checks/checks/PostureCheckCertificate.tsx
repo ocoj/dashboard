@@ -15,6 +15,8 @@ import {
 } from "lucide-react";
 import * as React from "react";
 import { useMemo, useState } from "react";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 import { CertificateCheck } from "@/interfaces/PostureCheck";
 import {
   isValidPEMCertificate,
@@ -41,8 +43,9 @@ export const PostureCheckCertificate = ({
       setOpen={setOpen}
       key={open ? 1 : 0}
       active={value?.ca_certificates && value.ca_certificates.length > 0}
-      title={"Certificate"}
+      title={zhMap["Certificate"] || "Certificate"}
       description={
+        zhMap["Restrict access to peers holding a certificate issued by your own certificate authority."] ||
         "Restrict access to peers holding a certificate issued by your own certificate authority."
       }
       icon={<FileKey2Icon size={18} />}
@@ -89,7 +92,8 @@ const CheckContent = ({ value, onChange, disabled }: Props) => {
     () =>
       certificates.map((c) =>
         c.pem.trim() !== "" && !isValidPEMCertificate(c.pem)
-          ? "Please paste a valid PEM encoded certificate"
+          ? zhMap["Please paste a valid PEM encoded certificate"] ||
+            "Please paste a valid PEM encoded certificate"
           : "",
       ),
     [certificates],
@@ -113,19 +117,14 @@ const CheckContent = ({ value, onChange, disabled }: Props) => {
       <div className={"flex flex-col px-8 gap-2 pb-6"}>
         <div className={"flex justify-between items-start gap-10 mt-2"}>
           <div>
-            <Label>CA Certificates</Label>
+            <Label><TransText>CA Certificates</TransText></Label>
             <HelpText className={""}>
-              Paste the PEM encoded public certificate of the root or
-              intermediate CA that issues your device certificates. Peers will
-              only be allowed to connect if they hold a certificate issued by
-              one of these CAs and prove possession of its private key.
+              <TransText>Paste the PEM encoded public certificate of the root or intermediate CA that issues your device certificates. Peers will only be allowed to connect if they hold a certificate issued by one of these CAs and prove possession of its private key.</TransText>
             </HelpText>
           </div>
         </div>
         <Callout variant={"warning"} className={"mb-2"}>
-          This check is not supported on mobile devices. Peers running the
-          NetBird iOS or Android app will always fail this check and be denied
-          access.
+          <TransText>This check is not supported on mobile devices. Peers running the NetBird iOS or Android app will always fail this check and be denied access.</TransText>
         </Callout>
         {certificates.length > 0 && (
           <div className={"mb-2 flex flex-col gap-4 w-full"}>
@@ -178,27 +177,27 @@ const CheckContent = ({ value, onChange, disabled }: Props) => {
           disabled={disabled}
         >
           <PlusCircle size={16} />
-          Add CA Certificate
+          <TransText>Add CA Certificate</TransText>
         </Button>
       </div>
       <ModalFooter className={"items-center"}>
         <div className={"w-full"}>
           <Paragraph className={"text-sm mt-auto"}>
-            Learn more about
+            <TransText>Learn more about</TransText>
             <InlineLink
               href={
                 "https://docs.netbird.io/how-to/manage-posture-checks#certificate-check"
               }
               target={"_blank"}
             >
-              Certificate Check
+              <TransText>Certificate Check</TransText>
               <ExternalLinkIcon size={12} />
             </InlineLink>
           </Paragraph>
         </div>
         <div className={"flex gap-3 w-full justify-end"}>
           <ModalClose asChild={true}>
-            <Button variant={"secondary"}>Cancel</Button>
+            <Button variant={"secondary"}><TransText>Cancel</TransText></Button>
           </ModalClose>
           <Button
             variant={"primary"}
@@ -209,7 +208,7 @@ const CheckContent = ({ value, onChange, disabled }: Props) => {
               })
             }
           >
-            Save
+            <TransText>Save</TransText>
           </Button>
         </div>
       </ModalFooter>

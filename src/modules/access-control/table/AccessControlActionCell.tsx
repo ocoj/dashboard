@@ -89,7 +89,7 @@ export default function AccessControlActionCell({ policy }: Readonly<Props>) {
           >
             <div className={"flex gap-3 items-center"}>
               <Copy size={14} className={"shrink-0"} />
-              Duplicate
+              <TransText>Duplicate</TransText>
             </div>
           </DropdownMenuItem>
           <DropdownMenuItem
