@@ -52,7 +52,7 @@ import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { getOperatingSystem } from "@/hooks/useOperatingSystem";
 import { Group } from "@/interfaces/Group";
 import { OperatingSystem } from "@/interfaces/OperatingSystem";
-import { Peer } from "@/interfaces/Peer";
+import { Peer, peerMacAddresses } from "@/interfaces/Peer";
 import PeerActionCell from "@/modules/peers/PeerActionCell";
 import PeerAddressCell from "@/modules/peers/PeerAddressCell";
 import PeerGroupCell from "@/modules/peers/PeerGroupCell";
@@ -264,6 +264,10 @@ const PeersTableColumns: ColumnDef<Peer>[] = [
   {
     id: "ipv6",
     accessorFn: (row) => row.ipv6,
+  },
+  {
+    id: "mac",
+    accessorFn: (peer) => peerMacAddresses(peer).join(", "),
   },
 ];
 
@@ -494,7 +498,7 @@ export default function PeersTable({
         showResetFilterButton={false}
         columns={PeersTableColumns}
         data={showBrowserPeers ? browserPeers : regularPeers}
-        searchPlaceholder={zhMap["Search by name, IP, owner or group..."] || "Search by name, IP, owner or group..."}
+        searchPlaceholder={zhMap["Search by name, IP, MAC, owner or group..."] || "Search by name, IP, MAC, owner or group..."}
         columnVisibility={{
           select: permission.groups.read,
           connected: false,
@@ -511,6 +515,7 @@ export default function PeersTable({
           os: false,
           os_kind: false,
           ipv6: false,
+          mac: false,
         }}
         isLoading={isLoading}
         // Treat a selected kind as an active filter: when peers exist but the

@@ -6,9 +6,11 @@ import {
   Flag,
   GlobeOff,
   Link2,
+  LockOpen,
   Network,
   ShieldAlert,
   ShieldOff,
+  ShieldX,
   Users,
 } from "lucide-react";
 import * as React from "react";
@@ -91,6 +93,16 @@ export const ReverseProxyEventsAuthMethodCell = ({
         return {
           icon: <GlobeOff size={12} />,
           label: "Geo Unavailable",
+        };
+      case "path_bypass":
+        return {
+          icon: <LockOpen size={12} />,
+          label: "Auth Bypassed",
+        };
+      case "path_block":
+        return {
+          icon: <ShieldX size={12} />,
+          label: "Path Blocked",
         };
       case "crowdsec_ban":
         return {

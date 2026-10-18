@@ -19,7 +19,8 @@ import {
 import React, { useEffect, useMemo, useState } from "react";
 import { useApiCall } from "@/utils/api";
 import { TransText } from "@/i18n/trans-text";
-import { ReverseProxyCluster } from "@/interfaces/ReverseProxy";
+import { isClusterConnected } from "@/interfaces/ReverseProxy";
+import { useProxyCluster } from "@/modules/reverse-proxy/clusters/useProxyCluster";
 import zhMap from "@/i18n/zh-map";
 
 // Synced from templates/reverse-proxy/netbird-proxy-cfn.yaml by the
@@ -242,39 +243,16 @@ const RegistrationCheck = ({
   domain: string;
   onRegistered?: () => void;
 }) => {
-  const clustersRequest = useApiCall<ReverseProxyCluster[]>(
-    "/reverse-proxies/clusters",
-    true,
-  );
-  const [registered, setRegistered] = useState(false);
+  const cluster = useProxyCluster(domain, {
+    done: isClusterConnected,
+    maxAttempts: 120,
+  });
+  const registered = isClusterConnected(cluster);
 
   useEffect(() => {
-    if (registered) {
-      onRegistered?.();
-      return;
-    }
-    let attempts = 0;
-    const timer = setInterval(() => {
-      attempts += 1;
-      if (attempts > 120) {
-        clearInterval(timer);
-        return;
-      }
-      clustersRequest
-        .get()
-        .then((clusters) => {
-          const cluster = clusters?.find((c) => c.address === domain);
-          if (cluster?.online && cluster.connected_proxies > 0) {
-            setRegistered(true);
-          }
-        })
-        .catch(() => {
-          // Polling failures are retried on the next tick.
-        });
-    }, 5000);
-    return () => clearInterval(timer);
+    if (registered) onRegistered?.();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [registered, domain]);
+  }, [registered]);
 
   return (
     <div className={"flex items-center gap-2 text-sm"}>
