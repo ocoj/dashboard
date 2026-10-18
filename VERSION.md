@@ -11,7 +11,7 @@
 
 ## 显示效果
 
-侧栏底部显示：`v2.95.0-zh`（`v` 前缀由 `formatVersion()` 自动添加）
+侧栏底部显示：`v2.95.0.6-zh`（`v` 前缀由 `formatVersion()` 自动添加）
 
 > ⚠️ **改动上游版本展示逻辑时必须回归这一项。**
 > 上游 v2.94.0 新增的 `formatShortVersion()`（`src/components/VersionInfo.tsx`）
@@ -24,9 +24,9 @@
 ## 版本号来源
 
 ```
-package.json          →  "version": "2.95.0"        # 上游干净版本号
+package.json          →  "version": "2.95.0.6"      # 上游版本 + 本地补丁序号 .N
 next.config.js         →  pkg.version + "-zh"       # 构建时自动追加 -zh
-VersionInfo.tsx        →  formatVersion() 加 v 前缀  # 显示为 v2.95.0-zh
+VersionInfo.tsx        →  formatVersion() 加 v 前缀  # 显示为 v2.95.0.6-zh
 ```
 
 > CI 会用 tag 名覆盖该值（`NEXT_PUBLIC_DASHBOARD_VERSION`）；
@@ -36,7 +36,7 @@ VersionInfo.tsx        →  formatVersion() 加 v 前缀  # 显示为 v2.95.0-zh
 
 | 操作 | 方法 |
 |------|------|
-| 同步上游新版本 | 修改 `package.json` 中 `version` 字段为上游版本号 |
+| 同步上游新版本 | 修改 `package.json` 中 `version` 字段为上游版本号（如 `2.95.0`） |
 | 本地补丁迭代 | 在上游版本不变时，追加 `.N`，如 `2.90.4.1-zh` |
 | 禁止行为 | ❌ 直接改 `next.config.js` 中的版本字符串 |
 | 禁止行为 | ❌ 使用非数字版本号（如 `development`） |
@@ -44,4 +44,4 @@ VersionInfo.tsx        →  formatVersion() 加 v 前缀  # 显示为 v2.95.0-zh
 
 ## 校验
 
-`next.config.js` 在构建时自动校验 `package.json` 的 `version` 字段是否符合 `x.y.z` 格式。不符合则构建失败。
+`next.config.js` 在构建时自动校验 `package.json` 的 `version` 字段是否符合 `x.y.z` 或 `x.y.z.N` 格式（见 `VERSION_RE`）。不符合则构建失败。
