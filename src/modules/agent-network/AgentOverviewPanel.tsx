@@ -382,8 +382,7 @@ function DailyBreakdownTable({ daily }: { daily: DayBucket[] }) {
             zhMap["Daily token and cost totals appear here as agents send requests through the providers you've connected."] || "Daily token and cost totals appear here as agents send requests through the providers you've connected."
           }
           learnMore={
-            <>
-              Learn more about
+            <>              <TransText>Learn more about</TransText>{" "}
               <InlineLink
                 href={"https://docs.netbird.io/agent-network"}
                 target={"_blank"}

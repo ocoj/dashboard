@@ -13,6 +13,7 @@ import ActivityDescription from "@/modules/activity/ActivityDescription";
 import ActivityTypeIcon from "@/modules/activity/ActivityTypeIcon";
 import { getColorFromCode } from "@/modules/activity/utils";
 import zhMap from "@/i18n/zh-map";
+import { useLocale } from "@/i18n/locale-context";
 
 export type ActionColor = "green" | "red" | "blue-darker" | "netbird";
 
@@ -25,6 +26,9 @@ const ActionIcons: Record<ActionColor, React.ReactNode> = {
 
 export const ActivityEntryRow = ({ event }: { event: ActivityEvent }) => {
   const { users } = useUsers();
+  const { locale } = useLocale();
+  const timestampFormat =
+    locale === "zh" ? "YYYY年M月D日 HH:mm:ss" : "MMM D, YYYY [at] h:mm:s A";
 
   const getActivityUser = () => {
     let user;
@@ -122,7 +126,7 @@ export const ActivityEntryRow = ({ event }: { event: ActivityEvent }) => {
             className={"flex gap-2 items-center text-nb-gray-400 text-xs mr-1"}
           >
             <div className={"h-1 w-1 bg-nb-gray-700 rounded-full"}></div>
-            {dayjs(event?.timestamp).format("MMM D, YYYY [at] h:mm:s A")}
+            {dayjs(event?.timestamp).format(timestampFormat)}
           </span>
         </div>
 

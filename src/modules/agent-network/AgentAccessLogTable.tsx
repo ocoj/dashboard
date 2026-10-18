@@ -773,11 +773,11 @@ export default function AgentAccessLogTable({
           }
           title={zhMap["No Access Log Entries Yet"] || "No Access Log Entries Yet"}
           description={
+            zhMap["No agent network requests yet. Check that providers are connected, policies allow traffic, and log collection is on."] ||
             "No agent network requests yet. Check that providers are connected, policies allow traffic, and log collection is on."
           }
           learnMore={
-            <>
-              Learn more about
+            <>              <TransText>Learn more about</TransText>{" "}
               <InlineLink
                 href={"https://docs.netbird.io/agent-network"}
                 target={"_blank"}
@@ -1140,15 +1140,15 @@ function TokenBreakdown({ entry }: { entry: AIAccessLogEntry }) {
         <span className={"font-medium"}>
           {(entry.outputTokens ?? 0).toLocaleString()}
         </span>
-        <span className={"text-nb-gray-400"}>output</span>
+        <span className={"text-nb-gray-400"}><TransText>output</TransText></span>
       </div>
       <div className={"flex items-center gap-2 whitespace-nowrap"}>
         <span className={"font-medium"}>{cacheRead.toLocaleString()}</span>
-        <span className={"text-nb-gray-400"}>cache read</span>
+        <span className={"text-nb-gray-400"}><TransText>cache read</TransText></span>
       </div>
       <div className={"flex items-center gap-2 whitespace-nowrap"}>
         <span className={"font-medium"}>{cacheWrite.toLocaleString()}</span>
-        <span className={"text-nb-gray-400"}>cache write</span>
+        <span className={"text-nb-gray-400"}><TransText>cache write</TransText></span>
       </div>
       <div
         className={

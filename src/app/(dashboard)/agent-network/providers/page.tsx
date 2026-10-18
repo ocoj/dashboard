@@ -42,7 +42,7 @@ function EndpointHeader() {
         }
         title={
           <>
-            API Base URL
+            <TransText>API Base URL</TransText>
             <span onClick={(e) => e.stopPropagation()}>
               <HelpTooltip iconSize={11} content={ENDPOINT_HELP_TEXT} />
             </span>

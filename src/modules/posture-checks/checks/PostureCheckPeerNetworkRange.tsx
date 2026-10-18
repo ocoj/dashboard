@@ -45,6 +45,7 @@ export const PostureCheckPeerNetworkRange = ({
       title={zhMap["Peer Network Range"] || "Peer Network Range"}
       modalWidthClass={"max-w-xl"}
       description={
+        zhMap["Restrict access by allowing or blocking peer network ranges."] ||
         "Restrict access by allowing or blocking peer network ranges."
       }
       iconClass={"bg-gradient-to-tr from-blue-500 to-blue-400"}

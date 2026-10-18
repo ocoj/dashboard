@@ -5,6 +5,7 @@ import { cn } from "@utils/helpers";
 import { ScaleIcon } from "lucide-react";
 import * as React from "react";
 import { useDialog } from "@/contexts/DialogProvider";
+import { TransText } from "@/i18n/trans-text";
 
 export const PostureCheckCard = ({
   children,
@@ -106,7 +107,7 @@ export const PostureCheckCard = ({
               }}
             >
               <IconCircleFilled size={7} className={"mt-[0.1px]"} />
-              {active ? "On" : "Off"}
+              {active ? <TransText>On</TransText> : <TransText>Off</TransText>}
             </span>
           </div>
         </div>

@@ -46,15 +46,15 @@ type Props = {
 
 const latestOrCustomVersion = [
   {
-    label: "Disabled",
+    label: zhMap["Disabled"] || "Disabled",
     value: "disabled",
   },
   {
-    label: "Latest Version",
+    label: zhMap["Latest Version"] || "Latest Version",
     value: "latest",
   },
   {
-    label: "Custom Version",
+    label: zhMap["Custom Version"] || "Custom Version",
     value: "custom",
   },
 ] as SelectOption[];
@@ -324,8 +324,8 @@ function ClientSettingsTabContent({ account }: Readonly<Props>) {
               />
               <Input
                 value={autoUpdateCustomVersion}
-                customPrefix={"Version"}
-                placeholder={"e.g., 0.52.2"}
+                customPrefix={zhMap["Version"] || "Version"}
+                placeholder={zhMap["e.g., 0.52.2"] || "e.g., 0.52.2"}
                 error={versionError}
                 errorTooltip={true}
                 disabled={autoUpdateMethod !== "custom"}

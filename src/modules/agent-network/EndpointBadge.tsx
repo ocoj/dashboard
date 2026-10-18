@@ -5,6 +5,7 @@ import { HelpTooltip } from "@components/HelpTooltip";
 import useCopyToClipboard from "@hooks/useCopyToClipboard";
 import { CheckIcon, CopyIcon, GlobeIcon } from "lucide-react";
 import React from "react";
+import { TransText } from "@/i18n/trans-text";
 import zhMap from "@/i18n/zh-map";
 
 // The tooltip is shared with the providers page's empty state, which shows the
@@ -45,7 +46,7 @@ export default function EndpointBadge({
       icon={<GlobeIcon size={16} />}
       title={
         <>
-          API Base URL
+          <TransText>API Base URL</TransText>
           <HelpTooltip iconSize={11} content={ENDPOINT_HELP_TEXT} />
         </>
       }

@@ -461,7 +461,7 @@ export default function AgentBudgetRulesTable() {
             }
             learnMore={
               <>
-                Learn more about
+                <TransText>Learn more about</TransText>{" "}
                 <InlineLink
                   href={"https://docs.netbird.io/agent-network"}
                   target={"_blank"}

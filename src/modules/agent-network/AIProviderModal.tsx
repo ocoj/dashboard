@@ -868,11 +868,12 @@ export default function AIProviderModal({
   ) : discovered.error ? (
     discovered.error
   ) : discovered.notSupported ? (
-    "This provider has no model listing endpoint — the catalog list is used instead."
+    zhMap["This provider has no model listing endpoint — the catalog list is used instead."] ||
+      "This provider has no model listing endpoint — the catalog list is used instead."
   ) : !discoveryInFlight && discovered.models.length > 0 ? (
     <>
-      {discovered.models.length} models loaded. Use the{" "}
-      <strong><TransText>Add More</TransText></strong> button to search and pick models.
+      {discovered.models.length} <TransText>models loaded. Use the</TransText>{" "}
+      <strong><TransText>Add More</TransText></strong> <TransText>button to search and pick models.</TransText>
     </>
   ) : null;
 
@@ -942,36 +943,32 @@ export default function AIProviderModal({
                 >
                   {canReadDomains && clustersLackPrivateCapability ? (
                     <>
-                      You need a reverse proxy cluster with private capabilities
-                      in order to enable agent networks. Connect one under
+                      <TransText>You need a reverse proxy cluster with private capabilities in order to enable agent networks. Connect one under</TransText>
                       <InlineLink
                         href={"/agent-network/configuration?tab=clusters"}
                       >
                         {" "}
-                        Configuration → Clusters
+                        <TransText>Configuration</TransText> → <TransText>Clusters</TransText>
                       </InlineLink>{" "}
-                      before adding a provider.
+                      <TransText>before adding a provider.</TransText>
                     </>
                   ) : canReadDomains ? (
                     <>
-                      No active proxy clusters are available. Connect at least
-                      one proxy under
+                      <TransText>No active proxy clusters are available. Connect at least one proxy under</TransText>
                       <InlineLink
                         href={"/agent-network/configuration?tab=clusters"}
                       >
                         {" "}
-                        Configuration → Clusters
+                        <TransText>Configuration</TransText> → <TransText>Clusters</TransText>
                       </InlineLink>{" "}
-                      before adding a provider.
+                      <TransText>before adding a provider.</TransText>
                     </>
                   ) : (
                     // Roles scoped to Agent Network can't read or connect
                     // proxies, so point at who can instead of at a page they
                     // have no access to.
                     <>
-                      Agent Network isn&apos;t set up for this account yet. Ask
-                      an account admin to connect a proxy before adding a
-                      provider.
+                      <TransText>Agent Network isn&apos;t set up for this account yet. Ask an account admin to connect a proxy before adding a provider.</TransText>
                     </>
                   )}
                 </Callout>
@@ -982,9 +979,9 @@ export default function AIProviderModal({
                   label={zhMap["Provider"] || "Provider"}
                   helpText={
                     <>
-                      AI provider and upstream URL to expose
+                      <TransText>AI provider and upstream URL to expose</TransText>
                       <br />
-                      through NetBird.
+                      <TransText>through NetBird.</TransText>
                     </>
                   }
                 >
@@ -1058,7 +1055,7 @@ export default function AIProviderModal({
                   label={
                     <>
                       <ShieldOffIcon size={15} />
-                      Skip TLS Verification
+                      <TransText>Skip TLS Verification</TransText>
                       <span onClick={(e) => e.stopPropagation()}>
                         <HelpTooltip
                           interactive
@@ -1092,12 +1089,11 @@ export default function AIProviderModal({
                 <FormRow
                   label={
                     <>
-                      Service account JSON key
+                      <TransText>Service account JSON key</TransText>
                       <HelpTooltip
                         content={
                           <>
-                            Upload the Vertex AI service account JSON key.
-                            NetBird base64-encodes it and prefixes it with{" "}
+                            <TransText>Upload the Vertex AI service account JSON key. NetBird base64-encodes it and prefixes it with</TransText>{" "}
                             <code className={"text-nb-gray-200"}>
                               keyfile::
                             </code>{" "}

@@ -161,8 +161,9 @@ function AgentBudgetRuleModalContent({
     <ModalContent maxWidthClass={"max-w-3xl"}>
       <ModalHeader
         icon={<SlidersHorizontal size={19} />}
-        title={rule ? "Update Global Limit" : "Create Global Limit"}
+        title={rule ? (zhMap["Update Global Limit"] || "Update Global Limit") : (zhMap["Create Global Limit"] || "Create Global Limit")}
         description={
+          zhMap["Token and budget caps, applied account-wide or scoped to groups and users."] ||
           "Token and budget caps, applied account-wide or scoped to groups and users."
         }
         color={"netbird"}
@@ -199,12 +200,11 @@ function AgentBudgetRuleModalContent({
               <div className={"w-full self-start"}>
                 <Label className={"mb-2"}>
                   <Users2 size={15} />
-                  Target Groups
+                  <TransText>Target Groups</TransText>
                   <HelpTooltip
                     content={
                       <>
-                        Restrict this rule to members of the selected groups.
-                        Leave empty (and no users) to apply account-wide.
+                        <TransText>Restrict this rule to members of the selected groups. Leave empty (and no users) to apply account-wide.</TransText>
                       </>
                     }
                   />
@@ -217,7 +217,7 @@ function AgentBudgetRuleModalContent({
                         <CircleUser size={12} />
                         <TransText>All</TransText>
                       </Badge>
-                      Select target group(s)...
+                      <TransText>Select target group(s)...</TransText>
                     </div>
                   }
                   values={targetGroupsRaw}
@@ -229,12 +229,11 @@ function AgentBudgetRuleModalContent({
               <div className={"w-full self-start"}>
                 <Label className={"mb-2"}>
                   <CircleUser size={15} />
-                  Target Users
+                  <TransText>Target Users</TransText>
                   <HelpTooltip
                     content={
                       <>
-                        Restrict this rule to specific users. Leave empty (and
-                        no groups) to apply account-wide.
+                        <TransText>Restrict this rule to specific users. Leave empty (and no groups) to apply account-wide.</TransText>
                       </>
                     }
                   />
@@ -249,9 +248,8 @@ function AgentBudgetRuleModalContent({
 
             {accountWide && (
               <Callout variant={"warning"}>
-                With no targets selected, this rule applies{" "}
-                <span className={"font-medium"}>account-wide</span> — every
-                agent-network request is counted against its caps.
+                <TransText>With no targets selected, this rule applies</TransText>{" "}
+                <span className={"font-medium"}><TransText>account-wide</TransText></span> <TransText>— every agent-network request is counted against its caps.</TransText>
               </Callout>
             )}
           </div>

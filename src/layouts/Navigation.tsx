@@ -238,7 +238,7 @@ export default function Navigation({
                   }
                 >
                   <SidebarItem
-                    label="Connect Agent"
+                    label={<TransText>Connect Agent</TransText>}
                     isChild
                     href={"/agent-network/connect"}
                     exactPathMatch={true}
@@ -253,7 +253,7 @@ export default function Navigation({
                     }
                   />
                   <SidebarItem
-                    label="Providers"
+                    label={<TransText>Providers</TransText>}
                     isChild
                     href={"/agent-network/providers"}
                     exactPathMatch={true}

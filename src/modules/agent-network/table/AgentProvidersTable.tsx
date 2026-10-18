@@ -158,12 +158,12 @@ export default function AgentProvidersTable({
       <DataTable
         headingTarget={headingTarget}
         isLoading={isLoading}
-        text={"Providers"}
+        text={zhMap["Providers"] || "Providers"}
         sorting={sorting}
         setSorting={setSorting}
         columns={columns}
         data={providers}
-        searchPlaceholder={"Search by name..."}
+        searchPlaceholder={zhMap["Search by name..."] || "Search by name..."}
         onRowClick={
           canUpdate ? (row) => openProviderEdit(row.original) : undefined
         }
@@ -178,6 +178,7 @@ export default function AgentProvidersTable({
             }
             title={zhMap["Connect a provider"] || "Connect a provider"}
             description={
+              zhMap["Route OpenAI, Anthropic, and other LLM APIs through NetBird to enforce access control, track token spend, and capture prompts."] ||
               "Route OpenAI, Anthropic, and other LLM APIs through NetBird to enforce access control, track token spend, and capture prompts."
             }
             button={
@@ -187,7 +188,7 @@ export default function AgentProvidersTable({
             }
             learnMore={
               <>
-                Learn more about
+                <TransText>Learn more about</TransText>{" "}
                 <InlineLink
                   href={"https://docs.netbird.io/agent-network/providers"}
                   target={"_blank"}

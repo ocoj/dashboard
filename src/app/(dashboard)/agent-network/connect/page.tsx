@@ -95,7 +95,7 @@ export default function ConnectAgentPage() {
           {/* Same box as the tab content above — gutter and max-width on one
               element — so the table lines up with the snippets. */}
           <div className={"p-default pt-8 pb-10 max-w-3xl"}>
-            <h2 className={"text-base mb-0"}>Your Providers &amp; Models</h2>
+            <h2 className={"text-base mb-0"}><TransText>Your Providers &amp; Models</TransText></h2>
             <ConnectProvidersTable providers={providers} />
           </div>
         </>

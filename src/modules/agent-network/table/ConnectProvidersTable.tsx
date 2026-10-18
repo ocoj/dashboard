@@ -180,8 +180,10 @@ export default function ConnectProvidersTable({ providers }: Readonly<Props>) {
           title={zhMap["No providers available yet"] || "No providers available yet"}
           description={
             canManagePolicies
-              ? "No access policy covers your user yet. Add one of your groups to a policy to route your agent through NetBird."
-              : "You don’t have access to any providers yet. Ask your administrator to add you to an Agent Network access policy."
+              ? zhMap["No access policy covers your user yet. Add one of your groups to a policy to route your agent through NetBird."] ||
+                "No access policy covers your user yet. Add one of your groups to a policy to route your agent through NetBird."
+              : zhMap["You don’t have access to any providers yet. Ask your administrator to add you to an Agent Network access policy."] ||
+                "You don’t have access to any providers yet. Ask your administrator to add you to an Agent Network access policy."
           }
         >
           {canManagePolicies && (

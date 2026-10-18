@@ -64,6 +64,7 @@ export const PostureCheckOperatingSystem = ({
       title={zhMap["Operating System"] || "Operating System"}
       modalWidthClass={"max-w-xl"}
       description={
+        zhMap["Restrict access in your network based on the operating system."] ||
         "Restrict access in your network based on the operating system."
       }
       iconClass={"bg-gradient-to-tr from-nb-gray-500 to-nb-gray-300"}

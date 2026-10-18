@@ -321,13 +321,11 @@ function AgentPolicyModalContent({
               <div className={"w-full self-start"}>
                 <Label className={"mb-2"}>
                   <FolderDown size={15} />
-                  Source
+                  <TransText>Source</TransText>
                   <HelpTooltip
                     content={
                       <>
-                        Group of users this policy authorises to call the
-                        destination providers. One group per policy in this
-                        release.
+                        <TransText>Group of users this policy authorises to call the destination providers. One group per policy in this release.</TransText>
                       </>
                     }
                   />
@@ -338,10 +336,8 @@ function AgentPolicyModalContent({
                 />
                 {hasLegacyExtraGroups && (
                   <div className={"mt-2 text-xs text-yellow-400 leading-snug"}>
-                    This policy was created with multiple source groups. Only
-                    the first group is kept on save —{" "}
-                    {sourceGroupsRaw[0]?.name ?? "—"} will be retained, the
-                    others removed.
+                    <TransText>This policy was created with multiple source groups. Only the first group is kept on save —</TransText>{" "}
+                    {sourceGroupsRaw[0]?.name ?? "—"} <TransText>will be retained, the others removed.</TransText>
                   </div>
                 )}
               </div>
@@ -349,9 +345,9 @@ function AgentPolicyModalContent({
               <div className={"w-full self-start"}>
                 <Label className={"mb-2"}>
                   <Sparkles size={15} />
-                  Provider
+                  <TransText>Provider</TransText>
                   <HelpTooltip
-                    content={<>AI providers the source is allowed to reach.</>}
+                    content={<><TransText>AI providers the source is allowed to reach.</TransText></>}
                   />
                 </Label>
                 <ProviderMultiSelect

@@ -40,6 +40,7 @@ export const PostureCheckProcess = ({ value, onChange, disabled }: Props) => {
       active={value?.processes && value?.processes?.length > 0}
       title={zhMap["Process"] || "Process"}
       description={
+        zhMap["Restrict access in your network based on running processes of a peer."] ||
         "Restrict access in your network based on running processes of a peer."
       }
       icon={<ServerCogIcon size={18} />}

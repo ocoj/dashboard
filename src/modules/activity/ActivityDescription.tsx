@@ -998,7 +998,7 @@ export default function ActivityDescription({ event }: Props) {
 
   return (
     <div className={"flex gap-2.5 items-center"}>
-      <span className={"mb-[1px]"}>{event.activity}</span>
+      <span className={"mb-[1px]"}><TransText>{event.activity}</TransText></span>
 
       {isLocalDev() && !isProduction() && (
         <FullTooltip

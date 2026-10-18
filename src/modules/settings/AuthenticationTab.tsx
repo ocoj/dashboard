@@ -202,7 +202,7 @@ export default function AuthenticationTab({ account }: Readonly<Props>) {
           <div>
             <h1><TransText>Authentication</TransText></h1>
             <Paragraph className={"block"}>
-              Control how peers and users authenticate.{" "}
+              <TransText>Control how peers and users authenticate.</TransText>{" "}
               <InlineLink
                 href={
                   "https://docs.netbird.io/how-to/enforce-periodic-user-authentication"
