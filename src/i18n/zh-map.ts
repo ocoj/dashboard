@@ -1255,6 +1255,8 @@ const zhMap: Record<string, string> = {
   'myapp': 'myapp',
   'myapp (optional)': 'myapp（可选）',
   'range': '范围',
+  'DNS zone created': 'DNS 区域已创建',
+  'DNS zone deleted': 'DNS 区域已删除',
   'domain(s)': '域名',
   'N {plural}': 'N {plural}',
   'N/A': 'N/A',
@@ -3133,7 +3135,7 @@ const zhMap: Record<string, string> = {
   'with auth': '并启用认证',
   'with domain': '域名：',
   'with key': '密钥为',
-  'with the': '带有',
+  'with the': '的',
   'with the NetBird IP': 'NetBird IP 为',
 
   // --- v2.94.0 混合内容（B 类：集成向导说明句）---

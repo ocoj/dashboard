@@ -1,6 +1,6 @@
 {
   "name": "netbird-dashboard",
-  "version": "2.95.0.5",
+  "version": "2.95.0.6",
   "private": true,
   "engines": {
     "node": ">=24.0.0"
