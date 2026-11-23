@@ -59,6 +59,9 @@ playwright-report*.zip
 src/.local-config*
 scripts/i18n-patches/
 
+# scan-untranslated.cjs 的临时文件列表
+.scan-files
+
 # 内部文档（含凭据/IP，禁止同步 GitHub）
 internal/
 
