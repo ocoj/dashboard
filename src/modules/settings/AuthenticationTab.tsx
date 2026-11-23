@@ -1,4 +1,3 @@
-import Breadcrumbs from "@components/Breadcrumbs";
 import Button from "@components/Button";
 import FancyToggleSwitch from "@components/FancyToggleSwitch";
 import FullTooltip from "@components/FullTooltip";
@@ -28,13 +27,11 @@ import {
   CalendarClock,
   ExternalLinkIcon,
   KeyRound,
-  ShieldIcon,
   ShieldUserIcon,
   TimerResetIcon,
 } from "lucide-react";
 import React, { useState } from "react";
 import { useSWRConfig } from "swr";
-import SettingsIcon from "@/assets/icons/SettingsIcon";
 import { AccountMFASettings } from "@/cloud/mfa/AccountMFASettings";
 import {
   SignInDomainsSettings,
@@ -185,19 +182,6 @@ export default function AuthenticationTab({ account }: Readonly<Props>) {
   return (
     <Tabs.Content value={"authentication"}>
       <div className={"p-default py-6 max-w-2xl"}>
-        <Breadcrumbs>
-          <Breadcrumbs.Item
-            href={"/settings"}
-            label={<TransText>Settings</TransText>}
-            icon={<SettingsIcon size={13} />}
-          />
-          <Breadcrumbs.Item
-            href={"/settings"}
-            label={<TransText>Authentication</TransText>}
-            icon={<ShieldIcon size={14} />}
-            active
-          />
-        </Breadcrumbs>
         <div className={"flex items-start justify-between -mt-1"}>
           <div>
             <h1><TransText>Authentication</TransText></h1>
@@ -338,10 +322,7 @@ export default function AuthenticationTab({ account }: Readonly<Props>) {
                 <div className={"w-full"}>
                   <Label><TransText>Session Expiration</TransText></Label>
                   <HelpText>
-                    <TransText>
-                      Time after which every peer added with SSO login will
-                      require re-authentication.
-                    </TransText>
+                    <TransText>Time after which every peer added with SSO login will require re-authentication.</TransText>
                   </HelpText>
                 </div>
                 <div className={"w-full flex gap-3"}>
@@ -394,10 +375,7 @@ export default function AuthenticationTab({ account }: Readonly<Props>) {
                 label={<><TransText>Require login after disconnect</TransText></>}
                 disabled={!permission.settings.update}
                 helpText={
-                  <TransText>
-                    Enable to require authentication after users disconnect from
-                    management for 10 minutes.
-                  </TransText>
+                  <TransText>Enable to require authentication after users disconnect from management for 10 minutes.</TransText>
                 }
               />
             </div>

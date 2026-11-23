@@ -291,8 +291,8 @@ function AgentPolicyModalContent({
   return (
     <ModalContent maxWidthClass={"max-w-3xl"}>
       <ModalHeader
-        icon={<AccessControlIcon className={"fill-netbird"} />}
-        title={policy ? zhMap["Update Agent Policy"] || "Update Agent Policy" : zhMap["Create Agent Policy"] || "Create Agent Policy"}
+        icon={<AccessControlIcon className={"fill-current"} />}
+        title={policy ? "Update Agent Policy" : "Create Agent Policy"}
         description={
           "Govern which groups can call which AI providers and under what guardrails."
         }

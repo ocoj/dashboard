@@ -92,7 +92,7 @@ export default function ReverseProxyTargetSelector({
               className={"max-w-sm"}
               content={
                 <>
-                  A <span className={"text-white font-medium"}>peer</span> is a
+                  A <span className={"text-nb-gray-100 dark:text-white font-medium"}>peer</span> is a
                   machine (e.g., laptop, server, container) running NetBird.
                   Select a peer if your service runs directly on it.
                   <span className={"mt-1 block"}>
@@ -113,7 +113,7 @@ export default function ReverseProxyTargetSelector({
               className={"max-w-sm"}
               content={
                 <>
-                  A <span className={"text-white font-medium"}>resource</span>{" "}
+                  A <span className={"text-nb-gray-100 dark:text-white font-medium"}>resource</span>{" "}
                   is a destination (IP, subnet, or domain) that can&apos;t run
                   NetBird directly. Resources are part of a network and are
                   reached through a routing peer that forwards traffic to them.
@@ -135,7 +135,7 @@ export default function ReverseProxyTargetSelector({
                   className={"max-w-sm"}
                   content={
                     <>
-                      A <span className={"text-white font-medium"}>
+                      A <span className={"text-nb-gray-100 dark:text-white font-medium"}>
                         proxy cluster
                       </span>{" "}
                       forwards inbound traffic to an upstream the proxy reaches

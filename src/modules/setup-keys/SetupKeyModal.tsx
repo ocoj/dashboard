@@ -225,11 +225,11 @@ export function SetupKeyModalContent({
   };
 
   return (
-    <ModalContent maxWidthClass={"max-w-xl"}>
+    <ModalContent flow="setup_key" maxWidthClass={"max-w-xl"}>
       <ModalHeader
-        icon={<SetupKeysIcon className={"fill-netbird"} />}
-        title={<TransText>Create New Setup Key</TransText>}
-        description={<TransText>Use this key to register new machines in your network</TransText>}
+        icon={<SetupKeysIcon className={"fill-current"} />}
+        title={zhMap["Create New Setup Key"] || "Create New Setup Key"}
+        description={zhMap["Use this key to register new machines in your network"] || "Use this key to register new machines in your network"}
         color={"netbird"}
       />
 

@@ -18,8 +18,7 @@ import {
 } from "lucide-react";
 import * as React from "react";
 import { useEffect, useState } from "react";
-import { TransText } from "@/i18n/trans-text";
-import zhMap from "@/i18n/zh-map";
+import { useMatomoEvent } from "@/cloud/analytics/MatomoProvider";
 import type {
   APIAgentNetworkAccessLog,
   APIAgentNetworkAccessLogsResponse,
@@ -34,6 +33,8 @@ import {
   testRequestOutcome,
 } from "@/modules/onboarding/agent-network/testRequest";
 import { WaitingForDevice } from "@/modules/onboarding/OnboardingDevices";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 const QUICKSTART_DOCS = "https://docs.netbird.io/agent-network/quickstart";
 
@@ -64,6 +65,7 @@ export const OnboardingAgentEnd = ({
   onFinish,
 }: Props) => {
   const outcome = useTestRequest(userId);
+  useMatomoEvent(outcome.kind !== "waiting" && "test_request", outcome.kind);
 
   if (outcome.kind === "passed") {
     return <AllSet entry={outcome.entry} onBack={onBack} onFinish={onFinish} />;

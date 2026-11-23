@@ -8,6 +8,7 @@ import { ArrowRightIcon, RefreshCw } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import NetBirdIcon from "@/assets/icons/NetBirdIcon";
+import { useMatomoVirtualPage } from "@/cloud/analytics/MatomoProvider";
 import { PendingApproval } from "@/modules/users/PendingApproval";
 import { TransText } from "@/i18n/trans-text";
 
@@ -22,6 +23,12 @@ export default function ErrorPage() {
     message: string;
     type: string;
   } | null>(null);
+
+  const isPendingApproval =
+    error?.code === 403 &&
+    error?.message?.toLowerCase().includes("pending approval");
+
+  useMatomoVirtualPage(!!error && !isPendingApproval && "error");
 
   useEffect(() => {
     // Get error details from URL params
@@ -55,9 +62,6 @@ export default function ErrorPage() {
 
   const isBlockedUser =
     error?.code === 403 && error?.message?.toLowerCase().includes("blocked");
-  const isPendingApproval =
-    error?.code === 403 &&
-    error?.message?.toLowerCase().includes("pending approval");
 
   // Waiting for an approval is an expected part of signing up, so it gets a
   // welcoming screen of its own instead of the error treatment.
@@ -107,7 +111,7 @@ export default function ErrorPage() {
         <TransText>If you believe this is an error, please contact your administrator.</TransText>
       </Paragraph>
 
-      <div className="mt-5 space-y-3">
+      <div className="mt-5 [&>*+*]:mt-3">
         {!isBlockedUser && (
           <Button variant="default-outline" size="sm" onClick={handleRetry}>
             <RefreshCw size={16} className="mr-2" />

@@ -1,4 +1,3 @@
-import Breadcrumbs from "@components/Breadcrumbs";
 import Card from "@components/Card";
 import InlineLink from "@components/InlineLink";
 import Paragraph from "@components/Paragraph";
@@ -8,7 +7,6 @@ import { VerticalTabs } from "@components/VerticalTabs";
 import * as Tabs from "@radix-ui/react-tabs";
 import { ExternalLinkIcon, MessageSquareDot } from "lucide-react";
 import React from "react";
-import SettingsIcon from "@/assets/icons/SettingsIcon";
 import { NotificationEmailChannel } from "@/cloud/notifications/channels/NotificationEmailChannel";
 import { NotificationSlackChannel } from "@/cloud/notifications/channels/NotificationSlackChannel";
 import { NotificationWebhookChannel } from "@/cloud/notifications/channels/NotificationWebhookChannel";
@@ -41,19 +39,6 @@ const NotificationsOverview = ({
 
   return (
     <div className={"p-default py-6 max-w-2xl"}>
-      <Breadcrumbs>
-        <Breadcrumbs.Item
-          href={"/settings"}
-          label={zhMap["Settings"] || "Settings"}
-          icon={<SettingsIcon size={13} />}
-        />
-        <Breadcrumbs.Item
-          href={"/settings?tab=notifications"}
-          label={zhMap["Notifications"] || "Notifications"}
-          icon={<MessageSquareDot size={14} />}
-          active
-        />
-      </Breadcrumbs>
       <div className={"flex items-start justify-between -mt-1"}>
         <div>
           <h1><TransText>Notifications</TransText></h1>
@@ -71,7 +56,7 @@ const NotificationsOverview = ({
       </div>
       <Card
         className={
-          "w-full flex flex-col mt-6 border-nb-gray-920 bg-nb-gray-940 p-1.5"
+          "w-full flex flex-col mt-6 border-nb-gray-920 dark:border-nb-gray-920 bg-nb-gray-940 p-1.5"
         }
       >
         <NotificationChannelListItem
@@ -175,9 +160,7 @@ export const NotificationsTabTrigger = () => {
 
   return (
     <VerticalTabs.Trigger value="notifications">
-      <MessageSquareDot size={14} />
-      Notifications
-      <SmallBadge
+      <MessageSquareDot size={14} /><TransText>Notifications</TransText><SmallBadge
         text={zhMap["Beta"] || "Beta"}
         variant={"sky"}
         className={"text-[8px] leading-none py-[3px] px-[5px]"}

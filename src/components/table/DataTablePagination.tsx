@@ -8,6 +8,7 @@ import {
   ChevronsRight,
 } from "lucide-react";
 import zhMap from "@/i18n/zh-map";
+import { TransText } from "@/i18n/trans-text";
 
 interface DataTablePaginationProps<TData> {
   table: Table<TData>;
@@ -40,12 +41,15 @@ export function DataTablePagination<TData>({
         className={cn("flex items-center justify-between", paginationPadding)}
       >
         <div className="text-nb-gray-400">
-          {zhMap["Showing"] || "Showing"}{" "}
-          <span className={"font-medium text-white"}>
-            {showingFrom} {zhMap["to"] || "to"} {showingTo}
+          <TransText>Showing</TransText>{" "}
+          <span className={"font-medium text-nb-gray-100 dark:text-white"}>
+            {showingFrom} <TransText>to</TransText> {showingTo}
           </span>{" "}
-          {zhMap["of"] || "of"} <span className={"font-medium text-white"}>{totalRows}</span>{" "}
-          {zhMap[text] || text}
+          <TransText>of</TransText>{" "}
+          <span className={"font-medium text-nb-gray-100 dark:text-white"}>
+            {totalRows}
+          </span>{" "}
+          <TransText>{text}</TransText>
         </div>
         {pageCount > 1 && (
           <div className={"flex items-center gap-3"}>

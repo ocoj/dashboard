@@ -1,6 +1,5 @@
 "use client";
 
-import Breadcrumbs from "@components/Breadcrumbs";
 import InlineLink from "@components/InlineLink";
 import Paragraph from "@components/Paragraph";
 import SkeletonTable from "@components/skeletons/SkeletonTable";
@@ -10,7 +9,6 @@ import * as Tabs from "@radix-ui/react-tabs";
 import { ExternalLinkIcon, Gauge, ScrollText, ServerIcon } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { lazy, Suspense, useMemo } from "react";
-import AgentNetworkIcon from "@/assets/icons/AgentNetworkIcon";
 import GroupsProvider from "@/contexts/GroupsProvider";
 import PeersProvider from "@/contexts/PeersProvider";
 import { usePermissions } from "@/contexts/PermissionsProvider";
@@ -89,7 +87,7 @@ export default function AgentNetworkConfigurationPage() {
           <GroupsProvider>
             <PeersProvider>
               <AIProvidersProvider>
-                <div className={"border-l border-nb-gray-930 w-full"}>
+                <div className={"w-full"}>
                   <Tabs.Content
                     value={TAB_BUDGET_SETTINGS}
                     className={"w-full"}
@@ -98,9 +96,7 @@ export default function AgentNetworkConfigurationPage() {
                       label={zhMap["Global Limits"]}
                       href={"/agent-network/configuration?tab=budget-settings"}
                     >
-                      <TransText>Account-wide caps on token usage and spend, applied across
-                      every policy. Scope a limit to specific groups or users,
-                      or leave it account-wide.</TransText>
+                      <TransText>Account-wide caps on token usage and spend, applied across every policy. Scope a limit to specific groups or users, or leave it account-wide.</TransText>
                     </ConfigTabHeader>
                     {/* DataTable applies its own p-default, so it is rendered
                         directly (no extra wrapper) to align with the header. */}
@@ -162,15 +158,7 @@ function ConfigTabHeader({
 }) {
   return (
     <div className={"p-default py-6"}>
-      <Breadcrumbs>
-        <Breadcrumbs.Item
-          href={"/agent-network/providers"}
-          label={zhMap["Agent Network"] || "Agent Network"}
-          icon={<AgentNetworkIcon size={16} />}
-        />
-        <Breadcrumbs.Item href={href} label={zhMap[label] || label} active />
-      </Breadcrumbs>
-      <h1>{zhMap[label] || label}</h1>
+      <h1>{label}</h1>
       {children && <Paragraph>{children}</Paragraph>}
     </div>
   );

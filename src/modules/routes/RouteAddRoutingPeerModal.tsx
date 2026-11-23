@@ -25,6 +25,7 @@ import { Peer } from "@/interfaces/Peer";
 import { GroupedRoute, Route } from "@/interfaces/Route";
 import { TransText } from "@/i18n/trans-text";
 import useGroupHelper from "@/modules/groups/useGroupHelper";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   groupedRoute?: GroupedRoute;
@@ -162,10 +163,10 @@ function Content({ onSuccess, groupedRoute, peer }: ModalProps) {
   }, [routingPeer]);
 
   return (
-    <ModalContent maxWidthClass={"max-w-2xl"}>
+    <ModalContent flow="route_routing_peer" maxWidthClass={"max-w-2xl"}>
       <ModalHeader
-        icon={<NetworkRoutesIcon className={"fill-netbird"} />}
-        title={<TransText>Add New Routing Peer</TransText>}
+        icon={<NetworkRoutesIcon className={"fill-current"} />}
+        title={zhMap["Add New Routing Peer"] || "Add New Routing Peer"}
         description={
           <TransText>When you add multiple routing peers, NetBird enables high availability for this network.</TransText>
         }

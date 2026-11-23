@@ -173,7 +173,7 @@ const PickerContent = ({
     <>
       <ModalContent maxWidthClass={"max-w-lg"}>
         <ModalHeader
-          icon={<NetworkRoutesIcon className={"fill-netbird"} />}
+          icon={<NetworkRoutesIcon className={"fill-current"} />}
           title={zhMap["Assign a network"] || "Assign a network"}
           description={zhMap["Pick a network for this resource or create a new one."] || "Pick a network for this resource or create a new one."}
           color={"netbird"}

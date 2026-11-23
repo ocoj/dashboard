@@ -14,6 +14,7 @@ import {
   UserCircleIcon,
 } from "lucide-react";
 import * as React from "react";
+import { useMatomoVirtualPage } from "@/cloud/analytics/MatomoProvider";
 import { TransText } from "@/i18n/trans-text";
 
 const parseApproverEmail = (message?: string): string =>
@@ -46,6 +47,7 @@ type Props = {
 
 export const PendingApproval = ({ error, onRefresh, onLogout }: Props) => {
   const owner = parseApproverEmail(error?.message);
+  useMatomoVirtualPage("pending_approval");
 
   return (
     <div
@@ -75,7 +77,7 @@ export const PendingApproval = ({ error, onRefresh, onLogout }: Props) => {
               <span
                 className={cn(
                   "text-sm text-center",
-                  status === "upcoming" ? "text-nb-gray-400" : "text-white",
+                  status === "upcoming" ? "text-nb-gray-400" : "text-neutral-900 dark:text-white",
                 )}
               >
                 {label}

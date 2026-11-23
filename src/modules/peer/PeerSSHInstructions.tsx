@@ -25,6 +25,7 @@ import { PeerSSHPolicyModal } from "@/modules/peer/PeerSSHPolicyModal";
 import { getOperatingSystem } from "@hooks/useOperatingSystem";
 import { OperatingSystem } from "@/interfaces/OperatingSystem";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open?: boolean;
@@ -55,8 +56,8 @@ export const PeerSSHInstructions = ({
         showClose={true}
       >
         <ModalHeader
-          icon={<TerminalSquare size={16} className={"text-netbird"} />}
-          title={<TransText>Enable SSH Access</TransText>}
+          icon={<TerminalSquare size={16} />}
+          title={zhMap["Enable SSH Access"] || "Enable SSH Access"}
           description={
             <TransText>Allow remote SSH access from other connected network participants.</TransText>
           }

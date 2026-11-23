@@ -54,7 +54,7 @@ export const RemoteJobDropdownButton = () => {
               >
                 <div>
                   Peer{" "}
-                  <span className={"text-white font-medium"}>{peer.name}</span>{" "}
+                  <span className={"text-nb-gray-100 dark:text-white font-medium"}>{peer.name}</span>{" "}
                   is currently offline. Please connect the peer to run remote
                   jobs.
                 </div>
@@ -74,7 +74,7 @@ export const RemoteJobDropdownButton = () => {
                 size={"small"}
               />
               <div className={"flex flex-col text-left"}>
-                <div className={"text-left text-white"}><TransText>Debug Bundle</TransText></div>
+                <div className={"text-left text-nb-gray-100 dark:text-white"}><TransText>Debug Bundle</TransText></div>
                 <div className={"text-xs"}>
                   <TransText>Collect debug information for troubleshooting</TransText>
                 </div>

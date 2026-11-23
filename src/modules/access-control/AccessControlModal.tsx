@@ -289,9 +289,12 @@ export function AccessControlModalContent({
   }, [destinationScope, direction, setDirection]);
 
   return (
-    <ModalContent maxWidthClass={"max-w-3xl"}>
+    <ModalContent
+      flow={useSave ? "policy" : undefined}
+      maxWidthClass={"max-w-3xl"}
+    >
       <ModalHeader
-        icon={<AccessControlIcon className={"fill-netbird"} />}
+        icon={<AccessControlIcon className={"fill-current"} />}
         title={
           <span
             data-testid={
@@ -304,9 +307,7 @@ export function AccessControlModalContent({
           </span>
         }
         description={
-          <TransText>
-            Use this policy to restrict access to groups of resources.
-          </TransText>
+          <TransText>Use this policy to restrict access to groups of resources.</TransText>
         }
         color={"netbird"}
       />
@@ -325,7 +326,7 @@ export function AccessControlModalContent({
                 "text-nb-gray-500 group-data-[state=active]/trigger:text-netbird transition-all"
               }
             />
-            <TransText>Name & Description</TransText>
+            <TransText>Name &amp; Description</TransText>
           </TabsTrigger>
         </TabsList>
 
@@ -338,14 +339,10 @@ export function AccessControlModalContent({
               <div className={"w-full"}>
                 <Label><TransText>Protocol</TransText></Label>
                 <HelpText className={"max-w-sm"}>
-                  {zhMap["Allow only specified network protocols. To change traffic direction and ports, select TCP or UDP protocol."] || (
-                    <>
-                      Allow only specified network protocols. To change traffic
-                      direction and ports, select{" "}
-                      <b className={"text-white"}>TCP</b> or{" "}
-                      <b className={"text-white"}>UDP</b> protocol.
-                    </>
-                  )}
+                  Allow only specified network protocols. To change traffic
+                  direction and ports, select{" "}
+                  <b className={"text-nb-gray-100 dark:text-white"}>TCP</b> or{" "}
+                  <b className={"text-nb-gray-100 dark:text-white"}>UDP</b> protocol.
                 </HelpText>
               </div>
               <Select
@@ -377,11 +374,7 @@ export function AccessControlModalContent({
                         align={"center"}
                         side={"right"}
                         content={
-                          <TransText>
-                            Select NetBird SSH for SSH-specific policies with
-                            fine-grained access control, or use TCP with port 22
-                            for basic network-level SSH access
-                          </TransText>
+                          <TransText>Select NetBird SSH for SSH-specific policies with fine-grained access control, or use TCP with port 22 for basic network-level SSH access</TransText>
                         }
                       />
                     }
@@ -399,11 +392,7 @@ export function AccessControlModalContent({
                   <TransText>Source</TransText>
                   <HelpTooltip
                     content={
-                      <TransText>
-                        Typically a group of user devices (e.g., Developers,
-                        Marketing) or individual devices in peer-to-peer
-                        connections that will access the destination.
-                      </TransText>
+                      <TransText>Typically a group of user devices (e.g., Developers, Marketing) or individual devices in peer-to-peer connections that will access the destination.</TransText>
                     }
                   />
                 </Label>
@@ -443,11 +432,7 @@ export function AccessControlModalContent({
                   <TransText>Destination</TransText>
                   <HelpTooltip
                     content={
-                      <TransText>
-                        Typically a group of peers or resources (e.g., Servers,
-                        Databases, Internal Services) that will be accessed by
-                        the source. Can also be an individual peer or resource.
-                      </TransText>
+                      <TransText>Typically a group of peers or resources (e.g., Servers, Databases, Internal Services) that will be accessed by the source. Can also be an individual peer or resource.</TransText>
                     }
                   />
                 </Label>
@@ -493,10 +478,7 @@ export function AccessControlModalContent({
                   }
                   className="mb-4"
                 >
-                  <TransText>
-                    Some destination groups contain resources. Resources only
-                    support incoming traffic and cannot initiate connections.
-                  </TransText>
+                  <TransText>Some destination groups contain resources. Resources only support incoming traffic and cannot initiate connections.</TransText>
                 </Callout>
               )}
 
@@ -513,11 +495,7 @@ export function AccessControlModalContent({
                     }
                     className="mb-6"
                   >
-                    <TransText>
-                      SSH access only works on peers, not on routed resources.
-                      Please ensure your destination groups contain peers for SSH
-                      connectivity.
-                    </TransText>
+                    <TransText>SSH access only works on peers, not on routed resources. Please ensure your destination groups contain peers for SSH connectivity.</TransText>
                   </Callout>
                 )}
                 <div
@@ -529,11 +507,7 @@ export function AccessControlModalContent({
                       <TransText>SSH Access</TransText>
                     </Label>
                     <HelpText>
-                      <TransText>
-                        Select 'Full Access' to allow SSH as any local user,
-                        or 'Limited Access' to specify which local users each
-                        group is allowed to use.
-                      </TransText>
+                      <TransText>Select 'Full Access' to allow SSH as any local user, or 'Limited Access' to specify which local users each group is allowed to use.</TransText>
                     </HelpText>
                   </div>
                   <SSHAccessType
@@ -561,10 +535,7 @@ export function AccessControlModalContent({
                     <TransText>Ports</TransText>
                   </Label>
                   <HelpText>
-                    <TransText>
-                      Allow network traffic and access only to specified ports.
-                      Select ports or port ranges between 1 and 65535.
-                    </TransText>
+                    <TransText>Allow network traffic and access only to specified ports. Select ports or port ranges between 1 and 65535.</TransText>
                   </HelpText>
                 </div>
                 <div className={""}>
@@ -606,9 +577,7 @@ export function AccessControlModalContent({
             <div>
               <Label><TransText>Name of the Rule</TransText></Label>
               <HelpText>
-                <TransText>
-                  Set an easily identifiable name for your policy.
-                </TransText>
+                <TransText>Set an easily identifiable name for your policy.</TransText>
               </HelpText>
               <Input
                 autoFocus={true}
@@ -625,9 +594,7 @@ export function AccessControlModalContent({
             <div>
               <Label><TransText>Description (optional)</TransText></Label>
               <HelpText>
-                <TransText>
-                  Write a short description to add more context to this policy.
-                </TransText>
+                <TransText>Write a short description to add more context to this policy.</TransText>
               </HelpText>
               <Textarea
                 value={description}

@@ -5,6 +5,7 @@ import Script from "next/script";
 import React, { useEffect, useState } from "react";
 import ReactGA from "react-ga4";
 import { hotjar } from "react-hotjar";
+import { sendMatomoEvent } from "@/cloud/analytics/MatomoProvider";
 import zhMap from "@/i18n/zh-map";
 
 type Props = {
@@ -84,6 +85,7 @@ export default function AnalyticsProvider({ children }: Readonly<Props>) {
     value?: string,
     userID?: string,
   ) => {
+    sendMatomoEvent(category, name);
     // Track custom event
     if (isProduction() && ReactGA.isInitialized) {
       ReactGA.event("nb_event", {

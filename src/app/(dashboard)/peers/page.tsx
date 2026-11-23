@@ -1,6 +1,5 @@
 "use client";
 
-import Breadcrumbs from "@components/Breadcrumbs";
 import InlineLink from "@components/InlineLink";
 import Paragraph from "@components/Paragraph";
 import SkeletonTable from "@components/skeletons/SkeletonTable";
@@ -9,8 +8,6 @@ import { usePortalElement } from "@hooks/usePortalElement";
 import { ExternalLinkIcon } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { lazy, Suspense, useMemo } from "react";
-import PeerIcon from "@/assets/icons/PeerIcon";
-import { TransText } from "@/i18n/trans-text";
 import useDistributorRedirect from "@/cloud/distributor/useDistributorRedirect";
 import { useBypassedPeers } from "@/cloud/edr/useBypass";
 import PeersProvider, { usePeers } from "@/contexts/PeersProvider";
@@ -20,6 +17,7 @@ import PageContainer from "@/layouts/PageContainer";
 import type { PeersTableKind } from "@/modules/peers/PeersTable";
 import { SetupModalContent } from "@/modules/setup-netbird-modal/SetupModal";
 import zhMap from "@/i18n/zh-map";
+import { TransText } from "@/i18n/trans-text";
 
 const PeersTable = lazy(() => import("@/modules/peers/PeersTable"));
 
@@ -92,14 +90,6 @@ function PeersView() {
   return (
     <>
       <div className={"p-default py-6"}>
-        <Breadcrumbs>
-          <Breadcrumbs.Item
-            href={"/peers"}
-            label={zhMap["Peers"]}
-            icon={<PeerIcon size={13} />}
-            active
-          />
-        </Breadcrumbs>
         <h1 ref={headingRef}><TransText>Peers</TransText></h1>
         <Paragraph>
           <TransText>User devices and headless machines, such as servers and autonomous agents, connected to your network.</TransText>{" "}

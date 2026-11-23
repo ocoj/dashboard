@@ -240,7 +240,10 @@ export function RoutingPeerModalContent({
   };
 
   return (
-    <ModalContent maxWidthClass={"max-w-xl"}>
+    <ModalContent
+      flow={useSave ? "network_router" : undefined}
+      maxWidthClass={"max-w-xl"}
+    >
       <ModalHeader
         icon={<Share2Icon size={16} />}
         title={router ? <TransText>Update Routing Peer</TransText> : <TransText>Add Routing Peer</TransText>}

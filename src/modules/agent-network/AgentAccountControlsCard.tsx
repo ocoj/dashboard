@@ -1,6 +1,5 @@
 "use client";
 
-import Breadcrumbs from "@components/Breadcrumbs";
 import Button from "@components/Button";
 import FancyToggleSwitch from "@components/FancyToggleSwitch";
 import HelpText from "@components/HelpText";
@@ -17,7 +16,6 @@ import { useHasChanges } from "@hooks/useHasChanges";
 import { cn } from "@utils/helpers";
 import { Clock, FileText, ScrollText } from "lucide-react";
 import React, { useEffect, useState } from "react";
-import AgentNetworkIcon from "@/assets/icons/AgentNetworkIcon";
 import { useAIProviders } from "@/modules/agent-network/AIProvidersProvider";
 import { TransText } from "@/i18n/trans-text";
 import zhMap from "@/i18n/zh-map";
@@ -86,20 +84,6 @@ export default function AgentAccountControlsCard() {
 
   return (
     <div className={"p-default py-6 max-w-2xl"}>
-      <Breadcrumbs>
-        <Breadcrumbs.Item
-          href={"/agent-network/providers"}
-          label={zhMap["Agent Network"] || "Agent Network"}
-          icon={<AgentNetworkIcon size={16} />}
-        />
-        <Breadcrumbs.Item
-          href={"/agent-network/configuration?tab=log-settings"}
-          label={zhMap["Log Collection"] || "Log Collection"}
-          icon={<ScrollText size={14} />}
-          active
-        />
-      </Breadcrumbs>
-
       <div className={"flex items-start justify-between"}>
         <h1><TransText>Log Collection</TransText></h1>
 
@@ -142,8 +126,7 @@ export default function AgentAccountControlsCard() {
               <div className={"w-full"}>
                 <Label><TransText>Retention Period</TransText></Label>
                 <HelpText className={"mt-1"}>
-                  <TransText>How long access logs are kept before they&apos;re deleted.
-                  Usage history is kept separately.</TransText>
+                  <TransText>How long access logs are kept before they&apos;re deleted. Usage history is kept separately.</TransText>
                 </HelpText>
               </div>
               <div className={"w-40 shrink-0"}>
@@ -186,8 +169,7 @@ export default function AgentAccountControlsCard() {
           }
           helpText={
             <>
-              <TransText>Capture prompt and completion bodies. A policy guardrail must also
-              be enabled.</TransText>
+              <TransText>Capture prompt and completion bodies. A policy guardrail must also be enabled.</TransText>
             </>
           }
         />

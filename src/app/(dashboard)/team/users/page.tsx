@@ -1,6 +1,5 @@
 "use client";
 
-import Breadcrumbs from "@components/Breadcrumbs";
 import InlineLink from "@components/InlineLink";
 import Paragraph from "@components/Paragraph";
 import SkeletonTable from "@components/skeletons/SkeletonTable";
@@ -8,17 +7,16 @@ import { RestrictedAccess } from "@components/ui/RestrictedAccess";
 import { usePortalElement } from "@hooks/usePortalElement";
 import useFetchApi from "@utils/api";
 import { isNetBirdCloud } from "@utils/netbird";
-import { ExternalLinkIcon, User2 } from "lucide-react";
+import { ExternalLinkIcon } from "lucide-react";
 import React, { lazy, Suspense } from "react";
-import TeamIcon from "@/assets/icons/TeamIcon";
 import { AccountMfaCard } from "@/cloud/mfa/AccountMFACard";
 import { useGroups } from "@/contexts/GroupsProvider";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { User } from "@/interfaces/User";
 import PageContainer from "@/layouts/PageContainer";
 import { IdentityProviderCard } from "@/modules/integrations/idp-sync/IdentityProviderCard";
+import UsersTabs from "@/modules/users/UsersTabs";
 import { TransText } from "@/i18n/trans-text";
-import zhMap from "@/i18n/zh-map";
 
 const UsersTable = lazy(() => import("@/modules/users/UsersTable"));
 
@@ -35,19 +33,6 @@ export default function TeamUsers() {
   return (
     <PageContainer>
       <div className={"p-default py-6"}>
-        <Breadcrumbs>
-          <Breadcrumbs.Item
-            href={"/team"}
-            label={zhMap["Team"]}
-            icon={<TeamIcon size={13} />}
-          />
-          <Breadcrumbs.Item
-            href={"/team/users"}
-            label={zhMap["Users"]}
-            active
-            icon={<User2 size={16} />}
-          />
-        </Breadcrumbs>
         <h1 ref={headingRef}><TransText>Users</TransText></h1>
         <Paragraph>
           <TransText>Manage users and their permissions. Same-domain email users are added automatically on first sign-in.</TransText>{" "}
@@ -60,6 +45,7 @@ export default function TeamUsers() {
           </InlineLink>
         </Paragraph>
       </div>
+      <UsersTabs current={"users"} />
       <RestrictedAccess page={"Users"} hasAccess={permission.users.read}>
         <Suspense fallback={<SkeletonTable />}>
           {permission.settings.read && (

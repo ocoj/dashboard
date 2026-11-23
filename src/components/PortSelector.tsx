@@ -161,7 +161,7 @@ export function PortSelector({
           </button>
         </PopoverTrigger>
         <PopoverContent
-          className="w-full p-0 shadow-sm  shadow-nb-gray-950"
+          className="w-full p-0 shadow-sm  dark:shadow-nb-gray-950"
           style={{
             width: popoverWidth === "auto" ? width : popoverWidth,
           }}
@@ -324,7 +324,7 @@ export function PortSelector({
       {portRanges?.length > 0 && (
         <Callout variant={"info"} className={"mt-4"}>
           Port ranges requires NetBird client{" "}
-          <span className={"text-white font-normal"}>v0.48</span> or higher.
+          <span className={"text-nb-gray-100 dark:text-white font-normal"}>v0.48</span> or higher.
         </Callout>
       )}
     </>

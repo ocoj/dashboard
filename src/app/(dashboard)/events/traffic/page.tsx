@@ -1,14 +1,12 @@
 "use client";
 
-import Breadcrumbs from "@components/Breadcrumbs";
 import InlineLink from "@components/InlineLink";
 import Paragraph from "@components/Paragraph";
 import { RestrictedAccess } from "@components/ui/RestrictedAccess";
 import { usePortalElement } from "@hooks/usePortalElement";
 import dayjs from "dayjs";
-import { ArrowLeftRightIcon, ExternalLinkIcon } from "lucide-react";
+import { ExternalLinkIcon } from "lucide-react";
 import React, { useMemo } from "react";
-import ActivityIcon from "@/assets/icons/ActivityIcon";
 import { useIsFeatureLocked } from "@/cloud/cloud-hooks/useIsFeatureLocked";
 import { TRAFFIC_EVENTS_DOC_LINK } from "@/cloud/traffic-events/TrafficEventSetting";
 import TrafficEventsTable from "@/cloud/traffic-events/TrafficEventsTable";
@@ -43,19 +41,6 @@ export default function NetworkTrafficPage() {
   return (
     <PageContainer>
       <div className="p-default py-6">
-        <Breadcrumbs>
-          <Breadcrumbs.Item
-            label={zhMap["Activity"] || "Activity"}
-            disabled
-            icon={<ActivityIcon size={13} />}
-          />
-          <Breadcrumbs.Item
-            href="/events/traffic"
-            label={zhMap["Traffic Events"] || "Traffic Events"}
-            icon={<ArrowLeftRightIcon size={15} />}
-          />
-        </Breadcrumbs>
-
         <h1 ref={headingRef}><TransText>Traffic Events</TransText></h1>
 
         <Paragraph>

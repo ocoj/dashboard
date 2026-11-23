@@ -1,6 +1,5 @@
 "use client";
 
-import Breadcrumbs from "@components/Breadcrumbs";
 import InlineLink from "@components/InlineLink";
 import Paragraph from "@components/Paragraph";
 import SkeletonTable from "@components/skeletons/SkeletonTable";
@@ -9,7 +8,6 @@ import { usePortalElement } from "@hooks/usePortalElement";
 import useFetchApi from "@utils/api";
 import { ExternalLinkIcon } from "lucide-react";
 import React, { lazy, Suspense } from "react";
-import DNSIcon from "@/assets/icons/DNSIcon";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import { NameserverGroup } from "@/interfaces/Nameserver";
 import PageContainer from "@/layouts/PageContainer";
@@ -32,19 +30,6 @@ export default function NameServers() {
   return (
     <PageContainer>
       <div className={"p-default py-6"}>
-        <Breadcrumbs>
-          <Breadcrumbs.Item
-            href={"/dns/nameservers"}
-            label={zhMap["DNS"]}
-            icon={<DNSIcon size={13} />}
-          />
-          <Breadcrumbs.Item
-            href={"/dns/nameservers"}
-            label={zhMap["Nameservers"]}
-            active
-            icon={<DNSIcon size={13} />}
-          />
-        </Breadcrumbs>
         <h1 ref={headingRef}><TransText>Nameservers</TransText></h1>
         <Paragraph>
           <TransText>Add nameservers for domain name resolution in your NetBird network.</TransText>{" "}

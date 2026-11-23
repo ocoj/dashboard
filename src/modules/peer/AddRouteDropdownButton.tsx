@@ -62,7 +62,7 @@ export default function AddRouteDropdownButton() {
                 size={"small"}
               />
               <div className={"flex flex-col text-left"}>
-                <div className={"text-left text-white"}><TransText>New Network Route</TransText></div>
+                <div className={"text-left text-nb-gray-100 dark:text-white"}><TransText>New Network Route</TransText></div>
                 <div className={"text-xs"}>
                   <TransText>Create a new network route with this peer</TransText>
                 </div>
@@ -77,14 +77,14 @@ export default function AddRouteDropdownButton() {
             <div className={"flex gap-3 items-center justify-center pr-3"}>
               <SquareIcon
                 icon={
-                  <NetworkRoutesIcon size={14} className={"fill-netbird"} />
+                  <NetworkRoutesIcon size={14} className={"fill-current"} />
                 }
                 color={"netbird"}
                 margin={""}
                 size={"small"}
               />
               <div className={"flex flex-col text-left"}>
-                <div className={"text-left text-white"}><TransText>Existing Network</TransText></div>
+                <div className={"text-left text-nb-gray-100 dark:text-white"}><TransText>Existing Network</TransText></div>
                 <div className={"text-xs"}>
                   <TransText>Add this peer to an existing network</TransText>
                 </div>

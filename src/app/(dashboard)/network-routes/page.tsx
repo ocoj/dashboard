@@ -1,6 +1,5 @@
 "use client";
 
-import Breadcrumbs from "@components/Breadcrumbs";
 import InlineLink from "@components/InlineLink";
 import Paragraph from "@components/Paragraph";
 import SkeletonTable from "@components/skeletons/SkeletonTable";
@@ -9,7 +8,6 @@ import { usePortalElement } from "@hooks/usePortalElement";
 import useFetchApi from "@utils/api";
 import { ArrowUpRightIcon, ExternalLinkIcon } from "lucide-react";
 import React, { lazy, Suspense } from "react";
-import NetworkRoutesIcon from "@/assets/icons/NetworkRoutesIcon";
 import PeersProvider from "@/contexts/PeersProvider";
 import { usePermissions } from "@/contexts/PermissionsProvider";
 import RoutesProvider from "@/contexts/RoutesProvider";
@@ -37,13 +35,6 @@ export default function NetworkRoutes() {
       <RoutesProvider>
         <PeersProvider>
           <div className={"p-default py-6"}>
-            <Breadcrumbs>
-              <Breadcrumbs.Item
-                label={zhMap["Network Routing"] || "Network Routing"}
-                icon={<NetworkRoutesIcon size={13} />}
-              />
-              <Breadcrumbs.Item href={"/network-routes"} label={zhMap["Routes"] || "Routes"} />
-            </Breadcrumbs>
             <h1 ref={headingRef}><TransText>Routes</TransText></h1>
             <Paragraph>
               <TransText>Access other networks like LANs and VPCs without installing NetBird on every resource.</TransText>{" "}

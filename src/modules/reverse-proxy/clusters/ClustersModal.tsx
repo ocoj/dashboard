@@ -329,7 +329,11 @@ spec:
 
   return (
     <Modal open={open} onOpenChange={onOpenChange}>
-      <ModalContent maxWidthClass={"relative max-w-[600px]"} showClose={true}>
+      <ModalContent
+        flow="reverse_proxy_cluster"
+        maxWidthClass={"relative max-w-[600px]"}
+        showClose={true}
+      >
         <ModalHeader
           icon={<ServerIcon size={16} />}
           title={<TransText>Setup Cluster</TransText>}
@@ -422,18 +426,14 @@ spec:
                   <TransText>In order to run the proxy, please make sure your machine meets the following requirements:</TransText>
                   <ul className={"list-disc pl-4 mt-2 flex flex-col gap-1"}>
                     <li>
-                      <span className={"text-white font-medium"}>
-                        <TransText>Publicly accessible IP address</TransText>
-                      </span>
+                      <span className={"text-sky-900 dark:text-white font-medium"}><TransText>Publicly accessible IP address</TransText></span>
                     </li>
                     <li>
-                      <span className={"text-white font-medium"}><TransText>Docker</TransText></span>{" "}
+                      <span className={"text-sky-900 dark:text-white font-medium"}><TransText>Docker</TransText></span>{" "}
                       installed and running
                     </li>
                     <li>
-                      <span className={"text-white font-medium"}>
-                        <TransText>Port 80 and 443</TransText>
-                      </span>{" "}
+                      <span className={"text-sky-900 dark:text-white font-medium"}><TransText>Port 80 and 443</TransText></span>{" "}
                       open and not in use
                     </li>
                   </ul>

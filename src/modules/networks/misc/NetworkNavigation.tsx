@@ -2,6 +2,7 @@ import SidebarItem from "@components/SidebarItem";
 import * as React from "react";
 import NetworkRoutesIcon from "@/assets/icons/NetworkRoutesIcon";
 import { usePermissions } from "@/contexts/PermissionsProvider";
+import { NETWORKS_ACTIVE_ROUTES } from "@/modules/navigation/sections";
 import { TransText } from "@/i18n/trans-text";
 
 export const NetworkNavigation = () => {
@@ -18,6 +19,7 @@ export const NetworkNavigation = () => {
         isChild
         href={"/networks"}
         exactPathMatch={true}
+        activeRoutes={NETWORKS_ACTIVE_ROUTES}
         visible={permission.networks.read}
       />
       <SidebarItem

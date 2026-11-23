@@ -273,9 +273,9 @@ export default function ReverseProxyTargetModal({
       <Modal open={open} onOpenChange={onOpenChange}>
         <ModalContent maxWidthClass="max-w-2xl">
           <ModalHeader
-            icon={<Server className="text-netbird" size={16} />}
-            title={currentTarget ? <TransText>Edit Target</TransText> : <TransText>Add Target</TransText>}
-            description={<TransText>Configure the target for your reverse proxy.</TransText>}
+            icon={<Server size={16} />}
+            title={currentTarget ? "Edit Target" : "Add Target"}
+            description={zhMap["Configure the target for your reverse proxy."] || "Configure the target for your reverse proxy."}
             color="netbird"
           />
 
@@ -366,22 +366,22 @@ export default function ReverseProxyTargetModal({
                             <div className="text-xs max-w-xs flex flex-col gap-2">
                               <div>
                                 When disabled, a request to e.g.,{" "}
-                                <span className="font-mono text-white">
+                                <span className="font-mono text-nb-gray-100 dark:text-white">
                                   {targetPath}/users
                                 </span>{" "}
                                 is forwarded as{" "}
-                                <span className="font-mono text-white">
+                                <span className="font-mono text-nb-gray-100 dark:text-white">
                                   /users
                                 </span>
                                 .
                               </div>
                               <div>
                                 When enabled, a request to e.g.,{" "}
-                                <span className="font-mono text-white">
+                                <span className="font-mono text-nb-gray-100 dark:text-white">
                                   {targetPath}/users
                                 </span>{" "}
                                 is forwarded as{" "}
-                                <span className="font-mono text-white">
+                                <span className="font-mono text-nb-gray-100 dark:text-white">
                                   {targetPath}/users
                                 </span>
                                 .
@@ -406,7 +406,7 @@ export default function ReverseProxyTargetModal({
               <div className="flex mt-1">
                 <div className="flex-1">
                   <Label>
-                    <TransText>Protocol & Host / IP</TransText>
+                    <TransText>Protocol &amp; Host / IP</TransText>
                     <CidrHelpText target={target} />
                   </Label>
                   <div className="flex items-center mt-2">

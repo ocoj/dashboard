@@ -1,12 +1,10 @@
-import Breadcrumbs from "@components/Breadcrumbs";
 import InlineLink from "@components/InlineLink";
 import Paragraph from "@components/Paragraph";
 import { SkeletonIntegration } from "@components/skeletons/SkeletonIntegration";
 import * as Tabs from "@radix-ui/react-tabs";
 import { isNetBirdCloud } from "@utils/netbird";
-import { ExternalLinkIcon, FingerprintIcon } from "lucide-react";
+import { ExternalLinkIcon } from "lucide-react";
 import React from "react";
-import IntegrationIcon from "@/assets/icons/IntegrationIcon";
 import { useAccount } from "@/modules/account/useAccount";
 import { LockedFeatureInfoCard } from "@/modules/billing/locked-feature/LockedFeatureInfoCard";
 import { LockedFeatureOverlay } from "@/modules/billing/locked-feature/LockedFeatureOverlay";
@@ -29,25 +27,9 @@ export default function IdentityProviderTab() {
   return (
     <Tabs.Content value={"identity-provider"}>
       <div className={"p-default py-6"}>
-        <Breadcrumbs>
-          <Breadcrumbs.Item
-            href={"/integrations"}
-            label={<TransText>Integrations</TransText>}
-            icon={<IntegrationIcon size={13} />}
-          />
-          <Breadcrumbs.Item
-            href={"/settings?tab=identity-provider"}
-            label={zhMap["Identity Provider Sync"] || "Identity Provider Sync"}
-            icon={<FingerprintIcon size={14} />}
-            active
-          />
-        </Breadcrumbs>
         <h1><TransText>Identity Provider Sync</TransText></h1>
         <Paragraph>
-          <TransText>
-            Configure your preferred Identity Provider (IdP) to synchronize your
-            users and groups to NetBird.
-          </TransText>
+          <TransText>Configure your preferred Identity Provider (IdP) to synchronize your users and groups to NetBird.</TransText>
         </Paragraph>
         <Paragraph>
           <InlineLink
@@ -88,16 +70,16 @@ export default function IdentityProviderTab() {
               </>
             )}
           </div>
-            { isNetBirdCloud() && <Callout variant={"warning"} className={"max-w-lg mt-6"}>
-            <TransText>Looking to enable a custom IdP like Keycloak?</TransText> <br />
-            Please contact us at{" "}
+            { isNetBirdCloud() && <Callout variant={"info"} className={"max-w-lg mt-6"}>
+            Using Keycloak or another IdP? See our{" "}
             <InlineLink
-              href={"mailto:support@netbird.io"}
+              href={"https://docs.netbird.io/manage/team/idp-sync"}
+              target={"_blank"}
               className={"inline !text-netbird-500 font-medium"}
             >
-              {" "}
-              support@netbird.io
-            </InlineLink>{" "}
+              documentation
+            </InlineLink>
+            .
           </Callout>}
         </LockedFeatureOverlay>
       </div>

@@ -1,6 +1,5 @@
 "use client";
 
-import Breadcrumbs from "@components/Breadcrumbs";
 import Paragraph from "@components/Paragraph";
 import SkeletonTable from "@components/skeletons/SkeletonTable";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@components/Tabs";
@@ -9,7 +8,6 @@ import { LayoutDashboard, ScrollText } from "lucide-react";
 import dayjs from "dayjs";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { Suspense, useMemo, useState } from "react";
-import AgentNetworkIcon from "@/assets/icons/AgentNetworkIcon";
 import GroupsProvider from "@/contexts/GroupsProvider";
 import PeersProvider from "@/contexts/PeersProvider";
 import { usePermissions } from "@/contexts/PermissionsProvider";
@@ -88,19 +86,7 @@ export default function UsageAndLogsPage() {
   return (
     <PageContainer>
       <div className={"p-default py-6 pb-0"}>
-        <Breadcrumbs>
-          <Breadcrumbs.Item
-            href={"/agent-network/providers"}
-            label={zhMap["Agent Network"] || "Agent Network"}
-            icon={<AgentNetworkIcon size={16} />}
-          />
-          <Breadcrumbs.Item
-            href={"/agent-network/usage"}
-            label={zhMap["Usage & Logs"] || "Usage & Logs"}
-            active={true}
-          />
-        </Breadcrumbs>
-        <h1><TransText>Usage & Logs</TransText></h1>
+        <h1><TransText>Usage &amp; Logs</TransText></h1>
         <Paragraph>
           <TransText>Per-request audit with real caller identity, cost attribution, and budget controls.</TransText>
         </Paragraph>
