@@ -26,9 +26,7 @@ export default function EDRTab({ account }: Props) {
       <div className={"p-default py-6"}>
         <h1><TransText>MDM &amp; EDR</TransText></h1>
         <Paragraph className={"max-w-3xl"}>
-          Endpoint Detection and Response (EDR) and Mobile Device Management
-          (MDM) integrations allow you to restrict network access only to
-          devices managed by the IT department.
+          <TransText>Endpoint Detection and Response (EDR) and Mobile Device Management (MDM) integrations allow you to restrict network access only to devices managed by the IT department.</TransText>
         </Paragraph>
         <Paragraph>
           <InlineLink

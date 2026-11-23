@@ -18,8 +18,7 @@ export default function EventStreamingTab() {
       <div className={"p-default py-6"}>
         <h1><TransText>Event Streaming</TransText></h1>
         <Paragraph>
-          Event Streaming allows you to stream NetBirds audit & traffic events
-          to different third-party services.
+          <TransText>Event Streaming allows you to stream NetBirds audit &amp; traffic events to different third-party services.</TransText>
         </Paragraph>
         <Paragraph>
           <InlineLink

@@ -1,4 +1,5 @@
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 import FullTooltip from "@components/FullTooltip";
 import InlineLink from "@components/InlineLink";
 import { cn } from "@utils/helpers";
@@ -101,7 +102,7 @@ export default function UserStatusCell({ user }: Readonly<Props>) {
           data-testid={"user-status-cell"}
         >
           <span className={cn("h-2 w-2 rounded-full", color)}></span>
-          {text}
+          {zhMap[text] || text}
           {showTooltip && (
             <HelpCircle size={14} className="text-netbird cursor-help" />
           )}

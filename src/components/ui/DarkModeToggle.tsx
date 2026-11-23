@@ -43,7 +43,7 @@ export default function DarkModeToggle() {
             key={value}
             type={"button"}
             title={zhMap[label] || label}
-            aria-label={`${zhMap[label] || label} ${zhMap["theme"] || "theme"}`}
+            aria-label={zhMap[`${label} theme`] || `${label} theme`}
             aria-pressed={theme === value}
             onClick={() => setTheme(value)}
             className={cn(

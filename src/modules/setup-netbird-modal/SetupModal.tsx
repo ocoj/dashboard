@@ -612,7 +612,7 @@ function SetupKeyGenerator({
           }
         >
 
-          This setup key can be used only once and expires in 24 hours.
+          <TransText>This setup key can be used only once and expires in 24 hours.</TransText>
         </div>
       </div>
       <Button variant={"secondary"} onClick={copy}>

@@ -1,6 +1,7 @@
 import { IconCircleFilled } from "@tabler/icons-react";
 import { cn } from "@utils/helpers";
 import * as React from "react";
+import { TransText } from "@/i18n/trans-text";
 
 type Props = {
   // "default" leads with the icon tile and a title in the reading size, for a
@@ -32,7 +33,7 @@ export const FeatureCardStatus = ({ enabled }: { enabled: boolean }) => (
     )}
   >
     <IconCircleFilled size={8} />
-    {enabled ? "Enabled" : "Disabled"}
+    {enabled ? <TransText>Enabled</TransText> : <TransText>Disabled</TransText>}
   </div>
 );
 
