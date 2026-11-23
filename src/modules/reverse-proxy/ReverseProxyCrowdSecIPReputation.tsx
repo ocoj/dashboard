@@ -69,10 +69,11 @@ export const ReverseProxyCrowdSecIPReputation = ({
         <div>
           <Label><TransText>CrowdSec IP Reputation</TransText></Label>
           <HelpText>
-            Detect malicious IPs with CrowdSec.{" "}
-            <b className={"text-nb-gray-100 dark:text-white"}>Enforce</b> to block them or{" "}
-            <b className={"text-nb-gray-100 dark:text-white"}>Observe</b> to only log without
-            blocking.
+            <TransText>Detect malicious IPs with CrowdSec.</TransText>{" "}
+            <b className={"text-nb-gray-100 dark:text-white"}>Enforce</b>{" "}
+            <TransText>to block them or</TransText>{" "}
+            <b className={"text-nb-gray-100 dark:text-white"}>Observe</b>{" "}
+            <TransText>to only log without blocking.</TransText>
           </HelpText>
         </div>
       </div>

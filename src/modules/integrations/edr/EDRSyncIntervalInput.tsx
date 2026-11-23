@@ -6,6 +6,8 @@ import Separator from "@components/Separator";
 import { IconInfoCircle } from "@tabler/icons-react";
 import { cn } from "@utils/helpers";
 import { TimerIcon } from "lucide-react";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 export const DEFAULT_SYNC_INTERVAL = 1;
 const MAX_SYNC_INTERVAL = 1440;
@@ -37,24 +39,24 @@ export const EDRSyncIntervalInput = ({
         <Label htmlFor={"sync-interval"}>
           <div className={"flex gap-2 items-center"}>
             <TimerIcon size={14} />
-            Sync Frequency
+            <TransText>Sync Frequency</TransText>
           </div>
         </Label>
         <FullTooltip
           interactive={false}
           content={
             <div className={"max-w-xs text-xs"}>
-              Example: This property is set to 1 minute. If Jane&apos;s laptop
-              stops meeting the requirements in {name}, NetBird picks up the
-              change on its next check, within 1 minute, and blocks network
-              access.
+              <TransText>Example: This property is set to 1 minute. If Jane&apos;s laptop stops meeting the requirements in</TransText>{" "}
+              {name}
+              <TransText>, NetBird picks up the change on its next check, within 1 minute, and blocks network access.</TransText>
             </div>
           }
         >
           <HelpText className={"max-w-sm mt-1"}>
-            How often NetBird checks {name} for device status{" "}
+            <TransText>How often NetBird checks</TransText> {name}{" "}
+            <TransText>for device status</TransText>{" "}
             <span className={"whitespace-nowrap"}>
-              changes.
+              <TransText>changes.</TransText>
               <IconInfoCircle
                 size={14}
                 className={"relative inline ml-1 -top-[1px]"}
@@ -75,11 +77,12 @@ export const EDRSyncIntervalInput = ({
         error={
           isValidSyncInterval(value)
             ? undefined
-            : `Must be a whole number between 1 and ${MAX_SYNC_INTERVAL}`
+            : zhMap[`Must be a whole number between 1 and ${MAX_SYNC_INTERVAL}`] ||
+              `Must be a whole number between 1 and ${MAX_SYNC_INTERVAL}`
         }
         errorTooltip={true}
         onChange={(e) => onChange(e.target.value)}
-        customSuffix={"Minutes"}
+        customSuffix={zhMap["Minutes"] || "Minutes"}
       />
     </div>
   </div>

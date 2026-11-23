@@ -17,6 +17,7 @@ import {
   resolveBlockedBy,
 } from "@/modules/agent-network/data/mockData";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   entry: AIAccessLogEntry;
@@ -133,7 +134,7 @@ export default function AgentAccessLogExpandedRow({
       )}
 
       {errorSource && (
-        <Section heading={"Error source"}>
+        <Section heading={zhMap["Error source"] || "Error source"}>
           <div className={"flex items-center gap-2 text-xs text-nb-gray-300"}>
             <Badge variant={"red"} size={"xs"} className={"shrink-0"}>
               {ERROR_SOURCE_INFO[errorSource].label}
@@ -144,13 +145,13 @@ export default function AgentAccessLogExpandedRow({
       )}
 
       {blocked && (
-        <Section heading={"Blocked by"}>
+        <Section heading={zhMap["Blocked by"] || "Blocked by"}>
           <BlockedByLink target={blocked} plain={selfScoped} />
         </Section>
       )}
 
       {errorDetail && (
-        <Section heading={"Error detail"}>
+        <Section heading={zhMap["Error detail"] || "Error detail"}>
           <Code dark small codeToCopy={errorDetail}>
             <pre className={"whitespace-pre-wrap break-all text-xs"}>
               {errorDetail}

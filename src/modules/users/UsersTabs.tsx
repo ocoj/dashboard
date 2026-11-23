@@ -6,6 +6,7 @@ import { useGuardedRouter } from "@utils/navigation-guard";
 import { User2 } from "lucide-react";
 import * as React from "react";
 import { usePermissions } from "@/contexts/PermissionsProvider";
+import { TransText } from "@/i18n/trans-text";
 
 export const USERS_TABS = [
   { value: "users", href: "/team/users", label: "Users" },
@@ -44,14 +45,14 @@ export default function UsersTabs({
       <TabsList justify={"start"} className={"px-8"}>
         <TabsTrigger value={"users"} data-testid={"users-tab-users"}>
           <User2 size={16} />
-          Users
+          <TransText>Users</TransText>
         </TabsTrigger>
         <TabsTrigger
           value={"service-users"}
           data-testid={"users-tab-service-users"}
         >
           <IconSettings2 size={16} />
-          Service Users
+          <TransText>Service Users</TransText>
         </TabsTrigger>
       </TabsList>
     </Tabs>

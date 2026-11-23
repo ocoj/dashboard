@@ -23,7 +23,7 @@ export default function AgentNetworkPoliciesPage() {
     <PageContainer>
       <div className={"p-default py-6"}>
         {/* "Agent Policies", next to Networking's Access Control › Policies. */}
-        <h1 ref={headingRef}>Agent Policies</h1>
+        <h1 ref={headingRef}><TransText>Agent Policies</TransText></h1>
         <Paragraph>
           <TransText>Bind IdP groups to providers: Engineering gets Claude, Finance doesn't. Enforce token limits, budgets, and guardrails.</TransText>
         </Paragraph>

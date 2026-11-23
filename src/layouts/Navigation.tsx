@@ -181,7 +181,7 @@ export default function Navigation({
 
             {shown.includes("networking") && (
               <SidebarItemGroup
-                label={"Networking"}
+                label={zhMap["Networking"] || "Networking"}
                 collapsible
                 {...section("networking")}
               >
@@ -207,7 +207,7 @@ export default function Navigation({
               >
                 <SidebarItem
                   icon={<AgentNetworkIcon size={16} />}
-                  label="Agents"
+                  label={zhMap["Agents"] || "Agents"}
                   collapsible
                   visible={
                     agentNetworkPages.connect ||
@@ -230,7 +230,7 @@ export default function Navigation({
                     visible={agentNetworkPages.providers}
                   />
                   <SidebarItem
-                    label="Agent Policies"
+                    label={zhMap["Agent Policies"] || "Agent Policies"}
                     isChild
                     href={"/agent-network/policies"}
                     exactPathMatch={true}
@@ -261,7 +261,10 @@ export default function Navigation({
                 in it. Both products share it. Documentation lives in the
                 header's help menu. */}
             {shown.includes("account") && (
-              <SidebarItemGroup label={"Account"} {...section("account")}>
+              <SidebarItemGroup
+                label={zhMap["Account"] || "Account"}
+                {...section("account")}
+              >
                 <SidebarItem
                   icon={<SettingsIcon />}
                   label={<TransText>Settings</TransText>}

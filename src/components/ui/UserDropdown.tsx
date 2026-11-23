@@ -27,6 +27,7 @@ import { useLoggedInUser } from "@/contexts/UsersProvider";
 import { ChangePasswordModalContent } from "@/modules/users/ChangePasswordModal";
 
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 export default function UserDropdown() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -57,10 +58,13 @@ export default function UserDropdown() {
       >
         <DropdownMenuTrigger
           data-testid="user-dropdown"
-          aria-label={"New: Light Mode - profile and theme settings"}
+          aria-label={zhMap["New: Light Mode - profile and theme settings"] ||
+            "New: Light Mode - profile and theme settings"}
           className={"flex cursor-pointer items-center gap-2"}
         >
-          <Badge variant={"blueDark"}>New: Light Mode</Badge>
+          <Badge variant={"blueDark"}>
+            <TransText>New: Light Mode</TransText>
+          </Badge>
           <UserAvatar size={"medium"} />
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-56" align="end" forceMount>

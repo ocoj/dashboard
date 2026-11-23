@@ -533,7 +533,9 @@ export function SetupContent({ onSuccess, account }: Readonly<ModalProps>) {
           <Clock4 size={12} />
           <div>
             <TransText>Estimated setup time:</TransText>
-            <span className={"font-medium"}> 10-20 Minutes</span>
+            <span className={"font-medium"}>
+              {" "}<TransText>10-20 Minutes</TransText>
+            </span>
           </div>
         </div>
       )}

@@ -4,6 +4,8 @@ import { SmallBadge } from "@components/ui/SmallBadge";
 import { cn } from "@utils/helpers";
 import { MonitorIcon, MoonIcon, SunIcon } from "lucide-react";
 import { type Theme, useTheme } from "@/contexts/ThemeProvider";
+import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 const OPTIONS: {
   value: Theme;
@@ -32,7 +34,7 @@ export default function DarkModeToggle() {
           "flex items-center gap-1.5 whitespace-nowrap text-nb-gray-300"
         }
       >
-        Theme
+        <TransText>Theme</TransText>
         <SmallBadge text={"Beta"} variant={"sky"} size={"md"} />
       </span>
       <div className={"flex items-center gap-1"}>
@@ -40,8 +42,8 @@ export default function DarkModeToggle() {
           <button
             key={value}
             type={"button"}
-            title={label}
-            aria-label={`${label} theme`}
+            title={zhMap[label] || label}
+            aria-label={`${zhMap[label] || label} ${zhMap["theme"] || "theme"}`}
             aria-pressed={theme === value}
             onClick={() => setTheme(value)}
             className={cn(

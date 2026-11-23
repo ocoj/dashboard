@@ -50,7 +50,7 @@ export default function Integrations() {
           </VerticalTabs.Trigger>
           <VerticalTabs.Trigger value="edr">
             <ShieldCheckIcon size={15} />
-            MDM & EDR
+            <TransText>MDM &amp; EDR</TransText>
           </VerticalTabs.Trigger>
         </VerticalTabs.List>
         <RestrictedAccess
