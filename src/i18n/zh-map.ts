@@ -12,6 +12,7 @@ const zhMap: Record<string, string> = {
   'Blocked by': '拦截来源',
   'By default,': '默认情况下，',
   'changes.': '变更。',
+  'Configure your preferred Identity Provider (IdP) to enable Single Sign-On (SSO) for your team.': '配置您首选的身份提供商（IdP），为团队启用 Single Sign-On（SSO）。',
   'Danger zone': '危险区域',
   'Dark theme': '深色主题',
   'Detect malicious IPs with CrowdSec.': '使用 CrowdSec 检测恶意 IP。',

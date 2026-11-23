@@ -19,8 +19,7 @@ export default function SSOTab() {
       <div className={"p-default py-6"}>
         <h1><TransText>Single Sign-On</TransText></h1>
         <Paragraph>
-          Configure your preferred Identity Provider (IdP) to enable Single
-          Sign-On (SSO) for your team.
+          <TransText>Configure your preferred Identity Provider (IdP) to enable Single Sign-On (SSO) for your team.</TransText>
         </Paragraph>
         <Paragraph>
           <InlineLink
