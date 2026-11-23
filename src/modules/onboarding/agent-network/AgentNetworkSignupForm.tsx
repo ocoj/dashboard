@@ -201,7 +201,7 @@ export const AgentNetworkSignupForm = ({ onSubmit }: Props) => {
               options={countryOptions}
               showSearch={true}
               placeholder={zhMap["Select your country..."] || "Select your country..."}
-              searchPlaceholder={"Search country..."}
+              searchPlaceholder={zhMap["Search country..."] || "Search country..."}
               variant={"dropdown"}
             />
           </div>

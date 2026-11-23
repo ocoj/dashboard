@@ -128,9 +128,7 @@ export const GroupPeersSection = ({ peers, isLoading = true }: Props) => {
           <NoResults
             className={"py-4"}
             title={zhMap["This group has no assigned peers yet"] || "This group has no assigned peers yet"}
-            description={
-              "Install NetBird and assign existing peers to this group to see them listed here."
-            }
+            description={zhMap["Install NetBird and assign existing peers to this group to see them listed here."] || "Install NetBird and assign existing peers to this group to see them listed here."}
             icon={<PeerIcon size={20} className={"fill-nb-gray-300"} />}
           >
             {permission?.peers?.update && permission?.groups?.update && (
@@ -188,7 +186,7 @@ export const GroupPeersSection = ({ peers, isLoading = true }: Props) => {
               useSave={false}
               showHeader={false}
               showClose={false}
-              buttonText={"Assign Peers"}
+              buttonText={zhMap["Assign Peers"] || "Assign Peers"}
               selectInitialPeers={false}
               excludedPeers={peers}
               onUpdate={(g) => {

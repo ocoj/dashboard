@@ -206,7 +206,7 @@ export default function GroupsSettings({ account }: Props) {
                         onKeyDown={(event) => {
                           if (event.code === "Space") event.preventDefault();
                         }}
-                        placeholder={"e.g., roles"}
+                        placeholder={zhMap["e.g., roles"] || "e.g., roles"}
                         value={jwtGroupsClaimName}
                         onChange={(e) => {
                           setJwtGroupsClaimName(

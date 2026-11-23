@@ -81,19 +81,17 @@ export default function InvoicesTable({
       tableClassName={"mt-0"}
       tableCellClassName={""}
       rowClassName={"last:mb-5"}
-      text={"Invoices"}
+      text={zhMap["Invoices"] || "Invoices"}
       columns={InvoicesColumns}
       keepStateInLocalStorage={false}
       data={invoices}
-      searchPlaceholder={"Search by invoice number or date..."}
+      searchPlaceholder={zhMap["Search by invoice number or date..."] || "Search by invoice number or date..."}
       isLoading={isLoading}
       getStartedCard={
         <NoResults
           className={"py-4"}
           title={zhMap["You don't have any invoices"] || "You don't have any invoices"}
-          description={
-            "Invoices are created at the end of each billing period. You will see them here once they are available."
-          }
+          description={zhMap["Invoices are created at the end of each billing period. You will see them here once they are available."] || "Invoices are created at the end of each billing period. You will see them here once they are available."}
           icon={<ReceiptTextIcon size={20} className={"text-nb-gray-300"} />}
         />
       }

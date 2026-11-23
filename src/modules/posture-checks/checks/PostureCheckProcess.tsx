@@ -170,7 +170,7 @@ const CheckContent = ({ value, onChange, disabled }: Props) => {
                   <div className={"w-full flex flex-col gap-1.5"}>
                     <Input
                       customPrefix={<TerminalIcon size={16} />}
-                      placeholder={"/usr/local/bin/netbird"}
+                      placeholder={zhMap["/usr/local/bin/netbird"] || "/usr/local/bin/netbird"}
                       value={p.linux_path}
                       error={
                         pathErrors.find((e) => e.id === p.id)?.errorLinuxPath
@@ -198,9 +198,7 @@ const CheckContent = ({ value, onChange, disabled }: Props) => {
                           )}
                         />
                       }
-                      placeholder={
-                        "/Applications/NetBird.app/Contents/MacOS/netbird"
-                      }
+                      placeholder={zhMap["/Applications/NetBird.app/Contents/MacOS/netbird"] || "/Applications/NetBird.app/Contents/MacOS/netbird"}
                       value={p.mac_path}
                       error={
                         pathErrors.find((e) => e.id === p.id)?.errorMacPath

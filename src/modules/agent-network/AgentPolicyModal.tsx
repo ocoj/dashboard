@@ -293,9 +293,7 @@ function AgentPolicyModalContent({
       <ModalHeader
         icon={<AccessControlIcon className={"fill-current"} />}
         title={policy ? "Update Agent Policy" : "Create Agent Policy"}
-        description={
-          "Govern which groups can call which AI providers and under what guardrails."
-        }
+        description={zhMap["Govern which groups can call which AI providers and under what guardrails."] || "Govern which groups can call which AI providers and under what guardrails."}
         color={"netbird"}
       />
 

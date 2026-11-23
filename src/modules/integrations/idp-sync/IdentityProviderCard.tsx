@@ -60,7 +60,7 @@ export const IdentityProviderCard = () => {
         enabled && idpLogo ? (
           <Image
             src={idpLogo as StaticImageData}
-            alt={"Identity Provider"}
+            alt={zhMap["Identity Provider"] || "Identity Provider"}
             className={"rounded-[4px]"}
           />
         ) : (

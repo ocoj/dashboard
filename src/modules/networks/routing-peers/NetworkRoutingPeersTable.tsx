@@ -169,9 +169,7 @@ export default function NetworkRoutingPeersTable({
         <NoResults
           className={"py-4"}
           title={zhMap["This network has no routing peers"] || "This network has no routing peers"}
-          description={
-            "Add routing peers to this network to access resources inside this network."
-          }
+          description={zhMap["Add routing peers to this network to access resources inside this network."] || "Add routing peers to this network to access resources inside this network."}
           icon={<PeerIcon size={18} className={"fill-nb-gray-400"} />}
         />
       }

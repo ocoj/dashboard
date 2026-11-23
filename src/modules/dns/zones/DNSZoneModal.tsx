@@ -150,7 +150,7 @@ export function DNSZoneModalContent({
           <Input
             disabled={!!zone}
             readOnly={!!zone}
-            placeholder={"e.g., company.internal"}
+            placeholder={zhMap["e.g., company.internal"] || "e.g., company.internal"}
             errorTooltip={false}
             errorTooltipPosition={"top"}
             error={domainError}

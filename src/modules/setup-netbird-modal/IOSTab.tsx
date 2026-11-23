@@ -9,6 +9,7 @@ import React from "react";
 import AppStoreButton from "@/assets/app-store-badge.png";
 import { OperatingSystem } from "@/interfaces/OperatingSystem";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 export default function IOSTab() {
   return (
@@ -28,7 +29,7 @@ export default function IOSTab() {
               >
                 <Image
                   src={AppStoreButton}
-                  alt={"Download NetBird on the App Store"}
+                  alt={zhMap["Download NetBird on the App Store"] || "Download NetBird on the App Store"}
                   height={50}
                 />
               </Link>

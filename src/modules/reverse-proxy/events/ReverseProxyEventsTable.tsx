@@ -419,9 +419,7 @@ export default function ReverseProxyEventsTable({
             />
           }
           title={zhMap["No Proxy Events Yet"] || "No Proxy Events Yet"}
-          description={
-            "No proxy traffic yet. Events appear here once your reverse proxy services start serving requests."
-          }
+          description={zhMap["No proxy traffic yet. Events appear here once your reverse proxy services start serving requests."] || "No proxy traffic yet. Events appear here once your reverse proxy services start serving requests."}
           learnMore={
             <>
               <TransText>Learn more about</TransText>{" "}

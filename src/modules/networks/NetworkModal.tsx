@@ -22,6 +22,7 @@ import React, { useState } from "react";
 import NetworkRoutesIcon from "@/assets/icons/NetworkRoutesIcon";
 import { Network } from "@/interfaces/Network";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -122,7 +123,7 @@ export const NetworkModalContent = ({
           <Input
             tabIndex={0}
             data-testid="network-name-input"
-            placeholder={"e.g., Office Network"}
+            placeholder={zhMap["e.g., Office Network"] || "e.g., Office Network"}
             value={name}
             onChange={(e) => setName(e.target.value)}
           />

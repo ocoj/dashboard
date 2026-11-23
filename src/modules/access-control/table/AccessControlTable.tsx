@@ -439,7 +439,7 @@ export default function AccessControlTable({
             value={p.value as string | undefined}
             onChange={p.onChange}
             close={p.close}
-            placeholder={"e.g. 443"}
+            placeholder={zhMap["e.g. 443"] || "e.g. 443"}
           />
         ),
         formatChip: (v) => formatTextChip(v as string | undefined),
@@ -533,9 +533,7 @@ export default function AccessControlTable({
             <NoResults
               className={"py-4"}
               title={zhMap["This group is not used within any policies yet"] || "This group is not used within any policies yet"}
-              description={
-                "Assign this group as either a source or destination inside a policy to see them listed here."
-              }
+              description={zhMap["Assign this group as either a source or destination inside a policy to see them listed here."] || "Assign this group as either a source or destination inside a policy to see them listed here."}
               icon={
                 <AccessControlIcon size={20} className={"fill-nb-gray-300"} />
               }

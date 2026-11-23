@@ -111,7 +111,7 @@ export function CreateDebugJobModalContent({ peerID, onSuccess }: Props) {
       <ModalHeader
         icon={<BugPlay size={20} />}
         title={zhMap["Debug Bundle"]}
-        description="Generate a debug bundle on this peer with logs and diagnostics. Useful for troubleshooting without CLI access."
+        description={zhMap["Generate a debug bundle on this peer with logs and diagnostics. Useful for troubleshooting without CLI access."] || "Generate a debug bundle on this peer with logs and diagnostics. Useful for troubleshooting without CLI access."}
         color="netbird"
       />
 

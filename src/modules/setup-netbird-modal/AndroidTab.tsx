@@ -9,6 +9,7 @@ import React from "react";
 import GooglePlayButton from "@/assets/google-play-badge.png";
 import { OperatingSystem } from "@/interfaces/OperatingSystem";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 export default function AndroidTab() {
   return (
@@ -30,7 +31,7 @@ export default function AndroidTab() {
               >
                 <Image
                   src={GooglePlayButton}
-                  alt={"Download NetBird from Google Play"}
+                  alt={zhMap["Download NetBird from Google Play"] || "Download NetBird from Google Play"}
                   height={50}
                 />
               </Link>

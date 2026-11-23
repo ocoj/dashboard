@@ -155,7 +155,7 @@ const CheckContent = ({ value, onChange, disabled }: Props) => {
                   <div className={"w-full"}>
                     <Input
                       customPrefix={<NetworkIcon size={16} />}
-                      placeholder={"e.g., 172.16.0.0/16"}
+                      placeholder={zhMap["e.g., 172.16.0.0/16"] || "e.g., 172.16.0.0/16"}
                       value={ipRange.value}
                       error={cidrErrors.find((e) => e.id === ipRange.id)?.error}
                       errorTooltip={false}

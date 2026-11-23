@@ -145,9 +145,7 @@ export default function MinimalPeersTable({
           <NoResults
             className={"py-4"}
             title={zhMap["This peer has no accessible peers"] || "This peer has no accessible peers"}
-            description={
-              "Add more peers to your network or check your access control policies."
-            }
+            description={zhMap["Add more peers to your network or check your access control policies."] || "Add more peers to your network or check your access control policies."}
             icon={<PeerIcon size={20} className={"fill-nb-gray-300"} />}
           />
         ) : (

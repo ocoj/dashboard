@@ -14,6 +14,7 @@ import NetBirdIcon from "@/assets/icons/NetBirdIcon";
 import { NetBirdVersionCheck } from "@/interfaces/PostureCheck";
 import { PostureCheckCard } from "@/modules/posture-checks/ui/PostureCheckCard";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   value?: NetBirdVersionCheck;
@@ -86,7 +87,7 @@ const CheckContent = ({ value, onChange, disabled }: Props) => {
               className={"max-w-[200px]"}
               value={version}
               onChange={(e) => setVersion(e.target.value)}
-              placeholder={"e.g., 0.25.0"}
+              placeholder={zhMap["e.g., 0.25.0"] || "e.g., 0.25.0"}
               error={versionError}
               customPrefix={"Version"}
               disabled={disabled}

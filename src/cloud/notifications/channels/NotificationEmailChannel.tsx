@@ -116,9 +116,7 @@ export const NotificationEmailChannel = ({ channel }: Props) => {
               <TransText>Enable Email Channel</TransText>
             </>
           }
-          helpText={
-            "Enable or disable all email notifications for your account"
-          }
+          helpText={zhMap["Enable or disable all email notifications for your account"] || "Enable or disable all email notifications for your account"}
         />
         <div className={"flex flex-col relative w-full"}>
           <Label>
@@ -131,7 +129,7 @@ export const NotificationEmailChannel = ({ channel }: Props) => {
           <div className={"flex gap-3"}>
             <Input
               ref={emailInputRef}
-              placeholder={"e.g. hello@company.com"}
+              placeholder={zhMap["e.g. hello@company.com"] || "e.g. hello@company.com"}
               maxWidthClass={"w-full"}
               disabled={!canUpdate}
               value={emailInput}

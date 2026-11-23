@@ -58,6 +58,7 @@ import { TransText } from "@/i18n/trans-text";
 import { AccessControlModalContent } from "@/modules/access-control/AccessControlModal";
 import useGroupHelper from "@/modules/groups/useGroupHelper";
 import { RoutingPeerMasqueradeSwitch } from "@/modules/networks/routing-peers/RoutingPeerMasqueradeSwitch";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   children?: React.ReactNode;
@@ -505,7 +506,7 @@ export function RouteModalContent({
                 <Input
                   ref={networkRangeRef}
                   customPrefix={<NetworkIcon size={16} />}
-                  placeholder={"e.g., 172.16.0.1, 172.16.0.0/16, 2001:db8::1 or 2001:db8::/64"}
+                  placeholder={zhMap["e.g., 172.16.0.1, 172.16.0.0/16, 2001:db8::1 or 2001:db8::/64"] || "e.g., 172.16.0.1, 172.16.0.0/16, 2001:db8::1 or 2001:db8::/64"}
                   value={networkRange}
                   data-testid={"network-range"}
                   className={"font-mono !text-[13px]"}
@@ -702,7 +703,7 @@ export function RouteModalContent({
                 data-testid={"network-identifier"}
                 tabIndex={0}
                 ref={nameRef}
-                placeholder={"e.g., aws-eu-central-1-vpc"}
+                placeholder={zhMap["e.g., aws-eu-central-1-vpc"] || "e.g., aws-eu-central-1-vpc"}
                 value={networkIdentifier}
                 onChange={(e) => setNetworkIdentifier(e.target.value)}
               />

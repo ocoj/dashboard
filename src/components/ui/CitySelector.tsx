@@ -47,7 +47,7 @@ export const CitySelector = ({ value, onChange, country = "de" }: Props) => {
         isLoading={isLoading}
         showSearch={true}
         placeholder={zhMap["Select city (optional)..."] || "Select city (optional)..."}
-        searchPlaceholder={"Search city..."}
+        searchPlaceholder={zhMap["Search city..."] || "Search city..."}
         value={value}
         onChange={onChange}
         options={cityList || []}

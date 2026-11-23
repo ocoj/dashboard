@@ -20,6 +20,7 @@ import AzureADSetup from "@/modules/integrations/idp-sync/azure-ad/AzureADSetup"
 import { useIntegrations } from "@/modules/integrations/idp-sync/useIntegrations";
 import { IntegrationCard } from "@/modules/integrations/IntegrationCard";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 export const AzureAD = () => {
   const { mutate } = useSWRConfig();
@@ -72,7 +73,7 @@ export const AzureAD = () => {
     <>
       <IntegrationCard
         name="Entra ID (API)"
-        description="Microsoft Entra ID is a cloud-based identity and access management solution."
+        description={zhMap["Microsoft Entra ID is a cloud-based identity and access management solution."] || "Microsoft Entra ID is a cloud-based identity and access management solution."}
         url={{
           title: "microsoft.com",
           href: "https://www.microsoft.com/en-us/security/business/identity-access/microsoft-entra-id",

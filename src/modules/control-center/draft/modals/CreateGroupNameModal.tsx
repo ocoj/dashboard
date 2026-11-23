@@ -66,7 +66,7 @@ export const CreateGroupNameModal = ({
         />
         <div className={"p-default flex flex-col gap-4"}>
           <Input
-            placeholder={"e.g., Developers"}
+            placeholder={zhMap["e.g., Developers"] || "e.g., Developers"}
             value={name}
             onChange={handleNameChange}
             error={error}

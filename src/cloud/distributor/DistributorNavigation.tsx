@@ -47,7 +47,7 @@ export const DistributorNavigation = () => {
           but user role has no other pages to navigate to */}
       <SidebarItem
         icon={<PeerIcon />}
-        label="Peers"
+        label={zhMap["Peers"] || "Peers"}
         href={"/peers"}
         visible={!isRestricted && loggedInUser?.role === Role.User}
       />

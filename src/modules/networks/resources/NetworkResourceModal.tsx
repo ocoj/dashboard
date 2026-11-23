@@ -299,7 +299,7 @@ export function ResourceModalContent({
                 autoFocus={true}
                 tabIndex={0}
                 data-testid="resource-name-input"
-                placeholder={"e.g., Postgres Database"}
+                placeholder={zhMap["e.g., Postgres Database"] || "e.g., Postgres Database"}
                 value={name}
                 error={nameError}
                 onChange={(e) => setName(e.target.value)}
@@ -362,7 +362,7 @@ export function ResourceModalContent({
                         <TransText>Write a short description to add more context to this resource.</TransText>
                       </HelpText>
                       <Input
-                        placeholder={"e.g., Production, Development"}
+                        placeholder={zhMap["e.g., Production, Development"] || "e.g., Production, Development"}
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                         data-testid="resource-description-input"

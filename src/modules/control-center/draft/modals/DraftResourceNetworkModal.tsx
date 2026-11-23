@@ -185,7 +185,7 @@ const PickerContent = ({
             onChange={setSelected}
             options={options}
             showSearch={true}
-            searchPlaceholder={"Search networks..."}
+            searchPlaceholder={zhMap["Search networks..."] || "Search networks..."}
             placeholder={zhMap["Select or create a network..."] || "Select or create a network..."}
             maxHeight={190}
             // Pinned below the options so scroll or search can't hide it.

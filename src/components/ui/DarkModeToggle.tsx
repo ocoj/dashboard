@@ -35,7 +35,7 @@ export default function DarkModeToggle() {
         }
       >
         <TransText>Theme</TransText>
-        <SmallBadge text={"Beta"} variant={"sky"} size={"md"} />
+        <SmallBadge text={zhMap["Beta"] || "Beta"} variant={"sky"} size={"md"} />
       </span>
       <div className={"flex items-center gap-1"}>
         {OPTIONS.map(({ value, label, icon: Icon }) => (

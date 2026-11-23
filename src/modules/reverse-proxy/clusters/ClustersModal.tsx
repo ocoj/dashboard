@@ -47,6 +47,7 @@ import DockerIcon from "@/assets/icons/DockerIcon";
 import HetznerIcon from "@/assets/icons/HetznerIcon";
 import KubernetesIcon from "@/assets/icons/KubernetesIcon";
 import { IconProps } from "@/assets/icons/IconProperties";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -377,7 +378,7 @@ spec:
                 </HelpText>
                 <Input
                   autoFocus={true}
-                  placeholder={"e.g., proxy.company.com"}
+                  placeholder={zhMap["e.g., proxy.company.com"] || "e.g., proxy.company.com"}
                   value={domain}
                   error={domainError}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>

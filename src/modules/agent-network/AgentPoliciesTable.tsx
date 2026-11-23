@@ -625,7 +625,7 @@ export default function AgentPoliciesTable({ headingTarget }: Readonly<Props>) {
         columns={columns}
         data={policies}
         initialSearch={initialSearch}
-        searchPlaceholder={"Search by name or description..."}
+        searchPlaceholder={zhMap["Search by name or description..."] || "Search by name or description..."}
         // Clicking the Models cell lands on the tab that actually owns the
         // model allowlist — the guardrails attached to the policy.
         onRowClick={(row, cell) =>
@@ -643,9 +643,7 @@ export default function AgentPoliciesTable({ headingTarget }: Readonly<Props>) {
               />
             }
             title={zhMap["Create your first policy"] || "Create your first policy"}
-            description={
-              "Policies connect user and agent groups to AI providers, with optional token and budget limits and guardrails for model access and prompt capture."
-            }
+            description={zhMap["Policies connect user and agent groups to AI providers, with optional token and budget limits and guardrails for model access and prompt capture."] || "Policies connect user and agent groups to AI providers, with optional token and budget limits and guardrails for model access and prompt capture."}
             button={
               <Button
                 variant={"primary"}

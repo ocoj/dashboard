@@ -202,9 +202,7 @@ export default function ClustersTable({ headingTarget }: Readonly<Props>) {
               />
             }
             title={zhMap["No clusters available"] || "No clusters available"}
-            description={
-              "Set up a cluster to route traffic through your own infrastructure."
-            }
+            description={zhMap["Set up a cluster to route traffic through your own infrastructure."] || "Set up a cluster to route traffic through your own infrastructure."}
             button={
               <Button
                 variant={"primary"}

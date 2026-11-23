@@ -22,6 +22,7 @@ import ModalHeader from "../modal/ModalHeader";
 import { notify } from "../Notification";
 import Paragraph from "../Paragraph";
 import Separator from "../Separator";
+import zhMap from "@/i18n/zh-map";
 
 export const AddGroupButton = () => {
   const create = useApiCall<Group>("/groups", true).post;
@@ -76,7 +77,7 @@ export const AddGroupButton = () => {
               <Input
                 tabIndex={0}
                 data-testid="group-name-input"
-                placeholder={"e.g., Developers"}
+                placeholder={zhMap["e.g., Developers"] || "e.g., Developers"}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />

@@ -64,7 +64,7 @@ export const SelectGroupNode = ({ data, id }: NodeProps) => {
         onChange={data.onChange}
         options={groupOptions}
         showSearch={true}
-        searchPlaceholder={"Search groups..."}
+        searchPlaceholder={zhMap["Search groups..."] || "Search groups..."}
         open={open}
         onOpenChange={setOpen}
         popoverWidth={280}

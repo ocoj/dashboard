@@ -254,9 +254,7 @@ export default function NameserverGroupTable({
               icon={<DNSIcon className={"fill-nb-gray-200"} size={20} />}
               className={"py-4"}
               title={zhMap["This group is not used within any nameservers yet"] || "This group is not used within any nameservers yet"}
-              description={
-                "Assign this group as a distribution group in your nameservers to see them listed here."
-              }
+              description={zhMap["Assign this group as a distribution group in your nameservers to see them listed here."] || "Assign this group as a distribution group in your nameservers to see them listed here."}
             >
               <NameserverTemplateModal distributionGroups={distributionGroups}>
                 <Button

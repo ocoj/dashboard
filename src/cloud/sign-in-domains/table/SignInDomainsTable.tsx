@@ -92,7 +92,7 @@ export default function SignInDomainsTable({
       showSearchAndFilters={false}
       inset={false}
       tableClassName={"mt-0"}
-      text={"Domains"}
+      text={zhMap["Domains"] || "Domains"}
       columns={SignInDomainsColumns}
       keepStateInLocalStorage={false}
       data={isLoading ? [placeholderRow] : domains}

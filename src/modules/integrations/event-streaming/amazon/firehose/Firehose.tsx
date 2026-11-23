@@ -11,6 +11,7 @@ import { useIsLicensed } from "@/hooks/useIsLicensed";
 import { EventStream } from "@/interfaces/EventStream";
 import FirehoseSetup from "@/modules/integrations/event-streaming/amazon/firehose/FirehoseSetup";
 import { IntegrationCard } from "@/modules/integrations/IntegrationCard";
+import zhMap from "@/i18n/zh-map";
 
 export default function Firehose() {
   const { permission } = usePermissions();
@@ -73,7 +74,7 @@ export default function Firehose() {
     <>
       <IntegrationCard
         name="Amazon Data Firehose"
-        description="Firehose delivers real-time data streaming to destinations such as Amazon S3, Amazon Redshift & more."
+        description={zhMap["Firehose delivers real-time data streaming to destinations such as Amazon S3, Amazon Redshift & more."] || "Firehose delivers real-time data streaming to destinations such as Amazon S3, Amazon Redshift & more."}
         url={{
           title: "aws.amazon.com/firehose",
           href: "https://aws.amazon.com/firehose",

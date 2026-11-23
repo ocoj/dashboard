@@ -61,7 +61,7 @@ export const EditGroupNameModal = ({
           <div>
             <Input
               data-testid="group-name-input"
-              placeholder={"e.g., Developers"}
+              placeholder={zhMap["e.g., Developers"] || "e.g., Developers"}
               value={name}
               onChange={handleNameChange}
               error={error}

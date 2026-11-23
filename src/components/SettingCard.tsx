@@ -8,6 +8,7 @@ import { cn } from "@utils/helpers";
 import { PlusCircle, SquarePen } from "lucide-react";
 import React from "react";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type SettingCardItemProps = {
   label: React.ReactNode;
@@ -56,7 +57,7 @@ function SettingCardItem({
           <Label>{label}</Label>
           {enabled && (
             <SmallBadge
-              text="Enabled"
+              text={zhMap["Enabled"] || "Enabled"}
               variant="green"
               size="md"
               className={"-top-[0.25rem]"}

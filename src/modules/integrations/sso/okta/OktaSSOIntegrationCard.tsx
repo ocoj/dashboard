@@ -14,6 +14,7 @@ import { OktaSsoSettings } from "@/modules/integrations/sso/okta/OktaSSOSettings
 import OktaSSOSetup from "@/modules/integrations/sso/okta/OktaSSOSetup";
 import { useEnterpriseConnections } from "@/modules/integrations/sso/useEnterpriseConnections";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 export const OktaSSOIntegrationCard = () => {
   const [setupModal, setSetupModal] = useState(false);
@@ -41,7 +42,7 @@ export const OktaSSOIntegrationCard = () => {
     <>
       <IntegrationCard
         name="Okta"
-        description="Okta is a platform to provision and manage user accounts in cloud-based applications."
+        description={zhMap["Okta is a platform to provision and manage user accounts in cloud-based applications."] || "Okta is a platform to provision and manage user accounts in cloud-based applications."}
         data={oktaConnection}
         url={{
           title: "okta.com",

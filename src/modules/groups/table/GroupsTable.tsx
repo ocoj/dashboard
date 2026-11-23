@@ -409,7 +409,7 @@ export default function GroupsTable({ headingTarget }: Readonly<Props>) {
         }
         useRowId={true}
         resetRowSelectionOnFilter={true}
-        text={"Groups"}
+        text={zhMap["Groups"] || "Groups"}
         sorting={sorting}
         isLoading={isLoading}
         setSorting={setSorting}
@@ -417,7 +417,7 @@ export default function GroupsTable({ headingTarget }: Readonly<Props>) {
         data={groups}
         initialPageSize={25}
         showResetFilterButton={false}
-        searchPlaceholder={"Search group by name..."}
+        searchPlaceholder={zhMap["Search group by name..."] || "Search group by name..."}
         rightSide={() => <AddGroupButton />}
         aboveTable={(table) => (
           <TableFilterChips table={table} filters={filterDefs} />

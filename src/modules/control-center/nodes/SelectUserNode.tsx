@@ -98,7 +98,7 @@ export const SelectUserNode = ({ data, id }: UserNodeProps) => {
         onChange={data.onUserChange}
         options={userSelectOptions}
         showSearch={true}
-        searchPlaceholder={"Search user by name or email..."}
+        searchPlaceholder={zhMap["Search user by name or email..."] || "Search user by name or email..."}
         open={open}
         onOpenChange={setOpen}
         popoverWidth={280}

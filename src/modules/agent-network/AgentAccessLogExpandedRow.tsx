@@ -97,7 +97,7 @@ export default function AgentAccessLogExpandedRow({
   return (
     <div className={"px-4 py-4 space-y-3 bg-nb-gray-940/30"}>
       {requestLine && (
-        <Section heading={"Request"}>
+        <Section heading={zhMap["Request"] || "Request"}>
           <Code dark small codeToCopy={requestLine}>
             <Code.Line>{requestLine}</Code.Line>
           </Code>
@@ -120,7 +120,7 @@ export default function AgentAccessLogExpandedRow({
       )}
 
       {isDeny && (
-        <Section heading={"Reason"}>
+        <Section heading={zhMap["Reason"] || "Reason"}>
           <div
             className={
               "rounded-md border border-red-500/20 bg-red-500/5 p-3 text-xs text-red-700 dark:text-red-300"

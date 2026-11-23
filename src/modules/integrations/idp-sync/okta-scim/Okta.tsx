@@ -82,7 +82,7 @@ export const Okta = () => {
     <>
       <IntegrationCard
         name="Okta"
-        description="Okta is a platform to provision and manage user accounts in cloud-based applications."
+        description={zhMap["Okta is a platform to provision and manage user accounts in cloud-based applications."] || "Okta is a platform to provision and manage user accounts in cloud-based applications."}
         url={{
           title: "okta.com",
           href: "https://www.okta.com/",

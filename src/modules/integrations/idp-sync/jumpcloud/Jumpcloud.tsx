@@ -69,7 +69,7 @@ export const Jumpcloud = () => {
     <>
       <IntegrationCard
         name="Jumpcloud"
-        description="Jumpcloud is a unified identity, device, and access management platform."
+        description={zhMap["Jumpcloud is a unified identity, device, and access management platform."] || "Jumpcloud is a unified identity, device, and access management platform."}
         url={{
           title: "jumpcloud.com",
           href: "https://jumpcloud.com/",

@@ -212,7 +212,7 @@ export default function IdentityProviderModal({
               <Label><TransText>Name</TransText></Label>
               <HelpText><TransText>A friendly name to identify this provider</TransText></HelpText>
               <Input
-                placeholder={"e.g., Corporate SSO"}
+                placeholder={zhMap["e.g., Corporate SSO"] || "e.g., Corporate SSO"}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 customPrefix={

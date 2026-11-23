@@ -22,6 +22,7 @@ import { PostureCheckPeerNetworkRange } from "@/modules/posture-checks/checks/Po
 import { PostureCheckProcess } from "@/modules/posture-checks/checks/PostureCheckProcess";
 import { usePostureCheck } from "@/modules/posture-checks/usePostureCheck";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   open: boolean;
@@ -200,7 +201,7 @@ export default function PostureCheckModal({
                         payload: e.target.value,
                       })
                     }
-                    placeholder={"e.g., NetBird Version > 0.25.0"}
+                    placeholder={zhMap["e.g., NetBird Version > 0.25.0"] || "e.g., NetBird Version > 0.25.0"}
                     disabled={
                       !permission.policies.create || !permission.policies.update
                     }

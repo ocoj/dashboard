@@ -449,7 +449,7 @@ export function NameserverModalContent({
                 autoFocus={true}
                 tabIndex={0}
                 error={nameLengthError}
-                placeholder={"e.g., Public DNS"}
+                placeholder={zhMap["e.g., Public DNS"] || "e.g., Public DNS"}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 disabled={!canAction}
@@ -620,7 +620,7 @@ function NameserverInput({
       <div className={"w-full"}>
         <Input
           customPrefix={"IP"}
-          placeholder={"e.g., 172.16.0.0"}
+          placeholder={zhMap["e.g., 172.16.0.0"] || "e.g., 172.16.0.0"}
           maxWidthClass={"w-full"}
           value={ip}
           className={"font-mono !text-[13px]"}

@@ -132,12 +132,12 @@ export default function DistributorCustomersTable({
     <DataTable
       headingTarget={headingTarget}
       useRowId={true}
-      text={"Customers"}
+      text={zhMap["Customers"] || "Customers"}
       sorting={sorting}
       setSorting={setSorting}
       columns={CustomersTableColumns}
       data={customers}
-      searchPlaceholder={"Search by name, domain or id..."}
+      searchPlaceholder={zhMap["Search by name, domain or id..."] || "Search by name, domain or id..."}
       columnVisibility={{
         domain: false,
       }}

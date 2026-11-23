@@ -444,9 +444,7 @@ export default function AgentBudgetRulesTable() {
               />
             }
             title={zhMap["Set a Global Limit"] || "Set a Global Limit"}
-            description={
-              "Global limits cap token usage and spend across every policy. Apply a limit account-wide, or scope it to specific groups or users."
-            }
+            description={zhMap["Global limits cap token usage and spend across every policy. Apply a limit account-wide, or scope it to specific groups or users."] || "Global limits cap token usage and spend across every policy. Apply a limit account-wide, or scope it to specific groups or users."}
             button={
               <Button
                 variant={"primary"}

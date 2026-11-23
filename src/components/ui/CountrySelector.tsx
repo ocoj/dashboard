@@ -43,7 +43,7 @@ export const CountrySelector = ({ value, onChange, iconSize = 20, popoverWidth, 
         isLoading={isLoading}
         showSearch={true}
         placeholder={zhMap["Select country..."] || "Select country..."}
-        searchPlaceholder={"Search country..."}
+        searchPlaceholder={zhMap["Search country..."] || "Search country..."}
         value={value}
         onChange={onChange}
         iconSize={iconSize}

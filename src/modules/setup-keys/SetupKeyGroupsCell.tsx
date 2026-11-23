@@ -46,9 +46,7 @@ export default function SetupKeyGroupsCell({ setupKey }: Readonly<Props>) {
     permission.groups.read && (
       <GroupsRow
         label={zhMap["Auto-assigned Groups"] || "Auto-assigned Groups"}
-        description={
-          "These groups will be automatically assigned to peers enrolled with this key"
-        }
+        description={zhMap["These groups will be automatically assigned to peers enrolled with this key"] || "These groups will be automatically assigned to peers enrolled with this key"}
         groups={setupKey.auto_groups || []}
         onSave={handleSave}
         hideAllGroup={true}

@@ -62,7 +62,7 @@ export function EditPeerNameModal({
         <div className={"p-default flex flex-col gap-4"}>
           <div>
             <Input
-              placeholder={"e.g., AWS Servers"}
+              placeholder={zhMap["e.g., AWS Servers"] || "e.g., AWS Servers"}
               value={name}
               onChange={(e) => setName(e.target.value)}
             />

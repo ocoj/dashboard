@@ -11,6 +11,7 @@ import { useIsLicensed } from "@/hooks/useIsLicensed";
 import { EventStream } from "@/interfaces/EventStream";
 import DatadogSetup from "@/modules/integrations/event-streaming/datadog/DatadogSetup";
 import { IntegrationCard } from "@/modules/integrations/IntegrationCard";
+import zhMap from "@/i18n/zh-map";
 
 export default function Datadog() {
   const { permission } = usePermissions();
@@ -71,7 +72,7 @@ export default function Datadog() {
     <>
       <IntegrationCard
         name="Datadog"
-        description="Datadog is a monitoring service for cloud-scale applications."
+        description={zhMap["Datadog is a monitoring service for cloud-scale applications."] || "Datadog is a monitoring service for cloud-scale applications."}
         url={{
           title: "datadoghq.com",
           href: "https://www.datadoghq.com/",

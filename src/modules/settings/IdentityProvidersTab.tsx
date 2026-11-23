@@ -227,9 +227,7 @@ export default function IdentityProvidersTab() {
               />
             }
             title={zhMap["Add Identity Provider"] || "Add Identity Provider"}
-            description={
-              "Configure an identity provider to enable SSO authentication for your users."
-            }
+            description={zhMap["Configure an identity provider to enable SSO authentication for your users."] || "Configure an identity provider to enable SSO authentication for your users."}
             button={
               <Button
                 variant={"primary"}

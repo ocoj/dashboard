@@ -11,6 +11,7 @@ import { useIsLicensed } from "@/hooks/useIsLicensed";
 import { EventStream } from "@/interfaces/EventStream";
 import S3Setup from "@/modules/integrations/event-streaming/amazon/s3/S3Setup";
 import { IntegrationCard } from "@/modules/integrations/IntegrationCard";
+import zhMap from "@/i18n/zh-map";
 
 export default function S3() {
   const { permission } = usePermissions();
@@ -71,7 +72,7 @@ export default function S3() {
     <>
       <IntegrationCard
         name="Amazon S3"
-        description="Amazon S3 is a scalable storage in the cloud."
+        description={zhMap["Amazon S3 is a scalable storage in the cloud."] || "Amazon S3 is a scalable storage in the cloud."}
         url={{
           title: "aws.amazon.com/s3",
           href: "https://aws.amazon.com/s3",

@@ -21,6 +21,7 @@ import GoogleWorkspaceSetup from "@/modules/integrations/idp-sync/google-workspa
 import { useIntegrations } from "@/modules/integrations/idp-sync/useIntegrations";
 import { IntegrationCard } from "@/modules/integrations/IntegrationCard";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 export const GoogleWorkspace = () => {
   const { mutate } = useSWRConfig();
@@ -73,7 +74,7 @@ export const GoogleWorkspace = () => {
     <>
       <IntegrationCard
         name="Google Workspace"
-        description="A flexible, innovative solution for people and organizations to achieve more."
+        description={zhMap["A flexible, innovative solution for people and organizations to achieve more."] || "A flexible, innovative solution for people and organizations to achieve more."}
         url={{
           title: "workspace.google.com",
           href: "https://workspace.google.com/",

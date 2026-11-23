@@ -73,9 +73,7 @@ export function NameserverTemplateModalContent({
             onClick={() => onePresetSelection(NameserverPresets.Google)}
             src={GoogleLogo}
             title={zhMap["Google DNS"] || "Google DNS"}
-            description={
-              "A free, global DNS resolution service by Google that implements a number of security, performance, and compliance improvements."
-            }
+            description={zhMap["A free, global DNS resolution service by Google that implements a number of security, performance, and compliance improvements."] || "A free, global DNS resolution service by Google that implements a number of security, performance, and compliance improvements."}
             href={"https://developers.google.com/speed/public-dns"}
             data-testid="nameserver-preset-google"
           />
@@ -83,9 +81,7 @@ export function NameserverTemplateModalContent({
             onClick={() => onePresetSelection(NameserverPresets.Cloudflare)}
             src={CloudflareLogo}
             title={zhMap["Cloudflare DNS"] || "Cloudflare DNS"}
-            description={
-              "Enterprise-grade DNS service that offers the fastest response time, unparalleled redundancy, and advanced security with built-in DDoS mitigation and DNSSEC."
-            }
+            description={zhMap["Enterprise-grade DNS service that offers the fastest response time, unparalleled redundancy, and advanced security with built-in DDoS mitigation and DNSSEC."] || "Enterprise-grade DNS service that offers the fastest response time, unparalleled redundancy, and advanced security with built-in DDoS mitigation and DNSSEC."}
             href={"https://www.cloudflare.com/learning/dns/what-is-1.1.1.1/"}
             data-testid="nameserver-preset-cloudflare"
           />
@@ -93,9 +89,7 @@ export function NameserverTemplateModalContent({
             onClick={() => onePresetSelection(NameserverPresets.Quad9)}
             src={Quad9Logo}
             title={zhMap["Quad9 DNS"] || "Quad9 DNS"}
-            description={
-              "The Quad9 DNS service is operated by the Swiss-based Quad9 Foundation, whose mission is to provide a safer and more robust Internet for everyone."
-            }
+            description={zhMap["The Quad9 DNS service is operated by the Swiss-based Quad9 Foundation, whose mission is to provide a safer and more robust Internet for everyone."] || "The Quad9 DNS service is operated by the Swiss-based Quad9 Foundation, whose mission is to provide a safer and more robust Internet for everyone."}
             href={"https://quad9.net/"}
             data-testid="nameserver-preset-quad9"
           />

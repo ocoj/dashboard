@@ -51,11 +51,11 @@ export function CustomDomainSelector({
                 <TruncatedText text={`.${domain.domain}`} maxWidth={"260px"} />
               </div>
               {isAccountCluster ? (
-                <SmallBadge text="Account" variant="sky" size="md" />
+                <SmallBadge text={zhMap["Account"] || "Account"} variant="sky" size="md" />
               ) : isNetBirdCloud() ? (
                 <SmallBadge text="Free" variant="green" size="md" />
               ) : (
-                <SmallBadge text="Shared" variant="green" size="md" />
+                <SmallBadge text={zhMap["Shared"] || "Shared"} variant="green" size="md" />
               )}
             </div>
           ),
@@ -72,7 +72,7 @@ export function CustomDomainSelector({
           renderItem: () => (
             <div className="flex items-center gap-2 w-full text-sm justify-between">
               <span>.{domain.domain}</span>
-              <SmallBadge text="Custom" variant="sky" size="md" />
+              <SmallBadge text={zhMap["Custom"] || "Custom"} variant="sky" size="md" />
             </div>
           ),
         });

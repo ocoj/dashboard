@@ -17,6 +17,7 @@ import { useIntegrations } from "@/modules/integrations/edr/useIntegrations";
 import { IntegrationCard } from "@/modules/integrations/IntegrationCard";
 import { Group } from "@/interfaces/Group";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   account: Account;
@@ -87,7 +88,7 @@ export const Intune = ({ account }: Props) => {
     <>
       <IntegrationCard
         name="Intune"
-        description="Microsoft Intune is a cloud-based unified endpoint management for your organization."
+        description={zhMap["Microsoft Intune is a cloud-based unified endpoint management for your organization."] || "Microsoft Intune is a cloud-based unified endpoint management for your organization."}
         url={{
           title: "microsoft.com",
           href: "https://www.microsoft.com/en-us/security/business/endpoint-management/microsoft-intune",

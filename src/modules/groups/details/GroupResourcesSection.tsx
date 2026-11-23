@@ -156,9 +156,7 @@ export const GroupResourcesSection = ({
             <NoResults
               className={"py-4"}
               title={zhMap["This group has no assigned resources"] || "This group has no assigned resources"}
-              description={
-                "Assign this group to your resources inside your networks to see them listed here."
-              }
+              description={zhMap["Assign this group to your resources inside your networks to see them listed here."] || "Assign this group to your resources inside your networks to see them listed here."}
               icon={<Layers3Icon size={20} className={"text-nb-gray-300"} />}
             >
               {permission?.networks?.create && (

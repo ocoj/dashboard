@@ -878,7 +878,7 @@ export default function ReverseProxyModal({
                     </div>
                     <Input
                       customPrefix={<ClockFadingIcon size={16} />}
-                      placeholder="e.g. 10s, 30s, 1m"
+                      placeholder={zhMap["e.g. 10s, 30s, 1m"] || "e.g. 10s, 30s, 1m"}
                       value={timeoutOption}
                       onChange={(e) => setTimeoutOption(e.target.value)}
                       maxWidthClass="w-[180px]"

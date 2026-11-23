@@ -13,6 +13,7 @@ import { EventStream } from "@/interfaces/EventStream";
 import GenericHTTPModal from "@/modules/integrations/event-streaming/generic-http/GenericHTTPModal";
 import { IntegrationCard } from "@/modules/integrations/IntegrationCard";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 export default function GenericHTTP() {
   const { permission } = usePermissions();
@@ -73,7 +74,7 @@ export default function GenericHTTP() {
     <>
       <IntegrationCard
         name="Generic HTTP"
-        description="Provide your custom HTTP endpoint to stream audit & traffic events."
+        description={zhMap["Provide your custom HTTP endpoint to stream audit & traffic events."] || "Provide your custom HTTP endpoint to stream audit & traffic events."}
         url={{
           title: "docs.netbird.io",
           href: "https://docs.netbird.io/how-to/stream-activity-to-generic-http",

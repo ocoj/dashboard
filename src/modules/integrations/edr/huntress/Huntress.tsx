@@ -19,6 +19,7 @@ import HuntressSetup from "@/modules/integrations/edr/huntress/HuntressSetup";
 import { useIntegrations } from "@/modules/integrations/edr/useIntegrations";
 import { IntegrationCard } from "@/modules/integrations/IntegrationCard";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   account: Account;
@@ -95,7 +96,7 @@ export const Huntress = ({ account }: Props) => {
     <>
       <IntegrationCard
         name={"Huntress"}
-        description="EDR with comprehensive, enterprise-grade protection, continuously backed by 24/7 AI-assisted SOC."
+        description={zhMap["EDR with comprehensive, enterprise-grade protection, continuously backed by 24/7 AI-assisted SOC."] || "EDR with comprehensive, enterprise-grade protection, continuously backed by 24/7 AI-assisted SOC."}
         url={{
           title: "huntress.com",
           href: "https://huntress.com/",

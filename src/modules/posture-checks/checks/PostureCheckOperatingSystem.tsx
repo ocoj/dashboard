@@ -411,7 +411,7 @@ export const OperatingSystemTab = ({
           <Input
             value={value}
             customPrefix={prefix}
-            placeholder={"e.g., 6.0.0"}
+            placeholder={zhMap["e.g., 6.0.0"] || "e.g., 6.0.0"}
             error={versionError}
             errorTooltip={true}
             disabled={allOrMin === "all" || allow === "block" || disabled}

@@ -245,10 +245,10 @@ function InviteAcceptContent() {
               />
               {password && (
                 <div className="mt-2 space-y-1">
-                  <PasswordRule met={hasMinLength} text="At least 8 characters" />
-                  <PasswordRule met={hasUppercase} text="One uppercase letter" />
-                  <PasswordRule met={hasLowercase} text="One lowercase letter" />
-                  <PasswordRule met={hasNumber} text="One number" />
+                  <PasswordRule met={hasMinLength} text={zhMap["At least 8 characters"] || "At least 8 characters"} />
+                  <PasswordRule met={hasUppercase} text={zhMap["One uppercase letter"] || "One uppercase letter"} />
+                  <PasswordRule met={hasLowercase} text={zhMap["One lowercase letter"] || "One lowercase letter"} />
+                  <PasswordRule met={hasNumber} text={zhMap["One number"] || "One number"} />
                   <PasswordRule met={hasSpecialChar} text="One special character (!@#$%^&*)" />
                 </div>
               )}

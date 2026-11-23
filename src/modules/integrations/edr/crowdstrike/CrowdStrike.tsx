@@ -16,6 +16,7 @@ import CrowdStrikeSetup from "@/modules/integrations/edr/crowdstrike/CrowdStrike
 import { IntegrationCard } from "@/modules/integrations/IntegrationCard";
 import { useIntegrations } from "../useIntegrations";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   account: Account;
@@ -91,7 +92,7 @@ export const CrowdStrike = ({ account }: Props) => {
     <>
       <IntegrationCard
         name="CrowdStrike"
-        description="CrowdStrike is a cloud-native platform for protecting endpoints, cloud workloads, identities and data."
+        description={zhMap["CrowdStrike is a cloud-native platform for protecting endpoints, cloud workloads, identities and data."] || "CrowdStrike is a cloud-native platform for protecting endpoints, cloud workloads, identities and data."}
         url={{
           title: "crowdstrike.com",
           href: "https://www.crowdstrike.com/",

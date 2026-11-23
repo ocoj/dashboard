@@ -244,7 +244,7 @@ export function DNSRecordModalContent({
               <Label><TransText>IPv4 Address</TransText></Label>
               <Input
                 className={"mt-1.5 font-mono text-[0.82rem]"}
-                placeholder={"192.168.1.1"}
+                placeholder={zhMap["192.168.1.1"] || "192.168.1.1"}
                 errorTooltip={false}
                 errorTooltipPosition={"top"}
                 error={ipv4Error}
@@ -261,7 +261,7 @@ export function DNSRecordModalContent({
               <Label><TransText>IPv6 Address</TransText></Label>
               <Input
                 className={"mt-1.5 font-mono text-[0.82rem]"}
-                placeholder={"2001:0db8:85a3::8a2e:0370:7334"}
+                placeholder={zhMap["2001:0db8:85a3::8a2e:0370:7334"] || "2001:0db8:85a3::8a2e:0370:7334"}
                 errorTooltip={false}
                 errorTooltipPosition={"top"}
                 error={ipv6Error}
@@ -278,7 +278,7 @@ export function DNSRecordModalContent({
               <Label><TransText>Target Domain</TransText></Label>
               <Input
                 className={"mt-1.5"}
-                placeholder={"e.g., example.com or intra.example.com"}
+                placeholder={zhMap["e.g., example.com or intra.example.com"] || "e.g., example.com or intra.example.com"}
                 errorTooltip={false}
                 errorTooltipPosition={"top"}
                 error={cnameError}

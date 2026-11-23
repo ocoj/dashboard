@@ -250,9 +250,7 @@ export default function DNSZonesTable({
             className={"py-4"}
             contentClassName={"max-w-lg"}
             title={zhMap["This group is not used within any zones yet"] || "This group is not used within any zones yet"}
-            description={
-              "Assign this group as a distribution group in your zones to see them listed here."
-            }
+            description={zhMap["Assign this group as a distribution group in your zones to see them listed here."] || "Assign this group as a distribution group in your zones to see them listed here."}
           >
             <div className={"gap-x-4 flex items-center justify-center mt-4"}>
               <AddZoneButton distributionGroups={distributionGroups} />

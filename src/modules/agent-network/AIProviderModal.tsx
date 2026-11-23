@@ -1035,7 +1035,7 @@ export default function AIProviderModal({
                     }}
                     options={providerOptions}
                     showSearch
-                    searchPlaceholder={"Search providers..."}
+                    searchPlaceholder={zhMap["Search providers..."] || "Search providers..."}
                     placeholder={zhMap["Select provider..."] || "Select provider..."}
                   />
                 </FormRow>
@@ -1220,7 +1220,7 @@ export default function AIProviderModal({
                   data-testid={"agent-network-provider-name"}
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder={"e.g. OpenAI"}
+                  placeholder={zhMap["e.g. OpenAI"] || "e.g. OpenAI"}
                 />
               </FormRow>
             </div>

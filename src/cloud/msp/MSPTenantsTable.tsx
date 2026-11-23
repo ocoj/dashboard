@@ -178,12 +178,12 @@ export default function MSPTenantsTable({
         <DataTable
           headingTarget={headingTarget}
           useRowId={true}
-          text={"Tenants"}
+          text={zhMap["Tenants"] || "Tenants"}
           sorting={sorting}
           setSorting={setSorting}
           columns={TenantsTableColumns}
           data={tenants}
-          searchPlaceholder={"Search by name, email or group..."}
+          searchPlaceholder={zhMap["Search by name, email or group..."] || "Search by name, email or group..."}
           columnVisibility={{
             created_at: false,
             domain: false,

@@ -22,6 +22,7 @@ import { useIntegrations } from "@/modules/integrations/edr/useIntegrations";
 import { IntegrationCard } from "@/modules/integrations/IntegrationCard";
 import { Group } from "@/interfaces/Group";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   account: Account;
@@ -91,7 +92,7 @@ export const FleetDM = ({ account }: Props) => {
     <>
       <IntegrationCard
         name={"FleetDM"}
-        description="Open-source device management platform for macOS, Windows, and Linux with osquery-based compliance policies."
+        description={zhMap["Open-source device management platform for macOS, Windows, and Linux with osquery-based compliance policies."] || "Open-source device management platform for macOS, Windows, and Linux with osquery-based compliance policies."}
         url={{
           title: "fleetdm.com",
           href: "https://fleetdm.com/",

@@ -100,9 +100,7 @@ function SlackModalContent({ onSave }: Readonly<ModalContentProps>) {
       <IntegrationModalHeader
         image={slackImage}
         title={zhMap["Connect NetBird with Slack"] || "Connect NetBird with Slack"}
-        description={
-          "Receive NetBird notification events directly in your Slack channel via an Incoming Webhook."
-        }
+        description={zhMap["Receive NetBird notification events directly in your Slack channel via an Incoming Webhook."] || "Receive NetBird notification events directly in your Slack channel via an Incoming Webhook."}
       />
 
       {step === 0 && (
@@ -176,7 +174,7 @@ function SlackModalContent({ onSave }: Readonly<ModalContentProps>) {
                   <GlobeIcon size={14} />
                 </div>
               }
-              placeholder={"https://hooks.slack.com/services/T000/B000/XXXX"}
+              placeholder={zhMap["https://hooks.slack.com/services/T000/B000/XXXX"] || "https://hooks.slack.com/services/T000/B000/XXXX"}
               value={url}
               error={urlError}
               onChange={(e) => setUrl(e.target.value)}

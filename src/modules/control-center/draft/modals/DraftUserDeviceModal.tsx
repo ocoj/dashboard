@@ -125,7 +125,7 @@ const StepperContent = ({
               onChange={setSelected}
               options={options}
               showSearch={true}
-              searchPlaceholder={"Search peers..."}
+              searchPlaceholder={zhMap["Search peers..."] || "Search peers..."}
               placeholder={zhMap["Select a peer..."] || "Select a peer..."}
               maxHeight={280}
             />

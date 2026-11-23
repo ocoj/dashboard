@@ -23,6 +23,7 @@ import { useIntegrations } from "@/modules/integrations/edr/useIntegrations";
 import { IntegrationCard } from "@/modules/integrations/IntegrationCard";
 import { Group } from "@/interfaces/Group";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   account: Account;
@@ -92,7 +93,7 @@ export const SentinelOne = ({ account }: Props) => {
     <>
       <IntegrationCard
         name={"SentinelOne"}
-        description="AI-powered endpoint protection platform for real-time threat detection and automated response."
+        description={zhMap["AI-powered endpoint protection platform for real-time threat detection and automated response."] || "AI-powered endpoint protection platform for real-time threat detection and automated response."}
         url={{
           title: "sentinelone.com",
           href: "https://www.sentinelone.com/",

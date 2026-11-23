@@ -31,6 +31,7 @@ import ReverseProxyDestinationCell from "@/modules/reverse-proxy/table/ReversePr
 import ReverseProxyNameCell from "@/modules/reverse-proxy/table/ReverseProxyNameCell";
 import ReverseProxyFlatTargetActionCell from "@/modules/reverse-proxy/targets/flat/ReverseProxyFlatTargetActionCell";
 import { ReverseProxyTargetDevice } from "@/modules/reverse-proxy/targets/ReverseProxyTargetDevice";
+import zhMap from "@/i18n/zh-map";
 
 const FlatTargetsTableColumns: ColumnDef<ReverseProxyFlatTarget>[] = [
   {
@@ -211,7 +212,7 @@ export const ReverseProxyFlatTargetsTable = ({
       minimal={true}
       showSearchAndFilters={true}
       tableClassName="mt-0"
-      text="Service"
+      text={zhMap["Service"] || "Service"}
       sorting={sorting}
       setSorting={setSorting}
       columns={FlatTargetsTableColumns}
@@ -219,7 +220,7 @@ export const ReverseProxyFlatTargetsTable = ({
       keepStateInLocalStorage={false}
       initialPageSize={25}
       showResetFilterButton={false}
-      searchPlaceholder="Search by URL, destination, or target..."
+      searchPlaceholder={zhMap["Search by URL, destination, or target..."] || "Search by URL, destination, or target..."}
       initialFilters={
         resourceId ? [{ id: "target_id", value: resourceId }] : undefined
       }

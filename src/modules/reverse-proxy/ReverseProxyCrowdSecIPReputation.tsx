@@ -15,6 +15,7 @@ import { HelpTooltip } from "@components/HelpTooltip";
 import { CrowdSecMode } from "@/interfaces/ReverseProxy";
 import Image from "next/image";
 import CrowdSecIconImage from "@/assets/integrations/crowdsec.png";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   value: CrowdSecMode;
@@ -62,7 +63,7 @@ export const ReverseProxyCrowdSecIPReputation = ({
         >
           <Image
             src={CrowdSecIconImage}
-            alt={"CrowdSec"}
+            alt={zhMap["CrowdSec"] || "CrowdSec"}
             className={"rounded-[4px]"}
           />
         </div>

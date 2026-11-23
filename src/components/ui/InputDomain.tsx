@@ -6,6 +6,7 @@ import { GlobeIcon, MinusCircleIcon } from "lucide-react";
 import * as React from "react";
 import { useEffect, useMemo, useState } from "react";
 import { Domain } from "@/interfaces/Domain";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   value: Domain;
@@ -80,7 +81,7 @@ export default function InputDomain({
       <div className={"w-full"}>
         <Input
           customPrefix={<GlobeIcon size={15} />}
-          placeholder={"e.g., example.com"}
+          placeholder={zhMap["e.g., example.com"] || "e.g., example.com"}
           maxWidthClass={"w-full"}
           data-testid={"domain-input"}
           value={name}

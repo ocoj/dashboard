@@ -585,7 +585,7 @@ export function AccessControlModalContent({
                 value={name}
                 data-testid={"policy-name"}
                 onChange={(e) => setName(e.target.value)}
-                placeholder={"e.g., Devs to Servers"}
+                placeholder={zhMap["e.g., Devs to Servers"] || "e.g., Devs to Servers"}
                 disabled={
                   !permission.policies.update || !permission.policies.create
                 }
@@ -600,9 +600,7 @@ export function AccessControlModalContent({
                 value={description}
                 data-testid={"policy-description"}
                 onChange={(e) => setDescription(e.target.value)}
-                placeholder={
-                  "e.g., Devs are allowed to access servers and servers are allowed to access Devs."
-                }
+                placeholder={zhMap["e.g., Devs are allowed to access servers and servers are allowed to access Devs."] || "e.g., Devs are allowed to access servers and servers are allowed to access Devs."}
                 rows={3}
                 disabled={
                   !permission.policies.update || !permission.policies.create

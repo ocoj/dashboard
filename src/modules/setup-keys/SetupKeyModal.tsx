@@ -241,7 +241,7 @@ export function SetupKeyModalContent({
           <Label><TransText>Name</TransText></Label>
           <HelpText><TransText>Set an easily identifiable name for your key</TransText></HelpText>
           <Input
-            placeholder={"e.g., AWS Servers"}
+            placeholder={zhMap["e.g., AWS Servers"] || "e.g., AWS Servers"}
             value={name}
             data-testid={"setup-key-name"}
             onChange={(e) => setName(e.target.value)}

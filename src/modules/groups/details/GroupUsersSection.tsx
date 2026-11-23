@@ -141,9 +141,7 @@ export const GroupUsersSection = ({ users, isLoading = true }: Props) => {
           <NoResults
             className={"py-4"}
             title={zhMap["This group has no assigned users yet"] || "This group has no assigned users yet"}
-            description={
-              "Invite new users or assign existing ones to this group to see them listed here."
-            }
+            description={zhMap["Invite new users or assign existing ones to this group to see them listed here."] || "Invite new users or assign existing ones to this group to see them listed here."}
             icon={<TeamIcon size={20} className={"fill-nb-gray-300"} />}
           >
             {permission?.users?.update && (
