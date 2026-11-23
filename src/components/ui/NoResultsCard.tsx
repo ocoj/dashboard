@@ -5,6 +5,7 @@ import { FilterX } from "lucide-react";
 import React from "react";
 import Skeleton from "react-loading-skeleton";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 type Props = {
   icon?: React.ReactNode;
@@ -17,7 +18,9 @@ type Props = {
 export default function NoResultsCard({
   icon,
   title = "Could not find any results",
-  description = "We couldn't find any results. Please try a different search term or change your filters.",
+  description = zhMap[
+    "We couldn't find any results. Please try a different search term or change your filters."
+  ] || "We couldn't find any results. Please try a different search term or change your filters.",
   children,
   className,
 }: Readonly<Props>) {

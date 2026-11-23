@@ -35,7 +35,7 @@ export default function SSOTab() {
         </Paragraph>
 
         <LockedFeatureInfoCard
-          featureText={"Identity Provider (IdP) Sync"}
+          featureText={zhMap["Identity Provider (IdP) Sync"] || "Identity Provider (IdP) Sync"}
           feature={"IDP_SYNC"}
         />
 

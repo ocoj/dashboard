@@ -472,7 +472,7 @@ function FocusModePill() {
             <FocusIcon size={13} className={"text-sky-400 shrink-0"} />
             {focusedNodeId
               ? `Focusing on “${focusedName || "node"}”`
-              : "Select a node to focus"}
+              : zhMap["Select a node to focus"] || "Select a node to focus"}
             <button
               onClick={() => {
                 setHighlightArmed(false);

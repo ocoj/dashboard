@@ -10,6 +10,7 @@ import { Group } from "@/interfaces/Group";
 import { Network, NetworkResource } from "@/interfaces/Network";
 import { Peer } from "@/interfaces/Peer";
 import { Policy } from "@/interfaces/Policy";
+import zhMap from "@/i18n/zh-map";
 
 // crypto.randomUUID is missing in non-secure contexts and older Safari.
 export const draftUid = () =>
@@ -45,7 +46,7 @@ export const getGroupCountLabel = (group?: Group, userCount = 0) => {
   const peerCount = group?.peers_count || 0;
   const resourceCount = group?.resources_count || 0;
   if (peerCount === 0 && resourceCount === 0 && userCount === 0) {
-    return "No Peers";
+    return zhMap["No Peers"] || "No Peers";
   }
   return [
     { count: userCount, label: singularize("Users", userCount, true) },
@@ -58,7 +59,8 @@ export const getGroupCountLabel = (group?: Group, userCount = 0) => {
     .filter((part) => part.count > 0)
     .sort((a, b) => b.count - a.count)
     .map((part) => part.label)
-    .join(", ");
+    .join(", ")
+    .replace(/\b(Peers|Users|Resources)\b/g, (m) => zhMap[m] || m);
 };
 
 // Policy-embedded groups carry a stale count snapshot; /groups is authoritative.

@@ -1618,7 +1618,8 @@ const PanelContent = React.memo(
                       "text-sm text-nb-gray-350 font-light max-w-xs px-6"
                     }
                   >
-                    {`We couldn't find any results. Please try a different search term.`}
+                    {zhMap["We couldn't find any results. Please try a different search term."] ||
+                      `We couldn't find any results. Please try a different search term.`}
                   </div>
                 </div>
               </div>

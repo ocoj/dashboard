@@ -50,6 +50,7 @@ import { User } from "@/interfaces/User";
 import { PeerOperatingSystemIcon } from "@/modules/peers/PeerOperatingSystemIcon";
 import { HorizontalUsersStack } from "@/modules/users/HorizontalUsersStack";
 import { TransText } from "@/i18n/trans-text";
+import zhMap from "@/i18n/zh-map";
 
 export type PeerGroupSelectorTab =
   | "peers"
@@ -189,7 +190,7 @@ export function PeerGroupSelector({
   closeOnSelect = false,
   resource,
   onResourceChange,
-  placeholder = "Add or select group(s)...",
+  placeholder = zhMap["Add or select group(s)..."] || "Add or select group(s)...",
   customTrigger,
   align = "start",
   side = "bottom",
