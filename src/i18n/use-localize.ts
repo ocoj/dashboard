@@ -1,6 +1,7 @@
 "use client";
 
 import zhMap from "./zh-map";
+import { localizeByPattern } from "./localize-patterns";
 import { useLocale } from "./locale-context";
 
 /**
@@ -19,11 +20,11 @@ export function useLocalize() {
 
   return function localize<T>(value: T): T {
     if (!mounted || locale !== "zh" || typeof value !== "string") return value;
-    return (zhMap[value] ?? value) as T;
+    return (zhMap[value] ?? localizeByPattern(value) ?? value) as T;
   };
 }
 
 /** Non-hook variant for module-scope code that already knows it is in zh. */
 export function localizeText(text: string): string {
-  return zhMap[text] ?? text;
+  return zhMap[text] ?? localizeByPattern(text) ?? text;
 }
