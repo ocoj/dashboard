@@ -1,6 +1,6 @@
 /**
  * Pattern rules for copy that is assembled at runtime, e.g.
- *   `Delete '${group.name}'?`  ->  "Delete '卡卡'?"  ->  删除「卡卡」？
+ *   `Delete '${group.name}'?`  ->  "Delete '卡卡'?"  ->  删除「卡卡」
  *
  * Exact lookup in `zh-map` cannot match these because the interpolated part
  * varies. Rules are applied in order, first match wins, and anything that
@@ -13,19 +13,22 @@ const QUOTE = String.raw`['"“](.+?)['"”]`;
 
 const RULES: Rule[] = [
   // ---------- 删除 / 移除 ----------
-  [new RegExp(String.raw`^Delete network ${QUOTE}\?$`), (m) => `删除网络「${m[1]}」？`],
-  [new RegExp(String.raw`^Delete resource ${QUOTE}\?$`), (m) => `删除资源「${m[1]}」？`],
-  [new RegExp(String.raw`^Delete policy ${QUOTE}\?$`), (m) => `删除策略「${m[1]}」？`],
-  [new RegExp(String.raw`^Delete record ${QUOTE}\?$`), (m) => `删除记录「${m[1]}」？`],
-  [new RegExp(String.raw`^Delete zone ${QUOTE}\?$`), (m) => `删除区域「${m[1]}」？`],
-  [new RegExp(String.raw`^Delete invite for ${QUOTE}\?$`), (m) => `删除「${m[1]}」的邀请？`],
-  [new RegExp(String.raw`^Delete peer (.+) from ${QUOTE} network\?$`), (m) => `从网络「${m[2]}」中删除节点「${m[1]}」？`],
-  [new RegExp(String.raw`^Delete ${QUOTE}\?$`), (m) => `删除「${m[1]}」？`],
+  // 删除确认的「标题」用陈述句，问句交给 description（与上游 title/description 字段一一对应，
+  // 方便与英文界面逐行对照）。
+
+  [new RegExp(String.raw`^Delete network ${QUOTE}\?$`), (m) => `删除网络「${m[1]}」`],
+  [new RegExp(String.raw`^Delete resource ${QUOTE}\?$`), (m) => `删除资源「${m[1]}」`],
+  [new RegExp(String.raw`^Delete policy ${QUOTE}\?$`), (m) => `删除策略「${m[1]}」`],
+  [new RegExp(String.raw`^Delete record ${QUOTE}\?$`), (m) => `删除记录「${m[1]}」`],
+  [new RegExp(String.raw`^Delete zone ${QUOTE}\?$`), (m) => `删除区域「${m[1]}」`],
+  [new RegExp(String.raw`^Delete invite for ${QUOTE}\?$`), (m) => `删除「${m[1]}」的邀请`],
+  [new RegExp(String.raw`^Delete peer (.+) from ${QUOTE} network\?$`), (m) => `从网络「${m[2]}」中删除节点「${m[1]}」`],
+  [new RegExp(String.raw`^Delete ${QUOTE}\?$`), (m) => `删除「${m[1]}」`],
   [new RegExp(String.raw`^Delete (\d+) (peers?|groups?|users?)$`), (m) => {
     const unit = m[2].startsWith("peer") ? "节点" : m[2].startsWith("group") ? "组" : "用户";
     return `删除 ${m[1]} 个${unit}`;
   }],
-  [new RegExp(String.raw`^Remove (.+)\?$`), (m) => `移除 ${translateEntity(m[1])} ？`],
+  [new RegExp(String.raw`^Remove (.+)\?$`), (m) => joinCn("移除", translateEntity(m[1]), "？")],
   [new RegExp(String.raw`^Delete (Group|Network|Route|Peers) (.+)$`), (m) => {
     const unit = { Group: "组", Network: "网络", Route: "路由", Peers: "节点" }[m[1]] ?? m[1];
     return `删除${unit} ${m[2]}`;
@@ -49,8 +52,8 @@ const RULES: Rule[] = [
   [new RegExp(String.raw`^Create a Setup Key\?$`), () => "创建安装密钥？"],
   [new RegExp(String.raw`^Regenerate Auth Token\?$`), () => "重新生成认证令牌？"],
   // ---------- 启用 / 禁用 / 断开 ----------
-  [new RegExp(String.raw`^(?:Enable|Disable) (.+)\?$`), (m, ) => `${m[0].startsWith("Enable") ? "启用" : "禁用"} ${translateEntity(m[1])} ？`],
-  [new RegExp(String.raw`^Disconnect (.+)\?$`), (m) => `断开 ${translateEntity(m[1])} ？`],
+  [new RegExp(String.raw`^(?:Enable|Disable) (.+)\?$`), (m, ) => joinCn(m[0].startsWith("Enable") ? "启用" : "禁用", translateEntity(m[1]), "？")],
+  [new RegExp(String.raw`^Disconnect (.+)\?$`), (m) => joinCn("断开", translateEntity(m[1]), "？")],
   // ---------- 组 / 资源 / 网络相关 ----------
   [new RegExp(String.raw`^Add Resource to ${QUOTE}\?$`), (m) => `向「${m[1]}」添加资源？`],
   [new RegExp(String.raw`^Add Routing Peer to ${QUOTE}\?$`), (m) => `向「${m[1]}」添加路由节点？`],
@@ -68,7 +71,7 @@ const RULES: Rule[] = [
     (m) => `正在为 ${m[2]} ${m[1] === "Creating" ? "创建" : "重新生成"}...`],
   [new RegExp(String.raw`^Removing (.+)\.\.\.$`), (m) => `正在移除 ${m[1]}...`],
   [new RegExp(String.raw`^(Enabling|Disabling) (.+?)(?:\.\.\.)?$`),
-    (m) => `正在${m[1] === "Enabling" ? "启用" : "禁用"} ${translateEntity(m[2])}...`],
+    (m) => joinCn(`正在${m[1] === "Enabling" ? "启用" : "禁用"}`, translateEntity(m[2]), "...")],
   [new RegExp(String.raw`^Granting access to (.+?)\??$`), (m) => `正在授予 ${m[1]} 访问权限`],
   [new RegExp(String.raw`^Adding (.+)\.\.\.$`), (m) => `正在添加 ${m[1]}...`],
   // ---------- 完成 / 结果 ----------
@@ -119,6 +122,12 @@ const ENTITY: Record<string, string> = {
   Domain: "域名",
   domain: "域名",
 };
+
+/** 中文前缀 + 实体：实体以拉丁字母开头时补一个空格，中文实体直接相连 */
+function joinCn(prefix: string, entity: string, suffix = ""): string {
+  const sep = /^[A-Za-z0-9]/.test(entity) ? " " : "";
+  return `${prefix}${sep}${entity}${suffix}`;
+}
 
 function translateEntity(text: string): string {
   const t = text.trim();
