@@ -25,6 +25,7 @@ import { NavigationEvents } from "@/contexts/NavigationEvents";
 import { ThemeProvider } from "@/contexts/ThemeProvider";
 import { useSignupSource } from "@/hooks/useSignupSource";
 import LocaleProvider from "@/i18n/locale-context";
+import TitleTranslator from "@/i18n/title-translator";
 
 const inter = localFont({
   src: "../assets/fonts/Inter.ttf",
@@ -68,32 +69,37 @@ export default function AppLayout({
       </head>
       <body className={cn(inter.className)} data-matomo-mask>
         <Suspense fallback={<FullScreenLoading />}>
-          <AnalyticsProvider>
-            <DialogProvider>
-              <ThemeProvider>
-                <ErrorBoundaryProvider>
-                  <InstanceSetupProvider>
-                    <OIDCProvider>
-                      <TooltipProvider delayDuration={0}>
-                        <LocaleProvider>{children}</LocaleProvider>
-                      </TooltipProvider>
-                    </OIDCProvider>
-                  </InstanceSetupProvider>
-                </ErrorBoundaryProvider>
-              </ThemeProvider>
-            </DialogProvider>
-            <Toaster
-              position="top-center"
-              duration={3000}
-              toastOptions={{ unstyled: true }}
-              style={{ "--width": "28rem" } as React.CSSProperties}
-              gap={0}
-              visibleToasts={5}
-              offset="12px"
-            />
-            <NavigationEvents />
-            <DisableDarkReader />
-          </AnalyticsProvider>
+          {/* LocaleProvider sits at the top: dialogs and toasts render outside
+              the page tree, and they need the locale too. */}
+          <LocaleProvider>
+            <AnalyticsProvider>
+              <DialogProvider>
+                <ThemeProvider>
+                  <ErrorBoundaryProvider>
+                    <InstanceSetupProvider>
+                      <OIDCProvider>
+                        <TooltipProvider delayDuration={0}>
+                          {children}
+                        </TooltipProvider>
+                      </OIDCProvider>
+                    </InstanceSetupProvider>
+                  </ErrorBoundaryProvider>
+                </ThemeProvider>
+              </DialogProvider>
+              <Toaster
+                position="top-center"
+                duration={3000}
+                toastOptions={{ unstyled: true }}
+                style={{ "--width": "28rem" } as React.CSSProperties}
+                gap={0}
+                visibleToasts={5}
+                offset="12px"
+              />
+              <NavigationEvents />
+              <DisableDarkReader />
+              <TitleTranslator />
+            </AnalyticsProvider>
+          </LocaleProvider>
         </Suspense>
       </body>
     </html>

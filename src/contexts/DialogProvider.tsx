@@ -8,6 +8,7 @@ import {
 import ModalHeader from "@components/modal/ModalHeader";
 import { AlertCircle, AlertTriangle } from "lucide-react";
 import React, { useCallback, useRef, useState } from "react";
+import { useLocalize } from "@/i18n/use-localize";
 
 type Props = {
   children: React.ReactNode;
@@ -34,6 +35,7 @@ type DialogOptions = {
 };
 
 export default function DialogProvider({ children }: Props) {
+  const localize = useLocalize();
   const [state, setState] = useState({
     isOpen: false,
   });
@@ -81,13 +83,15 @@ export default function DialogProvider({ children }: Props) {
               center={dialogOptions.center ?? dialogOptions.type == "center"}
               title={
                 <span data-testid={"confirmation.title"}>
-                  {dialogOptions.title || "Confirmation"}
+                  {localize(dialogOptions.title) || localize("Confirmation")}
                 </span>
               }
               margin={"mt-1"}
               description={
-                dialogOptions.description ||
-                "Are you sure you want to continue? This action cannot be undone."
+                localize(dialogOptions.description) ||
+                localize(
+                  "Are you sure you want to continue? This action cannot be undone.",
+                )
               }
               icon={
                 dialogOptions.hideIcon
@@ -121,7 +125,7 @@ export default function DialogProvider({ children }: Props) {
                   data-testid={"confirmation.cancel"}
                   onClick={() => fn.current && fn.current(false)}
                 >
-                  {dialogOptions.cancelText || "Cancel"}
+                  {localize(dialogOptions.cancelText) || localize("Cancel")}
                 </Button>
               </ModalClose>
               <Button
@@ -137,7 +141,7 @@ export default function DialogProvider({ children }: Props) {
                 data-testid={"confirmation.confirm"}
                 onClick={() => fn.current && fn.current(true)}
               >
-                {dialogOptions.confirmText || "Confirm"}
+                {localize(dialogOptions.confirmText) || localize("Confirm")}
               </Button>
             </ModalFooter>
           </ModalContent>

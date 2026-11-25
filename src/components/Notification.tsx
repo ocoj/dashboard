@@ -8,6 +8,7 @@ import * as React from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import { TransText } from "@/i18n/trans-text";
+import { useLocalize } from "@/i18n/use-localize";
 import zhMap from "@/i18n/zh-map";
 
 export interface NotifyProps<T> {
@@ -44,6 +45,7 @@ export default function Notification<T>({
   errorMessages,
   requestId: requestIdProp,
 }: NotificationProps<T>) {
+  const localize = useLocalize();
   const [error, setError] = useState("");
   const [requestId, setRequestId] = useState(requestIdProp);
   const [copied, setCopied] = useState(false);
@@ -220,11 +222,11 @@ export default function Notification<T>({
           <div className={"flex flex-col text-sm"}>
             <p data-testid={"notification-title"}>
               <span className={"font-semibold"}>
-                {loading ? loadingTitle || title : title}
+                {localize(loading ? loadingTitle || title : title)}
               </span>
             </p>
             <p className={"text-xs dark:text-nb-gray-300 text-gray-600 mt-0.5"}>
-              {loading ? loadingMessage : error ? error : description}
+              {loading ? localize(loadingMessage) : error ? error : localize(description)}
             </p>
             {!loading && requestId && (
               <button
