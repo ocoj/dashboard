@@ -26,6 +26,19 @@ const RULES: Rule[] = [
     return `删除 ${m[1]} 个${unit}`;
   }],
   [new RegExp(String.raw`^Remove (.+)\?$`), (m) => `移除 ${translateEntity(m[1])} ？`],
+  [new RegExp(String.raw`^Delete (Group|Network|Route|Peers) (.+)$`), (m) => {
+    const unit = { Group: "组", Network: "网络", Route: "路由", Peers: "节点" }[m[1]] ?? m[1];
+    return `删除${unit} ${m[2]}`;
+  }],
+  [new RegExp(String.raw`^Remove (Peer|User) from Group (.+)$`), (m) =>
+    `从组 ${m[2]} 中移除${{ Peer: "节点", User: "用户" }[m[1]] ?? m[1]}`],
+  [new RegExp(String.raw`^Add (.+) (account|customer)$`), (m) =>
+    `添加 ${m[1]} ${m[2] === "account" ? "账户" : "客户"}`],
+  [new RegExp(String.raw`^Download Invoice \((CSV|PDF)\)$`), (m) => `下载发票（${m[1]}）`],
+  [new RegExp(String.raw`^Downloading (.+)\.csv\.\.\.$`), (m) => `正在下载 ${m[1]}.csv...`],
+  [new RegExp(String.raw`^JWT allow group - (.+)$`), (m) => `JWT 允许组 - ${m[1]}`],
+  [new RegExp(String.raw`^Only users part of the (.+) group will be able to access NetBird\. Are you sure you want to continue\?$`),
+    (m) => `只有属于 ${m[1]} 组的用户才能访问 NetBird。确定要继续吗？`],
   // ---------- 审批 / 封禁 / 合规 ----------
   [new RegExp(String.raw`^Approve peer ${QUOTE}\?$`), (m) => `批准节点「${m[1]}」？`],
   [new RegExp(String.raw`^Block ${QUOTE}\?$`), (m) => `封禁「${m[1]}」？`],
